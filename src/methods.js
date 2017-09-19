@@ -1,4 +1,3 @@
 export const random = function () {
-  return this.prng()
+  return this.weighting(this.prng());
 };
-

@@ -1,66 +1,19 @@
 function Moon (initseed) {
-  const data = {};
-
-  let seed = initseed || Math.random()
-
-  const GetSet = (val, defaultVal) => newVal => {
+  const GetSet = (defaultVal, getter, setter) => newVal => {
     if (newVal === undefined) {
-      return val
+      return getter();
     } else {
       if (newVal === null) {
-        val = defaultVal
+        setter(defaultVal);
       } else {
-        val = newVal
+        setter(newVal);
       }
-      return this
+      return this;
     }
-  }
-  const RunSet = (fn, defaultFn) => newFn => {
-    if (newFn === undefined) {
-      return fn()
-    } else {
-      if (newFn === null) {
-        fn = defaultFn
-      } else {
-        fn = newFn
-      }
-      return this
-    }
-  }
+  };
 
-  const default_prng = () => {
-    const mix = seed => (seed * 9301 + 49297) % 233280
-    return (seed = mix(mix(seed))) / 233280;
-  }
-
-  let prng = default_prng
-
-  this.prng = RunSet(prng, default_prng)
-  this.seed = GetSet(seed, initseed)
-  /*
-  this.prng = prngin => {
-    if (prngin === undefined) {
-      return prng()
-    } else {
-      if (prngin === null) {
-        prng = default_prng
-      } else {
-        prng = prngin
-      }
-      return this
-    }
-  }
-  */
-
-  //this.default_weighting = i => i;
-
-  // TODO: merge reset into this
-  // this.seed = seedin => seedin === undefined ? seed : seedin === null ? this.reset() : this.reset(seedin)
-
-  this.info = () => ({
-    seed,
-    initseed
-  })
+  //
+  const data = {};
 
   this.data = function (input) {
     if (input) {
@@ -74,17 +27,53 @@ function Moon (initseed) {
     }
   };
 
-  this.reset = function (newseed) {
-    seed = newseed !== undefined ? newseed : initseed;
-    return this;
+  //
+  const defaultPrng = () => {
+    const mix = seed => (seed * 9301 + 49297) % 233280;
+    return (seed = mix(mix(seed))) / 233280;
   };
 
+  let prng = defaultPrng;
+
+  this.prng = GetSet(defaultPrng, () => prng(), newprng => (prng = newprng));
+
+  //
+  let seed = initseed || Math.random();
+
+  this.seed = GetSet(initseed, () => seed, newseed => (seed = newseed));
+
+  //
+  const defaultWeighting = i => i;
+
+  let weighting = defaultWeighting;
+
+  this.weighting = newVal => {
+    if (typeof newVal === 'function') {
+      weighting = newVal;
+      return this;
+    } else if (newVal === null) {
+      weighting = defaultWeighting;
+      return this;
+    } else {
+      return weighting(newVal);
+    }
+  };
+  // GetSet(defaultWeighting, () => weighting(), newWeighting => typeof newWeighting === 'function' ? (weighting = newWeighting) : weighting());
+
+  //
+  this.info = () => ({
+    seed,
+    initseed
+  });
+
+  //
   this.callback = function (cb) {
     return cb.bind(this)(data, this);
   };
 
+  //
   this.clone = function (salt) {
-    return fiona(initseed).reset(seed + (salt || 0)).callback((me, myself) => {
+    return fiona(initseed).seed(seed + (salt || 0)).callback((me, myself) => {
       myself.data(data);
       return myself;
     });
@@ -97,10 +86,10 @@ Moon.prototype = {
   constructor: Moon
 };
 
-const fiona = (...args) => new Moon(...args)
+const fiona = (...args) => new Moon(...args);
 
 fiona.version = '__VERSION__';
 
-fiona.fn = Moon.prototype
+fiona.fn = Moon.prototype;
 
-export default fiona
+export default fiona;
