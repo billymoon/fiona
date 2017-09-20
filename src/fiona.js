@@ -1,4 +1,4 @@
-import fiona from './core'
+import fiona from './core.js'
 import * as methods from './methods'
 
 Object.keys(methods).forEach(key => {

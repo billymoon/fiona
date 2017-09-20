@@ -5,7 +5,7 @@ export const random = function () {
 //
 
 export const number = function (max = 1e6, min = 0) {
-  return Math.floor(this.random() * max - min)
+  return Math.floor((this.random() * (max - min)) + min)
 }
 
 //

@@ -2,16 +2,22 @@
   "name": "fiona",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "fiona.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "demo": "node demo",
+    "test": "ava"
   },
-  "author": "",
+  "author": "Billy Moon",
   "license": "ISC",
   "@std/esm": {
     "esm": "all"
   },
-  "dependencies": {
-    "@std/esm": "^0.7.1"
+  "devDependencies": {
+    "@std/esm": "^0.7.1",
+    "rollup": "^0.50.0",
+    "ava": "^0.22.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "uglify-js": "^3.1.1"
   }
 }

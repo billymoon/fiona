@@ -61,7 +61,7 @@ function Moon (initseed) {
       })
       return seed
     } else {
-      return initseed
+      return inputSeed
     }
   }
 
