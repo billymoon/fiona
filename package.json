@@ -1,10 +1,12 @@
 {
   "name": "fiona",
   "version": "1.0.0",
-  "description": "",
+  "description": "tiny yet powerful pseudo random data generator",
+  "repository": "billymoon/fiona",
   "main": "fiona.js",
   "scripts": {
-    "demo": "node demo",
+    "demo": "node -r @std/esm demo",
+    "build": "rollup src/fiona.js -f cjs -o fiona.js",
     "test": "ava"
   },
   "author": "Billy Moon",
@@ -15,9 +17,6 @@
   "devDependencies": {
     "@std/esm": "^0.7.1",
     "rollup": "^0.50.0",
-    "ava": "^0.22.0",
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "uglify-js": "^3.1.1"
+    "ava": "^0.22.0"
   }
 }
