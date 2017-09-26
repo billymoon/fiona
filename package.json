@@ -6,7 +6,9 @@
   "main": "fiona.js",
   "scripts": {
     "demo": "node -r @std/esm demo",
-    "build": "rollup src/fiona.js -f cjs -o fiona.js",
+    "build": "npm run build:core && npm run build:full",
+    "build:full": "webpack",
+    "build:core": "webpack --config webpack.config.core.js",
     "docs": "next build && next export -o docs",
     "test": "ava"
   },
@@ -26,7 +28,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "rollup": "^0.50.0",
-    "rollup": "^0.50.0",
-    "styled-components": "^2.1.2"
+    "styled-components": "^2.1.2",
+    "webpack": "^3.6.0"
   }
 }

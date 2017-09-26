@@ -1,4 +1,4 @@
-import fiona from './src/fiona'
+import fiona from '../src/fiona'
 
 const data = {
   male: {
@@ -12,22 +12,25 @@ const data = {
   surname: ['Moon', 'Smith', 'Brown', 'Wilson', 'Robertson', 'Campbell', 'Stewart', 'Thomson', 'Anderson', 'Scott', 'MacDonald', 'Reid', 'Murray', 'Clark', 'Taylor', 'Ross', 'Young', 'Paterson', 'Watson', 'Mitchell', 'Fraser']
 }
 
-const getGender = gender => (gender && gender[0].toLowerCase() === 'f' ? 'female' : 'male') || this.gender()
+const getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male')) || this.gender()
 
 fiona.fn.gender = function () {
   return this.random() < 0.5 ? 'male' : 'female'
 }
 
 fiona.fn.title = function (opts) {
-  return this.oneOf(data[getGender(opts.gender)].title)
+  const gender = getGender((opts || {}).gender || this.gender())
+  return this.oneOf(data[gender].title)
 }
 
 fiona.fn.firstname = function (opts) {
-  return this.oneOf(data[getGender(opts.gender)].firstname)
+  const gender = getGender((opts || {}).gender || this.gender())
+  return this.oneOf(data[gender].firstname)
 }
 
 fiona.fn.firstnames = function (opts) {
-  return this.choose(this.number(3, 1), data[getGender(opts.gender)].firstname).join(' ')
+  const gender = getGender((opts || {}).gender || this.gender())
+  return this.choose(this.number(3, 1), data[gender].firstname).join(' ')
 }
 
 fiona.fn.surname = function () {
@@ -35,7 +38,7 @@ fiona.fn.surname = function () {
 }
 
 fiona.fn.fullname = function (opts) {
-  const gender = getGender(opts.gender)
+  const gender = getGender((opts || {}).gender || this.gender())
   return `${this.title({ gender })} ${this.firstnames({ gender })} ${this.surname()}`
 }
 

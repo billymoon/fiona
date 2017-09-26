@@ -1,4 +1,4 @@
-import fiona from './src/fiona'
+import fiona from '../src/fiona'
 import RandExp from 'randexp'
 
 fiona.fn.regex = function (regex) {

@@ -1,5 +1,5 @@
 import test from 'ava'
-import fiona from './fiona.js'
+import fiona from './fiona.core.js'
 
 const Girlnames = ['Mia', 'Alice', 'Fiona', 'Aria', 'Sarah']
 const Boynames = ['David', 'Maxwell', 'Christopher', 'John', 'Billy']
