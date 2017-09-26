@@ -136,6 +136,28 @@ const data = fiona(123).data([
 
 console.log(data[3].one[1])
 
+fiona(123).data(({ unique }) => {
+  return {
+    number: unique.number(),
+    color: ({ unique }) => `${unique.number(255)}/${unique.number(255)}/${unique.number(255)}`,
+    speeds: [10, [({ pos }) => pos, ({ pos }) => pos], 30]
+  }
+}).log()
+
+fiona(123).data({
+  number: ({ unique }) => unique.number(),
+  color: ({ unique }) => `${unique.number(255)}/${unique.number(255)}/${unique.number(255)}`,
+  speeds: [10, [({ pos }) => pos, ({ pos }) => pos], 30]
+}).log()
+
+fiona(123).data(({ unique }) => {
+  return [1, ({ unique }) => unique.number()]
+}).log()
+
+fiona(123).data(({ unique }) => `awesome ${unique.oneOf(['stuff', 'things'])}`).log()
+
+// console.log(x)
+
 // ************ //
 
 // fiona`
