@@ -262,25 +262,32 @@ function Moon (initseed) {
   }
 
   //
-  const data = {}
+  let data = null
 
-  // TODO: perhaps build intance data instead of section input, and call functions with that?
+  const arr = (qty, callback) => {
+    return Array(qty).fill(callback)
+  }
+
+  // TODO: perhaps build instance data instead of section input, and call functions with that?
   const recurseData = (input, position) => {
     const data = input
     const inception = (input, position) => {
       if (type(input) === 'Object') {
         Object.keys(input).forEach(key => {
           const pos = `${position}.${key}`
-          const unique = this.clone().seed(pos + initseed)
-          input[key] = type(input[key]) === 'Function' ? input[key]({ me: this, pos, data, unique }) : inception(input[key], pos)
+          input[key] = inception(input[key], pos)
         })
         return input
       } else if (type(input) === 'Array') {
         return input.map((item, index) => {
-          const pos = `${position}[${index}]`
-          const unique = this.clone().seed(pos + initseed)
-          return type(item) === 'Function' ? item({ me: this, pos, data, unique }) : inception(item, pos)
+          const m = position.match(/^data\[(\d+)\]$/)
+          const pos = m ? `data[${1 * m[1] + index}]` : `${position}[${index}]`
+          return inception(item, pos)
         })
+      } else if (type(input) === 'Function') {
+        // TODO: add divider to seed input, requires update to tests
+        const unique = this.clone().seed(position + initseed)
+        return inception(input({ me: this, pos: position, data, unique, arr }), position)
       } else {
         return input
       }
@@ -290,7 +297,21 @@ function Moon (initseed) {
 
   this.data = function (input) {
     if (input) {
-      Object.assign(data, recurseData(input, 'data'))
+      if (type(input) === 'Function') {
+        // TODO: merge this with repeated code in `inception`
+        // TODO: ensure divider same as in `inception`
+        const unique = this.clone().seed('() => data' + initseed)
+        input = input({ me: this, pos: '() => data', data, unique, arr })
+      }
+      // TODO: handle mixed input types on multiple data calls
+      if (type(input) === 'Array') {
+        data = (data || []).concat(recurseData(input, `data[${(data || []).length}]`))
+      } else if (type(input) === 'Object') {
+        data = Object.assign({}, data || {}, recurseData(input, 'data'))
+      } else {
+        // TODO: does it make sense to return stuff we don't recognise, or just throw?
+        data = input
+      }
       return this
     } else {
       return data
@@ -323,7 +344,7 @@ function Moon (initseed) {
 
   //
   let seed
-  seed = processSeed(initseed) || Math.random()
+  seed = processSeed(initseed = initseed || Math.random())
 
   this.seed = GetSet(initseed, () => seed, newseed => (seed = processSeed(newseed)))
 

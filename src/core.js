@@ -40,7 +40,8 @@ function Moon (initseed) {
           return inception(item, pos)
         })
       } else if (type(input) === 'Function') {
-        const unique = this.clone().seed(position + '/' + initseed)
+        // TODO: add divider to seed input, requires update to tests
+        const unique = this.clone().seed(position + initseed)
         return inception(input({ me: this, pos: position, data, unique, arr }), position)
       } else {
         return input
@@ -53,7 +54,8 @@ function Moon (initseed) {
     if (input) {
       if (type(input) === 'Function') {
         // TODO: merge this with repeated code in `inception`
-        const unique = this.clone().seed('() => data' + '/' + initseed)
+        // TODO: ensure divider same as in `inception`
+        const unique = this.clone().seed('() => data' + initseed)
         input = input({ me: this, pos: '() => data', data, unique, arr })
       }
       // TODO: handle mixed input types on multiple data calls
