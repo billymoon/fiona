@@ -344,7 +344,7 @@ function Moon (initseed) {
 
   //
   let seed
-  seed = processSeed(initseed = initseed || Math.random())
+  seed = processSeed(initseed = initseed !== undefined ? initseed : Math.random())
 
   this.seed = GetSet(initseed, () => seed, newseed => (seed = processSeed(newseed)))
 

@@ -98,14 +98,14 @@ test('fiona.fn.clone', t => {
 
 test('fiona.fn.number', t => {
   const baby = fiona(1)
-  t.true(baby.number() === 545331)
+  t.true(baby.number() === 545332)
   for (let i = 10; i--;) {
-    t.true(baby.number(10) < 10)
+    t.true(baby.number(10) <= 10)
   }
   for (let i = 10; i--;) {
     const num = baby.number(20, 10)
-    t.true(num > 10)
-    t.true(num < 20)
+    t.true(num >= 10)
+    t.true(num <= 20)
   }
   t.true(baby.seed(1).number(1e10) === 5453317901)
 })
@@ -157,7 +157,7 @@ test('fiona.fn.data', t => {
     firstname: 'Fiona',
     lastname: 'Moon',
     fullname: 'Little Miss Fiona Moon',
-    luckyNumber: 80,
+    luckyNumber: 81,
     houseNumber: 68,
     favourite: {
       color: 'Orange',
@@ -176,7 +176,7 @@ test('fiona.fn.data', t => {
   }).data(), {
     gender: 'Female',
     firstname: 'Fiona',
-    luckyNumber: 80,
+    luckyNumber: 81,
     pairsOfShoes: 7,
     favourite: {
       drinks: [ 'Water', 'Milk', 'Juice' ]
@@ -219,7 +219,7 @@ test('fiona.fn', t => {
   t.deepEqual(baby.data(), {
     gender: 'Female',
     firstname: 'Fiona',
-    luckyNumber: 80,
+    luckyNumber: 81,
     bear: 'John the yellow bear',
     dolly: 'Green Miller',
     houseNumber: 68
