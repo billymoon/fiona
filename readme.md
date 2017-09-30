@@ -39,14 +39,14 @@ The prng sets the initial seed when fiona is initialised, then tracks new seeds 
 
 ### Chained data builder
 
-Fiona supports jQuery like chaining and extendable plugin system. There is a data builder that takes advantage of this system to assist in building complex data structures that can be modified without the existing values changing. This works by using an inline function to set the values on the data structure, which is passed a clone of the chained fiona instance seeded with the position in the data structure (the path of the function setting the value) as `unique`.
+Fiona supports jQuery like chaining and extendable plugin system. There is a data builder that takes advantage of this system to assist in building complex data structures that can be modified without the existing values changing. This works by using an inline function to set the values on the data structure, which is passed a clone of the chained fiona instance seeded with the position in the data structure (the path of the function setting the value) as `seeded`.
 
 There are also some core helper methods for selecting random elements from arrays for example.
 
     fiona(12345).data({
-      gender: ({ unique }) => unique.oneOf(['Male', 'Female'])
+      gender: ({ seeded }) => seeded.oneOf(['Male', 'Female'])
     }).prng(Math.random).data({
-      bottles: ({ unique }) => unique.number(10)
+      bottles: ({ seeded }) => seeded.number(10)
     }).prng(null).data({
-      sentence: ({ me, unique }) => `There are ${me.data().bottles} ${unique.oneOf(['red', 'green', 'blue'])} bottles on the wall`
+      sentence: ({ me, seeded }) => `There are ${me.data().bottles} ${seeded.oneOf(['red', 'green', 'blue'])} bottles on the wall`
     }).data()

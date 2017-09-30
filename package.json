@@ -9,7 +9,8 @@
     "build": "npm run build:core && npm run build:full",
     "build:full": "webpack",
     "build:core": "webpack --config webpack.config.core.js",
-    "docs": "next build && next export -o docs",
+    "docs": "next",
+    "docs:build": "next build && next export -o docs",
     "pretest": "npm run build",
     "test": "ava",
     "test:coverage": "npm run pretest && nyc ava"

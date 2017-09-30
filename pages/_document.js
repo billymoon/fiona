@@ -2,7 +2,7 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
-  render() {
+  render () {
     const sheet = new ServerStyleSheet()
     const main = sheet.collectStyles(<Main />)
     const styleTags = sheet.getStyleElement()
@@ -11,12 +11,12 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <title>Fiona</title>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta name='viewport' content='initial-scale=1.0, width=device-width' />
           {styleTags}
         </Head>
 
         <body>
-          <div className="root">
+          <div className='root'>
             {main}
           </div>
           <NextScript />

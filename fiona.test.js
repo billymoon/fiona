@@ -127,15 +127,15 @@ import fiona from './fiona.js'
 
   test('fiona.fn.data', t => {
     const generatePerson = seed => fiona(seed).data({
-      gender: ({ unique }) => unique.oneOf(['Male', 'Female']),
-      firstname: ({ unique, data }) => unique.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
-      lastname: ({ unique }) => unique.oneOf(Surnames),
+      gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
+      firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
+      lastname: ({ seeded }) => seeded.oneOf(Surnames),
       fullname: ({ data }) => `${data.gender === 'Female' ? 'Little Miss' : 'Mr'} ${data.firstname} ${data.lastname}`,
-      luckyNumber: ({ unique }) => unique.number(100),
-      houseNumber: ({ unique }) => unique.number(100),
+      luckyNumber: ({ seeded }) => seeded.number(100),
+      houseNumber: ({ seeded }) => seeded.number(100),
       favourite: {
-        color: ({ unique }) => unique.oneOf(Colours),
-        drinks: ({ unique }) => unique.weighting(i => i * i).choose(3, Drinks)
+        color: ({ seeded }) => seeded.oneOf(Colours),
+        drinks: ({ seeded }) => seeded.weighting(i => i * i).choose(3, Drinks)
       }
     })
 
@@ -153,12 +153,12 @@ import fiona from './fiona.js'
     })
 
     t.deepEqual(fiona('moon').data({
-      gender: ({ unique }) => unique.oneOf(['Male', 'Female']),
-      firstname: ({ unique, data }) => unique.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
-      luckyNumber: ({ unique }) => unique.number(100),
-      pairsOfShoes: ({ unique }) => unique.number(10),
+      gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
+      firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
+      luckyNumber: ({ seeded }) => seeded.number(100),
+      pairsOfShoes: ({ seeded }) => seeded.number(10),
       favourite: {
-        drinks: ({ unique }) => unique.weighting(i => i * i).choose(3, Drinks)
+        drinks: ({ seeded }) => seeded.weighting(i => i * i).choose(3, Drinks)
       }
     }).data(), {
       gender: 'Male',
@@ -171,10 +171,10 @@ import fiona from './fiona.js'
     })
 
     t.deepEqual(fiona('moon').data({
-      gender: ({ unique }) => unique.oneOf(['Male', 'Female']),
-      firstname: ({ unique, data }) => unique.oneOf(data.gender === 'Female' ? Girlnames : Boynames)
+      gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
+      firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames)
     }).data({
-      toys: ({ unique }) => unique.number(100),
+      toys: ({ seeded }) => seeded.number(100),
       toyDeclaration: ({ me, data }) => `${me.data().firstname} has ${data.toys} toys`
     }).data(), {
       gender: 'Male',
@@ -187,8 +187,8 @@ import fiona from './fiona.js'
   test('fiona.fn', t => {
     fiona.fn.addToyNames = function () {
       this.data({
-        bear: ({ unique }) => `${unique.oneOf(Boynames)} the ${unique.oneOf(Colours).toLowerCase()} bear`,
-        dolly: ({ unique }) => `${unique.oneOf(Colours)} ${unique.oneOf(Surnames)}`
+        bear: ({ seeded }) => `${seeded.oneOf(Boynames)} the ${seeded.oneOf(Colours).toLowerCase()} bear`,
+        dolly: ({ seeded }) => `${seeded.oneOf(Colours)} ${seeded.oneOf(Surnames)}`
       })
       return this
     }
@@ -196,11 +196,11 @@ import fiona from './fiona.js'
     const baby = fiona('moon')
 
     baby.data({
-      gender: ({ unique }) => unique.oneOf(['Male', 'Female']),
-      firstname: ({ unique, data }) => unique.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
-      luckyNumber: ({ unique }) => unique.number(100)
+      gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
+      firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
+      luckyNumber: ({ seeded }) => seeded.number(100)
     }).addToyNames().data({
-      houseNumber: ({ unique }) => unique.number(100)
+      houseNumber: ({ seeded }) => seeded.number(100)
     })
 
     t.deepEqual(baby.data(), {
@@ -214,8 +214,8 @@ import fiona from './fiona.js'
   })
 
   test('fiona.data (Function)', t => {
-    const data = fiona('moon').data(({ arr }) => arr(2, ({ unique }) => {
-      return unique.number()
+    const data = fiona('moon').data(({ arr }) => arr(2, ({ seeded }) => {
+      return seeded.number()
     })).data()
     t.deepEqual(data, [885487, 775073])
   })

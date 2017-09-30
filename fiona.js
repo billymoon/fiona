@@ -341,8 +341,8 @@ function Moon (seedin) {
           return inception(item, pos)
         })
       } else if (type(input) === 'Function') {
-        const unique = fiona(`${position}/${initseed}`)
-        return inception(input({ me: this, pos: position, data, unique, arr }), position)
+        const seeded = fiona(`${position}/${initseed}`)
+        return inception(input({ me: this, pos: position, data, seeded, arr }), position)
       } else {
         return input
       }
@@ -354,8 +354,8 @@ function Moon (seedin) {
     if (input) {
       if (type(input) === 'Function') {
         // TODO: merge this with repeated code in `inception`
-        const unique = fiona(`() => data/${initseed}`)
-        input = input({ me: this, pos: '() => data', data, unique, arr })
+        const seeded = fiona(`() => data/${initseed}`)
+        input = input({ me: this, pos: '() => data', data, seeded, arr })
       }
       // TODO: handle mixed input types on multiple data calls
       if (type(input) === 'Array') {
