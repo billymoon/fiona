@@ -10,39 +10,39 @@ test('import', t => {
 })
 
 test('fiona.fn.title', t => {
-  t.true(fiona(1).title() === 'Dame')
-  t.true(fiona(1).title({}) === 'Dame')
-  t.true(fiona(2).title() === 'Mr')
-  t.true(fiona(2).title({}) === 'Mr')
-  t.true(fiona(4).title({ gender: 'f' }) === 'Miss')
-  t.true(fiona(4).title({ gender: 'm' }) === 'Mr')
-  t.true(fiona(4).title({ gender: 'Male' }) === 'Mr')
+  t.is(fiona(1).title(), 'Lord')
+  t.is(fiona(1).title({}), 'Lord')
+  t.is(fiona(2).title(), 'Mr')
+  t.is(fiona(2).title({}), 'Mr')
+  t.is(fiona(4).title({ gender: 'f' }), 'Dame')
+  t.is(fiona(4).title({ gender: 'm' }), 'Lord')
+  t.is(fiona(4).title({ gender: 'Male' }), 'Lord')
 })
 
 test('fiona.fn.firstname', t => {
-  t.true(fiona(1).firstname() === 'Hanna')
-  t.true(fiona(1).firstname({}) === 'Hanna')
-  t.true(fiona(2).firstname() === 'Daniel')
-  t.true(fiona(2).firstname({}) === 'Daniel')
-  t.true(fiona(2).firstname({ gender: 'f' }) === 'Zara')
-  t.true(fiona(2).firstname({ gender: 'm' }) === 'Liam')
-  t.true(fiona(2).firstname({ gender: 'Male' }) === 'Liam')
+  t.is(fiona(1).firstname(), 'Zachary')
+  t.is(fiona(1).firstname({}), 'Zachary')
+  t.is(fiona(2).firstname(), 'Aaron')
+  t.is(fiona(2).firstname({}), 'Aaron')
+  t.is(fiona(2).firstname({ gender: 'f' }), 'Daisy')
+  t.is(fiona(2).firstname({ gender: 'm' }), 'Ryan')
+  t.is(fiona(2).firstname({ gender: 'Male' }), 'Ryan')
 })
 
 test('fiona.fn.firstnames', t => {
-  t.true(fiona(1).firstnames() === 'Lily Phoebe Leah')
+  t.is(fiona(1).firstnames(), 'Owen Kayden Oliver')
 })
 
 test('fiona.fn.surname', t => {
-  t.true(fiona(1).surname() === 'Reid')
-  t.true(fiona(2).surname() === 'Anderson')
+  t.is(fiona(1).surname(), 'Anderson')
+  t.is(fiona(2).surname(), 'Scott')
 })
 
 test('fiona.fn.gender', t => {
-  t.true(fiona(1).gender() === 'female')
-  t.true(fiona(2).gender() === 'male')
+  t.is(fiona(1).gender(), 'male')
+  t.is(fiona(2).gender(), 'male')
 })
 
 test('fiona.fn.fullname', t => {
-  t.true(fiona(1).fullname() === 'Dame Phoebe MacDonald')
+  t.is(fiona(1).fullname(), 'Lord Kayden James Alfie Stewart')
 })

@@ -1,7 +1,3 @@
-export const random = function () {
-  return this.weighting(this.prng())
-}
-
 //
 
 export const number = function (max = 1e6, min = 0) {

@@ -8,6 +8,27 @@ fiona.fn.log = function () {
   return this
 }
 
+// const seeded = fiona(123)
+// // console.log(seeded.random())
+// // console.log(seeded.random())
+// // const seeded2 = fiona(123)
+// // console.log(seeded2.random())
+// // console.log(seeded2.random())
+// // seeded.reseed(1234)
+// // console.log(seeded.random())
+// // console.log(seeded.random())
+// // fiona(123).data(({ unique }) => unique.random()).log()
+
+// seeded.data({gender: [
+//   {a: seeded.firstname()},
+//   {a: ({ data, pos }) => data.gender[0].a},
+//   [({ data, pos }) => data.gender[0].a, ({ pos }) => pos]
+// ]}).log()
+
+// seeded.data({
+//   name: ({ unique }) => unique.fullname()
+// }).log()
+
 // ************ //
 
 // const Girlnames = ['Mia', 'Alice', 'Fiona', 'Aria', 'Sarah']
@@ -48,8 +69,7 @@ fiona.fn.log = function () {
 //   firstnamese: ({ data, unique }) => unique.firstnames({ gender: data.gender }),
 //   surname: ({ data, unique }) => unique.surname({ gender: data.gender }),
 //   fullname: ({ data, unique }) => unique.fullname({ gender: data.gender }),
-//   // fullname: ({ data, unique }) => unique.seed(),
-//   fullnamex: ({ data, unique }) => unique.seed('data.fullname' + unique.info().initseed).fullname({ gender: data.gender })
+//   fullnamex: ({ data, unique }) => unique.reseed('data.fullname' + unique.info().initseed).fullname({ gender: data.gender })
 // }).log()
 
 // console.log(JSON.stringify({
@@ -89,74 +109,72 @@ fiona.fn.log = function () {
 
 // ************ //
 
-fiona(123).data({
-  red: ({ unique }) => unique.number(255),
-  green: ({ unique }) => unique.number(255),
-  blue: ({ unique }) => unique.number(255)
-}).log()
+// fiona(123).data({
+//   red: ({ unique }) => unique.number(255),
+//   green: ({ unique }) => unique.number(255),
+//   blue: ({ unique }) => unique.number(255)
+// }).log()
 
-fiona(123).data([
-  ({ unique }) => unique.number(255),
-  ({ unique }) => unique.number(255),
-  ({ unique }) => unique.number(255)
-]).log()
+// fiona(123).data([
+//   ({ unique }) => unique.number(255),
+//   ({ unique }) => unique.number(255),
+//   ({ unique }) => unique.number(255)
+// ]).log()
 
-fiona(123).data({
-  red: ({ unique }) => unique.number(255),
-  green: ({ unique }) => unique.number(255),
-  blue: ({ unique }) => unique.number(255)
-}).log()
+// fiona(123).data({
+//   red: ({ unique }) => unique.number(255),
+//   green: ({ unique }) => unique.number(255),
+//   blue: ({ unique }) => unique.number(255)
+// }).log()
 
-fiona(123).data([
-  ({ unique }) => unique.number(255),
-  ({ unique }) => unique.number(255),
-  ({ unique }) => unique.number(255)
-]).log()
+// fiona(123).data([
+//   ({ unique }) => unique.number(255),
+//   ({ unique }) => unique.number(255),
+//   ({ unique }) => unique.number(255)
+// ]).log()
 
-fiona(123).data({
-  red: ({ unique }) => unique.number(255),
-  green: ({ unique }) => unique.number(255)
-}).data({
-  blue: ({ unique }) => unique.number(255)
-}).log()
+// fiona(123).data({
+//   red: ({ unique }) => unique.number(255),
+//   green: ({ unique }) => unique.number(255)
+// }).data({
+//   blue: ({ unique }) => unique.number(255)
+// }).log()
 
-const data = fiona(123).data([
-  ({ unique }) => unique.number(255)
-]).data([
-  ({ unique }) => unique.number(255)
-]).data([
-  ({ unique }) => unique.number(255),
-  {
-    nice: ({ unique }) => unique.firstname(),
-    pos: ({ pos }) => pos,
-    one: [1, 'cool'],
-    pos2: ({ pos }) => pos
-  }
-]).data()
+// const data = fiona(123).data([
+//   ({ unique }) => unique.number(255)
+// ]).data([
+//   ({ unique }) => unique.number(255)
+// ]).data([
+//   ({ unique }) => unique.number(255),
+//   {
+//     nice: ({ unique }) => unique.firstname(),
+//     pos: ({ pos }) => pos,
+//     one: [1, 'cool'],
+//     pos2: ({ pos }) => pos
+//   }
+// ]).data()
 
-console.log(data[3].one[1])
+// console.log(data[3].one[1])
 
-fiona(123).data(({ unique }) => {
-  return {
-    number: unique.number(),
-    color: ({ unique }) => `${unique.number(255)}/${unique.number(255)}/${unique.number(255)}`,
-    speeds: [10, [({ pos }) => pos, ({ pos }) => pos], 30]
-  }
-}).log()
+// fiona(123).data(({ unique }) => {
+//   return {
+//     number: unique.number(),
+//     color: ({ unique }) => `${unique.number(255)}/${unique.number(255)}/${unique.number(255)}`,
+//     speeds: [10, [({ pos }) => pos, ({ pos }) => pos], 30]
+//   }
+// }).log()
 
-fiona(123).data({
-  number: ({ unique }) => unique.number(),
-  color: ({ unique }) => `${unique.number(255)}/${unique.number(255)}/${unique.number(255)}`,
-  speeds: [10, [({ pos }) => pos, ({ pos }) => pos], 30]
-}).log()
+// fiona(123).data({
+//   number: ({ unique }) => unique.number(),
+//   color: ({ unique }) => `${unique.number(255)}/${unique.number(255)}/${unique.number(255)}`,
+//   speeds: [10, [({ pos }) => pos, ({ pos }) => pos], 30]
+// }).log()
 
-fiona(123).data(({ unique }) => {
-  return [1, ({ unique }) => unique.number()]
-}).log()
+// fiona(123).data(({ unique }) => {
+//   return [1, ({ unique }) => unique.number()]
+// }).log()
 
-fiona(123).data(({ unique }) => `awesome ${unique.oneOf(['stuff', 'things'])}`).log()
-
-// console.log(x)
+// fiona(123).data(({ unique }) => `awesome ${unique.oneOf(['stuff', 'things'])}`).log()
 
 // ************ //
 
@@ -169,19 +187,46 @@ fiona(123).data(({ unique }) => `awesome ${unique.oneOf(['stuff', 'things'])}`).
 
 // ************ //
 
-// console.time('loop')
-// const data = fiona(1).data({
-//   numbers: ({ arr, unique }) => arr(10000, ({ unique }) => unique.number(9999999, 1000000))
-// }).data()
-// console.timeEnd('loop')
+console.time('loop')
+const data = fiona(1).data({
+  numbers: ({ arr, unique }) => arr(1e4, ({ unique }) => unique.number(9999999, 1000000))
+}).data()
+console.timeEnd('loop')
 
 // console.log(data.numbers[123])
 // console.log(data.numbers[456])
 // console.log(data.numbers[789])
 // console.log(data.numbers[5106])
 // console.log(data.numbers[2724])
-// data.numbers.forEach((item, index) => {
-//   if (data.numbers.indexOf(item) < index) {
-//     console.log(item, index, data.numbers.indexOf(item))
-//   }
-// })
+data.numbers.forEach((item, index) => {
+  if (data.numbers.indexOf(item) < index) {
+    console.log(item, index, data.numbers.indexOf(item))
+  }
+})
+
+// console.log(data.numbers.slice(-10))
+
+// ************ //
+
+// const seeded = fiona(123)
+// console.log(1, seeded.random())
+// const dolly = seeded.clone()
+// console.log(1, seeded.random())
+// console.log(1, seeded.random())
+
+// const seeded2 = fiona(123)
+// console.log(2, seeded2.random())
+// console.log(2, seeded2.random())
+// console.log(2, seeded2.random())
+
+// console.log(3, dolly.random())
+// console.log(3, dolly.random())
+// console.log(3, dolly.random())
+// console.log(3, dolly.random())
+
+// // const seeded = fiona(123)
+// // console.log(seeded.random())
+// // console.log(seeded.random())
+// // seeded.seed(123)
+// // console.log(seeded.random())
+// // console.log(seeded.random())

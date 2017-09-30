@@ -1,6 +1,10 @@
-function Moon (initseed) {
-  //
-  const type = item => Object.prototype.toString.call(item).slice(8, -1)
+import prng from './prng-twister'
+
+//
+const type = item => Object.prototype.toString.call(item).slice(8, -1)
+
+function Moon (seedin) {
+  const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
 
   //
   const GetSet = (defaultVal, getter, setter) => newVal => {
@@ -14,6 +18,58 @@ function Moon (initseed) {
       }
       return this
     }
+  }
+
+  const processSeed = inputSeed => {
+    if (typeof inputSeed === 'string') {
+      // https://github.com/chancejs/chancejs/blob/b1b61100383bc9bfd27907c239e2f1437010e44e/chance.js#L40
+      let seed = 0
+      for (let i = 0; i < inputSeed.length; i++) {
+        let hash = 0
+        for (let j = 0; j < inputSeed.length; j++) {
+          hash = inputSeed.charCodeAt(j) + (hash << 6) + (hash << 16) - hash
+        }
+        seed += hash
+      }
+      return seed
+    } else {
+      return inputSeed
+    }
+  }
+
+  //
+  this.clone = function () {
+    return fiona(initseed).state(this.state())
+  }
+
+  //
+  const defaultWeighting = i => i
+
+  let weighting = defaultWeighting
+
+  this.weighting = newVal => {
+    if (typeof newVal === 'function') {
+      weighting = newVal
+      return this
+    } else if (newVal === null) {
+      weighting = defaultWeighting
+      return this
+    } else {
+      return weighting(newVal)
+    }
+  }
+
+  const { random, reseed, getState, setState } = prng(0)
+
+  this.random = () => this.weighting(random())
+
+  reseed(processSeed(initseed))
+
+  this.state = GetSet(getState(), getState, setState)
+
+  this.reseed = function (seed) {
+    reseed(processSeed(seed === null ? initseed : seed))
+    return this
   }
 
   //
@@ -40,8 +96,7 @@ function Moon (initseed) {
           return inception(item, pos)
         })
       } else if (type(input) === 'Function') {
-        // TODO: add divider to seed input, requires update to tests
-        const unique = this.clone().seed(position + initseed)
+        const unique = fiona(`${position}/${initseed}`)
         return inception(input({ me: this, pos: position, data, unique, arr }), position)
       } else {
         return input
@@ -54,8 +109,7 @@ function Moon (initseed) {
     if (input) {
       if (type(input) === 'Function') {
         // TODO: merge this with repeated code in `inception`
-        // TODO: ensure divider same as in `inception`
-        const unique = this.clone().seed('() => data' + initseed)
+        const unique = fiona(`() => data/${initseed}`)
         input = input({ me: this, pos: '() => data', data, unique, arr })
       }
       // TODO: handle mixed input types on multiple data calls
@@ -73,73 +127,14 @@ function Moon (initseed) {
     }
   }
 
-  const processSeed = inputSeed => {
-    if (typeof inputSeed === 'string') {
-      const split = inputSeed.split('').map(item => item.charCodeAt(0))
-      seed = split.pop()
-      split.forEach(item => {
-        seed = prng() + item
-      })
-      return seed
-    } else {
-      return inputSeed
-    }
-  }
-
-  //
-  const defaultPrng = () => {
-    const mix = seed => (seed * 9301 + 49297) % 233280
-    const res = (seed = mix(mix(seed))) / 233280
-    return res
-  }
-
-  let prng = defaultPrng
-
-  this.prng = GetSet(defaultPrng, () => prng(), newprng => (prng = newprng))
-
-  //
-  let seed
-  seed = processSeed(initseed = initseed !== undefined ? initseed : Math.random())
-
-  this.seed = GetSet(initseed, () => seed, newseed => (seed = processSeed(newseed)))
-
-  //
-  const defaultWeighting = i => i
-
-  let weighting = defaultWeighting
-
-  this.weighting = newVal => {
-    if (typeof newVal === 'function') {
-      weighting = newVal
-      return this
-    } else if (newVal === null) {
-      weighting = defaultWeighting
-      return this
-    } else {
-      return weighting(newVal)
-    }
-  }
-
   //
   this.info = () => ({
-    seed,
     initseed
   })
 
   //
   this.callback = function (cb) {
     return cb.bind(this)(data, this)
-  }
-
-  //
-  this.clone = function (salt) {
-    return fiona(initseed).seed(seed + (salt || 0)).callback((me, myself) => {
-      // TODO: why should I not set the prng in the clone?
-      // myself.prng(prng)
-      myself.weighting(weighting)
-      myself.data(data)
-      return myself
-    })
   }
 
   return this

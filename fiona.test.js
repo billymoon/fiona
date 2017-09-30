@@ -14,94 +14,76 @@ import fiona from './fiona.js'
   })
 
   test('import', t => {
-    t.true(typeof fiona === 'function')
+    t.is(typeof fiona, 'function')
   })
 
   test('basic seeding', t => {
-    t.true(fiona().random() !== fiona().random())
-    t.true(fiona(1).random() !== fiona(2).random())
-    t.true(fiona(1).random() === fiona(1).random())
-    t.true(fiona(2).random() === fiona(2).random())
+    t.not(fiona().random(), fiona().random())
+    t.not(fiona(1).random(), fiona(2).random())
+    t.is(fiona(1).random(), fiona(1).random())
+    t.is(fiona(2).random(), fiona(2).random())
   })
 
-  test('fiona.fn.seed', t => {
+  test('fiona.fn.reseed', t => {
     const baby = fiona(1)
-    t.true(baby.random() === 0.5453317901234568)
-    t.true(baby.random() === 0.9538280178326475)
-    t.true(baby.seed(null).random() === 0.5453317901234568)
-    t.true(baby.random() === 0.9538280178326475)
-    t.true(baby.seed(2).random() === 0.381241426611797)
-    t.true(baby.random() === 0.1688528806584362)
-    t.true(baby.seed(null).random() === 0.5453317901234568)
-    t.true(baby.random() === 0.9538280178326475)
-    t.true(baby.seed(2).random() === 0.381241426611797)
-    t.true(baby.random() === 0.1688528806584362)
-    t.true(baby.seed(1).random() === 0.5453317901234568)
-    t.true(baby.random() === 0.9538280178326475)
-    t.true(baby.seed('one').random() === 0.9866863489304305)
-    t.true(baby.random() === 0.38119154341815265)
-    t.true(baby.seed(null).random() === 0.5453317901234568)
-    t.true(baby.random() === 0.9538280178326475)
-    t.true(baby.seed() === 222509)
+    t.is(baby.random(), 0.4170219984371215)
+    t.is(baby.random(), 0.99718480813317)
+    t.is(baby.reseed(null).random(), 0.4170219984371215)
+    t.is(baby.random(), 0.99718480813317)
+    t.is(baby.reseed(2).random(), 0.43599490262567997)
+    t.is(baby.random(), 0.18508208147250116)
+    t.is(baby.reseed(null).random(), 0.4170219984371215)
+    t.is(baby.random(), 0.99718480813317)
+    t.is(baby.reseed(2).random(), 0.43599490262567997)
+    t.is(baby.random(), 0.18508208147250116)
+    t.is(baby.reseed(1).random(), 0.4170219984371215)
+    t.is(baby.random(), 0.99718480813317)
+    t.is(baby.reseed('one').random(), 0.19869689363986254)
+    t.is(baby.random(), 0.07978078303858638)
+    t.is(baby.reseed(null).random(), 0.4170219984371215)
+    t.is(baby.random(), 0.99718480813317)
   })
 
   test('fiona.fn.info', t => {
     const baby = fiona(1)
     t.deepEqual(baby.info(), {
-      initseed: 1,
-      seed: 1
+      initseed: 1
     })
-    baby.random()
-    t.deepEqual(baby.info(), {
-      initseed: 1,
-      seed: 127215
-    })
-    baby.seed(2)
-    t.deepEqual(baby.info(), {
-      initseed: 1,
-      seed: 2
-    })
-  })
-
-  test('fiona.fn.prng', t => {
-    const baby = fiona(1)
-    t.true(baby.prng(() => 123).random() === 123)
-    t.true(baby.prng(null).random() === 0.5453317901234568)
   })
 
   test('fiona.fn.weighting', t => {
     const baby = fiona(1)
-    t.true(baby.seed(null).random() === 0.5453317901234568)
-    t.true(baby.seed(null).weighting(i => i * i).random() === 0.2973867613192539)
-    t.true(baby.seed(null).random() === 0.2973867613192539)
-    t.true(baby.seed(null).weighting(null).random() === 0.5453317901234568)
+    t.is(baby.reseed(null).random(), 0.4170219984371215)
+    t.is(baby.reseed(null).weighting(i => i * i).random(), 0.17390734718049058)
+    t.is(baby.reseed(null).random(), 0.17390734718049058)
+    t.is(baby.reseed(null).weighting(null).random(), 0.4170219984371215)
   })
 
   test('fiona.fn.callback', t => {
     const baby = fiona(1)
-    t.true(baby.random() === 0.5453317901234568)
-    baby.callback((data, me) => me.seed(2))
-    t.true(baby.random() === 0.381241426611797)
-    baby.callback((data, me) => me.seed(1))
-    t.true(baby.random() === 0.5453317901234568)
+    t.is(baby.random(), 0.4170219984371215)
+    baby.callback((data, me) => me.reseed(2))
+    t.is(baby.random(), 0.43599490262567997)
+    baby.callback((data, me) => me.reseed(1))
+    t.is(baby.random(), 0.4170219984371215)
   })
 
   test('fiona.fn.clone', t => {
     const baby = fiona(1)
     const clone = baby.clone()
-    t.true(baby.random() === 0.5453317901234568)
-    t.true(clone.random() === 0.5453317901234568)
-    t.true(baby.random() === 0.9538280178326475)
-    t.true(clone.random() === 0.9538280178326475)
-    t.true(baby.seed(null).random() === 0.5453317901234568)
-    t.true(baby.random() === 0.9538280178326475)
-    t.true(clone.seed(null).random() === 0.5453317901234568)
-    t.true(clone.random() === 0.9538280178326475)
+    t.is(baby.random(), 0.4170219984371215)
+    t.is(clone.random(), 0.4170219984371215)
+    t.is(baby.random(), 0.99718480813317)
+    t.is(clone.random(), 0.99718480813317)
+    t.is(baby.reseed(null).random(), 0.4170219984371215)
+    t.is(baby.random(), 0.99718480813317)
+    t.is(clone.reseed(null).random(), 0.4170219984371215)
+    t.is(clone.random(), 0.99718480813317)
   })
 
   test('fiona.fn.number', t => {
     const baby = fiona(1)
-    t.true(baby.number() === 545332)
+    t.is(baby.number(), 417022)
     for (let i = 10; i--;) {
       t.true(baby.number(10) <= 10)
     }
@@ -110,35 +92,35 @@ import fiona from './fiona.js'
       t.true(num >= 10)
       t.true(num <= 20)
     }
-    t.true(baby.seed(1).number(1e10) === 5453317901)
+    t.is(baby.reseed(1).number(1e10), 4170219984)
   })
 
   test('fiona.fn.oneOf', t => {
     const baby = fiona(1)
     const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    t.true(baby.oneOf(oneToTen) === 6)
-    t.true(baby.oneOf(oneToTen) === 10)
-    t.true(baby.oneOf(oneToTen) === 2)
-    t.true(baby.oneOf(oneToTen) === 8)
-    baby.seed(null).weighting(i => i * i * i)
-    t.true(baby.oneOf(oneToTen) === 2)
-    t.true(baby.oneOf(oneToTen) === 9)
-    t.true(baby.oneOf(oneToTen) === 1)
-    t.true(baby.oneOf(oneToTen) === 4)
+    t.is(baby.oneOf(oneToTen), 5)
+    t.is(baby.oneOf(oneToTen), 10)
+    t.is(baby.oneOf(oneToTen), 8)
+    t.is(baby.oneOf(oneToTen), 10)
+    baby.reseed(null).weighting(i => i * i * i)
+    t.is(baby.oneOf(oneToTen), 1)
+    t.is(baby.oneOf(oneToTen), 10)
+    t.is(baby.oneOf(oneToTen), 4)
+    t.is(baby.oneOf(oneToTen), 9)
   })
 
   test('fiona.fn.choose', t => {
     const baby = fiona(1)
     const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    t.deepEqual(baby.choose(3, oneToTen), [6, 10, 4])
-    t.deepEqual(baby.choose(3, oneToTen), [8, 6, 1])
-    t.deepEqual(baby.choose(3, oneToTen), [5, 1, 3])
-    t.deepEqual(baby.choose(11, oneToTen), [10, 1, 6, 9, 7, 5, 3, 4, 2, 8])
-    baby.seed(null).weighting(i => i * i * i)
-    t.deepEqual(baby.choose(3, oneToTen), [2, 9, 3])
-    t.deepEqual(baby.choose(3, oneToTen), [4, 3, 5])
-    t.deepEqual(baby.choose(3, oneToTen), [1, 2, 3])
-    t.deepEqual(baby.choose(11, oneToTen), [10, 9, 3, 7, 5, 6, 4, 8, 1, 2])
+    t.deepEqual(baby.choose(3, oneToTen), [5, 10, 8])
+    t.deepEqual(baby.choose(3, oneToTen), [10, 2, 4])
+    t.deepEqual(baby.choose(3, oneToTen), [4, 10, 1])
+    t.deepEqual(baby.choose(11, oneToTen), [3, 2, 6, 5, 7, 4, 9, 1, 10, 8])
+    baby.reseed(null).weighting(i => i * i * i)
+    t.deepEqual(baby.choose(3, oneToTen), [1, 10, 5])
+    t.deepEqual(baby.choose(3, oneToTen), [9, 2, 3])
+    t.deepEqual(baby.choose(3, oneToTen), [1, 10, 3])
+    t.deepEqual(baby.choose(11, oneToTen), [1, 2, 3, 4, 5, 6, 8, 7, 10, 9])
     t.deepEqual(baby.choose(null, oneToTen), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     t.deepEqual(baby.choose(0, oneToTen), [])
   })
@@ -158,15 +140,15 @@ import fiona from './fiona.js'
     })
 
     t.deepEqual(generatePerson('moon').data(), {
-      gender: 'Female',
-      firstname: 'Fiona',
-      lastname: 'Moon',
-      fullname: 'Little Miss Fiona Moon',
-      luckyNumber: 81,
-      houseNumber: 68,
+      gender: 'Male',
+      firstname: 'Christopher',
+      lastname: 'Smith',
+      fullname: 'Mr Christopher Smith',
+      luckyNumber: 46,
+      houseNumber: 86,
       favourite: {
-        color: 'Orange',
-        drinks: [ 'Water', 'Milk', 'Juice' ]
+        color: 'Purple',
+        drinks: [ 'Milk', 'Juice', 'Water' ]
       }
     })
 
@@ -179,12 +161,12 @@ import fiona from './fiona.js'
         drinks: ({ unique }) => unique.weighting(i => i * i).choose(3, Drinks)
       }
     }).data(), {
-      gender: 'Female',
-      firstname: 'Fiona',
-      luckyNumber: 81,
-      pairsOfShoes: 7,
+      gender: 'Male',
+      firstname: 'Christopher',
+      luckyNumber: 46,
+      pairsOfShoes: 5,
       favourite: {
-        drinks: [ 'Water', 'Milk', 'Juice' ]
+        drinks: [ 'Milk', 'Juice', 'Water' ]
       }
     })
 
@@ -195,10 +177,10 @@ import fiona from './fiona.js'
       toys: ({ unique }) => unique.number(100),
       toyDeclaration: ({ me, data }) => `${me.data().firstname} has ${data.toys} toys`
     }).data(), {
-      gender: 'Female',
-      firstname: 'Fiona',
-      toys: 41,
-      toyDeclaration: 'Fiona has 41 toys'
+      gender: 'Male',
+      firstname: 'Christopher',
+      toys: 70,
+      toyDeclaration: 'Christopher has 70 toys'
     })
   })
 
@@ -222,12 +204,12 @@ import fiona from './fiona.js'
     })
 
     t.deepEqual(baby.data(), {
-      gender: 'Female',
-      firstname: 'Fiona',
-      luckyNumber: 81,
-      bear: 'John the yellow bear',
-      dolly: 'Green Miller',
-      houseNumber: 68
+      gender: 'Male',
+      firstname: 'Christopher',
+      luckyNumber: 46,
+      bear: 'Maxwell the purple bear',
+      dolly: 'Purple Smith',
+      houseNumber: 86
     })
   })
 
@@ -235,7 +217,7 @@ import fiona from './fiona.js'
     const data = fiona('moon').data(({ arr }) => arr(2, ({ unique }) => {
       return unique.number()
     })).data()
-    t.deepEqual(data, [788635, 850970])
+    t.deepEqual(data, [885487, 775073])
   })
 
   test('fiona.data (unknown)', t => {
