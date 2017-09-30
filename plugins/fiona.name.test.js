@@ -1,5 +1,5 @@
 import test from 'ava'
-import fiona from './fiona.js'
+import fiona from '../fiona.js'
 
 test('sanity', t => {
   t.true(true + true === 2)
@@ -29,6 +29,10 @@ test('fiona.fn.firstname', t => {
   t.true(fiona(2).firstname({ gender: 'Male' }) === 'Liam')
 })
 
+test('fiona.fn.firstnames', t => {
+  t.true(fiona(1).firstnames() === 'Lily Phoebe Leah')
+})
+
 test('fiona.fn.surname', t => {
   t.true(fiona(1).surname() === 'Reid')
   t.true(fiona(2).surname() === 'Anderson')
@@ -37,4 +41,8 @@ test('fiona.fn.surname', t => {
 test('fiona.fn.gender', t => {
   t.true(fiona(1).gender() === 'female')
   t.true(fiona(2).gender() === 'male')
+})
+
+test('fiona.fn.fullname', t => {
+  t.true(fiona(1).fullname() === 'Dame Phoebe MacDonald')
 })

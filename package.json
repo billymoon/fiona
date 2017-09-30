@@ -10,6 +10,7 @@
     "build:full": "webpack",
     "build:core": "webpack --config webpack.config.core.js",
     "docs": "next build && next export -o docs",
+    "pretest": "npm run build",
     "test": "ava"
   },
   "author": "Billy Moon",
@@ -24,6 +25,7 @@
     "fetch-pretender": "^1.5.0",
     "isomorphic-fetch": "^2.2.1",
     "next": "^3.2.2",
+    "nyc": "^11.2.1",
     "randexp": "^0.4.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
