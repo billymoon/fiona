@@ -96,11 +96,7 @@ module.exports = {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js__ = __webpack_require__(6);
-<<<<<<< Updated upstream
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__methods__ = __webpack_require__(7);
-=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__methods__ = __webpack_require__(11);
->>>>>>> Stashed changes
 
 
 
@@ -204,11 +200,7 @@ exports.anyChar = function() {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(4);
-<<<<<<< Updated upstream
-module.exports = __webpack_require__(14);
-=======
 module.exports = __webpack_require__(18);
->>>>>>> Stashed changes
 
 
 /***/ }),
@@ -218,12 +210,7 @@ module.exports = __webpack_require__(18);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fiona_regex__ = __webpack_require__(5);
-<<<<<<< Updated upstream
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fiona_name__ = __webpack_require__(13);
-
-=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fiona_name__ = __webpack_require__(17);
->>>>>>> Stashed changes
 
 
 
@@ -234,11 +221,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_fiona__ = __webpack_require__(1);
-<<<<<<< Updated upstream
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_randexp__ = __webpack_require__(8);
-=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_randexp__ = __webpack_require__(12);
->>>>>>> Stashed changes
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_randexp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_randexp__);
 
 
@@ -259,11 +242,6 @@ __WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.regex = function (regex) 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-<<<<<<< Updated upstream
-function Moon (initseed) {
-  //
-  const type = item => Object.prototype.toString.call(item).slice(8, -1)
-=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__prng_simple__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prng_xor__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__prng_twister__ = __webpack_require__(9);
@@ -271,12 +249,11 @@ function Moon (initseed) {
 
 
 
-//
-const type = item => Object.prototype.toString.call(item).slice(8, -1)
-
 function Moon (seedin) {
   const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
->>>>>>> Stashed changes
+
+  //
+  const type = item => Object.prototype.toString.call(item).slice(8, -1)
 
   //
   const GetSet = (defaultVal, getter, setter) => newVal => {
@@ -292,8 +269,6 @@ function Moon (seedin) {
     }
   }
 
-<<<<<<< Updated upstream
-=======
   const processSeed = inputSeed => {
     if (typeof inputSeed === 'string') {
       // https://github.com/chancejs/chancejs/blob/b1b61100383bc9bfd27907c239e2f1437010e44e/chance.js#L40
@@ -333,11 +308,11 @@ function Moon (seedin) {
     }
   }
 
-  this.selectedPrng = __WEBPACK_IMPORTED_MODULE_2__prng_twister__["a" /* default */]
+  let prng = __WEBPACK_IMPORTED_MODULE_2__prng_twister__["a" /* default */]
 
-  let { random, reseed, getState, setState } = this.selectedPrng(0)
+  let { random, reseed, getState, setState } = prng(0)
 
-  this.prng = GetSet(__WEBPACK_IMPORTED_MODULE_2__prng_twister__["a" /* default */], () => this.selectedPrng, function (newprng) {
+  this.prng = GetSet(__WEBPACK_IMPORTED_MODULE_2__prng_twister__["a" /* default */], () => prng, function (newprng) {
     random = newprng.random
     reseed = newprng.reseed
     getState = newprng.getState
@@ -356,7 +331,6 @@ function Moon (seedin) {
     return this
   }
 
->>>>>>> Stashed changes
   //
   let data = null
 
@@ -381,9 +355,8 @@ function Moon (seedin) {
           return inception(item, pos)
         })
       } else if (type(input) === 'Function') {
-        // TODO: add divider to seed input, requires update to tests
-        const unique = this.clone().seed(position + initseed)
-        return inception(input({ me: this, pos: position, data, unique, arr }), position)
+        const seeded = fiona(`${position}/${initseed}`)
+        return inception(input({ me: this, pos: position, data, seeded, arr }), position)
       } else {
         return input
       }
@@ -395,9 +368,8 @@ function Moon (seedin) {
     if (input) {
       if (type(input) === 'Function') {
         // TODO: merge this with repeated code in `inception`
-        // TODO: ensure divider same as in `inception`
-        const unique = this.clone().seed('() => data' + initseed)
-        input = input({ me: this, pos: '() => data', data, unique, arr })
+        const seeded = fiona(`() => data/${initseed}`)
+        input = input({ me: this, pos: '() => data', data, seeded, arr })
       }
       // TODO: handle mixed input types on multiple data calls
       if (type(input) === 'Array') {
@@ -414,73 +386,14 @@ function Moon (seedin) {
     }
   }
 
-  const processSeed = inputSeed => {
-    if (typeof inputSeed === 'string') {
-      const split = inputSeed.split('').map(item => item.charCodeAt(0))
-      seed = split.pop()
-      split.forEach(item => {
-        seed = prng() + item
-      })
-      return seed
-    } else {
-      return inputSeed
-    }
-  }
-
-  //
-  const defaultPrng = () => {
-    const mix = seed => (seed * 9301 + 49297) % 233280
-    const res = (seed = mix(mix(seed))) / 233280
-    return res
-  }
-
-  let prng = defaultPrng
-
-  this.prng = GetSet(defaultPrng, () => prng(), newprng => (prng = newprng))
-
-  //
-  let seed
-  seed = processSeed(initseed = initseed || Math.random())
-
-  this.seed = GetSet(initseed, () => seed, newseed => (seed = processSeed(newseed)))
-
-  //
-  const defaultWeighting = i => i
-
-  let weighting = defaultWeighting
-
-  this.weighting = newVal => {
-    if (typeof newVal === 'function') {
-      weighting = newVal
-      return this
-    } else if (newVal === null) {
-      weighting = defaultWeighting
-      return this
-    } else {
-      return weighting(newVal)
-    }
-  }
-
   //
   this.info = () => ({
-    seed,
     initseed
   })
 
   //
   this.callback = function (cb) {
     return cb.bind(this)(data, this)
-  }
-
-  //
-  this.clone = function (salt) {
-    return fiona(initseed).seed(seed + (salt || 0)).callback((me, myself) => {
-      // TODO: why should I not set the prng in the clone?
-      // myself.prng(prng)
-      myself.weighting(weighting)
-      myself.data(data)
-      return myself
-    })
   }
 
   return this
@@ -510,11 +423,6 @@ fiona.prngs = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-<<<<<<< Updated upstream
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-const random = function () {
-  return this.weighting(this.prng())
-=======
 /* harmony default export */ __webpack_exports__["a"] = (seed => {
   const mix = seed => (seed * 9301 + 49297) % 233280
   const reseed = newseed => (seed = newseed)
@@ -820,24 +728,23 @@ MersenneTwister.prototype.random_excl = function() {
 MersenneTwister.prototype.random_long = function() {
 	var a=this.random_int()>>>5, b=this.random_int()>>>6;
 	return(a*67108864.0+b)*(1.0/9007199254740992.0);
->>>>>>> Stashed changes
 }
-/* harmony export (immutable) */ __webpack_exports__["random"] = random;
+
+/* These real versions are due to Isaku Wada, 2002/01/09 added */
+
+module.exports = MersenneTwister;
 
 
-<<<<<<< Updated upstream
-=======
 /***/ }),
 /* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
->>>>>>> Stashed changes
 //
 
 const number = function (max = 1e6, min = 0) {
-  return Math.floor((this.random() * (max - min)) + min)
+  return Math.floor((this.random() * (1 + max - min)) + min)
 }
 /* harmony export (immutable) */ __webpack_exports__["number"] = number;
 
@@ -883,19 +790,11 @@ const choose = function (qty, arr) {
 
 
 /***/ }),
-<<<<<<< Updated upstream
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ret = __webpack_require__(9);
-var DRange = __webpack_require__(12);
-=======
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ret = __webpack_require__(13);
 var DRange = __webpack_require__(16);
->>>>>>> Stashed changes
 var types = ret.types;
 
 
@@ -1142,15 +1041,6 @@ function gen(token, groups) {
 
 
 /***/ }),
-<<<<<<< Updated upstream
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var util      = __webpack_require__(10);
-var types     = __webpack_require__(0);
-var sets      = __webpack_require__(2);
-var positions = __webpack_require__(11);
-=======
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1158,7 +1048,6 @@ var util      = __webpack_require__(14);
 var types     = __webpack_require__(0);
 var sets      = __webpack_require__(2);
 var positions = __webpack_require__(15);
->>>>>>> Stashed changes
 
 
 module.exports = function(regexpStr) {
@@ -1440,11 +1329,7 @@ module.exports.types = types;
 
 
 /***/ }),
-<<<<<<< Updated upstream
-/* 10 */
-=======
 /* 14 */
->>>>>>> Stashed changes
 /***/ (function(module, exports, __webpack_require__) {
 
 var types = __webpack_require__(0);
@@ -1561,11 +1446,7 @@ exports.error = function(regexp, msg) {
 
 
 /***/ }),
-<<<<<<< Updated upstream
-/* 11 */
-=======
 /* 15 */
->>>>>>> Stashed changes
 /***/ (function(module, exports, __webpack_require__) {
 
 var types = __webpack_require__(0);
@@ -1588,11 +1469,7 @@ exports.end = function() {
 
 
 /***/ }),
-<<<<<<< Updated upstream
-/* 12 */
-=======
 /* 16 */
->>>>>>> Stashed changes
 /***/ (function(module, exports) {
 
 //protected helper class
@@ -1742,11 +1619,7 @@ module.exports = DiscontinuousRange;
 
 
 /***/ }),
-<<<<<<< Updated upstream
-/* 13 */
-=======
 /* 17 */
->>>>>>> Stashed changes
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1799,11 +1672,7 @@ __WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].namedata = data
 
 
 /***/ }),
-<<<<<<< Updated upstream
-/* 14 */
-=======
 /* 18 */
->>>>>>> Stashed changes
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(1).default

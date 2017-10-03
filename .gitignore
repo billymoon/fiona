@@ -2,7 +2,6 @@
 .esm-cache
 misc
 node_modules
-
 .next
 coverage
 .nyc_output
