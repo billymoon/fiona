@@ -227,12 +227,7 @@ import fiona from './fiona.js'
 
   test('fiona.prng (unknown)', t => {
     t.is(fiona('moon').number(), 969283)
-    // console.log(fiona('moon').prngs.xor)
-    t.is(fiona('moon').prng(fiona.prngs.xor(1)).number(), 458333)
-    t.is(fiona('moon').prng(fiona.prngs.xor(2)).number(), 523993)
-    t.is(fiona('moon').prng(fiona.prngs.twister(1)).number(), 417022)
-    t.is(fiona('moon').prng(fiona.prngs.twister(2)).number(), 435995)
-    t.is(fiona('moon').prng(fiona.prngs.simple(1)).number(), 545332)
-    t.is(fiona('moon').prng(fiona.prngs.simple(2)).number(), 381241)
+    t.is(fiona('moon', fiona.prngs.twister).number(), 969283)
+    t.is(fiona('moon', fiona.prngs.xor).number(), 512979)
   })
 })

@@ -242,14 +242,14 @@ __WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.regex = function (regex) 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__prng_simple__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prng_xor__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__prng_twister__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__prng_twister__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prng_simple__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__prng_xor__ = __webpack_require__(10);
 
 
 
 
-function Moon (seedin) {
+function Moon (seedin, prngOverride) {
   const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
 
   //
@@ -308,11 +308,12 @@ function Moon (seedin) {
     }
   }
 
-  let prng = __WEBPACK_IMPORTED_MODULE_2__prng_twister__["a" /* default */]
+  let prng = prngOverride || __WEBPACK_IMPORTED_MODULE_0__prng_twister__["a" /* default */]
+  // console.log(prng+'')
 
   let { random, reseed, getState, setState } = prng(0)
 
-  this.prng = GetSet(__WEBPACK_IMPORTED_MODULE_2__prng_twister__["a" /* default */], () => prng, function (newprng) {
+  this.prng = GetSet(prng, () => prng, function (newprng) {
     random = newprng.random
     reseed = newprng.reseed
     getState = newprng.getState
@@ -355,7 +356,7 @@ function Moon (seedin) {
           return inception(item, pos)
         })
       } else if (type(input) === 'Function') {
-        const seeded = fiona(`${position}/${initseed}`)
+        const seeded = fiona(`${position}/${initseed}`, prng)
         return inception(input({ me: this, pos: position, data, seeded, arr }), position)
       } else {
         return input
@@ -368,7 +369,7 @@ function Moon (seedin) {
     if (input) {
       if (type(input) === 'Function') {
         // TODO: merge this with repeated code in `inception`
-        const seeded = fiona(`() => data/${initseed}`)
+        const seeded = fiona(`() => data/${initseed}`, prng)
         input = input({ me: this, pos: '() => data', data, seeded, arr })
       }
       // TODO: handle mixed input types on multiple data calls
@@ -407,13 +408,13 @@ const fiona = (...args) => new Moon(...args)
 
 fiona.version = '__VERSION__'
 
-fiona.fn = Moon.prototype
-
 fiona.prngs = {
-  twister: __WEBPACK_IMPORTED_MODULE_2__prng_twister__["a" /* default */],
-  simple: __WEBPACK_IMPORTED_MODULE_0__prng_simple__["a" /* default */],
-  xor: __WEBPACK_IMPORTED_MODULE_1__prng_xor__["a" /* default */]
+  twister: __WEBPACK_IMPORTED_MODULE_0__prng_twister__["a" /* default */],
+  simple: __WEBPACK_IMPORTED_MODULE_1__prng_simple__["a" /* default */],
+  xor: __WEBPACK_IMPORTED_MODULE_2__prng_xor__["a" /* default */]
 }
+
+fiona.fn = Moon.prototype
 
 /* harmony default export */ __webpack_exports__["a"] = (fiona);
 
@@ -423,72 +424,7 @@ fiona.prngs = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = (seed => {
-  const mix = seed => (seed * 9301 + 49297) % 233280
-  const reseed = newseed => (seed = newseed)
-  return {
-    random: () => (seed = mix(mix(seed))) / 233280,
-    reseed: reseed,
-    getState: () => seed,
-    setState: reseed
-  }
-});
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-const baseSeeds = [123456789, 362436069, 521288629, 88675123]
-const xor = seed => {
-  let [x, y, z, w] = baseSeeds
-
-  const random = function () {
-    var t = x ^ (x << 11)
-
-    x = y
-    y = z
-    z = w
-
-    w = w ^ (w >> 19) ^ (t ^ (t >> 8))
-
-    return w / 0x7FFFFFFF
-  }
-
-  const setSeeds = seed => {
-    [x, y, z, w] = baseSeeds.map(i => i + seed)
-    const newseeds = [
-      Math.round(random() * 1e16),
-      Math.round(random() * 1e16),
-      Math.round(random() * 1e16),
-      Math.round(random() * 1e16)
-    ]
-    x = newseeds[0]
-    y = newseeds[1]
-    z = newseeds[2]
-    w = newseeds[3]
-  }
-
-  setSeeds(seed)
-
-  return {
-    random: () => random(),
-    reseed: setSeeds,
-    getState: () => [x, y, z, w],
-    setState: seeds => ([x, y, z, w] = seeds)
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (xor);
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mersenne_twister__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mersenne_twister__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mersenne_twister___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mersenne_twister__);
 
 
@@ -520,7 +456,7 @@ const xor = seed => {
 
 
 /***/ }),
-/* 10 */
+/* 8 */
 /***/ (function(module, exports) {
 
 /*
@@ -733,6 +669,73 @@ MersenneTwister.prototype.random_long = function() {
 /* These real versions are due to Isaku Wada, 2002/01/09 added */
 
 module.exports = MersenneTwister;
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const prng = seed => {
+  const mix = seed => (seed * 9301 + 49297) % 233280
+  const reseed = newseed => (seed = newseed)
+  return {
+    random: () => (seed = mix(mix(seed))) / 233280,
+    reseed: reseed,
+    getState: () => seed,
+    setState: reseed
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (prng);
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const baseSeeds = [123456789, 362436069, 521288629, 88675123]
+const xor = seed => {
+  let [x, y, z, w] = baseSeeds
+
+  const random = function () {
+    var t = x ^ (x << 11)
+
+    x = y
+    y = z
+    z = w
+
+    w = w ^ (w >> 19) ^ (t ^ (t >> 8))
+
+    return w / 0x7FFFFFFF
+  }
+
+  const setSeeds = seed => {
+    [x, y, z, w] = baseSeeds.map(i => i + seed)
+    const newseeds = [
+      Math.round(random() * 1e16),
+      Math.round(random() * 1e16),
+      Math.round(random() * 1e16),
+      Math.round(random() * 1e16)
+    ]
+    x = newseeds[0]
+    y = newseeds[1]
+    z = newseeds[2]
+    w = newseeds[3]
+  }
+
+  setSeeds(seed)
+
+  return {
+    random: () => random(),
+    reseed: setSeeds,
+    getState: () => [x, y, z, w],
+    setState: seeds => ([x, y, z, w] = seeds)
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (xor);
 
 
 /***/ }),

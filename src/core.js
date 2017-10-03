@@ -1,8 +1,8 @@
+import prngTwister from './prng-twister'
 import prngSimple from './prng-simple'
 import prngXor from './prng-xor'
-import prngTwister from './prng-twister'
 
-function Moon (seedin) {
+function Moon (seedin, prngOverride) {
   const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
 
   //
@@ -61,11 +61,12 @@ function Moon (seedin) {
     }
   }
 
-  let prng = prngTwister
+  let prng = prngOverride || prngTwister
+  // console.log(prng+'')
 
   let { random, reseed, getState, setState } = prng(0)
 
-  this.prng = GetSet(prngTwister, () => prng, function (newprng) {
+  this.prng = GetSet(prng, () => prng, function (newprng) {
     random = newprng.random
     reseed = newprng.reseed
     getState = newprng.getState
@@ -108,7 +109,7 @@ function Moon (seedin) {
           return inception(item, pos)
         })
       } else if (type(input) === 'Function') {
-        const seeded = fiona(`${position}/${initseed}`)
+        const seeded = fiona(`${position}/${initseed}`, prng)
         return inception(input({ me: this, pos: position, data, seeded, arr }), position)
       } else {
         return input
@@ -121,7 +122,7 @@ function Moon (seedin) {
     if (input) {
       if (type(input) === 'Function') {
         // TODO: merge this with repeated code in `inception`
-        const seeded = fiona(`() => data/${initseed}`)
+        const seeded = fiona(`() => data/${initseed}`, prng)
         input = input({ me: this, pos: '() => data', data, seeded, arr })
       }
       // TODO: handle mixed input types on multiple data calls
@@ -160,12 +161,12 @@ const fiona = (...args) => new Moon(...args)
 
 fiona.version = '__VERSION__'
 
-fiona.fn = Moon.prototype
-
 fiona.prngs = {
   twister: prngTwister,
   simple: prngSimple,
   xor: prngXor
 }
+
+fiona.fn = Moon.prototype
 
 export default fiona

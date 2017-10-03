@@ -1,4 +1,4 @@
-export default seed => {
+const prng = seed => {
   const mix = seed => (seed * 9301 + 49297) % 233280
   const reseed = newseed => (seed = newseed)
   return {
@@ -8,3 +8,5 @@ export default seed => {
     setState: reseed
   }
 }
+
+export default prng

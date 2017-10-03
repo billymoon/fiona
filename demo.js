@@ -1,6 +1,10 @@
 // const fiona = require('./fiona.js')
 // const fiona = require('./fiona.core.js')
+// import prngSimple from './src/prng-simple'
+// import prngXor from './src/prng-xor'
+
 import fiona from './src/fiona'
+
 import './plugins'
 
 fiona.fn.log = function () {
@@ -192,16 +196,32 @@ fiona.fn.log = function () {
 //   numbers: ({ arr, seeded }) => arr(1e4, ({ seeded }) => seeded.number(9999999, 1000000))
 // }).data()
 // console.timeEnd('loop')
+const seeded = fiona(111, fiona.prngs.xor)
+// const seeded = fiona(111)
+// seeded.prng(fiona.prngs.xor(2))
+// console.log(seeded.prng() + '')
+// console.log(fiona.prngs.xor(2))
 console.time('loop')
-const seeded = fiona(2)
-seeded.prng(fiona.prngs.xor(2))
-console.log(seeded.prng() + '')
-console.log(fiona.prngs.xor(2))
 seeded.data({
   numbers: ({ arr, seeded }) => arr(1e4, ({ seeded }) => seeded.number(9999999, 1000000))
 })
-const data = seeded.data()
 console.timeEnd('loop')
+const data = seeded.data()
+
+console.time('loop2')
+seeded.data({
+  numbers: new Array(1e5).fill(null).map(i => seeded.number())//({ arr, seeded }) => arr(1e5, ({ seeded }) => seeded.random())
+})
+console.timeEnd('loop2')
+
+console.time('loop3')
+for (var i = 0; i < 1e6; i++) {
+  seeded.random()
+}
+console.timeEnd('loop3')
+
+
+
 // console.log(data.numbers[123])
 // console.log(data.numbers[456])
 // console.log(data.numbers[789])
