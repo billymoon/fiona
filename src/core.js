@@ -1,6 +1,18 @@
+<<<<<<< Updated upstream
 function Moon (initseed) {
   //
   const type = item => Object.prototype.toString.call(item).slice(8, -1)
+=======
+import prngSimple from './prng-simple'
+import prngXor from './prng-xor'
+import prngTwister from './prng-twister'
+
+//
+const type = item => Object.prototype.toString.call(item).slice(8, -1)
+
+function Moon (seedin) {
+  const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
+>>>>>>> Stashed changes
 
   //
   const GetSet = (defaultVal, getter, setter) => newVal => {
@@ -16,6 +28,71 @@ function Moon (initseed) {
     }
   }
 
+<<<<<<< Updated upstream
+=======
+  const processSeed = inputSeed => {
+    if (typeof inputSeed === 'string') {
+      // https://github.com/chancejs/chancejs/blob/b1b61100383bc9bfd27907c239e2f1437010e44e/chance.js#L40
+      let seed = 0
+      for (let i = 0; i < inputSeed.length; i++) {
+        let hash = 0
+        for (let j = 0; j < inputSeed.length; j++) {
+          hash = inputSeed.charCodeAt(j) + (hash << 6) + (hash << 16) - hash
+        }
+        seed += hash
+      }
+      return seed
+    } else {
+      return inputSeed
+    }
+  }
+
+  //
+  this.clone = function () {
+    return fiona(initseed).state(this.state())
+  }
+
+  //
+  const defaultWeighting = i => i
+
+  let weighting = defaultWeighting
+
+  this.weighting = newVal => {
+    if (typeof newVal === 'function') {
+      weighting = newVal
+      return this
+    } else if (newVal === null) {
+      weighting = defaultWeighting
+      return this
+    } else {
+      return weighting(newVal)
+    }
+  }
+
+  let prng = prngTwister
+
+  let { random, reseed, getState, setState } = prng(0)
+
+  this.prng = GetSet(prngTwister, () => prng, function (newprng) {
+    random = newprng.random
+    reseed = newprng.reseed
+    getState = newprng.getState
+    setState = newprng.setState
+    return this
+  })
+
+  this.random = () => this.weighting(random())
+
+  reseed(processSeed(initseed))
+
+  this.state = GetSet(getState(), getState, setState)
+
+  this.reseed = function (seed) {
+    reseed(processSeed(seed === null ? initseed : seed))
+    return this
+  }
+
+>>>>>>> Stashed changes
   //
   let data = null
 
@@ -154,5 +231,11 @@ const fiona = (...args) => new Moon(...args)
 fiona.version = '__VERSION__'
 
 fiona.fn = Moon.prototype
+
+fiona.prngs = {
+  twister: prngTwister,
+  simple: prngSimple,
+  xor: prngXor
+}
 
 export default fiona

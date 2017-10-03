@@ -169,19 +169,67 @@ fiona(123).data(({ unique }) => `awesome ${unique.oneOf(['stuff', 'things'])}`).
 
 // ************ //
 
+<<<<<<< Updated upstream
 // console.time('loop')
 // const data = fiona(1).data({
 //   numbers: ({ arr, unique }) => arr(10000, ({ unique }) => unique.number(9999999, 1000000))
 // }).data()
 // console.timeEnd('loop')
+=======
+console.time('loop')
+const seeded = fiona(2)
+seeded.prng(fiona.prngs.xor(2))
+console.log(seeded.prng() + '')
+console.log(fiona.prngs.xor(2))
+seeded.data({
+  numbers: ({ arr, seeded }) => arr(1e4, ({ seeded }) => seeded.number(9999999, 1000000))
+})
+const data = seeded.data()
+console.timeEnd('loop')
+>>>>>>> Stashed changes
 
 // console.log(data.numbers[123])
 // console.log(data.numbers[456])
 // console.log(data.numbers[789])
 // console.log(data.numbers[5106])
 // console.log(data.numbers[2724])
+<<<<<<< Updated upstream
 // data.numbers.forEach((item, index) => {
 //   if (data.numbers.indexOf(item) < index) {
 //     console.log(item, index, data.numbers.indexOf(item))
 //   }
 // })
+=======
+data.numbers.forEach((item, index) => {
+  if (data.numbers.indexOf(item) < index) {
+    console.log(item, index, data.numbers.indexOf(item))
+  }
+})
+
+// console.log(data.numbers.slice(-10))
+
+// ************ //
+
+// const seeded = fiona(123)
+// console.log(1, seeded.random())
+// const dolly = seeded.clone()
+// console.log(1, seeded.random())
+// console.log(1, seeded.random())
+
+// const seeded2 = fiona(123)
+// console.log(2, seeded2.random())
+// console.log(2, seeded2.random())
+// console.log(2, seeded2.random())
+
+// console.log(3, dolly.random())
+// console.log(3, dolly.random())
+// console.log(3, dolly.random())
+// console.log(3, dolly.random())
+
+// // const seeded = fiona(123)
+// // console.log(seeded.random())
+// // console.log(seeded.random())
+// // seeded.seed(123)
+// // console.log(seeded.random())
+// // console.log(seeded.random())
+>>>>>>> Stashed changes
