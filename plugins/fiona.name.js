@@ -37,7 +37,7 @@ fiona.fn.surname = function () {
   return this.oneOf(data.surname)
 }
 
-fiona.fn.fullname = function (opts) {
+fiona.fn.name = function (opts) {
   const gender = getGender((opts || {}).gender || this.gender())
   return `${this.title({ gender })} ${this.firstnames({ gender })} ${this.surname()}`
 }

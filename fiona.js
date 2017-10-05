@@ -1666,7 +1666,7 @@ __WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.surname = function () {
   return this.oneOf(data.surname)
 }
 
-__WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.fullname = function (opts) {
+__WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.name = function (opts) {
   const gender = getGender((opts || {}).gender || this.gender())
   return `${this.title({ gender })} ${this.firstnames({ gender })} ${this.surname()}`
 }

@@ -43,6 +43,6 @@ test('fiona.fn.gender', t => {
   t.is(fiona(2).gender(), 'male')
 })
 
-test('fiona.fn.fullname', t => {
-  t.is(fiona(1).fullname(), 'Lord Kayden James Alfie Stewart')
+test('fiona.fn.name', t => {
+  t.is(fiona(1).name(), 'Lord Kayden James Alfie Stewart')
 })

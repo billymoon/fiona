@@ -8,9 +8,39 @@ import fiona from './src/fiona'
 import './plugins'
 
 fiona.fn.log = function () {
-  console.log(this.data())
+  console.log(this.data().sort())
   return this
 }
+
+// 10% of the time, reseed with one of 10 seeds
+fiona.fn.duplicable = function (frequency = 0.1, pool = 10) {
+  if (this.random() <= frequency) {
+    this.reseed((Math.floor(this.random() * pool + 1) / pool + 1) * 1e16)
+  }
+  return this
+}
+
+fiona('moon').data(({ arr }) => arr(50, ({ seeded }) => seeded.duplicable(0.2, 3).name())).log()
+
+// const popular = i => i < 0.2 ? Math.floor(i * 20) / 20 : i
+// {
+//   return seeded.random() < 0.2 ? seeded.reseed((Math.floor(seeded.random() * 5) / 5) * 1e6).number() : 1// seeded.number()
+//   // return seeded.random() < 0.2 ? seeded.reseed((Math.floor(seeded.random() * 5) / 5) * 1e6).number() : 1// seeded.number()
+//   // return seeded.random() < 0.2 ? seeded.reseed((Math.floor(seeded.random() * 20) / 20) * 1e6).number() : 1// seeded.number()
+//   // return seeded.random() < 0.2 ? seeded.reseed(Math.floor(seeded.random() * 20) / 20).number() : seeded.number()
+// }
+
+// console.log([
+//   fiona().data(({ seeded }) => seeded.random() < 0.2 ? fiona(Math.floor(seeded.random() % 0.2 * 1e6)).random() : seeded.random()).data()
+// ].sort())
+
+// console.log(popular(0.0))
+// console.log(popular(0.01))
+// console.log(popular(0.02))
+// console.log(popular(0.2))
+// console.log(popular(0.06))
+// console.log(popular(0.19876543))
+// console.log(popular(0.6789))
 
 // const seeded = fiona(123)
 // // console.log(seeded.random())
@@ -30,7 +60,7 @@ fiona.fn.log = function () {
 // ]}).log()
 
 // seeded.data({
-//   name: ({ seeded }) => seeded.fullname()
+//   name: ({ seeded }) => seeded.name()
 // }).log()
 
 // ************ //
@@ -45,7 +75,7 @@ fiona.fn.log = function () {
 //   gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
 //   firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
 //   lastname: ({ seeded }) => seeded.oneOf(Surnames),
-//   fullname: ({ data }) => `${data.gender === 'Female' ? 'Little Miss' : 'Mr'} ${data.firstname} ${data.lastname}`,
+//   name: ({ data }) => `${data.gender === 'Female' ? 'Little Miss' : 'Mr'} ${data.firstname} ${data.lastname}`,
 //   nino: ({ seeded }) => seeded.regex(/[A-Z]{2}\d{6}[A-Z]/),
 //   luckyNumber: ({ seeded }) => seeded.number(100),
 //   houseNumber: ({ seeded }) => seeded.number(100),
@@ -62,7 +92,7 @@ fiona.fn.log = function () {
 
 // generatePerson(fiona('moon')).data({
 //   placeOfBirth: 'Scotland',
-//   fullname: ({ me, data }) => `Pretty Miss ${me.data().firstname} ${me.data().lastname} of ${data.placeOfBirth}`
+//   name: ({ me, data }) => `Pretty Miss ${me.data().firstname} ${me.data().lastname} of ${data.placeOfBirth}`
 // }).log()
 
 // fiona(123).data({
@@ -72,8 +102,8 @@ fiona.fn.log = function () {
 //   firstnames: ({ data, seeded }) => seeded.firstnames({ gender: data.gender }),
 //   firstnamese: ({ data, seeded }) => seeded.firstnames({ gender: data.gender }),
 //   surname: ({ data, seeded }) => seeded.surname({ gender: data.gender }),
-//   fullname: ({ data, seeded }) => seeded.fullname({ gender: data.gender }),
-//   fullnamex: ({ data, seeded }) => seeded.reseed('data.fullname' + seeded.info().initseed).fullname({ gender: data.gender })
+//   name: ({ data, seeded }) => seeded.name({ gender: data.gender }),
+//   fullnamex: ({ data, seeded }) => seeded.reseed('data.name' + seeded.info().initseed).name({ gender: data.gender })
 // }).log()
 
 // console.log(JSON.stringify({
@@ -191,59 +221,60 @@ fiona.fn.log = function () {
 
 // ************ //
 
+// // console.time('loop')
+// // const data = fiona(1).data({
+// //   numbers: ({ arr, seeded }) => arr(1e4, ({ seeded }) => seeded.number(9999999, 1000000))
+// // }).data()
+// // console.timeEnd('loop')
+
+// const seeded = fiona(111, fiona.prngs.xor)
+
+// // const seeded = fiona(111)
+// // seeded.prng(fiona.prngs.xor(2))
+// // console.log(seeded.prng() + '')
+// // console.log(fiona.prngs.xor(2))
 // console.time('loop')
-// const data = fiona(1).data({
+// seeded.data({
 //   numbers: ({ arr, seeded }) => arr(1e4, ({ seeded }) => seeded.number(9999999, 1000000))
-// }).data()
+// })
 // console.timeEnd('loop')
-const seeded = fiona(111, fiona.prngs.xor)
-// const seeded = fiona(111)
-// seeded.prng(fiona.prngs.xor(2))
-// console.log(seeded.prng() + '')
-// console.log(fiona.prngs.xor(2))
-console.time('loop')
-seeded.data({
-  numbers: ({ arr, seeded }) => arr(1e4, ({ seeded }) => seeded.number(9999999, 1000000))
-})
-console.timeEnd('loop')
-const data = seeded.data()
+// const data = seeded.data()
 
-console.time('loop2')
-seeded.data({
-  numbers: new Array(1e5).fill(null).map(i => seeded.number())//({ arr, seeded }) => arr(1e5, ({ seeded }) => seeded.random())
-})
-console.timeEnd('loop2')
+// console.time('loop2')
+// seeded.data({
+//   numbers: new Array(1e5).fill(null).map(i => seeded.number())// ({ arr, seeded }) => arr(1e5, ({ seeded }) => seeded.random())
+// })
+// console.timeEnd('loop2')
 
-console.time('loop3')
-for (var i = 0; i < 1e6; i++) {
-  seeded.random()
-}
-console.timeEnd('loop3')
+// console.time('loop3')
+// for (var i = 0; i < 1e6; i++) {
+//   seeded.random()
+// }
+// console.timeEnd('loop3')
 
-
-
-// console.log(data.numbers[123])
-// console.log(data.numbers[456])
-// console.log(data.numbers[789])
-// console.log(data.numbers[5106])
-// console.log(data.numbers[2724])
 // // console.log(data.numbers[123])
 // // console.log(data.numbers[456])
 // // console.log(data.numbers[789])
 // // console.log(data.numbers[5106])
 // // console.log(data.numbers[2724])
+// // // console.log(data.numbers[123])
+// // // console.log(data.numbers[456])
+// // // console.log(data.numbers[789])
+// // // console.log(data.numbers[5106])
+// // // console.log(data.numbers[2724])
+// // data.numbers.forEach((item, index) => {
+// //   if (data.numbers.indexOf(item) < index) {
+// //     console.log(item, index, data.numbers.indexOf(item))
+// //   }
+// // })
+
 // data.numbers.forEach((item, index) => {
 //   if (data.numbers.indexOf(item) < index) {
 //     console.log(item, index, data.numbers.indexOf(item))
 //   }
 // })
-data.numbers.forEach((item, index) => {
-  if (data.numbers.indexOf(item) < index) {
-    console.log(item, index, data.numbers.indexOf(item))
-  }
-})
 
-// console.log(data.numbers.slice(-10))
+// // console.log(data.numbers.slice(-10))
 
 // ************ //
 
