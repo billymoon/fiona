@@ -329,40 +329,45 @@ const number = function (max = 1e6, min = 0) {
 
 
 //
+const chooser = (position, arr, weightings) => {
+  const weights = arr.reduce((memo, value, index) => {
+    memo.push((memo[index - 1] || 0) + (typeof weightings[index] === 'number' ? weightings[index] : 1))
+    return memo
+  }, [])
 
-const oneOf = function (arr) {
-  return arr[Math.floor(this.random() * arr.length)]
+  const target = position * weights[weights.length - 1]
+
+  // TODO: Binary Tree akin to: https://github.com/plantain-00/weighted-picker/blob/3cdd2c37856bc39c2304d7a597b237cecc845f7e/src/index.ts#L34
+  let index
+
+  weights.every((weight, i) => {
+    if (target > weight) {
+      return true
+    } else {
+      index = i
+      return false
+    }
+  })
+
+  return index
+}
+
+const oneOf = function (arr, weightings=[]) {
+  return arr[chooser(this.random(), arr, weightings)]
 }
 /* harmony export (immutable) */ __webpack_exports__["oneOf"] = oneOf;
 
 
-//
-
-const some = function (arr, predicate) {
-  const length = arr.length
-  for (let index = 0; index < length; index++) {
-    if (predicate(arr[index], index, arr)) return true
-  }
-  return false
-}
-
-const shuffle = function (arrin, limit, random = Math.random) {
-  if (limit === 0) { return [] }
-  const arr = arrin.slice(0)
-  const len = arr.length
-  let rand, temp
-  some(arr, function (value, index) {
-    if (index >= limit) { return true }
-    rand = index + Math.floor(random() * (len - index))
-    temp = arr[index]
-    arr[index] = arr[rand]
-    arr[rand] = temp
+const choose = function (qty, arr, weightings=[]) {
+  const myArr = arr.slice(0)
+  const myWeightings = weightings.slice(0)
+  return Array(qty || 0).fill(null).map((v, i) => {
+    const index = chooser(this.random(), myArr, myWeightings)
+    const result = myArr[index]
+    myArr[index] = myArr[0]
+    myArr.shift()
+    return result
   })
-  return arr.slice(0, limit || len)
-}
-
-const choose = function (qty, arr) {
-  return shuffle(arr, qty, () => this.random())
 }
 /* harmony export (immutable) */ __webpack_exports__["choose"] = choose;
 

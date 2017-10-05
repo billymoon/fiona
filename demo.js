@@ -8,11 +8,28 @@ import fiona from './src/fiona'
 import './plugins'
 
 fiona.fn.log = function () {
-  console.log(this.data().sort())
+  // console.log(this.data().reduce((m, v, i) => { m[v] = (m[v] || 0) + 1; return m; }, {}))
+  // console.log(this.data().sort())
+  console.log(this.data())
   return this
 }
 
-fiona('moon').data(({ arr }) => arr(50, ({ seeded }) => seeded.duplicable(0.2, 3).name())).log()
+fiona('moon').data(({ arr }) => {
+  return arr(10, ({ seeded }) => seeded.choose(5, [1, 2, 3, 4, 5], [10, 30, 20, 10, 30]))
+}).log()
+
+fiona('moon').data(({ arr }) => {
+  return arr(10, ({ seeded }) => seeded.oneOf([1, 2, 3, 4, 5], [10, 30, 20, 10, 30]))
+}).log()
+
+// console.time('cool')
+// const data = fiona('moon').data(({ arr }) => {
+//   return arr(1e4, ({ seeded }) => seeded.oneOf([1, 2, 3, 4, 5], [10, 30, 20, 10, 30]))
+// })
+// console.timeEnd('cool')
+// data.log()
+
+// fiona('moon').data(({ arr }) => arr(50, ({ seeded }) => seeded.duplicable(0.2, 3).name())).log()
 
 // const popular = i => i < 0.2 ? Math.floor(i * 20) / 20 : i
 // {

@@ -125,13 +125,13 @@ const fixture = {
     t.deepEqual(baby.choose(3, oneToTen), [5, 7, 8])
     t.deepEqual(baby.choose(3, oneToTen), [1, 9, 4])
     t.deepEqual(baby.choose(3, oneToTen), [4, 1, 10])
-    t.deepEqual(baby.choose(11, oneToTen), [9, 5, 8, 6, 7, 2, 10, 4, 1, 3])
+    t.deepEqual(baby.choose(11, oneToTen), [9, 5, 8, 6, 7, 2, 10, 4, 1, 3, undefined])
     baby.reseed(null).weighting(i => i * i * i)
     t.deepEqual(baby.choose(3, oneToTen), [1, 3, 5])
     t.deepEqual(baby.choose(3, oneToTen), [1, 7, 3])
     t.deepEqual(baby.choose(3, oneToTen), [1, 2, 8])
-    t.deepEqual(baby.choose(11, oneToTen), [7, 2, 5, 4, 3, 6, 9, 1, 8, 10])
-    t.deepEqual(baby.choose(null, oneToTen), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    t.deepEqual(baby.choose(11, oneToTen), [7, 2, 5, 4, 3, 6, 9, 1, 8, 10, undefined])
+    t.deepEqual(baby.choose(null, oneToTen), [])
     t.deepEqual(baby.choose(0, oneToTen), [])
   })
 
@@ -145,7 +145,7 @@ const fixture = {
       houseNumber: ({ seeded }) => seeded.number(100),
       favourite: {
         color: ({ seeded }) => seeded.oneOf(Colours),
-        drinks: ({ seeded }) => seeded.weighting(i => i * i).choose(3, Drinks)
+        drinks: ({ seeded }) => seeded.choose(3, Drinks)
       }
     })
 
@@ -158,7 +158,7 @@ const fixture = {
       houseNumber: 81,
       favourite: {
         color: 'Yellow',
-        drinks: [ 'Milk', 'Water', 'Juice' ]
+        drinks: [ 'Water', 'Tea', 'Shake' ]
       }
     })
 
@@ -168,7 +168,7 @@ const fixture = {
       luckyNumber: ({ seeded }) => seeded.number(100),
       pairsOfShoes: ({ seeded }) => seeded.number(10),
       favourite: {
-        drinks: ({ seeded }) => seeded.weighting(i => i * i).choose(3, Drinks)
+        drinks: ({ seeded }) => seeded.choose(3, Drinks)
       }
     }).data(), {
       gender: 'Female',
@@ -176,7 +176,7 @@ const fixture = {
       luckyNumber: 76,
       pairsOfShoes: 10,
       favourite: {
-        drinks: [ 'Milk', 'Water', 'Juice' ]
+        drinks: [ 'Water', 'Tea', 'Shake' ]
       }
     })
 
