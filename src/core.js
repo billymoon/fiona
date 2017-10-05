@@ -1,7 +1,6 @@
-import prngTwister from './prng-twister'
-import prngXor from './prng-xor'
+import prng from './prng-xor'
 
-function Moon (seedin, prngOverride) {
+function Moon (seedin) {
   const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
 
   //
@@ -60,17 +59,7 @@ function Moon (seedin, prngOverride) {
     }
   }
 
-  let prng = prngOverride || prngTwister
-
   let { random, reseed, getState, setState } = prng(0)
-
-  this.prng = GetSet(prng, () => prng, function (newprng) {
-    random = newprng.random
-    reseed = newprng.reseed
-    getState = newprng.getState
-    setState = newprng.setState
-    return this
-  })
 
   this.random = () => this.weighting(random())
 
@@ -158,11 +147,6 @@ Moon.prototype = {
 const fiona = (...args) => new Moon(...args)
 
 fiona.version = '__VERSION__'
-
-fiona.prngs = {
-  twister: prngTwister,
-  xor: prngXor
-}
 
 fiona.fn = Moon.prototype
 

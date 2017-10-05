@@ -10,39 +10,39 @@ test('import', t => {
 })
 
 test('fiona.fn.title', t => {
-  t.is(fiona(1).title(), 'Lord')
-  t.is(fiona(1).title({}), 'Lord')
-  t.is(fiona(2).title(), 'Mr')
-  t.is(fiona(2).title({}), 'Mr')
-  t.is(fiona(4).title({ gender: 'f' }), 'Dame')
-  t.is(fiona(4).title({ gender: 'm' }), 'Lord')
-  t.is(fiona(4).title({ gender: 'Male' }), 'Lord')
+  t.is(fiona(1).title(), 'Sir')
+  t.is(fiona(1).title({}), 'Sir')
+  t.is(fiona(2).title(), 'Miss')
+  t.is(fiona(2).title({}), 'Miss')
+  t.is(fiona(4).title({ gender: 'f' }), 'Ms')
+  t.is(fiona(4).title({ gender: 'm' }), 'Sir')
+  t.is(fiona(4).title({ gender: 'Male' }), 'Sir')
 })
 
 test('fiona.fn.firstname', t => {
-  t.is(fiona(1).firstname(), 'Zachary')
-  t.is(fiona(1).firstname({}), 'Zachary')
-  t.is(fiona(2).firstname(), 'Aaron')
-  t.is(fiona(2).firstname({}), 'Aaron')
-  t.is(fiona(2).firstname({ gender: 'f' }), 'Daisy')
-  t.is(fiona(2).firstname({ gender: 'm' }), 'Ryan')
-  t.is(fiona(2).firstname({ gender: 'Male' }), 'Ryan')
+  t.is(fiona(1).firstname(), 'Hamish')
+  t.is(fiona(1).firstname({}), 'Hamish')
+  t.is(fiona(2).firstname(), 'Ava')
+  t.is(fiona(2).firstname({}), 'Ava')
+  t.is(fiona(2).firstname({ gender: 'f' }), 'Leah')
+  t.is(fiona(2).firstname({ gender: 'm' }), 'Angus')
+  t.is(fiona(2).firstname({ gender: 'Male' }), 'Angus')
 })
 
 test('fiona.fn.firstnames', t => {
-  t.is(fiona(1).firstnames(), 'Owen Kayden Oliver')
+  t.is(fiona(1).firstnames(), 'Kyle Harry')
 })
 
 test('fiona.fn.surname', t => {
-  t.is(fiona(1).surname(), 'Anderson')
-  t.is(fiona(2).surname(), 'Scott')
+  t.is(fiona(1).surname(), 'Scott')
+  t.is(fiona(2).surname(), 'Reid')
 })
 
 test('fiona.fn.gender', t => {
   t.is(fiona(1).gender(), 'male')
-  t.is(fiona(2).gender(), 'male')
+  t.is(fiona(2).gender(), 'female')
 })
 
 test('fiona.fn.name', t => {
-  t.is(fiona(1).name(), 'Lord Kayden James Alfie Stewart')
+  t.is(fiona(1).name(), 'Sir Logan Christopher Wilson')
 })

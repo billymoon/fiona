@@ -3,13 +3,13 @@ import fionaCore from './fiona.core.js'
 import fiona from './fiona.js'
 
 const fixture = {
-  RANDOM_1: 0.4170219984371215,
-  RANDOM_2: 0.99718480813317,
-  RANDOM_3: 0.43599490262567997,
-  RANDOM_4: 0.18508208147250116,
-  RANDOM_5: 0.19869689363986254,
-  RANDOM_6: 0.07978078303858638,
-  RANDOM_7: 0.17390734718049058
+  RANDOM_1: 0.4583325853842928,
+  RANDOM_2: 0.5661969359806724,
+  RANDOM_3: 0.5239930397476968,
+  RANDOM_4: 0.05277363818733657,
+  RANDOM_5: 0.5173543852369089,
+  RANDOM_6: 0.9576014438446618,
+  RANDOM_7: 0.21006875882505002
 };
 
 [fionaCore, fiona].forEach(fiona => {
@@ -93,7 +93,7 @@ const fixture = {
 
   test('fiona.fn.number', t => {
     const baby = fiona(1)
-    t.is(baby.number(), 417022)
+    t.is(baby.number(), 458333)
     for (let i = 10; i--;) {
       t.true(baby.number(10) <= 10)
     }
@@ -102,35 +102,35 @@ const fixture = {
       t.true(num >= 10)
       t.true(num <= 20)
     }
-    t.is(baby.reseed(1).number(1e10), 4170219984)
+    t.is(baby.reseed(1).number(1e10), 4583325854)
   })
 
   test('fiona.fn.oneOf', t => {
     const baby = fiona(1)
     const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     t.is(baby.oneOf(oneToTen), 5)
-    t.is(baby.oneOf(oneToTen), 10)
-    t.is(baby.oneOf(oneToTen), 8)
-    t.is(baby.oneOf(oneToTen), 10)
+    t.is(baby.oneOf(oneToTen), 6)
+    t.is(baby.oneOf(oneToTen), 7)
+    t.is(baby.oneOf(oneToTen), 1)
     baby.reseed(null).weighting(i => i * i * i)
     t.is(baby.oneOf(oneToTen), 1)
-    t.is(baby.oneOf(oneToTen), 10)
-    t.is(baby.oneOf(oneToTen), 4)
-    t.is(baby.oneOf(oneToTen), 9)
+    t.is(baby.oneOf(oneToTen), 2)
+    t.is(baby.oneOf(oneToTen), 3)
+    t.is(baby.oneOf(oneToTen), 1)
   })
 
   test('fiona.fn.choose', t => {
     const baby = fiona(1)
     const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    t.deepEqual(baby.choose(3, oneToTen), [5, 10, 8])
-    t.deepEqual(baby.choose(3, oneToTen), [10, 2, 4])
-    t.deepEqual(baby.choose(3, oneToTen), [4, 10, 1])
-    t.deepEqual(baby.choose(11, oneToTen), [3, 2, 6, 5, 7, 4, 9, 1, 10, 8])
+    t.deepEqual(baby.choose(3, oneToTen), [5, 7, 8])
+    t.deepEqual(baby.choose(3, oneToTen), [1, 9, 4])
+    t.deepEqual(baby.choose(3, oneToTen), [4, 1, 10])
+    t.deepEqual(baby.choose(11, oneToTen), [9, 5, 8, 6, 7, 2, 10, 4, 1, 3])
     baby.reseed(null).weighting(i => i * i * i)
-    t.deepEqual(baby.choose(3, oneToTen), [1, 10, 5])
-    t.deepEqual(baby.choose(3, oneToTen), [9, 2, 3])
-    t.deepEqual(baby.choose(3, oneToTen), [1, 10, 3])
-    t.deepEqual(baby.choose(11, oneToTen), [1, 2, 3, 4, 5, 6, 8, 7, 10, 9])
+    t.deepEqual(baby.choose(3, oneToTen), [1, 3, 5])
+    t.deepEqual(baby.choose(3, oneToTen), [1, 7, 3])
+    t.deepEqual(baby.choose(3, oneToTen), [1, 2, 8])
+    t.deepEqual(baby.choose(11, oneToTen), [7, 2, 5, 4, 3, 6, 9, 1, 8, 10])
     t.deepEqual(baby.choose(null, oneToTen), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     t.deepEqual(baby.choose(0, oneToTen), [])
   })
@@ -150,15 +150,15 @@ const fixture = {
     })
 
     t.deepEqual(generatePerson('moon').data(), {
-      gender: 'Male',
-      firstname: 'Christopher',
-      lastname: 'Smith',
-      fullname: 'Mr Christopher Smith',
-      luckyNumber: 46,
-      houseNumber: 86,
+      gender: 'Female',
+      firstname: 'Aria',
+      lastname: 'Moon',
+      fullname: 'Little Miss Aria Moon',
+      luckyNumber: 76,
+      houseNumber: 81,
       favourite: {
-        color: 'Purple',
-        drinks: [ 'Milk', 'Juice', 'Water' ]
+        color: 'Yellow',
+        drinks: [ 'Milk', 'Water', 'Juice' ]
       }
     })
 
@@ -171,12 +171,12 @@ const fixture = {
         drinks: ({ seeded }) => seeded.weighting(i => i * i).choose(3, Drinks)
       }
     }).data(), {
-      gender: 'Male',
-      firstname: 'Christopher',
-      luckyNumber: 46,
-      pairsOfShoes: 5,
+      gender: 'Female',
+      firstname: 'Aria',
+      luckyNumber: 76,
+      pairsOfShoes: 10,
       favourite: {
-        drinks: [ 'Milk', 'Juice', 'Water' ]
+        drinks: [ 'Milk', 'Water', 'Juice' ]
       }
     })
 
@@ -187,10 +187,10 @@ const fixture = {
       toys: ({ seeded }) => seeded.number(100),
       toyDeclaration: ({ me, data }) => `${me.data().firstname} has ${data.toys} toys`
     }).data(), {
-      gender: 'Male',
-      firstname: 'Christopher',
-      toys: 70,
-      toyDeclaration: 'Christopher has 70 toys'
+      gender: 'Female',
+      firstname: 'Aria',
+      toys: 81,
+      toyDeclaration: 'Aria has 81 toys'
     })
   })
 
@@ -214,12 +214,12 @@ const fixture = {
     })
 
     t.deepEqual(baby.data(), {
-      gender: 'Male',
-      firstname: 'Christopher',
-      luckyNumber: 46,
-      bear: 'Maxwell the purple bear',
-      dolly: 'Purple Smith',
-      houseNumber: 86
+      gender: 'Female',
+      firstname: 'Aria',
+      luckyNumber: 76,
+      bear: 'Christopher the orange bear',
+      dolly: 'Purple Moon',
+      houseNumber: 81
     })
   })
 
@@ -227,17 +227,11 @@ const fixture = {
     const data = fiona('moon').data(({ arr }) => arr(2, ({ seeded }) => {
       return seeded.number()
     })).data()
-    t.deepEqual(data, [885487, 775073])
+    t.deepEqual(data, [719007, 195079])
   })
 
   test('fiona.data (unknown)', t => {
     t.deepEqual(fiona('moon').data(123).data(), 123)
     t.deepEqual(fiona('moon').data(/asdasd/).data(), /asdasd/)
-  })
-
-  test('fiona.prng (unknown)', t => {
-    t.is(fiona('moon').number(), 969283)
-    t.is(fiona('moon', fiona.prngs.twister).number(), 969283)
-    t.is(fiona('moon', fiona.prngs.xor).number(), 512979)
   })
 })

@@ -80,7 +80,7 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__methods__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__methods__ = __webpack_require__(8);
 
 
 
@@ -200,7 +200,7 @@ exports.anyChar = function() {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(4);
-module.exports = __webpack_require__(18);
+module.exports = __webpack_require__(16);
 
 
 /***/ }),
@@ -210,8 +210,8 @@ module.exports = __webpack_require__(18);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fiona_regex__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fiona_name__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fiona_duplicable__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fiona_name__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fiona_duplicable__ = __webpack_require__(15);
 
 
 
@@ -223,7 +223,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_fiona__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_randexp__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_randexp__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_randexp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_randexp__);
 
 
@@ -244,12 +244,10 @@ __WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.regex = function (regex) 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__prng_twister__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prng_xor__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__prng_xor__ = __webpack_require__(7);
 
 
-
-function Moon (seedin, prngOverride) {
+function Moon (seedin) {
   const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
 
   //
@@ -308,17 +306,7 @@ function Moon (seedin, prngOverride) {
     }
   }
 
-  let prng = prngOverride || __WEBPACK_IMPORTED_MODULE_0__prng_twister__["a" /* default */]
-
-  let { random, reseed, getState, setState } = prng(0)
-
-  this.prng = GetSet(prng, () => prng, function (newprng) {
-    random = newprng.random
-    reseed = newprng.reseed
-    getState = newprng.getState
-    setState = newprng.setState
-    return this
-  })
+  let { random, reseed, getState, setState } = Object(__WEBPACK_IMPORTED_MODULE_0__prng_xor__["a" /* default */])(0)
 
   this.random = () => this.weighting(random())
 
@@ -355,7 +343,7 @@ function Moon (seedin, prngOverride) {
           return inception(item, pos)
         })
       } else if (type(input) === 'Function') {
-        const seeded = fiona(`${position}/${initseed}`, prng)
+        const seeded = fiona(`${position}/${initseed}`, __WEBPACK_IMPORTED_MODULE_0__prng_xor__["a" /* default */])
         return inception(input({ me: this, pos: position, data, seeded, arr }), position)
       } else {
         return input
@@ -368,7 +356,7 @@ function Moon (seedin, prngOverride) {
     if (input) {
       if (type(input) === 'Function') {
         // TODO: merge this with repeated code in `inception`
-        const seeded = fiona(`() => data/${initseed}`, prng)
+        const seeded = fiona(`() => data/${initseed}`, __WEBPACK_IMPORTED_MODULE_0__prng_xor__["a" /* default */])
         input = input({ me: this, pos: '() => data', data, seeded, arr })
       }
       // TODO: handle mixed input types on multiple data calls
@@ -407,11 +395,6 @@ const fiona = (...args) => new Moon(...args)
 
 fiona.version = '__VERSION__'
 
-fiona.prngs = {
-  twister: __WEBPACK_IMPORTED_MODULE_0__prng_twister__["a" /* default */],
-  xor: __WEBPACK_IMPORTED_MODULE_1__prng_xor__["a" /* default */]
-}
-
 fiona.fn = Moon.prototype
 
 /* harmony default export */ __webpack_exports__["a"] = (fiona);
@@ -419,258 +402,6 @@ fiona.fn = Moon.prototype
 
 /***/ }),
 /* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mersenne_twister__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mersenne_twister___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mersenne_twister__);
-
-
-/* harmony default export */ __webpack_exports__["a"] = (seed => {
-  const twister = new __WEBPACK_IMPORTED_MODULE_0_mersenne_twister___default.a(seed !== undefined ? seed : 0)
-  return {
-    random: () => twister.random(),
-    reseed: seed => twister.init_seed(seed),
-    getState: () => ({
-      // N: twister.N,
-      // M: twister.M,
-      // MATRIX_A: twister.MATRIX_A,
-      // UPPER_MASK: twister.UPPER_MASK,
-      // LOWER_MASK: twister.LOWER_MASK,
-      mt: twister.mt.slice(0),
-      mti: twister.mti
-    }),
-    setState: newstate => {
-      // twister.N = newstate.N
-      // twister.M = newstate.M
-      // twister.MATRIX_A = newstate.MATRIX_A
-      // twister.UPPER_MASK = newstate.UPPER_MASK
-      // twister.LOWER_MASK = newstate.LOWER_MASK
-      twister.mt = newstate.mt
-      twister.mti = newstate.mti
-    }
-  }
-});
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-/*
-  https://github.com/banksean wrapped Makoto Matsumoto and Takuji Nishimura's code in a namespace
-  so it's better encapsulated. Now you can have multiple random number generators
-  and they won't stomp all over eachother's state.
-
-  If you want to use this as a substitute for Math.random(), use the random()
-  method like so:
-
-  var m = new MersenneTwister();
-  var randomNumber = m.random();
-
-  You can also call the other genrand_{foo}() methods on the instance.
-
-  If you want to use a specific seed in order to get a repeatable random
-  sequence, pass an integer into the constructor:
-
-  var m = new MersenneTwister(123);
-
-  and that will always produce the same random sequence.
-
-  Sean McCullough (banksean@gmail.com)
-*/
-
-/*
-   A C-program for MT19937, with initialization improved 2002/1/26.
-   Coded by Takuji Nishimura and Makoto Matsumoto.
-
-   Before using, initialize the state by using init_seed(seed)
-   or init_by_array(init_key, key_length).
-
-   Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,
-   All rights reserved.
-
-   Redistribution and use in source and binary forms, with or without
-   modification, are permitted provided that the following conditions
-   are met:
-
-     1. Redistributions of source code must retain the above copyright
-        notice, this list of conditions and the following disclaimer.
-
-     2. Redistributions in binary form must reproduce the above copyright
-        notice, this list of conditions and the following disclaimer in the
-        documentation and/or other materials provided with the distribution.
-
-     3. The names of its contributors may not be used to endorse or promote
-        products derived from this software without specific prior written
-        permission.
-
-   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
-   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
-   Any feedback is very welcome.
-   http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
-   email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)
-*/
-
-var MersenneTwister = function(seed) {
-	if (seed == undefined) {
-		seed = new Date().getTime();
-	}
-
-	/* Period parameters */
-	this.N = 624;
-	this.M = 397;
-	this.MATRIX_A = 0x9908b0df;   /* constant vector a */
-	this.UPPER_MASK = 0x80000000; /* most significant w-r bits */
-	this.LOWER_MASK = 0x7fffffff; /* least significant r bits */
-
-	this.mt = new Array(this.N); /* the array for the state vector */
-	this.mti=this.N+1; /* mti==N+1 means mt[N] is not initialized */
-
-	if (seed.constructor == Array) {
-		this.init_by_array(seed, seed.length);
-	}
-	else {
-		this.init_seed(seed);
-	}
-}
-
-/* initializes mt[N] with a seed */
-/* origin name init_genrand */
-MersenneTwister.prototype.init_seed = function(s) {
-	this.mt[0] = s >>> 0;
-	for (this.mti=1; this.mti<this.N; this.mti++) {
-		var s = this.mt[this.mti-1] ^ (this.mt[this.mti-1] >>> 30);
-		this.mt[this.mti] = (((((s & 0xffff0000) >>> 16) * 1812433253) << 16) + (s & 0x0000ffff) * 1812433253)
-		+ this.mti;
-		/* See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. */
-		/* In the previous versions, MSBs of the seed affect   */
-		/* only MSBs of the array mt[].                        */
-		/* 2002/01/09 modified by Makoto Matsumoto             */
-		this.mt[this.mti] >>>= 0;
-		/* for >32 bit machines */
-	}
-}
-
-/* initialize by an array with array-length */
-/* init_key is the array for initializing keys */
-/* key_length is its length */
-/* slight change for C++, 2004/2/26 */
-MersenneTwister.prototype.init_by_array = function(init_key, key_length) {
-	var i, j, k;
-	this.init_seed(19650218);
-	i=1; j=0;
-	k = (this.N>key_length ? this.N : key_length);
-	for (; k; k--) {
-		var s = this.mt[i-1] ^ (this.mt[i-1] >>> 30)
-		this.mt[i] = (this.mt[i] ^ (((((s & 0xffff0000) >>> 16) * 1664525) << 16) + ((s & 0x0000ffff) * 1664525)))
-		+ init_key[j] + j; /* non linear */
-		this.mt[i] >>>= 0; /* for WORDSIZE > 32 machines */
-		i++; j++;
-		if (i>=this.N) { this.mt[0] = this.mt[this.N-1]; i=1; }
-		if (j>=key_length) j=0;
-	}
-	for (k=this.N-1; k; k--) {
-		var s = this.mt[i-1] ^ (this.mt[i-1] >>> 30);
-		this.mt[i] = (this.mt[i] ^ (((((s & 0xffff0000) >>> 16) * 1566083941) << 16) + (s & 0x0000ffff) * 1566083941))
-		- i; /* non linear */
-		this.mt[i] >>>= 0; /* for WORDSIZE > 32 machines */
-		i++;
-		if (i>=this.N) { this.mt[0] = this.mt[this.N-1]; i=1; }
-	}
-
-	this.mt[0] = 0x80000000; /* MSB is 1; assuring non-zero initial array */
-}
-
-/* generates a random number on [0,0xffffffff]-interval */
-/* origin name genrand_int32 */
-MersenneTwister.prototype.random_int = function() {
-	var y;
-	var mag01 = new Array(0x0, this.MATRIX_A);
-	/* mag01[x] = x * MATRIX_A  for x=0,1 */
-
-	if (this.mti >= this.N) { /* generate N words at one time */
-		var kk;
-
-		if (this.mti == this.N+1)  /* if init_seed() has not been called, */
-			this.init_seed(5489);  /* a default initial seed is used */
-
-		for (kk=0;kk<this.N-this.M;kk++) {
-			y = (this.mt[kk]&this.UPPER_MASK)|(this.mt[kk+1]&this.LOWER_MASK);
-			this.mt[kk] = this.mt[kk+this.M] ^ (y >>> 1) ^ mag01[y & 0x1];
-		}
-		for (;kk<this.N-1;kk++) {
-			y = (this.mt[kk]&this.UPPER_MASK)|(this.mt[kk+1]&this.LOWER_MASK);
-			this.mt[kk] = this.mt[kk+(this.M-this.N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-		}
-		y = (this.mt[this.N-1]&this.UPPER_MASK)|(this.mt[0]&this.LOWER_MASK);
-		this.mt[this.N-1] = this.mt[this.M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
-
-		this.mti = 0;
-	}
-
-	y = this.mt[this.mti++];
-
-	/* Tempering */
-	y ^= (y >>> 11);
-	y ^= (y << 7) & 0x9d2c5680;
-	y ^= (y << 15) & 0xefc60000;
-	y ^= (y >>> 18);
-
-	return y >>> 0;
-}
-
-/* generates a random number on [0,0x7fffffff]-interval */
-/* origin name genrand_int31 */
-MersenneTwister.prototype.random_int31 = function() {
-	return (this.random_int()>>>1);
-}
-
-/* generates a random number on [0,1]-real-interval */
-/* origin name genrand_real1 */
-MersenneTwister.prototype.random_incl = function() {
-	return this.random_int()*(1.0/4294967295.0);
-	/* divided by 2^32-1 */
-}
-
-/* generates a random number on [0,1)-real-interval */
-MersenneTwister.prototype.random = function() {
-	return this.random_int()*(1.0/4294967296.0);
-	/* divided by 2^32 */
-}
-
-/* generates a random number on (0,1)-real-interval */
-/* origin name genrand_real3 */
-MersenneTwister.prototype.random_excl = function() {
-	return (this.random_int() + 0.5)*(1.0/4294967296.0);
-	/* divided by 2^32 */
-}
-
-/* generates a random number on [0,1) with 53-bit resolution*/
-/* origin name genrand_res53 */
-MersenneTwister.prototype.random_long = function() {
-	var a=this.random_int()>>>5, b=this.random_int()>>>6;
-	return(a*67108864.0+b)*(1.0/9007199254740992.0);
-}
-
-/* These real versions are due to Isaku Wada, 2002/01/09 added */
-
-module.exports = MersenneTwister;
-
-
-/***/ }),
-/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -718,7 +449,7 @@ const xor = seed => {
 
 
 /***/ }),
-/* 10 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -772,11 +503,11 @@ const choose = function (qty, arr) {
 
 
 /***/ }),
-/* 11 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ret = __webpack_require__(12);
-var DRange = __webpack_require__(15);
+var ret = __webpack_require__(10);
+var DRange = __webpack_require__(13);
 var types = ret.types;
 
 
@@ -1023,13 +754,13 @@ function gen(token, groups) {
 
 
 /***/ }),
-/* 12 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var util      = __webpack_require__(13);
+var util      = __webpack_require__(11);
 var types     = __webpack_require__(1);
 var sets      = __webpack_require__(2);
-var positions = __webpack_require__(14);
+var positions = __webpack_require__(12);
 
 
 module.exports = function(regexpStr) {
@@ -1311,7 +1042,7 @@ module.exports.types = types;
 
 
 /***/ }),
-/* 13 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var types = __webpack_require__(1);
@@ -1428,7 +1159,7 @@ exports.error = function(regexp, msg) {
 
 
 /***/ }),
-/* 14 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var types = __webpack_require__(1);
@@ -1451,7 +1182,7 @@ exports.end = function() {
 
 
 /***/ }),
-/* 15 */
+/* 13 */
 /***/ (function(module, exports) {
 
 //protected helper class
@@ -1601,7 +1332,7 @@ module.exports = DiscontinuousRange;
 
 
 /***/ }),
-/* 16 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1654,7 +1385,7 @@ __WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].namedata = data
 
 
 /***/ }),
-/* 17 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1672,7 +1403,7 @@ __WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.duplicable = function (fr
 
 
 /***/ }),
-/* 18 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(0).default

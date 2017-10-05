@@ -10,5 +10,5 @@ test('import', t => {
 })
 
 test('fiona.fn.regex', t => {
-  t.is(fiona(1).regex(/[0-1]{8} (cy|ro)bo(t|rg)s/), '11100010 cybots')
+  t.is(fiona(1).regex(/[0-1]{8} (cy|ro)bo(t|rg)s/), '11010001 robots')
 })
