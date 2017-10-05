@@ -2,6 +2,16 @@ import test from 'ava'
 import fionaCore from './fiona.core.js'
 import fiona from './fiona.js'
 
+const fixture = {
+  RANDOM_1: 0.4170219984371215,
+  RANDOM_2: 0.99718480813317,
+  RANDOM_3: 0.43599490262567997,
+  RANDOM_4: 0.18508208147250116,
+  RANDOM_5: 0.19869689363986254,
+  RANDOM_6: 0.07978078303858638,
+  RANDOM_7: 0.17390734718049058
+};
+
 [fionaCore, fiona].forEach(fiona => {
   const Girlnames = ['Mia', 'Alice', 'Fiona', 'Aria', 'Sarah']
   const Boynames = ['David', 'Maxwell', 'Christopher', 'John', 'Billy']
@@ -26,22 +36,22 @@ import fiona from './fiona.js'
 
   test('fiona.fn.reseed', t => {
     const baby = fiona(1)
-    t.is(baby.random(), 0.4170219984371215)
-    t.is(baby.random(), 0.99718480813317)
-    t.is(baby.reseed(null).random(), 0.4170219984371215)
-    t.is(baby.random(), 0.99718480813317)
-    t.is(baby.reseed(2).random(), 0.43599490262567997)
-    t.is(baby.random(), 0.18508208147250116)
-    t.is(baby.reseed(null).random(), 0.4170219984371215)
-    t.is(baby.random(), 0.99718480813317)
-    t.is(baby.reseed(2).random(), 0.43599490262567997)
-    t.is(baby.random(), 0.18508208147250116)
-    t.is(baby.reseed(1).random(), 0.4170219984371215)
-    t.is(baby.random(), 0.99718480813317)
-    t.is(baby.reseed('one').random(), 0.19869689363986254)
-    t.is(baby.random(), 0.07978078303858638)
-    t.is(baby.reseed(null).random(), 0.4170219984371215)
-    t.is(baby.random(), 0.99718480813317)
+    t.is(baby.random(), fixture.RANDOM_1)
+    t.is(baby.random(), fixture.RANDOM_2)
+    t.is(baby.reseed(null).random(), fixture.RANDOM_1)
+    t.is(baby.random(), fixture.RANDOM_2)
+    t.is(baby.reseed(2).random(), fixture.RANDOM_3)
+    t.is(baby.random(), fixture.RANDOM_4)
+    t.is(baby.reseed(null).random(), fixture.RANDOM_1)
+    t.is(baby.random(), fixture.RANDOM_2)
+    t.is(baby.reseed(2).random(), fixture.RANDOM_3)
+    t.is(baby.random(), fixture.RANDOM_4)
+    t.is(baby.reseed(1).random(), fixture.RANDOM_1)
+    t.is(baby.random(), fixture.RANDOM_2)
+    t.is(baby.reseed('one').random(), fixture.RANDOM_5)
+    t.is(baby.random(), fixture.RANDOM_6)
+    t.is(baby.reseed(null).random(), fixture.RANDOM_1)
+    t.is(baby.random(), fixture.RANDOM_2)
   })
 
   test('fiona.fn.info', t => {
@@ -53,32 +63,32 @@ import fiona from './fiona.js'
 
   test('fiona.fn.weighting', t => {
     const baby = fiona(1)
-    t.is(baby.reseed(null).random(), 0.4170219984371215)
-    t.is(baby.reseed(null).weighting(i => i * i).random(), 0.17390734718049058)
-    t.is(baby.reseed(null).random(), 0.17390734718049058)
-    t.is(baby.reseed(null).weighting(null).random(), 0.4170219984371215)
+    t.is(baby.reseed(null).random(), fixture.RANDOM_1)
+    t.is(baby.reseed(null).weighting(i => i * i).random(), fixture.RANDOM_7)
+    t.is(baby.reseed(null).random(), fixture.RANDOM_7)
+    t.is(baby.reseed(null).weighting(null).random(), fixture.RANDOM_1)
   })
 
   test('fiona.fn.callback', t => {
     const baby = fiona(1)
-    t.is(baby.random(), 0.4170219984371215)
+    t.is(baby.random(), fixture.RANDOM_1)
     baby.callback((data, me) => me.reseed(2))
-    t.is(baby.random(), 0.43599490262567997)
+    t.is(baby.random(), fixture.RANDOM_3)
     baby.callback((data, me) => me.reseed(1))
-    t.is(baby.random(), 0.4170219984371215)
+    t.is(baby.random(), fixture.RANDOM_1)
   })
 
   test('fiona.fn.clone', t => {
     const baby = fiona(1)
     const clone = baby.clone()
-    t.is(baby.random(), 0.4170219984371215)
-    t.is(clone.random(), 0.4170219984371215)
-    t.is(baby.random(), 0.99718480813317)
-    t.is(clone.random(), 0.99718480813317)
-    t.is(baby.reseed(null).random(), 0.4170219984371215)
-    t.is(baby.random(), 0.99718480813317)
-    t.is(clone.reseed(null).random(), 0.4170219984371215)
-    t.is(clone.random(), 0.99718480813317)
+    t.is(baby.random(), fixture.RANDOM_1)
+    t.is(clone.random(), fixture.RANDOM_1)
+    t.is(baby.random(), fixture.RANDOM_2)
+    t.is(clone.random(), fixture.RANDOM_2)
+    t.is(baby.reseed(null).random(), fixture.RANDOM_1)
+    t.is(baby.random(), fixture.RANDOM_2)
+    t.is(clone.reseed(null).random(), fixture.RANDOM_1)
+    t.is(clone.random(), fixture.RANDOM_2)
   })
 
   test('fiona.fn.number', t => {
