@@ -200,7 +200,7 @@ exports.anyChar = function() {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(4);
-module.exports = __webpack_require__(16);
+module.exports = __webpack_require__(17);
 
 
 /***/ }),
@@ -212,6 +212,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fiona_regex__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fiona_name__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fiona_duplicable__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fiona_bool__ = __webpack_require__(16);
+
 
 
 
@@ -1404,6 +1406,19 @@ __WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.duplicable = function (fr
 
 /***/ }),
 /* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_fiona__ = __webpack_require__(0);
+
+
+__WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.bool = function (chance = 0.5) {
+  return this.random() < chance
+}
+
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(0).default
