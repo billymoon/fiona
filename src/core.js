@@ -1,5 +1,4 @@
 import prngTwister from './prng-twister'
-import prngSimple from './prng-simple'
 import prngXor from './prng-xor'
 
 function Moon (seedin, prngOverride) {
@@ -62,7 +61,6 @@ function Moon (seedin, prngOverride) {
   }
 
   let prng = prngOverride || prngTwister
-  // console.log(prng+'')
 
   let { random, reseed, getState, setState } = prng(0)
 
@@ -163,7 +161,6 @@ fiona.version = '__VERSION__'
 
 fiona.prngs = {
   twister: prngTwister,
-  simple: prngSimple,
   xor: prngXor
 }
 

@@ -94,7 +94,7 @@ module.exports = __webpack_require__(2).default
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__methods__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__methods__ = __webpack_require__(7);
 
 
 
@@ -111,9 +111,7 @@ Object.keys(__WEBPACK_IMPORTED_MODULE_1__methods__).forEach(key => {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__prng_twister__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prng_simple__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__prng_xor__ = __webpack_require__(7);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prng_xor__ = __webpack_require__(6);
 
 
 
@@ -177,7 +175,6 @@ function Moon (seedin, prngOverride) {
   }
 
   let prng = prngOverride || __WEBPACK_IMPORTED_MODULE_0__prng_twister__["a" /* default */]
-  // console.log(prng+'')
 
   let { random, reseed, getState, setState } = prng(0)
 
@@ -278,8 +275,7 @@ fiona.version = '__VERSION__'
 
 fiona.prngs = {
   twister: __WEBPACK_IMPORTED_MODULE_0__prng_twister__["a" /* default */],
-  simple: __WEBPACK_IMPORTED_MODULE_1__prng_simple__["a" /* default */],
-  xor: __WEBPACK_IMPORTED_MODULE_2__prng_xor__["a" /* default */]
+  xor: __WEBPACK_IMPORTED_MODULE_1__prng_xor__["a" /* default */]
 }
 
 fiona.fn = Moon.prototype
@@ -544,25 +540,6 @@ module.exports = MersenneTwister;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-const prng = seed => {
-  const mix = seed => (seed * 9301 + 49297) % 233280
-  const reseed = newseed => (seed = newseed)
-  return {
-    random: () => (seed = mix(mix(seed))) / 233280,
-    reseed: reseed,
-    getState: () => seed,
-    setState: reseed
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (prng);
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 const baseSeeds = [123456789, 362436069, 521288629, 88675123]
 const xor = seed => {
   let [x, y, z, w] = baseSeeds
@@ -607,7 +584,7 @@ const xor = seed => {
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

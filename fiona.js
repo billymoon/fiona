@@ -75,6 +75,24 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__methods__ = __webpack_require__(10);
+
+
+
+Object.keys(__WEBPACK_IMPORTED_MODULE_1__methods__).forEach(key => {
+  __WEBPACK_IMPORTED_MODULE_0__core_js__["a" /* default */].fn[key] = __WEBPACK_IMPORTED_MODULE_1__methods__[key]
+})
+
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__core_js__["a" /* default */]);
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -90,28 +108,10 @@ module.exports = {
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_js__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__methods__ = __webpack_require__(11);
-
-
-
-Object.keys(__WEBPACK_IMPORTED_MODULE_1__methods__).forEach(key => {
-  __WEBPACK_IMPORTED_MODULE_0__core_js__["a" /* default */].fn[key] = __WEBPACK_IMPORTED_MODULE_1__methods__[key]
-})
-
-/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__core_js__["a" /* default */]);
-
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var types = __webpack_require__(0);
+var types = __webpack_require__(1);
 
 var INTS = function() {
  return [{ type: types.RANGE , from: 48, to: 57 }];
@@ -210,7 +210,9 @@ module.exports = __webpack_require__(18);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fiona_regex__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fiona_name__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fiona_name__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fiona_duplicable__ = __webpack_require__(17);
+
 
 
 
@@ -220,8 +222,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_fiona__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_randexp__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_fiona__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_randexp__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_randexp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_randexp__);
 
 
@@ -243,9 +245,7 @@ __WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.regex = function (regex) 
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__prng_twister__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prng_simple__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__prng_xor__ = __webpack_require__(10);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prng_xor__ = __webpack_require__(9);
 
 
 
@@ -309,7 +309,6 @@ function Moon (seedin, prngOverride) {
   }
 
   let prng = prngOverride || __WEBPACK_IMPORTED_MODULE_0__prng_twister__["a" /* default */]
-  // console.log(prng+'')
 
   let { random, reseed, getState, setState } = prng(0)
 
@@ -410,8 +409,7 @@ fiona.version = '__VERSION__'
 
 fiona.prngs = {
   twister: __WEBPACK_IMPORTED_MODULE_0__prng_twister__["a" /* default */],
-  simple: __WEBPACK_IMPORTED_MODULE_1__prng_simple__["a" /* default */],
-  xor: __WEBPACK_IMPORTED_MODULE_2__prng_xor__["a" /* default */]
+  xor: __WEBPACK_IMPORTED_MODULE_1__prng_xor__["a" /* default */]
 }
 
 fiona.fn = Moon.prototype
@@ -676,25 +674,6 @@ module.exports = MersenneTwister;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-const prng = seed => {
-  const mix = seed => (seed * 9301 + 49297) % 233280
-  const reseed = newseed => (seed = newseed)
-  return {
-    random: () => (seed = mix(mix(seed))) / 233280,
-    reseed: reseed,
-    getState: () => seed,
-    setState: reseed
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (prng);
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 const baseSeeds = [123456789, 362436069, 521288629, 88675123]
 const xor = seed => {
   let [x, y, z, w] = baseSeeds
@@ -739,7 +718,7 @@ const xor = seed => {
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -793,11 +772,11 @@ const choose = function (qty, arr) {
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ret = __webpack_require__(13);
-var DRange = __webpack_require__(16);
+var ret = __webpack_require__(12);
+var DRange = __webpack_require__(15);
 var types = ret.types;
 
 
@@ -1044,13 +1023,13 @@ function gen(token, groups) {
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var util      = __webpack_require__(14);
-var types     = __webpack_require__(0);
+var util      = __webpack_require__(13);
+var types     = __webpack_require__(1);
 var sets      = __webpack_require__(2);
-var positions = __webpack_require__(15);
+var positions = __webpack_require__(14);
 
 
 module.exports = function(regexpStr) {
@@ -1332,10 +1311,10 @@ module.exports.types = types;
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var types = __webpack_require__(0);
+var types = __webpack_require__(1);
 var sets  = __webpack_require__(2);
 
 
@@ -1449,10 +1428,10 @@ exports.error = function(regexp, msg) {
 
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var types = __webpack_require__(0);
+var types = __webpack_require__(1);
 
 exports.wordBoundary = function() {
   return { type: types.POSITION, value: 'b' };
@@ -1472,7 +1451,7 @@ exports.end = function() {
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 //protected helper class
@@ -1622,11 +1601,11 @@ module.exports = DiscontinuousRange;
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_fiona__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_fiona__ = __webpack_require__(0);
 
 
 const data = {
@@ -1675,10 +1654,28 @@ __WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].namedata = data
 
 
 /***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_fiona__ = __webpack_require__(0);
+
+
+// 10% of the time, reseed with one of 10 seeds
+// frequency and pool can be overriden
+__WEBPACK_IMPORTED_MODULE_0__src_fiona__["default"].fn.duplicable = function (frequency = 0.1, pool = 10) {
+  if (this.random() <= frequency) {
+    this.reseed((Math.floor(this.random() * pool + 1) / pool + 1) * 1e16)
+  }
+  return this
+}
+
+
+/***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(1).default
+module.exports = __webpack_require__(0).default
 
 
 /***/ })
