@@ -6,8 +6,6 @@ The most basic use case is to generate a random number: `fiona().number(max=1000
     // myNumber is an integer between 1 and 1,000,000
     const age = fiona().number(100)
     // age is integer between 0 and 100
-    const salary = fiona().number(100000, 10000)
-    // salary is integer between 10,000 and 100,000
 
 It becomes more useful when creating data structures.
 
@@ -36,6 +34,13 @@ The prng sets the initial seed when fiona is initialised, then tracks new seeds 
     data.number() // seeded with 67890
     data.seed(null) // reset seed to initial value
     data.number() // seeded with 12345
+
+### Weighting
+
+The idea of adding a weighting to the output of random allows for powerful manipulation of large sets of pseudo random data. For example, the distribution of income is not even, where many more people are on low income than high. If we simply choose from 10,000 to 1,000,000 then the average income would be around 505,000. If we add weighting, we can make this represent our target distribution much more accurately.
+
+    const salary = fiona().weighting(i => i * i * i).number(100000, 10000)
+    // salary is integer between 10,000 and 100,000 but much more likely to be low
 
 ### Chained data builder
 

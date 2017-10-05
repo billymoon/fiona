@@ -23,6 +23,7 @@
   "devDependencies": {
     "@std/esm": "^0.7.1",
     "ava": "^0.22.0",
+    "babel-minify-webpack-plugin": "^0.2.0",
     "babel-plugin-styled-components": "^1.2.0",
     "fetch-pretender": "^1.5.0",
     "isomorphic-fetch": "^2.2.1",
