@@ -1,3 +1,5 @@
+// xorshift128 variation of https://en.wikipedia.org/wiki/Xorshift
+
 const baseSeeds = [123456789, 362436069, 521288629, 88675123]
 const xor = seed => {
   let [x, y, z, w] = baseSeeds
