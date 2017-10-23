@@ -14,13 +14,15 @@ fiona.fn.log = function () {
   return this
 }
 
-fiona('moon').data(({ arr }) => {
-  return arr(10, ({ seeded }) => seeded.choose(5, [1, 2, 3, 4, 5], [10, 30, 20, 10, 30]))
-}).log()
+fiona('moon').data(({ arr }) => arr(100, ({ seeded }) => seeded.name())).log()
 
-fiona('moon').data(({ arr }) => {
-  return arr(10, ({ seeded }) => seeded.oneOf([1, 2, 3, 4, 5], [10, 30, 20, 10, 30]))
-}).log()
+// fiona('moon').data(({ arr }) => {
+//   return arr(10, ({ seeded }) => seeded.choose(5, [1, 2, 3, 4, 5], [10, 30, 20, 10, 30]))
+// }).log()
+
+// fiona('moon').data(({ arr }) => {
+//   return arr(10, ({ seeded }) => seeded.oneOf([1, 2, 3, 4, 5], [10, 30, 20, 10, 30]))
+// }).log()
 
 // console.time('cool')
 // const data = fiona('moon').data(({ arr }) => {
