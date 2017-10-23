@@ -30,12 +30,12 @@ test('fiona.fn.firstname', t => {
 })
 
 test('fiona.fn.firstnames', t => {
-  t.is(fiona(1).firstnames(), 'Kyle Harry')
+  t.is(fiona(1).firstnames(), 'Callum')
 })
 
 test('fiona.fn.surname', t => {
-  t.is(fiona(1).surname(), 'Scott')
-  t.is(fiona(2).surname(), 'Reid')
+  t.is(fiona(1).surname(), 'Wilson')
+  t.is(fiona(2).surname(), 'Moon')
 })
 
 test('fiona.fn.gender', t => {
@@ -44,5 +44,5 @@ test('fiona.fn.gender', t => {
 })
 
 test('fiona.fn.name', t => {
-  t.is(fiona(1).name(), 'Sir Logan Christopher Wilson')
+  t.is(fiona(1).name(), 'Sir Jack Moon Smith')
 })

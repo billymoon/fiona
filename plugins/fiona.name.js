@@ -30,11 +30,11 @@ fiona.fn.firstname = function (opts) {
 
 fiona.fn.firstnames = function (opts) {
   const gender = getGender((opts || {}).gender || this.gender())
-  return this.choose(this.number(3, 1), data[gender].firstname).join(' ')
+  return this.choose(this.weighting(x => x * x * x).number(3, 1), data[gender].firstname).join(' ')
 }
 
 fiona.fn.surname = function () {
-  return this.oneOf(data.surname)
+  return this.choose(this.weighting(x => x * x * x).number(2, 1), data.surname).join(this.bool() ? ' ' : '-')
 }
 
 fiona.fn.name = function (opts) {
