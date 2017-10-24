@@ -3,18 +3,18 @@
 // import prngSimple from './src/prng-simple'
 // import prngXor from './src/prng-xor'
 
-import fiona from './src/fiona'
+import fiona from './src/fiona';
 
-import './plugins'
+import './plugins';
 
 fiona.fn.log = function () {
   // console.log(this.data().reduce((m, v, i) => { m[v] = (m[v] || 0) + 1; return m; }, {}))
   // console.log(this.data().sort())
-  console.log(this.data())
-  return this
-}
+  console.log(this.data());
+  return this;
+};
 
-fiona('moon').data(({ arr }) => arr(100, ({ seeded }) => seeded.name())).log()
+fiona('sadfghjasd').data(({ arr }) => arr(100, ({ seeded }) => seeded.surname())).log();
 
 // fiona('moon').data(({ arr }) => {
 //   return arr(10, ({ seeded }) => seeded.choose(5, [1, 2, 3, 4, 5], [10, 30, 20, 10, 30]))
