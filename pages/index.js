@@ -1,71 +1,78 @@
-import Head from 'next/head'
-import styled from 'styled-components'
+import { Component } from 'react'
+
 import fiona from '../src/fiona'
+import '../plugins'
 
-var HappyHello = styled.div`
-  color: purple;
-  font-size: 30px;
-`
+import { Logo } from '../components/Svg.js'
 
-export default () =>
-  <div>
-    <Head>
-      <script src='https://cdn.jsdelivr.net/combine/npm/rng@0.2.2/rng.min.js,npm/rng@0.2.2/lib/park-miller.min.js,npm/rng@0.2.2/lib/mersenne-twister.min.js,npm/rng@0.2.2/lib/xor.min.js' />
-      <script>{`
-var loops = 1e5
-console.time('init MT')
-for (var i = 0; i < loops; i++) {
-  new Random.MT(1234567890)
+export default class Main extends Component {
+  state = {
+    selected: 24
+  }
+
+  render () {
+    const { selected } = this.state
+    return (
+      <div>
+        <div className='centered'>
+          <Logo selected={selected} clickHandler={index => evt => this.setState({ selected: selected === index ? Math.floor(Math.random() * 33) : index })} />
+        </div>
+        <p>
+          {[
+            'Fiona is a ', '(helper|tool|library) ', 'for (creating|generating) ', '(large)? (chunks|sets) of (seeded|pseudo|mock) random data\\.',
+            ' (At it\'s core it uses|It is based around) a (Xorshift(256)? )?(PRNG|pseudo random number generator) that (enables|assists with|makes a mockery of) (generating|creating) (repeatable|predictable) (seemingly|apparently|authentic (feeling|looking)) random data\\.'
+          ].map(item => fiona(selected).regex(item))}
+        </p>
+        <style global jsx>{`
+          body {
+            font-family: helvetica, arial, sans-serif;
+            max-width: 1200px;
+            margin: auto;
+          }
+          p {
+            padding: 0 15px;
+          }
+          .centered {
+            text-align: center;
+          }
+          svg {
+            width: 800px;
+            max-width: 100%;
+            height: auto;
+            -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+            -moz-user-select: none; /* mozilla browsers */
+            -khtml-user-select: none; /* webkit (konqueror) browsers */
+            -ms-user-select: none; /* IE10+ */
+          }
+          svg path {
+            stroke: #000;
+          }
+          svg path.inner {
+            fill: #fff;
+          }
+          svg path.inner:hover, svg path.outer:hover {
+            cursor: pointer;
+          }
+          svg g.filled path.inner {
+            fill: #000;
+          }
+          svg g.filled.selected path.inner {
+            fill: #f00;
+          }
+          svg path.outer {
+            stroke: #000;
+            fill: #000;
+          }
+          svg g:hover .outer {
+            stroke: #a00;
+            fill: #a00;
+          }
+          svg g.selected path.outer {
+            stroke: #f00;
+            fill: #f00;
+          }
+        `}</style>
+      </div>
+    )
+  }
 }
-console.timeEnd('init MT')
-var MT = new Random.MT(1234567890)
-console.time('run MT')
-for (var i = 0; i < loops; i++) {
-  MT.random()
-}
-console.timeEnd('run MT')
-console.time('init XOR')
-for (var i = 0; i < loops; i++) {
-  new Random.XOR(1234567890, 12345678, 1234567, 123456)
-}
-console.timeEnd('init XOR')
-var XOR = new Random.XOR(1234567890, 12345678, 1234567, 123456)
-console.time('run XOR')
-for (var i = 0; i < loops; i++) {
-  XOR.random()
-}
-console.timeEnd('run XOR')
-`}</script>
-      <script>{`
-var loops = 30
-
-// var x = 123456789
-// var y = 362436069
-// var z = 521288629
-// var w = 88675123
-
-var Seeder = input => {
-  const prng = new Random.XOR(x + input, y + input, z + input, w + input)
-  return () => Math.round(prng.random() * 1e16)
-}
-var seeder = Seeder(22)
-
-var XOR = new Random.XOR(seeder(), seeder(), seeder(), seeder())
-
-console.time('run XOR')
-for (var i = 0; i < loops; i++) {
-  console.log(XOR.random())
-}
-console.timeEnd('run XOR')
-`}</script>
-    </Head>
-    <HappyHello>Fiona - seeded random data assistant</HappyHello>
-    <p>{fiona('moon').number(10)} green bottles</p>
-  </div>
-
-/*
-init MT: 13082.328125ms
-run MT: 32.721923828125ms
-init XOR: 16.664794921875ms
-run XOR: 7.000244140625ms
-*/
