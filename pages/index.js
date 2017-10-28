@@ -7,22 +7,33 @@ import { Logo } from '../components/Svg.js'
 
 export default class Main extends Component {
   state = {
-    selected: 24
+    selected: 24,
+    blink: false,
+    clicked: false
+  }
+
+  componentDidMount () {
+    this.interval = setInterval(() => {
+      this.setState({ blink: !this.state.blink })
+      setTimeout(() => this.setState({ blink: !this.state.blink }), 300)
+    }, 5000)
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.interval)
   }
 
   render () {
-    const { selected } = this.state
+    const { selected, blink, clicked } = this.state
     return (
       <div>
         <div className='centered'>
-          <Logo selected={selected} clickHandler={index => evt => this.setState({ selected: selected === index ? Math.floor(Math.random() * 33) : index })} />
+          <Logo selected={selected} className={blink && !clicked ? 'blink' : ''} clickHandler={index => evt => this.setState({ clicked: true, selected: selected === index ? Math.floor(Math.random() * 33) : index })} />
         </div>
-        <p>
-          {[
-            'Fiona is a ', '(helper|tool|library) ', 'for (creating|generating) ', '(large)? (chunks|sets) of (seeded|pseudo|mock) random data\\.',
-            ' (At it\'s core it uses|It is based around) a (Xorshift(256)? )?(PRNG|pseudo random number generator) that (enables|assists with|makes a mockery of) (generating|creating) (repeatable|predictable) (seemingly|apparently|authentic (feeling|looking)) random data\\.'
-          ].map(item => fiona(selected).regex(item))}
-        </p>
+        {[
+          `Fiona is a (helper|tool|library) for (creating|generating) (large)? (chunks|sets) of (seeded|pseudo|mock) random data\\.`,
+          `(At it's core it uses|It is based around) a (Xorshift(256)? )?(PRNG|pseudo random number generator) that (enables|assists with|makes a mockery of) (generating|creating) (repeatable|predictable) (seemingly|apparently|authentic (feeling|looking)) random data\\.`
+        ].map((item, index) => <p key={index}>{fiona(selected).regex(item)}</p>)}
         <style global jsx>{`
           body {
             font-family: helvetica, arial, sans-serif;
@@ -50,6 +61,9 @@ export default class Main extends Component {
           svg path.inner {
             fill: #fff;
           }
+          svg.blink g.selected path.inner {
+            fill: #f00;
+          }
           svg path.inner:hover, svg path.outer:hover {
             cursor: pointer;
           }
@@ -62,10 +76,6 @@ export default class Main extends Component {
           svg path.outer {
             stroke: #000;
             fill: #000;
-          }
-          svg g:hover .outer {
-            stroke: #a00;
-            fill: #a00;
           }
           svg g.selected path.outer {
             stroke: #f00;
