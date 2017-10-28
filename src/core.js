@@ -80,24 +80,24 @@ function Moon (seedin) {
   }
 
   // TODO: perhaps build instance data instead of section input, and call functions with that?
-  const recurseData = (input, position) => {
+  const recurseData = (input, position, currentindex) => {
     const data = input
-    const inception = (input, position) => {
+    const inception = (input, position, currentindex) => {
       if (type(input) === 'Object') {
         Object.keys(input).forEach(key => {
           const pos = `${position}.${key}`
-          input[key] = inception(input[key], pos)
+          input[key] = inception(input[key], pos, null)
         })
         return input
       } else if (type(input) === 'Array') {
         return input.map((item, index) => {
           const m = position.match(/^data\[(\d+)\]$/)
           const pos = m ? `data[${1 * m[1] + index}]` : `${position}[${index}]`
-          return inception(item, pos)
+          return inception(item, pos, index)
         })
       } else if (type(input) === 'Function') {
         const seeded = fiona(`${position}/${initseed}`, prng)
-        return inception(input({ me: this, pos: position, data, seeded, arr }), position)
+        return inception(input({ me: this, pos: position, data, seeded, arr }, currentindex), position, currentindex)
       } else {
         return input
       }
@@ -114,9 +114,9 @@ function Moon (seedin) {
       }
       // TODO: handle mixed input types on multiple data calls
       if (type(input) === 'Array') {
-        data = (data || []).concat(recurseData(input, `data[${(data || []).length}]`))
+        data = (data || []).concat(recurseData(input, `data[${(data || []).length}]`, 0))
       } else if (type(input) === 'Object') {
-        data = Object.assign({}, data || {}, recurseData(input, 'data'))
+        data = Object.assign({}, data || {}, recurseData(input, 'data', null))
       } else {
         // TODO: does it make sense to return stuff we don't recognise, or just throw?
         data = input
