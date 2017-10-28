@@ -97,6 +97,7 @@ function Moon (seedin) {
         })
       } else if (type(input) === 'Function') {
         const seeded = fiona(`${position}/${initseed}`, prng)
+        // TODO: better handling of current index in callbacks of `arr`
         return inception(input({ me: this, pos: position, data, seeded, arr }, currentindex), position, currentindex)
       } else {
         return input
