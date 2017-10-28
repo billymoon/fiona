@@ -1,6 +1,6 @@
 {
   "name": "fiona",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
   "main": "fiona.js",
@@ -36,5 +36,8 @@
     "rollup": "^0.50.0",
     "styled-components": "^2.1.2",
     "webpack": "^3.6.0"
+  },
+  "dependencies": {
+    "bezier-easing": "^2.0.3"
   }
 }
