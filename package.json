@@ -1,6 +1,6 @@
 {
   "name": "fiona",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
   "main": "fiona.js",
@@ -14,7 +14,7 @@
     "pretest": "npm run build",
     "test": "ava",
     "test:coverage": "npm run pretest && nyc ava",
-    "publish": "git tag $(node -p \"require('./package').version\") && git push && git push --tags && npm publish"
+    "distribute": "git tag $(node -p \"require('./package').version\") && git push && git push --tags && npm publish"
   },
   "author": "Billy Moon",
   "license": "ISC",

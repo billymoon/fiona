@@ -27,11 +27,11 @@ fiona.fn.firstname = function ({ gender } = {}) {
 }
 
 fiona.fn.firstnames = function ({ gender } = {}) {
-  return this.choose(this.clone().weighting(x => x * x * x).number(3, 1), data[getGender(gender || this.gender())].firstname).join(' ')
+  return this.choose(this.clone().weighting(x => x * x * x).number({ min: 1, max: 3 }), data[getGender(gender || this.gender())].firstname).join(' ')
 }
 
 fiona.fn.lastname = function () {
-  return this.choose(this.clone().weighting(x => x * x * x).number(2, 1), data.lastname).join(this.bool() ? ' ' : '-')
+  return this.choose(this.clone().weighting(x => x * x * x).number({ min: 1, max: 2 }), data.lastname).join(this.bool() ? ' ' : '-')
 }
 
 fiona.fn.name = function ({ gender } = {}) {

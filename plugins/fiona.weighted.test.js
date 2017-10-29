@@ -19,8 +19,8 @@ test('fiona.fn.weighted (cube)', t => {
 test('fiona.weighted (function)', t => {
   fiona.weighted('clamp', i => i < 0.5 ? 0.5 : i > 0.7 ? 0.7 : i)
   t.is(typeof fiona.weighted.clamp, 'function')
-  t.is(fiona(1).number(100), 46)
-  t.is(fiona(1).weighted('clamp').number(100), 50)
+  t.is(fiona(1).number({ max: 100 }), 46)
+  t.is(fiona(1).weighted('clamp').number({ max: 100 }), 50)
 })
 
 test('fiona.weighted (array)', t => {

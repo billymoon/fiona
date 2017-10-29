@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import Head from 'next/head'
 
 import fiona from '../src/fiona'
 import '../plugins'
@@ -54,6 +55,9 @@ export default class Main extends Component {
     const { selected, blink, clicked } = this.state
     return (
       <div>
+        <Head>
+          <link rel='icon' href='/static/favicon.png' sizes='16x16' type='image/png' />
+        </Head>
         <div className='centered'>
           <Logo selected={selected} className={blink && !clicked ? 'blink' : ''} clickHandler={index => evt => this.setState({ clicked: true, selected: selected === index ? Math.floor(Math.random() * 33) : index })} />
         </div>
@@ -64,7 +68,7 @@ export default class Main extends Component {
 
         <Sample title='input'>{`
         fiona(${selected || 952684}).data({
-          age: ({ seeded }) => seeded.number(100),
+          age: ({ seeded }) => seeded.number({ max: 100 }),
           name: ({ seeded }) => seeded.name(),
           favouriteColor: ({ seeded }) => seeded.oneOf([
             'red',
@@ -77,7 +81,7 @@ export default class Main extends Component {
         `}</Sample>
         <Sample title='output'>
           {'\n' + JSON.stringify(fiona(selected || 952684).data({
-            age: ({ seeded }) => seeded.number(100),
+            age: ({ seeded }) => seeded.number({ max: 100 }),
             name: ({ seeded }) => seeded.name(),
             favouriteColor: ({ seeded }) => seeded.oneOf(['red', 'pink', 'orange', 'green', 'blue'])
           }), null, 2)}

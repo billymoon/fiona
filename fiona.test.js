@@ -95,14 +95,14 @@ const fixture = {
     const baby = fiona(1)
     t.is(baby.number(), 458333)
     for (let i = 10; i--;) {
-      t.true(baby.number(10) <= 10)
+      t.true(baby.number({ max: 10 }) <= 10)
     }
     for (let i = 10; i--;) {
-      const num = baby.number(20, 10)
+      const num = baby.number({ min: 10, max: 20 })
       t.true(num >= 10)
       t.true(num <= 20)
     }
-    t.is(baby.reseed(1).number(1e10), 4583325854)
+    t.is(baby.reseed(1).number({ max: 1e10 }), 4583325854)
   })
 
   test('fiona.fn.oneOf', t => {
@@ -141,8 +141,8 @@ const fixture = {
       firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
       lastname: ({ seeded }) => seeded.oneOf(Surnames),
       fullname: ({ data }) => `${data.gender === 'Female' ? 'Little Miss' : 'Mr'} ${data.firstname} ${data.lastname}`,
-      luckyNumber: ({ seeded }) => seeded.number(100),
-      houseNumber: ({ seeded }) => seeded.number(100),
+      luckyNumber: ({ seeded }) => seeded.number({ max: 100 }),
+      houseNumber: ({ seeded }) => seeded.number({ max: 100 }),
       favourite: {
         color: ({ seeded }) => seeded.oneOf(Colours),
         drinks: ({ seeded }) => seeded.choose(3, Drinks)
@@ -165,8 +165,8 @@ const fixture = {
     t.deepEqual(fiona('moon').data({
       gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
       firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
-      luckyNumber: ({ seeded }) => seeded.number(100),
-      pairsOfShoes: ({ seeded }) => seeded.number(10),
+      luckyNumber: ({ seeded }) => seeded.number({ max: 100 }),
+      pairsOfShoes: ({ seeded }) => seeded.number({ max: 10 }),
       favourite: {
         drinks: ({ seeded }) => seeded.choose(3, Drinks)
       }
@@ -184,7 +184,7 @@ const fixture = {
       gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
       firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames)
     }).chain({
-      toys: ({ seeded }) => seeded.number(100),
+      toys: ({ seeded }) => seeded.number({ max: 100 }),
       toyDeclaration: ({ me, data }) => `${me.value().firstname} has ${data.toys} toys`
     }).value(), {
       gender: 'Female',
@@ -208,9 +208,9 @@ const fixture = {
     baby.chain({
       gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
       firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
-      luckyNumber: ({ seeded }) => seeded.number(100)
+      luckyNumber: ({ seeded }) => seeded.number({ max: 100 })
     }).addToyNames().chain({
-      houseNumber: ({ seeded }) => seeded.number(100)
+      houseNumber: ({ seeded }) => seeded.number({ max: 100 })
     })
 
     t.deepEqual(baby.value(), {

@@ -8,7 +8,7 @@ fiona.fn.lorem = function ({ qty = 15 } = {}) {
   }
   let min = Math.ceil(qty - qty / 3)
   let max = Math.ceil(qty + qty / 3) - 2
-  return out + this.choose(this.number(max, min), words).join(' ')
+  return out + this.choose(this.number({ min, max }), words).join(' ')
 }
 
 fiona.fn.sentence = function () {
@@ -17,5 +17,5 @@ fiona.fn.sentence = function () {
 }
 
 fiona.fn.para = function () {
-  return Array(this.number(10, 1)).fill(0).map(i => this.sentence()).join('  ')
+  return Array(this.number({ min: 1, max: 10 })).fill(0).map(i => this.sentence()).join('  ')
 }
