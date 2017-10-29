@@ -2,10 +2,8 @@ import fiona from './src/fiona'
 
 import './plugins'
 
-fiona.weighted('clamp', i => i < 0.4 ? 0.4 : i > 0.6 ? 0.6 : i)
-
-const data = fiona('moon').data(({ arr }) => arr(10, ({ seeded }) => {
-  return seeded.weighted('clamp').number(100)
-})).data()
-
-console.log(data)
+console.log([952684, 2001635, 932955].map(seed => fiona(seed).data({
+  age: ({ seeded }) => seeded.number(100),
+  name: ({ seeded }) => seeded.name(),
+  favouriteColor: ({ seeded }) => seeded.oneOf(['red', 'pink', 'orange', 'green', 'blue'])
+}).data()))
