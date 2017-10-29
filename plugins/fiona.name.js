@@ -1,4 +1,4 @@
-import fiona from '../src/fiona';
+import fiona from '../src/fiona'
 
 const data = {
   male: {
@@ -9,37 +9,34 @@ const data = {
     firstname: ['Fiona', 'Aria', 'Mia', 'Emily', 'Sophie', 'Ava', 'Amelia', 'Jessica', 'Ella', 'Lucy', 'Charlotte', 'Ellie', 'Lily', 'Grace', 'Sophia', 'Chloe', 'Evie', 'Emma', 'Millie', 'Eilidh', 'Anna', 'Eva', 'Hannah', 'Erin', 'Layla', 'Ruby', 'Orla', 'Harper', 'Georgia', 'Maisie', 'Isabella', 'Katie', 'Zoe', 'Holly', 'Robyn', 'Amber', 'Rosie', 'Zara', 'Emilia', 'Sofia', 'Skye', 'Poppy', 'Daisy', 'Alice', 'Lilly', 'Esme', 'Rebecca', 'Scarlett', 'Ivy', 'Abigail', 'Imogen', 'Leah', 'Amy', 'Lacey', 'Maya', 'Niamh', 'Willow', 'Thea', 'Elizabeth', 'Abbie', 'Lexi', 'Hollie', 'Molly', 'Brooke', 'Gracie', 'Sarah', 'Cara', 'Sienna', 'Mila', 'Phoebe', 'Rose', 'Lola', 'Iona', 'Ayla', 'Megan', 'Paige', 'Kayla', 'Julia', 'Mya', 'Alexandra', 'Arianna', 'Summer', 'Hope', 'Quinn', 'Maria', 'Eve', 'Violet', 'Ariana', 'Arya', 'Bella', 'Elsie', 'Lillie', 'Florence', 'Hanna', 'Madison', 'Amelie', 'Matilda', 'Lauren'],
     title: ['Miss', 'Mrs', 'Dr', 'Ms', 'Dame']
   },
-  surname: ['Moon', 'Smith', 'Brown', 'Wilson', 'Robertson', 'Campbell', 'Stewart', 'Thomson', 'Anderson', 'Scott', 'MacDonald', 'Reid', 'Murray', 'Clark', 'Taylor', 'Ross', 'Young', 'Paterson', 'Watson', 'Mitchell', 'Fraser']
-};
+  lastname: ['Moon', 'Smith', 'Brown', 'Wilson', 'Robertson', 'Campbell', 'Stewart', 'Thomson', 'Anderson', 'Scott', 'MacDonald', 'Reid', 'Murray', 'Clark', 'Taylor', 'Ross', 'Young', 'Paterson', 'Watson', 'Mitchell', 'Fraser']
+}
 
-const getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male')) || this.gender();
+const getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male')) || this.gender()
 
 fiona.fn.gender = function () {
-  return this.random() < 0.5 ? 'male' : 'female';
-};
+  return this.random() < 0.5 ? 'male' : 'female'
+}
 
-fiona.fn.title = function (opts) {
-  const gender = getGender((opts || {}).gender || this.gender());
-  return this.oneOf(data[gender].title);
-};
+fiona.fn.title = function ({ gender } = {}) {
+  return this.oneOf(data[getGender(gender || this.gender())].title)
+}
 
-fiona.fn.firstname = function (opts) {
-  const gender = getGender((opts || {}).gender || this.gender());
-  return this.oneOf(data[gender].firstname);
-};
+fiona.fn.firstname = function ({ gender } = {}) {
+  return this.oneOf(data[getGender(gender || this.gender())].firstname)
+}
 
-fiona.fn.firstnames = function (opts) {
-  const gender = getGender((opts || {}).gender || this.gender());
-  return this.choose(this.clone().weighting(x => x * x * x).number(3, 1), data[gender].firstname).join(' ');
-};
+fiona.fn.firstnames = function ({ gender } = {}) {
+  return this.choose(this.clone().weighting(x => x * x * x).number(3, 1), data[getGender(gender || this.gender())].firstname).join(' ')
+}
 
-fiona.fn.surname = function () {
-  return this.choose(this.clone().weighting(x => x * x * x).number(2, 1), data.surname).join(this.bool() ? ' ' : '-');
-};
+fiona.fn.lastname = function () {
+  return this.choose(this.clone().weighting(x => x * x * x).number(2, 1), data.lastname).join(this.bool() ? ' ' : '-')
+}
 
-fiona.fn.name = function (opts) {
-  const gender = getGender((opts || {}).gender || this.gender());
-  return `${this.title({ gender })} ${this.firstnames({ gender })} ${this.surname()}`;
-};
+fiona.fn.name = function ({ gender } = {}) {
+  const myGender = getGender(gender || this.gender())
+  return `${this.title({ gender: myGender })} ${this.firstnames({ gender: myGender })} ${this.lastname()}`
+}
 
-fiona.namedata = data;
+fiona.namedata = data

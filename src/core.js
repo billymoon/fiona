@@ -107,25 +107,30 @@ function Moon (seedin) {
   }
 
   this.data = function (input) {
-    if (input) {
-      if (type(input) === 'Function') {
-        // TODO: merge this with repeated code in `inception`
-        const seeded = fiona(`() => data/${initseed}`, prng)
-        input = input({ me: this, pos: '() => data', data, seeded, arr })
-      }
-      // TODO: handle mixed input types on multiple data calls
-      if (type(input) === 'Array') {
-        data = (data || []).concat(recurseData(input, `data[${(data || []).length}]`, 0))
-      } else if (type(input) === 'Object') {
-        data = Object.assign({}, data || {}, recurseData(input, 'data', null))
-      } else {
-        // TODO: does it make sense to return stuff we don't recognise, or just throw?
-        data = input
-      }
-      return this
-    } else {
-      return data
+    if (type(input) === 'Function') {
+      // TODO: merge this with repeated code in `inception`
+      const seeded = fiona(`() => data/${initseed}`, prng)
+      input = input({ me: this, pos: '() => data', data, seeded, arr })
     }
+    // TODO: handle mixed input types on multiple data calls
+    if (type(input) === 'Array') {
+      data = (data || []).concat(recurseData(input, `data[${(data || []).length}]`, 0))
+    } else if (type(input) === 'Object') {
+      data = Object.assign({}, data || {}, recurseData(input, 'data', null))
+    } else {
+      // TODO: does it make sense to return stuff we don't recognise, or just throw?
+      data = input
+    }
+    return data
+  }
+
+  this.chain = function (input) {
+    this.data(input)
+    return this
+  }
+
+  this.value = function () {
+    return data
   }
 
   //

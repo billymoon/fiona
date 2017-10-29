@@ -3,8 +3,8 @@ import fiona from '../fiona.js'
 
 test('fiona.fn.duplicable', t => {
   t.deepEqual(fiona('moon').data(({ arr }) => arr(10, ({ seeded }) => {
-    return seeded.duplicable(0.9, 2).number()
-  })).data(), [
+    return seeded.duplicable({ frequency: 0.9, pool: 2 }).number()
+  })), [
     373260,
     153925,
     373260,

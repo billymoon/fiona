@@ -5,6 +5,33 @@ import '../plugins'
 
 import { Logo } from '../components/Svg.js'
 
+if (process.browser) {
+  window.fiona = fiona
+}
+
+const Sample = ({ title, children, ...props }) => {
+  const lines = children.split('\n')
+  const lastline = lines[lines.length - 1]
+  const indent = (/^ +$/.test(lastline) && lastline.length) || 0
+  const code = lines.map(line => line.slice(indent)).join('\n')
+  return (
+    <div {...props}>
+      <pre>
+        <code>
+          <b>// {title}</b>{'\n'}
+          {code}
+        </code>
+      </pre>
+      <style jsx>{`
+        float: left;
+        pre {
+          white-space: pre-wrap;
+        }
+      `}</style>
+    </div>
+  )
+}
+
 export default class Main extends Component {
   state = {
     selected: 24,
@@ -34,13 +61,40 @@ export default class Main extends Component {
           `Fiona is a (helper|tool|library) for (creating|generating) (large)? (chunks|sets) of (seeded|pseudo|mock) random data\\.`,
           `(At it's core it uses|It is based around) a (Xorshift(256)? )?(PRNG|pseudo random number generator) that (enables|assists with|makes a mockery of) (generating|creating) (repeatable|predictable) (seemingly|apparently|authentic (feeling|looking)) random data\\.`
         ].map((item, index) => <p key={index}>{fiona(selected).regex(item)}</p>)}
+
+        <Sample title='input'>{`
+        fiona(${selected || 952684}).data({
+          age: ({ seeded }) => seeded.number(100),
+          name: ({ seeded }) => seeded.name(),
+          favouriteColor: ({ seeded }) => seeded.oneOf([
+            'red',
+            'pink',
+            'orange',
+            'green',
+            'blue'
+          ])
+        })
+        `}</Sample>
+        <Sample title='output'>
+          {'\n' + JSON.stringify(fiona(selected || 952684).data({
+            age: ({ seeded }) => seeded.number(100),
+            name: ({ seeded }) => seeded.name(),
+            favouriteColor: ({ seeded }) => seeded.oneOf(['red', 'pink', 'orange', 'green', 'blue'])
+          }), null, 2)}
+        </Sample>
         <style global jsx>{`
+          code {
+            color: #bd10e0;
+            font-family: Menlo,Monaco,Lucida Console,Liberation Mono, DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace, serif;
+            font-size: 13px;
+            line-height: 20px;
+          }
           body {
             font-family: helvetica, arial, sans-serif;
             max-width: 1200px;
             margin: auto;
           }
-          p {
+          p, pre {
             padding: 0 15px;
           }
           .centered {

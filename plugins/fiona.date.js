@@ -1,9 +1,12 @@
 import fiona from '../src/fiona'
 
-fiona.fn.date = function (earliest, latest, full) {
-  const early = new Date(earliest || '1940') * 1
-  const late = new Date(latest || '2000') * 1
+fiona.fn.date = function ({ min = '1940', max = '2000', long = false } = {}) {
+  const early = new Date(min) * 1
+  const late = new Date(max) * 1
+  if (early > late) {
+    throw Error(`min date must be lower than max date`)
+  }
   const diff = late - early
   const date = new Date(this.number(diff) + early).toISOString()
-  return full ? date : date.slice(0, 10)
+  return long ? date : date.slice(0, 10)
 }

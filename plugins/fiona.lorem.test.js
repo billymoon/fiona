@@ -6,11 +6,11 @@ test('fiona.fn.lorem', t => {
 })
 
 test('fiona.fn.lorem (can specify approximately how many words)', t => {
-  t.is(fiona(1).lorem(2), 'velit consectetur')
+  t.is(fiona(1).lorem({ qty: 2 }), 'velit consectetur')
 })
 
 test('fiona.fn.lorem (sometimes starts lorem ipsum)', t => {
-  t.is(fiona(7).lorem(2), 'lorem ipsum proident id')
+  t.is(fiona(7).lorem({ qty: 2 }), 'lorem ipsum proident id')
 })
 
 test('fiona.fn.sentence', t => {

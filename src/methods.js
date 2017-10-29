@@ -28,11 +28,11 @@ const chooser = (position, arr, weightings) => {
   return index
 }
 
-export const oneOf = function (arr, weightings=[]) {
+export const oneOf = function (arr, weightings = []) {
   return arr[chooser(this.random(), arr, weightings)]
 }
 
-export const choose = function (qty, arr, weightings=[]) {
+export const choose = function (qty, arr, weightings = []) {
   const myArr = arr.slice(0)
   const myWeightings = weightings.slice(0)
   return Array(qty || 0).fill(null).map((v, i) => {

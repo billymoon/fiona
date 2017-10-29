@@ -1,6 +1,6 @@
 import fiona from '../src/fiona'
 
-fiona.fn.lorem = function (qty = 15) {
+fiona.fn.lorem = function ({ qty = 15 } = {}) {
   let out = this.random() < 0.2 ? 'lorem ipsum ' : ''
   let words = []
   while (words.length < qty) {
@@ -12,7 +12,7 @@ fiona.fn.lorem = function (qty = 15) {
 }
 
 fiona.fn.sentence = function () {
-  let para = this.lorem(25)
+  let para = this.lorem({ qty: 25 })
   return para[0].toUpperCase() + para.slice(1) + '.'
 }
 

@@ -149,7 +149,7 @@ const fixture = {
       }
     })
 
-    t.deepEqual(generatePerson('moon').data(), {
+    t.deepEqual(generatePerson('moon'), {
       gender: 'Female',
       firstname: 'Aria',
       lastname: 'Moon',
@@ -170,7 +170,7 @@ const fixture = {
       favourite: {
         drinks: ({ seeded }) => seeded.choose(3, Drinks)
       }
-    }).data(), {
+    }), {
       gender: 'Female',
       firstname: 'Aria',
       luckyNumber: 76,
@@ -180,13 +180,13 @@ const fixture = {
       }
     })
 
-    t.deepEqual(fiona('moon').data({
+    t.deepEqual(fiona('moon').chain({
       gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
       firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames)
-    }).data({
+    }).chain({
       toys: ({ seeded }) => seeded.number(100),
-      toyDeclaration: ({ me, data }) => `${me.data().firstname} has ${data.toys} toys`
-    }).data(), {
+      toyDeclaration: ({ me, data }) => `${me.value().firstname} has ${data.toys} toys`
+    }).value(), {
       gender: 'Female',
       firstname: 'Aria',
       toys: 81,
@@ -196,7 +196,7 @@ const fixture = {
 
   test('fiona.fn', t => {
     fiona.fn.addToyNames = function () {
-      this.data({
+      this.chain({
         bear: ({ seeded }) => `${seeded.oneOf(Boynames)} the ${seeded.oneOf(Colours).toLowerCase()} bear`,
         dolly: ({ seeded }) => `${seeded.oneOf(Colours)} ${seeded.oneOf(Surnames)}`
       })
@@ -205,15 +205,15 @@ const fixture = {
 
     const baby = fiona('moon')
 
-    baby.data({
+    baby.chain({
       gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
       firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
       luckyNumber: ({ seeded }) => seeded.number(100)
-    }).addToyNames().data({
+    }).addToyNames().chain({
       houseNumber: ({ seeded }) => seeded.number(100)
     })
 
-    t.deepEqual(baby.data(), {
+    t.deepEqual(baby.value(), {
       gender: 'Female',
       firstname: 'Aria',
       luckyNumber: 76,
@@ -226,12 +226,12 @@ const fixture = {
   test('fiona.data (Function)', t => {
     const data = fiona('moon').data(({ arr }) => arr(2, ({ seeded }) => {
       return seeded.number()
-    })).data()
+    }))
     t.deepEqual(data, [719007, 195079])
   })
 
   test('fiona.data (unknown)', t => {
-    t.deepEqual(fiona('moon').data(123).data(), 123)
-    t.deepEqual(fiona('moon').data(/asdasd/).data(), /asdasd/)
+    t.deepEqual(fiona('moon').data(123), 123)
+    t.deepEqual(fiona('moon').data(/asdasd/), /asdasd/)
   })
 })
