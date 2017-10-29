@@ -23,9 +23,8 @@ const Sample = ({ title, children, ...props }) => {
       <style jsx>{`
         float: left;
         pre, code {
-          white-space: pre;
+          white-space: pre-wrap;
           max-width: 100%;
-          overflow: scroll;
         }
       `}</style>
     </div>
@@ -64,6 +63,10 @@ export default class Main extends Component {
 
         <h2>Quickstart</h2>
 
+        <p>Install via npm in usual way (<code>npm install fiona</code> and import into your app <code>import fiona from 'fiona'</code>) or from cdn (<code>{`<script src='https://cdn.jsdelivr.net/npm/fiona'></script>`}</code>)</p>
+
+        <p><i>n.b. you can open the console and edit/run code from this page</i></p>
+
         <p>The most basic use case is to generate a random number: <code>{`fiona({ max: 1000000, min: 0 }).number()`}</code></p>
 
         <Sample title='input'>{`
@@ -82,10 +85,12 @@ export default class Main extends Component {
         <p>It becomes more useful when creating data structures.</p>
 
         <Sample title='input'>{`
+        const ibanregex = /[A-Z]{2}\\d{2}( \\d{4}){4,5} \\d{1,3}/
+
         fiona(${selected || 952684}).data({
           age: ({ seeded }) => seeded.number({ max: 100 }),
           name: ({ seeded }) => seeded.name(),
-          iban: ({ seeded }) => seeded.regex(/[A-Z]{2}\\d{2}( \\d{4}){4,5} \\d{1,3}/),
+          iban: ({ seeded }) => seeded.regex(ibanregex),
           favouriteColor: ({ seeded }) => seeded.oneOf([
             'red',
             'yellow',
@@ -94,7 +99,7 @@ export default class Main extends Component {
         })
         `}</Sample>
         <Sample title='output'>
-          {'\n' + JSON.stringify(fiona(selected || 952684).data({
+          {'\n\n\n' + JSON.stringify(fiona(selected || 952684).data({
             age: ({ seeded }) => seeded.number({ max: 100 }),
             name: ({ seeded }) => seeded.name(),
             iban: ({ seeded }) => seeded.regex(/[A-Z]{2}\d{2}( \d{4}){4,5} \d{0,3}/),
@@ -214,7 +219,7 @@ export default class Main extends Component {
           }
           body {
             font-family: helvetica, arial, sans-serif;
-            max-width: 1200px;
+            max-width: 840px;
             margin: auto;
           }
           p, pre, h2, h2 {
@@ -227,7 +232,7 @@ export default class Main extends Component {
             clear: both;
           }
           svg {
-            width: 800px;
+            width: 500px;
             max-width: 100%;
             height: auto;
             -webkit-user-select: none; /* webkit (safari, chrome) browsers */
@@ -242,7 +247,7 @@ export default class Main extends Component {
             fill: #fff;
           }
           svg.blink g.selected path.inner {
-            fill: #f00;
+            fill: #bd10e0;
           }
           svg path.inner:hover, svg path.outer:hover {
             cursor: pointer;
@@ -251,15 +256,15 @@ export default class Main extends Component {
             fill: #000;
           }
           svg g.filled.selected path.inner {
-            fill: #f00;
+            fill: #bd10e0;
           }
           svg path.outer {
             stroke: #000;
             fill: #000;
           }
           svg g.selected path.outer {
-            stroke: #f00;
-            fill: #f00;
+            stroke: #bd10e0;
+            fill: #bd10e0;
           }
         `}</style>
       </div>

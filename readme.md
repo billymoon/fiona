@@ -21,3 +21,19 @@ It becomes more useful when creating data structures.
         'blue'                                                                    
       ])                                                                          
     })                                                                            
+
+## Installation
+
+Install and import/require via npm in usual way
+
+    $ npm install fiona
+
+... and from your app
+
+    import fiona from 'fiona' // or... `const fiona = require('fiona')`
+
+... or from CDN
+
+    <script src='https://cdn.jsdelivr.net/npm/fiona'></script>
+
+Full documentation on the website: https://fiona.now.sh
