@@ -11,6 +11,9 @@ export default {
   theme: {
     // fg: clr.white,
     // bg: clr.black,
-    fontFamily: 'helvetica, tahoma, verdana, sans-serif'
+    fontFamily: 'helvetica, tahoma, verdana, sans-serif',
+    grid: {
+      unit: 10
+    }
   }
 }

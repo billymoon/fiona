@@ -190,7 +190,7 @@ export default provideState({
       }
     }
   }
-})(injectState(({ state: { blink, seed, interval }, effects: { clickSeed }, children, ...props }) =>
+})(injectState(({ state: { seed, blink, interval }, effects: { clickSeed }, children, ...props }) =>
   <div>
     <svg className={blink && interval ? 'blink' : ''} xmlns='http://www.w3.org/2000/svg' width='944' height='360' viewBox='0, 0, 944, 360' {...props}>
       <g strokeWidth='6' className='lines' strokeLinecap='round' strokeLinejoin='bevel'>
@@ -201,7 +201,7 @@ export default provideState({
       </g>
       {circles.map(({ inner, outer, filled }, index) => <g key={index} onClick={() => clickSeed(index)} className={`${(filled && ' filled') || ''}${((index === 0 ? 952684 : index) === seed && ' selected') || ''}`}><path d={inner} className='inner' /><path d={outer} className='outer' /></g>)}
     </svg>
-    <style global jsx>{`
+    <style jsx>{`
       svg {
         width: 500px;
         max-width: 100%;

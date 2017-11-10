@@ -37,11 +37,6 @@ export default provideState({
       }
       body {
         font-family: helvetica, arial, sans-serif;
-        max-width: 900px;
-        margin: auto;
-      }
-      .clearfix {
-        clear: both;
       }
     `}</style>
   </Layout>
