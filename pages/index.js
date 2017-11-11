@@ -4,7 +4,7 @@ import fiona from '../src/fiona'
 import '../plugins'
 
 import { Shelf } from '../components'
-import { Layout, Logo, DynamicOverview, QuickStart, SeededPRNG, Weighting, ChainedDataBuilder } from '../app'
+import { Layout, Logo, DynamicOverview, QuickStart, SeededPRNG, Weighting, ChainedDataBuilder, Plugins } from '../app'
 
 if (process.browser) {
   window.fiona = fiona
