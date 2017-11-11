@@ -27,6 +27,7 @@ export default provideState({
     <Shelf><SeededPRNG /></Shelf>
     <Shelf><Weighting /></Shelf>
     <Shelf><ChainedDataBuilder /></Shelf>
+    <Shelf><Plugins /></Shelf>
     <style global jsx>{`
       code {
         color: #bd10e0;
