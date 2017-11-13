@@ -11,7 +11,7 @@ export default injectState(({ state: { seed } }) =>
 
     <p><i>n.b. you can open the console and edit/run code from this page</i></p>
 
-    <p>The most basic use case is to generate a random number: <code>{`fiona({ max: 1000000, min: 0 }).number()`}</code></p>
+    <p>The most basic use case is to generate a random number: <code>{`fiona().number({ max: 1000000, min: 0 })`}</code></p>
 
     <Sample input={`
     const myNumber = fiona(${seed}).number()
