@@ -1,6 +1,5 @@
 const fionaCore = require('./src/core')
 const fiona = require('./src/fiona')
-const t = require('./ava-to-jest-hack')
 
 const fixture = {
   RANDOM_1: 0.4583325853842928,
@@ -24,123 +23,123 @@ const fixture = {
   })
 
   test('import', () => {
-    t.is(typeof fiona, 'function')
+    expect(typeof fiona).toBe('function')
   })
 
   test('basic seeding', () => {
-    t.not(fiona().random(), fiona().random())
-    t.not(fiona(1).random(), fiona(2).random())
-    t.is(fiona(1).random(), fiona(1).random())
-    t.is(fiona(2).random(), fiona(2).random())
+    expect(fiona().random()).not.toBe(fiona().random())
+    expect(fiona(1).random()).not.toBe(fiona(2).random())
+    expect(fiona(1).random()).toBe(fiona(1).random())
+    expect(fiona(2).random()).toBe(fiona(2).random())
   })
 
   test('fiona.fn.reseed', () => {
     const baby = fiona(1)
-    t.is(baby.random(), fixture.RANDOM_1)
-    t.is(baby.random(), fixture.RANDOM_2)
-    t.is(baby.reseed(null).random(), fixture.RANDOM_1)
-    t.is(baby.random(), fixture.RANDOM_2)
-    t.is(baby.reseed(2).random(), fixture.RANDOM_3)
-    t.is(baby.random(), fixture.RANDOM_4)
-    t.is(baby.reseed(null).random(), fixture.RANDOM_1)
-    t.is(baby.random(), fixture.RANDOM_2)
-    t.is(baby.reseed(2).random(), fixture.RANDOM_3)
-    t.is(baby.random(), fixture.RANDOM_4)
-    t.is(baby.reseed(1).random(), fixture.RANDOM_1)
-    t.is(baby.random(), fixture.RANDOM_2)
-    t.is(baby.reseed('one').random(), fixture.RANDOM_5)
-    t.is(baby.random(), fixture.RANDOM_6)
-    t.is(baby.reseed(null).random(), fixture.RANDOM_1)
-    t.is(baby.random(), fixture.RANDOM_2)
+    expect(baby.random()).toBe(fixture.RANDOM_1)
+    expect(baby.random()).toBe(fixture.RANDOM_2)
+    expect(baby.reseed(null).random()).toBe(fixture.RANDOM_1)
+    expect(baby.random()).toBe(fixture.RANDOM_2)
+    expect(baby.reseed(2).random()).toBe(fixture.RANDOM_3)
+    expect(baby.random()).toBe(fixture.RANDOM_4)
+    expect(baby.reseed(null).random()).toBe(fixture.RANDOM_1)
+    expect(baby.random()).toBe(fixture.RANDOM_2)
+    expect(baby.reseed(2).random()).toBe(fixture.RANDOM_3)
+    expect(baby.random()).toBe(fixture.RANDOM_4)
+    expect(baby.reseed(1).random()).toBe(fixture.RANDOM_1)
+    expect(baby.random()).toBe(fixture.RANDOM_2)
+    expect(baby.reseed('one').random()).toBe(fixture.RANDOM_5)
+    expect(baby.random()).toBe(fixture.RANDOM_6)
+    expect(baby.reseed(null).random()).toBe(fixture.RANDOM_1)
+    expect(baby.random()).toBe(fixture.RANDOM_2)
   })
 
   test('fiona.fn.info', () => {
     const baby = fiona(1)
-    t.deepEqual(baby.info(), {
+    expect(baby.info()).toEqual({
       initseed: 1
     })
   })
 
   test('fiona.fn.weighting', () => {
     const baby = fiona(1)
-    t.is(baby.reseed(null).random(), fixture.RANDOM_1)
-    t.is(baby.reseed(null).weighting(i => i * i).random(), fixture.RANDOM_7)
-    t.is(baby.reseed(null).random(), fixture.RANDOM_7)
-    t.is(baby.reseed(null).weighting(null).random(), fixture.RANDOM_1)
+    expect(baby.reseed(null).random()).toBe(fixture.RANDOM_1)
+    expect(baby.reseed(null).weighting(i => i * i).random()).toBe(fixture.RANDOM_7)
+    expect(baby.reseed(null).random()).toBe(fixture.RANDOM_7)
+    expect(baby.reseed(null).weighting(null).random()).toBe(fixture.RANDOM_1)
   })
 
   test('fiona.fn.callback', () => {
     const baby = fiona(1)
-    t.is(baby.random(), fixture.RANDOM_1)
+    expect(baby.random()).toBe(fixture.RANDOM_1)
     baby.callback((data, me) => me.reseed(2))
-    t.is(baby.random(), fixture.RANDOM_3)
+    expect(baby.random()).toBe(fixture.RANDOM_3)
     baby.callback((data, me) => me.reseed(1))
-    t.is(baby.random(), fixture.RANDOM_1)
+    expect(baby.random()).toBe(fixture.RANDOM_1)
   })
 
   test('fiona.fn.clone', () => {
     const baby = fiona(1)
     const clone = baby.clone()
-    t.is(baby.random(), fixture.RANDOM_1)
-    t.is(clone.random(), fixture.RANDOM_1)
-    t.is(baby.random(), fixture.RANDOM_2)
-    t.is(clone.random(), fixture.RANDOM_2)
-    t.is(baby.reseed(null).random(), fixture.RANDOM_1)
-    t.is(baby.random(), fixture.RANDOM_2)
-    t.is(clone.reseed(null).random(), fixture.RANDOM_1)
-    t.is(clone.random(), fixture.RANDOM_2)
+    expect(baby.random()).toBe(fixture.RANDOM_1)
+    expect(clone.random()).toBe(fixture.RANDOM_1)
+    expect(baby.random()).toBe(fixture.RANDOM_2)
+    expect(clone.random()).toBe(fixture.RANDOM_2)
+    expect(baby.reseed(null).random()).toBe(fixture.RANDOM_1)
+    expect(baby.random()).toBe(fixture.RANDOM_2)
+    expect(clone.reseed(null).random()).toBe(fixture.RANDOM_1)
+    expect(clone.random()).toBe(fixture.RANDOM_2)
   })
 
   test('fiona.fn.number', () => {
     const baby = fiona(1)
-    t.is(baby.number(), 458333)
+    expect(baby.number()).toBe(458333)
     for (let i = 10; i--;) {
-      t.true(baby.number({ max: 10 }) <= 10)
+      expect(baby.number({ max: 10 }) <= 10).toBe(true)
     }
     for (let i = 10; i--;) {
       const num = baby.number({ min: 10, max: 20 })
-      t.true(num >= 10)
-      t.true(num <= 20)
+      expect(num >= 10).toBe(true)
+      expect(num <= 20).toBe(true)
     }
-    t.is(baby.reseed(1).number({ max: 1e10 }), 4583325854)
+    expect(baby.reseed(1).number({ max: 1e10 })).toBe(4583325854)
   })
 
   test('fiona.fn.oneOf', () => {
     const baby = fiona(1)
     const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    t.is(baby.oneOf(oneToTen), 5)
-    t.is(baby.oneOf(oneToTen), 6)
-    t.is(baby.oneOf(oneToTen), 7)
-    t.is(baby.oneOf(oneToTen), 1)
+    expect(baby.oneOf(oneToTen)).toBe(5)
+    expect(baby.oneOf(oneToTen)).toBe(6)
+    expect(baby.oneOf(oneToTen)).toBe(7)
+    expect(baby.oneOf(oneToTen)).toBe(1)
     baby.reseed(null).weighting(i => i * i * i)
-    t.is(baby.oneOf(oneToTen), 1)
-    t.is(baby.oneOf(oneToTen), 2)
-    t.is(baby.oneOf(oneToTen), 3)
-    t.is(baby.oneOf(oneToTen), 1)
+    expect(baby.oneOf(oneToTen)).toBe(1)
+    expect(baby.oneOf(oneToTen)).toBe(2)
+    expect(baby.oneOf(oneToTen)).toBe(3)
+    expect(baby.oneOf(oneToTen)).toBe(1)
   })
 
   test('fiona.fn.choose', () => {
     const baby = fiona(1)
     const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    t.deepEqual(baby.choose(3, oneToTen), [5, 7, 8])
-    t.deepEqual(baby.choose(3, oneToTen), [1, 9, 4])
-    t.deepEqual(baby.choose(3, oneToTen), [4, 1, 10])
-    t.deepEqual(baby.choose(11, oneToTen), [9, 5, 8, 6, 7, 2, 10, 4, 1, 3, undefined])
+    expect(baby.choose(3, oneToTen)).toEqual([5, 7, 8])
+    expect(baby.choose(3, oneToTen)).toEqual([1, 9, 4])
+    expect(baby.choose(3, oneToTen)).toEqual([4, 1, 10])
+    expect(baby.choose(11, oneToTen)).toEqual([9, 5, 8, 6, 7, 2, 10, 4, 1, 3, undefined])
     baby.reseed(null)
-    t.deepEqual(baby.choose(3, oneToTen, { weights: [10, 5, 1] }), [2, 3, 4])
+    expect(baby.choose(3, oneToTen, { weights: [10, 5, 1] })).toEqual([2, 3, 4])
     baby.reseed(null)
-    t.deepEqual(baby.choose(3, oneToTen, { weights: [10, 5, ''] }), [2, 3, 4])
+    expect(baby.choose(3, oneToTen, { weights: [10, 5, ''] })).toEqual([2, 3, 4])
     baby.reseed(null)
-    t.deepEqual(baby.choose(3, oneToTen, { weights: [10] }), [1, 3, 4])
+    expect(baby.choose(3, oneToTen, { weights: [10] })).toEqual([1, 3, 4])
     baby.reseed(null)
-    t.deepEqual(baby.choose(3, oneToTen, { weights: [10, 1] }), [1, 3, 4])
+    expect(baby.choose(3, oneToTen, { weights: [10, 1] })).toEqual([1, 3, 4])
     baby.reseed(null).weighting(i => i * i * i)
-    t.deepEqual(baby.choose(3, oneToTen), [1, 3, 5])
-    t.deepEqual(baby.choose(3, oneToTen), [1, 7, 3])
-    t.deepEqual(baby.choose(3, oneToTen), [1, 2, 8])
-    t.deepEqual(baby.choose(11, oneToTen), [7, 2, 5, 4, 3, 6, 9, 1, 8, 10, undefined])
-    t.deepEqual(baby.choose(null, oneToTen), [])
-    t.deepEqual(baby.choose(0, oneToTen), [])
+    expect(baby.choose(3, oneToTen)).toEqual([1, 3, 5])
+    expect(baby.choose(3, oneToTen)).toEqual([1, 7, 3])
+    expect(baby.choose(3, oneToTen)).toEqual([1, 2, 8])
+    expect(baby.choose(11, oneToTen)).toEqual([7, 2, 5, 4, 3, 6, 9, 1, 8, 10, undefined])
+    expect(baby.choose(null, oneToTen)).toEqual([])
+    expect(baby.choose(0, oneToTen)).toEqual([])
   })
 
   test('fiona.fn.data', () => {
@@ -157,7 +156,7 @@ const fixture = {
       }
     })
 
-    t.deepEqual(generatePerson('moon'), {
+    expect(generatePerson('moon')).toEqual({
       gender: 'Female',
       firstname: 'Aria',
       lastname: 'Moon',
@@ -170,7 +169,7 @@ const fixture = {
       }
     })
 
-    t.deepEqual(fiona('moon').data({
+    expect(fiona('moon').data({
       gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
       firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
       luckyNumber: ({ seeded }) => seeded.number({ max: 100 }),
@@ -178,7 +177,7 @@ const fixture = {
       favourite: {
         drinks: ({ seeded }) => seeded.choose(3, Drinks)
       }
-    }), {
+    })).toEqual({
       gender: 'Female',
       firstname: 'Aria',
       luckyNumber: 76,
@@ -188,13 +187,13 @@ const fixture = {
       }
     })
 
-    t.deepEqual(fiona('moon').chain({
+    expect(fiona('moon').chain({
       gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
       firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames)
     }).chain({
       toys: ({ seeded }) => seeded.number({ max: 100 }),
       toyDeclaration: ({ me, data }) => `${me.value().firstname} has ${data.toys} toys`
-    }).value(), {
+    }).value()).toEqual({
       gender: 'Female',
       firstname: 'Aria',
       toys: 81,
@@ -221,7 +220,7 @@ const fixture = {
       houseNumber: ({ seeded }) => seeded.number({ max: 100 })
     })
 
-    t.deepEqual(baby.value(), {
+    expect(baby.value()).toEqual({
       gender: 'Female',
       firstname: 'Aria',
       luckyNumber: 76,
@@ -235,12 +234,12 @@ const fixture = {
     const data = fiona('moon').data(({ arr }) => arr(2, ({ seeded }) => {
       return seeded.number()
     }))
-    t.deepEqual(data, [719007, 195079])
+    expect(data).toEqual([719007, 195079])
   })
 
   test('fiona.data (unknown)', () => {
-    t.deepEqual(fiona('moon').data(123), 123)
-    t.deepEqual(fiona('moon').data(/asdasd/), /asdasd/)
+    expect(fiona('moon').data(123)).toEqual(123)
+    expect(fiona('moon').data(/asdasd/)).toEqual(/asdasd/)
   })
 
   test('fiona.state', () => {
