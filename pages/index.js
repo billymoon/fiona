@@ -1,6 +1,6 @@
 import { provideState, update } from 'freactal'
 
-import fiona from '../src/fiona'
+const fiona = require('../src/fiona')
 import '../plugins'
 
 import { Shelf } from '../components'

@@ -1,6 +1,6 @@
-import test from 'ava'
-import fionaCore from './fiona.core.js'
-import fiona from './fiona.js'
+const fionaCore = require('./src/core')
+const fiona = require('./src/fiona')
+const t = require('./ava-to-jest-hack')
 
 const fixture = {
   RANDOM_1: 0.4583325853842928,
@@ -19,22 +19,22 @@ const fixture = {
   const Colours = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple']
   const Drinks = ['Milk', 'Water', 'Tea', 'Beer', 'Juice', 'Shake', 'Coffee']
 
-  test('sanity', t => {
-    t.true(true + true === 2)
+  test('sanity', () => {
+    expect(true + true).toBe(2)
   })
 
-  test('import', t => {
+  test('import', () => {
     t.is(typeof fiona, 'function')
   })
 
-  test('basic seeding', t => {
+  test('basic seeding', () => {
     t.not(fiona().random(), fiona().random())
     t.not(fiona(1).random(), fiona(2).random())
     t.is(fiona(1).random(), fiona(1).random())
     t.is(fiona(2).random(), fiona(2).random())
   })
 
-  test('fiona.fn.reseed', t => {
+  test('fiona.fn.reseed', () => {
     const baby = fiona(1)
     t.is(baby.random(), fixture.RANDOM_1)
     t.is(baby.random(), fixture.RANDOM_2)
@@ -54,14 +54,14 @@ const fixture = {
     t.is(baby.random(), fixture.RANDOM_2)
   })
 
-  test('fiona.fn.info', t => {
+  test('fiona.fn.info', () => {
     const baby = fiona(1)
     t.deepEqual(baby.info(), {
       initseed: 1
     })
   })
 
-  test('fiona.fn.weighting', t => {
+  test('fiona.fn.weighting', () => {
     const baby = fiona(1)
     t.is(baby.reseed(null).random(), fixture.RANDOM_1)
     t.is(baby.reseed(null).weighting(i => i * i).random(), fixture.RANDOM_7)
@@ -69,7 +69,7 @@ const fixture = {
     t.is(baby.reseed(null).weighting(null).random(), fixture.RANDOM_1)
   })
 
-  test('fiona.fn.callback', t => {
+  test('fiona.fn.callback', () => {
     const baby = fiona(1)
     t.is(baby.random(), fixture.RANDOM_1)
     baby.callback((data, me) => me.reseed(2))
@@ -78,7 +78,7 @@ const fixture = {
     t.is(baby.random(), fixture.RANDOM_1)
   })
 
-  test('fiona.fn.clone', t => {
+  test('fiona.fn.clone', () => {
     const baby = fiona(1)
     const clone = baby.clone()
     t.is(baby.random(), fixture.RANDOM_1)
@@ -91,7 +91,7 @@ const fixture = {
     t.is(clone.random(), fixture.RANDOM_2)
   })
 
-  test('fiona.fn.number', t => {
+  test('fiona.fn.number', () => {
     const baby = fiona(1)
     t.is(baby.number(), 458333)
     for (let i = 10; i--;) {
@@ -105,7 +105,7 @@ const fixture = {
     t.is(baby.reseed(1).number({ max: 1e10 }), 4583325854)
   })
 
-  test('fiona.fn.oneOf', t => {
+  test('fiona.fn.oneOf', () => {
     const baby = fiona(1)
     const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     t.is(baby.oneOf(oneToTen), 5)
@@ -119,13 +119,21 @@ const fixture = {
     t.is(baby.oneOf(oneToTen), 1)
   })
 
-  test('fiona.fn.choose', t => {
+  test('fiona.fn.choose', () => {
     const baby = fiona(1)
     const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     t.deepEqual(baby.choose(3, oneToTen), [5, 7, 8])
     t.deepEqual(baby.choose(3, oneToTen), [1, 9, 4])
     t.deepEqual(baby.choose(3, oneToTen), [4, 1, 10])
     t.deepEqual(baby.choose(11, oneToTen), [9, 5, 8, 6, 7, 2, 10, 4, 1, 3, undefined])
+    baby.reseed(null)
+    t.deepEqual(baby.choose(3, oneToTen, { weights: [10, 5, 1] }), [2, 3, 4])
+    baby.reseed(null)
+    t.deepEqual(baby.choose(3, oneToTen, { weights: [10, 5, ''] }), [2, 3, 4])
+    baby.reseed(null)
+    t.deepEqual(baby.choose(3, oneToTen, { weights: [10] }), [1, 3, 4])
+    baby.reseed(null)
+    t.deepEqual(baby.choose(3, oneToTen, { weights: [10, 1] }), [1, 3, 4])
     baby.reseed(null).weighting(i => i * i * i)
     t.deepEqual(baby.choose(3, oneToTen), [1, 3, 5])
     t.deepEqual(baby.choose(3, oneToTen), [1, 7, 3])
@@ -135,7 +143,7 @@ const fixture = {
     t.deepEqual(baby.choose(0, oneToTen), [])
   })
 
-  test('fiona.fn.data', t => {
+  test('fiona.fn.data', () => {
     const generatePerson = seed => fiona(seed).data({
       gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
       firstname: ({ seeded, data }) => seeded.oneOf(data.gender === 'Female' ? Girlnames : Boynames),
@@ -194,7 +202,7 @@ const fixture = {
     })
   })
 
-  test('fiona.fn', t => {
+  test('fiona.fn', () => {
     fiona.fn.addToyNames = function () {
       this.chain({
         bear: ({ seeded }) => `${seeded.oneOf(Boynames)} the ${seeded.oneOf(Colours).toLowerCase()} bear`,
@@ -223,15 +231,27 @@ const fixture = {
     })
   })
 
-  test('fiona.data (Function)', t => {
+  test('fiona.data (Function)', () => {
     const data = fiona('moon').data(({ arr }) => arr(2, ({ seeded }) => {
       return seeded.number()
     }))
     t.deepEqual(data, [719007, 195079])
   })
 
-  test('fiona.data (unknown)', t => {
+  test('fiona.data (unknown)', () => {
     t.deepEqual(fiona('moon').data(123), 123)
     t.deepEqual(fiona('moon').data(/asdasd/), /asdasd/)
+  })
+
+  test('fiona.state', () => {
+    const seeded = fiona('moon')
+    expect(seeded.number()).toBe(512979)
+    const state = seeded.state()
+    expect(seeded.number()).toBe(432056)
+    seeded.state(null)
+    expect(seeded.number()).toBe(512979)
+    expect(seeded.number()).toBe(432056)
+    seeded.state(state)
+    expect(seeded.number()).toBe(432056)
   })
 })

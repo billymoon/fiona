@@ -1,6 +1,6 @@
-import fiona from '../src/fiona'
+const fiona = require('../src/fiona')
 
-import bezierEasing from 'bezier-easing'
+const bezierEasing = require('bezier-easing')
 
 const type = item => Object.prototype.toString.call(item).slice(8, -1)
 
@@ -9,6 +9,8 @@ fiona.weighted = function (weighting, fn) {
     fiona.weighted[weighting] = bezierEasing.apply(null, fn)
   } else if (type(fn) === 'Function') {
     fiona.weighted[weighting] = fn
+  } else {
+    throw Error('invalid argument type supplied to `weighted` method')
   }
 }
 

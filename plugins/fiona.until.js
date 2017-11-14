@@ -1,4 +1,4 @@
-import fiona from '../src/fiona'
+const fiona = require('../src/fiona')
 
 fiona.until = function (predicate, data, { startseed = 0, tries = 1e6 } = {}) {
   let seed = startseed

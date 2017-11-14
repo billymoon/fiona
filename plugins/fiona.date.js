@@ -1,4 +1,4 @@
-import fiona from '../src/fiona'
+const fiona = require('../src/fiona')
 
 fiona.fn.date = function ({ min = '1940', max = '2000', long = false } = {}) {
   const early = new Date(min) * 1

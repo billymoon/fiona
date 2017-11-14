@@ -1,4 +1,4 @@
-import fiona from '../src/fiona'
+const fiona = require('../src/fiona')
 
 fiona.fn.lorem = function ({ qty = 15 } = {}) {
   let out = this.random() < 0.2 ? 'lorem ipsum ' : ''

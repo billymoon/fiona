@@ -1,14 +1,17 @@
-import test from 'ava'
-import fiona from '../fiona.js'
+const fiona = require('../src/fiona')
+require('./fiona.bool')
 
-test('fiona.fn.bool', t => {
+const t = require('../ava-to-jest-hack')
+
+test('fiona.fn.bool', () => {
   t.is(fiona(1).bool(), true)
   t.is(fiona(2).bool(), false)
 })
 
-test('fiona.fn.bool (chance)', t => {
+test('fiona.fn.bool (chance)', () => {
   t.is(fiona(1).bool(), true)
   t.is(fiona(1).bool({ chance: 0.25 }), false)
   t.is(fiona(2).bool(), false)
   t.is(fiona(2).bool({ chance: 0.75 }), true)
 })
+

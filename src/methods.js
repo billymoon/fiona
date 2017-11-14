@@ -1,6 +1,6 @@
 //
 
-export const number = function ({ max = 1e6, min = 0 } = {}) {
+const number = function ({ max = 1e6, min = 0 } = {}) {
   return Math.floor((this.random() * (1 + max - min)) + min)
 }
 
@@ -28,11 +28,11 @@ const chooser = (position, arr, weights) => {
   return index
 }
 
-export const oneOf = function (arr, { weights = [] } = {}) {
+const oneOf = function (arr, { weights = [] } = {}) {
   return arr[chooser(this.random(), arr, weights)]
 }
 
-export const choose = function (qty, arr, { weights = [] } = {}) {
+const choose = function (qty, arr, { weights = [] } = {}) {
   const myArr = arr.slice(0)
   const myWeightings = weights.slice(0)
   return Array(qty || 0).fill(null).map((v, i) => {
@@ -43,3 +43,6 @@ export const choose = function (qty, arr, { weights = [] } = {}) {
     return result
   })
 }
+
+module.exports = { number, oneOf, choose }
+

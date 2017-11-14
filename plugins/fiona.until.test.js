@@ -1,7 +1,10 @@
-import test from 'ava'
-import fiona from '../fiona.js'
+const fiona = require('../src/fiona')
+require('./fiona.bool')
+require('./fiona.name')
+require('./fiona.until')
+const t = require('../ava-to-jest-hack')
 
-test('fiona.until', t => {
+test('fiona.until', () => {
   t.is(fiona.until(data => {
     return data.age === 61
   }, {
@@ -10,7 +13,7 @@ test('fiona.until', t => {
   }).value().name, 'Lord Zac Blair Max Wilson')
 })
 
-test('fiona.until (set startseed)', t => {
+test('fiona.until (set startseed)', () => {
   t.is(fiona.until(data => {
     return data.age === 61
   }, {
@@ -40,7 +43,7 @@ test('fiona.until (set startseed)', t => {
   }, { startseed: 932950 }).info().initseed, 932955)
 })
 
-test('fiona.until', t => {
+test('fiona.until', () => {
   t.throws(() => fiona.until(data => {
     return data.age === 61
   }, {

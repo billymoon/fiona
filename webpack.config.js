@@ -3,7 +3,7 @@ const MinifyPlugin = require('babel-minify-webpack-plugin')
 module.exports = {
   entry: [
     './plugins/index.js',
-    './src/export.js'
+    './src/fiona.js'
   ],
   output: {
     filename: 'fiona.js',

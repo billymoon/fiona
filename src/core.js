@@ -1,4 +1,4 @@
-import prng from './prng-xor'
+const prng = require('./prng-xor')
 
 function Moon (seedin) {
   const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
@@ -156,4 +156,4 @@ fiona.version = '__VERSION__'
 
 fiona.fn = Moon.prototype
 
-export default fiona
+module.exports = fiona

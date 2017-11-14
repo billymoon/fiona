@@ -1,15 +1,17 @@
-import test from 'ava'
-import fiona from '../fiona.js'
+const fiona = require('../src/fiona')
+require('./fiona.bool')
+require('./fiona.name')
+const t = require('../ava-to-jest-hack')
 
-test('sanity', t => {
+test('sanity', () => {
   t.true(true + true === 2)
 })
 
-test('import', t => {
+test('import', () => {
   t.true(typeof fiona === 'function')
 })
 
-test('fiona.fn.title', t => {
+test('fiona.fn.title', () => {
   t.is(fiona(1).title(), 'Sir')
   t.is(fiona(1).title({}), 'Sir')
   t.is(fiona(2).title(), 'Miss')
@@ -19,7 +21,7 @@ test('fiona.fn.title', t => {
   t.is(fiona(4).title({ gender: 'Male' }), 'Sir')
 })
 
-test('fiona.fn.firstname', t => {
+test('fiona.fn.firstname', () => {
   t.is(fiona(1).firstname(), 'Hamish')
   t.is(fiona(1).firstname({}), 'Hamish')
   t.is(fiona(2).firstname(), 'Ava')
@@ -29,20 +31,20 @@ test('fiona.fn.firstname', t => {
   t.is(fiona(2).firstname({ gender: 'Male' }), 'Angus')
 })
 
-test('fiona.fn.firstnames', t => {
+test('fiona.fn.firstnames', () => {
   t.is(fiona(1).firstnames(), 'Hamish')
 })
 
-test('fiona.fn.lastname', t => {
+test('fiona.fn.lastname', () => {
   t.is(fiona(1).lastname(), 'Scott')
   t.is(fiona(2).lastname(), 'Reid')
 })
 
-test('fiona.fn.gender', t => {
+test('fiona.fn.gender', () => {
   t.is(fiona(1).gender(), 'male')
   t.is(fiona(2).gender(), 'female')
 })
 
-test('fiona.fn.name', t => {
+test('fiona.fn.name', () => {
   t.is(fiona(1).name(), 'Sir Kyle Moon')
 })

@@ -1,5 +1,5 @@
-import fiona from '../src/fiona'
-import RandExp from 'randexp'
+const fiona = require('../src/fiona')
+const RandExp = require('randexp')
 
 fiona.fn.regex = function (regex) {
   const myRandExp = new RandExp(regex)

@@ -1,4 +1,4 @@
-import fiona from '../src/fiona'
+const fiona = require('../src/fiona')
 
 // 10% of the time, reseed with one of 10 seeds
 // frequency and pool can be overriden

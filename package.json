@@ -11,10 +11,8 @@
     "build:core": "webpack --config webpack.config.core.js",
     "docs": "next",
     "docs:build": "next build && next export -o docs",
-    "pretest": "npm run build",
-    "test": "ava",
-    "test:coverage": "npm run pretest && nyc ava",
-    "distribute": "git tag $(node -p \"require('./package').version\") && git push && git push --tags && npm publish"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "author": "Billy Moon",
   "license": "ISC",
@@ -23,14 +21,12 @@
   },
   "devDependencies": {
     "@std/esm": "^0.7.1",
-    "ava": "^0.22.0",
     "babel-minify-webpack-plugin": "^0.2.0",
     "babel-plugin-styled-components": "^1.2.0",
     "fetch-pretender": "^1.5.0",
     "isomorphic-fetch": "^2.2.1",
-    "mersenne-twister": "^1.1.0",
+    "jest": "^21.2.1",
     "next": "4.1.4",
-    "nyc": "^11.2.1",
     "randexp": "^0.4.6",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

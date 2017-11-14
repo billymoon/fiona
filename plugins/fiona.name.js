@@ -1,4 +1,4 @@
-import fiona from '../src/fiona'
+const fiona = require('../src/fiona')
 
 const data = {
   male: {
@@ -12,7 +12,7 @@ const data = {
   lastname: ['Moon', 'Smith', 'Brown', 'Wilson', 'Robertson', 'Campbell', 'Stewart', 'Thomson', 'Anderson', 'Scott', 'MacDonald', 'Reid', 'Murray', 'Clark', 'Taylor', 'Ross', 'Young', 'Paterson', 'Watson', 'Mitchell', 'Fraser']
 }
 
-const getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male')) || this.gender()
+const getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male'))
 
 fiona.fn.gender = function () {
   return this.random() < 0.5 ? 'male' : 'female'
