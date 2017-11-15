@@ -1,12 +1,10 @@
 const fiona = require('../src/fiona')
 require('./fiona.duplicable')
-const t = require('../ava-to-jest-hack')
-
 
 test('fiona.fn.duplicable', () => {
-  t.deepEqual(fiona('moon').data(({ arr }) => arr(10, ({ seeded }) => {
+  expect(fiona('moon').data(({ arr }) => arr(10, ({ seeded }) => {
     return seeded.duplicable({ frequency: 0.8, pool: 2 }).number()
-  })), [
+  }))).toEqual([
     373260,
     153925,
     373260,
@@ -19,9 +17,9 @@ test('fiona.fn.duplicable', () => {
     153925
   ])
 
-  t.deepEqual(fiona('moon').data(({ arr }) => arr(3, ({ seeded }) => {
+  expect(fiona('moon').data(({ arr }) => arr(3, ({ seeded }) => {
     return seeded.duplicable().number()
-  })), [
+  }))).toEqual([
     292980,
     916259,
     316107

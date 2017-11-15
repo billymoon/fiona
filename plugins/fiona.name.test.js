@@ -1,50 +1,49 @@
 const fiona = require('../src/fiona')
 require('./fiona.bool')
 require('./fiona.name')
-const t = require('../ava-to-jest-hack')
 
 test('sanity', () => {
-  t.true(true + true === 2)
+  expect(true + true === 2).toBe(true)
 })
 
 test('import', () => {
-  t.true(typeof fiona === 'function')
+  expect(typeof fiona === 'function').toBe(true)
 })
 
 test('fiona.fn.title', () => {
-  t.is(fiona(1).title(), 'Sir')
-  t.is(fiona(1).title({}), 'Sir')
-  t.is(fiona(2).title(), 'Miss')
-  t.is(fiona(2).title({}), 'Miss')
-  t.is(fiona(4).title({ gender: 'f' }), 'Ms')
-  t.is(fiona(4).title({ gender: 'm' }), 'Sir')
-  t.is(fiona(4).title({ gender: 'Male' }), 'Sir')
+  expect(fiona(1).title()).toBe('Sir')
+  expect(fiona(1).title({})).toBe('Sir')
+  expect(fiona(2).title()).toBe('Miss')
+  expect(fiona(2).title({})).toBe('Miss')
+  expect(fiona(4).title({ gender: 'f' })).toBe('Ms')
+  expect(fiona(4).title({ gender: 'm' })).toBe('Sir')
+  expect(fiona(4).title({ gender: 'Male' })).toBe('Sir')
 })
 
 test('fiona.fn.firstname', () => {
-  t.is(fiona(1).firstname(), 'Hamish')
-  t.is(fiona(1).firstname({}), 'Hamish')
-  t.is(fiona(2).firstname(), 'Ava')
-  t.is(fiona(2).firstname({}), 'Ava')
-  t.is(fiona(2).firstname({ gender: 'f' }), 'Leah')
-  t.is(fiona(2).firstname({ gender: 'm' }), 'Angus')
-  t.is(fiona(2).firstname({ gender: 'Male' }), 'Angus')
+  expect(fiona(1).firstname()).toBe('Hamish')
+  expect(fiona(1).firstname({})).toBe('Hamish')
+  expect(fiona(2).firstname()).toBe('Ava')
+  expect(fiona(2).firstname({})).toBe('Ava')
+  expect(fiona(2).firstname({ gender: 'f' })).toBe('Leah')
+  expect(fiona(2).firstname({ gender: 'm' })).toBe('Angus')
+  expect(fiona(2).firstname({ gender: 'Male' })).toBe('Angus')
 })
 
 test('fiona.fn.firstnames', () => {
-  t.is(fiona(1).firstnames(), 'Hamish')
+  expect(fiona(1).firstnames()).toBe('Hamish')
 })
 
 test('fiona.fn.lastname', () => {
-  t.is(fiona(1).lastname(), 'Scott')
-  t.is(fiona(2).lastname(), 'Reid')
+  expect(fiona(1).lastname()).toBe('Scott')
+  expect(fiona(2).lastname()).toBe('Reid')
 })
 
 test('fiona.fn.gender', () => {
-  t.is(fiona(1).gender(), 'male')
-  t.is(fiona(2).gender(), 'female')
+  expect(fiona(1).gender()).toBe('male')
+  expect(fiona(2).gender()).toBe('female')
 })
 
 test('fiona.fn.name', () => {
-  t.is(fiona(1).name(), 'Sir Kyle Moon')
+  expect(fiona(1).name()).toBe('Sir Kyle Moon')
 })
