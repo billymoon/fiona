@@ -1,3 +1,5 @@
+/* global test,expect */
+
 const fiona = require('../src/fiona')
 require('./fiona.lorem')
 

@@ -1,3 +1,5 @@
+/* global test,expect */
+
 const fionaCore = require('./src/core')
 const fiona = require('./src/fiona')
 
