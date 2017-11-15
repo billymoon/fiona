@@ -1,0 +1,13 @@
+{
+  "ignore": [
+    "**/node_modules/**",
+    "fiona.js",
+    "fiona.core.js"
+  ],
+  "test": [
+    "**/*.test.js"
+  ],
+  "critics": {
+    "lint": {"engine": "standard"}
+  }
+}

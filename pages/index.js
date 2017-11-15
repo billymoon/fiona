@@ -1,10 +1,11 @@
 import { provideState, update } from 'freactal'
 
-const fiona = require('../src/fiona')
 import '../plugins'
 
 import { Shelf } from '../components'
 import { Layout, Logo, DynamicOverview, QuickStart, SeededPRNG, Weighting, ChainedDataBuilder, Plugins } from '../app'
+
+const fiona = require('../src/fiona')
 
 if (process.browser) {
   window.fiona = fiona
