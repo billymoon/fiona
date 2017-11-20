@@ -1,9 +1,9 @@
-import { provideState, update } from 'freactal'
+import { provideState, injectState, update } from 'freactal'
 
-import '../plugins'
+import '../src/plugins'
 
-import { Shelf } from '../components'
-import { Layout, Logo, DynamicOverview, QuickStart, SeededPRNG, Weighting, ChainedDataBuilder, Plugins } from '../app'
+import { Container, Row, Col } from './components'
+import { Layout, Logo, DynamicOverview, QuickStart, SeededPRNG, Weighting, ChainedDataBuilder, Plugins, Api } from './app'
 
 const fiona = require('../src/fiona')
 
@@ -11,35 +11,39 @@ if (process.browser) {
   window.fiona = fiona
 }
 
+const Article = ({ children, ...props }) =>
+  <Container {...props}>
+    <Row>
+      <Col md={8 / 12} offset-md={2 / 12}>
+        {children}
+      </Col>
+    </Row>
+  </Container>
+
+const Content = injectState(({ state: { seed, theme } }) =>
+  <div>
+    <Article style={{ textAlign: 'center' }}><Logo /></Article>
+    <Article style={{ textAlign: 'center' }}><h1>{fiona(seed).regex(/(The )?(Seeded )?((Pseudo )?Random )?Data Generator/)}</h1></Article>
+    <Article><DynamicOverview /></Article>
+    <Article><QuickStart /></Article>
+    <Article><SeededPRNG /></Article>
+    <Article><Weighting /></Article>
+    <Article><ChainedDataBuilder /></Article>
+    <Article><Plugins /></Article>
+    <Article><Api /></Article>
+    <style jsx>{`
+      width
+    `}</style>
+  </div>
+)
+
 export default provideState({
   initialState: () => ({
-    seed: 24
+    seed: 952684
   }),
   effects: {
     setSeed: update(({ seed }, newValue) => ({
       seed: seed === newValue ? Math.floor(Math.random() * 33) : newValue
     }))
   }
-})(() =>
-  <Layout>
-    <Shelf style={{ textAlign: 'center' }}><Logo /></Shelf>
-    <Shelf><DynamicOverview /></Shelf>
-    <Shelf><QuickStart /></Shelf>
-    <Shelf><SeededPRNG /></Shelf>
-    <Shelf><Weighting /></Shelf>
-    <Shelf><ChainedDataBuilder /></Shelf>
-    <Shelf><Plugins /></Shelf>
-    <style global jsx>{`
-      code {
-        color: #bd10e0;
-        font-family: Menlo,Monaco,Lucida Console,Liberation Mono, DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace, serif;
-        font-size: 13px;
-        line-height: 20px;
-        // padding-right: 30px;
-      }
-      body {
-        font-family: helvetica, arial, sans-serif;
-      }
-    `}</style>
-  </Layout>
-)
+})(() => <Layout><Content /></Layout>)

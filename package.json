@@ -1,6 +1,6 @@
 {
   "name": "fiona",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
   "main": "fiona.js",
@@ -10,7 +10,7 @@
     "build:full": "webpack",
     "build:core": "webpack --config webpack.config.core.js",
     "docs": "next",
-    "docs:build": "next build && next export -o docs",
+    "docs:build": "npx next build && npx next export -o docs",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
@@ -26,7 +26,7 @@
     "fetch-pretender": "^1.5.0",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^21.2.1",
-    "next": "4.1.4",
+    "next": "canary",
     "randexp": "^0.4.6",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
