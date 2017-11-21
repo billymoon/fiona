@@ -1,7 +1,7 @@
 import React from 'react'
 import { injectState } from 'freactal'
 
-import { Sample } from './'
+import { Sample } from '../'
 
 export default injectState(({ state: { seed } }) =>
   <section>

@@ -4,7 +4,9 @@ import { provideState, injectState, update } from 'freactal'
 import '../src/plugins'
 
 import { Container, Row, Col } from './components'
-import { Layout, Logo, DynamicOverview, QuickStart, SeededPRNG, Weighting, ChainedDataBuilder, Plugins, Api } from './app'
+import { Layout, Logo } from './app'
+
+import { DynamicOverview, QuickStart, SeededPRNG, Weighting, ChainedDataBuilder, Plugins, Api } from './app/sections'
 
 const fiona = require('../src')
 
@@ -32,9 +34,6 @@ const Content = injectState(({ state: { seed, theme } }) =>
     <Article><ChainedDataBuilder /></Article>
     <Article><Plugins /></Article>
     <Article><Api /></Article>
-    <style jsx>{`
-      width
-    `}</style>
   </div>
 )
 

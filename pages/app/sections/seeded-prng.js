@@ -1,8 +1,8 @@
 import React from 'react'
 import { injectState } from 'freactal'
-import fiona from '../../src'
+import fiona from '../../../src'
 
-import { Sample } from './'
+import { Sample } from '../'
 
 export default injectState(({ state: { seed } }) =>
   <section>

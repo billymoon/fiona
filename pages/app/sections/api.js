@@ -1,12 +1,13 @@
 import React from 'react'
 import { injectState } from 'freactal'
-import fiona from '../../src'
 
-import { Sample } from './'
+import fiona from '../../../src'
+import { Sample } from '../'
 
 export default injectState(({ state: { seed, theme } }) =>
   <section>
     <h2>API</h2>
+    
     <p>Fiona has a jQuery like plugin architecture where methods are attached to `fiona.fn` to operate on an instance, and directly on `fiona` when used as utility.</p>
 
     <p>For demonstration purposes, a seed of `24` is used, but changing this should render different, but consistent results.</p>
@@ -80,5 +81,103 @@ export default injectState(({ state: { seed, theme } }) =>
     ${fiona(seed + 9).duplicable({ frequency: 0.6, pool: 2 }).number()}
     ${fiona(seed + 10).duplicable({ frequency: 0.6, pool: 2 }).number()}
     `} />
+    
+    <h3><small>fiona.fn.</small>gender</h3>
+
+    <p>A seeded utility to return `male` or `female` evenly distributed.</p>
+
+    <Sample input={`
+    fiona(${seed}).gender()
+    `} output={`
+    ${fiona(seed).gender()}
+    `} />
+    
+    <h3><small>fiona.fn.</small>title</h3>
+
+    <p>A seeded utility to return a salutation, optionally taking a gender to adhere to.</p>
+
+    <Sample input={`
+    fiona(${seed}).title() // can be either gender
+    fiona(${seed}).title({ gender: 'male' }) // always male
+    `} output={`
+    ${fiona(seed).title()}
+    ${fiona(seed).title({ gender: 'male' })}
+    `} />
+    
+    <h3><small>fiona.fn.</small>firstname</h3>
+
+    <p>A seeded utility to return a single firstname, optionally taking a gender to adhere to.</p>
+
+    <Sample input={`
+    fiona(${seed}).firstname() // can be either gender
+    fiona(${seed}).firstname({ gender: 'male' }) // always male
+    `} output={`
+    ${fiona(seed).firstname()}
+    ${fiona(seed).firstname({ gender: 'male' })}
+    `} />
+    
+    <h3><small>fiona.fn.</small>firstnames</h3>
+
+    <p>A seeded utility to return firstnames, optionally taking a gender to adhere to. This is useful for producing more realistic name data where people might have multiple first and middle names.</p>
+
+    <Sample input={`
+    fiona(${seed}).firstname() // can be either gender
+    fiona(${seed}).firstname({ gender: 'male' }) // always male
+    `} output={`
+    ${fiona(seed).firstname()}
+    ${fiona(seed).firstname({ gender: 'male' })}
+    `} />
+    
+    <h3><small>fiona.fn.</small>lastname</h3>
+
+    <p>A seeded utility to return a single lastname.</p>
+
+    <Sample input={`
+    fiona(${seed}).lastname()
+    `} output={`
+    ${fiona(seed).lastname()}
+    `} />
+    
+    <h3><small>fiona.fn.</small>name</h3>
+
+    <p>A seeded utility to return a full name, optionally taking a gender to adhere to. This is useful for producing more realistic name data where people might have multiple first and middle names, and sometimes double barrel lastnames joined with hyphen.</p>
+
+    <Sample input={`
+    fiona(${seed}).name() // can be either gender
+    fiona(${seed}).name({ gender: 'male' }) // always male
+    `} output={`
+    ${fiona(seed).name()}
+    ${fiona(seed).name({ gender: 'male' })}
+    `} />
+
+    <h3><small>fiona.</small>namedata</h3>
+    
+    <p>the data used to generate names and salutations is exposed as `fiona.namedata` shich can be inspected, and modified.</p>
+    
+    <Sample>{`
+    fiona.namedata = {
+      male: {
+        firstname: ['Jack', 'James', /* etc... */ 'Hunter', 'Zachary'],
+        title: ['Mr', 'Dr', 'Sir', 'Lord']
+      },
+      female: {
+        firstname: ['Fiona', 'Aria', 'Mia', /* etc... */ 'Matilda', 'Lauren'],
+        title: ['Miss', 'Mrs', 'Dr', 'Ms', 'Dame']
+      },
+      lastname: ['Moon', 'Smith', 'Brown', /* etc... */ 'Mitchell', 'Fraser']
+    }
+    `}</Sample>
+
+    {/*
+## fiona.fn.number
+## fiona.fn.lorem
+## fiona.fn.sentence
+## fiona.fn.para
+## fiona.fn.regex
+## fiona.fn.oneOf
+## fiona.fn.choose
+## fiona.weighted
+## fiona.fn.weighted
+    */}
   </section>
 )
