@@ -1,85 +1,43 @@
 const prng = require('./prng-xor')
 const RecurseData = require('./recurse-data')
+const Weighting = require('./weighting')
+const PrngMethods = require('./prng-methods')
+const { type } = require('./utils')
 
+// define main constructor function
 function Moon (seedin) {
+  /*** initialise seed ***/
+
+  // set initial seed from constructor function initialisation argument, or random integer
   const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
 
-  //
-  const type = item => Object.prototype.toString.call(item).slice(8, -1)
+  /*** weighting ***/
 
-  const processSeed = inputSeed => {
-    if (type(inputSeed) === 'String') {
-      // https://github.com/chancejs/chancejs/blob/b1b61100383bc9bfd27907c239e2f1437010e44e/chance.js#L40
-      let seed = 0
-      for (let i = 0; i < inputSeed.length; i++) {
-        let hash = 0
-        for (let j = 0; j < inputSeed.length; j++) {
-          hash = inputSeed.charCodeAt(j) + (hash << 6) + (hash << 16) - hash
-        }
-        seed += hash
-      }
-      return seed
-    } else {
-      return inputSeed
-    }
-  }
+  // define weighting method
+  this.weighting = Weighting(this)
 
-  //
-  this.clone = function () {
-    return fiona(initseed).state(this.state())
-  }
+  /*** initialise PRNG ***/
 
-  //
-  const defaultWeighting = i => i
+  const { state, reseed, random } = PrngMethods(this, initseed)
 
-  let weighting = defaultWeighting
+  this.state = state
+  this.random = random
+  this.reseed = reseed
 
-  this.weighting = newVal => {
-    if (type(newVal) === 'Function') {
-      weighting = newVal
-      return this
-    } else if (newVal === null) {
-      weighting = defaultWeighting
-      return this
-    } else {
-      return weighting(newVal)
-    }
-  }
-
-  // 
-  let { reseed, getState, setState, random } = prng(0)
-
-  reseed(processSeed(initseed))
-
-  this.reseed = function (seed) {
-    reseed(processSeed(seed === null ? initseed : seed))
-    return this
-  }
-
-  const initialState = getState()
-
-  this.state = newVal => {
-    if (newVal === undefined) {
-      return getState()
-    } else {
-      if (newVal === null) {
-        setState(initialState)
-      } else {
-        setState(newVal)
-      }
-      return this
-    }
-  }
-
-  this.random = () => this.weighting(random())
-
-  //
-  let data = null
+  /*** data builder ***/
 
   // TODO: perhaps build instance data instead of section input, and call functions with that?
-  const { recurseData, handleFunction } = RecurseData(type, fiona, initseed, prng, this)
+  const { recurseData, handleFunction } = RecurseData(fiona, initseed, this)
 
-  this.data = function (input) {
+  /*** data builder ***/
+
+  // TODO: perhaps build instance data instead of section input, and call functions with that?
+
+  // define main data variable
+  let data = null
+
+  // define data builder method
+  this.data = input => {
     if (type(input) === 'Function') {
       input = input(handleFunction('() => data', data))
     }
@@ -95,36 +53,40 @@ function Moon (seedin) {
     return data
   }
 
-  this.chain = function (input) {
+  // define data chaining method
+  this.chain = input => {
     this.data(input)
     return this
   }
 
-  this.value = function () {
-    return data
-  }
+  // define value method to get data off chain
+  this.value = () => data
 
-  //
-  this.info = () => ({
-    initseed
-  })
+  // define callback method to execute arbitrary expressions in a chain
+  this.callback = cb => cb.bind(this)(data, this)
 
-  //
-  this.callback = function (cb) {
-    return cb.bind(this)(data, this)
-  }
+  /*** info ***/
+
+  // define info method to report initial seed
+  this.info = () => ({ initseed })
+
+  /*** clone ***/
+
+  // define clone method to fork current state
+  this.clone = () => fiona(initseed).state(this.state())
 
   return this
 }
 
-Moon.prototype = {
-  constructor: Moon
-}
-
+// define main function
 const fiona = (...args) => new Moon(...args)
 
+// TODO: add some babel replace function to update version string
+// define library version
 fiona.version = '__VERSION__'
 
-fiona.fn = Moon.prototype
+// set up self referencial prototype chain with jQuery like plugin architecture
+fiona.fn = Moon.prototype = { constructor: Moon }
 
+// export the main function
 module.exports = fiona

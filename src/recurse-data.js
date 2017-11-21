@@ -1,6 +1,9 @@
-module.exports = (type, fiona, initseed, prng, self) => {
+const prng = require('./prng-xor')
+const { type } = require('./utils')
+
+module.exports = (fiona, initseed, self) => {
   const recurseData = (originalInput, position, currentInput, currentindex) => {
-    if (type(currentInput) === 'Undefined') {
+    if (currentInput === undefined) {
       currentInput = originalInput
     }
 
