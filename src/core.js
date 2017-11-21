@@ -1,4 +1,5 @@
 const prng = require('./prng-xor')
+const RecurseData = require('./recurse-data')
 
 function Moon (seedin) {
   const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
@@ -6,22 +7,8 @@ function Moon (seedin) {
   //
   const type = item => Object.prototype.toString.call(item).slice(8, -1)
 
-  //
-  const GetSet = (defaultVal, getter, setter) => newVal => {
-    if (newVal === undefined) {
-      return getter()
-    } else {
-      if (newVal === null) {
-        setter(defaultVal)
-      } else {
-        setter(newVal)
-      }
-      return this
-    }
-  }
-
   const processSeed = inputSeed => {
-    if (typeof inputSeed === 'string') {
+    if (type(inputSeed) === 'String') {
       // https://github.com/chancejs/chancejs/blob/b1b61100383bc9bfd27907c239e2f1437010e44e/chance.js#L40
       let seed = 0
       for (let i = 0; i < inputSeed.length; i++) {
@@ -48,7 +35,7 @@ function Moon (seedin) {
   let weighting = defaultWeighting
 
   this.weighting = newVal => {
-    if (typeof newVal === 'function') {
+    if (type(newVal) === 'Function') {
       weighting = newVal
       return this
     } else if (newVal === null) {
@@ -59,68 +46,52 @@ function Moon (seedin) {
     }
   }
 
-  let { random, reseed, getState, setState } = prng(0)
-
-  this.random = () => this.weighting(random())
+  // 
+  let { reseed, getState, setState, random } = prng(0)
 
   reseed(processSeed(initseed))
-
-  this.state = GetSet(getState(), getState, setState)
 
   this.reseed = function (seed) {
     reseed(processSeed(seed === null ? initseed : seed))
     return this
   }
 
+  const initialState = getState()
+
+  this.state = newVal => {
+    if (newVal === undefined) {
+      return getState()
+    } else {
+      if (newVal === null) {
+        setState(initialState)
+      } else {
+        setState(newVal)
+      }
+      return this
+    }
+  }
+
+  this.random = () => this.weighting(random())
+
   //
   let data = null
 
-  const arr = (qty, callback) => {
-    return Array(qty).fill(callback)
-  }
-
   // TODO: perhaps build instance data instead of section input, and call functions with that?
-  const recurseData = (input, position, currentindex) => {
-    const data = input
-    const inception = (input, position, currentindex) => {
-      if (type(input) === 'Object') {
-        Object.keys(input).forEach(key => {
-          const pos = `${position}.${key}`
-          input[key] = inception(input[key], pos, null)
-        })
-        return input
-      } else if (type(input) === 'Array') {
-        return input.map((item, index) => {
-          const m = position.match(/^data\[(\d+)\]$/)
-          const pos = m ? `data[${1 * m[1] + index}]` : `${position}[${index}]`
-          return inception(item, pos, index)
-        })
-      } else if (type(input) === 'Function') {
-        const seeded = fiona(`${position}/${initseed}`, prng)
-        // TODO: better handling of current index in callbacks of `arr`
-        return inception(input({ me: this, pos: position, data, seeded, arr }, currentindex), position, currentindex)
-      } else {
-        return input
-      }
-    }
-    return inception(input, position)
-  }
+  const { recurseData, handleFunction } = RecurseData(type, fiona, initseed, prng, this)
 
   this.data = function (input) {
     if (type(input) === 'Function') {
-      // TODO: merge this with repeated code in `inception`
-      const seeded = fiona(`() => data/${initseed}`, prng)
-      input = input({ me: this, pos: '() => data', data, seeded, arr })
+      input = input(handleFunction('() => data', data))
     }
+
     // TODO: handle mixed input types on multiple data calls
-    if (type(input) === 'Array') {
-      data = (data || []).concat(recurseData(input, `data[${(data || []).length}]`, 0))
-    } else if (type(input) === 'Object') {
-      data = Object.assign({}, data || {}, recurseData(input, 'data', null))
-    } else {
+    switch (type(input)) {
+      case 'Array': data = recurseData((data || []).concat(input), `data[${(data || []).length}]`); break;
+      case 'Object': data = recurseData(Object.assign({}, data || {}, input), 'data'); break;
       // TODO: does it make sense to return stuff we don't recognise, or just throw?
-      data = input
+      default: data = input;
     }
+
     return data
   }
 
