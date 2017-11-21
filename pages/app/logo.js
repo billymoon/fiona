@@ -1,3 +1,4 @@
+import React from 'react'
 import { provideState, injectState } from 'freactal'
 
 const fiona = require('../../src')

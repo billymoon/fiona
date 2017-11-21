@@ -1,3 +1,4 @@
+import React from 'react'
 import { Container, Row, Col } from '..'
 
 const Shelf = ({ head, section1, section2, section3, split, indent, rtl, children, ...props }) => {
