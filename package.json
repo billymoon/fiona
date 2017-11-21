@@ -5,7 +5,6 @@
   "repository": "billymoon/fiona",
   "main": "fiona.js",
   "scripts": {
-    "demo": "node -r @std/esm demo",
     "build": "webpack",
     "build:core": "webpack --config webpack.config.core.js",
     "docs": "next",
@@ -15,21 +14,16 @@
   },
   "author": "Billy Moon",
   "license": "ISC",
-  "@std/esm": {
-    "esm": "all"
-  },
   "devDependencies": {
-    "@std/esm": "^0.7.1",
     "babel-minify-webpack-plugin": "^0.2.0",
     "babel-plugin-styled-components": "^1.2.0",
     "fetch-pretender": "^1.5.0",
-    "isomorphic-fetch": "^2.2.1",
     "jest": "^21.2.1",
-    "next": "canary",
+    "next": "4.2.0-canary.1",
     "randexp": "^0.4.6",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "rollup": "^0.50.0",
+    "rollup": "^0.51.8",
     "styled-components": "^2.1.2",
     "webpack": "^3.6.0"
   },
