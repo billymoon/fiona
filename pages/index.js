@@ -1,3 +1,4 @@
+import React from 'react'
 import { provideState, injectState, update } from 'freactal'
 
 import '../src/plugins'
@@ -5,7 +6,7 @@ import '../src/plugins'
 import { Container, Row, Col } from './components'
 import { Layout, Logo, DynamicOverview, QuickStart, SeededPRNG, Weighting, ChainedDataBuilder, Plugins, Api } from './app'
 
-const fiona = require('../src/fiona')
+const fiona = require('../src')
 
 if (process.browser) {
   window.fiona = fiona

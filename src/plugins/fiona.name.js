@@ -1,4 +1,4 @@
-const fiona = require('../fiona')
+const fiona = require('../')
 
 const data = {
   male: {

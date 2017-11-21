@@ -1,6 +1,6 @@
 import { provideState, injectState } from 'freactal'
 
-const fiona = require('../../src/fiona')
+const fiona = require('../../src')
 
 const pos = index => ({ x: (index % 11) * 40 + 10, y: Math.floor(index / 11) * 40 + 10 })
 

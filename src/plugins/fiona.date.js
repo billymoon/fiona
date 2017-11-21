@@ -1,4 +1,4 @@
-const fiona = require('../fiona')
+const fiona = require('../')
 
 fiona.fn.date = function ({ min = '1940', max = '2000', long = false } = {}) {
   const early = new Date(min) * 1

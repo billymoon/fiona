@@ -1,5 +1,5 @@
 import { injectState } from 'freactal'
-import fiona from '../../src/fiona'
+import fiona from '../../src'
 
 import { Sample } from './'
 

@@ -1,4 +1,4 @@
-const fiona = require('../fiona')
+const fiona = require('../')
 
 fiona.fn.lorem = function ({ qty = 15 } = {}) {
   let out = this.random() < 0.2 ? 'lorem ipsum ' : ''

@@ -6,8 +6,7 @@
   "main": "fiona.js",
   "scripts": {
     "demo": "node -r @std/esm demo",
-    "build": "npm run build:core && npm run build:full",
-    "build:full": "webpack",
+    "build": "webpack",
     "build:core": "webpack --config webpack.config.core.js",
     "docs": "next",
     "docs:build": "npx next build && npx next export -o docs",

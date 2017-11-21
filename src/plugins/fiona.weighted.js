@@ -1,4 +1,4 @@
-const fiona = require('../fiona')
+const fiona = require('../')
 
 const bezierEasing = require('bezier-easing')
 

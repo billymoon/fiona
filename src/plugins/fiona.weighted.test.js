@@ -1,6 +1,6 @@
 /* global test,expect */
 
-const fiona = require('../fiona')
+const fiona = require('../')
 require('./fiona.weighted')
 
 test('fiona.fn.weighted (linear)', () => {

@@ -1,4 +1,4 @@
-import fiona from '../fiona'
+import fiona from '../'
 import Pretender from 'fetch-pretender'
 
 let pretender = new Pretender()

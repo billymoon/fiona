@@ -1,7 +1,7 @@
 /* global test,expect */
 
 const fionaCore = require('./core')
-const fiona = require('./fiona')
+const fiona = require('./')
 
 const fixture = {
   RANDOM_1: 0.4583325853842928,

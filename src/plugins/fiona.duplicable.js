@@ -1,4 +1,4 @@
-const fiona = require('../fiona')
+const fiona = require('../')
 
 // 10% of the time, reseed with one of 10 seeds
 // frequency and pool can be overriden

@@ -1,4 +1,4 @@
-const fiona = require('../fiona')
+const fiona = require('../')
 
 fiona.until = function (predicate, data, { startseed = 0, tries = 1e6 } = {}) {
   let seed = startseed

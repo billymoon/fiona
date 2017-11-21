@@ -34,35 +34,6 @@ export default injectState(({ input, output, title, state: { theme }, effects: {
         .clearfix {
           clear: both;
         }
-        @media screen and (min-width: ${theme.grid.breakpoints.md}px) {
-          .inner {
-            margin-top: -20px;
-            margin-bottom: -20px;
-          }
-          .root {
-            margin: 40px 0 80px -${2 / 12 * 100}%;
-            width: ${133.3333}%;
-            position: relative;
-            border: 8px solid ${theme.bg};
-          }
-          .root:before, .root:after {
-            position: absolute;
-            content: '';
-            // border: solid ${theme.clr.primary};
-            border: solid ${theme.clr.light};
-            z-index: -1;
-          }
-          .root:before {
-            top: -16px; bottom: -16px;
-            left: -1px; right: -1px;
-            border-width: 0 1px;
-          }
-          .root:after {
-            left: -16px; right: -16px;
-            top: -1px; bottom: -1px;
-            border-width: 1px 0;
-          }
-        }
      `}</style>
     </div>
   )
