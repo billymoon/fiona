@@ -6,7 +6,7 @@ const defaultWeighting = i => i
 module.exports = self => {
   // define initial weighting to be default weighting
   let weighting = defaultWeighting
-  
+
   return newVal => {
     if (type(newVal) === 'Function') {
       weighting = newVal

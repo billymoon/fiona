@@ -45,4 +45,3 @@ const choose = function (qty, arr, { weights = [] } = {}) {
 }
 
 module.exports = { number, oneOf, choose }
-

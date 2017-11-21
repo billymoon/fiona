@@ -9,7 +9,7 @@ import { Layout, Logo, DynamicOverview, QuickStart, SeededPRNG, Weighting, Chain
 const fiona = require('../src')
 
 if (process.browser) {
-  window.fiona = fiona
+  window.fiona = fiona // eslint-disable-line
 }
 
 const Article = ({ children, ...props }) =>

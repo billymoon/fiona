@@ -1,4 +1,3 @@
-const prng = require('./prng-xor')
 const RecurseData = require('./recurse-data')
 const Weighting = require('./weighting')
 const PrngMethods = require('./prng-methods')
@@ -6,17 +5,17 @@ const { type } = require('./utils')
 
 // define main constructor function
 function Moon (seedin) {
-  /*** initialise seed ***/
+  /* initialise seed */
 
   // set initial seed from constructor function initialisation argument, or random integer
   const initseed = seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
 
-  /*** weighting ***/
+  /* weighting */
 
   // define weighting method
   this.weighting = Weighting(this)
 
-  /*** initialise PRNG ***/
+  /* initialise PRNG */
 
   const { state, reseed, random } = PrngMethods(this, initseed)
 
@@ -24,12 +23,12 @@ function Moon (seedin) {
   this.random = random
   this.reseed = reseed
 
-  /*** data builder ***/
+  /* data builder */
 
   // TODO: perhaps build instance data instead of section input, and call functions with that?
   const { recurseData, handleFunction } = RecurseData(fiona, initseed, this)
 
-  /*** data builder ***/
+  /* data builder */
 
   // TODO: perhaps build instance data instead of section input, and call functions with that?
 
@@ -44,10 +43,10 @@ function Moon (seedin) {
 
     // TODO: handle mixed input types on multiple data calls
     switch (type(input)) {
-      case 'Array': data = recurseData((data || []).concat(input), `data[${(data || []).length}]`); break;
-      case 'Object': data = recurseData(Object.assign({}, data || {}, input), 'data'); break;
+      case 'Array': data = recurseData((data || []).concat(input), `data[${(data || []).length}]`); break
+      case 'Object': data = recurseData(Object.assign({}, data || {}, input), 'data'); break
       // TODO: does it make sense to return stuff we don't recognise, or just throw?
-      default: data = input;
+      default: data = input
     }
 
     return data
@@ -65,12 +64,12 @@ function Moon (seedin) {
   // define callback method to execute arbitrary expressions in a chain
   this.callback = cb => cb.bind(this)(data, this)
 
-  /*** info ***/
+  /* info */
 
   // define info method to report initial seed
   this.info = () => ({ initseed })
 
-  /*** clone ***/
+  /* clone */
 
   // define clone method to fork current state
   this.clone = () => fiona(initseed).state(this.state())

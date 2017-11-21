@@ -25,7 +25,7 @@ module.exports = (fiona, initseed, self) => {
       const pos = `${position}.${key}`
       currentInput[key] = recurseData(originalInput, pos, currentInput[key], null)
     })
-    return currentInput      
+    return currentInput
   }
 
   const recurseArray = (currentInput, originalInput, position) => {
