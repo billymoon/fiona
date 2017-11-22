@@ -168,14 +168,96 @@ export default injectState(({ state: { seed, theme } }) =>
     }
     `}</Sample>
 
+    <h3><small>fiona.fn.</small>number</h3>
+
+    <p>A seeded utility to return a positive integer, taking options min and max, which default to 0 and 1,000,000.</p>
+
+    <Sample input={`
+    fiona(${seed}).number()
+    fiona(${seed}).number({ max: 10 })
+    fiona(${seed}).number({ min: 10, max: 20 })
+    `} output={`
+    ${fiona(seed).number()}
+    ${fiona(seed).number({ max: 10 })}
+    ${fiona(seed).number({ min: 10, max: 20 })}
+    `} />
+    
+    <h3><small>fiona.fn.</small>lorem</h3>
+
+    <p>A seeded utility to return lorem ipsum text, optionally takes `qty` which is approximate number of words and defaults to `15`.</p>
+
+    <Sample input={`
+    fiona(${seed}).lorem()
+
+    fiona(${seed}).lorem({ qty: 3 })
+
+    fiona(${seed}).lorem({ qty: 50 })
+    `} output={`
+    ${fiona(seed).lorem()}
+
+    ${fiona(seed).lorem({ qty: 3 })}
+
+    ${fiona(seed).lorem({ qty: 50 })}
+    `} />
+    
+    <h3><small>fiona.fn.</small>sentence</h3>
+
+    <p>A seeded utility to return a sentence of lorem ipsum text.</p>
+
+    <Sample input={`
+    fiona(${seed}).sentence()
+    `} output={`
+    ${fiona(seed).sentence()}
+    `} />
+    
+    <h3><small>fiona.fn.</small>para</h3>
+
+    <p>A seeded utility to return a paragraph of lorem ipsum text.</p>
+
+    <Sample input={`
+    fiona(${seed}).para()
+    `} output={`
+    ${fiona(seed).para()}
+    `} />
+    
+    <h3><small>fiona.fn.</small>oneOf</h3>
+
+    <p>A seeded weighted method to select one item from a passed array.</p>
+
+    <Sample input={`
+    fiona(${seed}).oneOf(['pink', 'powder blue', 'purple'])
+    `} output={`
+    ${fiona(seed).oneOf(['pink', 'powder blue', 'purple'])}
+    `} />
+    
+    <p>The current weighting function will influence the choice, so for example, elements appearing earlier are more likely to be chosen when a weighting reduces the pseudo random values.</p>
+
+    <Sample input={`
+    fiona(${seed}).weighting(i => i * i * i).oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    `} output={`
+    ${fiona(seed).weighting(i => i * i * i).oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])}
+    `} />
+    
+    <h3><small>fiona.fn.</small>choose</h3>
+
+    <p>A seeded weighted method to select a specified number of items from a passed array.</p>
+
+    <Sample input={`
+    fiona(${seed}).choose(2, ['pink', 'powder blue', 'purple'])
+    `} output={`
+    ${fiona(seed).choose(2, ['pink', 'powder blue', 'purple'])}
+    `} />
+    
+    <p>Like `fiona.fn.oneOf`, the current weighting function will influence the choice.</p>
+
+    <Sample input={`
+    fiona(${seed}).weighting(i => i * i * i).choose(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    `} output={`
+    ${JSON.stringify(fiona(seed).weighting(i => i * i * i).choose(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))}
+    `} />
+    
     {/*
-## fiona.fn.number
-## fiona.fn.lorem
-## fiona.fn.sentence
-## fiona.fn.para
 ## fiona.fn.regex
-## fiona.fn.oneOf
-## fiona.fn.choose
 ## fiona.weighted
 ## fiona.fn.weighted
     */}

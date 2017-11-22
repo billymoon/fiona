@@ -31,7 +31,7 @@ export default injectState(({ state: { seed } }) =>
       age: ({ seeded }) => seeded.number({ max: 100 }),
       name: ({ seeded }) => seeded.name(),
       iban: ({ seeded }) => seeded.regex(ibanregex),
-      favouriteColor: ({ seeded }) => seeded.oneOf([
+      favouriteColour: ({ seeded }) => seeded.oneOf([
         'red',
         'yellow',
         'blue'
@@ -41,7 +41,7 @@ export default injectState(({ state: { seed } }) =>
       age: ({ seeded }) => seeded.number({ max: 100 }),
       name: ({ seeded }) => seeded.name(),
       iban: ({ seeded }) => seeded.regex(/[A-Z]{2}\d{2}( \d{4}){4,5} \d{0,3}/),
-      favouriteColor: ({ seeded }) => seeded.oneOf(['red', 'yellow', 'blue'])
+      favouriteColour: ({ seeded }) => seeded.oneOf(['red', 'yellow', 'blue'])
     }), null, 2)}`} />
   </section>
 )

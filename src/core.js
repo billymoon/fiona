@@ -28,10 +28,6 @@ function Moon (seedin) {
   // TODO: perhaps build instance data instead of section input, and call functions with that?
   const { recurseData, handleFunction } = RecurseData(fiona, initseed, this)
 
-  /* data builder */
-
-  // TODO: perhaps build instance data instead of section input, and call functions with that?
-
   // define main data variable
   let data = null
 

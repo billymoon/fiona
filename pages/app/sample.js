@@ -13,7 +13,7 @@ export default injectState(({ input, output, title, state: { theme }, effects: {
     <div className='root' {...props}>
       <div className='inner'>
         {input && <pre><code><b>// input</b><br />{formatCode(input)}</code></pre>}
-        {output && <pre><code><b>// output</b><br />{formatCode(output)}</code></pre>}
+        {output && <pre><code className='secondary'><b>// output</b><br />{formatCode(output)}</code></pre>}
         {output && <div className='clearfix' />}
         {children && <pre><code>{title && <b>// {title}<br /></b>}{formatCode(children)}</code></pre>}
         {children && <div className='clearfix' />}
@@ -34,6 +34,11 @@ export default injectState(({ input, output, title, state: { theme }, effects: {
         }
         .clearfix {
           clear: both;
+        }
+        @media screen (min-width: ${theme.grid.breakpoints.md}px) {
+          .inner {
+            width: 333.333333%;
+          }
         }
      `}</style>
     </div>

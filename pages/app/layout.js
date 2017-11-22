@@ -80,6 +80,10 @@ const Main = injectState(({ state: { theme }, children }) =>
         font-size: 14px;
       }
 
+      code.secondary {
+        color: ${theme.clr.light};
+      }
+
       h1, h2, h3, h4, h5, h6 {
         font-family: Tangerine, cursive;
         color: ${theme.clr.secondary};
