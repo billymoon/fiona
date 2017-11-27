@@ -1,9 +1,9 @@
-import React from 'react'
-import { injectState } from 'freactal'
+import React from 'react';
+import { injectState } from 'freactal';
 
-import fiona from '../../../src'
-import '../../../src/plugins'
-import { Sample } from '../'
+import fiona from '../../../src';
+// import '../../../src/plugins'
+import { Sample } from '../';
 
 export default injectState(({ state: { seed, theme } }) =>
   <section>
@@ -246,7 +246,7 @@ export default injectState(({ state: { seed, theme } }) =>
     <Sample input={`
     fiona(${seed}).choose(2, ['pink', 'powder blue', 'purple'])
     `} output={`
-    ${fiona(seed).choose(2, ['pink', 'powder blue', 'purple'])}
+    ${JSON.stringify(fiona(seed).choose(2, ['pink', 'powder blue', 'purple']))}
     `} />
 
     <p>Like `fiona.fn.oneOf`, the current weighting function will influence the choice.</p>
@@ -300,15 +300,15 @@ export default injectState(({ state: { seed, theme } }) =>
     `} />
 
     {/*
-      reseed
-      clone
-      callback
-      data
-      info
-      chain
-      value
-      state
-    */}
+  reseed
+  clone
+  callback
+  data
+  info
+  chain
+  value
+  state
+*/}
 
   </section>
-)
+);
