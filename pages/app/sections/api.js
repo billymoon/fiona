@@ -1,8 +1,8 @@
-import React from 'react'
-import { injectState } from 'freactal'
+import React from 'react';
+import { injectState } from 'freactal';
 
-import fiona from '../../../src'
-import { Sample } from '../'
+import fiona from '../../../src';
+import { Sample } from '../';
 
 export default injectState(({ state: { seed, theme } }) =>
   <section>
@@ -81,7 +81,7 @@ export default injectState(({ state: { seed, theme } }) =>
     ${fiona(seed + 9).duplicable({ frequency: 0.6, pool: 2 }).number()}
     ${fiona(seed + 10).duplicable({ frequency: 0.6, pool: 2 }).number()}
     `} />
-    
+
     <h3><small>fiona.fn.</small>gender</h3>
 
     <p>A seeded utility to return `male` or `female` evenly distributed.</p>
@@ -127,7 +127,7 @@ export default injectState(({ state: { seed, theme } }) =>
     ${fiona(seed).firstname()}
     ${fiona(seed).firstname({ gender: 'male' })}
     `} />
-    
+
     <h3><small>fiona.fn.</small>lastname</h3>
 
     <p>A seeded utility to return a single lastname.</p>
@@ -137,7 +137,7 @@ export default injectState(({ state: { seed, theme } }) =>
     `} output={`
     ${fiona(seed).lastname()}
     `} />
-    
+
     <h3><small>fiona.fn.</small>name</h3>
 
     <p>A seeded utility to return a full name, optionally taking a gender to adhere to. This is useful for producing more realistic name data where people might have multiple first and middle names, and sometimes double barrel lastnames joined with hyphen.</p>
@@ -151,7 +151,7 @@ export default injectState(({ state: { seed, theme } }) =>
     `} />
 
     <h3><small>fiona.</small>namedata</h3>
-    
+
     <p>the data used to generate names and salutations is exposed as `fiona.namedata` shich can be inspected, and modified.</p>
 
     <Sample>{`
@@ -199,7 +199,7 @@ export default injectState(({ state: { seed, theme } }) =>
 
     ${fiona(seed).lorem({ qty: 50 })}
     `} />
-    
+
     <h3><small>fiona.fn.</small>sentence</h3>
 
     <p>A seeded utility to return a sentence of lorem ipsum text.</p>
@@ -209,7 +209,7 @@ export default injectState(({ state: { seed, theme } }) =>
     `} output={`
     ${fiona(seed).sentence()}
     `} />
-    
+
     <h3><small>fiona.fn.</small>para</h3>
 
     <p>A seeded utility to return a paragraph of lorem ipsum text.</p>
@@ -219,7 +219,7 @@ export default injectState(({ state: { seed, theme } }) =>
     `} output={`
     ${fiona(seed).para()}
     `} />
-    
+
     <h3><small>fiona.fn.</small>oneOf</h3>
 
     <p>A seeded weighted method to select one item from a passed array.</p>
@@ -229,7 +229,7 @@ export default injectState(({ state: { seed, theme } }) =>
     `} output={`
     ${fiona(seed).oneOf(['pink', 'powder blue', 'purple'])}
     `} />
-    
+
     <p>The current weighting function will influence the choice, so for example, elements appearing earlier are more likely to be chosen when a weighting reduces the pseudo random values.</p>
 
     <Sample input={`
@@ -237,7 +237,7 @@ export default injectState(({ state: { seed, theme } }) =>
     `} output={`
     ${fiona(seed).weighting(i => i * i * i).oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])}
     `} />
-    
+
     <h3><small>fiona.fn.</small>choose</h3>
 
     <p>A seeded weighted method to select a specified number of items from a passed array.</p>
@@ -245,9 +245,9 @@ export default injectState(({ state: { seed, theme } }) =>
     <Sample input={`
     fiona(${seed}).choose(2, ['pink', 'powder blue', 'purple'])
     `} output={`
-    ${fiona(seed).choose(2, ['pink', 'powder blue', 'purple'])}
+    ${JSON.stringify(fiona(seed).choose(2, ['pink', 'powder blue', 'purple']))}
     `} />
-    
+
     <p>Like `fiona.fn.oneOf`, the current weighting function will influence the choice.</p>
 
     <Sample input={`
@@ -255,7 +255,7 @@ export default injectState(({ state: { seed, theme } }) =>
     `} output={`
     ${JSON.stringify(fiona(seed).weighting(i => i * i * i).choose(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))}
     `} />
-    
+
     <h3><small>fiona.fn.</small>regex</h3>
 
     <p>A very general use, seeded utility to generate a string that matches a supplied regular expression. It uses the <a href='http://npmjs.org/packages/randexp'>randexp</a> library to expand expressions, seeded by the instance of fiona.</p>
@@ -269,7 +269,7 @@ export default injectState(({ state: { seed, theme } }) =>
     <h3><small>fiona.fn.</small>weighted and <small>fiona.</small>weighted</h3>
 
     <p>A utility to be used in the chain, which modifies the seed value distribution allowing control over the distribution of seeded values. Weighting functions influence `fiona.fn.random`, `fiona.fn.bool`, `fiona.fn.number`, `fiona.fn.oneOf`, `fiona.fn.choice` and any other methods that rely on them. The primary use case for this method is to control the distribution of data to create more realistic data.</p>
-    
+
     <p>Out of the box there are some predefined weighting functions as follows.</p>
 
     <ul>
@@ -292,7 +292,7 @@ export default injectState(({ state: { seed, theme } }) =>
 
     <p>In most cases the upper and lower limits remain the same, but the distribution of the values in between change as with all the predefined functions, but you can also create custom functions that can be used for any purpose, for example to clamp outputs to min and max values.</p>
 
-    <Sample input={`
+    <Sample nothing={fiona.weighted('clamp', i => i < 0.5 ? 0.5 : i > 0.7 ? 0.7 : i)} input={`
     fiona.weighted('clamp', i => i < 0.5 ? 0.5 : i > 0.7 ? 0.7 : i)
   
     fiona(${seed}).weighted('clamp').random()
@@ -304,9 +304,9 @@ export default injectState(({ state: { seed, theme } }) =>
     ${fiona(seed).weighted('clamp').random()}
     // value is clamped from 50-70
     ${fiona(seed).weighted('clamp').number({ max: 100 })}
-    `} />    
+    `} />
 
-{/*
+    {/*
   reseed
   clone
   callback
@@ -318,4 +318,4 @@ export default injectState(({ state: { seed, theme } }) =>
 */}
 
   </section>
-)
+);
