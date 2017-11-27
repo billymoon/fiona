@@ -11,7 +11,9 @@ const clr = {
   black: '#000',
   darkGray: '#333',
   lightGray: '#bbb',
-  white: '#fff'
+  white: '#fff',
+  lightPink: '#ffe0fc',
+  lightBlue: '#e0f0ff'
 }
 
 export default {
@@ -19,8 +21,10 @@ export default {
     // fg: clr.white,
     // bg: clr.black,
     clr: {
-      primary: clr.blue,
-      secondary: clr.purple,
+      primary: clr.purple,
+      secondary: clr.blue,
+      accent: clr.lightPink,
+      secondaryAccent: clr.lightBlue,
       black: clr.black,
       dark: clr.darkGray,
       light: clr.lightGray,

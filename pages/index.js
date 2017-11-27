@@ -1,12 +1,20 @@
-import React from 'react'
-import { provideState, injectState, update } from 'freactal'
-
 import '../src/plugins'
 
-import { Container, Row, Col } from './components'
-import { Layout, Logo } from './app'
+import { provideState, injectState, update } from 'freactal'
 
-import { DynamicOverview, QuickStart, SeededPRNG, Weighting, ChainedDataBuilder, Plugins, Api } from './app/sections'
+import React from 'react'
+
+import {
+  Api,
+  ChainedDataBuilder,
+  DynamicOverview,
+  Plugins,
+  QuickStart,
+  SeededPRNG,
+  Weighting
+} from './app/sections'
+import { Col, Container, Ribbon, Row } from './components'
+import { Layout, Logo } from './app'
 
 const fiona = require('../src')
 
@@ -25,6 +33,7 @@ const Article = ({ children, ...props }) =>
 
 const Content = injectState(({ state: { seed, theme } }) =>
   <div>
+    <Ribbon url='https://github.com/billymoon/fiona' color={theme.clr.primary} />
     <Article style={{ textAlign: 'center' }}><Logo /></Article>
     <Article style={{ textAlign: 'center' }}><h1>{fiona(seed).regex(/(The )?(Seeded )?((Pseudo )?Random )?Data Generator/)}</h1></Article>
     <Article><DynamicOverview /></Article>

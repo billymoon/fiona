@@ -1,3 +1,3 @@
-import { provideState } from 'freactal'
+import { provideState, injectState } from 'freactal'
 
-export default provideState({ initialState: ({ config }) => config || {} })(({ children }) => children)
+export default provideState({ initialState: ({ config }) => config || {} })(injectState(({ children }) => children))

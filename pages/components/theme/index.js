@@ -22,4 +22,9 @@ const Dark = ThemeFactory({
   bg: '#444'
 })
 
-export default { Default, Light, Dark }
+const Dynamic = ({ config, ...props }) => {
+  const DynamicTheme = ThemeFactory(config)
+  return <DynamicTheme {...props} />
+}
+
+export default { Dynamic, Default, Light, Dark }

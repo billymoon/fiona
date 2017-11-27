@@ -113,13 +113,13 @@ export default provideState({
         stroke: ${theme.clr.white};
       }
       circle.selected {
-        stroke: ${theme.clr.secondary};
+        stroke: ${theme.clr.primary};
       }
       circle.blink {
-        fill: ${theme.clr.secondary};
+        fill: ${theme.clr.primary};
       }
       circle.filled.selected {
-        fill: ${theme.clr.secondary};
+        fill: ${theme.clr.primary};
       }
     `}</style>
   </div>
