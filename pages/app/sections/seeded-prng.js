@@ -1,10 +1,9 @@
 import React from 'react'
 import { injectState } from 'freactal'
-import fiona from '../../../src'
 
-import { Sample } from '../'
+import { Sample, fiona } from '../'
 
-export default injectState(({ state: { seed } }) =>
+const Section = ({ state: { seed } }) =>
   <section>
     <h2>Seeded pseudo random number generator</h2>
 
@@ -41,4 +40,5 @@ export default injectState(({ state: { seed } }) =>
     })()}
     `} />
   </section>
-)
+
+export default injectState(Section)

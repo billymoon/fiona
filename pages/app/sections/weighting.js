@@ -1,10 +1,9 @@
 import React from 'react'
 import { injectState } from 'freactal'
 
-import fiona from '../../../src'
-import { Sample } from '../'
+import { Sample, fiona } from '../'
 
-export default injectState(({ state: { seed } }) =>
+const Section = ({ state: { seed } }) =>
   <section>
     <h2>Weighting</h2>
 
@@ -79,4 +78,5 @@ export default injectState(({ state: { seed } }) =>
 
     <div className='clearfix' />
   </section>
-)
+
+export default injectState(Section)

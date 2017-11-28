@@ -1,7 +1,7 @@
 import React from 'react'
 import { provideState, injectState } from 'freactal'
 
-const fiona = require('../../src')
+import { fiona } from './'
 
 const pos = index => ({ x: (index % 11) * 40 + 10, y: Math.floor(index / 11) * 40 + 10 })
 
@@ -45,6 +45,7 @@ fiona.fn.getDots = function () {
   return out
 }
 
+// TODO: simpify and tidy this section, perhaps this whole logo file
 export default provideState({
   initialState: () => ({
     blink: false

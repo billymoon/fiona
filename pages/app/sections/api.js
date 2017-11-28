@@ -1,11 +1,11 @@
-import React from 'react';
-import { injectState } from 'freactal';
+import React from 'react'
+import { injectState } from 'freactal'
 
-import fiona from '../../../src';
-// import '../../../src/plugins'
-import { Sample } from '../';
+import { Sample, fiona } from '../'
 
-export default injectState(({ state: { seed, theme } }) =>
+// TODO reseed, clone, callback, data, info, chain, value, state
+
+const Section = ({ state: { seed } }) =>
   <section>
     <h2>API</h2>
 
@@ -298,17 +298,6 @@ export default injectState(({ state: { seed, theme } }) =>
     // value is clamped from 50-70
     ${fiona(seed).weighted('clamp').number({ max: 100 })}
     `} />
-
-    {/*
-  reseed
-  clone
-  callback
-  data
-  info
-  chain
-  value
-  state
-*/}
-
   </section>
-);
+
+export default injectState(Section)

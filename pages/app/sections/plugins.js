@@ -3,7 +3,7 @@ import { injectState } from 'freactal'
 
 import { Sample } from '../'
 
-export default injectState(({ state: { seed } }) =>
+const Section = ({ state: { seed } }) =>
   <section>
     <h2>Plugins</h2>
 
@@ -47,5 +47,6 @@ export default injectState(({ state: { seed } }) =>
     }).addFavouriteColor().value()
     // will return something like { luckyNumber: 7, favouriteColor: [223, 122, 154] }
     `}</Sample>
-</section>
-)
+  </section>
+
+export default injectState(Section)

@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default ({ url, color = '#a00', title = 'Fork me on GitHub' }) =>
+export default ({ url, color = '#a00', title = 'Fork me on GitHub', breakAt768 = false }) =>
   <div>
-    <a className='github-fork-ribbon' href={url} data-ribbon={title} title={title}>{title}</a>
+    <a className={'github-fork-ribbon' + (breakAt768 ? ' break-at-768' : '')} href={url} data-ribbon={title} title={title}>{title}</a>
     <style jsx>{`
     .github-fork-ribbon {
       width: 12.1em;
@@ -86,6 +86,24 @@ export default ({ url, color = '#a00', title = 'Fork me on GitHub' }) =>
       border-style: dotted;
       border-color: #fff;
       border-color: rgba(255, 255, 255, 0.7);
+    }
+    
+    // TODO: figure out how to make breakpoints dynamic
+    @media (max-width: 768px) {
+      .github-fork-ribbon.break-at-768 {
+        position: inherit;
+      }
+
+      .github-fork-ribbon.break-at-768:before, .github-fork-ribbon.break-at-768:after {
+        top: 0;
+        right: 0;
+        width: 100%;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
     }
     `}</style>
   </div>

@@ -8,6 +8,7 @@ const formatCode = code => {
   return lines.map(line => line.slice(indent)).join('\n')
 }
 
+// TODO: simpify and tidy this section, perhaps this whole sample file
 export default injectState(({ input, output, title, state: { theme }, effects: {}, children, ...props }) => {
   return (
     <div className='root' {...props}>
