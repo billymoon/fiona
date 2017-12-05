@@ -106,6 +106,15 @@ const fixture = {
     expect(baby.reseed(1).number({ max: 1e10 })).toBe(4583325854)
   })
 
+  test('fiona.fn.number (precision)', () => {
+    expect(fiona(0).number()).toBe(617634)
+    expect(fiona(0).number({ precision: 0 })).toBe(617634)
+    expect(fiona(0).number({ precision: 1 })).toBe(617634.2)
+    expect(fiona(0).number({ precision: 2 })).toBe(617634.21)
+    expect(fiona(0).number({ precision: -2 })).toBe(617600)
+    expect(fiona(0).number({ min: 10, max: 20, precision: 2 })).toBe(16.79)
+  })
+
   test('fiona.fn.oneOf', () => {
     const baby = fiona(1)
     const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

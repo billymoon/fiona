@@ -1,7 +1,8 @@
 //
 
-const number = function ({ max = 1e6, min = 0 } = {}) {
-  return Math.floor((this.random() * (1 + max - min)) + min)
+const number = function ({ max = 1e6, min = 0, precision = 0 } = {}) {
+  const multiplier = Math.pow(10, precision)
+  return Math.floor(((this.random() * (1 + max - min)) + min) * multiplier) / multiplier
 }
 
 //

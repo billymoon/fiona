@@ -23,6 +23,30 @@ const Section = ({ state: { seed } }) =>
     ${fiona(seed).random().toString()}
     `} />
 
+    <h3><small>fiona.fn.</small>number</h3>
+
+    <p>A seeded utility to return a number, taking options min and max and precision, which default to 0 and 1,000,000 and 0.</p>
+
+    <Sample input={`
+    fiona(${seed}).number()
+    fiona(${seed}).number({ max: 10 })
+    fiona(${seed}).number({ min: 10, max: 20 })
+    `} output={`
+    ${fiona(seed).number()}
+    ${fiona(seed).number({ max: 10 })}
+    ${fiona(seed).number({ min: 10, max: 20 })}
+    `} />
+
+    <p>If you add a precision, instead of an integer you will get a float rounded to specified precision.</p>
+
+    <Sample input={`
+    fiona(${seed}).number({ precision: 2 })
+    fiona(${seed}).number({ precision: -2 })
+    `} output={`
+    ${fiona(seed).number({ precision: 2 })}
+    ${fiona(seed).number({ precision: -2 })}
+    `} />
+
     <h3><small>fiona.fn.</small>bool</h3>
 
     <p>A seeded utility to return true or false. Takes `chance` option to change the probability of true as decimal value between 0 and 1 which defaults to 0.5.</p>
@@ -168,20 +192,6 @@ const Section = ({ state: { seed } }) =>
       lastname: ['Moon', 'Smith', 'Brown', /* etc... */ 'Mitchell', 'Fraser']
     }
     `}</Sample>
-
-    <h3><small>fiona.fn.</small>number</h3>
-
-    <p>A seeded utility to return a positive integer, taking options min and max, which default to 0 and 1,000,000.</p>
-
-    <Sample input={`
-    fiona(${seed}).number()
-    fiona(${seed}).number({ max: 10 })
-    fiona(${seed}).number({ min: 10, max: 20 })
-    `} output={`
-    ${fiona(seed).number()}
-    ${fiona(seed).number({ max: 10 })}
-    ${fiona(seed).number({ min: 10, max: 20 })}
-    `} />
 
     <h3><small>fiona.fn.</small>lorem</h3>
 
