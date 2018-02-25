@@ -1,7 +1,6 @@
-import React from 'react'
 import { injectState } from 'freactal'
 
-import { Sample, fiona } from '../'
+import { Sample, fiona } from '../app/'
 
 // TODO reseed, clone, callback, data, info, chain, value, state
 

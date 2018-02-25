@@ -1,7 +1,6 @@
-import React from 'react'
 import { injectState } from 'freactal'
 
-import { fiona } from '../'
+import { fiona } from '../app/'
 
 const Section = ({ state: { seed } }) =>
   <section>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { injectState } from 'freactal'
 
 const Section = ({ state: { seed } }) =>

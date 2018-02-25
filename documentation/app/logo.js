@@ -1,4 +1,3 @@
-import React from 'react'
 import { provideState, injectState } from 'freactal'
 
 import { fiona } from './'

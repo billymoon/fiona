@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default ({ url, color = '#a00', title = 'Fork me on GitHub', breakAt768 = false }) =>
   <div>
     <a className={'github-fork-ribbon' + (breakAt768 ? ' break-at-768' : '')} href={url} data-ribbon={title} title={title}>{title}</a>

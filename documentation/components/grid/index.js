@@ -1,4 +1,3 @@
-import React from 'react'
 import { injectState, provideState } from 'freactal'
 import { mergeDeep } from '..'
 
