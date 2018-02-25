@@ -30,6 +30,7 @@
   "dependencies": {
     "bezier-easing": "^2.0.3",
     "freactal": "^1.1.1",
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.5",
+    "sentencer": "^0.1.5"
   }
 }

@@ -1,10 +1,16 @@
 import { Article } from '../components'
 import { Layout, state } from '../app'
-import { ExamplesIntro } from '../app/sections'
+import {
+  ExamplesIntro,
+  ExamplesTemplateString,
+  ExamplesTemplatePlugin
+} from '../app/sections'
 
 const Page = ({ url }) =>
   <Layout url={url}>
     <Article><ExamplesIntro /></Article>
+    <Article><ExamplesTemplateString /></Article>
+    <Article><ExamplesTemplatePlugin /></Article>
   </Layout>
 
 export default state(Page)
