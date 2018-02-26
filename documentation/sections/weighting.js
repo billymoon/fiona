@@ -1,8 +1,6 @@
-import { injectState } from 'freactal'
-
 import { Sample, fiona } from '../app/'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h2>Weighting</h2>
 
@@ -78,4 +76,4 @@ const Section = ({ state: { seed } }) =>
     <div className='clearfix' />
   </section>
 
-export default injectState(Section)
+export default Section

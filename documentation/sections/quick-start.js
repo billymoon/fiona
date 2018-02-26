@@ -1,8 +1,6 @@
-import { injectState } from 'freactal'
-
 import { Sample, fiona } from '../app/'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h2>Quickstart...</h2>
 
@@ -43,4 +41,4 @@ const Section = ({ state: { seed } }) =>
     }), null, 2)}`} />
   </section>
 
-export default injectState(Section)
+export default Section

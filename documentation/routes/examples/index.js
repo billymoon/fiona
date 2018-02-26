@@ -1,16 +1,14 @@
 import { Article } from '../../components'
-import { Layout, state } from '../../app'
+import { Layout } from '../../app'
 import {
   ExamplesIntro,
   ExamplesTemplateString,
   ExamplesTemplatePlugin
 } from '../../sections'
 
-const Page = ({ url }) =>
+export default ({ url, state: { seed } }) =>
   <Layout url={url}>
     <Article><ExamplesIntro /></Article>
-    <Article><ExamplesTemplateString /></Article>
-    <Article><ExamplesTemplatePlugin /></Article>
+    <Article><ExamplesTemplateString seed={seed} /></Article>
+    <Article><ExamplesTemplatePlugin seed={seed} /></Article>
   </Layout>
-
-export default state(Page)

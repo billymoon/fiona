@@ -1,16 +1,6 @@
-import { provideState, injectState } from 'freactal'
-
-import { fiona } from './'
+import { fiona } from '../'
 
 const pos = index => ({ x: (index % 11) * 40 + 10, y: Math.floor(index / 11) * 40 + 10 })
-
-const fionaLines = [
-  [1, 2], [1, 23], [12, 13],
-  [3, 25],
-  [4, 26], [5, 27], [4, 5], [26, 27],
-  [6, 28], [6, 29], [7, 29],
-  [8, 30], [8, 9], [9, 31], [19, 20]
-]
 
 fiona.fn.getLines = function () {
   const out = []
@@ -28,12 +18,6 @@ fiona.fn.getLines = function () {
   return out
 }
 
-const fionaDots = [
-  false, false, true, true, true, false, false, true, false, false, false,
-  false, false, true, false, false, false, false, false, false, false, false,
-  false, true, false, true, false, false, true, false, true, true, false
-]
-
 fiona.fn.getDots = function () {
   const out = []
 
@@ -44,34 +28,22 @@ fiona.fn.getDots = function () {
   return out
 }
 
-// TODO: simpify and tidy this section, perhaps this whole logo file
-export default provideState({
-  initialState: () => ({
-    blink: false
-  }),
-  effects: {
-    initialize: effects => state => Object.assign({}, state, {
-      interval: process.browser && effects.toggleBlink()
-    }),
-    toggleBlink: ({ toggleBlink }) => state => {
-      if (state.blink !== null) {
-        setTimeout(toggleBlink, 500)
-        return Object.assign({}, state, {
-          blink: !state.blink
-        })
-      } else {
-        return state
-      }
-    },
-    clickSeed: ({ setSeed }, index) => state => {
-      setSeed(index === 24 ? 952684 : index)
+const fionaLines = [
+  [1, 2], [1, 23], [12, 13],
+  [3, 25],
+  [4, 26], [5, 27], [4, 5], [26, 27],
+  [6, 28], [6, 29], [7, 29],
+  [8, 30], [8, 9], [9, 31], [19, 20]
+]
 
-      return Object.assign({}, state, {
-        blink: null
-      })
-    }
-  }
-})(injectState(({ state: { seed, blink, theme }, effects: { clickSeed }, ...props }) =>
+const fionaDots = [
+  false, false, true, true, true, false, false, true, false, false, false,
+  false, false, true, false, false, false, false, false, false, false, false,
+  false, true, false, true, false, false, true, false, true, true, false
+]
+
+// TODO: simpify and tidy this section, perhaps this whole logo file
+export default ({ seed, blink, theme, clickSeed }) =>
   <div className='root'>
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0, 0, 420, 100'>
       <g>
@@ -123,4 +95,3 @@ export default provideState({
       }
     `}</style>
   </div>
-))

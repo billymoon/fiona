@@ -7,16 +7,14 @@ import {
   ChainedDataBuilder,
   Plugins
 } from '../sections'
-import { Layout, state } from '../app'
+import { Layout } from '../app'
 
-const Page = ({ url }) =>
+export default ({ url, state: { seed } }) =>
   <Layout url={url}>
-    <Article><DynamicOverview /></Article>
-    <Article><QuickStart /></Article>
-    <Article><SeededPRNG /></Article>
-    <Article><Weighting /></Article>
-    <Article><ChainedDataBuilder /></Article>
-    <Article><Plugins /></Article>
+    <Article><DynamicOverview seed={seed} /></Article>
+    <Article><QuickStart seed={seed} /></Article>
+    <Article><SeededPRNG seed={seed} /></Article>
+    <Article><Weighting seed={seed} /></Article>
+    <Article><ChainedDataBuilder seed={seed} /></Article>
+    <Article><Plugins seed={seed} /></Article>
   </Layout>
-
-export default state(Page)

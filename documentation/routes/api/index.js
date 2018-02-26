@@ -1,10 +1,8 @@
 import { Article } from '../../components'
-import { Layout, state } from '../../app'
+import { Layout } from '../../app'
 import { Api } from '../../sections'
 
-const Page = ({ url }) =>
+export default ({ url, state: { seed } }) =>
   <Layout url={url}>
-    <Article><Api /></Article>
+    <Article><Api seed={seed} /></Article>
   </Layout>
-
-export default state(Page)

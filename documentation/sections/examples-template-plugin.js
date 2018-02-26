@@ -1,9 +1,8 @@
-import { injectState } from 'freactal'
 import _ from 'lodash'
 
 import { Sample, fiona } from '../app/'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h3>Template Plugin</h3>
 
@@ -17,7 +16,7 @@ const Section = ({ state: { seed } }) =>
       return _.template(templateString)(this.value())
     }
 
-    fiona().chain({
+    fiona(${seed}).chain({
         name: ({ seeded }) => seeded.name(),
         color: ({ seeded }) => seeded.oneOf(['red', 'orange', 'yellow', 'green', 'blue'])
     }).template\`Hi <%= name %>,
@@ -52,7 +51,6 @@ const Section = ({ state: { seed } }) =>
     } />
 
     <div className='clearfix' />
-
   </section>
 
-export default injectState(Section)
+export default Section
