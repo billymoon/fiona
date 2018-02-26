@@ -25,7 +25,8 @@ export default {
     },
     fontFamily: 'helvetica, tahoma, verdana, sans-serif',
     grid: {
-      unit: 10
+      unit: 10,
+      breakpoints: { xs: 0, sm: 768, md: 992, lg: 1200, xl: 1400, xxl: 1400 }
     }
   }
 }

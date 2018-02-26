@@ -35,7 +35,7 @@ export default injectState(({ input, output, title, state: { theme }, effects: {
         .clearfix {
           clear: both;
         }
-        @media screen (min-width: ${theme.grid.breakpoints.md}px) {
+        @media screen (min-width: ${theme.grid.breakpoints.lg}px) {
           .inner {
             width: 333.333333%;
           }

@@ -1,8 +1,8 @@
-import './fiona.regex'
-import './fiona.name'
-import './fiona.duplicable'
-import './fiona.bool'
-import './fiona.lorem'
-import './fiona.date'
-import './fiona.weighted'
-import './fiona.until'
+require('./fiona.regex')
+require('./fiona.name')
+require('./fiona.duplicable')
+require('./fiona.bool')
+require('./fiona.lorem')
+require('./fiona.date')
+require('./fiona.weighted')
+require('./fiona.until')
