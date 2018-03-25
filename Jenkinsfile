@@ -1,5 +1,9 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image "node:9-alpine"
+    }
+  }
 
   stages {
     stage ("init") {
