@@ -9,7 +9,7 @@ pipeline {
     stage ("init") {
       steps {
         sh "env"
-        sh "npm ci --production"
+        sh "npm i --production"
       }
     }
 
