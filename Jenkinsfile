@@ -9,14 +9,14 @@ pipeline {
     stage ("init") {
       steps {
         sh "env"
-        sh "npm i"
+        sh "npm ci --production"
       }
     }
 
     stage ("test") {
       steps {
         sh "npm test"
-        sh "npm test:coverage"
+        sh "npm run test:coverage"
       }
     }
   }
