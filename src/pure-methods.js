@@ -1,8 +1,8 @@
 //
 
-const number = function ({ max = 1e6, min = 0, precision = 0 } = {}) {
+const number = function ({ seeded }, { max = 1e6, min = 0, precision = 0 } = {}) {
   const multiplier = Math.pow(10, precision)
-  return Math.floor(((this.random() * (1 + max - min)) + min) * multiplier) / multiplier
+  return Math.floor(((seeded.random() * (1 + max - min)) + min) * multiplier) / multiplier
 }
 
 //
@@ -29,15 +29,15 @@ const chooser = (position, arr, weights) => {
   return index
 }
 
-const oneOf = function (arr, { weights = [] } = {}) {
-  return arr[chooser(this.random(), arr, weights)]
+const oneOf = function ({ seeded }, arr, { weights = [] } = {}) {
+  return arr[chooser(seeded.random(), arr, weights)]
 }
 
-const choose = function (qty, arr, { weights = [] } = {}) {
+const choose = function ({ seeded }, qty, arr, { weights = [] } = {}) {
   const myArr = arr.slice(0)
   const myWeightings = weights.slice(0)
   return Array(qty || 0).fill(null).map((v, i) => {
-    const index = chooser(this.random(), myArr, myWeightings)
+    const index = chooser(seeded.random(), myArr, myWeightings)
     const result = myArr[index]
     myArr[index] = myArr[0]
     myArr.shift()

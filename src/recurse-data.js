@@ -1,7 +1,7 @@
 const prng = require('./prng-xor')
 const { type } = require('./utils')
 
-module.exports = (fiona, initseed, self) => {
+module.exports = (fiona, initseed, seeded) => {
   const recurseData = (originalInput, position, currentInput, currentindex) => {
     if (currentInput === undefined) {
       currentInput = originalInput
@@ -37,7 +37,7 @@ module.exports = (fiona, initseed, self) => {
   }
 
   const handleFunction = (position, data) => ({
-    me: self,
+    me: seeded,
     pos: position,
     data,
     seeded: fiona(`${position}/${initseed}`, prng),

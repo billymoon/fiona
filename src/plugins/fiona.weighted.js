@@ -1,10 +1,10 @@
-const fiona = require('../')
-
 const bezierEasing = require('bezier-easing')
 
-const type = item => Object.prototype.toString.call(item).slice(8, -1)
+const fiona = require('../')
+const { type } = require('../utils')
 
-fiona.weighted = function (weighting, fn) {
+
+fiona.weighted = (weighting, fn) => {
   if (type(fn) === 'Array') {
     fiona.weighted[weighting] = bezierEasing.apply(null, fn)
   } else if (type(fn) === 'Function') {
@@ -25,6 +25,4 @@ fiona.weighted('high', [0, 1, 0, 1])
 fiona.weighted('extremes', [1, 0, 0, 1])
 fiona.weighted('tinyTop', [0.25, 1, 1, 0.5])
 
-fiona.fn.weighted = function (weighting) {
-  return this.weighting(fiona.weighted[weighting])
-}
+fiona.plugin('weighted', ({ seeded }, weighting) => seeded.weighting(fiona.weighted[weighting]))

@@ -83,5 +83,9 @@ fiona.version = '__VERSION__'
 // set up self referencial prototype chain with jQuery like plugin architecture
 fiona.fn = Moon.prototype = { constructor: Moon }
 
+fiona.plugin = (name, fn) => fiona.fn[name] = function (...args) { return fn({ seeded: this }, ...args) } 
+
+fiona.call = (cmd, ...args) => ({ seeded }) => seeded[cmd](...args)
+
 // export the main function
 module.exports = fiona

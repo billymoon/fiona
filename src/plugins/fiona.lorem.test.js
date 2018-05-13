@@ -15,6 +15,12 @@ test('fiona.fn.lorem (sometimes starts lorem ipsum)', () => {
   expect(fiona(7).lorem({ qty: 2 })).toBe('lorem ipsum proident id')
 })
 
+test('fiona.fn.word', () => {
+  expect(fiona(1).word()).toBe('velit')
+  expect(fiona(2).word()).toBe('eiusmod')
+  expect(fiona(3).word()).toBe('nulla')
+})
+
 test('fiona.fn.sentence', () => {
   expect(fiona(1).sentence()).toBe('Velit consectetur proident et ullamco exercitation deserunt culpa ut excepteur laboris ex nostrud in sit in aliqua ad commodo non mollit esse eiusmod enim occaecat sunt.')
 })

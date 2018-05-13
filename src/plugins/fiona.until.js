@@ -1,6 +1,6 @@
 const fiona = require('../')
 
-fiona.until = function (predicate, data, { startseed = 0, tries = 1e6 } = {}) {
+fiona.until = (predicate, data, { startseed = 0, tries = 1e6 } = {}) => {
   let seed = startseed
   let seeded
   do {

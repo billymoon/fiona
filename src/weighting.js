@@ -3,17 +3,17 @@ const { type } = require('./utils')
 // define default weighting method
 const defaultWeighting = i => i
 
-module.exports = self => {
+module.exports = seeded => {
   // define initial weighting to be default weighting
   let weighting = defaultWeighting
 
   return newVal => {
     if (type(newVal) === 'Function') {
       weighting = newVal
-      return self
+      return seeded
     } else if (newVal === null) {
       weighting = defaultWeighting
-      return self
+      return seeded
     } else {
       return weighting(newVal)
     }

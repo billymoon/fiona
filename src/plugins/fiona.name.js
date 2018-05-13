@@ -14,29 +14,29 @@ const data = {
 
 const getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male'))
 
-fiona.fn.gender = function () {
-  return this.random() < 0.5 ? 'male' : 'female'
-}
+fiona.plugin('gender', ({ seeded }) => {
+  return seeded.random() < 0.5 ? 'male' : 'female'
+})
 
-fiona.fn.title = function ({ gender } = {}) {
-  return this.oneOf(data[getGender(gender || this.gender())].title)
-}
+fiona.plugin('title', ({ seeded }, { gender } = {}) => {
+  return seeded.oneOf(data[getGender(gender || seeded.gender())].title)
+})
 
-fiona.fn.firstname = function ({ gender } = {}) {
-  return this.oneOf(data[getGender(gender || this.gender())].firstname)
-}
+fiona.plugin('firstname', ({ seeded }, { gender } = {}) => {
+  return seeded.oneOf(data[getGender(gender || seeded.gender())].firstname)
+})
 
-fiona.fn.firstnames = function ({ gender } = {}) {
-  return this.choose(this.clone().weighting(x => x * x * x).number({ min: 1, max: 3 }), data[getGender(gender || this.gender())].firstname).join(' ')
-}
+fiona.plugin('firstnames', ({ seeded }, { gender } = {}) => {
+  return seeded.choose(seeded.clone().weighting(x => x * x * x).number({ min: 1, max: 3 }), data[getGender(gender || seeded.gender())].firstname).join(' ')
+})
 
-fiona.fn.lastname = function () {
-  return this.choose(this.clone().weighting(x => x * x * x).number({ min: 1, max: 2 }), data.lastname).join(this.bool() ? ' ' : '-')
-}
+fiona.plugin('lastname', ({ seeded }) => {
+  return seeded.choose(seeded.clone().weighting(x => x * x * x).number({ min: 1, max: 2 }), data.lastname).join(seeded.bool() ? ' ' : '-')
+})
 
-fiona.fn.name = function ({ gender } = {}) {
-  const myGender = getGender(gender || this.gender())
-  return `${this.title({ gender: myGender })} ${this.firstnames({ gender: myGender })} ${this.lastname()}`
-}
+fiona.plugin('name', ({ seeded }, { gender } = {}) => {
+  const myGender = getGender(gender || seeded.gender())
+  return `${seeded.title({ gender: myGender })} ${seeded.firstnames({ gender: myGender })} ${seeded.lastname()}`
+})
 
 fiona.namedata = data

@@ -1,8 +1,8 @@
 const prng = require('./prng-xor')
 const { processSeed } = require('./utils')
 
-module.exports = (self, initseed) => {
-// initialise prng functions
+module.exports = (seeded, initseed) => {
+  // initialise prng functions
   const { reseed: prngReseed, getState, setState, random: prngRandom } = prng(0)
 
   // seed prng with initial seed
@@ -21,18 +21,18 @@ module.exports = (self, initseed) => {
       } else {
         setState(newVal)
       }
-      return self
+      return seeded
     }
   }
 
   // define prng reseed method
   const reseed = function (seed) {
     prngReseed(processSeed(seed === null ? initseed : seed))
-    return self
+    return seeded
   }
 
   // define random method based on weighted prng random function
-  const random = () => self.weighting(prngRandom())
+  const random = () => seeded.weighting(prngRandom())
 
   return {
     state,

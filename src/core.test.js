@@ -55,6 +55,31 @@ const fixture = {
     expect(baby.random()).toBe(fixture.RANDOM_2)
   })
 
+  test('fiona.call', () => {
+    const baby1 = fiona(1)
+    expect(baby1.data({
+      number: fiona.call('number')
+    })).toEqual({
+      number: 670802
+    })
+
+    const baby2 = fiona(1)
+    expect(baby2.data({
+      age: fiona.call('number', { min: 10, max: 100 })
+    })).toEqual({
+      age: 18
+    })
+
+    const baby3 = fiona(1)
+    expect(baby3.data({
+      number: fiona.call('number'),
+      age: fiona.call('number', { min: 10, max: 100 })
+    })).toEqual({
+      number: 670802,
+      age: 18
+    })
+  })
+
   test('fiona.fn.info', () => {
     const baby = fiona(1)
     expect(baby.info()).toEqual({
