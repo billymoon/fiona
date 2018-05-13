@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { injectState } from 'freactal'
+import { withTheme } from '../components/theme'
 
-const ButtonLink = injectState(({ href, selected, label, state: { theme }, ...props }) =>
+const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
   <div>
     <Link href={href}><a className={['action-button'].concat(selected ? ['selected'] : []).join(' ')}>{label}</a></Link>
     <style jsx>{`
@@ -19,7 +19,7 @@ const ButtonLink = injectState(({ href, selected, label, state: { theme }, ...pr
       border-radius: 10px;
       font-family: Tangerine, cursive;
       font-size: 25px;
-      text-decoration: none;  
+      text-decoration: none;
       color: ${theme.clr.primary};
       background-color: ${theme.clr.accent};
       border-bottom: 5px solid ${theme.clr.primary};
@@ -50,10 +50,9 @@ const ButtonLink = injectState(({ href, selected, label, state: { theme }, ...pr
 )
 
 // TODO: simpify and tidy this section, perhaps this whole nav file
-export default injectState(({ url, input, output, title, state: { theme }, effects: {}, children, ...props }) =>
+export default ({ url }) =>
   <div>
     <ButtonLink label='Overview' selected={url.pathname === '/'} href='/' />
     <ButtonLink label='API' selected={url.pathname === '/api'} href='/api' />
     <ButtonLink label='Examples' selected={url.pathname === '/examples'} href='/examples' />
   </div>
-)

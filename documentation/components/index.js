@@ -1,6 +1,5 @@
 export { isObject, mergeDeep } from './util'
-export { default as Config } from './config'
-export { default as Theme } from './theme'
+export { default as Theme, ThemeFactory, withTheme } from './theme'
 export { Container, Row, Col } from './grid'
 export { default as Shelf } from './shelf'
 export { default as Article } from './article'

@@ -1,11 +1,10 @@
 import Head from 'next/head'
-import { provideState, injectState } from 'freactal'
 
-import { Config, Theme, Ribbon, Article } from '../components'
+import { Theme, Ribbon, Article, withTheme } from '../components'
 import { Logo, Nav, fiona } from './'
-import defaultConfig from './config'
+import config from './config'
 
-const MainContent = injectState(({ url, state: { config, seed, theme }, children }) =>
+const MainContent = withTheme(({ url, seed, theme, children }) =>
   <section>
     <Ribbon url='https://github.com/billymoon/fiona' color={theme.clr.primary} breakAt768 />
     <Article style={{ textAlign: 'center' }}><Logo /></Article>
@@ -114,13 +113,8 @@ const MainContent = injectState(({ url, state: { config, seed, theme }, children
 )
 
 // TODO: simpify and tidy this section, perhaps this whole layout file
-export default provideState({
-  initialState: () => ({
-    auth: false,
-    config: defaultConfig
-  })
-})(injectState(({ url, state: { config, seed, theme }, children }) =>
-  <Config config={config}>
+export default ({ url, seed, children }) =>
+  <div>
     <Head>
       <title>Fiona</title>
       <meta charSet='UTF-8' />
@@ -130,15 +124,14 @@ export default provideState({
     </Head>
     <Theme.Dynamic config={seed % 2 ? {
       clr: {
-        primary: defaultConfig.theme.clr.secondary,
-        accent: defaultConfig.theme.clr.secondaryAccent,
-        secondary: defaultConfig.theme.clr.primary,
-        secondaryAccent: defaultConfig.theme.clr.accent
+        primary: config.theme.clr.secondary,
+        accent: config.theme.clr.secondaryAccent,
+        secondary: config.theme.clr.primary,
+        secondaryAccent: config.theme.clr.accent
       }
     } : {}}>
-      <MainContent url={url}>
+      <MainContent url={url} seed={seed}>
         {children}
       </MainContent>
     </Theme.Dynamic>
-  </Config>
-))
+  </div>

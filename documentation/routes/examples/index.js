@@ -8,7 +8,7 @@ import {
 } from '../../sections'
 
 export default ({ url, state: { seed } }) =>
-  <Layout url={url}>
+  <Layout url={url} seed={seed}>
     <Article><ExamplesIntro /></Article>
     <Article><ExamplesPretend seed={seed} /></Article>
     <Article><ExamplesTemplateString seed={seed} /></Article>

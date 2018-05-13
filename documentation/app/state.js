@@ -1,5 +1,7 @@
 import { provideState, injectState, update } from 'freactal'
 
+import config from './config'
+
 // const inject = Component => {
 //   return injectState(({ state, effects, ...props }) => {
 //     // console.log(state, props)
@@ -19,7 +21,8 @@ export const connect = (componentState, ComponentPure) => provideState(component
 // export { inject }
 
 const initialState = () => ({
-  seed: 952684
+  seed: 952684,
+  theme: config.theme
 })
 
 const effects = {

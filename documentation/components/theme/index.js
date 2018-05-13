@@ -1,4 +1,4 @@
-import { provideState } from 'freactal'
+import { provideState, injectState } from 'freactal'
 
 import { mergeDeep } from '..'
 
@@ -28,3 +28,5 @@ const Dynamic = ({ config, ...props }) => {
 }
 
 export default { Dynamic, Default, Light, Dark }
+
+export const withTheme = Component => injectState(({ state, ...props }) => <Component theme={state.theme} state={state} {...props} />)
