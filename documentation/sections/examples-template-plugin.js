@@ -9,12 +9,12 @@ const Section = ({ seed }) =>
     <p>To build a custom template plugin, you could use any template language. This example uses a lodash template.</p>
 
     <Sample input={`
-    fiona.fn.template = function (template, ...args) {
+    fiona.plugin('template', ({ seeded }, template, ...args) => {
       const templateString = template.reduce((a, b) => a + args.shift().toString() + b)
       // assuming lodash is loaded
       // render template with values
-      return _.template(templateString)(this.value())
-    }
+      return _.template(templateString)(seeded.value())
+    })
 
     fiona(${seed}).chain({
         name: ({ seeded }) => seeded.name(),
@@ -28,16 +28,16 @@ const Section = ({ seed }) =>
     Fiona
     x x x\`
     `} output={
-    fiona.fn.template = function (template, ...args) {
+    fiona.plugin('template', ({ seeded }, template, ...args) => {
       const templateString = template.reduce((a, b) => a + args.shift().toString() + b)
       // assuming lodash is loaded
       // render template with values
-      return _.template(templateString)(this.value())
-    },
+      return _.template(templateString)(seeded.value())
+    }),
 
     fiona(seed).chain({
-      name: ({ seeded }) => seeded.name(),
-      color: ({ seeded }) => seeded.oneOf(['red', 'orange', 'yellow', 'green', 'blue'])
+      name: fiona.call('name'),
+      color: fiona.call('oneOf', ['red', 'orange', 'yellow', 'green', 'blue'])
     }).template`
     Hi <%= name %>,
 

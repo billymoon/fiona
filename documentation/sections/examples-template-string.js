@@ -8,10 +8,10 @@ const Section = ({ seed }) =>
 
     <Sample input={`
     const data = fiona(${seed}).data({
-      name: ({ seeded }) => seeded.name(),
-      age: ({ seeded }) => seeded.number({ max: 100 }),
+      name: fiona.call('name'),
+      age: fiona.call('number', { max: 100 }),
       playThing: ({ data }) => data.age < 5 ? 'cuddly toys' : 'friends',
-      sentences: ({ seeded, arr }) => arr(seeded.number({ min: 1, max: 5 }), ({ seeded }) => seeded.sentence())
+      sentences: ({ seeded, arr }) => arr(seeded.number({ min: 1, max: 5 }), fiona.call('sentence'))
     })
 
     const templateFunction = d => \`Dear \${d.name},
@@ -38,10 +38,10 @@ const Section = ({ seed }) =>
     Fiona
     x x x
     `)(fiona(seed).data({
-      name: ({ seeded }) => seeded.name(),
-      age: ({ seeded }) => seeded.number({ max: 100 }),
+      name: fiona.call('name'),
+      age: fiona.call('number', { max: 100 }),
       playThing: ({ data }) => data.age < 5 ? 'cuddly toys' : 'friends',
-      sentences: ({ seeded, arr }) => arr(seeded.number({ min: 1, max: 5 }), ({ seeded }) => seeded.sentence())
+      sentences: ({ seeded, arr }) => arr(seeded.number({ min: 1, max: 5 }), fiona.call('sentence'))
     }))
     }`} />
 

@@ -54,6 +54,15 @@ const Section = ({ seed }) =>
     ${fiona(seed).bool()}
     `} />
 
+    {/* TODO: write up api docs for fiona.plugin and fiona.call */}
+    <h3><small>fiona.</small>plugin</h3>
+
+    <p>See Plugins section in <a href='/'>Overview</a></p>
+
+    <h3><small>fiona.</small>call</h3>
+
+    <p>See Quickstart section in <a href='/'>Overview</a></p>
+
     <h3><small>fiona.fn.</small>date</h3>
 
     <p>A seeded utility to return a date as a string in format `YYYY-MM-DD`. Range is between `min` and `max` options, which default to 1940 and 2000 and can be overridden with strings parsable by the native `Date()` method. There is also a `long` to output full `Date.prototype.toISOString` format.</p>
@@ -206,6 +215,16 @@ const Section = ({ seed }) =>
     ${fiona(seed).lorem({ qty: 3 })}
 
     ${fiona(seed).lorem({ qty: 50 })}
+    `} />
+
+    <h3><small>fiona.fn.</small>word</h3>
+
+    <p>A seeded utility to return a single word from lorem ipsum text.</p>
+
+    <Sample input={`
+    fiona(${seed}).word()
+    `} output={`
+    ${fiona(seed).word()}
     `} />
 
     <h3><small>fiona.fn.</small>sentence</h3>

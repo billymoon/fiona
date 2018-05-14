@@ -4,14 +4,18 @@ const Section = ({ seed }) =>
   <section>
     <h3>Mocking `fetch` with Fetch Pretender</h3>
 
-    <p>Assuming some kind of setup code loading <a href='https://github.com/sstur/fetch-pretender'>Fetch Pretender</a> and defining a mock server like this...</p>
+    <p>Assuming some kind of setup code loading <a href='https://github.com/sstur/fetch-pretender'>Fetch Pretender</a></p>
 
     <Sample>{`
     // Load a copy of \`fetch-pretender\`
     const fetchPretenderScript = document.createElement('script')
     fetchPretenderScript.src = 'https://cdn.rawgit.com/billymoon/fiona/efba8e0/documentation/lib/pretender.js'
     document.head.appendChild(fetchPretenderScript)
+    `}</Sample>
+
+    <p>You can define a mock server like this...</p>
     
+    <Sample>{`
     const pretender = new Pretender()
 
     const modelMock = seed => fiona(seed).data({

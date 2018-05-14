@@ -21,12 +21,12 @@ const Section = ({ seed }) =>
     <p>It becomes more useful when creating data structures.</p>
 
     <Sample input={`
-    const ibanregex = /[A-Z]{2}\\d{2}( \\d{4}){4,5} \\d{1,3}/
+    const iban = /[A-Z]{2}\\d{2}( \\d{4}){4,5} \\d{1,3}/
 
     fiona(${seed}).data({
       age: ({ seeded }) => seeded.number({ max: 100 }),
       name: ({ seeded }) => seeded.name(),
-      iban: ({ seeded }) => seeded.regex(ibanregex),
+      iban: ({ seeded }) => seeded.regex(iban),
       favouriteColour: ({ seeded }) => seeded.oneOf([
         'red',
         'yellow',
@@ -38,6 +38,32 @@ const Section = ({ seed }) =>
       name: ({ seeded }) => seeded.name(),
       iban: ({ seeded }) => seeded.regex(/[A-Z]{2}\d{2}( \d{4}){4,5} \d{0,3}/),
       favouriteColour: ({ seeded }) => seeded.oneOf(['red', 'yellow', 'blue'])
+    }), null, 2)}`} />
+
+    <p>By using plugins, and <code>{`fiona.call`}</code> to architect your data, the defenitions become very re-usable, terse and readable.</p>
+
+    <Sample>{`
+    const iban = /[A-Z]{2}\\d{2}( \\d{4}){4,5} \\d{1,3}/
+
+    const colorChooser = fiona.call('oneOf', [
+      'red',
+      'yellow',
+      'blue'
+    ])
+    `}</Sample>
+
+    <Sample input={`
+    fiona(${seed}).data({
+      age: fiona.call('number', { max: 100 }),
+      name: fiona.call('name'),
+      iban: fiona.call('regex', iban),
+      favouriteColour: colorChooser
+    })
+    `} output={`\n${JSON.stringify(fiona(seed).data({
+      age: fiona.call('number', { max: 100 }),
+      name: fiona.call('name'),
+      iban: fiona.call('regex', /[A-Z]{2}\d{2}( \d{4}){4,5} \d{0,3}/),
+      favouriteColour: fiona.call('oneOf', ['red', 'yellow', 'blue'])
     }), null, 2)}`} />
   </section>
 
