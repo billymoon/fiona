@@ -1,4 +1,4 @@
-import { Sample } from '../app/'
+import { Sample } from '../components/'
 
 const Section = ({ seed }) =>
   <section>

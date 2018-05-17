@@ -1,6 +1,6 @@
 {
   "name": "fiona",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
   "main": "fiona.js",
@@ -18,21 +18,17 @@
   "devDependencies": {
     "babel-minify-webpack-plugin": "^0.2.0",
     "babel-plugin-styled-components": "^1.2.0",
+    "bezier-easing": "^2.0.3",
     "fetch-pretender": "^1.5.0",
+    "freactal": "^1.1.1",
     "jest": "^21.2.1",
-    "next": "^5.0.0",
+    "lodash": "^4.17.5",
+    "next": "^6.0.2",
     "randexp": "^0.4.6",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "rollup": "^0.51.8",
     "styled-components": "^2.1.2",
     "webpack": "^3.6.0"
-  },
-  "dependencies": {
-    "bezier-easing": "^2.0.3",
-    "freactal": "^1.1.1",
-    "lodash": "^4.17.5",
-    "sentencer": "^0.1.5"
   },
   "jest": {
     "collectCoverageFrom": [

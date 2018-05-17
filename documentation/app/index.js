@@ -1,7 +1,6 @@
 export { default as config } from './config'
 export { default as fiona } from './fiona-loader'
 export { default as Layout } from './layout'
-export { default as Sample } from './sample'
 export { default as Logo } from './logo'
 export { default as Nav } from './nav'
-export { default as state, inject } from './state'
+export { default as state, inject, withState } from './state'

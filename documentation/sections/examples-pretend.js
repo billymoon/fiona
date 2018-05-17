@@ -1,4 +1,24 @@
-import { Sample, fiona } from '../app/'
+import { fiona } from '../app/'
+import { Sample } from '../components/'
+import Pretender from 'fetch-pretender'
+
+if (process.browser) {
+  window.Pretender = Pretender
+}
+
+const pretender = new Pretender()
+
+const modelMock = seed => fiona(seed).data({
+  name: ({ seeded }) => seeded.name(),
+  color: ({ seeded }) => seeded.oneOf(['red', 'yellow', 'blue']),
+  age: ({ seeded }) => seeded.number({ max: 100 })
+})
+
+pretender.get('/user/:id', request => [
+  200,
+  { 'Content-Type': 'application/json' },
+  JSON.stringify(modelMock(request.params.id))
+]) 
 
 const Section = ({ seed }) =>
   <section>
@@ -9,7 +29,7 @@ const Section = ({ seed }) =>
     <Sample>{`
     // Load a copy of \`fetch-pretender\`
     const fetchPretenderScript = document.createElement('script')
-    fetchPretenderScript.src = 'https://cdn.rawgit.com/billymoon/fiona/efba8e0/documentation/lib/pretender.js'
+    fetchPretenderScript.src = 'https://cdn.rawgit.com/billymoon/fetch-pretender/master/dist/pretender.js'
     document.head.appendChild(fetchPretenderScript)
     `}</Sample>
 

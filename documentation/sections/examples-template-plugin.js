@@ -1,6 +1,7 @@
 import _ from 'lodash'
 
-import { Sample, fiona } from '../app/'
+import { fiona } from '../app/'
+import { Sample } from '../components/'
 
 const Section = ({ seed }) =>
   <section>

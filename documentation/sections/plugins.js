@@ -1,4 +1,4 @@
-import { Sample } from '../app/'
+import { Sample } from '../components/'
 
 // TODO: make samples render real values
 const Section = ({ seed }) =>

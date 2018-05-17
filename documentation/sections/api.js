@@ -1,6 +1,7 @@
-import { Sample, fiona } from '../app/'
+import { fiona } from '../app/'
+import { Sample } from '../components/'
 
-// TODO reseed, clone, callback, data, info, chain, value, state
+// TODO document api for: reseed, clone, callback, data, info, chain, value, json, state, plugin, call
 
 const Section = ({ seed }) =>
   <section>
@@ -54,7 +55,6 @@ const Section = ({ seed }) =>
     ${fiona(seed).bool()}
     `} />
 
-    {/* TODO: write up api docs for fiona.plugin and fiona.call */}
     <h3><small>fiona.</small>plugin</h3>
 
     <p>See Plugins section in <a href='/'>Overview</a></p>
