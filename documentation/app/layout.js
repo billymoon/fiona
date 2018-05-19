@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import { Theme, Ribbon, Article, withTheme } from '../components'
-import { Logo, Nav, fiona } from './'
+import { Logo, Nav, fiona, injectState } from './'
 import config from './config'
 
 const MainContent = withTheme(({ url, seed, theme, children }) =>
@@ -113,7 +113,7 @@ const MainContent = withTheme(({ url, seed, theme, children }) =>
 )
 
 // TODO: simpify and tidy this section, perhaps this whole layout file
-export default ({ url, seed, children }) =>
+const MainLayout = ({ url, state: { seed }, children }) =>
   <div>
     <Head>
       <title>Fiona</title>
@@ -135,3 +135,5 @@ export default ({ url, seed, children }) =>
       </MainContent>
     </Theme.Dynamic>
   </div>
+
+export default injectState(MainLayout)

@@ -8,13 +8,13 @@ import {
   ExamplesExpressMock
 } from '../../documentation/sections'
 
-const Page = ({ url, state: { seed } }) =>
-  <Layout url={url} seed={seed}>
+const Page = ({ url }) =>
+  <Layout url={url}>
     <Article><ExamplesIntro /></Article>
-    <Article><ExamplesPretend seed={seed} /></Article>
-    <Article><ExamplesExpressMock seed={seed} /></Article>
-    <Article><ExamplesTemplateString seed={seed} /></Article>
-    <Article><ExamplesTemplatePlugin seed={seed} /></Article>
+    <Article><ExamplesPretend /></Article>
+    <Article><ExamplesExpressMock /></Article>
+    <Article><ExamplesTemplateString /></Article>
+    <Article><ExamplesTemplatePlugin /></Article>
   </Layout>
 
 

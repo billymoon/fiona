@@ -1,38 +1,9 @@
-import ReactDOM from 'react-dom'
-import { fiona } from '../app/'
-import { Sample } from '../components/'
+import { fiona, injectState, ApiSection } from '../app'
+import { Sample } from '../components'
 
 // TODO document api for: reseed, clone, callback, data, info, chain, value, json, state, plugin, call
-
-const extractText = component => component.props.children
-
-const register = (() => {
-  const things = []
-  return heading => {
-    things.push(extractText(heading))
-    console.log(things)
-    return heading
-  }
-})()
-
-
-const ApiSection = ({ heading, children, ...props }) =>
-    <section {...props}>
-        <h3>{register(heading)}</h3>
-        {children}
-    </section>
-
-const Section = ({ seed }) =>
-  <>
-    <section>
-      <h2>API</h2>
-
-      <p>Fiona has a jQuery like plugin architecture where methods are attached to `fiona.fn` to operate on an instance, and directly on `fiona` when used as utility.</p>
-
-      <p>For demonstration purposes, a seed of `24` is used, but changing this should render different, but consistent results.</p>
-
-    </section>
-
+const Section = ({ state: { seed } }) =>
+  <section>
     <ApiSection heading={<><small>fiona.fn.</small>random</>}>
       <p>Seeded version of native `Math.random` method.</p>
 
@@ -346,6 +317,6 @@ const Section = ({ seed }) =>
       ${fiona(seed).weighted('clamp').number({ max: 100 })}
       `} /> 
     </ApiSection>
-  </>
+  </section>
 
-export default Section
+export default injectState(Section)

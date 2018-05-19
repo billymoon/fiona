@@ -1,5 +1,5 @@
-import { fiona } from '../app/'
-import { Sample } from '../components/'
+import { fiona, injectState } from '../app'
+import { Sample } from '../components'
 import Pretender from 'fetch-pretender'
 
 if (process.browser) {
@@ -20,7 +20,7 @@ pretender.get('/user/:id', request => [
   JSON.stringify(modelMock(request.params.id))
 ]) 
 
-const Section = ({ seed }) =>
+const Section = ({ state: { seed } }) =>
   <section>
     <h3>Mocking `fetch` with Fetch Pretender</h3>
 
@@ -66,4 +66,4 @@ const Section = ({ seed }) =>
     <div className='clearfix' />
   </section>
 
-export default Section
+export default injectState(Section)

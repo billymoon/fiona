@@ -1,10 +1,18 @@
 import { withState, Layout } from '../../documentation/app'
 import { Article } from '../../documentation/components'
-import { Api } from '../../documentation/sections'
+import {
+  Api,
+  ApiSearch,
+  ApiOverview
+} from '../../documentation/sections'
 
-const Page = ({ url, state: { seed } }) =>
-  <Layout url={url} seed={seed}>
-    <Article><Api seed={seed} /></Article>
+const Page = ({ url }) =>
+  <Layout url={url}>
+    <Article>
+      <ApiOverview />
+      <ApiSearch />
+      <Api />
+    </Article>
   </Layout>
 
 export default withState(Page)

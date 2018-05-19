@@ -9,14 +9,14 @@ import {
   Plugins
 } from '../documentation/sections'
 
-const Page = ({ url, state: { seed } }) =>
-  <Layout url={url} seed={seed}>
-    <Article><DynamicOverview seed={seed} /></Article>
-    <Article><QuickStart seed={seed} /></Article>
-    <Article><SeededPRNG seed={seed} /></Article>
-    <Article><Weighting seed={seed} /></Article>
-    <Article><ChainedDataBuilder seed={seed} /></Article>
-    <Article><Plugins seed={seed} /></Article>
+const Page = ({ url }) =>
+  <Layout url={url}>
+    <Article><DynamicOverview /></Article>
+    <Article><QuickStart /></Article>
+    <Article><SeededPRNG /></Article>
+    <Article><Weighting /></Article>
+    <Article><ChainedDataBuilder /></Article>
+    <Article><Plugins /></Article>
   </Layout>
 
 
