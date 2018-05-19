@@ -1,7 +1,7 @@
-import { fiona } from '../app/'
-import { Sample } from '../components/'
+import { Sample } from '../components'
+import { fiona, injectState } from '../app'
 
-const Section = ({ seed }) =>
+const Section = ({ state: { seed } }) =>
   <section>
     <h2>Quickstart...</h2>
 
@@ -68,4 +68,4 @@ const Section = ({ seed }) =>
     }), null, 2)}`} />
   </section>
 
-export default Section
+export default injectState(Section)

@@ -1,7 +1,8 @@
-import { Sample } from '../components/'
+import { Sample } from '../components'
+import { fiona, injectState } from '../app'
 
 // TODO: make samples render real values
-const Section = ({ seed }) =>
+const Section = ({ state: { seed } }) =>
   <section>
     <h2>Plugins</h2>
 
@@ -56,4 +57,4 @@ const Section = ({ seed }) =>
     `}</Sample>
   </section>
 
-export default Section
+export default injectState(Section)

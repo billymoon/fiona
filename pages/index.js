@@ -1,22 +1,22 @@
 import { withState, Layout } from '../documentation/app'
 import { Article } from '../documentation/components'
 import {
-  DynamicOverview,
-  QuickStart,
-  SeededPRNG,
-  Weighting,
-  ChainedDataBuilder,
-  Plugins
+  OverviewDynamicOverview,
+  OverviewQuickStart,
+  OverviewSeededPRNG,
+  OverviewWeighting,
+  OverviewChainedDataBuilder,
+  OverviewPlugins
 } from '../documentation/sections'
 
-const Page = ({ url, state: { seed } }) =>
-  <Layout url={url} seed={seed}>
-    <Article><DynamicOverview seed={seed} /></Article>
-    <Article><QuickStart seed={seed} /></Article>
-    <Article><SeededPRNG seed={seed} /></Article>
-    <Article><Weighting seed={seed} /></Article>
-    <Article><ChainedDataBuilder seed={seed} /></Article>
-    <Article><Plugins seed={seed} /></Article>
+const Page = ({ url }) =>
+  <Layout url={url}>
+    <Article><OverviewDynamicOverview /></Article>
+    <Article><OverviewQuickStart /></Article>
+    <Article><OverviewSeededPRNG /></Article>
+    <Article><OverviewWeighting /></Article>
+    <Article><OverviewChainedDataBuilder /></Article>
+    <Article><OverviewPlugins /></Article>
   </Layout>
 
 

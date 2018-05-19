@@ -1,7 +1,7 @@
-import { fiona } from '../app/'
-import { Sample } from '../components/'
+import { Sample } from '../components'
+import { fiona, injectState } from '../app'
 
-const Section = ({ seed }) =>
+const Section = ({ state: { seed } }) =>
   <section>
     <h2>Weighting</h2>
 
@@ -77,4 +77,4 @@ const Section = ({ seed }) =>
     <div className='clearfix' />
   </section>
 
-export default Section
+export default injectState(Section)
