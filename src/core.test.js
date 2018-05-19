@@ -2,6 +2,8 @@
 
 const fionaCore = require('./core')
 const fiona = require('./')
+const fionaCompiled = require('../fiona.core')
+const fionaCoreCompiled = require('../fiona')
 
 const fixture = {
   RANDOM_1: 0.4583325853842928,
@@ -13,7 +15,7 @@ const fixture = {
   RANDOM_7: 0.21006875882505002
 };
 
-[fionaCore, fiona].forEach(fiona => {
+[fionaCore, fiona, fionaCompiled, fionaCoreCompiled].forEach(fiona => {
   const Girlnames = ['Mia', 'Alice', 'Fiona', 'Aria', 'Sarah']
   const Boynames = ['David', 'Maxwell', 'Christopher', 'John', 'Billy']
   const Surnames = ['Moon', 'Bell', 'Miller', 'Smith', 'Jones']
