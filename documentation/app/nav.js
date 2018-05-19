@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next/prefetch'
 import { withTheme } from '../components/theme'
 
 const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
