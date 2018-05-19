@@ -1,3 +1,4 @@
+const packageJson = require('../package')
 const RecurseData = require('./recurse-data')
 const Weighting = require('./weighting')
 const PrngMethods = require('./prng-methods')
@@ -76,9 +77,8 @@ function Moon (seedin) {
 // define main function
 const fiona = (...args) => new Moon(...args)
 
-// TODO: add some babel replace function to update version string
-// define library version
-fiona.version = '__VERSION__'
+// TODO: don't reuquire whole package json just to get version string
+fiona.version = packageJson.version
 
 // set up self referencial prototype chain with jQuery like plugin architecture
 fiona.fn = Moon.prototype = { constructor: Moon }
