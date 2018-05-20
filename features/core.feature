@@ -3,6 +3,11 @@ Feature: Core functionality
   As a developer
   I want to use core features of fiona
 
+  Scenario: test fixtures for fiona.fn.number
+    Given fixture is loaded
+    When every fixture is iterated
+    Then the result should match the fixtures
+
   Scenario Outline: use fiona.fn.number to get repeatable whole numbers
     Given fiona is seeded with <seed>
     When the "number" method is called

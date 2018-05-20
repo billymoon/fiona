@@ -3,6 +3,21 @@ const expect = require('expect')
 
 const fixtures = require('./fixtures')
 
+Given('fixture is loaded', function () {
+  this.fixtures = fixtures
+})
+
+When('every fixture is iterated', function () {
+  Object.keys(this.fixtures).forEach(key => {
+    const value = this.fixtures[key]
+    console.log(key, value)
+  })
+})
+
+Then('the result should match the fixtures', function () {
+  console.log(this.fixtures)
+})
+
 Given('fiona is seeded with {string}', function (seedname) {
   this.loadFiona(seedname)
 })
