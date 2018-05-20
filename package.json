@@ -11,13 +11,16 @@
     "docs:build": "next build && next export -o docs",
     "docs:deploy": "cd docs && now",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:acceptance": "mkdir -p docs/reports/cucumber; cucumber-js -f json:docs/reports/cucumber/report.json -f progress && node scripts/cucumber-html-report"
   },
   "author": "Billy Moon",
   "license": "ISC",
   "devDependencies": {
     "babel-plugin-styled-components": "^1.2.0",
     "bezier-easing": "^2.0.3",
+    "cucumber": "^4.2.1",
+    "cucumber-html-reporter": "^4.0.2",
     "fetch-pretender": "^1.5.0",
     "freactal": "^2.0.3",
     "jest": "^22.4.4",
@@ -33,6 +36,7 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.js"
-    ]
+    ],
+    "coverageDirectory": "docs/reports/coverage"
   }
 }
