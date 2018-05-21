@@ -5,6 +5,10 @@ const fiona = require('./')
 const fionaCompiled = require('../fiona.core')
 const fionaCoreCompiled = require('../fiona')
 
+require('./plugins/number/fiona.number')
+require('./plugins/choose/fiona.choose-oneof')
+require('./plugins/choose/fiona.choose')
+
 const fixture = {
   RANDOM_1: 0.4583325853842928,
   RANDOM_2: 0.5661969359806724,
