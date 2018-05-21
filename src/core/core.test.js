@@ -1,13 +1,13 @@
 /* global test,expect */
 
 const fionaCore = require('./core')
-const fiona = require('./')
-const fionaCompiled = require('../fiona.core')
-const fionaCoreCompiled = require('../fiona')
+const fiona = require('../')
+const fionaCompiled = require('../../fiona.core')
+const fionaCoreCompiled = require('../../fiona')
 
-require('./plugins/number/fiona.number')
-require('./plugins/choose/fiona.choose-oneof')
-require('./plugins/choose/fiona.choose')
+require('../plugins/number/fiona.number')
+require('../plugins/choose/fiona.choose-oneof')
+require('../plugins/choose/fiona.choose')
 
 const fixture = {
   RANDOM_1: 0.4583325853842928,

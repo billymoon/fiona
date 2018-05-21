@@ -5,9 +5,9 @@ import {
   ApiSearch
 } from '../../documentation/sections'
 import ApiFnBool from '../../src/plugins/bool/fiona.bool.docs'
-import ApiFnCall from '../../src/core-call.docs'
-import ApiFnPlugin from '../../src/core-plugin.docs'
-import ApiFnRandom from '../../src/core-random.docs'
+import ApiFnCall from '../../src/core/core-call.docs'
+import ApiFnPlugin from '../../src/core/core-plugin.docs'
+import ApiFnRandom from '../../src/core/core-random.docs'
 import ApiFnChoose from '../../src/plugins/choose/fiona.choose.docs'
 import ApiFnOneof from '../../src/plugins/choose/fiona.choose-oneof.docs'
 import ApiFnDate from '../../src/plugins/date/fiona.date.docs'

@@ -1,8 +1,8 @@
-const packageJson = require('../package')
+const packageJson = require('../../package')
 const RecurseData = require('./recurse-data')
 const Weighting = require('./weighting')
 const PrngMethods = require('./prng-methods')
-const { type } = require('./utils')
+const { type } = require('../utils')
 
 // define main constructor function
 function Moon (seedin) {

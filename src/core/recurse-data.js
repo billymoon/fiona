@@ -1,5 +1,5 @@
 const prng = require('./prng-xor')
-const { type } = require('./utils')
+const { type } = require('../utils')
 
 module.exports = (fiona, initseed, seeded) => {
   const recurseData = (originalInput, position, currentInput, currentindex) => {

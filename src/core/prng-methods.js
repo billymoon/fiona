@@ -1,5 +1,5 @@
 const prng = require('./prng-xor')
-const { processSeed } = require('./utils')
+const processSeed = require('./process-seed')
 
 module.exports = (seeded, initseed) => {
   // initialise prng functions

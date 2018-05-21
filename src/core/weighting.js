@@ -1,4 +1,4 @@
-const { type } = require('./utils')
+const { type } = require('../utils')
 
 // define default weighting method
 const defaultWeighting = i => i
