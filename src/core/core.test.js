@@ -2,12 +2,16 @@
 
 const fionaCore = require('./core')
 const fiona = require('../')
-const fionaCompiled = require('../../fiona.core')
-const fionaCoreCompiled = require('../../fiona')
+const fionaCompiled = require('../../fiona')
+const fionaCoreCompiled = require('../../fiona.core')
 
+// TODO: move tests for number/oneOf/choose to plugins
 require('../plugins/number/fiona.number')
 require('../plugins/choose/fiona.choose-oneof')
 require('../plugins/choose/fiona.choose')
+fionaCoreCompiled.fn.number = fiona.fn.number
+fionaCoreCompiled.fn.oneOf = fiona.fn.oneOf
+fionaCoreCompiled.fn.choose = fiona.fn.choose
 
 const fixture = {
   RANDOM_1: 0.4583325853842928,
@@ -279,12 +283,12 @@ const fixture = {
     expect(data).toEqual([719007, 195079])
   })
 
-  test('fiona.data (unknown)', () => {
+  test('fiona.fn.data (unknown)', () => {
     expect(fiona('moon').data(123)).toEqual(123)
     expect(fiona('moon').data(/asdasd/)).toEqual(/asdasd/)
   })
 
-  test('fiona.state', () => {
+  test('fiona.fn.state', () => {
     const seeded = fiona('moon')
     expect(seeded.number()).toBe(512979)
     const state = seeded.state()

@@ -20,6 +20,8 @@ pretender.get('/user/:id', request => [
   JSON.stringify(modelMock(request.params.id))
 ]) 
 
+pretender.get('/*all', pretender.passthrough)
+
 const Section = ({ state: { seed } }) =>
   <section>
     <h3>Mocking `fetch` with Fetch Pretender</h3>

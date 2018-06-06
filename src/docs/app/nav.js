@@ -1,9 +1,10 @@
-import Link from 'next/prefetch'
+import Link from 'next/link'
 import { withTheme } from '../components/theme'
+import { withRouter } from 'next/router'
 
 const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
   <div>
-    <Link href={href}><a className={['action-button'].concat(selected ? ['selected'] : []).join(' ')}>{label}</a></Link>
+    <Link prefetch href={href}><a className={['action-button'].concat(selected ? ['selected'] : []).join(' ')}>{label}</a></Link>
     <style jsx>{`
     .animate {
       transition: all 0.05s;
@@ -50,9 +51,11 @@ const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
 )
 
 // TODO: simpify and tidy this section, perhaps this whole nav file
-export default ({ url }) =>
+const Nav = ({ router }) =>
   <div>
-    <ButtonLink label='Overview' selected={url.pathname === '/'} href='/' />
-    <ButtonLink label='API' selected={url.pathname === '/api'} href='/api' />
-    <ButtonLink label='Examples' selected={url.pathname === '/examples'} href='/examples' />
+    <ButtonLink label='Overview' selected={router.pathname === '/'} href='/' />
+    <ButtonLink label='API' selected={router.pathname === '/api'} href='/api' />
+    <ButtonLink label='Examples' selected={router.pathname === '/examples'} href='/examples' />
   </div>
+
+export default withRouter(Nav)

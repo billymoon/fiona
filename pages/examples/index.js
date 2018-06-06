@@ -1,15 +1,15 @@
-import { withState, Layout } from '../../documentation/app'
-import { Article } from '../../documentation/components'
+import { withState, Layout } from '../../src/docs/app'
+import { Article } from '../../src/docs/components'
 import {
   ExamplesIntro,
   ExamplesTemplateString,
   ExamplesTemplatePlugin,
   ExamplesPretend,
   ExamplesExpressMock
-} from '../../documentation/sections'
+} from '../../src/docs/sections'
 
-const Page = ({ url }) =>
-  <Layout url={url}>
+const Page = () =>
+  <Layout>
     <Article><ExamplesIntro /></Article>
     <Article><ExamplesPretend /></Article>
     <Article><ExamplesExpressMock /></Article>

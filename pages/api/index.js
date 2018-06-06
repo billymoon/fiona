@@ -1,9 +1,9 @@
-import { withState, Layout } from '../../documentation/app'
-import { Article } from '../../documentation/components'
+import { withState, Layout } from '../../src/docs/app'
+import { Article } from '../../src/docs/components'
 import {
   ApiOverview,
   ApiSearch
-} from '../../documentation/sections'
+} from '../../src/docs/sections'
 import ApiFnBool from '../../src/plugins/bool/fiona.bool.docs'
 import ApiFnCall from '../../src/core/core-call.docs'
 import ApiFnPlugin from '../../src/core/core-plugin.docs'
@@ -28,8 +28,8 @@ import ApiFnWeighted from '../../src/plugins/weighted/fiona.weighted.docs'
 import ApiFnNumber from '../../src/plugins/number/fiona.number.docs'
 
 // TODO document api for: reseed, clone, callback, data, info, chain, value, json, state, plugin, call
-const Page = ({ url }) =>
-  <Layout url={url}>
+const Page = () =>
+  <Layout>
     <Article>
       <ApiOverview />
       <ApiSearch />

@@ -1,5 +1,5 @@
-import { fiona, injectState, ApiSection } from '../../../documentation/app'
-import { Sample } from '../../../documentation/components'
+import { fiona, injectState, ApiSection } from '../../docs/app'
+import { Sample } from '../../docs/components'
 
 const Section = ({ state: { seed } }) =>
   <ApiSection heading={<><small>fiona.fn.</small>lorem</>}>

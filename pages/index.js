@@ -1,5 +1,5 @@
-import { withState, Layout } from '../documentation/app'
-import { Article } from '../documentation/components'
+import { withState, Layout } from '../src/docs/app'
+import { Article } from '../src/docs/components'
 import {
   OverviewDynamicOverview,
   OverviewQuickStart,
@@ -7,10 +7,10 @@ import {
   OverviewWeighting,
   OverviewChainedDataBuilder,
   OverviewPlugins
-} from '../documentation/sections'
+} from '../src/docs/sections'
 
-const Page = ({ url }) =>
-  <Layout url={url}>
+const Page = () =>
+  <Layout>
     <Article><OverviewDynamicOverview /></Article>
     <Article><OverviewQuickStart /></Article>
     <Article><OverviewSeededPRNG /></Article>

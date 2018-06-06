@@ -1,15 +1,16 @@
 import Head from 'next/head'
+import { withRouter } from 'next/router'
 
 import { Theme, Ribbon, Article, withTheme } from '../components'
 import { Logo, Nav, fiona, injectState } from './'
 import config from './config'
 
-const MainContent = withTheme(({ url, seed, theme, children }) =>
+const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
   <section>
-    <Ribbon url='https://github.com/billymoon/fiona' color={theme.clr.primary} breakAt768 />
+    <Ribbon href='https://github.com/billymoon/fiona' color={theme.clr.primary} breakAt768 />
     <Article style={{ textAlign: 'center' }}><Logo /></Article>
     <Article style={{ textAlign: 'center' }}><h1>{fiona(seed).regex(/(The )?(Seeded )?((Pseudo )?Random )?Data Generator/)}</h1></Article>
-    <Article style={{ textAlign: 'center' }}><Nav url={url} /></Article>
+    <Article style={{ textAlign: 'center' }}><Nav /></Article>
     <style global jsx>{`
       // TODO: how can @font-face declarations be externalised
       @font-face {
@@ -110,10 +111,10 @@ const MainContent = withTheme(({ url, seed, theme, children }) =>
     `}</style>
     {children}
   </section>
-)
+))
 
 // TODO: simpify and tidy this section, perhaps this whole layout file
-const MainLayout = ({ url, state: { seed }, children }) =>
+const MainLayout = ({ state: { seed }, children }) =>
   <div>
     <Head>
       <title>Fiona</title>
@@ -130,7 +131,7 @@ const MainLayout = ({ url, state: { seed }, children }) =>
         secondaryAccent: config.theme.clr.accent
       }
     } : {}}>
-      <MainContent url={url} seed={seed}>
+      <MainContent seed={seed}>
         {children}
       </MainContent>
     </Theme.Dynamic>
