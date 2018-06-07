@@ -23,7 +23,10 @@ export async function reports (task) {
 
 export async function coverage (task) {
   exec('jest --coverage')
-  task.clear('static/reports/coverage').source('coverage/lcov-report/**').target('static/reports/coverage')
+  task.clear('static/reports/coverage')
+    .source('coverage/lcov-report/**')
+    .target('static/reports/coverage')
+    .clear('coverage')
 }
 
 export async function build (task) {

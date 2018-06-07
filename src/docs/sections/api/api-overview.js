@@ -1,4 +1,4 @@
-import { injectState } from '../app'
+import { injectState } from '../../app'
 
 const Section = ({ state: { seed } }) =>
   <section>

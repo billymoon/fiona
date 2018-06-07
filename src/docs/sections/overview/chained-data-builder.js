@@ -1,5 +1,5 @@
-import { Sample } from '../components'
-import { injectState } from '../app'
+import { Sample } from '../../components'
+import { injectState } from '../../app'
 
 const Section = ({ state: { seed } }) =>
   <section>

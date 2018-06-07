@@ -1,4 +1,5 @@
 export { default as config } from './config'
+export { default as fonts } from './fonts'
 export { default as state, inject, withState, injectState } from './state'
 export { default as fiona } from './fiona-loader'
 export { default as Layout } from './layout'

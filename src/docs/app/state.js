@@ -2,7 +2,10 @@ import { provideState, injectState, update } from 'freactal'
 
 import config from './config'
 
-export const connect = (componentState, ComponentPure) => provideState(componentState)(injectState(({ state, effects, ...props }) => <ComponentPure {...state} {...effects} {...props} />))
+export const connect = (componentState, ComponentPure) => {
+  const Component = ({ state, effects, ...props }) => <ComponentPure {...state} {...effects} {...props} />
+  return provideState(componentState)(injectState(Component))
+}
 
 export { injectState }
 

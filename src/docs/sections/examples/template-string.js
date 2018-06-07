@@ -1,5 +1,5 @@
-import { fiona, injectState } from '../app'
-import { Sample } from '../components'
+import { fiona, injectState } from '../../app'
+import { Sample } from '../../components'
 
 const Section = ({ state: { seed } }) =>
   <section>

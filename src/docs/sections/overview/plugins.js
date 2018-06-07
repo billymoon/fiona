@@ -1,5 +1,5 @@
-import { Sample } from '../components'
-import { injectState } from '../app'
+import { Sample } from '../../components'
+import { injectState } from '../../app'
 
 // TODO: make samples render real values
 const Section = ({ state: { seed } }) =>

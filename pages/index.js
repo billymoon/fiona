@@ -6,7 +6,8 @@ import {
   OverviewSeededPRNG,
   OverviewWeighting,
   OverviewChainedDataBuilder,
-  OverviewPlugins
+  OverviewPlugins,
+  OverviewContributing
 } from '../src/docs/sections'
 
 const Page = () =>
@@ -17,6 +18,7 @@ const Page = () =>
     <Article><OverviewWeighting /></Article>
     <Article><OverviewChainedDataBuilder /></Article>
     <Article><OverviewPlugins /></Article>
+    <Article><OverviewContributing /></Article>
   </Layout>
 
 
