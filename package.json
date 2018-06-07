@@ -11,7 +11,8 @@
     "build": "taskr build",
     "deploy": "taskr deploy",
     "precommit": "npm run test",
-    "postcommit": "taskr deployMaster"
+    "postcommit": "taskr deployMaster",
+    "postmerge": "taskr deployMaster"
   },
   "author": "Billy Moon",
   "license": "ISC",
