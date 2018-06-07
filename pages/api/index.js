@@ -26,6 +26,7 @@ import ApiFnWord from '../../src/plugins/lorem/fiona.lorem-word.docs'
 import ApiFnRegex from '../../src/plugins/regex/fiona.regex.docs'
 import ApiFnWeighted from '../../src/plugins/weighted/fiona.weighted.docs'
 import ApiFnNumber from '../../src/plugins/number/fiona.number.docs'
+import ApiFnShuffle from '../../src/plugins/shuffle/fiona.shuffle.docs'
 
 // TODO document api for: reseed, clone, callback, data, info, chain, value, json, state, plugin, call
 const Page = () =>
@@ -40,6 +41,7 @@ const Page = () =>
         <ApiFnPlugin />
         <ApiFnCall />
         <ApiFnDate />
+        <ApiFnShuffle />
         <ApiFnDuplicable />
         <ApiFnGender />
         <ApiFnTitle />
