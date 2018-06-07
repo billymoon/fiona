@@ -2,7 +2,7 @@ import { fiona, injectState, ApiSection } from '../../docs/app'
 import { Sample } from '../../docs/components'
 
 const Section = ({ state: { seed } }) =>
-  <ApiSection heading={<><small>fiona.fn.</small>para</>}>
+  <ApiSection heading={<span><small>fiona.fn.</small>para</span>}>
     <p>A seeded utility to return a paragraph of lorem ipsum text.</p>
 
     <Sample input={`

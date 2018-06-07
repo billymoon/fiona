@@ -13,15 +13,12 @@ const git = method => new Promise(resolve => repo[method]((err, value) => resolv
 
 /* tasks */
 
-export async function deployMaster (task) {
-  const branch = await git('currentBranch')
-  if (branch === 'master') {
-    task.start('deploy')
-  }
+export async function lint (task) {
+  exec('standard src/**/*.js')
 }
 
 export async function reports (task) {
-  task.start('coverage')
+  task.serial('coverage')
 }
 
 export async function coverage (task) {
@@ -49,4 +46,16 @@ export async function core (task) {
 export async function deploy (task) {
   exec(`now alias $(now) fiona`)
   task.$.log('deployed to: https://fiona.now.sh')
+}
+
+export async function precommit (task) {
+  exec('npm run test')
+  task.start('lint')
+}
+
+export async function postcommit (task) {
+  const branch = await git('currentBranch')
+  if (branch === 'master') {
+    task.start('deploy')
+  }
 }

@@ -2,7 +2,7 @@ import { fiona, injectState, ApiSection } from '../../docs/app'
 import { Sample } from '../../docs/components'
 
 const Section = ({ state: { seed } }) =>
-  <ApiSection heading={<><small>fiona.fn.</small>weighted and <small>fiona.</small>weighted</>}>
+  <ApiSection heading={<span><small>fiona.fn.</small>weighted and <small>fiona.</small>weighted</span>}>
     <p>A utility to be used in the chain, which modifies the seed value distribution allowing control over the distribution of seeded values. Weighting functions influence `fiona.fn.random`, `fiona.fn.bool`, `fiona.fn.number`, `fiona.fn.oneOf`, `fiona.fn.choice` and any other methods that rely on them. The primary use case for this method is to control the distribution of data to create more realistic data.</p>
 
     <p>Out of the box there are some predefined weighting functions: <code>linear</code>, <code>square</code>, <code>cube</code>, <code>quad</code>, <code>low</code></p>
@@ -31,7 +31,7 @@ const Section = ({ state: { seed } }) =>
     ${fiona(seed).weighted('clamp').random()}
     // value is clamped from 50-70
     ${fiona(seed).weighted('clamp').number({ max: 100 })}
-    `} /> 
+    `} />
   </ApiSection>
 
 export default injectState(Section)

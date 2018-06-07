@@ -1,5 +1,5 @@
 import { Sample } from '../components'
-import { fiona, injectState } from '../app'
+import { injectState } from '../app'
 
 // TODO: make samples render real values
 const Section = ({ state: { seed } }) =>

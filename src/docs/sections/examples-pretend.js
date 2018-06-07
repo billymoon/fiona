@@ -18,7 +18,7 @@ pretender.get('/user/:id', request => [
   200,
   { 'Content-Type': 'application/json' },
   JSON.stringify(modelMock(request.params.id))
-]) 
+])
 
 pretender.get('/*all', pretender.passthrough)
 
@@ -36,7 +36,7 @@ const Section = ({ state: { seed } }) =>
     `}</Sample>
 
     <p>You can define a mock server like this...</p>
-    
+
     <Sample>{`
     const pretender = new Pretender()
 

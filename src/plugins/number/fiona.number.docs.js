@@ -2,7 +2,7 @@ import { fiona, injectState, ApiSection } from '../../docs/app'
 import { Sample } from '../../docs/components'
 
 const Section = ({ state: { seed } }) =>
-  <ApiSection heading={<><small>fiona.fn.</small>number</>}>
+  <ApiSection heading={<span><small>fiona.fn.</small>number</span>}>
     <p>A seeded utility to return a number, taking options min and max and precision, which default to 0 and 1,000,000 and 0.</p>
 
     <Sample input={`

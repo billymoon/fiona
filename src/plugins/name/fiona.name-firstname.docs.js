@@ -2,7 +2,7 @@ import { fiona, injectState, ApiSection } from '../../docs/app'
 import { Sample } from '../../docs/components'
 
 const Section = ({ state: { seed } }) =>
-  <ApiSection heading={<><small>fiona.fn.</small>firstname</>}>
+  <ApiSection heading={<span><small>fiona.fn.</small>firstname</span>}>
     <p>A seeded utility to return a single firstname, optionally taking a gender to adhere to.</p>
 
     <Sample input={`

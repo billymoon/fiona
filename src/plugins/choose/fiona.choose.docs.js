@@ -2,7 +2,7 @@ import { fiona, injectState, ApiSection } from '../../docs/app'
 import { Sample } from '../../docs/components'
 
 const Section = ({ state: { seed } }) =>
-  <ApiSection heading={<><small>fiona.fn.</small>choose</>}>
+  <ApiSection heading={<span><small>fiona.fn.</small>choose</span>}>
     <p>A seeded weighted method to select a specified number of items from a passed array.</p>
 
     <Sample input={`

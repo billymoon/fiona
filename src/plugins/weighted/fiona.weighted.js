@@ -3,7 +3,6 @@ const bezierEasing = require('bezier-easing')
 const fiona = require('../../')
 const { type } = require('../../utils')
 
-
 fiona.weighted = (weighting, fn) => {
   if (type(fn) === 'Array') {
     fiona.weighted[weighting] = bezierEasing.apply(null, fn)

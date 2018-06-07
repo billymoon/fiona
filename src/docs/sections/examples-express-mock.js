@@ -44,7 +44,7 @@ const Section = ({ state: { seed } }) =>
       name: fiona.call('name'),
       age: fiona.call('number', { max: 100 })
     }).json()
-    }`}/>
+    }`} />
 
     ... or with curl ...
 

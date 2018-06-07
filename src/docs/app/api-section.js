@@ -1,6 +1,6 @@
 import { injectState } from 'freactal'
 
-const recurser = item => typeof item  === 'string' ? item : recurser(item.props.children)
+const recurser = item => typeof item === 'string' ? item : recurser(item.props.children)
 
 const extractText = ({ props: { children } }) => children.map(recurser).join('')
 

@@ -3,6 +3,13 @@ import _ from 'lodash'
 import { fiona, injectState } from '../app'
 import { Sample } from '../components'
 
+fiona.plugin('template', ({ seeded }, template, ...args) => {
+  const templateString = template.reduce((a, b) => a + args.shift().toString() + b)
+  // assuming lodash is loaded
+  // render template with values
+  return _.template(templateString)(seeded.value())
+})
+
 const Section = ({ state: { seed } }) =>
   <section>
     <h3>Template Plugin</h3>
@@ -29,13 +36,6 @@ const Section = ({ state: { seed } }) =>
     Fiona
     x x x\`
     `} output={
-    fiona.plugin('template', ({ seeded }, template, ...args) => {
-      const templateString = template.reduce((a, b) => a + args.shift().toString() + b)
-      // assuming lodash is loaded
-      // render template with values
-      return _.template(templateString)(seeded.value())
-    }),
-
     fiona(seed).chain({
       name: fiona.call('name'),
       color: fiona.call('oneOf', ['red', 'orange', 'yellow', 'green', 'blue'])
