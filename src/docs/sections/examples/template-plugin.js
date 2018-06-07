@@ -1,13 +1,11 @@
-import _ from 'lodash'
+import template from 'lodash.template'
 
 import { fiona, injectState } from '../../app'
 import { Sample } from '../../components'
 
-fiona.plugin('template', ({ seeded }, template, ...args) => {
-  const templateString = template.reduce((a, b) => a + args.shift().toString() + b)
-  // assuming lodash is loaded
-  // render template with values
-  return _.template(templateString)(seeded.value())
+fiona.plugin('template', ({ seeded }, templateArray, ...args) => {
+  const templateString = templateArray.reduce((a, b) => a + args.shift().toString() + b)
+  return template(templateString)(seeded.value())
 })
 
 const Section = ({ state: { seed } }) =>
