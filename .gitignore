@@ -4,6 +4,8 @@
 misc
 node_modules
 coverage
-static/lcov-report
+static/reports
 
 *.log
+package-lock.json
+yarn.lock
