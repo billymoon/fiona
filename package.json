@@ -1,6 +1,6 @@
 {
   "name": "fiona",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
   "main": "fiona.js",
@@ -8,12 +8,11 @@
     "start": "next start",
     "dev": "next",
     "test": "jest",
-    "build": "run-p build:** && run-s report:**",
-    "build:docs": "next build && fs.clean static/reports",
-    "build:fiona": "webpack",
-    "build:fiona-core": "webpack --config webpack.config.core.js",
-    "report:coverage": "jest --coverage && mv coverage/lcov-report static/reports/coverage",
-    "deploy": "DEPLOY_URI=$(now) && now alias $DEPLOY_URI https://fiona.now.sh"
+    "build": "taskr build",
+    "deploy": "taskr deploy",
+    "precommit": "npm run test",
+    "postcommit": "taskr deployMaster",
+    "postmerge": "taskr deployMaster"
   },
   "author": "Billy Moon",
   "license": "ISC",
@@ -23,6 +22,8 @@
     "fetch-pretender": "^1.5.0",
     "freactal": "^2.0.3",
     "fs-dot": "^4.0.2",
+    "git-tools": "^0.3.0",
+    "husky": "^0.14.3",
     "jest": "^22.4.4",
     "lodash": "^4.17.5",
     "next": "^6.0.2",
@@ -41,5 +42,9 @@
       "!src/docs/**"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "@taskr/clear": "^1.1.0",
+    "@taskr/esnext": "^1.1.0",
+    "taskr": "^1.1.0"
+  }
 }
