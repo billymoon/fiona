@@ -18,7 +18,7 @@ export async function lint (task) {
 }
 
 export async function reports (task) {
-  task.serial('coverage')
+  task.serial(['coverage'])
 }
 
 export async function coverage (task) {
