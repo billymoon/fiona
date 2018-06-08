@@ -28,7 +28,7 @@ import ApiFnWeighted from '../../src/plugins/weighted/fiona.weighted.docs'
 import ApiFnNumber from '../../src/plugins/number/fiona.number.docs'
 import ApiFnShuffle from '../../src/plugins/shuffle/fiona.shuffle.docs'
 
-// TODO document api for: reseed, clone, callback, data, info, chain, value, json, state, plugin, call
+// TODO document api for: reseed, clone, callback, data, info, chain, value, json, state, plugin, call, find
 const Page = () =>
   <Layout>
     <Article>
