@@ -59,7 +59,7 @@ function Moon (seedin) {
   this.value = () => data
 
   // define callback method to execute arbitrary expressions in a chain
-  this.callback = cb => cb.bind(this)(data, this)
+  this.callback = cb => cb.bind(this)(this)
 
   /* info */
 
