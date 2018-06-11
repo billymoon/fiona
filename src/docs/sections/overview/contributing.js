@@ -3,15 +3,15 @@ import Link from 'next/link'
 import { Sample } from '../../components'
 import { fiona, injectState } from '../../app'
 
-const NPM = ({ name }) => <Link><a href={`https://www.npmjs.com/package/${name}`}>{name}</a></Link>
+const NPM = ({ name }) => <Link href={`https://www.npmjs.com/package/${name}`}><a>{name}</a></Link>
 
 const Section = ({ state: { seed } }) =>
   <section>
     <h2>Contributing</h2>
 
-    <p>Fiona aims to be performant, robust, well documented and <Link><a href='/static/reports/coverage/index.html'>well tested</a></Link>.</p>
+    <p>Fiona aims to be performant, robust, well documented and <Link href='/static/reports/coverage/index.html'><a>well tested</a></Link>.</p>
 
-    <p>Fiona is open source, <Link><a href='https://github.com/billymoon/fiona'>fork me on github</a></Link>. Pull requests and issues welcome.</p>
+    <p>Fiona is open source, <Link href='https://github.com/billymoon/fiona'><a>fork me on github</a></Link>. Pull requests and issues welcome.</p>
 
     <p>The code style is terse and succinct, and hopefully easy to understand and work with. The file structure is based around colocation, so the src folder includes the main library code, it's tests, and the documentation.</p>
 
