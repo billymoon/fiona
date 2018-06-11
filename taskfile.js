@@ -51,6 +51,24 @@ export async function deploy (task) {
   task.$.log('deployed to: https://fiona.now.sh')
 }
 
+export async function bump (task) {
+  exec(`
+  if [ -n "$(git status --porcelain)" ]; then
+    echo "Working directory is not clean";
+    exit 1;
+  else
+    npm --no-git-tag-version version patch;
+    git add package.json
+    git commit -m "bump"
+    git tag $(node -p "require('./package').version")
+    git push --tags
+    git push
+    npm publish
+  fi`)
+  task.$.log(`published version $(node -p "require('./package').version") to npm`)
+  task.$.log(`pushed version $(node -p "require('./package').version") to git`)
+}
+
 export async function precommit (task) {
   exec('npm run test')
   task.start('lint')
@@ -60,5 +78,6 @@ export async function postcommit (task) {
   const branch = await git('currentBranch')
   if (branch === 'master') {
     task.start('deploy')
+    task.start('bump')
   }
 }
