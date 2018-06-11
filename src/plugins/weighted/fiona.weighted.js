@@ -25,3 +25,6 @@ fiona.weighted('extremes', [1, 0, 0, 1])
 fiona.weighted('tinyTop', [0.25, 1, 1, 0.5])
 
 fiona.plugin('weighted', ({ seeded }, weighting) => seeded.weighting(fiona.weighted[weighting]))
+
+// TODO: get rid of fiona.weighted - replace with fiona.easy
+fiona.easy = arr => bezierEasing(...arr)

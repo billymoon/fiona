@@ -1,9 +1,50 @@
+import BezierEditor from 'bezier-easing-editor'
+import ChartistGraph from 'react-chartist'
+import ChartistStyles from './chartist-styles'
+
 import { Sample } from '../../components'
 import { fiona, injectState } from '../../app'
 
-const Section = ({ state: { seed } }) =>
+const chunks = 10
+const samples = 150
+
+const chartOptions = {
+  width: '50%',
+  showLine: false,
+  showPoint: false,
+  showArea: true,
+  low: 0,
+  axisX: {
+    labelInterpolationFnc: function(value, index) {
+      return index % 2 === 0 ? value / chunks : null;
+    }
+  }
+}
+
+const chartData = weighting => ({
+  labels: Array(chunks).fill(null).map((x, i) => i),
+  series: [
+    Array(samples).fill(null).map((discard, i) => fiona.easy(weighting)(i / samples)).reduce((memo, item) => {
+      memo[Math.floor(item * chunks)] = 1 + memo[Math.floor(item * chunks)]
+      return memo
+    }, Array(chunks).fill(0))
+  ]
+})
+
+const Section = ({ state: { seed, weighting }, effects: { setWeighting } }) =>
   <section>
     <h2>Weighting</h2>
+    <ChartistStyles />
+    <BezierEditor value={weighting} onChange={setWeighting} />
+    <ChartistGraph data={chartData(weighting)} type={'Line'} options={chartOptions} />
+
+    <Sample input={`
+    const sorter = (a, b) => a < b ? -1 : 1
+    const populationWeighting = fiona.easy([${ weighting.join(', ') }])
+    fiona(${ seed }).arr(10, ({ seeded }) => seeded.weighting(populationWeighting).number({ max: 100 })).sort(sorter)
+    `} output={
+    JSON.stringify(fiona(seed).chain(({ arr }) => arr(10, ({ seeded }) => seeded.weighting(fiona.easy(weighting)).number({ max: 100 }))).value().sort((a, b) => a < b ? -1 : 1))
+    } />
 
     <p>The idea of adding a weighting to the output of random allows for powerful manipulation of large sets of pseudo random data. For example, the distribution of income is not even, where many more people are on low income than high. If we simply choose from 10,000 to 1,000,000 then the average income would be around 505,000. If we add weighting, we can make this represent our target distribution much more accurately.</p>
 
