@@ -6,10 +6,12 @@ const Section = ({ state: { seed } }) =>
     <p>A seeded utility to shuffle passed array, without modifying the original input.</p>
 
     <Sample input={`
-    fiona(${seed}).shuffle(['Moon', 'is', 'Fiona', 'My', 'name']).join(' ')
+    fiona(${seed}).shuffle(['my', 'is', 'Fiona', 'name', 'Moon']).join(' ')
     `} output={`
-    ${fiona(seed).shuffle(['Moon', 'is', 'Fiona', 'My', 'name']).join(' ')}
+    ${fiona(seed).shuffle(['my', 'is', 'Fiona', 'name', 'Moon']).join(' ')}
     `} />
+
+    <p><b>n.b.</b> this method is actually shorthand for <code>seeded.choose(arr.length, arr)</code></p>
   </ApiSection>
 
 export default injectState(Section)

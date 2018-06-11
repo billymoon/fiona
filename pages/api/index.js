@@ -10,6 +10,7 @@ import ApiFnPlugin from '../../src/core/core-plugin.docs'
 import ApiFnRandom from '../../src/core/core-random.docs'
 import ApiFnChoose from '../../src/plugins/choose/fiona.choose.docs'
 import ApiFnOneof from '../../src/plugins/choose/fiona.choose-oneof.docs'
+import ApiFnArr from '../../src/plugins/arr/fiona.arr.docs'
 import ApiFnDate from '../../src/plugins/date/fiona.date.docs'
 import ApiFnDuplicable from '../../src/plugins/duplicable/fiona.duplicable.docs'
 import ApiFnFirstname from '../../src/plugins/name/fiona.name-firstname.docs'
@@ -28,7 +29,7 @@ import ApiFnWeighted from '../../src/plugins/weighted/fiona.weighted.docs'
 import ApiFnNumber from '../../src/plugins/number/fiona.number.docs'
 import ApiFnShuffle from '../../src/plugins/shuffle/fiona.shuffle.docs'
 
-// TODO document api for: reseed, clone, callback, data, info, chain, value, json, state, plugin, call
+// TODO document api for: reseed, clone, callback, data, info, chain, value, json, state, plugin, call, find
 const Page = () =>
   <Layout>
     <Article>
@@ -55,6 +56,7 @@ const Page = () =>
         <ApiFnSentence />
         <ApiFnPara />
         <ApiFnOneof />
+        <ApiFnArr />
         <ApiFnChoose />
         <ApiFnRegex />
         <ApiFnWeighted />
