@@ -1,3 +1,4 @@
+require('./arr/fiona.arr')
 require('./number/fiona.number')
 require('./choose/fiona.choose')
 require('./choose/fiona.choose-oneof')
