@@ -59,7 +59,7 @@ function Moon (seedin) {
   this.value = () => data
 
   // define callback method to execute arbitrary expressions in a chain
-  this.callback = cb => cb.bind(this)(data, this)
+  this.callback = cb => cb.bind(this)(this)
 
   /* info */
 
@@ -85,6 +85,7 @@ fiona.fn = Moon.prototype = { constructor: Moon }
 
 fiona.plugin = (name, fn) => { fiona.fn[name] = function (...args) { return fn({ seeded: this }, ...args) } }
 
+// TODO: should seeded carry weighting of parent? is it possible?
 fiona.call = (cmd, ...args) => ({ seeded }) => seeded[cmd](...args)
 
 // export the main function

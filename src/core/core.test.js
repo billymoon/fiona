@@ -108,9 +108,9 @@ const fixture = {
   test('fiona.fn.callback', () => {
     const baby = fiona(1)
     expect(baby.random()).toBe(fixture.RANDOM_1)
-    baby.callback((data, me) => me.reseed(2))
+    baby.callback(seeded => seeded.reseed(2))
     expect(baby.random()).toBe(fixture.RANDOM_3)
-    baby.callback((data, me) => me.reseed(1))
+    baby.callback(seeded => seeded.reseed(1))
     expect(baby.random()).toBe(fixture.RANDOM_1)
   })
 
