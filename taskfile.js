@@ -76,8 +76,9 @@ export async function precommit (task) {
 
 export async function postcommit (task) {
   const branch = await git('currentBranch')
-  if (branch === 'master') {
-    task.start('deploy')
-    task.start('bump')
-  }
+  // if (branch === 'master') {
+  //   task.start('deploy')
+  //   task.start('bump')
+  // }
+  console.log('time to tag and push...')
 }

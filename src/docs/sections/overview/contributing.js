@@ -15,7 +15,7 @@ const Section = ({ state: { seed } }) =>
 
     <p>The code style is terse and succinct, and hopefully easy to understand and work with. The file structure is based around colocation, so the src folder includes the main library code, it's tests, and the documentation.</p>
 
-    <p>Whilst there are very few dependencies (<NPM name='randexp' /> and <NPM name='bezier-easing' />) in the fiona library, there are several used to aid development:</p>
+    <p>Whilst there are very few core dependencies (<NPM name='randexp' /> and <NPM name='bezier-easing' />) in the fiona library, there are several used to aid development:</p>
 
     <ul>
       <li><NPM name='jest' /> for testing</li>
