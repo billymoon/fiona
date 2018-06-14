@@ -79,6 +79,7 @@ const fiona = (...args) => new Moon(...args)
 
 // TODO: don't reuquire whole package json just to get version string
 fiona.version = packageJson.version
+fiona.description = packageJson.description
 
 // set up self referencial prototype chain with jQuery like plugin architecture
 fiona.fn = Moon.prototype = { constructor: Moon }
