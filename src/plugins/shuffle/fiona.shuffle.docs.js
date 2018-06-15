@@ -1,6 +1,8 @@
 import { fiona, injectState, ApiSection } from '../../docs/app'
 import { Sample } from '../../docs/components'
 
+// TODO: document fischer yates style, and qty param
+
 const Section = ({ state: { seed } }) =>
   <ApiSection heading={<span><small>fiona.fn.</small>shuffle</span>}>
     <p>A seeded utility to shuffle passed array, without modifying the original input.</p>

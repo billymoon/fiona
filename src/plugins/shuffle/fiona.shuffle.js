@@ -1,3 +1,3 @@
 const fiona = require('../../')
 
-fiona.plugin('shuffle', ({ seeded }, arr) => seeded.choose(arr.length, arr))
+fiona.plugin('shuffle', ({ seeded }, arr, { qty } = {}) => seeded.choose(typeof qty !== 'undefined' ? qty : arr.length, arr))
