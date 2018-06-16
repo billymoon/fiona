@@ -24,6 +24,8 @@ const Section = ({ state: { seed } }) =>
       <li><NPM name='standard' /> for linting</li>
       <li><NPM name='react' />, <NPM name='freactal' /> and <NPM name='next' /> for documentation website</li>
     </ul>
+
+    <p>Pushing a tag triggers a highly experimental continuous integration deployment service using zeit's now: [dock.now.sh](https://dock.now.sh)</p>
   </section>
 
 export default injectState(Section)
