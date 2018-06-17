@@ -1,7 +1,4 @@
-import { injectState, provideState } from 'freactal'
-import { mergeDeep } from '..'
-
-const defaults = {
+export const defaults = {
   equalized: true,
   unit: 15,
   fluidish: true,
@@ -26,35 +23,35 @@ const queryMapper = (props, name) => `
   `) || ''}
 `
 
-export const PureCol = ({ children, state: { theme }, ...props }) => {
+export const Col = ({ children, state: { theme }, ...props }) => {
   return (
     <div className='grid-col' {...props}>
       {children}
       <style jsx>{`
         box-sizing: border-box;
         margin: 0;
-        padding: 0 ${theme.grid.unit}px;
+        padding: 0 ${(theme || defaults).grid.unit}px;
         float: left;
         position: relative;
       `}</style>
       {/* TODO: why can't I dynamically create media queries? */}
       <style jsx>{`
-        @media screen and (min-width: ${theme.grid.breakpoints.xs}px) {
+        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.xs}px) {
           ${queryMapper(props, 'xs')}
         }
-        @media screen and (min-width: ${theme.grid.breakpoints.sm}px) {
+        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.sm}px) {
           ${queryMapper(props, 'sm')}
         }
-        @media screen and (min-width: ${theme.grid.breakpoints.md}px) {
+        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.md}px) {
           ${queryMapper(props, 'md')}
         }
-        @media screen and (min-width: ${theme.grid.breakpoints.lg}px) {
+        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.lg}px) {
           ${queryMapper(props, 'lg')}
         }
-        @media screen and (min-width: ${theme.grid.breakpoints.xl}px) {
+        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.xl}px) {
           ${queryMapper(props, 'xl')}
         }
-        @media screen and (min-width: ${theme.grid.breakpoints.xxl}px) {
+        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.xxl}px) {
           ${queryMapper(props, 'xxl')}
         }
       `}</style>
@@ -62,16 +59,14 @@ export const PureCol = ({ children, state: { theme }, ...props }) => {
   )
 }
 
-export const Col = injectState(PureCol)
-
 Col.defaultProps = {
   xs: 1
 }
 
 Col.displayName = 'Col'
 
-export const PureRow = ({ state: { theme }, children, ...props }) => {
-  const lastBreakpoint = getLastBreakpoint(theme.grid.breakpoints)
+export const Row = ({ state: { theme }, children, ...props }) => {
+  const lastBreakpoint = getLastBreakpoint((theme || defaults).grid.breakpoints)
   return (
     <div className='grid-row' {...props}>
       {children}
@@ -84,22 +79,22 @@ export const PureRow = ({ state: { theme }, children, ...props }) => {
         :after {
           clear: both;
         }
-        ${(theme.grid.equalized && `
-        margin: 0 -${2 * theme.grid.unit}px;
-        padding: 0 ${1 * theme.grid.unit}px;
+        ${((theme || defaults).grid.equalized && `
+        margin: 0 -${2 * (theme || defaults).grid.unit}px;
+        padding: 0 ${1 * (theme || defaults).grid.unit}px;
         `) || ''}
-        ${(!theme.grid.equalized && `
-        margin: 0 -${1 * theme.grid.unit}px;
+        ${(!(theme || defaults).grid.equalized && `
+        margin: 0 -${1 * (theme || defaults).grid.unit}px;
         padding: 0;
         `) || ''}
       `}</style>
       <style jsx>{`
         @media screen and (min-width: ${lastBreakpoint}px) {
-          ${(theme.grid.fluidish && `
+          ${((theme || defaults).grid.fluidish && `
           max-width: ${lastBreakpoint}px;
           margin: auto;
-          ${(theme.grid.equalized && `
-          padding: 0 ${1 * theme.grid.unit}px;
+          ${((theme || defaults).grid.equalized && `
+          padding: 0 ${1 * (theme || defaults).grid.unit}px;
           `) || ''}
           `) || ''}
         }
@@ -107,7 +102,7 @@ export const PureRow = ({ state: { theme }, children, ...props }) => {
       {/* TODO: how to better handle nested rows/cols? */}
       <style global jsx>{`
         .grid-col .grid-row {
-          margin: 0 -${1 * theme.grid.unit}px;
+          margin: 0 -${1 * (theme || defaults).grid.unit}px;
           padding: 0;
         }
       `}</style>
@@ -115,11 +110,9 @@ export const PureRow = ({ state: { theme }, children, ...props }) => {
   )
 }
 
-export const Row = injectState(PureRow)
-
 Row.displayName = 'Row'
 
-export const PureContainer = ({ state: { theme }, children, ...props }) =>
+export const Container = ({ state: { theme }, children, ...props }) =>
   <div {...props}>
     {children}
     <style jsx>{`
@@ -132,12 +125,8 @@ export const PureContainer = ({ state: { theme }, children, ...props }) =>
         clear: both;
       }
       margin: 0;
-      padding: 0 ${(theme.grid.equalized ? 2 : 1) * theme.grid.unit}px;
+      padding: 0 ${((theme || defaults).grid.equalized ? 2 : 1) * (theme || defaults).grid.unit}px;
     `}</style>
   </div>
-
-export const Container = provideState({ initialState: (props, { freactal }) => ({
-  theme: mergeDeep({}, { grid: defaults }, freactal.state.theme)
-}) })(injectState(PureContainer))
 
 Container.displayName = 'Container'

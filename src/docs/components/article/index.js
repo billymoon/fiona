@@ -1,6 +1,4 @@
-import { Container, Row, Col } from '..'
-
-const Article = ({ children, ...props }) =>
+const Article = ({ Container, Row, Col }) => ({ children, ...props }) =>
   <Container {...props}>
     <Row>
       <Col md={8 / 12} offset-md={2 / 12}>

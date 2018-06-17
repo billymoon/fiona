@@ -1,6 +1,4 @@
-import { Container, Row, Col } from '..'
-
-const Shelf = ({ head, section1, section2, section3, split, indent, rtl, children, ...props }) => {
+const Shelf = ({ Container, Row, Col }) => ({ head, section1, section2, section3, split, indent, rtl, children, ...props }) => {
   const splitr = section2 ? section3 ? 1 / 3 : 1 / 2 : 1
   const split1 = split && !section3 ? split : splitr
   const split2 = split && !section3 ? 1 - split : splitr

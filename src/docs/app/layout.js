@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 
-import { Theme, Ribbon, Article, withTheme } from '../components'
+import { Shelf, Theme, Ribbon, Article, withTheme } from '../components'
 import { Logo, Nav, fiona, injectState, config, fonts } from './'
 
 const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
