@@ -1,5 +1,5 @@
-import { withState, Layout } from '../src/docs/app'
-import { Article } from '../src/docs/components'
+import { withState, Layout, Article } from '../src/docs/app'
+
 import {
   OverviewDynamicOverview,
   OverviewQuickStart,
@@ -20,6 +20,5 @@ const Page = () =>
     <Article><OverviewPlugins /></Article>
     <Article><OverviewContributing /></Article>
   </Layout>
-
 
 export default withState(Page)

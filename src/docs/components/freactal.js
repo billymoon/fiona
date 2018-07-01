@@ -3,19 +3,11 @@ import { injectState, provideState } from 'freactal'
 import { isObject, mergeDeep } from './util'
 export { isObject, mergeDeep }
 
-import { defaults as gridDefaults, Container as PureContainer, Row as PureRow, Col as PureCol } from './grid'
-export const Col = injectState(PureCol)
-export const Row = injectState(PureRow)
-export const Container = provideState({ initialState: (props, { freactal }) => ({
-  theme: mergeDeep({}, { grid: gridDefaults }, freactal.state.theme)
-}) })(injectState(PureContainer))
-const ContainerRowCol = { Container, Row, Col }
+export { Container, Row, Col } from './grid'
 
-import ShelfCreator from './shelf'
-export const Shelf = ShelfCreator(ContainerRowCol)
+export { default as ShelfCreator } from './shelf'
 
-import ArticleCreator from './article'
-export const Article = ArticleCreator(ContainerRowCol)
+export { default as ArticleCreator } from './article'
 
 export const withTheme = Component => injectState(({ state, ...props }) => <Component theme={state.theme} state={state} {...props} />)
 

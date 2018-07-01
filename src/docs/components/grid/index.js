@@ -23,35 +23,35 @@ const queryMapper = (props, name) => `
   `) || ''}
 `
 
-export const Col = ({ children, state: { theme }, ...props }) => {
+export const Col = ({ config = defaults, children, ...props }) => {
   return (
     <div className='grid-col' {...props}>
       {children}
       <style jsx>{`
         box-sizing: border-box;
         margin: 0;
-        padding: 0 ${(theme || defaults).grid.unit}px;
+        padding: 0 ${config.unit}px;
         float: left;
         position: relative;
       `}</style>
       {/* TODO: why can't I dynamically create media queries? */}
       <style jsx>{`
-        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.xs}px) {
+        @media screen and (min-width: ${config.breakpoints.xs}px) {
           ${queryMapper(props, 'xs')}
         }
-        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.sm}px) {
+        @media screen and (min-width: ${config.breakpoints.sm}px) {
           ${queryMapper(props, 'sm')}
         }
-        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.md}px) {
+        @media screen and (min-width: ${config.breakpoints.md}px) {
           ${queryMapper(props, 'md')}
         }
-        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.lg}px) {
+        @media screen and (min-width: ${config.breakpoints.lg}px) {
           ${queryMapper(props, 'lg')}
         }
-        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.xl}px) {
+        @media screen and (min-width: ${config.breakpoints.xl}px) {
           ${queryMapper(props, 'xl')}
         }
-        @media screen and (min-width: ${(theme || defaults).grid.breakpoints.xxl}px) {
+        @media screen and (min-width: ${config.breakpoints.xxl}px) {
           ${queryMapper(props, 'xxl')}
         }
       `}</style>
@@ -65,8 +65,8 @@ Col.defaultProps = {
 
 Col.displayName = 'Col'
 
-export const Row = ({ state: { theme }, children, ...props }) => {
-  const lastBreakpoint = getLastBreakpoint((theme || defaults).grid.breakpoints)
+export const Row = ({ config = defaults, children, ...props }) => {
+  const lastBreakpoint = getLastBreakpoint(config.breakpoints)
   return (
     <div className='grid-row' {...props}>
       {children}
@@ -79,22 +79,22 @@ export const Row = ({ state: { theme }, children, ...props }) => {
         :after {
           clear: both;
         }
-        ${((theme || defaults).grid.equalized && `
-        margin: 0 -${2 * (theme || defaults).grid.unit}px;
-        padding: 0 ${1 * (theme || defaults).grid.unit}px;
+        ${(config.equalized && `
+        margin: 0 -${2 * config.unit}px;
+        padding: 0 ${1 * config.unit}px;
         `) || ''}
-        ${(!(theme || defaults).grid.equalized && `
-        margin: 0 -${1 * (theme || defaults).grid.unit}px;
+        ${(!config.equalized && `
+        margin: 0 -${1 * config.unit}px;
         padding: 0;
         `) || ''}
       `}</style>
       <style jsx>{`
         @media screen and (min-width: ${lastBreakpoint}px) {
-          ${((theme || defaults).grid.fluidish && `
+          ${(config.fluidish && `
           max-width: ${lastBreakpoint}px;
           margin: auto;
-          ${((theme || defaults).grid.equalized && `
-          padding: 0 ${1 * (theme || defaults).grid.unit}px;
+          ${(config.equalized && `
+          padding: 0 ${1 * config.unit}px;
           `) || ''}
           `) || ''}
         }
@@ -102,7 +102,7 @@ export const Row = ({ state: { theme }, children, ...props }) => {
       {/* TODO: how to better handle nested rows/cols? */}
       <style global jsx>{`
         .grid-col .grid-row {
-          margin: 0 -${1 * (theme || defaults).grid.unit}px;
+          margin: 0 -${1 * config.unit}px;
           padding: 0;
         }
       `}</style>
@@ -112,7 +112,7 @@ export const Row = ({ state: { theme }, children, ...props }) => {
 
 Row.displayName = 'Row'
 
-export const Container = ({ state: { theme }, children, ...props }) =>
+export const Container = ({ config = defaults, children, ...props }) =>
   <div {...props}>
     {children}
     <style jsx>{`
@@ -125,7 +125,7 @@ export const Container = ({ state: { theme }, children, ...props }) =>
         clear: both;
       }
       margin: 0;
-      padding: 0 ${((theme || defaults).grid.equalized ? 2 : 1) * (theme || defaults).grid.unit}px;
+      padding: 0 ${(config.equalized ? 2 : 1) * config.unit}px;
     `}</style>
   </div>
 

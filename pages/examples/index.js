@@ -1,5 +1,5 @@
-import { withState, Layout } from '../../src/docs/app'
-import { Article } from '../../src/docs/components'
+import { withState, Layout, Article } from '../../src/docs/app'
+
 import {
   ExamplesIntro,
   ExamplesTemplateString,

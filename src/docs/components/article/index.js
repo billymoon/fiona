@@ -1,4 +1,4 @@
-const Article = ({ Container, Row, Col }) => ({ children, ...props }) =>
+const ArticleCreator = ({ Container, Row, Col }) => ({ children, ...props }) =>
   <Container {...props}>
     <Row>
       <Col md={8 / 12} offset-md={2 / 12}>
@@ -7,4 +7,4 @@ const Article = ({ Container, Row, Col }) => ({ children, ...props }) =>
     </Row>
   </Container>
 
-export default Article
+export default ArticleCreator
