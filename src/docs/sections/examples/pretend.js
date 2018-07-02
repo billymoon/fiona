@@ -1,6 +1,7 @@
-import { fiona, injectState } from '../../app'
-import { Sample } from '../../components'
 import Pretender from 'fetch-pretender'
+
+import { Sample } from '../../components'
+import { fiona, injectState } from '../../app'
 
 if (process.browser) {
   window.Pretender = Pretender

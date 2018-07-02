@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { withTheme } from '../components'
 import { withRouter } from 'next/router'
+
+import { withTheme } from '../app'
 
 const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
   <div>

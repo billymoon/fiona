@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 
-import { Theme, Ribbon, withTheme } from '../components'
-import { Shelf, Article } from '../app'
+import { Ribbon } from '../components'
+import { Theme, Shelf, Article, withTheme } from '../app'
 import { Logo, Nav, fiona, injectState, config, fonts } from './'
 
 const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
   <section>
+    {/* TODO: why is ribbon not going along top below 768px */}
     <Ribbon href='https://github.com/billymoon/fiona' color={theme.clr.primary} breakAt768 />
     <Article style={{ textAlign: 'center' }}><Logo /></Article>
     <Article style={{ textAlign: 'center' }}><h1>{fiona(seed).regex(/(The )?(Seeded )?((Pseudo )?Random )?Data Generator/)}</h1></Article>
@@ -73,8 +74,10 @@ const MainLayout = ({ state: { seed }, children }) =>
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <meta name='apple-mobile-web-app-capable' content='yes' />
       <link rel='icon' href='/static/favicon.png' sizes='16x16' type='image/png' />
-      {/*<script src='https://cdn.ravenjs.com/3.26.2/raven.min.js' crossorigin='anonymous'></script>*/}
-      {/*<script>Raven.config('https://cbe5f0dcbb0b4d488ca750f1b7f7ac11@sentry.io/1226793').install()</script>*/}
+      {/* TODO: re-enable error tracking if can disable locally
+      <script src='https://cdn.ravenjs.com/3.26.2/raven.min.js' crossorigin='anonymous'></script>
+      <script>Raven.config('https://cbe5f0dcbb0b4d488ca750f1b7f7ac11@sentry.io/1226793').install()</script>
+      */}
     </Head>
     <Theme.Dynamic config={seed % 2 ? {
       clr: {

@@ -5,8 +5,7 @@
   "repository": "billymoon/fiona",
   "main": "fiona.js",
   "scripts": {
-    "start": "next start",
-    "dev": "next",
+    "start": "[ ${NODE_ENV:-''} = 'production' ] && next start || next dev",
     "test": "jest",
     "build": "taskr build",
     "deploy": "taskr deploy",
