@@ -86,8 +86,7 @@ export default ({ href, color = '#a00', title = 'Fork me on GitHub', breakAt768 
       border-color: #fff;
       border-color: rgba(255, 255, 255, 0.7);
     }
-    
-    @media (max-width: 768px) {
+    @media (max-width: 768px) { /* TODO: potential bug preventing blank line above @media in jsx  */
       .github-fork-ribbon.break-at-768 {
         position: inherit;
       }
