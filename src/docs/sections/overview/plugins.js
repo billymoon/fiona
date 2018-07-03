@@ -1,4 +1,4 @@
-import { Sample } from '../../components'
+import { Sample } from 'jsx-components'
 import { injectState } from '../../app'
 
 // TODO: make samples render real values

@@ -1,5 +1,5 @@
 import { injectState, ApiSection } from '../../docs/app'
-import { Sample } from '../../docs/components'
+import { Sample } from 'jsx-components'
 
 const Section = ({ state: { seed } }) =>
   <ApiSection heading={<span><small>fiona.</small>namedata</span>}>

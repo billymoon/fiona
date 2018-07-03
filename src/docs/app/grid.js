@@ -1,5 +1,5 @@
 import { injectState } from './'
-import { configurableLayoutComponents } from '../components'
+import { configurableLayoutComponents } from 'jsx-components'
 
 export const defaultConfig = {
   equalized: true,

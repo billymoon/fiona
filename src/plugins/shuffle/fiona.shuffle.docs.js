@@ -1,5 +1,5 @@
 import { fiona, injectState, ApiSection } from '../../docs/app'
-import { Sample } from '../../docs/components'
+import { Sample } from 'jsx-components'
 
 // TODO: document fischer yates style, and qty param
 

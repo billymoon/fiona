@@ -1,6 +1,6 @@
 import template from 'lodash.template'
 
-import { Sample } from '../../components'
+import { Sample } from 'jsx-components'
 import { fiona, injectState } from '../../app'
 
 fiona.plugin('template', ({ seeded }, templateArray, ...args) => {

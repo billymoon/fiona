@@ -1,13 +1,12 @@
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 
-import { Ribbon } from '../components'
+import { Ribbon } from 'jsx-components'
 import { Theme, Shelf, Article, withTheme } from '../app'
 import { Logo, Nav, fiona, injectState, config, fonts } from './'
 
 const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
   <section>
-    {/* TODO: why is ribbon not going along top below 768px */}
     <Ribbon href='https://github.com/billymoon/fiona' color={theme.clr.primary} breakAt768 />
     <Article style={{ textAlign: 'center' }}><Logo /></Article>
     <Article style={{ textAlign: 'center' }}><h1>{fiona(seed).regex(/(The )?(Seeded )?((Pseudo )?Random )?Data Generator/)}</h1></Article>

@@ -36,15 +36,20 @@ const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
     }
 
     .action-button:active {
-      transform: translate(0px, 5px);
-      -webkit-transform: translate(0px, 5px);
       border-bottom: 1px solid;
+      margin-top: 4px;
     }
 
     @media screen and (min-width: 768px) {
       .action-button {
         padding: 10px 40px;
         width: auto;
+      }
+      
+      .action-button:active {
+        transform: translate(0px, 4px);
+        -webkit-transform: translate(0px, 4px);
+        margin-top: 0px;
       }
     }
   `}</style>

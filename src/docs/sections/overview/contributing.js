@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { Sample } from '../../components'
+import { Sample } from 'jsx-components'
 import { fiona, injectState } from '../../app'
 
 const NPM = ({ name }) => <Link href={`https://www.npmjs.com/package/${name}`}><a>{name}</a></Link>
