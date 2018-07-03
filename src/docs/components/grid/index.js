@@ -1,4 +1,4 @@
-export const defaults = {
+export const gridDefaults = {
   equalized: true,
   unit: 15,
   fluidish: true,
@@ -23,7 +23,7 @@ const queryMapper = (props, name) => `
   `) || ''}
 `
 
-export const Col = ({ config = defaults, children, ...props }) => {
+export const Col = ({ config = gridDefaults, children, ...props }) => {
   return (
     <div className='grid-col' {...props}>
       {children}
@@ -65,7 +65,7 @@ Col.defaultProps = {
 
 Col.displayName = 'Col'
 
-export const Row = ({ config = defaults, children, ...props }) => {
+export const Row = ({ config = gridDefaults, children, ...props }) => {
   const lastBreakpoint = getLastBreakpoint(config.breakpoints)
   return (
     <div className='grid-row' {...props}>
@@ -112,7 +112,7 @@ export const Row = ({ config = defaults, children, ...props }) => {
 
 Row.displayName = 'Row'
 
-export const Container = ({ config = defaults, children, ...props }) =>
+export const Container = ({ config = gridDefaults, children, ...props }) =>
   <div {...props}>
     {children}
     <style jsx>{`

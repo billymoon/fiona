@@ -6,6 +6,7 @@ const formatCode = code => {
 }
 
 // TODO: simpify and tidy this section, perhaps this whole sample file
+// TODO: trim leading newlines at xs breakpoint
 // TODO: why can't I use withTheme around this component!!?
 // @media screen (min-width: ${theme.grid.breakpoints.lg}px) {
 export default ({ input, output, title, children, ...props }) =>

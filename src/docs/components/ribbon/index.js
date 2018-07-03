@@ -1,3 +1,4 @@
+// TODO: make breakAt768 dynamic breakpoint
 export default ({ href, color = '#a00', title = 'Fork me on GitHub', breakAt768 = false }) =>
   <div>
     <a className={'github-fork-ribbon' + (breakAt768 ? ' break-at-768' : '')} href={href} data-ribbon={title} title={title}>{title}</a>
@@ -86,7 +87,6 @@ export default ({ href, color = '#a00', title = 'Fork me on GitHub', breakAt768 
       border-color: rgba(255, 255, 255, 0.7);
     }
     
-    // TODO: figure out how to make breakpoints dynamic
     @media (max-width: 768px) {
       .github-fork-ribbon.break-at-768 {
         position: inherit;
