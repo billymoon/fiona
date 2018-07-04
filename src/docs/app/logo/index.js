@@ -1,6 +1,6 @@
-import { connect } from '../state'
+import { wrapWithState } from '..'
 
 import Component from './component'
 import state from './state'
 
-export default connect(state, Component)
+export default wrapWithState(state, Component)

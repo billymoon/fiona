@@ -1,11 +1,6 @@
-import { provideState, injectState, update } from 'freactal'
+import { provideState, injectState, update } from '.'
 
 import config from './config'
-
-export const connect = (componentState, ComponentPure) => {
-  const Component = ({ state, effects, ...props }) => <ComponentPure {...state} {...effects} {...props} />
-  return provideState(componentState)(injectState(Component))
-}
 
 export { injectState }
 
@@ -25,5 +20,12 @@ const effects = {
 }
 
 const localState = provideState({ initialState, effects })
+
+export const wrapWithState = (componentState, ComponentPure) => provideState(componentState)(connect(ComponentPure))
+
+export const connect = ComponentPure => {
+  const Component = ({ state, effects, ...props }) => <ComponentPure {...state} {...effects} {...props} />
+  return injectState(Component)
+}
 
 export const withState = Component => localState(Component)

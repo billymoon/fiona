@@ -1,4 +1,4 @@
-import { injectState, provideState } from 'freactal'
+import { injectState, provideState } from '.'
 
 import { mergeDeep, ThemeCreator, themeDefaults } from '.'
 
