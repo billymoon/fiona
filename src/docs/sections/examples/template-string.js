@@ -1,5 +1,4 @@
-import { Sample } from 'jsx-components'
-import { fiona, injectState } from '../../app'
+import { fiona, injectState, Sample } from '../../app'
 
 const Section = ({ state: { seed } }) =>
   <section>

@@ -1,7 +1,6 @@
 import template from 'lodash.template'
 
-import { Sample } from 'jsx-components'
-import { fiona, injectState } from '../../app'
+import { fiona, injectState, Sample } from '../../app'
 
 fiona.plugin('template', ({ seeded }, templateArray, ...args) => {
   const templateString = templateArray.reduce((a, b) => a + args.shift().toString() + b)

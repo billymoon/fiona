@@ -23,10 +23,12 @@ export default {
       light: clr.lightGray,
       white: clr.white
     },
-    // grid: {
-    //   unit: 1,
-    //   breakpoints: { xs: 0, sm: 768, md: 992, lg: 1200, xl: 1400, xxl: 1400 }
-    // },
+    grid: {
+      equalized: true,
+      unit: 10,
+      fluidish: true,
+      breakpoints: { xs: 0, sm: 768, md: 992, lg: 1200, xl: 1400, xxl: 1400 }
+    },
     fontFamily: 'helvetica, tahoma, verdana, sans-serif'
   }
 }

@@ -1,7 +1,6 @@
 import Pretender from 'fetch-pretender'
 
-import { Sample } from 'jsx-components'
-import { fiona, injectState } from '../../app'
+import { fiona, injectState, Sample } from '../../app'
 
 if (process.browser) {
   window.Pretender = Pretender

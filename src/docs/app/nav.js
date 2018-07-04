@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { withRouter } from 'next/router'
 
-import { withTheme } from '../app'
+import { withTheme, config } from '../app'
 
 const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
   <div>
@@ -40,7 +40,7 @@ const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
       margin-top: 4px;
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: ${config.theme.grid.breakpoints.sm}px) {
       .action-button {
         padding: 10px 40px;
         width: auto;

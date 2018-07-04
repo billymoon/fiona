@@ -1,5 +1,8 @@
 export { injectState } from 'freactal'
 
+// Seems to be overridden by explicitly exported components
+export * from 'jsx-components'
+
 export { default as config } from './config'
 export { default as fonts } from './fonts'
 export { default as state, inject, withState } from './state'
@@ -12,4 +15,6 @@ export { default as Nav } from './nav'
 export { default as ApiSection } from './api-section'
 export { Container, Row, Col, Article, Shelf } from './grid'
 
-export * from 'jsx-components'
+import config from './config'
+import { Sample as VanillaSample} from 'jsx-components'
+export const Sample = ({ ...props }) => <VanillaSample breakpoint={`${config.theme.grid.breakpoints.lg}px`} {...props} />

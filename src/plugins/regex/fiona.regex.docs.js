@@ -1,5 +1,4 @@
-import { fiona, injectState, ApiSection } from '../../docs/app'
-import { Sample } from 'jsx-components'
+import { fiona, injectState, ApiSection, Sample } from '../../docs/app'
 
 const Section = ({ state: { seed } }) =>
   <ApiSection heading={<span><small>fiona.fn.</small>regex</span>}>

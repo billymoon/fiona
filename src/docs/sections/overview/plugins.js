@@ -1,5 +1,4 @@
-import { Sample } from 'jsx-components'
-import { injectState } from '../../app'
+import { injectState, Sample } from '../../app'
 
 // TODO: make samples render real values
 const Section = ({ state: { seed } }) =>

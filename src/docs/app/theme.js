@@ -1,7 +1,6 @@
 import { injectState, provideState } from 'freactal'
 
-import { default as ThemeCreator, themeDefaults } from 'jsx-components/theme'
-import { mergeDeep } from 'jsx-components/util'
+import { mergeDeep, ThemeCreator, themeDefaults } from '.'
 
 export const withTheme = Component => injectState(({ state, ...props }) => <Component theme={state.theme} state={state} {...props} />)
 
