@@ -1,6 +1,6 @@
-import { injectState } from '../../app'
+import { globalState } from '../../app'
 
-const ApiSearch = ({ effects: { setApiFilter }, state: { apiFilter }, ...props }) =>
+const ApiSearch = ({ setApiFilter, apiFilter, ...props }) =>
   <input ref={el => el && el.focus()} value={apiFilter} placeholder='filter api methods' onChange={evt => setApiFilter(evt.target.value)} />
 
-export default injectState(ApiSearch)
+export default globalState(ApiSearch)

@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 
-import { Theme, Shelf, Article, withTheme, Ribbon } from '../app'
-import { Logo, Nav, fiona, injectState, config, fonts } from './'
+import { Theme, Shelf, Article, withTheme, Ribbon, Logo, Nav, fiona, injectState, config, fonts, GlobalState } from '.'
 
 const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
   <section>
@@ -77,18 +76,20 @@ const MainLayout = ({ state: { seed }, children }) =>
       <script>Raven.config('https://cbe5f0dcbb0b4d488ca750f1b7f7ac11@sentry.io/1226793').install()</script>
       */}
     </Head>
-    <Theme.Dynamic config={seed % 2 ? {
-      clr: {
-        primary: config.theme.clr.secondary,
-        accent: config.theme.clr.secondaryAccent,
-        secondary: config.theme.clr.primary,
-        secondaryAccent: config.theme.clr.accent
-      }
-    } : {}}>
-      <MainContent seed={seed}>
-        {children}
-      </MainContent>
-    </Theme.Dynamic>
+    <GlobalState>
+      <Theme.Dynamic config={seed % 2 ? {
+        clr: {
+          primary: config.theme.clr.secondary,
+          accent: config.theme.clr.secondaryAccent,
+          secondary: config.theme.clr.primary,
+          secondaryAccent: config.theme.clr.accent
+        }
+      } : {}}>
+        <MainContent seed={seed}>
+          {children}
+        </MainContent>
+      </Theme.Dynamic>
+    </GlobalState>
   </div>
 
 export default injectState(MainLayout)
