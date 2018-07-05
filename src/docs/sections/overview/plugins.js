@@ -1,7 +1,7 @@
-import { injectState, Sample } from '../../app'
+import { connect, Sample } from '../../app'
 
 // TODO: make samples render real values
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h2>Plugins</h2>
 
@@ -56,4 +56,4 @@ const Section = ({ state: { seed } }) =>
     `}</Sample>
   </section>
 
-export default injectState(Section)
+export default connect(Section)

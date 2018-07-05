@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 
-import { Theme, Shelf, Article, withTheme, Ribbon, Logo, Nav, fiona, injectState, config, fonts, GlobalState } from '.'
+import { Theme, Shelf, Article, withTheme, Ribbon, Logo, Nav, fiona, connect, config, fonts, GlobalState } from '.'
 
 const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
   <section>
@@ -63,7 +63,7 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
 ))
 
 // TODO: simpify and tidy this section, perhaps this whole layout file
-const MainLayout = ({ state: { seed }, children }) =>
+const MainLayout = ({ seed, children }) =>
   <div>
     <Head>
       <title>Fiona</title>
@@ -92,4 +92,4 @@ const MainLayout = ({ state: { seed }, children }) =>
     </GlobalState>
   </div>
 
-export default injectState(MainLayout)
+export default connect(MainLayout)

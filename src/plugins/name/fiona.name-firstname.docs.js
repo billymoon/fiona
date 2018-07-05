@@ -1,6 +1,6 @@
-import { fiona, injectState, ApiSection, Sample } from '../../docs/app'
+import { fiona, connect, ApiSection, Sample } from '../../docs/app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <ApiSection heading={<span><small>fiona.fn.</small>firstname</span>}>
     <p>A seeded utility to return a single firstname, optionally taking a gender to adhere to.</p>
 
@@ -13,4 +13,4 @@ const Section = ({ state: { seed } }) =>
     `} />
   </ApiSection>
 
-export default injectState(Section)
+export default connect(Section)

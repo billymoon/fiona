@@ -1,9 +1,9 @@
-import { injectState, configurableLayoutComponents, config } from '.'
+import { connect, configurableLayoutComponents, config } from '.'
 
 const componentConfigurator = Component => {
-  const ComponentProxy = ({ state: { theme: { grid } }, effects, ...props }) =>
+  const ComponentProxy = ({ theme: { grid }, effects, ...props }) =>
     <Component config={Object.assign({}, config.theme.grid, grid)} {...props} />
-  return injectState(ComponentProxy)
+  return connect(ComponentProxy)
 }
 
 export const {

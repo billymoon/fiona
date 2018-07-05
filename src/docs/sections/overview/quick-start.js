@@ -1,6 +1,6 @@
-import { fiona, injectState, Sample } from '../../app'
+import { fiona, connect, Sample } from '../../app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h2>Quickstart...</h2>
 
@@ -67,4 +67,4 @@ const Section = ({ state: { seed } }) =>
     }), null, 2)}`} />
   </section>
 
-export default injectState(Section)
+export default connect(Section)

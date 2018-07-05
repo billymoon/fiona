@@ -1,6 +1,6 @@
 import Pretender from 'fetch-pretender'
 
-import { fiona, injectState, Sample } from '../../app'
+import { fiona, connect, Sample } from '../../app'
 
 if (process.browser) {
   window.Pretender = Pretender
@@ -22,7 +22,7 @@ pretender.get('/user/:id', request => [
 
 pretender.get('/*all', pretender.passthrough)
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h3>Mocking `fetch` with Fetch Pretender</h3>
 
@@ -68,4 +68,4 @@ const Section = ({ state: { seed } }) =>
     <div className='clearfix' />
   </section>
 
-export default injectState(Section)
+export default connect(Section)

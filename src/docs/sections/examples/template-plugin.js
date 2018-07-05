@@ -1,13 +1,13 @@
 import template from 'lodash.template'
 
-import { fiona, injectState, Sample } from '../../app'
+import { fiona, connect, Sample } from '../../app'
 
 fiona.plugin('template', ({ seeded }, templateArray, ...args) => {
   const templateString = templateArray.reduce((a, b) => a + args.shift().toString() + b)
   return template(templateString)(seeded.value())
 })
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h3>Template Plugin</h3>
 
@@ -51,4 +51,4 @@ const Section = ({ state: { seed } }) =>
     <div className='clearfix' />
   </section>
 
-export default injectState(Section)
+export default connect(Section)

@@ -1,6 +1,6 @@
-import { fiona, injectState, ApiSection, Sample } from '../../docs/app'
+import { fiona, connect, ApiSection, Sample } from '../../docs/app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <ApiSection heading={<span><small>fiona.fn.</small>date</span>}>
     <p>A seeded utility to return a date as a string in format `YYYY-MM-DD`. Range is between `min` and `max` options, which default to 1940 and 2000 and can be overridden with strings parsable by the native `Date()` method. There is also a `long` to output full `Date.prototype.toISOString` format.</p>
 
@@ -19,4 +19,4 @@ const Section = ({ state: { seed } }) =>
     `} />
   </ApiSection>
 
-export default injectState(Section)
+export default connect(Section)

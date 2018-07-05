@@ -1,8 +1,8 @@
-import { injectState, provideState } from '.'
+import { connect, provideState } from '.'
 
 import { mergeDeep, ThemeCreator, themeDefaults } from '.'
 
-export const withTheme = Component => injectState(({ state, ...props }) => <Component theme={state.theme} state={state} {...props} />)
+export const withTheme = Component => connect(Component)
 
 const ThemeFactory = properties => provideState({ initialState: (props, { freactal }) => ({
   theme: {

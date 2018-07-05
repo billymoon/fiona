@@ -1,6 +1,6 @@
-import { fiona, injectState, ApiSection, Sample } from '../../docs/app'
+import { fiona, connect, ApiSection, Sample } from '../../docs/app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <ApiSection heading={<span><small>fiona.fn.</small>duplicable</span>}>
     <p>A seeded utility to help to produce duplicated data sometimes. By default, the seed will be picked from a pool of 10 possibilities, 10 per cent of the time.</p>
 
@@ -33,4 +33,4 @@ const Section = ({ state: { seed } }) =>
     `} />
   </ApiSection>
 
-export default injectState(Section)
+export default connect(Section)

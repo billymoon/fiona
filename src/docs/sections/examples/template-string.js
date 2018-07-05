@@ -1,6 +1,6 @@
-import { fiona, injectState, Sample } from '../../app'
+import { fiona, connect, Sample } from '../../app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h3>Template String</h3>
 
@@ -48,4 +48,4 @@ const Section = ({ state: { seed } }) =>
     <div className='clearfix' />
   </section>
 
-export default injectState(Section)
+export default connect(Section)

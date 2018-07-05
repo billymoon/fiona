@@ -1,6 +1,6 @@
-import { fiona, injectState, ApiSection, Sample } from '../../docs/app'
+import { fiona, connect, ApiSection, Sample } from '../../docs/app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <ApiSection heading={<span><small>fiona.</small>namedata</span>}>
     <p>the data used to generate names and salutations is exposed as `fiona.namedata` shich can be inspected, and modified.</p>
 
@@ -19,4 +19,4 @@ const Section = ({ state: { seed } }) =>
     `}</Sample>
   </ApiSection>
 
-export default injectState(Section)
+export default connect(Section)

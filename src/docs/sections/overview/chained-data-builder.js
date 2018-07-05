@@ -1,6 +1,6 @@
-import { injectState, Sample } from '../../app'
+import { connect, Sample } from '../../app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h2>Chained data builder</h2>
 
@@ -32,4 +32,4 @@ const Section = ({ state: { seed } }) =>
     <p>The chained data method works by recursing and traversing objects and arrays, and any functions it finds, it will execute them, passing them the current data, a new seeded instance based on position in the data structure, the position as a path and an array builder helper.</p>
   </section>
 
-export default injectState(Section)
+export default connect(Section)

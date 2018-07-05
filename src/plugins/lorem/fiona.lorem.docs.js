@@ -1,6 +1,6 @@
-import { fiona, injectState, ApiSection, Sample } from '../../docs/app'
+import { fiona, connect, ApiSection, Sample } from '../../docs/app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <ApiSection heading={<span><small>fiona.fn.</small>lorem</span>}>
     <p>A seeded utility to return lorem ipsum text, optionally takes `qty` which is approximate number of words and defaults to `15`.</p>
 
@@ -19,4 +19,4 @@ const Section = ({ state: { seed } }) =>
     `} />
   </ApiSection>
 
-export default injectState(Section)
+export default connect(Section)

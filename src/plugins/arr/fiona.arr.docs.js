@@ -1,6 +1,6 @@
-import { fiona, injectState, ApiSection, Sample } from '../../docs/app'
+import { fiona, connect, ApiSection, Sample } from '../../docs/app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <ApiSection heading={<span><small>fiona.fn.</small>arr</span>}>
     <p>A seeded array generation utility, which takes <code>qty</code> (how many items in array) and a callback that is called with <code>{`{ seeded }`}</code> which should return the value of each array item.</p>
 
@@ -23,4 +23,4 @@ const Section = ({ state: { seed } }) =>
     `}</Sample>
   </ApiSection>
 
-export default injectState(Section)
+export default connect(Section)

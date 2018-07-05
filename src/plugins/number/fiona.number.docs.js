@@ -1,6 +1,6 @@
-import { fiona, injectState, ApiSection, Sample } from '../../docs/app'
+import { fiona, connect, ApiSection, Sample } from '../../docs/app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <ApiSection heading={<span><small>fiona.fn.</small>number</span>}>
     <p>A seeded utility to return a number, taking options min and max and precision, which default to 0 and 1,000,000 and 0.</p>
 
@@ -25,4 +25,4 @@ const Section = ({ state: { seed } }) =>
     `} />
   </ApiSection>
 
-export default injectState(Section)
+export default connect(Section)

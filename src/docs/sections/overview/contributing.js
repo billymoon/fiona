@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
-import { fiona, injectState, Sample } from '../../app'
+import { fiona, connect, Sample } from '../../app'
 
 const NPM = ({ name }) => <Link href={`https://www.npmjs.com/package/${name}`}><a>{name}</a></Link>
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h2>Contributing</h2>
 
@@ -27,4 +27,4 @@ const Section = ({ state: { seed } }) =>
     <p>Updating or creating a pull request will trigger a deployment using zeit's now service.</p>
   </section>
 
-export default injectState(Section)
+export default connect(Section)

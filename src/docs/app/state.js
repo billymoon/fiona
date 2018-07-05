@@ -1,8 +1,6 @@
-import { provideState, injectState, update } from '.'
+import { provideState, injectState, update } from 'freactal'
 
 import config from './config'
-
-export { injectState }
 
 const initialState = () => ({
   seed: 952684,

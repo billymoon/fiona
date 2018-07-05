@@ -1,6 +1,6 @@
-import { fiona, injectState, Sample } from '../../app'
+import { fiona, connect, Sample } from '../../app'
 
-const Section = ({ state: { seed } }) =>
+const Section = ({ seed }) =>
   <section>
     <h2>Seeded pseudo random number generator</h2>
 
@@ -38,4 +38,4 @@ const Section = ({ state: { seed } }) =>
     `} />
   </section>
 
-export default injectState(Section)
+export default connect(Section)
