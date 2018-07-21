@@ -1,4 +1,5 @@
-import { connect, provideState } from '.'
+import { provideState } from 'freactal'
+import { connect, config } from '.'
 
 import { mergeDeep, ThemeCreator, themeDefaults } from '.'
 
@@ -9,5 +10,34 @@ const ThemeFactory = properties => provideState({ initialState: (props, { freact
     ...mergeDeep({}, themeDefaults, freactal.state.theme, properties)
   }
 }) })(({ children }) => children)
+
+const ThemeStateContext = React.createContext(themeDefaults)
+
+export const injectWithState = Component => ({ ...props }) =>
+  <ThemeStateContext.Consumer>
+    {({ ...state }) => <Component {...state} {...props} />}
+  </ThemeStateContext.Consumer>
+
+export const ThemeStateFactory = themeState => {
+
+  class ThemeState extends React.Component {
+    render () {
+      const { state, props: { children } } = this
+      return (
+        <ThemeStateContext.Consumer>{({ theme }) =>
+          <ThemeStateContext.Provider value={mergeDeep({}, themeDefaults, { theme: (theme || {}) }), state}>
+            {children}
+          </ThemeStateContext.Provider>
+        }</ThemeStateContext.Consumer>
+      )
+    }
+
+    state = {
+      theme: themeState
+    }
+  }
+
+  return { ThemeState }
+}
 
 export const Theme = ThemeCreator(ThemeFactory)

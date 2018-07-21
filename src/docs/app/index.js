@@ -1,5 +1,3 @@
-export { provideState } from 'freactal'
-
 // Seems to be overridden by explicitly exported components
 export * from 'jsx-components'
 

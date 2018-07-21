@@ -23,7 +23,9 @@ const fixture = {
   RANDOM_7: 0.21006875882505002
 };
 
-[fionaCore, fiona, fionaCompiled, fionaCoreCompiled].forEach(fiona => {
+[fionaCore, fiona].forEach(fiona => {
+// TODO: more elegant way to test compiled packages
+// [fionaCore, fiona, fionaCompiled, fionaCoreCompiled].forEach(fiona => {
   const Girlnames = ['Mia', 'Alice', 'Fiona', 'Aria', 'Sarah']
   const Boynames = ['David', 'Maxwell', 'Christopher', 'John', 'Billy']
   const Surnames = ['Moon', 'Bell', 'Miller', 'Smith', 'Jones']
@@ -283,9 +285,53 @@ const fixture = {
     expect(data).toEqual([719007, 195079])
   })
 
+  test('arr', () => {
+    const data = fiona('moon').data(({ arr }) => arr(2, () => 123))
+    expect(data).toEqual([123, 123])
+  })
+
+  test('arr (fiona.call)', () => {
+    const data = fiona('moon').data(({ arr }) => arr(fiona.call('number'), () => 123))
+    // const data = fiona('moon').data(({ arr }) => arr(2, () => 123))
+    expect(data).toEqual([123, 123])
+  })
+
+  test('arr (min/max)', () => {
+    const data = fiona('moon').data(({ arr }) => arr({ min: 5, max: 7 }, () => 123))
+    expect(data).toEqual([123, 123, 123, 123, 123, 123])
+  })
+
   test('fiona.fn.data (unknown)', () => {
     expect(fiona('moon').data(123)).toEqual(123)
     expect(fiona('moon').data(/asdasd/)).toEqual(/asdasd/)
+  })
+
+  test('fiona.fn.data (undefined)', () => {
+    [
+      undefined,
+      [1, undefined],
+      [undefined],
+      [undefined, 1],
+      [1, undefined, 1],
+      { a: undefined },
+      { a: undefined, b: 1 },
+      { a: 1, b: undefined }
+    ].forEach(item => {
+      expect(fiona('moon').data(item)).toEqual(item)
+      expect(fiona('moon').data(() => item)).toEqual(item)      
+    })
+
+    expect(fiona('moon').data({
+      a: 1, b: undefined, c: () => undefined
+    })).toEqual({
+      a: 1, b: undefined, c: undefined
+    })
+
+    expect(fiona('moon').data({
+      a: 1, b: undefined, c: () => [undefined]
+    })).toEqual({
+      a: 1, b: undefined, c: [undefined]
+    })
   })
 
   test('fiona.fn.state', () => {

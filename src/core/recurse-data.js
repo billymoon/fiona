@@ -3,7 +3,8 @@ const { type } = require('../utils')
 
 module.exports = (fiona, initseed, seeded) => {
   const recurseData = (originalInput, position, currentInput, currentindex) => {
-    if (currentInput === undefined) {
+    // TODO: check if this logic is correct and better detection of root object
+    if (currentInput === undefined && (position === 'data' || position === 'data[0]')) {
       currentInput = originalInput
     }
 
@@ -17,7 +18,18 @@ module.exports = (fiona, initseed, seeded) => {
   }
 
   const arr = (qty, callback) => {
-    return Array(qty).fill(callback)
+    // TODO: document passing options object to arr
+    if (type(qty) === 'Object') {
+      // if (qty.max === undefined) {
+        // qty.max = 10
+      // }
+      return Array(seeded.number(qty)).fill(callback)
+    } else {
+      // return Array(recurseData(qty)).fill(callback)
+      return Array(seeded.clone().data(qty)).fill(callback)
+      // console.log(seeded.clone().data(qty), qty)
+      // return Array(qty).fill(callback)
+    }
   }
 
   const recurseObject = (currentInput, originalInput, position) => {
@@ -32,7 +44,11 @@ module.exports = (fiona, initseed, seeded) => {
     return currentInput.map((item, index) => {
       const m = position.match(/^data\[(\d+)\]$/)
       const pos = m ? `data[${1 * m[1] + index}]` : `${position}[${index}]`
-      return recurseData(originalInput, pos, item, index)
+      if (item !== undefined) {
+        return recurseData(originalInput, pos, item, index)
+      } else {
+        return undefined
+      }
     })
   }
 
