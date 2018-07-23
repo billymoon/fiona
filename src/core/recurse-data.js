@@ -21,7 +21,7 @@ module.exports = (fiona, initseed, seeded) => {
     // TODO: document passing options object to arr
     if (type(qty) === 'Object') {
       // if (qty.max === undefined) {
-        // qty.max = 10
+      //   qty.max = 10
       // }
       return Array(seeded.number(qty)).fill(callback)
     } else {

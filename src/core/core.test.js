@@ -318,7 +318,7 @@ const fixture = {
       { a: 1, b: undefined }
     ].forEach(item => {
       expect(fiona('moon').data(item)).toEqual(item)
-      expect(fiona('moon').data(() => item)).toEqual(item)      
+      expect(fiona('moon').data(() => item)).toEqual(item)
     })
 
     expect(fiona('moon').data({
