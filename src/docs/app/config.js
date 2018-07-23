@@ -12,7 +12,18 @@ const clr = {
 }
 
 export default {
+  // seed that creates data with name 'Miss Fiona Moon' and age '0'
+  // fiona.find(
+  //   ({ name, age }) => name === 'Miss Fiona Moon' && age === 0,
+  //   seeded => seeded.data({
+  //     name: fiona.call('name'),
+  //     age: fiona.call('number', { max: 100 })
+  //   }),
+  //   { startseed: 950000 }
+  // ).info()
+  magicNumber: 952684, //4946447
   theme: {
+    bg: clr.white,
     clr: {
       primary: clr.purple,
       secondary: clr.blue,

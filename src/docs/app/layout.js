@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 
-import { Theme, Shelf, Article, withTheme, Ribbon, Logo, Nav, fiona, connect, config, fonts, GlobalState } from '.'
+import { connect, Theme, Shelf, Article, withTheme, Ribbon, Logo, Nav, fiona, config, fonts } from '.'
 
 const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
   <section>
@@ -63,6 +63,7 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
 ))
 
 // TODO: simpify and tidy this section, perhaps this whole layout file
+// TODO: re-implement dynamic theme switcher
 const MainLayout = ({ seed, children }) =>
   <div>
     <Head>
@@ -75,21 +76,10 @@ const MainLayout = ({ seed, children }) =>
       <script src='https://cdn.ravenjs.com/3.26.2/raven.min.js' crossorigin='anonymous'></script>
       <script>Raven.config('https://cbe5f0dcbb0b4d488ca750f1b7f7ac11@sentry.io/1226793').install()</script>
       */}
-    </Head>
-    <GlobalState>
-      <Theme.Dynamic config={seed % 2 ? {
-        clr: {
-          primary: config.theme.clr.secondary,
-          accent: config.theme.clr.secondaryAccent,
-          secondary: config.theme.clr.primary,
-          secondaryAccent: config.theme.clr.accent
-        }
-      } : {}}>
-        <MainContent seed={seed}>
-          {children}
-        </MainContent>
-      </Theme.Dynamic>
-    </GlobalState>
+    </Head>    
+    <MainContent seed={seed}>
+      {children}
+    </MainContent>
   </div>
 
 export default connect(MainLayout)

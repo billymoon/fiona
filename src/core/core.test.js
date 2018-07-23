@@ -2,16 +2,16 @@
 
 const fionaCore = require('./core')
 const fiona = require('../')
-const fionaCompiled = require('../../fiona')
-const fionaCoreCompiled = require('../../fiona.core')
+// const fionaCompiled = require('../../fiona')
+// const fionaCoreCompiled = require('../../fiona.core')
 
 // TODO: move tests for number/oneOf/choose to plugins
 require('../plugins/number/fiona.number')
 require('../plugins/choose/fiona.choose-oneof')
 require('../plugins/choose/fiona.choose')
-fionaCoreCompiled.fn.number = fiona.fn.number
-fionaCoreCompiled.fn.oneOf = fiona.fn.oneOf
-fionaCoreCompiled.fn.choose = fiona.fn.choose
+// fionaCoreCompiled.fn.number = fiona.fn.number
+// fionaCoreCompiled.fn.oneOf = fiona.fn.oneOf
+// fionaCoreCompiled.fn.choose = fiona.fn.choose
 
 const fixture = {
   RANDOM_1: 0.4583325853842928,
@@ -290,9 +290,9 @@ const fixture = {
     expect(data).toEqual([123, 123])
   })
 
+  // TODO: document min/max and call of `arr` fn
   test('arr (fiona.call)', () => {
-    const data = fiona('moon').data(({ arr }) => arr(fiona.call('number'), () => 123))
-    // const data = fiona('moon').data(({ arr }) => arr(2, () => 123))
+    const data = fiona('moon').data(({ arr }) => arr(fiona.call('number', { max: 20 }), () => 123))
     expect(data).toEqual([123, 123])
   })
 

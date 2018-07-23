@@ -22,7 +22,6 @@
     "@weco/next-plugin-transpile-modules": "0.0.2",
     "bezier-easing": "^2.0.3",
     "fetch-pretender": "^1.5.0",
-    "freactal": "^2.0.3",
     "git-tools": "^0.3.0",
     "husky": "^0.14.3",
     "jest": "^22.4.4",

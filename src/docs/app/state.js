@@ -1,69 +1,34 @@
-import { provideState, injectState, update } from 'freactal'
-
+import { StateFactory, mergeDeep } from '.'
 import config from './config'
 
-const initialState = () => ({
-  seed: 952684,
-  theme: config.theme
+export const GlobalState = StateFactory({
+  theme: config.theme,
+  seed: config.magicNumber,
+  blink: false,
+  apiFilter: '',
+}, {
+  doubleCool: ({ cool }) => ({ cool: cool * 2 }),
+  setSeed: ({ seed }, newValue) => ({ seed: seed === newValue ? Math.floor(Math.random() * 33) : newValue }),
+  setApiFilter: ({}, newValue) => ({ apiFilter: newValue }),
+  clickSeed: ({ seed }, index) => ({ blink: null, seed: (index === 24 ? config.magicNumber : index) === seed ? Math.floor(Math.random() * 33) : (index === 24 ? config.magicNumber : index) })
+  // TODO: re-instate blink
+  // initialize: effects => state => Object.assign({}, state, {
+  //   interval: process.browser && effects.toggleBlink()
+  // }),
+  // // TODO: why is each click creating new blink state?
+  // toggleBlink: ({ toggleBlink }) => state => {
+  //   if (state.blink !== null) {
+  //     setTimeout(toggleBlink, 500)
+
+  //     return Object.assign({}, state, {
+  //       blink: !state.blink
+  //     })
+  //   } else {
+  //     return state
+  //   }
+  // },
 })
 
-const effects = {
-  setSeed: update(({ seed }, newValue) => ({
-    seed: seed === newValue ? Math.floor(Math.random() * 33) : newValue
-  }))
-}
+export const withState = GlobalState.withState
 
-const localState = provideState({ initialState, effects })
-
-export const wrapWithState = (componentState, ComponentPure) => provideState(componentState)(connect(ComponentPure))
-
-export const connect = ComponentPure => {
-  const Component = ({ state, effects, ...props }) => <ComponentPure {...state} {...effects} {...props} />
-  return injectState(Component)
-}
-
-export const withState = Component => localState(Component)
-
-
-/* new React Context based state solution */
-
-export const GlobalStateContext = React.createContext({
-  // seed: 952684,
-  // theme: config.theme,
-  // apiFilter: ''
-})
-
-export class GlobalState extends React.Component {
-  render () {
-    return (
-      <GlobalStateContext.Provider value={this.state}>
-        {this.props.children}
-      </GlobalStateContext.Provider>
-    );
-  }
-
-  state = {
-    theme: config.theme,
-
-    seed: 952684,
-    setSeed: newValue => {
-      this.setState({
-        seed: this.state.seed === newValue ? Math.floor(Math.random() * 33) : newValue
-      })
-    },
-
-    apiFilter: '',
-    setApiFilter: newValue => {
-      this.setState({
-        apiFilter: newValue
-      })
-    }
-  }
-}
-
-export const globalState = Component => ({ ...props }) => {
-  return (<GlobalStateContext.Consumer>{
-      ({ ...state }) => <Component {...state} {...props} />
-    }</GlobalStateContext.Consumer>
-  )
-}
+export const connect = GlobalState.inject

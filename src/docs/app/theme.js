@@ -1,15 +1,16 @@
-import { provideState } from 'freactal'
 import { connect, config } from '.'
 
 import { mergeDeep, ThemeCreator, themeDefaults } from '.'
 
 export const withTheme = Component => connect(Component)
 
-const ThemeFactory = properties => provideState({ initialState: (props, { freactal }) => ({
-  theme: {
-    ...mergeDeep({}, themeDefaults, freactal.state.theme, properties)
-  }
-}) })(({ children }) => children)
+// TODO: re-implement functionality with new react context state
+const ThemeFactory = properties => ({ children }) => children
+// const ThemeFactory = properties => provideState({ initialState: (props, { freactal }) => ({
+//   theme: {
+//     ...mergeDeep({}, themeDefaults, freactal.state.theme, properties)
+//   }
+// }) })(({ children }) => children)
 
 const ThemeStateContext = React.createContext(themeDefaults)
 

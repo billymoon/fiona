@@ -1,4 +1,4 @@
-import { fiona } from '../'
+import { fiona, config, connect } from '.'
 
 const pos = index => ({ x: (index % 11) * 40 + 10, y: Math.floor(index / 11) * 40 + 10 })
 
@@ -43,19 +43,19 @@ const fionaDots = [
 ]
 
 // TODO: simpify and tidy this section, perhaps this whole logo file
-export default ({ seed, blink, theme, clickSeed }) =>
+const Logo = ({ seed, blink, theme, clickSeed }) =>
   <div className='root'>
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0, 0, 420, 100'>
       <g>
-        {(seed === 952684 ? fionaLines : fiona(seed).getLines()).map(([p1, p2], index) =>
+        {(seed === config.magicNumber ? fionaLines : fiona(seed).getLines()).map(([p1, p2], index) =>
           <line key={index} x1={pos(p1).x} y1={pos(p1).y} x2={pos(p2).x} y2={pos(p2).y} strokeWidth='4' />
         )}
       </g>
       <g>
-        {(seed === 952684 ? fionaDots : fiona(seed).getDots()).map((filled, index) =>
+        {(seed === config.magicNumber ? fionaDots : fiona(seed).getDots()).map((filled, index) =>
           <circle key={index} cx={pos(index).x} cy={pos(index).y} r={filled ? 10 : 8} strokeWidth={filled ? 0 : 4} className={[
             filled ? 'filled' : '',
-            ((index === 24 ? 952684 : index) === seed && (blink ? 'blink selected' : 'selected')) || ''
+            ((index === 24 ? config.magicNumber : index) === seed && (blink ? 'blink selected' : 'selected')) || ''
           ].join(' ')} onClick={() => clickSeed(index)} />
         )}
       </g>
@@ -95,3 +95,5 @@ export default ({ seed, blink, theme, clickSeed }) =>
       }
     `}</style>
   </div>
+
+export default connect(Logo)

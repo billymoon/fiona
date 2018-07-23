@@ -1,4 +1,4 @@
-import { globalState } from '.'
+import { connect } from '.'
 
 const recurser = item => typeof item === 'string' ? item : recurser(item.props.children)
 
@@ -12,4 +12,4 @@ const ApiSection = ({ heading, apiFilter, children }) =>
     {children}
   </section>
 
-export default globalState(ApiSection)
+export default connect(ApiSection)
