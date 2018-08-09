@@ -1,6 +1,6 @@
-import { globalState } from '../../app'
+import { connect } from '../../app'
 
-const ApiSearch = ({ setApiFilter, apiFilter, ...props }) =>
+const ApiSearch = ({ setApiFilter, apiFilter, theme, ...props }) =>
 // const ApiSearch = ({ effects: { setApiFilter }, state: { apiFilter, theme }, ...props }) =>
   <div>
     <input ref={el => el && el.focus()} value={apiFilter} placeholder='filter api methods' onChange={evt => setApiFilter(evt.target.value)} />
@@ -23,4 +23,4 @@ const ApiSearch = ({ setApiFilter, apiFilter, ...props }) =>
     `}</style>
   </div>
 
-export default globalState(ApiSearch)
+export default connect(ApiSearch)

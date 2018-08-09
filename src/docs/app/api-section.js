@@ -4,7 +4,7 @@ const recurser = item => typeof item === 'string' ? item : recurser(item.props.c
 
 const extractText = ({ props: { children } }) => children.map(recurser).join('')
 
-const shouldDisplay = (heading, apiFilter) => extractText(heading).toLowerCase().indexOf(apiFilter.toLowerCase()) === -1 ? 'none' : 'block'
+const shouldDisplay = (heading, apiFilter) => extractText(heading).toLowerCase().indexOf((apiFilter || '').toLowerCase()) === -1 ? 'none' : 'block'
 
 const ApiSection = ({ heading, apiFilter, children, ...props }) =>
   <section {...props} style={{ display: shouldDisplay(heading, apiFilter) }}>
