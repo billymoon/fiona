@@ -62,12 +62,15 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
         font-size: 0.75em;
       }
 
-      h1 { font-size: 40px; margin-top: 20px; margin-bottom: 20px; }
+      h1 { font-size: 40px; margin-top: 0px; margin-bottom: 10px; }
       h2 { font-size: 32px; }
       h3 { font-size: 24px; }
       h4 { font-size: 22px; }
       h5 { font-size: 18px; }
-      h6 { font-size: 16px; }
+      h6 { font-size: 16px; }      
+      @media screen and (min-width: 768px) {
+        h1 { margin-top: 20px; margin-bottom: 40px; }
+      }
     `}</style>
     {children}
   </section>
