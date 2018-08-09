@@ -1,4 +1,5 @@
-import { withState, Layout, Article } from '../src/docs/app'
+import { Layout, Article } from '../src/docs/app'
+import { provide } from '../src/docs/app/state'
 
 import {
   OverviewDynamicOverview,
@@ -21,4 +22,4 @@ const Page = () =>
     <Article><OverviewContributing /></Article>
   </Layout>
 
-export default withState(Page)
+export default provide(Page)

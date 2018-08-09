@@ -1,6 +1,6 @@
 import Pretender from 'fetch-pretender'
 
-import { fiona, connect, Sample } from '../../app'
+import { fiona, consume, Sample } from '../../app'
 
 if (process.browser) {
   window.Pretender = Pretender
@@ -68,4 +68,4 @@ const Section = ({ seed }) =>
     <div className='clearfix' />
   </section>
 
-export default connect(Section)
+export default consume(Section)

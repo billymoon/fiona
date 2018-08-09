@@ -1,6 +1,6 @@
 import template from 'lodash.template'
 
-import { fiona, connect, Sample } from '../../app'
+import { fiona, consume, Sample } from '../../app'
 
 fiona.plugin('template', ({ seeded }, templateArray, ...args) => {
   const templateString = templateArray.reduce((a, b) => a + args.shift().toString() + b)
@@ -51,4 +51,4 @@ const Section = ({ seed }) =>
     <div className='clearfix' />
   </section>
 
-export default connect(Section)
+export default consume(Section)

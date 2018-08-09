@@ -3,7 +3,7 @@ import { withRouter } from 'next/router'
 
 import { Ribbon } from 'jsx-components'
 import { Theme, Shelf, Article, withTheme } from '../app'
-import { Logo, Nav, fiona, injectState, config, connect } from './'
+import { Logo, Nav, fiona, injectState, config, consume } from './'
 
 const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
   <section>
@@ -97,4 +97,4 @@ const MainLayout = ({ seed, children }) =>
     </MainContent>
   </div>
 
-export default connect(MainLayout)
+export default consume(MainLayout)

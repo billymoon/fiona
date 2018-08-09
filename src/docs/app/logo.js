@@ -1,4 +1,4 @@
-import { fiona, config, connect } from '.'
+import { fiona, config, consume } from '.'
 
 const pos = index => ({ x: (index % 11) * 40 + 10, y: Math.floor(index / 11) * 40 + 10 })
 
@@ -101,4 +101,4 @@ const Logo = ({ seed, blink, theme, clickSeed }) =>
     `}</style>
   </div>
 
-export default connect(Logo)
+export default consume(Logo)

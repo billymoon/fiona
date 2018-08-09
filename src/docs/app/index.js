@@ -2,7 +2,7 @@
 export * from 'jsx-components'
 
 export { default as config } from './config'
-export { withState, connect } from './state'
+export { provide, consume } from './state'
 export { default as fiona } from './fiona-loader'
 export { withTheme, Theme } from './theme'
 

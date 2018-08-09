@@ -1,4 +1,4 @@
-import { connect } from '../../app'
+import { consume } from '../../app'
 
 const Section = ({ seed }) =>
   <section>
@@ -7,4 +7,4 @@ const Section = ({ seed }) =>
     <p>For demonstration purposes, a seed of <code>{seed}</code> is used, but changing this should render different, but consistent results.</p>
   </section>
 
-export default connect(Section)
+export default consume(Section)

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { fiona, connect, Sample } from '../../app'
+import { fiona, consume, Sample } from '../../app'
 
 const NPM = ({ name }) => <Link href={`https://www.npmjs.com/package/${name}`}><a>{name}</a></Link>
 
@@ -27,4 +27,4 @@ const Section = ({ seed }) =>
     <p>Updating or creating a pull request will trigger a deployment using zeit's now service.</p>
   </section>
 
-export default connect(Section)
+export default consume(Section)

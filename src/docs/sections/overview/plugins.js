@@ -1,4 +1,4 @@
-import { connect, Sample } from '../../app'
+import { consume, Sample } from '../../app'
 
 // TODO: make samples render real values
 const Section = ({ seed }) =>
@@ -56,4 +56,4 @@ const Section = ({ seed }) =>
     `}</Sample>
   </section>
 
-export default connect(Section)
+export default consume(Section)

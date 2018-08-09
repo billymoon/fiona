@@ -1,4 +1,4 @@
-import { fiona, connect, ApiSection, Sample } from '../../docs/app'
+import { fiona, consume, ApiSection, Sample } from '../../docs/app'
 
 const Section = ({ seed }) =>
   <ApiSection heading={<span><small>fiona.fn.</small>number</span>}>
@@ -25,4 +25,4 @@ const Section = ({ seed }) =>
     `} />
   </ApiSection>
 
-export default connect(Section)
+export default consume(Section)

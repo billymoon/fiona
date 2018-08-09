@@ -1,4 +1,4 @@
-import { fiona, connect, Sample } from '../../app'
+import { fiona, consume, Sample } from '../../app'
 
 const Section = ({ seed }) =>
   <section>
@@ -54,4 +54,4 @@ const Section = ({ seed }) =>
     <div className='clearfix' />
   </section>
 
-export default connect(Section)
+export default consume(Section)

@@ -1,7 +1,6 @@
-import { connect } from '../../app'
+import { consume } from '../../app/state'
 
 const ApiSearch = ({ setApiFilter, apiFilter, theme, ...props }) =>
-// const ApiSearch = ({ effects: { setApiFilter }, state: { apiFilter, theme }, ...props }) =>
   <div>
     <input ref={el => el && el.focus()} value={apiFilter} placeholder='filter api methods' onChange={evt => setApiFilter(evt.target.value)} />
     <style jsx>{`
@@ -23,4 +22,4 @@ const ApiSearch = ({ setApiFilter, apiFilter, theme, ...props }) =>
     `}</style>
   </div>
 
-export default connect(ApiSearch)
+export default consume(ApiSearch)

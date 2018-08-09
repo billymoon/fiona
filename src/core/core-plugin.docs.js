@@ -1,8 +1,8 @@
-import { connect, ApiSection } from '../docs/app'
+import { consume, ApiSection } from '../docs/app'
 
 const Section = ({ seed }) =>
   <ApiSection heading={<span><small>fiona.</small>plugin</span>}>
     <p>See Plugins section in <a href='/'>Overview</a></p>
   </ApiSection>
 
-export default connect(Section)
+export default consume(Section)

@@ -1,12 +1,12 @@
 {
   "name": "fiona",
-  "version": "2.5.6",
+  "version": "2.6.0",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
   "main": "fiona.js",
   "scripts": {
     "start": "next start",
-    "dev": "next dev -p ${PORT:-3000}",
+    "dev": "next dev",
     "test": "jest",
     "build": "taskr build",
     "deploy": "taskr deploy",

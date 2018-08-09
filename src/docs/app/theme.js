@@ -1,8 +1,8 @@
-import { connect, config } from '.'
+import { consume, config } from '.'
 
 import { mergeDeep, ThemeCreator, themeDefaults } from '.'
 
-export const withTheme = Component => connect(Component)
+export const withTheme = Component => consume(Component)
 
 // TODO: re-implement functionality with new react context state
 const ThemeFactory = properties => ({ children }) => children
