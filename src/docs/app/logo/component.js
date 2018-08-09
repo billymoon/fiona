@@ -62,7 +62,7 @@ export default ({ seed, blink, theme, clickSeed }) =>
     </svg>
     <style jsx>{`
       .root {
-        margin: 20px auto;
+        margin: 20px auto 0px auto;
         max-width: 400px;
       }
       circle {
@@ -92,6 +92,11 @@ export default ({ seed, blink, theme, clickSeed }) =>
       }
       circle.filled.selected {
         fill: ${theme.clr.primary};
+      }
+      @media screen and (min-width: 768px) {
+        .root {
+          margin: 60px auto 20px auto;
+        }
       }
     `}</style>
   </div>
