@@ -19,30 +19,29 @@ const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
       margin: 0px 10px 10px 0px;
       float: left;
       border-radius: 10px;
-      font-family: Tangerine, cursive;
-      font-size: 25px;
+      font-family: ${theme.headingFontFamily};
+      font-size: 16px;
       text-decoration: none;
       color: ${theme.clr.primary};
       background-color: ${theme.clr.accent};
-      border-bottom: 5px solid ${theme.clr.primary};
-      text-shadow: 0px -2px ${theme.clr.white};
+      border-bottom: 3px solid ${theme.clr.primary};
+      // text-shadow: 0px -2px ${theme.clr.white};
     }
 
     .action-button.selected {
       color: ${theme.clr.secondary};
       background-color: ${theme.clr.secondaryAccent};
-      border-bottom: 5px solid ${theme.clr.secondary};
-      text-shadow: 0px -2px ${theme.clr.white};
+      border-bottom: 3px solid ${theme.clr.secondary};
+      // text-shadow: 0px -2px ${theme.clr.white};
     }
 
     .action-button:active {
       border-bottom: 1px solid;
-      margin-top: 4px;
     }
 
     @media screen and (min-width: ${config.theme.grid.breakpoints.sm}px) {
       .action-button {
-        padding: 10px 40px;
+        padding: 7px 20px;
         width: auto;
       }
       

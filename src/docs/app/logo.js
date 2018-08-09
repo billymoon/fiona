@@ -48,12 +48,12 @@ const Logo = ({ seed, blink, theme, clickSeed }) =>
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0, 0, 420, 100'>
       <g>
         {(seed === config.magicNumber ? fionaLines : fiona(seed).getLines()).map(([p1, p2], index) =>
-          <line key={index} x1={pos(p1).x} y1={pos(p1).y} x2={pos(p2).x} y2={pos(p2).y} strokeWidth='4' />
+          <line key={index} x1={pos(p1).x} y1={pos(p1).y} x2={pos(p2).x} y2={pos(p2).y} strokeWidth='2' />
         )}
       </g>
       <g>
         {(seed === config.magicNumber ? fionaDots : fiona(seed).getDots()).map((filled, index) =>
-          <circle key={index} cx={pos(index).x} cy={pos(index).y} r={filled ? 10 : 8} strokeWidth={filled ? 0 : 4} className={[
+          <circle key={index} cx={pos(index).x} cy={pos(index).y} r={filled ? 10 : 8} strokeWidth={filled ? 0 : 2} className={[
             filled ? 'filled' : '',
             ((index === 24 ? config.magicNumber : index) === seed && (blink ? 'blink selected' : 'selected')) || ''
           ].join(' ')} onClick={() => clickSeed(index)} />
@@ -81,7 +81,7 @@ const Logo = ({ seed, blink, theme, clickSeed }) =>
         cursor: pointer;
       }
       circle.filled {
-        fill: ${theme.clr.dark};
+        fill: ${theme.clr.black};
         stroke: ${theme.clr.white};
       }
       circle.selected {

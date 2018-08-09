@@ -1,4 +1,6 @@
 export default `
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Andika');
 @font-face {
   font-family: 'Tangerine';
   font-style: normal;

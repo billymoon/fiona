@@ -20,7 +20,7 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
         padding: 0 0 5em 0;
         color: ${theme.fg};
         background-color: ${theme.bg};
-        font-family: 'Gentium Basic', serif;
+        font-family: ${theme.bodyFontFamily};
         font-size: 17px;
 
         background: -moz-linear-gradient(top, ${theme.clr.accent} 0, ${theme.bg} 160px);
@@ -40,10 +40,11 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
       }
 
       h1, h2, h3, h4, h5, h6 {
-        font-family: Tangerine, cursive;
+        font-family: ${theme.headingFontFamily};
         color: ${theme.clr.primary};
-        font-weight: bold;
+        font-weight: normal;
         margin-bottom: 10px;
+        margin-top: 10px;
       }
 
       h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
@@ -51,12 +52,12 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
         font-size: 0.75em;
       }
 
-      h1 { font-size: 48px; margin-top: 0px; margin-bottom: 20px; }
+      h1 { font-size: 48px; margin-top: 30px; margin-bottom: 20px; }
       h2 { font-size: 40px; }
-      h3 { font-size: 36px; }
-      h4 { font-size: 30px; }
-      h5 { font-size: 24px; }
-      h6 { font-size: 20px; }
+      h3 { font-size: 30px; }
+      h4 { font-size: 22px; }
+      h5 { font-size: 18px; }
+      h6 { font-size: 16px; }
     `}</style>
     {children}
   </section>

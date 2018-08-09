@@ -6,7 +6,7 @@
   "main": "fiona.js",
   "scripts": {
     "start": "next start",
-    "dev": "next dev",
+    "dev": "next dev -p ${PORT:-3000}",
     "test": "jest",
     "build": "taskr build",
     "deploy": "taskr deploy",

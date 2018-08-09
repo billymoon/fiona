@@ -8,27 +8,30 @@ module.exports = (fiona, initseed, seeded) => {
       currentInput = originalInput
     }
 
-    const handler = {
-      Object: recurseObject,
-      Array: recurseArray,
-      Function: recurseFunction
-    }[type(currentInput)]
+    if (type(currentInput) === 'Object') {
+      return recurseObject(currentInput, originalInput, position)
+    } else if (type(currentInput) === 'Array') {
+      return recurseArray(currentInput, originalInput, position)
+    } else if (type(currentInput) === 'Function') {
+      return recurseFunction(currentInput, originalInput, position, currentindex)
+    } else {
+      return currentInput
+    }
+    // const handler = {
+    //   Object: recurseObject,
+    //   Array: recurseArray,
+    //   Function: recurseFunction
+    // }[type(currentInput)]
 
-    return handler ? handler(currentInput, originalInput, position, currentindex) : currentInput
+    // return handler ? handler(currentInput, originalInput, position, currentindex) : currentInput
   }
 
   const arr = (qty, callback) => {
     // TODO: document passing options object to arr
     if (type(qty) === 'Object') {
-      // if (qty.max === undefined) {
-      //   qty.max = 10
-      // }
       return Array(seeded.number(qty)).fill(callback)
     } else {
-      // return Array(recurseData(qty)).fill(callback)
       return Array(seeded.clone().data(qty)).fill(callback)
-      // console.log(seeded.clone().data(qty), qty)
-      // return Array(qty).fill(callback)
     }
   }
 
@@ -41,15 +44,25 @@ module.exports = (fiona, initseed, seeded) => {
   }
 
   const recurseArray = (currentInput, originalInput, position) => {
-    return currentInput.map((item, index) => {
+    currentInput.forEach((item, index) => {
       const m = position.match(/^data\[(\d+)\]$/)
       const pos = m ? `data[${1 * m[1] + index}]` : `${position}[${index}]`
       if (item !== undefined) {
-        return recurseData(originalInput, pos, item, index)
+        currentInput[index] = recurseData(originalInput, pos, item, index)
       } else {
-        return undefined
+        currentInput[index] = undefined
       }
     })
+    return currentInput
+    // return currentInput.map((item, index) => {
+    //   const m = position.match(/^data\[(\d+)\]$/)
+    //   const pos = m ? `data[${1 * m[1] + index}]` : `${position}[${index}]`
+    //   if (item !== undefined) {
+    //     return recurseData(originalInput, pos, item, index)
+    //   } else {
+    //     return undefined
+    //   }
+    // })
   }
 
   const handleFunction = (position, data) => ({
