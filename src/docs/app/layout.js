@@ -1,15 +1,19 @@
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 
-import { Theme, Shelf, Article, withTheme, Ribbon, Logo, Nav, fiona, connect, config, fonts, GlobalState } from '.'
+import { Ribbon } from 'jsx-components'
+import { Theme, Shelf, Article, withTheme } from '../app'
+import { Logo, Nav, fiona, injectState, config, connect } from './'
 
 const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
   <section>
     <Ribbon href='https://github.com/billymoon/fiona' color={theme.clr.primary} />
     <Article style={{ textAlign: 'center' }}><Logo /></Article>
-    <Article style={{ textAlign: 'center' }}><h1>{fiona(seed).regex(/(The )?(Seeded )?((Pseudo )?Random )?Data Generator/)}</h1></Article>
+    <Article style={{ textAlign: 'center' }}><h1>{fiona(seed).regex(/(Make Believe|Simulated|Immitation|Substitute|Pretend|Fake|Spurious|Mock) Data/)}</h1></Article>
     <Article style={{ textAlign: 'center' }}><Nav /></Article>
-    <style global jsx>{fonts}</style>
+    <style global jsx>{`
+      @import url('https://fonts.googleapis.com/css?family=Raleway|Andika|Cousine');
+    `}</style>
     <style global jsx>{`
       html {
         background-color: ${theme.clr.accent};
@@ -20,7 +24,7 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
         padding: 0 0 5em 0;
         color: ${theme.fg};
         background-color: ${theme.bg};
-        font-family: 'Gentium Basic', serif;
+        font-family: ${theme.font.body};
         font-size: 17px;
 
         background: -moz-linear-gradient(top, ${theme.clr.accent} 0, ${theme.bg} 160px);
@@ -31,16 +35,23 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
 
       code {
         color: ${theme.clr.secondary};
-        font-family: Menlo,Monaco,Lucida Console,Liberation Mono, DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace, serif;
+        font-family: ${theme.font.code};
         font-size: 14px;
       }
 
       code.secondary {
-        color: ${theme.clr.light};
+        color: ${theme.clr.primary};
+      }
+
+      .outer {
+        margin: 10px -10px;
+        padding: 10px;
+        border: 1px solid ${theme.clr.light};
+        background-color: ${theme.clr.highlight};
       }
 
       h1, h2, h3, h4, h5, h6 {
-        font-family: Tangerine, cursive;
+        font-family: ${theme.font.heading};
         color: ${theme.clr.primary};
         font-weight: bold;
         margin-bottom: 10px;
@@ -51,12 +62,12 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
         font-size: 0.75em;
       }
 
-      h1 { font-size: 48px; margin-top: 0px; margin-bottom: 20px; }
-      h2 { font-size: 40px; }
-      h3 { font-size: 36px; }
-      h4 { font-size: 30px; }
-      h5 { font-size: 24px; }
-      h6 { font-size: 20px; }
+      h1 { font-size: 40px; margin-top: 20px; margin-bottom: 20px; }
+      h2 { font-size: 32px; }
+      h3 { font-size: 24px; }
+      h4 { font-size: 22px; }
+      h5 { font-size: 18px; }
+      h6 { font-size: 16px; }
     `}</style>
     {children}
   </section>
@@ -76,20 +87,20 @@ const MainLayout = ({ seed, children }) =>
       <script>Raven.config('https://cbe5f0dcbb0b4d488ca750f1b7f7ac11@sentry.io/1226793').install()</script>
       */}
     </Head>
-    <GlobalState>
-      <Theme.Dynamic config={seed % 2 ? {
-        clr: {
-          primary: config.theme.clr.secondary,
-          accent: config.theme.clr.secondaryAccent,
-          secondary: config.theme.clr.primary,
-          secondaryAccent: config.theme.clr.accent
-        }
-      } : {}}>
-        <MainContent seed={seed}>
-          {children}
-        </MainContent>
-      </Theme.Dynamic>
-    </GlobalState>
+    <Theme.Dynamic config={seed % 2 ? {
+      clr: {
+        primary: config.theme.clr.secondary,
+        accent: config.theme.clr.secondaryAccent,
+        highlight: config.theme.clr.secondaryHighlight,
+        secondary: config.theme.clr.primary,
+        secondaryAccent: config.theme.clr.accent,
+        secondaryHighlight: config.theme.clr.highlight
+      }
+    } : {}}>
+      <MainContent seed={seed}>
+        {children}
+      </MainContent>
+    </Theme.Dynamic>
   </div>
 
 export default connect(MainLayout)

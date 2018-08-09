@@ -1,23 +1,28 @@
 // App wide config, can be overriden per page by adding config prop to Layout
 
 const clr = {
-  blue: '#2a35d8',
+  blue: '#5056a9',
   purple: '#e11bea',
-  black: '#000',
-  darkGray: '#333',
+  darkPink: '#d24188',
+  black: '#444',
+  darkGray: '#666',
   lightGray: '#bbb',
   white: '#fff',
-  lightPink: '#ffe0fc',
-  lightBlue: '#e0f0ff'
+  lightPink: '#ffe0e0',
+  lighterPink: '#fff6f8',
+  lightBlue: '#d4e1ec',
+  lighterBlue: '#edf1f7'
 }
 
 export default {
   theme: {
     clr: {
-      primary: clr.purple,
+      primary: clr.darkPink,
       secondary: clr.blue,
       accent: clr.lightPink,
+      highlight: clr.lighterPink,
       secondaryAccent: clr.lightBlue,
+      secondaryHighlight: clr.lighterBlue,
       black: clr.black,
       dark: clr.darkGray,
       light: clr.lightGray,
@@ -29,6 +34,15 @@ export default {
       fluidish: true,
       breakpoints: { xs: 0, sm: 768, md: 992, lg: 1200, xl: 1400, xxl: 1400 }
     },
-    fontFamily: 'helvetica, tahoma, verdana, sans-serif'
+    fontFamily: 'helvetica, tahoma, verdana, sans-serif',
+    // grid: {
+    //   unit: 1,
+    //   breakpoints: { xs: 0, sm: 768, md: 992, lg: 1200, xl: 1400, xxl: 1400 }
+    // },
+    font: {
+      body: 'Raleway, sans-serif',
+      heading: 'Andika, sans-serif',
+      code: 'Cousine, monospace'
+    }
   }
 }

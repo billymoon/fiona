@@ -3,6 +3,10 @@ import { withRouter } from 'next/router'
 
 import { withTheme, config } from '../app'
 
+const radius = 6
+const underline = 3
+const underlinePressed = 1
+
 const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
   <div>
     <Link prefetch href={href}><a className={['action-button'].concat(selected ? ['selected'] : []).join(' ')}>{label}</a></Link>
@@ -13,42 +17,40 @@ const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
     }
 
     .action-button {
-      padding: 10px 0px;
+      padding: ${radius}px 0px;
       width: 100%;
       position: relative;
       margin: 0px 10px 10px 0px;
       float: left;
-      border-radius: 10px;
-      font-family: Tangerine, cursive;
-      font-size: 25px;
+      border-radius: ${radius}px;
+      font-family: ${theme.font.heading};
+      font-size: 16px;
       text-decoration: none;
       color: ${theme.clr.primary};
       background-color: ${theme.clr.accent};
-      border-bottom: 5px solid ${theme.clr.primary};
-      text-shadow: 0px -2px ${theme.clr.white};
+      border-bottom: ${underline}px solid ${theme.clr.primary};
     }
 
     .action-button.selected {
       color: ${theme.clr.secondary};
       background-color: ${theme.clr.secondaryAccent};
-      border-bottom: 5px solid ${theme.clr.secondary};
-      text-shadow: 0px -2px ${theme.clr.white};
+      border-bottom: ${underline}px solid ${theme.clr.secondary};
     }
 
     .action-button:active {
-      border-bottom: 1px solid;
-      margin-top: 4px;
+      border-bottom: ${underlinePressed}px solid;
+      margin-top: ${underline - underlinePressed}px;
     }
 
     @media screen and (min-width: ${config.theme.grid.breakpoints.sm}px) {
       .action-button {
-        padding: 10px 40px;
+        padding: ${radius}px 20px;
         width: auto;
       }
       
       .action-button:active {
-        transform: translate(0px, 4px);
-        -webkit-transform: translate(0px, 4px);
+        transform: translate(0px, ${underline - underlinePressed}px);
+        -webkit-transform: translate(0px, ${underline - underlinePressed}px);
         margin-top: 0px;
       }
     }

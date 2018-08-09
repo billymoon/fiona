@@ -1,6 +1,6 @@
 {
   "name": "fiona",
-  "version": "2.5.3",
+  "version": "2.5.5",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
   "main": "fiona.js",
@@ -26,7 +26,7 @@
     "git-tools": "^0.3.0",
     "husky": "^0.14.3",
     "jest": "^22.4.4",
-    "jsx-components": "^1.0.1",
+    "jsx-components": "^1.2.0",
     "lodash.template": "^4.4.0",
     "next": "^6.1.1",
     "randexp": "^0.4.6",
@@ -38,6 +38,7 @@
     "webpack-command": "^0.2.0"
   },
   "jest": {
+    "testURL": "http://localhost/",
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/**/*.docs.js",
