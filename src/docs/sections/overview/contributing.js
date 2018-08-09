@@ -21,7 +21,7 @@ const Section = ({ seed }) =>
       <li><NPM name='webpack' /> and <NPM name='babel-cli' /> for bundling distributable</li>
       <li><NPM name='taskr' /> and <NPM name='husky' /> for development lifecycle scripting</li>
       <li><NPM name='standard' /> for linting</li>
-      <li><NPM name='react' />, <NPM name='freactal' /> and <NPM name='next' /> for documentation website</li>
+      <li><NPM name='react' /> and <NPM name='next' /> for documentation website</li>
     </ul>
 
     <p>Updating or creating a pull request will trigger a deployment using zeit's now service.</p>

@@ -1,69 +1,58 @@
-import { provideState, injectState, update } from 'freactal'
-
+import { StateFactory, mergeDeep } from '.'
 import config from './config'
 
-const initialState = () => ({
-  seed: 952684,
-  theme: config.theme
-})
-
-const effects = {
-  setSeed: update(({ seed }, newValue) => ({
-    seed: seed === newValue ? Math.floor(Math.random() * 33) : newValue
-  }))
+const globalState = {
+  theme: config.theme,
+  seed: config.magicNumber,
+  blink: false,
+  apiFilter: '',
+  blinkInterval: null
 }
 
-const localState = provideState({ initialState, effects })
 
-export const wrapWithState = (componentState, ComponentPure) => provideState(componentState)(connect(ComponentPure))
-
-export const connect = ComponentPure => {
-  const Component = ({ state, effects, ...props }) => <ComponentPure {...state} {...effects} {...props} />
-  return injectState(Component)
-}
-
-export const withState = Component => localState(Component)
-
-
-/* new React Context based state solution */
-
-export const GlobalStateContext = React.createContext({
-  // seed: 952684,
-  // theme: config.theme,
-  // apiFilter: ''
-})
-
-export class GlobalState extends React.Component {
-  render () {
-    return (
-      <GlobalStateContext.Provider value={this.state}>
-        {this.props.children}
-      </GlobalStateContext.Provider>
-    );
-  }
-
-  state = {
-    theme: config.theme,
-
-    seed: 952684,
-    setSeed: newValue => {
-      this.setState({
-        seed: this.state.seed === newValue ? Math.floor(Math.random() * 33) : newValue
-      })
-    },
-
-    apiFilter: '',
-    setApiFilter: newValue => {
-      this.setState({
-        apiFilter: newValue
-      })
+const actions = {
+  setSeed: ({ seed }, newValue) => ({ seed: seed === newValue ? Math.floor(Math.random() * 33) : newValue }),
+  setApiFilter: ({}, newValue) => ({ apiFilter: newValue }),
+  clickSeed: ({ seed, blinkInterval }, index) => {
+    actions.cancelBlink({ blinkInterval })
+    const newSeed = (index === 24 ? config.magicNumber : index) === seed ? Math.floor(Math.random() * 33) : (index === 24 ? config.magicNumber : index)
+    return {
+      blink: null,
+      seed: newSeed
+    }
+  },
+  // TODO: why is each click creating new blink state?
+  toggleBlink: ({ blink }) => {
+    if (blink !== null) {
+      return {
+        blink: !blink
+      }
+    } else {
+      return {}
+    }
+  },
+  cancelBlink: ({ blinkInterval }) => {
+    clearInterval(blinkInterval)
+    return {
+      blink: null
     }
   }
 }
 
-export const globalState = Component => ({ ...props }) => {
-  return (<GlobalStateContext.Consumer>{
-      ({ ...state }) => <Component {...state} {...props} />
-    }</GlobalStateContext.Consumer>
-  )
+// TODO: when toggle blink and navigate away, can try to set state in interval when component already destroyed
+const initialize = ({ toggleBlink }) => {
+  if (process.browser) {
+    const blinkInterval = setInterval(toggleBlink, 500)
+    return {
+      blinkInterval
+    }
+  } else {
+    return {}
+  }
 }
+
+export const GlobalState = StateFactory(globalState, actions, initialize)
+
+export const withState = GlobalState.withState
+
+export const connect = GlobalState.inject

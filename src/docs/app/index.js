@@ -1,11 +1,8 @@
-export { provideState } from 'freactal'
-
 // Seems to be overridden by explicitly exported components
 export * from 'jsx-components'
 
 export { default as config } from './config'
-export { default as state, GlobalState, globalState, inject, withState, connect, wrapWithState } from './state'
-// export { default as state, inject, withState } from './state'
+export { withState, connect } from './state'
 export { default as fiona } from './fiona-loader'
 export { withTheme, Theme } from './theme'
 
@@ -13,7 +10,8 @@ export { default as Layout } from './layout'
 export { default as Logo } from './logo'
 export { default as Nav } from './nav'
 export { default as ApiSection } from './api-section'
-export { Container, Row, Col, Article, Shelf } from './grid'
+// TODO: re-instate configurable grid
+// export { Container, Row, Col, Article, Shelf } from './grid'
 
 import config from './config'
 import { Sample as VanillaSample} from 'jsx-components'

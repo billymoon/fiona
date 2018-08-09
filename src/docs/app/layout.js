@@ -53,8 +53,9 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
       h1, h2, h3, h4, h5, h6 {
         font-family: ${theme.font.heading};
         color: ${theme.clr.primary};
-        font-weight: bold;
+        font-weight: normal;
         margin-bottom: 10px;
+        margin-top: 10px;
       }
 
       h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
@@ -77,6 +78,7 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
 ))
 
 // TODO: simpify and tidy this section, perhaps this whole layout file
+// TODO: re-implement dynamic theme switcher
 const MainLayout = ({ seed, children }) =>
   <div>
     <Head>
@@ -89,21 +91,10 @@ const MainLayout = ({ seed, children }) =>
       <script src='https://cdn.ravenjs.com/3.26.2/raven.min.js' crossorigin='anonymous'></script>
       <script>Raven.config('https://cbe5f0dcbb0b4d488ca750f1b7f7ac11@sentry.io/1226793').install()</script>
       */}
-    </Head>
-    <Theme.Dynamic config={seed % 2 ? {
-      clr: {
-        primary: config.theme.clr.secondary,
-        accent: config.theme.clr.secondaryAccent,
-        highlight: config.theme.clr.secondaryHighlight,
-        secondary: config.theme.clr.primary,
-        secondaryAccent: config.theme.clr.accent,
-        secondaryHighlight: config.theme.clr.highlight
-      }
-    } : {}}>
-      <MainContent seed={seed}>
-        {children}
-      </MainContent>
-    </Theme.Dynamic>
+    </Head>    
+    <MainContent seed={seed}>
+      {children}
+    </MainContent>
   </div>
 
 export default connect(MainLayout)
