@@ -10,8 +10,7 @@ export { default as Layout } from './layout'
 export { default as Logo } from './logo'
 export { default as Nav } from './nav'
 export { default as ApiSection } from './api-section'
-// TODO: re-instate configurable grid
-// export { Container, Row, Col, Article, Shelf } from './grid'
+export { Container, Row, Col, Article, Shelf } from './grid'
 
 import config from './config'
 import { Sample as VanillaSample} from 'jsx-components'

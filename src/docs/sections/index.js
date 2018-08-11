@@ -1,3 +1,4 @@
+export { default as OverviewInfographic } from './overview/infographic'
 export { default as OverviewDynamicOverview } from './overview/dynamic-overview'
 export { default as OverviewQuickStart } from './overview/quick-start'
 export { default as OverviewSeededPRNG } from './overview/seeded-prng'

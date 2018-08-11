@@ -1,10 +1,10 @@
-import { configurableLayoutComponents, config } from '.'
+import { configurableLayoutComponents, config, consume } from '.'
 
 // TODO: fix configurable grid
 const componentConfigurator = Component => {
-  const ComponentProxy = ({ theme: { grid }, effects, ...props }) =>
+  const ComponentProxy = ({ theme: { grid }, ...props }) =>
     <Component config={Object.assign({}, config.theme.grid, grid)} {...props} />
-  return ComponentProxy
+  return consume(ComponentProxy)
 }
 
 export const {

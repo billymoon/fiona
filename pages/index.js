@@ -2,6 +2,7 @@ import { Layout, Article } from '../src/docs/app'
 import { provide } from '../src/docs/app/state'
 
 import {
+  OverviewInfographic,
   OverviewDynamicOverview,
   OverviewQuickStart,
   OverviewSeededPRNG,
@@ -13,6 +14,7 @@ import {
 
 const Page = () =>
   <Layout>
+    <Article><OverviewInfographic /></Article>
     <Article><OverviewDynamicOverview /></Article>
     <Article><OverviewQuickStart /></Article>
     <Article><OverviewSeededPRNG /></Article>

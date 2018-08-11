@@ -5,8 +5,9 @@ import { Ribbon } from 'jsx-components'
 import { Theme, Shelf, Article, withTheme } from '../app'
 import { Logo, Nav, fiona, injectState, config, consume } from './'
 
-const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
+const MainContent = withTheme(withRouter(({ router, seed, theme, toggleBlink, blinkInterval, setBlinkInterval, children }) =>
   <section>
+    {process.browser &! blinkInterval && setBlinkInterval(setInterval(toggleBlink, 500)) && '' || ''}
     <Ribbon href='https://github.com/billymoon/fiona' color={theme.clr.primary} />
     <Article style={{ textAlign: 'center' }}><Logo /></Article>
     <Article style={{ textAlign: 'center' }}><h1>{fiona(seed).regex(/(Make Believe|Simulated|Immitation|Substitute|Pretend|Fake|Spurious|Mock) Data/)}</h1></Article>

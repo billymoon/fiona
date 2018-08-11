@@ -53,7 +53,7 @@ const Logo = ({ seed, blink, theme, clickSeed }) =>
       </g>
       <g>
         {(seed === config.magicNumber ? fionaDots : fiona(seed).getDots()).map((filled, index) =>
-          <circle key={index} cx={pos(index).x} cy={pos(index).y} r={filled ? 10 : 8} strokeWidth={filled ? 0 : 2} className={[
+          <circle key={index} cx={pos(index).x} cy={pos(index).y} r={filled ? 9 : 8} strokeWidth={filled ? 0 : 2} className={[
             filled ? 'filled' : '',
             ((index === 24 ? config.magicNumber : index) === seed && (blink ? 'blink selected' : 'selected')) || ''
           ].join(' ')} onClick={() => clickSeed(index)} />
