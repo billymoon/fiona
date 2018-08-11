@@ -7,6 +7,16 @@ import {
 } from '../../src/docs/sections'
 
 import ApiFnBool from '../../src/plugins/bool/fiona.bool.docs'
+import ApiFnFind from '../../src/plugins/find/fiona.find.docs'
+import ApiFnCallback from '../../src/core/core-callback.docs'
+import ApiFnData from '../../src/core/core-data.docs'
+import ApiFnReseed from '../../src/core/core-reseed.docs'
+import ApiFnClone from '../../src/core/core-clone.docs'
+import ApiFnInfo from '../../src/core/core-info.docs'
+import ApiFnState from '../../src/core/core-state.docs'
+import ApiFnChain from '../../src/core/core-chain.docs'
+import ApiFnValue from '../../src/core/core-value.docs'
+import ApiFnJson from '../../src/core/core-json.docs'
 import ApiFnCall from '../../src/core/core-call.docs'
 import ApiFnPlugin from '../../src/core/core-plugin.docs'
 import ApiFnRandom from '../../src/core/core-random.docs'
@@ -31,13 +41,22 @@ import ApiFnWeighted from '../../src/plugins/weighted/fiona.weighted.docs'
 import ApiFnNumber from '../../src/plugins/number/fiona.number.docs'
 import ApiFnShuffle from '../../src/plugins/shuffle/fiona.shuffle.docs'
 
-// TODO document api for: reseed, clone, callback, data, info, chain, value, json, state, plugin, call, find
 const Page = () =>
   <Layout>
     <Article>
       <ApiOverview />
       <ApiSearch />
       <section>
+        <ApiFnCallback />
+        <ApiFnReseed />
+        <ApiFnClone />
+        <ApiFnInfo />
+        <ApiFnState />
+        <ApiFnFind />
+        <ApiFnData />
+        <ApiFnChain />
+        <ApiFnValue />
+        <ApiFnJson />
         <ApiFnRandom />
         <ApiFnNumber />
         <ApiFnBool />

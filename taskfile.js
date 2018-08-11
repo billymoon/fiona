@@ -17,6 +17,10 @@ export async function lint (task) {
   exec('standard src/**/*.js')
 }
 
+export async function test (task) {
+  exec('npm run test')
+}
+
 export async function reports (task) {
   task.serial(['coverage'])
 }
@@ -30,8 +34,7 @@ export async function coverage (task) {
 }
 
 export async function build (task) {
-  task.parallel(['fiona', 'docs', 'core'])
-  task.start('reports')
+  task.serial(['fiona', 'docs', 'core', 'reports'])
 }
 
 export async function fiona (task) {
@@ -70,8 +73,7 @@ export async function bump (task) {
 }
 
 export async function precommit (task) {
-  exec('npm run test')
-  task.start('lint')
+  task.serial(['test', 'lint'])
 }
 
 export async function postcommit (task) {
