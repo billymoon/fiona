@@ -43,7 +43,7 @@ const fionaDots = [
 ]
 
 // TODO: simpify and tidy this section, perhaps this whole logo file
-const Logo = ({ seed, blink, theme, clickSeed }) =>
+const Logo = ({ seed, blink, theme, clickSeed, toggleTheme }) =>
   <div className='root'>
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0, 0, 420, 100'>
       <g>
@@ -56,7 +56,11 @@ const Logo = ({ seed, blink, theme, clickSeed }) =>
           <circle key={index} cx={pos(index).x} cy={pos(index).y} r={filled ? 10 : 8} strokeWidth={filled ? 0 : 2} className={[
             filled ? 'filled' : '',
             ((index === 24 ? config.magicNumber : index) === seed && (blink ? 'blink selected' : 'selected')) || ''
-          ].join(' ')} onClick={() => clickSeed(index)} />
+          ].join(' ')} onClick={() => {
+            // TODO: move this into clickSeed action
+            toggleTheme(index)
+            return clickSeed(index)
+          }} />
         )}
       </g>
     </svg>
