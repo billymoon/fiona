@@ -8,19 +8,19 @@ const Section = ({ seed }) =>
 
       <Sample input={`
       fiona(${seed}).chain({
-        name: fiona.call('name')
+        fullname: fiona.call('fullname')
       }).json()
       `} output={`
-      ${fiona(seed).chain({ name: fiona.call('name'), age: fiona.call('number', { max: 100 }) }).json()}
+      ${fiona(seed).chain({ fullname: fiona.call('fullname'), age: fiona.call('number', { max: 100 }) }).json()}
       `} />
 
       <p>Optionally takes spacing argument to pass onto `JSON.stringify`.</p>
 
       <Sample input={`
       fiona(${seed}).chain({
-        name: fiona.call('name')
+        fullname: fiona.call('fullname')
       }).json(2)
-      `} output={`${fiona(seed).chain({ name: fiona.call('name'), age: fiona.call('number', { max: 100 }) }).json(2)}`} />
+      `} output={`${fiona(seed).chain({ fullname: fiona.call('fullname'), age: fiona.call('number', { max: 100 }) }).json(2)}`} />
 
     </ApiSection>
   </span>

@@ -22,7 +22,7 @@ import ApiFnPlugin from '../../src/core/core-plugin.docs'
 import ApiFnRandom from '../../src/core/core-random.docs'
 import ApiFnChoose from '../../src/plugins/choose/fiona.choose.docs'
 import ApiFnOneof from '../../src/plugins/choose/fiona.choose-oneof.docs'
-import ApiFnArr from '../../src/plugins/arr/fiona.arr.docs'
+import ApiFnArray from '../../src/plugins/array/fiona.array.docs'
 import ApiFnDate from '../../src/plugins/date/fiona.date.docs'
 import ApiFnDuplicable from '../../src/plugins/duplicable/fiona.duplicable.docs'
 import ApiFnFirstname from '../../src/plugins/name/fiona.name-firstname.docs'
@@ -77,7 +77,7 @@ const Page = () =>
         <ApiFnSentence />
         <ApiFnPara />
         <ApiFnOneof />
-        <ApiFnArr />
+        <ApiFnArray />
         <ApiFnChoose />
         <ApiFnRegex />
         <ApiFnWeighted />

@@ -39,9 +39,9 @@ test('fiona.fn.firstnames', () => {
   expect(fiona(1).firstnames()).toBe('Hamish')
 })
 
-test('fiona.fn.lastname', () => {
-  expect(fiona(1).lastname()).toBe('Scott')
-  expect(fiona(2).lastname()).toBe('Reid')
+test('fiona.fn.surname', () => {
+  expect(fiona(1).surname()).toBe('Scott')
+  expect(fiona(2).surname()).toBe('Reid')
 })
 
 test('fiona.fn.gender', () => {
@@ -49,6 +49,6 @@ test('fiona.fn.gender', () => {
   expect(fiona(2).gender()).toBe('female')
 })
 
-test('fiona.fn.name', () => {
-  expect(fiona(1).name()).toBe('Sir Kyle Moon')
+test('fiona.fn.fullname', () => {
+  expect(fiona(1).fullname()).toBe('Sir Kyle Moon')
 })

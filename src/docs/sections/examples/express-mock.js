@@ -20,7 +20,7 @@ const Section = ({ seed }) =>
     // define fiona generated data handler for user api
     app.use('/api/user/:id', (req, res) => {
       res.end(fiona(req.params.id).chain({
-        name: fiona.call('name'),
+        fullname: fiona.call('fullname'),
         age: fiona.call('number', { max: 100 })
       }).json())
     })
@@ -40,7 +40,7 @@ const Section = ({ seed }) =>
     fetch('/api/user/${seed}').then(r => r.json()).then(console.log)
     `} output={`\n${
     fiona(seed).chain({
-      name: fiona.call('name'),
+      fullname: fiona.call('fullname'),
       age: fiona.call('number', { max: 100 })
     }).json()
     }`} />

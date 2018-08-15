@@ -71,6 +71,8 @@ function Moon (seedin) {
   // define clone method to fork current state
   this.clone = () => fiona(initseed).state(this.state())
 
+  // this.string = ([a, ...b], ...c) => a + b.map((str, i) => (typeof c[i] === 'function' ? this.data(c[i]) : c[i]) + str).join('')
+
   return this
 }
 
@@ -83,10 +85,30 @@ fiona.version = packageJson.version
 // set up self referencial prototype chain with jQuery like plugin architecture
 fiona.fn = Moon.prototype = { constructor: Moon }
 
-fiona.plugin = (name, fn) => { fiona.fn[name] = function (...args) { return fn({ seeded: this }, ...args) } }
+fiona.plugin = (name, fn) => {
+  fiona.fn[name] = function (...args) { return fn({ seeded: this }, ...args) }
+  fiona[name] = (...args) => fiona.call(name, ...args)
+  if (name === 'name') {
+    console.log(fiona[name])
+  }
+  // Object.keys(fiona.fn).filter(i=>i!=='constructor').map(i=> )
+}
 
 // TODO: should seeded carry weighting of parent? is it possible?
-fiona.call = (cmd, ...args) => ({ seeded }) => seeded[cmd](...args)
+// fiona.call = (cmd, ...args) => (first, ...args) => ((first || {}).seeded || fiona(first, ...args))[cmd](...args)
+fiona.call = (cmd, ...args) => first => {
+  const { seeded } = first || { seeded: fiona() }
+  return seeded[cmd](...args)
+}
+
+// utility to create seeded object to call plugin functions with
+fiona.fn.seeded = function () {
+  return {
+    seeded: this
+  }
+}
+
+// fiona.string = (...args) => fiona.call('string', ...args)
 
 // export the main function
 module.exports = fiona

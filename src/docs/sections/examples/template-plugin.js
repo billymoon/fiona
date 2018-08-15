@@ -22,9 +22,9 @@ const Section = ({ seed }) =>
     })
 
     fiona(${seed}).chain({
-        name: ({ seeded }) => seeded.name(),
+        fullname: ({ seeded }) => seeded.fullname(),
         color: ({ seeded }) => seeded.oneOf(['red', 'orange', 'yellow', 'green', 'blue'])
-    }).template\`Hi <%= name %>,
+    }).template\`Hi <%= fullname %>,
 
     Your favourite colour is <%= color %>.
 
@@ -34,10 +34,10 @@ const Section = ({ seed }) =>
     x x x\`
     `} output={
     fiona(seed).chain({
-      name: fiona.call('name'),
+      fullname: fiona.call('fullname'),
       color: fiona.call('oneOf', ['red', 'orange', 'yellow', 'green', 'blue'])
     }).template`
-    Hi <%= name %>,
+    Hi <%= fullname %>,
 
     Your favourite colour is <%= color %>.
 

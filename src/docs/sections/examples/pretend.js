@@ -9,7 +9,7 @@ if (process.browser) {
 const pretender = new Pretender()
 
 const modelMock = seed => fiona(seed).data({
-  name: ({ seeded }) => seeded.name(),
+  fullname: ({ seeded }) => seeded.fullname(),
   color: ({ seeded }) => seeded.oneOf(['red', 'yellow', 'blue']),
   age: ({ seeded }) => seeded.number({ max: 100 })
 })
@@ -41,7 +41,7 @@ const Section = ({ seed }) =>
     const pretender = new Pretender()
 
     const modelMock = seed => fiona(seed).data({
-      name: ({ seeded }) => seeded.name(),
+      fullname: ({ seeded }) => seeded.fullname(),
       color: ({ seeded }) => seeded.oneOf(['red', 'yellow', 'blue']),
       age: ({ seeded }) => seeded.number({ max: 100 })
     })
@@ -59,7 +59,7 @@ const Section = ({ seed }) =>
     fetch('/user/${seed}').then(r => r.text()).then(console.log)
     `} output={`
     ${JSON.stringify(fiona(seed).data({
-      name: ({ seeded }) => seeded.name(),
+      fullname: ({ seeded }) => seeded.fullname(),
       color: ({ seeded }) => seeded.oneOf(['red', 'yellow', 'blue']),
       age: ({ seeded }) => seeded.number({ max: 100 })
     }))}

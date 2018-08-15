@@ -1,7 +1,7 @@
 /* global test,expect */
 
 const fiona = require('../../')
-require('./fiona.arr')
+require('./fiona.array')
 
 const resultFixture = [
   0.8474856111442137,
@@ -16,10 +16,10 @@ const resultFixture = [
   0.4541439816607833
 ]
 
-test('fiona.fn.arr (10 items)', () => {
-  expect(fiona(1).arr(10, fiona.call('random'))).toEqual(resultFixture)
+test('fiona.fn.array (10 items)', () => {
+  expect(fiona(1).array(10, fiona.call('random'))).toEqual(resultFixture)
 })
 
-test('fiona.fn.arr (0 items)', () => {
-  expect(fiona(1).arr(0, fiona.call('random'))).toEqual([])
+test('fiona.fn.array (0 items)', () => {
+  expect(fiona(1).array(0, fiona.call('random'))).toEqual([])
 })
