@@ -91,7 +91,7 @@ const MainLayout = ({ seed, children }) =>
       <script src='https://cdn.ravenjs.com/3.26.2/raven.min.js' crossorigin='anonymous'></script>
       <script>Raven.config('https://cbe5f0dcbb0b4d488ca750f1b7f7ac11@sentry.io/1226793').install()</script>
       */}
-    </Head>    
+    </Head>
     <MainContent seed={seed}>
       {children}
     </MainContent>

@@ -1,3 +1,5 @@
+// TODO: alias plugins for common use cases, e.g. fiona.surname vs fiona.lastname
+// TODO: configuration plugins for common use case, e.g. fiona.float() vs fiona.number({ precision: 2 })
 require('./array/fiona.array')
 require('./number/fiona.number')
 require('./choose/fiona.choose')

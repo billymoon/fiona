@@ -33,10 +33,10 @@ const Section = ({ seed }) =>
     Fiona
     x x x\`
     `} output={
-    fiona(seed).chain({
-      fullname: fiona.call('fullname'),
-      color: fiona.call('oneOf', ['red', 'orange', 'yellow', 'green', 'blue'])
-    }).template`
+      fiona(seed).chain({
+        fullname: fiona.call('fullname'),
+        color: fiona.call('oneOf', ['red', 'orange', 'yellow', 'green', 'blue'])
+      }).template`
     Hi <%= fullname %>,
 
     Your favourite colour is <%= color %>.

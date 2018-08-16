@@ -2,9 +2,9 @@ import { fiona, consume, ApiSection, Sample } from '../../docs/app'
 
 const Section = ({ seed }) =>
   <span>
-    {/* TODO: document find
-  <ApiSection heading={<span><small>fiona.fn.</small>find</span>}>
-    <p>find...</p>
+    {/* TODO: document string
+  <ApiSection heading={<span><small>fiona.fn.</small>string</span>}>
+    <p>string...</p>
 
     <Sample input={`
     fiona(${seed})

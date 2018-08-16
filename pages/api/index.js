@@ -8,6 +8,7 @@ import {
 
 import ApiFnBool from '../../src/plugins/bool/fiona.bool.docs'
 import ApiFnFind from '../../src/plugins/find/fiona.find.docs'
+import ApiFnString from '../../src/plugins/string/fiona.string.docs'
 import ApiFnCallback from '../../src/core/core-callback.docs'
 import ApiFnData from '../../src/core/core-data.docs'
 import ApiFnReseed from '../../src/core/core-reseed.docs'
@@ -53,6 +54,7 @@ const Page = () =>
         <ApiFnInfo />
         <ApiFnState />
         <ApiFnFind />
+        <ApiFnString />
         <ApiFnData />
         <ApiFnChain />
         <ApiFnValue />

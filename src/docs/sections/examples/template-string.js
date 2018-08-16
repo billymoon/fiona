@@ -38,12 +38,12 @@ const Section = ({ seed }) =>
     Fiona
     x x x
     `)(fiona(seed).data({
-      fullname: fiona.call('fullname'),
-      age: fiona.call('number', { max: 100 }),
-      playThing: ({ data }) => data.age < 5 ? 'cuddly toys' : 'friends',
-      sentences: ({ seeded, arr }) => arr(seeded.number({ min: 1, max: 5 }), fiona.call('sentence'))
-    }))
-    }`} />
+    fullname: fiona.call('fullname'),
+    age: fiona.call('number', { max: 100 }),
+    playThing: ({ data }) => data.age < 5 ? 'cuddly toys' : 'friends',
+    sentences: ({ seeded, arr }) => arr(seeded.number({ min: 1, max: 5 }), fiona.call('sentence'))
+  }))
+}`} />
 
     <div className='clearfix' />
   </section>

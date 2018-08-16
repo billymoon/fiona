@@ -47,7 +47,7 @@ export default {
   //   }),
   //   { startseed: 950000 }
   // ).info()
-  magicNumber: 952684, //4946447
+  magicNumber: 952684, // 4946447
   theme: {
     bg: clr.white,
     clr: {

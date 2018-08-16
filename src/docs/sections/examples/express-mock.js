@@ -39,10 +39,10 @@ const Section = ({ seed }) =>
     <Sample input={`
     fetch('/api/user/${seed}').then(r => r.json()).then(console.log)
     `} output={`\n${
-    fiona(seed).chain({
-      fullname: fiona.call('fullname'),
-      age: fiona.call('number', { max: 100 })
-    }).json()
+      fiona(seed).chain({
+        fullname: fiona.call('fullname'),
+        age: fiona.call('number', { max: 100 })
+      }).json()
     }`} />
 
     ... or with curl ...

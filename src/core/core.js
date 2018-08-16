@@ -3,6 +3,7 @@ const RecurseData = require('./recurse-data')
 const Weighting = require('./weighting')
 const PrngMethods = require('./prng-methods')
 const { type } = require('../utils')
+const RecursorArguments = require('./recursor-arguments')
 
 // define main constructor function
 function Moon (seedin) {
@@ -35,6 +36,7 @@ function Moon (seedin) {
   this.data = input => {
     let safety = 50
     while (type(input) === 'Function' && --safety) {
+      // input = recurseData(input, '() => data')
       input = input(handleFunction('() => data', data))
     }
 
@@ -91,12 +93,18 @@ fiona.version = packageJson.version
 fiona.fn = Moon.prototype = { constructor: Moon }
 
 fiona.plugin = (name, fn) => {
-  fiona.fn[name] = function (...args) { return fn({ seeded: this }, ...args) }
-  fiona[name] = (...args) => fiona.call(name, ...args)
-  if (name === 'name') {
-    console.log(fiona[name])
+  fiona.fn[name] = function (...args) {
+    return fn({ seeded: this }, ...args)
   }
-  // Object.keys(fiona.fn).filter(i=>i!=='constructor').map(i=> )
+
+  fiona[name] = (first, ...args) => {
+    // TODO: there must be a more robust, generally better way to auto call plugins
+    if (first instanceof RecursorArguments) {
+      return fiona.call(name)
+    } else {
+      return fiona.call(name, first, ...args)
+    }
+  }
 }
 
 // TODO: should seeded carry weighting of parent? is it possible?
@@ -114,8 +122,6 @@ fiona.fn.seeded = function () {
     seeded: this
   }
 }
-
-// fiona.string = (...args) => fiona.call('string', ...args)
 
 // export the main function
 module.exports = fiona
