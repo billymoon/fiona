@@ -34,14 +34,20 @@ function Moon (seedin) {
 
   // define data builder method
   this.data = input => {
-    if (type(input) === 'Function') {
+    let safety = 50
+    while (type(input) === 'Function' && --safety) {
       input = input(handleFunction('() => data', data))
+    }
+
+    if (!safety) {
+      throw Error('too much recursion in functions returning functions')
     }
 
     // TODO: handle mixed input types on multiple data calls
     switch (type(input)) {
-      case 'Array': data = recurseData((data || []).concat(input), `data[${(data || []).length}]`); break
+      case 'Array': data = recurseData((data || []), `data[${(data || []).length}]`, (data || []).concat(input)); break
       case 'Object': data = recurseData(Object.assign({}, data || {}, input), 'data'); break
+      case 'String': data = (data || '') + input; break
       // TODO: does it make sense to return stuff we don't recognise, or just throw?
       default: data = input
     }
@@ -100,6 +106,8 @@ fiona.call = (cmd, ...args) => first => {
   const { seeded } = first || { seeded: fiona() }
   return seeded[cmd](...args)
 }
+
+fiona.random = (...args) => fiona.call('random', ...args)
 
 // utility to create seeded object to call plugin functions with
 fiona.fn.seeded = function () {

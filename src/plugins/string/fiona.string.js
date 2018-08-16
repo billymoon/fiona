@@ -1,3 +1,8 @@
 const fiona = require('../../')
 
-fiona.plugin('string', ({ seeded }, [a, ...b], ...c) => a + b.map((str, i) => (typeof c[i] === 'function' ? seeded.data(c[i]) : c[i]) + str).join(''))
+const string = ({ seeded }, [a, ...b], ...c) => {
+  const reduced = b.reduce((memo, item, index) => memo.concat(c[index], item), [a])
+  return seeded.data(reduced).join('')
+}
+
+fiona.plugin('string', string)

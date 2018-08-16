@@ -6,6 +6,8 @@ module.exports = (fiona, initseed, seeded) => {
     // TODO: check if this logic is correct and better detection of root object
     if (currentInput === undefined && (position === 'data' || position === 'data[0]')) {
       currentInput = originalInput
+    } else if (currentInput === undefined && position === '() => data') {
+      currentInput = handleFunction(position, originalInput)
     }
 
     if (type(currentInput) === 'Object') {
@@ -17,13 +19,6 @@ module.exports = (fiona, initseed, seeded) => {
     } else {
       return currentInput
     }
-    // const handler = {
-    //   Object: recurseObject,
-    //   Array: recurseArray,
-    //   Function: recurseFunction
-    // }[type(currentInput)]
-
-    // return handler ? handler(currentInput, originalInput, position, currentindex) : currentInput
   }
 
   const arr = (qty, callback) => {
@@ -44,25 +39,15 @@ module.exports = (fiona, initseed, seeded) => {
   }
 
   const recurseArray = (currentInput, originalInput, position) => {
-    currentInput.forEach((item, index) => {
+    return currentInput.map((item, index) => {
       const m = position.match(/^data\[(\d+)\]$/)
       const pos = m ? `data[${1 * m[1] + index}]` : `${position}[${index}]`
       if (item !== undefined) {
-        currentInput[index] = recurseData(originalInput, pos, item, index)
+        return recurseData(originalInput, pos, item, index)
       } else {
-        currentInput[index] = undefined
+        return undefined
       }
     })
-    return currentInput
-    // return currentInput.map((item, index) => {
-    //   const m = position.match(/^data\[(\d+)\]$/)
-    //   const pos = m ? `data[${1 * m[1] + index}]` : `${position}[${index}]`
-    //   if (item !== undefined) {
-    //     return recurseData(originalInput, pos, item, index)
-    //   } else {
-    //     return undefined
-    //   }
-    // })
   }
 
   const handleFunction = (position, data) => ({
