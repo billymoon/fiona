@@ -3,11 +3,8 @@ const { type } = require('../utils')
 
 module.exports = (fiona, initseed, seeded) => {
   const recurseData = (originalInput, position, currentInput, currentindex) => {
-    // TODO: check if this logic is correct and better detection of root object
     if (currentInput === undefined && (position === 'data' || position === 'data[0]')) {
       currentInput = originalInput
-    } else if (currentInput === undefined && position === '() => data') {
-      currentInput = handleFunction(position, originalInput)
     }
 
     if (type(currentInput) === 'Object') {
@@ -56,6 +53,7 @@ module.exports = (fiona, initseed, seeded) => {
     data,
     seeded: fiona(`${position}/${initseed}`, prng),
     // TODO: better handling of current index in callbacks of `arr`
+    // TODO: rename arr to array? consolidate with fiona.array plugin?
     arr
   })
 
