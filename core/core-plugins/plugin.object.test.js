@@ -44,19 +44,19 @@ describe('plugin.object', () => {
   })
 
   test('should call function with current position', () => {
-    const expected = JSON.stringify(seeded.object({ a: ({ pos }) => pos }))
+    const expected = JSON.stringify(seeded.object({ a: ({ position }) => position }))
     const fixture = `{"a":"root.a"}`
     expect(expected).toBe(fixture)
   })
 
   test('should call function with current position with recursion', () => {
-    const expected = JSON.stringify(seeded.object({ a: ({ pos }) => pos }))
+    const expected = JSON.stringify(seeded.object({ a: ({ position }) => position }))
     const fixture = `{"a":"root.a"}`
     expect(expected).toBe(fixture)
   })
 
   test('should call function with current position on deeply nested object', () => {
-    const expected = JSON.stringify(seeded.object({ a: { b: ({ pos }) => pos } }))
+    const expected = JSON.stringify(seeded.object({ a: { b: ({ position }) => position } }))
     const fixture = `{"a":{"b":"root.a.b"}}`
     expect(expected).toBe(fixture)
   })
@@ -88,20 +88,20 @@ describe('plugin.object', () => {
         1,
         undefined,
         3,
-        () => ({ pos }) => pos,
+        () => ({ position }) => position,
         {
           b: () => [
             'b0',
             'b1',
             'b2',
             () => 'b3',
-            ({ pos }) => pos
+            ({ position }) => position
           ]
         },
         [
           6,
           7,
-          ({ pos }) => pos
+          ({ position }) => position
         ]
       ]
     }))
@@ -132,4 +132,10 @@ describe('plugin.object', () => {
     const fixture = `{"a":790000}`
     expect(expected).toBe(fixture)
   })
+
+  // test('should call functions with parent seeded instance', () => {
+  //   const expected = JSON.stringify(seeded.object({ a: ({ parent, seeded }) => [parent.info().initseed, seeded.info().initseed, seeded.object({ b: ({ parent, seeded })  => [parent.info().initseed, seeded.info().initseed] })] }))
+  //   const fixture = `{"a":790000}`
+  //   expect(expected).toBe(fixture)
+  // })
 })

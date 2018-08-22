@@ -22,6 +22,6 @@ describe('plugin.string', () => {
   })
 
   test('plugin can be called as method on fiona', () => {
-    expect(seeded.string`a ${({ pos }) => pos} c ${({ pos }) => pos} d`).toBe('a root.string[1] c root.string[3] d')
+    expect(seeded.string`a ${({ position }) => position} c ${({ position }) => position} d`).toBe('a root.string[1] c root.string[3] d')
   })
 })
