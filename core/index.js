@@ -2,6 +2,12 @@ const packageJson = require('../package')
 // const RecurseData = require('./recurse-data')
 const PrngMethods = require('./prng-methods')
 const { type } = require('./utils')
+const {
+  number,
+  object,
+  chain,
+  string
+} = require('./core-plugins')
 // const RecursorArguments = require('./recursor-arguments')
 
 // define main constructor function
@@ -51,6 +57,11 @@ fiona.register = (name, fn) => {
 }
 
 fiona.random = () => ({ seeded: { random } }) => random()
+
+fiona.register(number)
+fiona.register(object)
+fiona.register(chain)
+fiona.register(string)
 
 // export the main function
 module.exports = fiona
