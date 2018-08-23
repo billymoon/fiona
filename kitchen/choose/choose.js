@@ -1,7 +1,6 @@
-const fiona = require('../../')
 const chooser = require('./chooser')
 
-fiona.plugin('choose', ({ seeded }, qty, arr, { weights = [] } = {}) => {
+const choose = ({ seeded }, qty, arr, { weights = [] } = {}) => {
   const myArr = arr.slice(0)
   const myWeightings = weights.slice(0)
   return Array(qty || 0).fill(null).map((v, i) => {
@@ -11,4 +10,6 @@ fiona.plugin('choose', ({ seeded }, qty, arr, { weights = [] } = {}) => {
     myArr.shift()
     return result
   })
-})
+}
+
+module.exports = choose

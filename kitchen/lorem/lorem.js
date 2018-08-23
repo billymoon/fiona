@@ -1,6 +1,4 @@
-const fiona = require('../../')
-
-fiona.plugin('lorem', ({ seeded }, { qty = 15 } = {}) => {
+const lorem = ({ seeded }, { qty = 15 } = {}) => {
   const out = seeded.random() < 0.2 ? 'lorem ipsum ' : ''
   let words = []
   while (words.length < qty) {
@@ -9,13 +7,20 @@ fiona.plugin('lorem', ({ seeded }, { qty = 15 } = {}) => {
   const min = Math.ceil(qty - qty / 3)
   const max = Math.ceil(qty + qty / 3) - 2
   return out + seeded.choose(seeded.number({ min, max }), words).join(' ')
-})
+}
 
-fiona.plugin('word', ({ seeded }) => seeded.lorem({ qty: 1 }).split(' ')[0])
+const word = ({ seeded }) => seeded.lorem({ qty: 1 }).split(' ')[0]
 
-fiona.plugin('sentence', ({ seeded }) => {
+const sentence = ({ seeded }) => {
   const para = seeded.lorem({ qty: 25 })
   return para[0].toUpperCase() + para.slice(1) + '.'
-})
+}
 
-fiona.plugin('para', ({ seeded }) => Array(seeded.number({ min: 1, max: 10 })).fill(0).map(i => seeded.sentence()).join('  '))
+const para = ({ seeded }) => Array(seeded.number({ min: 1, max: 10 })).fill(0).map(i => seeded.sentence()).join('  ')
+
+module.exports = {
+  lorem,
+  word,
+  sentence,
+  para
+}

@@ -31,6 +31,8 @@ const recurseData = (seeded, original, position = 'root', current) => {
     return recurseArray(seeded, original, position, current)
   } else if (typeof current === 'function') {
     return recurseFunction(seeded, original, position, current)
+  } else if (typeof current === 'object' && current.constructor === RegExp) {
+    return seeded.regex ? seeded.regex(current) : current
   } else {
     return current
   }

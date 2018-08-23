@@ -3,7 +3,7 @@
   "version": "2.7.0",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
-  "main": "fiona.js",
+  "main": "fiona.min.js",
   "scripts": {
     "start": "next start",
     "dev": "next dev",
@@ -43,6 +43,6 @@
       "!core/**/*.docs.js",
       "!core/docs/**"
     ],
-    "testPathIgnorePatterns": ["src"]
+    "testPathIgnorePatterns": ["src", "plugins"]
   }
 }

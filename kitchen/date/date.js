@@ -1,6 +1,4 @@
-const fiona = require('../../')
-
-fiona.plugin('date', ({ seeded }, { min = '1940', max = '2000', long = false } = {}) => {
+const date = ({ seeded }, { min = '1940', max = '2000', long = false } = {}) => {
   const early = new Date(min) * 1
   const late = new Date(max) * 1
   if (early > late) {
@@ -9,4 +7,6 @@ fiona.plugin('date', ({ seeded }, { min = '1940', max = '2000', long = false } =
   const diff = late - early
   const date = new Date(seeded.number({ max: diff }) + early).toISOString()
   return long ? date : date.slice(0, 10)
-})
+}
+
+module.exports = date
