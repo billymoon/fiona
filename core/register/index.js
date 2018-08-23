@@ -1,9 +1,8 @@
 const RecurseArguments = require('../recurse/arguments')
-const { type } = require('../utils')
 
 const Register = (registerInstance, registerConstructorPrototype) => (...plugins) => plugins.forEach(plugin => {
   let fn
-  if (type(plugin) === 'Function') {
+  if (typeof plugin === 'function') {
     name = plugin.name
     fn = plugin
   } else {

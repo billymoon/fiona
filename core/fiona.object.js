@@ -1,8 +1,7 @@
 const recurseData = require('./recurse')
-const { type } = require('./utils')
 
 const object = ({ seeded }, original) => {
-  if (type(original) !== 'Object') {
+  if (!(typeof original === 'object' && original.constructor === Object)) {
     throw Error('first argument of fiona.object must be an Object')
   }
 

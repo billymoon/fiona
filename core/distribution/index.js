@@ -1,5 +1,3 @@
-const { type } = require('../utils')
-
 // define default distribution method
 const defaultDistribution = i => i
 
@@ -11,7 +9,7 @@ module.exports = seeded => {
   // if passed null, reset distribution method to default passthrough
   // else call distribution function with passed argument
   return newVal => {
-    if (type(newVal) === 'Function') {
+    if (typeof newVal === 'function') {
       distribution = newVal
       return seeded
     } else if (newVal === null) {

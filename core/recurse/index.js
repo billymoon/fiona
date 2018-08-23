@@ -1,4 +1,3 @@
-const { type } = require('../utils')
 const RecurseArguments = require('./arguments')
 
 const recurseObject = (seeded, original, position, current) => {
@@ -26,11 +25,11 @@ const recurseData = (seeded, original, position = 'root', current) => {
     current = original
   }
 
-  if (type(current) === 'Object') {
+  if (typeof current === 'object' && current.constructor === Object) {
     return recurseObject(seeded, original, position, current)
-  } else if (type(current) === 'Array') {
+  } else if (typeof current === 'object' && current.constructor === Array) {
     return recurseArray(seeded, original, position, current)
-  } else if (type(current) === 'Function') {
+  } else if (typeof current === 'function') {
     return recurseFunction(seeded, original, position, current)
   } else {
     return current

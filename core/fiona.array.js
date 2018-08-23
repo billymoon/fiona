@@ -1,9 +1,8 @@
-const { type } = require('./utils')
 const recurseData = require('./recurse')
 
 const array = ({ seeded }, qty, input, processor = i => i) => {
-  const myProcessor = type(processor) === 'String' ? i => i.join(processor) : processor
-  const quantity = type(qty) === 'Object' ? seeded.number(qty) : recurseData(seeded.clone(), qty)
+  const myProcessor = typeof processor === 'string' ? i => i.join(processor) : processor
+  const quantity = typeof qty === 'object' && qty.constructor === Object ? seeded.number(qty) : recurseData(seeded.clone(), qty)
   return myProcessor(recurseData(seeded, Array(quantity).fill(input)))
 }
 
