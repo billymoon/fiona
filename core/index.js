@@ -23,6 +23,32 @@ function Moon (seedin) {
   // define clone method to fork current state
   seeded.clone = () => fiona(initseed).state(seeded.state())
 
+  let chainValue = {}
+
+  const chainPlugin = ({ seeded }, input) => {
+    chainValue = seeded.object(Object.assign({}, chainValue, input))
+    return seeded
+  }
+
+  seeded.chain = function (...args) {
+    const seeded = this
+    return chainPlugin({ seeded }, ...args)
+  }
+
+  // TODO: does it make any sense to have chain method on fiona instance?
+  // fiona.chain = (...args) => instance => chainPlugin(instance, ...args)
+
+  const valuePlugin = () => {
+    return Object.assign({}, chainValue)
+  }
+
+  seeded.value = function (...args) {
+    const seeded = this
+    return valuePlugin({ seeded }, ...args)
+  }
+
+  fiona.value = (...args) => instance => valuePlugin(instance, ...args)
+
   return seeded
 }
 
@@ -67,7 +93,6 @@ fiona.register(
   ['number', corePlugins.number],
   ['object', corePlugins.object],
   ['json', corePlugins.json],
-  ['chain', corePlugins.chain],
   ['string', corePlugins.string],
   ['array', corePlugins.array]
 )

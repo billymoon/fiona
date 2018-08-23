@@ -14,4 +14,10 @@ describe('plugin.chain', () => {
     const expected = seeded.json({ a: 1, b: 2 })
     expect(expected).toBe(fixture)
   })
+
+  test('json method should accept indentation argument', () => {
+    const fixture = `{\n  "a": 1,\n  "b": 2\n}`
+    const expected = seeded.json({ a: 1, b: 2 }, null, 2)
+    expect(expected).toBe(fixture)
+  })
 })
