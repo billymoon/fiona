@@ -1,12 +1,7 @@
 const packageJson = require('../package')
 const PrngMethods = require('./prng-methods')
 const { type } = require('./utils')
-const {
-  number,
-  object,
-  chain,
-  string
-} = require('./core-plugins')
+const corePlugins = require('./core-plugins')
 
 // define main constructor function
 function Moon (seedin) {
@@ -39,27 +34,36 @@ fiona.version = packageJson.version
 // set up self referencial prototype chain with jQuery like plugin architecture
 Moon.prototype = { constructor: Moon }
 
-// TODO: change function signature to take list of named functions, or [name, function] plugin definitions
-fiona.register = (name, fn) => {
-  if (type(name) === 'Function') {
-    fn = name
-    name = fn.name
-  }
+fiona.register = (...plugins) => {
+  plugins.forEach(plugin => {
+    let fn
+    if (type(plugin) === 'Function') {
+      name = plugin.name
+      fn = plugin
+    } else {
+      name = plugin[0]
+      fn = plugin[1]
+    }
 
-  Moon.prototype[name] = function (...args) {
-    const seeded = this
-    return fn({ seeded }, ...args)
-  }
+    Moon.prototype[name] = function (...args) {
+      const seeded = this
+      return fn({ seeded }, ...args)
+    }
 
-  fiona[name] = (...args) => ({ seeded }) => fn({ seeded }, ...args)
+    fiona[name] = (...args) => ({ seeded }) => fn({ seeded }, ...args)
+  })
 }
 
 fiona.random = () => ({ seeded: { random } }) => random()
 
-fiona.register('number', number)
-fiona.register('object', object)
-fiona.register('chain', chain)
-fiona.register('string', string)
+fiona.register(
+  ['number', corePlugins.number],
+  ['object', corePlugins.object],
+  ['json', corePlugins.json],
+  ['chain', corePlugins.chain],
+  ['string', corePlugins.string],
+  ['array', corePlugins.array]
+)
 
 // export the main function
 module.exports = fiona
