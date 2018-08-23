@@ -29,7 +29,6 @@ function Moon (seedin) {
 // define main function
 const fiona = (...args) => new Moon(...args)
 
-// TODO: don't reuquire whole package json just to get version string
 fiona.version = packageJson.version
 
 // set up self referencial prototype chain with jQuery like plugin architecture
@@ -52,6 +51,7 @@ fiona.register = (...plugins) => {
     }
 
     fiona[name] = (...args) => ({ seeded }) => {
+      // TODO: it's pretty hacky to duck type the passed argument here
       if (args[0] instanceof RecurseArguments) {
         return fn({ seeded })
       } else {

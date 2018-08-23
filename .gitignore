@@ -6,6 +6,7 @@ node_modules
 coverage
 static/reports
 
+package-extract.json
 *.log
 package-lock.json
 yarn.lock
