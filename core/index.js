@@ -1,5 +1,6 @@
 const packageJson = require('../package')
 const PrngMethods = require('./prng-methods')
+const RecurseArguments = require('./recurse-arguments')
 const { type } = require('./utils')
 const corePlugins = require('./core-plugins')
 
@@ -50,7 +51,13 @@ fiona.register = (...plugins) => {
       return fn({ seeded }, ...args)
     }
 
-    fiona[name] = (...args) => ({ seeded }) => fn({ seeded }, ...args)
+    fiona[name] = (...args) => ({ seeded }) => {
+      if (args[0] instanceof RecurseArguments) {
+        return fn({ seeded })
+      } else {
+        return fn({ seeded }, ...args)
+      }
+    }
   })
 }
 

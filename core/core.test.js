@@ -172,5 +172,23 @@ describe('core', () => {
       fiona.register(zeroHundred)
       expect(fiona.zeroHundred()({ seeded })).toBe(51)
     })
+
+    test('plugin can is called with no arguments with no brackets', () => {
+      const zeroHundred = ({ seeded }, arg) => typeof arg
+      fiona.register(zeroHundred)
+      expect(seeded.object({ a: fiona.zeroHundred })).toEqual({ a: 'undefined' })
+    })
+
+    test('plugin can is called with no arguments with no brackets in string', () => {
+      const zeroHundred = ({ seeded }, arg) => typeof arg
+      fiona.register(zeroHundred)
+      expect(seeded.string`number ${fiona.zeroHundred}`).toEqual(`number undefined`)
+    })
+
+    test('plugin can is called with passed arguments in string', () => {
+      const zeroHundred = ({ seeded }, arg) => typeof arg
+      fiona.register(zeroHundred)
+      expect(seeded.string`number ${fiona.zeroHundred(1)}`).toEqual(`number number`)
+    })
   })
 })

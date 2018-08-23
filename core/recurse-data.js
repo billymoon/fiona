@@ -1,4 +1,5 @@
 const { type } = require('./utils')
+const RecurseArguments = require('./recurse-arguments')
 
 const recurseObject = (seeded, original, position, current) => {
   Object.keys(current).forEach(key => {
@@ -16,14 +17,8 @@ const recurseArray = (seeded, original, position, current) => {
 }
 
 const recurseFunction = (seeded, original, position, current) => {
-  // TODO: re-introduce recursor arguments class to identify auto calling functions
-  return recurseData(seeded, original, position, current({
-    // TODO: is it useful to return parent here..?
-    // parent: seeded,
-    position,
-    // new seeded.constructor =~ new Moon =~ fiona
-    seeded: new seeded.constructor(`${position}/${seeded.info().initseed}`)
-  }))
+  const recurseArguments = new RecurseArguments(seeded, position)
+  return recurseData(seeded, original, position, current(recurseArguments))
 }
 
 const recurseData = (seeded, original, position = 'root', current) => {
