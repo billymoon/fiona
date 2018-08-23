@@ -1,6 +1,8 @@
 /* global test expect describe */
 
-const fiona = require('.')
+// TODO: move tests closer to relevant source code
+const index = require('.')
+const fiona = require('./fiona')
 
 const fixtures = [
   0.5129792850990683,
@@ -11,6 +13,12 @@ const fixtures = [
 describe('sanity', () => {
   test('javascript is javascript', () => {
     expect(true + true).toBe(2)
+  })
+})
+
+describe('exports fiona', () => {
+  test('index exports fiona', () => {
+    expect(index).toBe(fiona)
   })
 })
 

@@ -1,5 +1,5 @@
-const recurseData = require('../recurse-data')
-const { type } = require('../utils')
+const recurseData = require('./recurse')
+const { type } = require('./utils')
 
 const object = ({ seeded }, original) => {
   if (type(original) !== 'Object') {

@@ -1,4 +1,4 @@
-const { type } = require('./utils')
+const { type } = require('../utils')
 
 // define default distribution method
 const defaultDistribution = i => i

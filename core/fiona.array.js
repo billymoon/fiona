@@ -1,5 +1,5 @@
-const { type } = require('../utils')
-const recurseData = require('../recurse-data')
+const { type } = require('./utils')
+const recurseData = require('./recurse')
 
 const array = ({ seeded }, qty, input, processor = i => i) => {
   const myProcessor = type(processor) === 'String' ? i => i.join(processor) : processor

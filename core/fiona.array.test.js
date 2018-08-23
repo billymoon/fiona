@@ -1,6 +1,6 @@
 /* global test expect describe */
 
-const fiona = require('..')
+const fiona = require('./fiona')
 
 const fixtures = [
   923436,

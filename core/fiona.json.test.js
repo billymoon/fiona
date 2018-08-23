@@ -1,6 +1,6 @@
 /* global test expect describe */
 
-const fiona = require('..')
+const fiona = require('./fiona')
 
 describe('plugin.chain', () => {
   let seeded

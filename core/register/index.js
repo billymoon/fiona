@@ -1,8 +1,7 @@
-const RecurseArguments = require('./recurse-arguments')
-const { type } = require('./utils')
-const corePlugins = require('./core-plugins')
+const RecurseArguments = require('../recurse/arguments')
+const { type } = require('../utils')
 
-const Register = (fiona, Moon) => (...plugins) => plugins.forEach(plugin => {
+const Register = (registerInstance, registerConstructorPrototype) => (...plugins) => plugins.forEach(plugin => {
   let fn
   if (type(plugin) === 'Function') {
     name = plugin.name
@@ -12,19 +11,19 @@ const Register = (fiona, Moon) => (...plugins) => plugins.forEach(plugin => {
     fn = plugin[1]
   }
 
-  Moon.prototype[name] = function (...args) {
+  registerConstructorPrototype(name, function (...args) {
     const seeded = this
     return fn({ seeded }, ...args)
-  }
+  })
 
-  fiona[name] = (...args) => ({ seeded }) => {
+  registerInstance(name, (...args) => ({ seeded }) => {
     // TODO: it's pretty hacky to duck type the passed argument here
     if (args[0] instanceof RecurseArguments) {
       return fn({ seeded })
     } else {
       return fn({ seeded }, ...args)
     }
-  }
+  })
 })
 
 module.exports = Register

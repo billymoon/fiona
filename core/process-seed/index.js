@@ -1,4 +1,4 @@
-const { type } = require('./utils')
+const { type } = require('../utils')
 
 const processSeed = inputSeed => {
   if (type(inputSeed) === 'String') {

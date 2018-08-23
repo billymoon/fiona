@@ -1,6 +1,6 @@
 /* global test expect describe */
 
-const fiona = require('.')
+const fiona = require('../fiona')
 
 describe('plugin.chain', () => {
   let seeded
@@ -52,6 +52,21 @@ describe('plugin.chain', () => {
     const fixture = `{"a":1,"b":2}`
     const expected = seeded.json()
     expect(expected).toBe(fixture)
+  })
+
+  test('should not let chained value of one instance impact another', () => {
+    const another = fiona('another')
+    
+    seeded.chain({ a: 1 }).chain({ b: 2 })
+    another.chain({ a: 3 }).chain({ b: 4 })
+
+    const fixture1 = `{"a":1,"b":2}`
+    const fixture2 = `{"a":3,"b":4}`
+    const expected1 = seeded.json()
+    const expected2 = another.json()
+
+    expect(expected1).toBe(fixture1)
+    expect(expected2).toBe(fixture2)
   })
 
   test('should call fiona.value', () => {

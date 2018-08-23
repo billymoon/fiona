@@ -1,5 +1,5 @@
-const { type } = require('./utils')
-const RecurseArguments = require('./recurse-arguments')
+const { type } = require('../utils')
+const RecurseArguments = require('./arguments')
 
 const recurseObject = (seeded, original, position, current) => {
   Object.keys(current).forEach(key => {

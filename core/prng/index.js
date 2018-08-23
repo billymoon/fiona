@@ -1,13 +1,13 @@
-const prng = require('./prng-xor')
-const processSeed = require('./process-seed')
-const Distribution = require('./distribution')
+const xor = require('./xor')
+const processSeed = require('../process-seed')
+const Distribution = require('../distribution')
 
 module.exports = (seeded, initseed) => {
   // initialise prng functions
-  const { reseed: prngReseed, getState, setState, random: prngRandom } = prng(0)
+  const { reseed, getState, setState, random: prngRandom } = xor(0)
 
   // seed prng with initial seed
-  prngReseed(processSeed(initseed))
+  reseed(processSeed(initseed))
 
   // capture initial prng state
   const initialState = getState()
@@ -28,9 +28,9 @@ module.exports = (seeded, initseed) => {
 
   const distribution = Distribution(seeded)
 
-  // define prng reseed method
+  // define prng reset method
   const reset = (seed) => {
-    prngReseed(processSeed(seed !== undefined ? seed : initseed))
+    reseed(processSeed(seed !== undefined ? seed : initseed))
     return seeded
   }
 
