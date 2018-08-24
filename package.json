@@ -43,6 +43,9 @@
       "!core/**/*.docs.js",
       "!core/docs/**"
     ],
-    "testPathIgnorePatterns": ["src", "plugins"]
+    "testPathIgnorePatterns": [
+      "src",
+      "plugins"
+    ]
   }
 }
