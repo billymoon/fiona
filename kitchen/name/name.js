@@ -1,6 +1,4 @@
-const fiona = require('../../')
-
-const data = {
+const namedata = {
   male: {
     firstname: ['Jack', 'James', 'Oliver', 'Lewis', 'Logan', 'Harry', 'Noah', 'Leo', 'Charlie', 'Alexander', 'Jacob', 'Lucas', 'Harris', 'Mason', 'Alfie', 'Finlay', 'Ethan', 'Daniel', 'Aaron', 'Max', 'Archie', 'Thomas', 'Matthew', 'Adam', 'Rory', 'Nathan', 'Callum', 'Joshua', 'Oscar', 'Brodie', 'Cameron', 'Harrison', 'William', 'Finn', 'Riley', 'Dylan', 'Samuel', 'Jaxon', 'Liam', 'Ollie', 'Jamie', 'Connor', 'Luke', 'Theo', 'Ryan', 'Andrew', 'Caleb', 'Jude', 'Joseph', 'Benjamin', 'Muhammad', 'Arran', 'Angus', 'John', 'David', 'Isaac', 'Cole', 'Hamish', 'Robert', 'Jackson', 'Michael', 'George', 'Kai', 'Leon', 'Kyle', 'Ben', 'Luca', 'Blake', 'Murray', 'Aiden', 'Carter', 'Jake', 'Owen', 'Cooper', 'Freddie', 'Ruaridh', 'Jayden', 'Aidan', 'Fraser', 'Reuben', 'Euan', 'Sam', 'Blair', 'Calvin', 'Christopher', 'Alex', 'Arthur', 'Calum', 'Cody', 'Elliot', 'Josh', 'Lachlan', 'Zac', 'Arlo', 'Kayden', 'Robbie', 'Tyler', 'Conor', 'Henry', 'Hunter', 'Zachary'],
     title: ['Mr', 'Dr', 'Sir', 'Lord']
@@ -14,29 +12,37 @@ const data = {
 
 const getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male'))
 
-fiona.plugin('gender', ({ seeded }) => {
+const gender = ({ seeded }) => {
   return seeded.random() < 0.5 ? 'male' : 'female'
-})
+}
 
-fiona.plugin('title', ({ seeded }, { gender } = {}) => {
-  return seeded.oneOf(data[getGender(gender || seeded.gender())].title)
-})
+const title = ({ seeded }, { gender } = {}) => {
+  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].title)
+}
 
-fiona.plugin('firstname', ({ seeded }, { gender } = {}) => {
-  return seeded.oneOf(data[getGender(gender || seeded.gender())].firstname)
-})
+const firstname = ({ seeded }, { gender } = {}) => {
+  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].firstname)
+}
 
-fiona.plugin('firstnames', ({ seeded }, { gender } = {}) => {
-  return seeded.choose(seeded.clone().weighting(x => x * x * x).number({ min: 1, max: 3 }), data[getGender(gender || seeded.gender())].firstname).join(' ')
-})
+const firstnames = ({ seeded }, { gender } = {}) => {
+  return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 3 }), namedata[getGender(gender || seeded.gender())].firstname).join(' ')
+}
 
-fiona.plugin('surname', ({ seeded }) => {
-  return seeded.choose(seeded.clone().weighting(x => x * x * x).number({ min: 1, max: 2 }), data.surname).join(seeded.bool() ? ' ' : '-')
-})
+const surname = ({ seeded }) => {
+  return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 2 }), namedata.surname).join(seeded.bool() ? ' ' : '-')
+}
 
-fiona.plugin('fullname', ({ seeded }, { gender } = {}) => {
+const fullname = ({ seeded }, { gender } = {}) => {
   const myGender = getGender(gender || seeded.gender())
   return `${seeded.title({ gender: myGender })} ${seeded.firstnames({ gender: myGender })} ${seeded.surname()}`
-})
+}
 
-fiona.namedata = data
+module.exports = {
+  gender,
+  title,
+  firstname,
+  firstnames,
+  surname,
+  fullname,
+  namedata
+}

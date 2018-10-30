@@ -23,7 +23,7 @@ const Section = ({ seed }) =>
     <Sample input={`
     const iban = /[A-Z]{2}\\d{2}( \\d{4}){4,5} \\d{1,3}/
 
-    fiona(${seed}).data({
+    fiona(${seed}).object({
       age: ({ seeded }) => seeded.number({ max: 100 }),
       fullname: ({ seeded }) => seeded.fullname(),
       iban: ({ seeded }) => seeded.regex(iban),
@@ -33,7 +33,7 @@ const Section = ({ seed }) =>
         'blue'
       ])
     })
-    `} output={`\n\n\n${JSON.stringify(fiona(seed).data({
+    `} output={`\n\n\n${JSON.stringify(fiona(seed).object({
       age: ({ seeded }) => seeded.number({ max: 100 }),
       fullname: ({ seeded }) => seeded.fullname(),
       iban: ({ seeded }) => seeded.regex(/[A-Z]{2}\d{2}( \d{4}){4,5} \d{0,3}/),
@@ -45,7 +45,7 @@ const Section = ({ seed }) =>
     <Sample>{`
     const iban = /[A-Z]{2}\\d{2}( \\d{4}){4,5} \\d{1,3}/
 
-    const colorChooser = fiona.call('oneOf', [
+    const colorChooser = fiona.oneOf([
       'red',
       'yellow',
       'blue'
@@ -53,17 +53,17 @@ const Section = ({ seed }) =>
     `}</Sample>
 
     <Sample input={`
-    fiona(${seed}).data({
-      age: fiona.call('number', { max: 100 }),
-      fullname: fiona.call('fullname'),
-      iban: fiona.call('regex', iban),
+    fiona(${seed}).object({
+      age: fiona.number({ max: 100 }),
+      fullname: fiona.fullname,
+      iban: fiona.regex(iban),
       favouriteColour: colorChooser
     })
-    `} output={`\n${JSON.stringify(fiona(seed).data({
-      age: fiona.call('number', { max: 100 }),
-      fullname: fiona.call('fullname'),
-      iban: fiona.call('regex', /[A-Z]{2}\d{2}( \d{4}){4,5} \d{0,3}/),
-      favouriteColour: fiona.call('oneOf', ['red', 'yellow', 'blue'])
+    `} output={`\n${JSON.stringify(fiona(seed).object({
+      age: fiona.number({ max: 100 }),
+      fullname: fiona.fullname(),
+      iban: fiona.regex(/[A-Z]{2}\d{2}( \d{4}){4,5} \d{0,3}/),
+      favouriteColour: fiona.oneOf(['red', 'yellow', 'blue'])
     }), null, 2)}`} />
   </section>
 

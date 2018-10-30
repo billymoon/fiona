@@ -5,7 +5,9 @@ const oneOf = require('./choose/one-of')
 const date = require('./date/date')
 const duplicable = require('./duplicable/duplicable')
 const { lorem, word, sentence, para } = require('./lorem/lorem')
+const { gender, title, firstname, firstnames, surname, fullname, namedata } = require('./name/name')
 const regex = require('./regex/regex')
+const shuffle = require('./shuffle/shuffle')
 
 fiona.register(
   ['bool', bool],
@@ -17,7 +19,16 @@ fiona.register(
   ['word', word],
   ['sentence', sentence],
   ['para', para],
-  ['regex', regex]
+  ['gender', gender],
+  ['title', title],
+  ['firstname', firstname],
+  ['firstnames', firstnames],
+  ['surname', surname],
+  ['fullname', fullname],
+  ['regex', regex],
+  ['shuffle', shuffle]
 )
+
+fiona.namedata = namedata
 
 module.exports = fiona

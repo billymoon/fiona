@@ -1,5 +1,16 @@
 import { fiona, consume, Sample } from '../../app'
 
+const tmeplateStringOutput = seeded => {
+  return seeded.chain({
+    fullname: fiona.fullname(),
+    age: fiona.number({ max: 100 })
+  }).chain({
+    // break the chain to commit current value and reference from original `seeded` that was passed in
+    playThing: () => seeded.value().age < 5 ? 'cuddly toys' : 'friends',
+    sentences: fiona.array({ min: 1, max: 5 }, fiona.sentence())
+  }).value()
+}
+
 const Section = ({ seed }) =>
   <section>
     <h3>Template String</h3>
@@ -8,10 +19,10 @@ const Section = ({ seed }) =>
 
     <Sample input={`
     const data = fiona(${seed}).data({
-      fullname: fiona.call('fullname'),
-      age: fiona.call('number', { max: 100 }),
+      fullname: fiona.fullname(),
+      age: fiona.number({ max: 100 }),
       playThing: ({ data }) => data.age < 5 ? 'cuddly toys' : 'friends',
-      sentences: ({ seeded, arr }) => arr(seeded.number({ min: 1, max: 5 }), fiona.call('sentence'))
+      sentences: ({ seeded, arr }) => arr(seeded.number({ min: 1, max: 5 }), fiona.sentence())
     })
 
     const templateFunction = d => \`Dear \${d.fullname},
@@ -37,12 +48,7 @@ const Section = ({ seed }) =>
 
     Fiona
     x x x
-    `)(fiona(seed).data({
-    fullname: fiona.call('fullname'),
-    age: fiona.call('number', { max: 100 }),
-    playThing: ({ data }) => data.age < 5 ? 'cuddly toys' : 'friends',
-    sentences: ({ seeded, arr }) => arr(seeded.number({ min: 1, max: 5 }), fiona.call('sentence'))
-  }))
+    `)(tmeplateStringOutput(fiona(seed)))
 }`} />
 
     <div className='clearfix' />

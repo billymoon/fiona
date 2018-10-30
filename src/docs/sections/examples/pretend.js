@@ -8,7 +8,7 @@ if (process.browser) {
 
 const pretender = new Pretender()
 
-const modelMock = seed => fiona(seed).data({
+const modelMock = seed => fiona(seed).object({
   fullname: ({ seeded }) => seeded.fullname(),
   color: ({ seeded }) => seeded.oneOf(['red', 'yellow', 'blue']),
   age: ({ seeded }) => seeded.number({ max: 100 })
@@ -58,7 +58,7 @@ const Section = ({ seed }) =>
     <Sample input={`
     fetch('/user/${seed}').then(r => r.text()).then(console.log)
     `} output={`
-    ${JSON.stringify(fiona(seed).data({
+    ${JSON.stringify(fiona(seed).object({
     fullname: ({ seeded }) => seeded.fullname(),
     color: ({ seeded }) => seeded.oneOf(['red', 'yellow', 'blue']),
     age: ({ seeded }) => seeded.number({ max: 100 })

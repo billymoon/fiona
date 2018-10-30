@@ -15,10 +15,12 @@ const Page = () =>
   <Layout>
     <Article><OverviewDynamicOverview /></Article>
     <Article><OverviewQuickStart /></Article>
+{/*
     <Article><OverviewSeededPRNG /></Article>
     <Article><OverviewWeighting /></Article>
-    <Article><OverviewChainedDataBuilder /></Article>
+*/}
     <Article><OverviewPlugins /></Article>
+    <Article><OverviewChainedDataBuilder /></Article>
     <Article><OverviewContributing /></Article>
   </Layout>
 

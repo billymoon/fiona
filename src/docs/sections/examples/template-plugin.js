@@ -2,10 +2,10 @@ import template from 'lodash.template'
 
 import { fiona, consume, Sample } from '../../app'
 
-fiona.plugin('template', ({ seeded }, templateArray, ...args) => {
+fiona.register(['template', ({ seeded }, templateArray, ...args) => {
   const templateString = templateArray.reduce((a, b) => a + args.shift().toString() + b)
   return template(templateString)(seeded.value())
-})
+}])
 
 const Section = ({ seed }) =>
   <section>
@@ -34,8 +34,8 @@ const Section = ({ seed }) =>
     x x x\`
     `} output={
       fiona(seed).chain({
-        fullname: fiona.call('fullname'),
-        color: fiona.call('oneOf', ['red', 'orange', 'yellow', 'green', 'blue'])
+        fullname: fiona.fullname(),
+        color: fiona.oneOf(['red', 'orange', 'yellow', 'green', 'blue'])
       }).template`
     Hi <%= fullname %>,
 

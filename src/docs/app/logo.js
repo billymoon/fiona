@@ -2,15 +2,15 @@ import { fiona, config, consume } from '.'
 
 const pos = index => ({ x: (index % 11) * 40 + 10, y: Math.floor(index / 11) * 40 + 10 })
 
-fiona.fn.getLines = function () {
+const getLines = ({ seeded }) => {
   const out = []
 
   for (let i = 0; i < 33; i++) {
-    if (((i + 1) % 11) && this.bool()) {
+    if (((i + 1) % 11) && seeded.bool()) {
       out.push([i, i + 1])
     }
 
-    if (i < 22 && this.bool()) {
+    if (i < 22 && seeded.bool()) {
       out.push([i, i + 11])
     }
   }
@@ -18,15 +18,17 @@ fiona.fn.getLines = function () {
   return out
 }
 
-fiona.fn.getDots = function () {
+const getDots = ({ seeded }) => {
   const out = []
 
   for (let i = 0; i < 33; i++) {
-    out.push(this.bool({ chance: 0.2 }))
+    out.push(seeded.bool({ chance: 0.2 }))
   }
 
   return out
 }
+
+fiona.register(['getLines', getLines], ['getDots', getDots])
 
 const fionaLines = [
   [1, 2], [1, 23], [12, 13],
@@ -37,9 +39,9 @@ const fionaLines = [
 ]
 
 const fionaDots = [
-  false, false, true, true, true, false, false, true, false, false, false,
-  false, false, true, false, false, false, false, false, false, false, false,
-  false, true, false, true, false, false, true, false, true, true, false
+  0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0,
+  0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0
 ]
 
 // TODO: simpify and tidy this section, perhaps this whole logo file
@@ -53,7 +55,7 @@ const Logo = ({ seed, blink, theme, clickSeed, toggleTheme }) =>
       </g>
       <g>
         {(seed === config.magicNumber ? fionaDots : fiona(seed).getDots()).map((filled, index) =>
-          <circle key={index} cx={pos(index).x} cy={pos(index).y} r={filled ? 10 : 8} strokeWidth={filled ? 0 : 2} className={[
+          <circle key={index} cx={pos(index).x} cy={pos(index).y} r={filled ? 9 : 8} strokeWidth={filled ? 0 : 2} className={[
             filled ? 'filled' : '',
             ((index === 24 ? config.magicNumber : index) === seed && (blink ? 'blink selected' : 'selected')) || ''
           ].join(' ')} onClick={() => {
