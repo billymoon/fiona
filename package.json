@@ -45,6 +45,7 @@
     ],
     "testPathIgnorePatterns": [
       "src",
+      "misc",
       "plugins"
     ]
   }

@@ -3,4 +3,3 @@
 const fiona = require('./core')
 
 module.exports = fiona
-
