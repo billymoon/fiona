@@ -40,6 +40,7 @@ export async function fiona (task) {
 
 export async function docs (task) {
   exec('next build')
+  exec('next export')
 }
 
 export async function core (task) {

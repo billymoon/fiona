@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { withRouter } from 'next/router'
 
 import { Ribbon } from 'jsx-components'
+import FONTS from './fonts'
 import { Theme, Shelf, Article, withTheme } from '../app'
 import { Logo, Nav, fiona, injectState, config } from './'
 
@@ -11,9 +12,7 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
     <Article style={{ textAlign: 'center' }}><Logo /></Article>
     <Article style={{ textAlign: 'center' }}><h1>{fiona(seed).regex(/(Make Believe|Simulated|Immitation|Substitute|Pretend|Fake|Spurious|Mock) Data/)}</h1></Article>
     <Article style={{ textAlign: 'center' }}><Nav /></Article>
-    <style global jsx>{`
-      @import url('https://fonts.googleapis.com/css?family=Raleway|Andika|Cousine');
-    `}</style>
+    <style global jsx>{FONTS}</style>
     <style global jsx>{`
       html {
         background-color: ${theme.clr.accent};
