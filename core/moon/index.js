@@ -15,11 +15,12 @@ function Moon (seedin) {
 
   let chainValue = {}
 
-  const chainPlugin = ({ seeded }, input) => {
-    chainValue = seeded.object(Object.assign({}, chainValue, input))
+  const chainPlugin = ({ seeded }, ...inputs) => {
+    chainValue = seeded.object(chainValue, ...inputs)
     return seeded
   }
 
+  // TODO: perhaps deprecate the chain method since object/json now take functions as arguments and multiple arguments and return current value inline
   seeded.chain = function (...args) {
     const seeded = this
     return chainPlugin({ seeded }, ...args)

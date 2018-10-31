@@ -2,6 +2,7 @@
 
 const fiona = require('../fiona')
 
+// TODO: test chain takes multiple arguments and passes them through to fiona.object correctly
 describe('plugin.chain', () => {
   let seeded
 

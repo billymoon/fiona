@@ -1,5 +1,5 @@
-const json = ({ seeded }, input, ...args) => {
-  return JSON.stringify(input === undefined ? seeded.value() : seeded.object(input), ...args)
+const json = ({ seeded }, ...input) => {
+  return JSON.stringify(seeded.object(seeded.value(), ...input))
 }
 
 module.exports = json

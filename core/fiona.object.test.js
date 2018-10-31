@@ -2,6 +2,7 @@
 
 const fiona = require('./fiona')
 
+// TODO: test passing multiple arguments and executing functions to resolve objects
 describe('plugin.object', () => {
   let seeded
 
@@ -65,7 +66,7 @@ describe('plugin.object', () => {
     [[], /a/, () => {}, 1, true, false, ''].forEach(item => {
       expect(() => {
         seeded.object(item)
-      }).toThrow('first argument of fiona.object must be an Object')
+      }).toThrow('arguments of fiona.object must be an Object or function that returns an Object')
     })
   })
 

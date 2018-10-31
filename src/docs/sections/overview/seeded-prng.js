@@ -12,8 +12,10 @@ const Section = ({ seed }) =>
     seeded.number()
     `} output={`
     // hint: change the seed in the page banner
-    ${fiona(seed).number()}
-    ${fiona(seed).callback(function () { this.number(); return this }).number()}
+    ${(() => {
+      const seeded = fiona(seed)
+      return `${seeded.number()}\n    ${seeded.number()}`
+    })()}
     `} />
 
     <p>The prng sets the initial seed when fiona is initialised, then tracks new seeds generated in consistent sequence internally. The seed can be reset to the initial value, or any arbitrary value at any time. This makes it easy to ensure data is repeatable.</p>
@@ -25,13 +27,13 @@ const Section = ({ seed }) =>
     seeded.number()
     seeded.reseed(null) // reset seed
     seeded.number()
-    `} output={`${(function () {
+    `} output={`${(() => {
       const out = ['']
       const seeded = fiona(seed)
       out.push(seeded.number())
-      seeded.reseed((seed) + 1)
+      seeded.reset((seed) + 1)
       out.push(seeded.number())
-      seeded.reseed(null)
+      seeded.reset()
       out.push(seeded.number())
       return out.join('\n\n')
     })()}
