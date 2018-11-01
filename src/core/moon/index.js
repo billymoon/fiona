@@ -15,7 +15,7 @@ function Moon (seedin) {
 
   let chainValue = {}
 
-  const chainPlugin = ({ seeded }, ...inputs) => {
+  const chainPlugin = (seeded, ...inputs) => {
     chainValue = seeded.object(chainValue, ...inputs)
     return seeded
   }
@@ -23,7 +23,7 @@ function Moon (seedin) {
   // TODO: perhaps deprecate the chain method since object/json now take functions as arguments and multiple arguments and return current value inline
   seeded.chain = function (...args) {
     const seeded = this
-    return chainPlugin({ seeded }, ...args)
+    return chainPlugin(seeded, ...args)
   }
 
   const valuePlugin = () => {
@@ -32,7 +32,7 @@ function Moon (seedin) {
 
   seeded.value = function (...args) {
     const seeded = this
-    return valuePlugin({ seeded }, ...args)
+    return valuePlugin(seeded, ...args)
   }
 
   return seeded

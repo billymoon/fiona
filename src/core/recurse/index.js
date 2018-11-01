@@ -16,8 +16,8 @@ const recurseArray = (seeded, original, position, current, value) => {
 }
 
 const recurseFunction = (seeded, original, position, current, value) => {
-  const recurseArguments = new RecurseArguments(seeded, position)
-  return recurseData(seeded, original, position, current(recurseArguments, value), value)
+  const { seeded: recurseSeeded } = new RecurseArguments(seeded, position)
+  return recurseData(seeded, original, position, current(recurseSeeded, value), value)
 }
 
 const recurseData = (seeded, original, position = 'root', current, value) => {

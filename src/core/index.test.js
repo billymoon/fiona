@@ -52,9 +52,9 @@ describe('core', () => {
     })
 
     test('returns expected floats in order when called as fiona.random', () => {
-      expect(fiona.random()({ seeded })).toBe(fixtures[0])
-      expect(fiona.random()({ seeded })).toBe(fixtures[1])
-      expect(fiona.random()({ seeded })).toBe(fixtures[2])
+      expect(fiona.random()(seeded)).toBe(fixtures[0])
+      expect(fiona.random()(seeded)).toBe(fixtures[1])
+      expect(fiona.random()(seeded)).toBe(fixtures[2])
     })
   })
 
@@ -157,44 +157,44 @@ describe('core', () => {
 
   describe('fiona.plugin', () => {
     test('accepts named function as plugin', () => {
-      const zeroHundred = ({ seeded }) => Math.round(seeded.random() * 100)
+      const zeroHundred = (seeded) => Math.round(seeded.random() * 100)
       fiona.register(zeroHundred)
       expect(seeded.zeroHundred()).toBe(51)
     })
 
     test('accepts multiple named functions as plugins', () => {
-      const zeroHundred = ({ seeded }) => Math.round(seeded.random() * 100)
-      const zeroTwoHundred = ({ seeded }) => Math.round(seeded.random() * 100)
+      const zeroHundred = (seeded) => Math.round(seeded.random() * 100)
+      const zeroTwoHundred = (seeded) => Math.round(seeded.random() * 100)
       fiona.register(zeroHundred, zeroTwoHundred)
       expect(seeded.zeroHundred()).toBe(51)
       expect(seeded.zeroTwoHundred()).toBe(43)
     })
 
     test('accepts name and function as plugin', () => {
-      fiona.register(['zeroHundred', ({ seeded }) => Math.round(seeded.random() * 100)])
+      fiona.register(['zeroHundred', (seeded) => Math.round(seeded.random() * 100)])
       expect(seeded.zeroHundred()).toBe(51)
     })
 
     test('plugin can be called as method on fiona', () => {
-      const zeroHundred = ({ seeded }) => Math.round(seeded.random() * 100)
+      const zeroHundred = (seeded) => Math.round(seeded.random() * 100)
       fiona.register(zeroHundred)
-      expect(fiona.zeroHundred()({ seeded })).toBe(51)
+      expect(fiona.zeroHundred()(seeded)).toBe(51)
     })
 
     test('plugin can is called with no arguments with no brackets', () => {
-      const zeroHundred = ({ seeded }, arg) => typeof arg
+      const zeroHundred = (seeded, arg) => typeof arg
       fiona.register(zeroHundred)
       expect(seeded.object({ a: fiona.zeroHundred })).toEqual({ a: 'undefined' })
     })
 
     test('plugin can is called with no arguments with no brackets in string', () => {
-      const zeroHundred = ({ seeded }, arg) => typeof arg
+      const zeroHundred = (seeded, arg) => typeof arg
       fiona.register(zeroHundred)
       expect(seeded.string`number ${fiona.zeroHundred}`).toEqual(`number undefined`)
     })
 
     test('plugin can is called with passed arguments in string', () => {
-      const zeroHundred = ({ seeded }, arg) => typeof arg
+      const zeroHundred = (seeded, arg) => typeof arg
       fiona.register(zeroHundred)
       expect(seeded.string`number ${fiona.zeroHundred(1)}`).toEqual(`number number`)
     })

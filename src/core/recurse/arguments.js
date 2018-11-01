@@ -4,7 +4,9 @@ const RecurseArguments = function (seeded, position) {
   // this.position = position
   // new seeded.constructor =~ new Moon =~ fiona
   this.seeded = new seeded.constructor(`${position}/${seeded.info().initseed}`)
+  this.seeded.recursing = true
   return this
+  // return new seeded.constructor(`${position}/${seeded.info().initseed}`)
 }
 
 module.exports = RecurseArguments

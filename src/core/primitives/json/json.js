@@ -1,4 +1,4 @@
-const json = ({ seeded }, ...input) => {
+const json = (seeded, ...input) => {
   return JSON.stringify(seeded.object(seeded.value(), ...input))
 }
 

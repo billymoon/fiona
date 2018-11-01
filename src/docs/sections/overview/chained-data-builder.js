@@ -14,7 +14,7 @@ const Section = ({ seed }) =>
     // add some data to the instance
     seeded.chain({
       species: 'human',
-      gender: ({ seeded }) => seeded.oneOf(['Male', 'Female']),
+      gender: (seeded) => seeded.oneOf(['Male', 'Female']),
       planet: ({ data }) => data.gender === 'Male' ? 'Mars' : 'Venus'
     })
 

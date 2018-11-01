@@ -2,7 +2,7 @@ import template from 'lodash.template'
 
 import { fiona, consume, Sample } from '../../app'
 
-fiona.register(['template', ({ seeded }, templateArray, ...args) => {
+fiona.register(['template', (seeded, templateArray, ...args) => {
   const templateString = templateArray.reduce((a, b) => a + args.shift().toString() + b)
   return template(templateString)(seeded.value())
 }])
@@ -14,7 +14,7 @@ const Section = ({ seed }) =>
     <p>To build a custom template plugin, you could use any template language. This example uses a lodash template.</p>
 
     <Sample input={`
-    fiona.plugin('template', ({ seeded }, template, ...args) => {
+    fiona.plugin('template', (seeded, template, ...args) => {
       const templateString = template.reduce((a, b) => a + args.shift().toString() + b)
       // assuming lodash is loaded
       // render template with values
@@ -22,8 +22,8 @@ const Section = ({ seed }) =>
     })
 
     fiona(${seed}).chain({
-        fullname: ({ seeded }) => seeded.fullname(),
-        color: ({ seeded }) => seeded.oneOf(['red', 'orange', 'yellow', 'green', 'blue'])
+        fullname: (seeded) => seeded.fullname(),
+        color: (seeded) => seeded.oneOf(['red', 'orange', 'yellow', 'green', 'blue'])
     }).template\`Hi <%= fullname %>,
 
     Your favourite colour is <%= color %>.

@@ -12,15 +12,15 @@ const Register = (registerInstance, registerConstructorPrototype) => (...plugins
 
   registerConstructorPrototype(name, function (...args) {
     const seeded = this
-    return fn({ seeded }, ...args)
+    return fn(seeded, ...args)
   })
 
-  registerInstance(name, (...args) => ({ seeded }) => {
-    // TODO: it's pretty hacky to duck type the passed argument here
-    if (args[0] instanceof RecurseArguments) {
-      return fn({ seeded })
+  registerInstance(name, (...args) => (seeded) => {
+    // TODO: it's pretty hacky to throw recursing property on instance here
+    if (args[0] && args[0].recursing) {
+      return fn(seeded)
     } else {
-      return fn({ seeded }, ...args)
+      return fn(seeded, ...args)
     }
   })
 })

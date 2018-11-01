@@ -22,9 +22,9 @@ describe('number', () => {
   })
 
   test('plugin can be called as method on fiona', () => {
-    expect(fiona.number()({ seeded })).toBe(fixtures[0])
-    expect(fiona.number()({ seeded })).toBe(fixtures[1])
-    expect(fiona.number()({ seeded })).toBe(fixtures[2])
+    expect(fiona.number()(seeded)).toBe(fixtures[0])
+    expect(fiona.number()(seeded)).toBe(fixtures[1])
+    expect(fiona.number()(seeded)).toBe(fixtures[2])
   })
 
   test('plugin to give expected outputs with arguments set', () => {

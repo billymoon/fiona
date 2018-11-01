@@ -1,6 +1,6 @@
 const chooser = require('./chooser')
 
-const choose = ({ seeded }, qty, arr, { weights = [] } = {}) => {
+const choose = (seeded, qty, arr, { weights = [] } = {}) => {
   const myArr = arr.slice(0)
   const myWeightings = weights.slice(0)
   return Array(qty || 0).fill(null).map((v, i) => {

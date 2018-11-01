@@ -16,13 +16,12 @@ fiona.register = Register(
   (name, fn) => (Moon.prototype[name] = fn)
 )
 
-fiona.random = () => ({ seeded }) => seeded.random()
+fiona.random = () => (seeded) => seeded.random()
 
 // TODO: does it make any sense to have chain method on fiona instance?
-// fiona.chain = (...args) => instance => instance.seeded.chain(instance, ...args)
-fiona.value = (...args) => instance => instance.seeded.value(instance, ...args)
+fiona.value = (...args) => seeded => seeded.value(seeded, ...args)
 
-const clone = ({ seeded }) => fiona(seeded.info().initseed).state(seeded.state())
+const clone = (seeded) => fiona(seeded.info().initseed).state(seeded.state())
 
 fiona.register(['clone', clone])
 
