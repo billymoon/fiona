@@ -17,6 +17,10 @@ export async function lint (task) {
   exec('standard src/**/*.js')
 }
 
+export async function fix (task) {
+  exec('standard --fix src/**/*.js')
+}
+
 export async function test (task) {
   exec('npm run test')
 }

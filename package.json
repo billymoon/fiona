@@ -10,6 +10,7 @@
     "test": "jest",
     "build": "taskr build",
     "deploy": "taskr deploy",
+    "fix": "taskr fix",
     "git-pre-commit": "taskr precommit",
     "git-post-commit": "taskr postcommit",
     "git-post-merge": "taskr postcommit"
