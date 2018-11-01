@@ -1,8 +1,8 @@
-/* global test expect describe */
+/* global test expect describe beforeEach */
 
 // TODO: move tests closer to relevant source code
 const index = require('.')
-const fiona = require('./fiona')
+const fiona = require('..')
 
 const fixtures = [
   0.5129792850990683,
@@ -129,9 +129,9 @@ describe('core', () => {
 
   describe('seeded.state', () => {
     test('seeded.state should return expected state', () => {
-      expect(seeded.state()).toEqual([9114374722873036,1080754632633531,7193642159548421,7191889941316046])
+      expect(seeded.state()).toEqual([9114374722873036, 1080754632633531, 7193642159548421, 7191889941316046])
       seeded.random()
-      expect(seeded.state()).toEqual([1080754632633531,7193642159548421,7191889941316046,1101614626])
+      expect(seeded.state()).toEqual([1080754632633531, 7193642159548421, 7191889941316046, 1101614626])
     })
 
     test('seeded.state should reset state to passed argument', () => {

@@ -1,4 +1,4 @@
-import fiona from '../../../kitchen'
+import fiona from '../..'
 
 if (process.browser) {
   window.fiona = fiona // eslint-disable-line

@@ -1,1 +1,1 @@
-module.exports = require('./fiona')
+module.exports = require('../src/core')

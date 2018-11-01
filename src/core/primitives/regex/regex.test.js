@@ -1,7 +1,7 @@
 /* global test expect describe */
 
-const fiona = require('./fiona')
-const regexPlugin = require('../kitchen/regex/regex')
+const fiona = require('../..')
+const regexPlugin = require('../../../regex/regex')
 
 describe('plugin.regex (if registered)', () => {
   let seeded

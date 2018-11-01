@@ -1,6 +1,6 @@
 /* global test expect describe */
 
-const fiona = require('./fiona')
+const fiona = require('../..')
 
 // TODO: test passing multiple arguments and executing functions to resolve objects
 describe('plugin.object', () => {

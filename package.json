@@ -39,14 +39,12 @@
   "jest": {
     "testURL": "http://localhost/",
     "collectCoverageFrom": [
-      "core/**/*.js",
-      "!core/**/*.docs.js",
-      "!core/docs/**"
+      "src/**/*.js",
+      "!src/**/*.docs.js",
+      "!src/docs/**"
     ],
     "testPathIgnorePatterns": [
-      "src",
-      "misc",
-      "plugins"
+      "misc"
     ]
   }
 }

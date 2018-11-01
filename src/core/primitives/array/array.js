@@ -1,4 +1,4 @@
-const recurseData = require('./recurse')
+const recurseData = require('../../recurse')
 
 const array = ({ seeded }, qty, input, processor = i => i) => {
   const myProcessor = typeof processor === 'string' ? i => i.join(processor) : processor

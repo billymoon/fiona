@@ -22,7 +22,7 @@ const Section = ({ seed }) =>
       fullname: fiona.fullname(),
       age: fiona.number({ max: 100 }),
       playThing: ({ data }) => data.age < 5 ? 'cuddly toys' : 'friends',
-      sentences: ({ seeded, arr }) => arr(seeded.number({ min: 1, max: 5 }), fiona.sentence())
+      sentences: fiona.array({ min: 1, max: 5 }, fiona.sentence())
     })
 
     const templateFunction = d => \`Dear \${d.fullname},
