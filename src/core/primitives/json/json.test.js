@@ -2,7 +2,7 @@
 
 const fiona = require('../..')
 
-describe('plugin.chain', () => {
+describe('json', () => {
   let seeded
 
   beforeEach(() => {

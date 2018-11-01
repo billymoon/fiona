@@ -10,7 +10,7 @@ const fixtures = [
   240368
 ]
 
-describe('plugin.array', () => {
+describe('array', () => {
   let seeded
 
   beforeEach(() => {

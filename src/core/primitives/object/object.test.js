@@ -3,7 +3,7 @@
 const fiona = require('../..')
 
 // TODO: test passing multiple arguments and executing functions to resolve objects
-describe('plugin.object', () => {
+describe('object', () => {
   let seeded
 
   beforeEach(() => {
@@ -44,23 +44,24 @@ describe('plugin.object', () => {
     expect(expected).toBe(fixture)
   })
 
-  test('should call function with current position', () => {
-    const expected = JSON.stringify(seeded.object({ a: ({ position }) => position }))
-    const fixture = `{"a":"root.a"}`
-    expect(expected).toBe(fixture)
-  })
+  // TODO: can we provide position another way..?
+  // test('should call function with current position', () => {
+  //   const expected = JSON.stringify(seeded.object({ a: ({ position }) => position }))
+  //   const fixture = `{"a":"root.a"}`
+  //   expect(expected).toBe(fixture)
+  // })
 
-  test('should call function with current position with recursion', () => {
-    const expected = JSON.stringify(seeded.object({ a: ({ position }) => position }))
-    const fixture = `{"a":"root.a"}`
-    expect(expected).toBe(fixture)
-  })
+  // test('should call function with current position with recursion', () => {
+  //   const expected = JSON.stringify(seeded.object({ a: ({ position }) => position }))
+  //   const fixture = `{"a":"root.a"}`
+  //   expect(expected).toBe(fixture)
+  // })
 
-  test('should call function with current position on deeply nested object', () => {
-    const expected = JSON.stringify(seeded.object({ a: { b: ({ position }) => position } }))
-    const fixture = `{"a":{"b":"root.a.b"}}`
-    expect(expected).toBe(fixture)
-  })
+  // test('should call function with current position on deeply nested object', () => {
+  //   const expected = JSON.stringify(seeded.object({ a: { b: ({ position }) => position } }))
+  //   const fixture = `{"a":{"b":"root.a.b"}}`
+  //   expect(expected).toBe(fixture)
+  // })
 
   test('should throw when non object passed', () => {
     [[], /a/, () => {}, 1, true, false, ''].forEach(item => {
@@ -89,24 +90,24 @@ describe('plugin.object', () => {
         1,
         undefined,
         3,
-        () => ({ position }) => position,
+        () => () => fiona.random,
         {
           b: () => [
             'b0',
             'b1',
             'b2',
             () => 'b3',
-            ({ position }) => position
+            () => fiona.random
           ]
         },
         [
           6,
           7,
-          ({ position }) => position
+          () => fiona.random
         ]
       ]
     }))
-    const fixture = `{"a":[0,1,null,3,"root.a[4]",{"b":["b0","b1","b2","b3","root.a[5].b[4]"]},[6,7,"root.a[6][2]"]]}`
+    const fixture = `{"a":[0,1,null,3,0.8738715024077667,{"b":["b0","b1","b2","b3",0.82669865890718]},[6,7,0.24771976435916487]]}`
     expect(expected).toBe(fixture)
   })
 

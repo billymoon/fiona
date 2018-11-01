@@ -6,7 +6,8 @@ const object = ({ seeded }, ...originals) => {
       throw Error('arguments of fiona.object must be an Object or function that returns an Object')
     }
 
-    return { ...value, ...recurseData(seeded, Object.assign({}, original)) }
+    // TODO: change the order of recursion so that results of functions defined earlier can be passed as value to functions defined later
+    return { ...value, ...recurseData(seeded, { ...original}, undefined, undefined, { ...original, ...value }) }
   }, {})
 }
 

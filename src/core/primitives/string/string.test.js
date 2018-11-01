@@ -2,7 +2,7 @@
 
 const fiona = require('../..')
 
-describe('plugin.string', () => {
+describe('string', () => {
   let seeded
 
   beforeEach(() => {
@@ -22,6 +22,6 @@ describe('plugin.string', () => {
   })
 
   test('plugin can be called as method on fiona', () => {
-    expect(seeded.string`a ${({ position }) => position} c ${({ position }) => position} d`).toBe('a root[1] c root[3] d')
+    expect(seeded.string`a ${() => `b`} c ${() => `d`} e`).toBe('a b c d e')
   })
 })

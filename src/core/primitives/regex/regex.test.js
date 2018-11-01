@@ -3,7 +3,7 @@
 const fiona = require('../..')
 const regexPlugin = require('../../../regex/regex')
 
-describe('plugin.regex (if registered)', () => {
+describe('regex (if registered)', () => {
   let seeded
 
   beforeEach(() => {
