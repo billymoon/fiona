@@ -2,7 +2,7 @@ import { fiona, config, consume } from '.'
 
 const pos = index => ({ x: (index % 11) * 40 + 10, y: Math.floor(index / 11) * 40 + 10 })
 
-const getLines = (seeded) => {
+const getLines = seeded => {
   const out = []
 
   for (let i = 0; i < 33; i++) {
@@ -18,7 +18,7 @@ const getLines = (seeded) => {
   return out
 }
 
-const getDots = (seeded) => {
+const getDots = seeded => {
   const out = []
 
   for (let i = 0; i < 33; i++) {

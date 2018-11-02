@@ -27,19 +27,19 @@ describe('object', () => {
   })
 
   test('should return handled function with seeded value', () => {
-    const expected = JSON.stringify(seeded.object({ a: (seeded) => seeded.random() }))
+    const expected = JSON.stringify(seeded.object({ a: seeded => seeded.random() }))
     const fixture = `{"a":0.7904736091338441}`
     expect(expected).toBe(fixture)
   })
 
   test('should handle functions with recursion', () => {
-    const expected = JSON.stringify(seeded.object({ a: () => (seeded) => seeded.random() }))
+    const expected = JSON.stringify(seeded.object({ a: () => seeded => seeded.random() }))
     const fixture = `{"a":0.7904736091338441}`
     expect(expected).toBe(fixture)
   })
 
   test('should handle deeply nested object with function property', () => {
-    const expected = JSON.stringify(seeded.object({ a: { b: (seeded) => seeded.random() } }))
+    const expected = JSON.stringify(seeded.object({ a: { b: seeded => seeded.random() } }))
     const fixture = `{"a":{"b":0.530906858169896}}`
     expect(expected).toBe(fixture)
   })

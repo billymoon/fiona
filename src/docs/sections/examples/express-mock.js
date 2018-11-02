@@ -40,8 +40,8 @@ const Section = ({ seed }) =>
     fetch('/api/user/${seed}').then(r => r.json()).then(console.log)
     `} output={`\n${
       fiona(seed).chain({
-        fullname: fiona.call('fullname'),
-        age: fiona.call('number', { max: 100 })
+        fullname: fiona.fullname,
+        age: fiona.number({ max: 100 })
       }).json()
     }`} />
 

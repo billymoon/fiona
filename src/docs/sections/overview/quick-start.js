@@ -24,20 +24,20 @@ const Section = ({ seed }) =>
     const iban = /[A-Z]{2}\\d{2}( \\d{4}){4,5} \\d{1,3}/
 
     fiona(${seed}).object({
-      age: (seeded) => seeded.number({ max: 100 }),
-      fullname: (seeded) => seeded.fullname(),
-      iban: (seeded) => seeded.regex(iban),
-      favouriteColour: (seeded) => seeded.oneOf([
+      age: seeded => seeded.number({ max: 100 }),
+      fullname: seeded => seeded.fullname(),
+      iban: seeded => seeded.regex(iban),
+      favouriteColour: seeded => seeded.oneOf([
         'red',
         'yellow',
         'blue'
       ])
     })
     `} output={`\n\n\n${JSON.stringify(fiona(seed).object({
-      age: (seeded) => seeded.number({ max: 100 }),
-      fullname: (seeded) => seeded.fullname(),
-      iban: (seeded) => seeded.regex(/[A-Z]{2}\d{2}( \d{4}){4,5} \d{0,3}/),
-      favouriteColour: (seeded) => seeded.oneOf(['red', 'yellow', 'blue'])
+      age: seeded => seeded.number({ max: 100 }),
+      fullname: seeded => seeded.fullname(),
+      iban: seeded => seeded.regex(/[A-Z]{2}\d{2}( \d{4}){4,5} \d{0,3}/),
+      favouriteColour: seeded => seeded.oneOf(['red', 'yellow', 'blue'])
     }), null, 2)}`} />
 
     <p>By using plugins, and <code>{`fiona.call`}</code> to architect your data, the defenitions become very re-usable, terse and readable.</p>

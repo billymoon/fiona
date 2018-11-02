@@ -15,6 +15,7 @@ const actions = {
   setApiFilter: update('apiFilter', () => newValue => newValue),
   clickSeed: update('seed', seed => index => {
     // actions.cancelBlink({ blinkInterval })
+    // TODO: fix blinking, and lack of magic number highlighting for spot 24
     // TODO: call setSeed action instead of setting seed directly
     const newSeed = (index === 24 ? config.magicNumber : index) === seed ? Math.floor(Math.random() * 33) : (index === 24 ? config.magicNumber : index)
     return newSeed

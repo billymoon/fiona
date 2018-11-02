@@ -22,7 +22,7 @@ describe('array', () => {
   })
 
   test('recurses array', () => {
-    expect(seeded.array(5, (seeded) => seeded.number())).toEqual(fixtures)
+    expect(seeded.array(5, seeded => seeded.number())).toEqual(fixtures)
   })
 
   test('recurses array with bar fiona.plugin syntax', () => {

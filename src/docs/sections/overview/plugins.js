@@ -29,14 +29,14 @@ const Section = ({ seed }) =>
     // will return something like  \`There are 7 green bottles on the wall\`
     // this will also work from inside a data structure ...
     fiona(${seed}).data({
-      bottles: (seeded) => seeded.bottles('green')
+      bottles: seeded => seeded.bottles('green')
     })
     `}</Sample>
 
     <p>To create a chainable plugin, just return seeded</p>
 
     <Sample>{`
-    fiona.plugin('addFavouriteColor', (seeded) => {
+    fiona.plugin('addFavouriteColor', seeded => {
       seeded.chain({
         favouriteColor: [
             seeded.number({ max: 255 }),
@@ -49,7 +49,7 @@ const Section = ({ seed }) =>
 
     // ... then you can use like ...
     const data = fiona(${seed}).chain({
-      luckyNumber: (seeded) => seeded.number({ min: 1, max: 10 })
+      luckyNumber: seeded => seeded.number({ min: 1, max: 10 })
     }).addFavouriteColor().value()
 
     // will return something like { luckyNumber: 7, favouriteColor: [223, 122, 154] }

@@ -12,7 +12,7 @@ const namedata = {
 
 const getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male'))
 
-const gender = (seeded) => {
+const gender = seeded => {
   return seeded.random() < 0.5 ? 'male' : 'female'
 }
 
@@ -28,7 +28,7 @@ const firstnames = (seeded, { gender } = {}) => {
   return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 3 }), namedata[getGender(gender || seeded.gender())].firstname).join(' ')
 }
 
-const surname = (seeded) => {
+const surname = seeded => {
   return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 2 }), namedata.surname).join(seeded.bool() ? ' ' : '-')
 }
 

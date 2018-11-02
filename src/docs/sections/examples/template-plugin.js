@@ -22,8 +22,8 @@ const Section = ({ seed }) =>
     })
 
     fiona(${seed}).chain({
-        fullname: (seeded) => seeded.fullname(),
-        color: (seeded) => seeded.oneOf(['red', 'orange', 'yellow', 'green', 'blue'])
+        fullname: seeded => seeded.fullname(),
+        color: seeded => seeded.oneOf(['red', 'orange', 'yellow', 'green', 'blue'])
     }).template\`Hi <%= fullname %>,
 
     Your favourite colour is <%= color %>.

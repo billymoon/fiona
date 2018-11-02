@@ -157,26 +157,26 @@ describe('core', () => {
 
   describe('fiona.plugin', () => {
     test('accepts named function as plugin', () => {
-      const zeroHundred = (seeded) => Math.round(seeded.random() * 100)
+      const zeroHundred = seeded => Math.round(seeded.random() * 100)
       fiona.register(zeroHundred)
       expect(seeded.zeroHundred()).toBe(51)
     })
 
     test('accepts multiple named functions as plugins', () => {
-      const zeroHundred = (seeded) => Math.round(seeded.random() * 100)
-      const zeroTwoHundred = (seeded) => Math.round(seeded.random() * 100)
+      const zeroHundred = seeded => Math.round(seeded.random() * 100)
+      const zeroTwoHundred = seeded => Math.round(seeded.random() * 100)
       fiona.register(zeroHundred, zeroTwoHundred)
       expect(seeded.zeroHundred()).toBe(51)
       expect(seeded.zeroTwoHundred()).toBe(43)
     })
 
     test('accepts name and function as plugin', () => {
-      fiona.register(['zeroHundred', (seeded) => Math.round(seeded.random() * 100)])
+      fiona.register(['zeroHundred', seeded => Math.round(seeded.random() * 100)])
       expect(seeded.zeroHundred()).toBe(51)
     })
 
     test('plugin can be called as method on fiona', () => {
-      const zeroHundred = (seeded) => Math.round(seeded.random() * 100)
+      const zeroHundred = seeded => Math.round(seeded.random() * 100)
       fiona.register(zeroHundred)
       expect(fiona.zeroHundred()(seeded)).toBe(51)
     })
