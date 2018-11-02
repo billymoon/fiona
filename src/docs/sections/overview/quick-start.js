@@ -1,4 +1,4 @@
-import Link from 'next/link
+import Link from 'next/link'
 import { fiona, consume, Sample } from '../../app'
 
 const Section = ({ seed }) =>
@@ -39,12 +39,17 @@ const Section = ({ seed }) =>
       milesFromHome: fiona.number(),
       age: seeded => seeded.number({ max: 100 })
     })
-    `} output={`${JSON.stringify(fiona(seed).object({
+    `} output={`\n${JSON.stringify(fiona(seed).object({
       milesFromHome: fiona.number(),
       age: seeded => seeded.number({ max: 100 })
     }), null, 2)}`} />
 
     <p>There are lots of methods to help generate different types of data, you can read more about them in the <Link href='/api'><a>api section</a></Link>. These methods can be called on an instance to return a value, or on `fiona` itself to return a higher order function that when called with an instance, returns a value. Also, during recursion, any found functions are executed to resolve their value. Combining these things allows a very terse and powerful syntax to describe any data structure.</p>
+
+    <Sample>{`
+    // use a regex pattern to generate strings that match
+    const ibanPattern = /[A-Z]{2}\\d{2}( \\d{4}){4,5} \\d{1,3}/
+    `}</Sample>
 
     <Sample input={`
     fiona(${seed}).object({
@@ -54,10 +59,14 @@ const Section = ({ seed }) =>
         first: fiona.firstname,
         last: fiona.surname
       },
-      iban: /[A-Z]{2}\\d{2}( \\d{4}){4,5} \\d{1,3}/,
-      colour: fiona.oneOf(['red', 'yellow', 'blue'])
+      iban: ibanPattern,
+      colour: fiona.oneOf([
+        'red',
+        'yellow',
+        'blue'
+      ])
     })
-    `} output={`${JSON.stringify(fiona(seed).object({
+    `} output={`\n${JSON.stringify(fiona(seed).object({
       milesFromHome: fiona.number,
       age: fiona.number({ max: 100 }),
       name: {

@@ -1,6 +1,5 @@
-import { consume, Sample } from '../../app'
+import { fiona, consume, Sample } from '../../app'
 
-// TODO: make samples render real values
 const Section = ({ seed }) =>
   <section>
     <h2>Extending</h2>
@@ -13,14 +12,10 @@ const Section = ({ seed }) =>
     const income = seeded => seeded.distribution(i => i * i * i).number({ max: 1000000 })
 
     fiona(${seed}).object({ name: fiona.fullname, income })
-    `} output={`
-
-
-    fiona(seed).object({
+    `} output={`${JSON.stringify(fiona(seed).object({
       name: fiona.fullname,
       income: seeded => seeded.distribution(i => i * i * i).number({ max: 1000000 })
-    })
-    `} />
+    }), null, 2)}`} />
 
     <p>Use the `register` method to add your function as a method in fiona.</p>
 
