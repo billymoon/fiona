@@ -1,7 +1,6 @@
 export { default as OverviewDynamicOverview } from './overview/dynamic-overview'
 export { default as OverviewQuickStart } from './overview/quick-start'
 export { default as OverviewSeededPRNG } from './overview/seeded-prng'
-export { default as OverviewChainedDataBuilder } from './overview/chained-data-builder'
 export { default as OverviewDistribution } from './overview/distribution'
 export { default as OverviewExtending } from './overview/extending'
 export { default as OverviewContributing } from './overview/contributing'
@@ -12,3 +11,4 @@ export { default as ExamplesTemplateString } from './examples/template-string'
 export { default as ExamplesTemplatePlugin } from './examples/template-plugin'
 export { default as ExamplesPretend } from './examples/pretend'
 export { default as ExamplesExpressMock } from './examples/express-mock'
+

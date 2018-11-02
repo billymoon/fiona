@@ -6,7 +6,6 @@ import {
   OverviewQuickStart,
   OverviewSeededPRNG,
   OverviewDistribution,
-  OverviewChainedDataBuilder,
   OverviewExtending,
   OverviewContributing
 } from '../src/docs/sections'
@@ -18,7 +17,6 @@ const Page = () =>
     <Article><OverviewSeededPRNG /></Article>
     <Article><OverviewDistribution /></Article>
     <Article><OverviewExtending /></Article>
-    <Article><OverviewChainedDataBuilder /></Article>
     <Article><OverviewContributing /></Article>
   </Layout>
 
