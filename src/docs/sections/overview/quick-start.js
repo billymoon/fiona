@@ -21,7 +21,7 @@ const Section = ({ seed }) =>
 
     <p>The most basic use case is to generate a random number</p>
     
-    <Sample>{`fiona().number({ min: 0, max: 1000000 })`}</Sample>
+    <Sample>{`fiona().number()`}</Sample>
 
     <Sample input={`
     const milesFromHome = fiona(${seed}).number()

@@ -29,10 +29,7 @@ const Section = ({ seed }) =>
     <p>Assuming some kind of setup code loading <a href='https://github.com/sstur/fetch-pretender'>Fetch Pretender</a></p>
 
     <Sample>{`
-    // Load a copy of \`fetch-pretender\`
-    const fetchPretenderScript = document.createElement('script')
-    fetchPretenderScript.src = 'https://cdn.rawgit.com/billymoon/fetch-pretender/master/dist/pretender.js'
-    document.head.appendChild(fetchPretenderScript)
+    <script src="https://cdn.rawgit.com/billymoon/fetch-pretender/master/dist/pretender.js"></script>
     `}</Sample>
 
     <p>You can define a mock server like this...</p>
@@ -40,7 +37,7 @@ const Section = ({ seed }) =>
     <Sample>{`
     const pretender = new Pretender()
 
-    const modelMock = seed => fiona(seed).data({
+    const modelMock = seed => fiona(seed).object({
       fullname: seeded => seeded.fullname(),
       color: seeded => seeded.oneOf(['red', 'yellow', 'blue']),
       age: seeded => seeded.number({ max: 100 })

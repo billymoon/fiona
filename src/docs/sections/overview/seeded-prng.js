@@ -4,7 +4,7 @@ const Section = ({ seed }) =>
   <section>
     <h2>Seeded pseudo random number generator</h2>
 
-    <p>At it's core, fiona has a seeded prng that will give back approximately evenly distributed floating point numbers between 0 and 1. The seed defaults to <code>{`Math.random()`}</code> can be passed in during initialisation. <code>{`fiona(seed = Math.random())`}</code></p>
+    <p>At it's core, fiona has a seeded prng that will give back approximately evenly distributed floating point numbers between 0 and 1. The seed defaults to <code>Math.random()</code> can be passed in during initialisation. <code>fiona(seed = Math.random())</code></p>
 
     <Sample input={`
     const seeded = fiona(${seed})

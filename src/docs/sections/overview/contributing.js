@@ -10,7 +10,7 @@ const Section = ({ seed }) =>
 
     <p>Fiona aims to be performant, robust, well documented and <Link href='/static/reports/coverage/index.html'><a>well tested</a></Link>.</p>
 
-    <p>Fiona is open source, <Link href='https://github.com/billymoon/fiona'><a>fork me on github</a></Link>. Pull requests and issues welcome.</p>
+    <p>Fiona is open source, <Link href='https://github.com/billymoon/fiona'><a>fork me on github</a></Link>. Pull requests and issues welcome. I think the most useful thing the community could contribute to this project at this time is to help build up the methods to become a rich tapestry of data generating utilities.</p>
 
     <p>The code style is terse and succinct, and hopefully easy to understand and work with. The file structure is based around colocation, so the src folder includes the main library code, it's tests, and the documentation.</p>
 
@@ -24,7 +24,7 @@ const Section = ({ seed }) =>
       <li><NPM name='react' /> and <NPM name='next' /> for documentation website</li>
     </ul>
 
-    <p>Updating or creating a pull request will trigger a deployment using zeit's now service.</p>
+    <p>Updating or creating a pull request will trigger a deployment using zeit's now service, so you can preview the suggested changes in a production like environment.</p>
   </section>
 
 export default consume(Section)

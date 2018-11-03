@@ -6,7 +6,7 @@ const Section = ({ seed }) =>
 
     <p>This example assumes you have a project with dependencies added for <a href='https://www.npmjs.com/package/fiona'>fiona</a>, <a href='https://www.npmjs.com/package/express'>express</a> and <a href='https://www.npmjs.com/package/express-http-proxy'>express-http-proxy</a> and that you have a development server running on port 3000 serving your web app.</p>
 
-    <p>Define an express proxy server and run with nodejs - e.g. dave the snippet as `server.js` and run `node server`</p>
+    <p>Define an express proxy server and run with nodejs - e.g. save the snippet as `server.js` and run `node server`</p>
 
     <Sample>{`
     // require dependencies
@@ -39,10 +39,10 @@ const Section = ({ seed }) =>
     <Sample input={`
     fetch('/api/user/${seed}').then(r => r.json()).then(console.log)
     `} output={`\n${
-      fiona(seed).chain({
+      fiona(seed).json({
         fullname: fiona.fullname,
         age: fiona.number({ max: 100 })
-      }).json()
+      })
     }`} />
 
     ... or with curl ...
