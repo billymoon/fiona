@@ -2,7 +2,7 @@
 
 const fiona = require('..')
 
-// TODO: test chain takes multiple arguments and passes them through to fiona.object correctly
+// TODO: test chain takes multiple arguments and passes them through to fiona.Object correctly
 describe('plugin.chain', () => {
   let seeded
 
@@ -26,7 +26,7 @@ describe('plugin.chain', () => {
   })
 
   test('should set value on seeded instance to be recursed object', () => {
-    seeded.chain({ a: fiona.number })
+    seeded.chain({ a: fiona.Number })
     const fixture = `{"a":790474}`
     const expected = JSON.stringify(seeded.value())
     expect(expected).toBe(fixture)
@@ -34,8 +34,8 @@ describe('plugin.chain', () => {
 
   test('should chain values', () => {
     seeded.chain({ a: 'will be overwritten' })
-    seeded.chain({ a: fiona.number })
-    seeded.chain({ b: fiona.number })
+    seeded.chain({ a: fiona.Number })
+    seeded.chain({ b: fiona.Number })
     const fixture = `{"a":790474,"b":566216}`
     const expected = JSON.stringify(seeded.value())
     expect(expected).toBe(fixture)
@@ -70,8 +70,8 @@ describe('plugin.chain', () => {
     expect(expected2).toBe(fixture2)
   })
 
-  test('should call fiona.value', () => {
-    const expected = seeded.object({ a: fiona.value })
+  test('should call fiona.Value', () => {
+    const expected = seeded.object({ a: fiona.Value })
     expect(expected).toEqual({ a: {} })
   })
 })

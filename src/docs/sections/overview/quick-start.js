@@ -36,11 +36,11 @@ const Section = ({ seed }) =>
     {/* TODO: json method should export double spaced indented output for the sample component */}
     <Sample input={`
     fiona(${seed}).object({
-      milesFromHome: fiona.number(),
+      milesFromHome: fiona.Number(),
       age: seeded => seeded.number({ max: 100 })
     })
     `} output={`\n${JSON.stringify(fiona(seed).object({
-      milesFromHome: fiona.number(),
+      milesFromHome: fiona.Number(),
       age: seeded => seeded.number({ max: 100 })
     }), null, 2)}`} />
 
@@ -53,28 +53,28 @@ const Section = ({ seed }) =>
 
     <Sample input={`
     fiona(${seed}).object({
-      milesFromHome: fiona.number,
-      age: fiona.number({ max: 100 }),
+      milesFromHome: fiona.Number,
+      age: fiona.Number({ max: 100 }),
       name: {
-        first: fiona.firstname,
-        last: fiona.surname
+        first: fiona.Firstname,
+        last: fiona.Surname
       },
       iban: ibanPattern,
-      colour: fiona.oneOf([
+      colour: fiona.OneOf([
         'red',
         'yellow',
         'blue'
       ])
     })
     `} output={`\n${JSON.stringify(fiona(seed).object({
-      milesFromHome: fiona.number,
-      age: fiona.number({ max: 100 }),
+      milesFromHome: fiona.Number,
+      age: fiona.Number({ max: 100 }),
       name: {
-        first: fiona.firstname,
-        last: fiona.surname
+        first: fiona.Firstname,
+        last: fiona.Surname
       },
       iban: /[A-Z]{2}\d{2}( \d{4}){4,5} \d{1,3}/,
-      colour: fiona.oneOf(['red', 'yellow', 'blue'])
+      colour: fiona.OneOf(['red', 'yellow', 'blue'])
     }), null, 2)}`} />
   </section>
 

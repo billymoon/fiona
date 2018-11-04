@@ -48,8 +48,8 @@ const Section = ({ seed }) => (
     x x x\`
     `}
       output={fiona(seed).template({
-        fullname: fiona.fullname(),
-        color: fiona.oneOf(["red", "orange", "yellow", "green", "blue"])
+        fullname: fiona.Fullname(),
+        color: fiona.OneOf(["red", "orange", "yellow", "green", "blue"])
       })`
     Hi <%= fullname %>,
 

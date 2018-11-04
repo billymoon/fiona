@@ -67,7 +67,7 @@ describe('object', () => {
     [[], /a/, () => {}, 1, true, false, ''].forEach(item => {
       expect(() => {
         seeded.object(item)
-      }).toThrow('arguments of fiona.object must be an Object or function that returns an Object')
+      }).toThrow('arguments of fiona.Object must be an Object or function that returns an Object')
     })
   })
 
@@ -90,20 +90,20 @@ describe('object', () => {
         1,
         undefined,
         3,
-        () => () => fiona.random,
+        () => () => fiona.Random,
         {
           b: () => [
             'b0',
             'b1',
             'b2',
             () => 'b3',
-            () => fiona.random
+            () => fiona.Random
           ]
         },
         [
           6,
           7,
-          () => fiona.random
+          () => fiona.Random
         ]
       ]
     }))
@@ -111,26 +111,26 @@ describe('object', () => {
     expect(expected).toBe(fixture)
   })
 
-  test('should execute plugins defined as fiona.myPlugin()', () => {
-    const expected = JSON.stringify(seeded.object({ a: fiona.random() }))
+  test('should execute plugins defined as fiona.MyPlugin()', () => {
+    const expected = JSON.stringify(seeded.object({ a: fiona.Random() }))
     const fixture = `{"a":0.7904736091338441}`
     expect(expected).toBe(fixture)
   })
 
-  test('should execute plugins defined as fiona.myPlugin', () => {
-    const expected = JSON.stringify(seeded.object({ a: fiona.random }))
+  test('should execute plugins defined as fiona.MyPlugin', () => {
+    const expected = JSON.stringify(seeded.object({ a: fiona.Random }))
     const fixture = `{"a":0.7904736091338441}`
     expect(expected).toBe(fixture)
   })
 
-  test('should execute plugins defined as fiona.myPlugin', () => {
-    const expected = JSON.stringify(seeded.object({ a: fiona.number }))
+  test('should execute plugins defined as fiona.MyPlugin', () => {
+    const expected = JSON.stringify(seeded.object({ a: fiona.Number }))
     const fixture = `{"a":790474}`
     expect(expected).toBe(fixture)
   })
 
-  test('should execute plugins defined as fiona.myPlugin({ argument: 1 })', () => {
-    const expected = JSON.stringify(seeded.object({ a: fiona.number({ precision: -3 }) }))
+  test('should execute plugins defined as fiona.MyPlugin({ argument: 1 })', () => {
+    const expected = JSON.stringify(seeded.object({ a: fiona.Number({ precision: -3 }) }))
     const fixture = `{"a":790000}`
     expect(expected).toBe(fixture)
   })

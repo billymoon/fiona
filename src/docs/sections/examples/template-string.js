@@ -3,12 +3,12 @@ import { fiona, consume, Sample } from "../../app";
 const templateStringOutput = seeded =>
   seeded.object(
     {
-      fullname: fiona.fullname(),
-      age: fiona.number({ max: 100 })
+      fullname: fiona.Fullname(),
+      age: fiona.Number({ max: 100 })
     },
     {
       playThing: (seeded, value) => (value.age < 5 ? "cuddly toys" : "friends"),
-      sentences: fiona.array({ min: 1, max: 5 }, fiona.sentence, "\n\n    ")
+      sentences: fiona.Array({ min: 1, max: 5 }, fiona.Sentence, "\n\n    ")
     }
   );
 
@@ -24,13 +24,13 @@ const Section = ({ seed }) => (
     <Sample
       input={`
     const data = fiona(${seed}).object({
-        fullname: fiona.fullname(),
-        age: fiona.number({ max: 100 })
+        fullname: fiona.Fullname(),
+        age: fiona.Number({ max: 100 })
       }, {
         // pass as second argument so values in first argument
         // are calculated and can be consumed
         playThing: (seeded, value) => value.age < 5 ? 'cuddly toys' : 'friends',
-        sentences: fiona.array({ min: 1, max: 5 }, fiona.sentence, '\\n\\n')
+        sentences: fiona.Array({ min: 1, max: 5 }, fiona.Sentence, '\\n\\n')
     })
 
     const templateFunction = d => \`Dear \${d.fullname},

@@ -12,14 +12,14 @@ const fiona = (...args) => new Moon(...args)
 fiona.version = packageJson.version
 
 fiona.register = Register(
-  (name, fn) => (fiona[name] = fn),
+  (name, fn) => (fiona[name[0].toUpperCase() + name.slice(1)] = fn),
   (name, fn) => (Moon.prototype[name] = fn)
 )
 
-fiona.random = () => seeded => seeded.random()
+fiona.Random = () => seeded => seeded.random()
 
 // TODO: does it make any sense to have chain method on fiona instance?
-fiona.value = (...args) => seeded => seeded.value(seeded, ...args)
+fiona.Value = (...args) => seeded => seeded.value(seeded, ...args)
 
 const clone = seeded => fiona(seeded.info().initseed).state(seeded.state())
 

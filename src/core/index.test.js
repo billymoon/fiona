@@ -51,10 +51,10 @@ describe('core', () => {
       Math.random = MathRandom
     })
 
-    test('returns expected floats in order when called as fiona.random', () => {
-      expect(fiona.random()(seeded)).toBe(fixtures[0])
-      expect(fiona.random()(seeded)).toBe(fixtures[1])
-      expect(fiona.random()(seeded)).toBe(fixtures[2])
+    test('returns expected floats in order when called as fiona.Random', () => {
+      expect(fiona.Random()(seeded)).toBe(fixtures[0])
+      expect(fiona.Random()(seeded)).toBe(fixtures[1])
+      expect(fiona.Random()(seeded)).toBe(fixtures[2])
     })
   })
 
@@ -155,7 +155,7 @@ describe('core', () => {
     })
   })
 
-  describe('fiona.plugin', () => {
+  describe('fiona.Plugin', () => {
     test('accepts named function as plugin', () => {
       const zeroHundred = seeded => Math.round(seeded.random() * 100)
       fiona.register(zeroHundred)
@@ -178,25 +178,25 @@ describe('core', () => {
     test('plugin can be called as method on fiona', () => {
       const zeroHundred = seeded => Math.round(seeded.random() * 100)
       fiona.register(zeroHundred)
-      expect(fiona.zeroHundred()(seeded)).toBe(51)
+      expect(fiona.ZeroHundred()(seeded)).toBe(51)
     })
 
     test('plugin can is called with no arguments with no brackets', () => {
       const zeroHundred = (seeded, arg) => typeof arg
       fiona.register(zeroHundred)
-      expect(seeded.object({ a: fiona.zeroHundred })).toEqual({ a: 'undefined' })
+      expect(seeded.object({ a: fiona.ZeroHundred })).toEqual({ a: 'undefined' })
     })
 
     test('plugin can is called with no arguments with no brackets in string', () => {
       const zeroHundred = (seeded, arg) => typeof arg
       fiona.register(zeroHundred)
-      expect(seeded.string`number ${fiona.zeroHundred}`).toEqual(`number undefined`)
+      expect(seeded.string`number ${fiona.ZeroHundred}`).toEqual(`number undefined`)
     })
 
     test('plugin can is called with passed arguments in string', () => {
       const zeroHundred = (seeded, arg) => typeof arg
       fiona.register(zeroHundred)
-      expect(seeded.string`number ${fiona.zeroHundred(1)}`).toEqual(`number number`)
+      expect(seeded.string`number ${fiona.ZeroHundred(1)}`).toEqual(`number number`)
     })
   })
 })

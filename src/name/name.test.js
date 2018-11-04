@@ -19,7 +19,7 @@ test('import', () => {
   expect(typeof fiona === 'function').toBe(true)
 })
 
-test('fiona.fn.title', () => {
+test('fiona.Title', () => {
   expect(fiona(1).title()).toBe('Sir')
   expect(fiona(1).title({})).toBe('Sir')
   expect(fiona(2).title()).toBe('Miss')
@@ -29,7 +29,7 @@ test('fiona.fn.title', () => {
   expect(fiona(4).title({ gender: 'Male' })).toBe('Sir')
 })
 
-test('fiona.fn.firstname', () => {
+test('fiona.Firstname', () => {
   expect(fiona(1).firstname()).toBe('Hamish')
   expect(fiona(1).firstname({})).toBe('Hamish')
   expect(fiona(2).firstname()).toBe('Ava')
@@ -39,20 +39,20 @@ test('fiona.fn.firstname', () => {
   expect(fiona(2).firstname({ gender: 'Male' })).toBe('Angus')
 })
 
-test('fiona.fn.firstnames', () => {
+test('fiona.Firstnames', () => {
   expect(fiona(1).firstnames()).toBe('Hamish')
 })
 
-test('fiona.fn.surname', () => {
+test('fiona.Surname', () => {
   expect(fiona(1).surname()).toBe('Scott')
   expect(fiona(2).surname()).toBe('Reid')
 })
 
-test('fiona.fn.gender', () => {
+test('fiona.Gender', () => {
   expect(fiona(1).gender()).toBe('male')
   expect(fiona(2).gender()).toBe('female')
 })
 
-test('fiona.fn.fullname', () => {
+test('fiona.Fullname', () => {
   expect(fiona(1).fullname()).toBe('Sir Kyle Moon')
 })
