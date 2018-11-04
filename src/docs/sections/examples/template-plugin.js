@@ -1,24 +1,38 @@
-import template from 'lodash.template'
+import template from "lodash.template";
 
-import { fiona, consume, Sample } from '../../app'
+import { fiona, consume, Sample } from "../../app";
 
-fiona.register(['template', (seeded, templateArray, ...args) => {
-  const templateString = templateArray.reduce((a, b) => a + args.shift().toString() + b)
-  return template(templateString)(seeded.value())
-}])
+if (process.browser) {
+  window._ = {
+    template
+  };
+}
 
-const Section = ({ seed }) =>
+fiona.register([
+  "template",
+  (seeded, ...data) => (templateArray, ...args) => {
+    const templateString = templateArray.reduce(
+      (a, b) => a + args.shift().toString() + b
+    );
+    return template(templateString)(seeded.object(...data));
+  }
+]);
+
+const Section = ({ seed }) => (
   <section>
     <h3>Template Plugin</h3>
 
-    <p>To build a custom template plugin, you could use any template language. This example uses a lodash template.</p>
+    <p>
+      To build a custom template plugin, you could use any template language.
+      This example uses a lodash template.
+    </p>
 
-    <Sample input={`
-    fiona.register(['template', defs => (seeded, template, ...args) => {
-      const templateString = template.reduce((a, b) => a + args.shift().toString() + b)
-      // assuming lodash is loaded
-      // render template with values
-      return _.template(templateString)(seeded.object(...defs))
+    <Sample
+      input={`
+    fiona.register(['template', (seeded, ...data) => (templateArray, ...args) => {
+      const templateString = templateArray.reduce((a, b) => a + args.shift().toString() + b)
+      // assuming lodash is loaded, render template with values
+      return _.template(templateString)(seeded.object(...data))
     }])
 
     fiona(${seed}).template({
@@ -32,10 +46,10 @@ const Section = ({ seed }) =>
 
     Fiona
     x x x\`
-    `} output={
-      fiona(seed).template({
+    `}
+      output={fiona(seed).template({
         fullname: fiona.fullname(),
-        color: fiona.oneOf(['red', 'orange', 'yellow', 'green', 'blue'])
+        color: fiona.oneOf(["red", "orange", "yellow", "green", "blue"])
       })`
     Hi <%= fullname %>,
 
@@ -45,10 +59,11 @@ const Section = ({ seed }) =>
 
     Fiona
     x x x
-    `
-    } />
+    `}
+    />
 
-    <div className='clearfix' />
+    <div className="clearfix" />
   </section>
+);
 
-export default consume(Section)
+export default consume(Section);
