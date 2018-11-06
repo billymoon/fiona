@@ -1,16 +1,20 @@
 import { Provider, connect } from "react-redux";
 import { createStore } from "redux";
-import { CreateContext, update } from "jsx-components";
 
 import config from "./config";
 
-const globalState = {
-  theme: Object.assign({}, config.theme)
-};
-
-const actions = {
-  toggleTheme: update("theme", theme => index => {
-    if (index % 2) {
+const reducer = (state, action) => {
+  if (action.type === "SET_SEED") {
+    const newseed = action.payload;
+    return {
+      ...state,
+      seed: newseed ? Math.floor(Math.random() * 33) : newseed
+    };
+  } else if (action.type === "SET_API_FILTER") {
+    return { ...state, apiFilter: action.payload };
+  } else if (action.type === "TOGGLE_THEME") {
+    const theme = { ...state.theme }
+    if (action.payload % 2) {
       theme.clr = {
         ...config.theme.clr,
         primary: config.theme.clr.secondary,
@@ -23,24 +27,8 @@ const actions = {
     } else {
       theme.clr = Object.assign({}, config.theme.clr);
     }
-    return theme;
-  })
-};
 
-const { provide: oldProvide, consume: oldConsume } = CreateContext(
-  globalState,
-  actions
-);
-
-const reducer = (state, action) => {
-  if (action.type === "SET_SEED") {
-    const newseed = action.payload;
-    return {
-      ...state,
-      seed: newseed ? Math.floor(Math.random() * 33) : newseed
-    };
-  } else if (action.type === "SET_API_FILTER") {
-    return { ...state, apiFilter: action.payload };
+    return { ...state, theme: theme };
   } else if (action.type === "TOGGLE_BLINK") {
     const blink = state.blink === null ? null : !state.blink;
     return { ...state, blink: blink };
@@ -75,7 +63,8 @@ const store = createStore(
     blink: false,
     blinkInterval: blinkIntervalID,
     apiFilter: "",
-    seed: config.magicNumber
+    seed: config.magicNumber,
+    theme: Object.assign({}, config.theme)
   },
   process.browser &&
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
@@ -87,10 +76,9 @@ const store = createStore(
 // });
 
 export const provide = Component => {
-  const Provided = oldProvide(Component);
   const Thing = () => (
     <Provider store={store}>
-      <Provided />
+      <Component />
     </Provider>
   );
   return Thing;
@@ -102,7 +90,8 @@ export const consume = Component => {
       seed: state.seed,
       apiFilter: state.apiFilter,
       blink: state.blink,
-      blinkInterval: state.blinkInterval
+      blinkInterval: state.blinkInterval,
+      theme: state.theme
     }),
     dispatch => ({
       toggleBlink: () => dispatch({ type: "TOGGLE_BLINK" }),
@@ -110,9 +99,10 @@ export const consume = Component => {
       setApiFilter: newfilter =>
         dispatch({ type: "SET_API_FILTER", payload: newfilter }),
       setSeed: newseed => dispatch({ type: "SET_SEED", payload: newseed }),
-      clickSeed: index => dispatch({ type: "CLICK_SEED", payload: index })
+      clickSeed: index => dispatch({ type: "CLICK_SEED", payload: index }),
+      toggleTheme: index => dispatch({ type: "TOGGLE_THEME", payload: index }),
     })
-  )(oldConsume(Component));
+  )(Component);
 };
 
 // // TODO: when toggle blink and navigate away, can try to set state in interval when component already destroyed
