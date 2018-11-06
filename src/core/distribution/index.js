@@ -1,4 +1,4 @@
-// define default distribution method
+// define default distribution method as passthrough
 const defaultDistribution = i => i
 
 module.exports = seeded => {

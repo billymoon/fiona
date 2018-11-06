@@ -1,4 +1,4 @@
-/* global test,expect */
+/* global test expect */
 
 const fiona = require('../core')
 fiona.register(['choose', require('../choose/choose')])

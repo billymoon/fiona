@@ -7,7 +7,7 @@ const templateStringOutput = seeded =>
       age: fiona.Number({ max: 100 })
     },
     {
-      playThing: (seeded, value) => (value.age < 5 ? "cuddly toys" : "friends"),
+      playThing: ({ data }) => (data.age < 5 ? "cuddly toys" : "friends"),
       sentences: fiona.Array({ min: 1, max: 5 }, fiona.Sentence, "\n\n    ")
     }
   );

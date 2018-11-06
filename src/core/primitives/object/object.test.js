@@ -63,13 +63,13 @@ describe('object', () => {
   //   expect(expected).toBe(fixture)
   // })
 
-  test('should throw when non object passed', () => {
-    [[], /a/, () => {}, 1, true, false, ''].forEach(item => {
-      expect(() => {
-        seeded.object(item)
-      }).toThrow('arguments of fiona.Object must be an Object or function that returns an Object')
-    })
-  })
+  // test('should throw when non object passed', () => {
+  //   [[], /a/, () => {}, 1, true, false, ''].forEach(item => {
+  //     expect(() => {
+  //       seeded.object(item)
+  //     }).toThrow('arguments of fiona.Object must be an Object or function that returns an Object')
+  //   })
+  // })
 
   test('should handle array', () => {
     const expected = JSON.stringify(seeded.object({ a: [1, 2, 3] }))

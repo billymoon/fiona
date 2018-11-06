@@ -1,3 +1,4 @@
+// TODO: add a Mersenne Twister for comparison, and benchmark 
 const xor = require('./xor')
 const processSeed = require('../process-seed')
 const Distribution = require('../distribution')
@@ -12,8 +13,12 @@ module.exports = (seeded, initseed) => {
   // capture initial prng state
   const initialState = getState()
 
+  // TODO: should be normalized to serialised string for portability?
   // define prng state getter/setter method
   const state = newVal => {
+    // if called with no arguments, return state
+    // else if called with null, reset state and return seeded instance
+    // else if called with value, set state to value and return seeded instance
     if (newVal === undefined) {
       return getState()
     } else {
@@ -29,12 +34,12 @@ module.exports = (seeded, initseed) => {
   const distribution = Distribution(seeded)
 
   // define prng reset method
-  const reset = (seed) => {
+  const reset = seed => {
     reseed(processSeed(seed !== undefined ? seed : initseed))
     return seeded
   }
 
-  // define random method based on weighted prng random function
+  // define random method based on distribution weighted prng random function
   const random = () => distribution(prngRandom())
 
   return {

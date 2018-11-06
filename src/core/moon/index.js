@@ -1,5 +1,7 @@
 const Prng = require('../prng')
 
+// TODO: should Moon be renamed to something more intuitive like FionaConstructor?
+// TODO: should Moon accept second argument that defines alternative prng, or options object exposing same functionality?
 // define main constructor function
 function Moon (seedin) {
   const seeded = this
@@ -13,32 +15,10 @@ function Moon (seedin) {
 
   seeded.info = () => ({ initseed })
 
-  let chainValue = {}
-
-  const chainPlugin = (seeded, ...inputs) => {
-    chainValue = seeded.object(chainValue, ...inputs)
-    return seeded
-  }
-
-  // TODO: perhaps deprecate the chain method since object/json now take functions as arguments and multiple arguments and return current value inline
-  seeded.chain = function (...args) {
-    const seeded = this
-    return chainPlugin(seeded, ...args)
-  }
-
-  const valuePlugin = () => {
-    return Object.assign({}, chainValue)
-  }
-
-  seeded.value = function (...args) {
-    const seeded = this
-    return valuePlugin(seeded, ...args)
-  }
-
   return seeded
 }
 
-// set up self referencial prototype chain with jQuery like plugin architecture
+// set up self referencial prototype chain á la jQuery
 Moon.prototype = { constructor: Moon }
 
 module.exports = Moon

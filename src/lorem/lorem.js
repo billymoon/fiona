@@ -12,15 +12,15 @@ const lorem = (seeded, { qty = 15 } = {}) => {
 const word = seeded => seeded.lorem({ qty: 1 }).split(' ')[0]
 
 const sentence = seeded => {
-  const para = seeded.lorem({ qty: 25 })
-  return para[0].toUpperCase() + para.slice(1) + '.'
+  const paragraph = seeded.lorem({ qty: 25 })
+  return paragraph[0].toUpperCase() + paragraph.slice(1) + '.'
 }
 
-const para = seeded => Array(seeded.number({ min: 1, max: 10 })).fill(0).map(i => seeded.sentence()).join('  ')
+const paragraph = seeded => Array(seeded.number({ min: 1, max: 10 })).fill(0).map(i => seeded.sentence()).join('  ')
 
 module.exports = {
   lorem,
   word,
   sentence,
-  para
+  paragraph
 }

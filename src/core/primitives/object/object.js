@@ -1,14 +1,14 @@
 const recurseData = require('../../recurse')
-const object = (seeded, ...originals) => {
-  return originals.reduce((value, next) => {
-      const original = typeof next === 'function' ? next(seeded, value) : next
-      if (!(typeof original === 'object' && original.constructor === Object)) {
-      throw Error('arguments of fiona.Object must be an Object or function that returns an Object')
-    }
 
-    // TODO: change the order of recursion so that results of functions defined earlier can be passed as value to functions defined later
-    return { ...value, ...recurseData(seeded, { ...original}, undefined, undefined, { ...original, ...value }) }
+const object = (seeded, ...originals) => {
+  return originals.reduce((memo, original) => {
+    return recurseData(seeded, original, undefined, undefined, memo)
+    // TODO: re-instate error checking for object
+    // const result = recurseData(seeded, original, undefined, undefined, memo)
+    // if (!(typeof result === 'object' && result.constructor === Object)) {
+    //   throw Error('arguments of fiona.Object must be an Object or function that returns an Object')
+    // }
+    // return result
   }, {})
 }
-
 module.exports = object
