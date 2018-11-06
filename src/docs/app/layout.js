@@ -1,7 +1,5 @@
 import Head from "next/head";
 import { withRouter } from "next/router";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
 import { Ribbon } from "jsx-components";
 
 import { Theme, Shelf, Article, withTheme } from "../app";
@@ -102,33 +100,6 @@ const MainContent = withTheme(
   ))
 );
 
-const reducer = (state, action) => {
-  if (action.type === "SET") {
-    return { ...state, reseed: action.payload };
-    // return action.payload
-  } else {
-    return state
-  }
-};
-
-const store = createStore(
-  reducer,
-  {
-    reseed: 123
-  },
-  process.browser &&
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-// store.subscribe(() => {
-//   console.log("subscribed", store.getState());
-// });
-
-// setInterval(() => {
-//   store.dispatch({ type: "SET", payload: fiona().number() })
-// }, 2000)
-
 // TODO: simpify and tidy this section, perhaps this whole layout file
 // TODO: re-implement dynamic theme switcher
 const MainLayout = ({ seed, children }) => (
@@ -149,9 +120,7 @@ const MainLayout = ({ seed, children }) => (
       <script>Raven.config('https://cbe5f0dcbb0b4d488ca750f1b7f7ac11@sentry.io/1226793').install()</script>
       */}
     </Head>
-    <Provider store={store}>
-      <MainContent seed={seed}>{children}</MainContent>
-    </Provider>
+    <MainContent seed={seed}>{children}</MainContent>
   </div>
 );
 
