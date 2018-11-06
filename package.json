@@ -47,5 +47,9 @@
     "testPathIgnorePatterns": [
       "misc"
     ]
+  },
+  "dependencies": {
+    "react-redux": "^5.1.0",
+    "redux": "^4.0.1"
   }
 }

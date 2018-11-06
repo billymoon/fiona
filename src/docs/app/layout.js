@@ -1,20 +1,36 @@
-import Head from 'next/head'
-import { withRouter } from 'next/router'
+import Head from "next/head";
+import { withRouter } from "next/router";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import { Ribbon } from "jsx-components";
 
-import { Ribbon } from 'jsx-components'
-import { Theme, Shelf, Article, withTheme } from '../app'
-import { Logo, Nav, fiona, injectState, config, consume } from './'
+import { Theme, Shelf, Article, withTheme } from "../app";
+import { Logo, Nav, fiona, injectState, config, consume } from "./";
 
-const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
-  <section>
-    <Ribbon href='https://github.com/billymoon/fiona' color={theme.clr.primary} />
-    <Article style={{ textAlign: 'center' }}><Logo /></Article>
-    <Article style={{ textAlign: 'center' }}><h1>{fiona(seed).regex(/(Make Believe|Simulated|Immitation|Substitute|Pretend|Fake|Spurious|Mock) Data/)}</h1></Article>
-    <Article style={{ textAlign: 'center' }}><Nav /></Article>
-    <style global jsx>{`
-      @import url('https://fonts.googleapis.com/css?family=Raleway|Andika|Cousine');
-    `}</style>
-    <style global jsx>{`
+const MainContent = withTheme(
+  withRouter(({ router, seed, theme, children }) => (
+    <section>
+      <Ribbon
+        href="https://github.com/billymoon/fiona"
+        color={theme.clr.primary}
+      />
+      <Article style={{ textAlign: "center" }}>
+        <Logo />
+      </Article>
+      <Article style={{ textAlign: "center" }}>
+        <h1>
+          {fiona(seed).regex(
+            /(Make Believe|Simulated|Immitation|Substitute|Pretend|Fake|Spurious|Mock) Data/
+          )}
+        </h1>
+      </Article>
+      <Article style={{ textAlign: "center" }}>
+        <Nav />
+      </Article>
+      <style global jsx>{`
+        @import url("https://fonts.googleapis.com/css?family=Raleway|Andika|Cousine");
+      `}</style>
+      <style global jsx>{`
       html {
         background-color: ${theme.clr.accent};
       }
@@ -27,10 +43,18 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
         font-family: ${theme.font.body};
         font-size: 17px;
 
-        background: -moz-linear-gradient(top, ${theme.clr.accent} 0, ${theme.bg} 160px);
-        background: -webkit-linear-gradient(top, ${theme.clr.accent} 0,${theme.bg} 160px);
-        background: linear-gradient(to bottom, ${theme.clr.accent} 0,${theme.bg} 160px);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${theme.clr.accent}', endColorstr='${theme.bg}',GradientType=0 );
+        background: -moz-linear-gradient(top, ${theme.clr.accent} 0, ${
+        theme.bg
+      } 160px);
+        background: -webkit-linear-gradient(top, ${theme.clr.accent} 0,${
+        theme.bg
+      } 160px);
+        background: linear-gradient(to bottom, ${theme.clr.accent} 0,${
+        theme.bg
+      } 160px);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${
+          theme.clr.accent
+        }', endColorstr='${theme.bg}',GradientType=0 );
       }
 
       code {
@@ -73,28 +97,62 @@ const MainContent = withTheme(withRouter(({ router, seed, theme, children }) =>
         h1 { margin-top: 20px; margin-bottom: 40px; }
       }
     `}</style>
-    {children}
-  </section>
-))
+      {children}
+    </section>
+  ))
+);
+
+const reducer = (state, action) => {
+  if (action.type === "SET") {
+    return { ...state, reseed: action.payload };
+    // return action.payload
+  } else {
+    return state
+  }
+};
+
+const store = createStore(
+  reducer,
+  {
+    reseed: 123
+  },
+  process.browser &&
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+    window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+// store.subscribe(() => {
+//   console.log("subscribed", store.getState());
+// });
+
+// setInterval(() => {
+//   store.dispatch({ type: "SET", payload: fiona().number() })
+// }, 2000)
 
 // TODO: simpify and tidy this section, perhaps this whole layout file
 // TODO: re-implement dynamic theme switcher
-const MainLayout = ({ seed, children }) =>
+const MainLayout = ({ seed, children }) => (
   <div>
     <Head>
       <title>Fiona</title>
-      <meta charSet='UTF-8' />
-      <meta name='viewport' content='width=device-width, initial-scale=1' />
-      <meta name='apple-mobile-web-app-capable' content='yes' />
-      <link rel='icon' href='/static/favicon.png' sizes='16x16' type='image/png' />
+      <meta charSet="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <link
+        rel="icon"
+        href="/static/favicon.png"
+        sizes="16x16"
+        type="image/png"
+      />
       {/* TODO: re-enable error tracking if can disable locally
       <script src='https://cdn.ravenjs.com/3.26.2/raven.min.js' crossorigin='anonymous'></script>
       <script>Raven.config('https://cbe5f0dcbb0b4d488ca750f1b7f7ac11@sentry.io/1226793').install()</script>
       */}
     </Head>
-    <MainContent seed={seed}>
-      {children}
-    </MainContent>
+    <Provider store={store}>
+      <MainContent seed={seed}>{children}</MainContent>
+    </Provider>
   </div>
+);
 
-export default consume(MainLayout)
+export default consume(MainLayout);
