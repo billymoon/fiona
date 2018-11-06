@@ -1,4 +1,4 @@
-/* global test expect */
+/* global test expect describe */
 
 const fiona = require('../core')
 fiona.register(['bool', require('../bool/bool')])
@@ -69,5 +69,5 @@ describe.skip('find', () => {
         age: fiona.Number({ max: 100 })
       }), { tries: 2 })
     }).toThrow('Predicate not satisfied within 2 tries')
-  })  
+  })
 })

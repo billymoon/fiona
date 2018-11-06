@@ -12,7 +12,7 @@ module.exports = {
   ],
   output: {
     path: __dirname,
-    filename: 'fiona.core.js',
+    filename: 'fiona.core.min.js',
     libraryTarget: 'umd',
     library: 'fiona',
     globalObject: 'this',
