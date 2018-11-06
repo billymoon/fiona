@@ -45,7 +45,7 @@ const fionaDots = [
 ]
 
 // TODO: simpify and tidy this section, perhaps this whole logo file
-const Logo = ({ seed, blink, theme, clickSeed, toggleTheme }) =>
+const Logo = ({ seed, blink, blinkInterval, theme, clickSeed, toggleTheme }) =>
   <div className='root'>
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0, 0, 420, 100'>
       <g>
@@ -56,7 +56,7 @@ const Logo = ({ seed, blink, theme, clickSeed, toggleTheme }) =>
       <g>
         {(seed === config.magicNumber ? fionaDots : fiona(seed).getDots()).map((filled, index) =>
           <circle key={index} cx={pos(index).x} cy={pos(index).y} r={filled ? 9 : 8} strokeWidth={filled ? 0 : 2} className={[
-            filled ? 'filled' : '',
+            filled || (!blinkInterval && (index === 24 ? config.magicNumber : index) === seed) ? 'filled' : '',
             ((index === 24 ? config.magicNumber : index) === seed && (blink ? 'blink selected' : 'selected')) || ''
           ].join(' ')} onClick={() => {
             // TODO: move this into clickSeed action

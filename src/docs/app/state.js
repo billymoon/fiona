@@ -5,16 +5,10 @@ import { CreateContext, update } from "jsx-components";
 import config from "./config";
 
 const globalState = {
-  theme: Object.assign({}, config.theme),
-  blink: false,
-  apiFilter: "",
-  blinkInterval: null
+  theme: Object.assign({}, config.theme)
 };
 
 const actions = {
-  setApiFilter: update("apiFilter", () => newValue => newValue),
-  // TODO: why is each click creating new blink state?
-  toggleBlink: update("blink", blink => (blink === null ? null : !blink)),
   toggleTheme: update("theme", theme => index => {
     if (index % 2) {
       theme.clr = {
@@ -30,10 +24,6 @@ const actions = {
       theme.clr = Object.assign({}, config.theme.clr);
     }
     return theme;
-  }),
-  cancelBlink: update("blinkInterval", blink => {
-    clearInterval(blinkInterval);
-    return null;
   })
 };
 
@@ -44,7 +34,19 @@ const { provide: oldProvide, consume: oldConsume } = CreateContext(
 
 const reducer = (state, action) => {
   if (action.type === "SET_SEED") {
-    return { ...state, seed: action.payload };
+    const newseed = action.payload;
+    return {
+      ...state,
+      seed: newseed ? Math.floor(Math.random() * 33) : newseed
+    };
+  } else if (action.type === "SET_API_FILTER") {
+    return { ...state, apiFilter: action.payload };
+  } else if (action.type === "TOGGLE_BLINK") {
+    const blink = state.blink === null ? null : !state.blink;
+    return { ...state, blink: blink };
+  } else if (action.type === "CANCEL_BLINK") {
+    clearInterval(state.blinkInterval);
+    return { ...state, blink: false, blinkInterval: null };
   } else if (action.type === "CLICK_SEED") {
     const index = action.payload;
     const seed = state.seed;
@@ -54,15 +56,25 @@ const reducer = (state, action) => {
         : index === 24
           ? config.magicNumber
           : index;
-    return { ...state, seed: newSeed };
+    clearInterval(state.blinkInterval);
+    return { ...state, seed: newSeed, blink: false, blinkInterval: null };
   } else {
     return state;
   }
 };
 
+const blinkIntervalID = setInterval(() => {
+  store.dispatch({ type: "TOGGLE_BLINK" });
+}, 750);
+
+console.log(blinkIntervalID)
+
 const store = createStore(
   reducer,
   {
+    blink: false,
+    blinkInterval: blinkIntervalID,
+    apiFilter: "",
     seed: config.magicNumber
   },
   process.browser &&
@@ -73,10 +85,6 @@ const store = createStore(
 // store.subscribe(() => {
 //   console.log("subscribed", store.getState());
 // });
-
-// setInterval(() => {
-//   store.dispatch({ type: "SET", payload: fiona().number() })
-// }, 2000)
 
 export const provide = Component => {
   const Provided = oldProvide(Component);
@@ -90,13 +98,18 @@ export const provide = Component => {
 
 export const consume = Component => {
   return connect(
-    state => ({ seed: state.seed }),
+    state => ({
+      seed: state.seed,
+      apiFilter: state.apiFilter,
+      blink: state.blink,
+      blinkInterval: state.blinkInterval
+    }),
     dispatch => ({
-      setSeed: newseed =>
-        dispatch({
-          type: "SET_SEED",
-          payload: newseed ? Math.floor(Math.random() * 33) : newseed
-        }),
+      toggleBlink: () => dispatch({ type: "TOGGLE_BLINK" }),
+      cancelBlink: () => dispatch({ type: "CANCEL_BLINK" }),
+      setApiFilter: newfilter =>
+        dispatch({ type: "SET_API_FILTER", payload: newfilter }),
+      setSeed: newseed => dispatch({ type: "SET_SEED", payload: newseed }),
       clickSeed: index => dispatch({ type: "CLICK_SEED", payload: index })
     })
   )(oldConsume(Component));
