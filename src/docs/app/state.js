@@ -13,7 +13,7 @@ const reducer = (state, action) => {
   } else if (action.type === "SET_API_FILTER") {
     return { ...state, apiFilter: action.payload };
   } else if (action.type === "TOGGLE_THEME") {
-    const theme = { ...state.theme }
+    const theme = { ...state.theme };
     if (action.payload % 2) {
       theme.clr = {
         ...config.theme.clr,
@@ -44,6 +44,7 @@ const reducer = (state, action) => {
         : index === 24
           ? config.magicNumber
           : index;
+    // TODO: redux compose this instead of duplicating logic
     clearInterval(state.blinkInterval);
     return { ...state, seed: newSeed, blink: false, blinkInterval: null };
   } else {
@@ -54,8 +55,6 @@ const reducer = (state, action) => {
 const blinkIntervalID = setInterval(() => {
   store.dispatch({ type: "TOGGLE_BLINK" });
 }, 750);
-
-console.log(blinkIntervalID)
 
 const store = createStore(
   reducer,
@@ -84,6 +83,7 @@ export const provide = Component => {
   return Thing;
 };
 
+// TODO: be selective about what state is consumed per component, especially the blinking
 export const consume = Component => {
   return connect(
     state => ({
@@ -100,7 +100,7 @@ export const consume = Component => {
         dispatch({ type: "SET_API_FILTER", payload: newfilter }),
       setSeed: newseed => dispatch({ type: "SET_SEED", payload: newseed }),
       clickSeed: index => dispatch({ type: "CLICK_SEED", payload: index }),
-      toggleTheme: index => dispatch({ type: "TOGGLE_THEME", payload: index }),
+      toggleTheme: index => dispatch({ type: "TOGGLE_THEME", payload: index })
     })
   )(Component);
 };

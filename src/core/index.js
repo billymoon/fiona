@@ -1,5 +1,6 @@
 const packageJson = require('../../package')
 const { Register, registered } = require('./register')
+const Prng = require('./prng')
 const Moon = require('./moon')
 const number = require('./primitives/number/number')
 const object = require('./primitives/object/object')
@@ -7,7 +8,7 @@ const json = require('./primitives/json/json')
 const array = require('./primitives/array/array')
 const string = require('./primitives/string/string')
 
-const fiona = (...args) => new Moon(...args)
+const fiona = seed => new Moon(seed, Prng)
 
 fiona.version = packageJson.version
 

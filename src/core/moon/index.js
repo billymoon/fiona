@@ -1,9 +1,6 @@
-const Prng = require('../prng')
-
 // TODO: should Moon be renamed to something more intuitive like FionaConstructor?
-// TODO: should Moon accept second argument that defines alternative prng, or options object exposing same functionality?
 // define main constructor function
-function Moon (seedin) {
+function Moon (seedin, Prng) {
   const seeded = this
 
   // set initial seed from constructor function initialisation argument, or random integer

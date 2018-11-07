@@ -1,3 +1,4 @@
+// TODO: should regex be part of core?
 const RandExp = require('randexp')
 
 const regex = (seeded, regex = /[A-F0-9]{16}/) => {

@@ -26,12 +26,14 @@
     "fetch-pretender": "^1.5.0",
     "git-tools": "^0.3.0",
     "jest": "^22.4.4",
-    "jsx-components": "^1.2.0",
+    "jsx-components": "1.2.0",
     "lodash.template": "^4.4.0",
     "next": "^6.1.1",
     "randexp": "^0.4.6",
     "react": "^16.4.1",
     "react-dom": "^16.0.0",
+    "react-redux": "^5.1.0",
+    "redux": "^4.0.1",
     "standard": "^11.0.1",
     "taskr": "^1.1.0",
     "webpack": "^4.8.3",
@@ -45,11 +47,9 @@
       "!src/docs/**"
     ],
     "testPathIgnorePatterns": [
+      "node_modules",
       "misc"
     ]
   },
-  "dependencies": {
-    "react-redux": "^5.1.0",
-    "redux": "^4.0.1"
-  }
+  "dependencies": {}
 }

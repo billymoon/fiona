@@ -1,3 +1,4 @@
+// TODO: document find
 const find = fiona => (predicate, cb, { startseed = 0, tries = 1e6 } = {}) => {
   let seed = startseed
   let seeded

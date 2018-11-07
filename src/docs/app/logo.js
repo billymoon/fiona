@@ -79,15 +79,19 @@ const Logo = ({ seed, blink, blinkInterval, theme, clickSeed, toggleTheme }) =>
         -ms-user-select: none;
         user-select: none;
       }
-      circle, line {
+      circle {
+        stroke: ${theme.clr.secondary};
         fill: ${theme.clr.white};
-        stroke: ${theme.clr.black};
+      }
+      line {
+        stroke: ${theme.clr.primary};
+        fill: ${theme.clr.white};
       }
       circle:hover {
         cursor: pointer;
       }
       circle.filled {
-        fill: ${theme.clr.black};
+        fill: ${theme.clr.secondary};
         stroke: ${theme.clr.white};
       }
       circle.selected {

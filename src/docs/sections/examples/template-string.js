@@ -3,10 +3,8 @@ import { fiona, consume, Sample } from "../../app";
 const templateStringOutput = seeded =>
   seeded.object(
     {
-      fullname: fiona.Fullname(),
-      age: fiona.Number({ max: 100 })
-    },
-    {
+      fullname: fiona.Fullname,
+      age: fiona.Number({ max: 100 }),
       playThing: ({ data }) => (data.age < 5 ? "cuddly toys" : "friends"),
       sentences: fiona.Array({ min: 1, max: 5 }, fiona.Sentence, "\n\n    ")
     }
