@@ -2,9 +2,9 @@
   "errors": [],
   "warnings": [],
   "version": "4.25.1",
-  "hash": "cdb691272e680d88d4ba",
-  "time": 150,
-  "builtAt": 1541668483917,
+  "hash": "3c1588f73513c8ba1744",
+  "time": 164,
+  "builtAt": 1541720256397,
   "publicPath": "",
   "outputPath": "/Users/billymoon/projects/fiona",
   "assetsByChunkName": {
@@ -54,14 +54,14 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 12243,
+      "size": 12336,
       "names": [
         "main"
       ],
       "files": [
         "fiona.core.min.js"
       ],
-      "hash": "7452e86e5ac3376f937c",
+      "hash": "32045a2583c0c5b593ac",
       "siblings": [],
       "parents": [],
       "children": [],
@@ -90,8 +90,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -99,7 +99,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -108,8 +108,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             },
             {
@@ -117,16 +117,16 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/primitives/object/object.js",
               "name": "./src/core/primitives/object/object.js",
               "profile": {
-                "factory": 21,
+                "factory": 23,
                 "building": 6,
-                "dependencies": 18
+                "dependencies": 13
               }
             }
           ],
           "profile": {
-            "factory": 20,
-            "building": 9,
-            "dependencies": 0
+            "factory": 16,
+            "building": 7,
+            "dependencies": 1
           },
           "failed": false,
           "errors": 0,
@@ -192,8 +192,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -201,7 +201,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -210,15 +210,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             }
           ],
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           },
           "failed": false,
           "errors": 0,
@@ -275,8 +275,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -284,7 +284,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -293,15 +293,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             }
           ],
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           },
           "failed": false,
           "errors": 0,
@@ -353,8 +353,8 @@
           "issuerName": null,
           "issuerPath": null,
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           },
           "failed": false,
           "errors": 0,
@@ -399,13 +399,13 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             }
           ],
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           },
           "failed": false,
@@ -437,7 +437,7 @@
           "name": "./src/core/index.js",
           "index": 2,
           "index2": 16,
-          "size": 1603,
+          "size": 1696,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -454,8 +454,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -463,14 +463,14 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             }
           ],
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           },
           "failed": false,
           "errors": 0,
@@ -493,7 +493,7 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 2,
-          "source": "const packageJson = require('../../package')\nconst { Register, registered } = require('./register')\nconst Prng = require('./prng')\nconst Moon = require('./moon')\nconst number = require('./primitives/number/number')\nconst object = require('./primitives/object/object')\nconst json = require('./primitives/json/json')\nconst array = require('./primitives/array/array')\nconst string = require('./primitives/string/string')\n\nconst fiona = seed => new Moon(seed, Prng)\n\nfiona.version = packageJson.version\n\n// TODO: would it be simpler to pull the Register factory into core index?\nconst registerFactory = (name, fn) => {\n  const fnProxy = (...args) => fn(...args)\n  // TODO: handle duplicate extension registrations\n  registered.push(fnProxy)\n  return (fiona[name] = fnProxy)\n}\n\nconst registerMethod = (name, fn) => {\n  return (Moon.prototype[name] = fn)\n}\n\n// TODO: should it be possible to register extensions local to seeded instance?\n// perhaps something like:\n//     const personExtension = seeded => ({\n//       gender: fiona.Gender,\n//       name: ({ data }) => seeded.fullname({ gender: data.gender })\n//     })\n//     fiona().register(['person', personExtension]).object(() => fiona.Person, { luckyNumber: fiona.Number({ max: 100 }) })\nfiona.register = Register(registerFactory, registerMethod)\n\nfiona.Random = () => seeded => seeded.random()\n\nconst clone = seeded => fiona(seeded.info().initseed).state(seeded.state())\n\nfiona.register(['clone', clone])\n\nfiona.register(\n  ['number', number],\n  ['object', object],\n  ['json', json],\n  ['string', string],\n  ['array', array]\n)\n\nmodule.exports = fiona\n"
+          "source": "const packageJson = require('../../package')\nconst { Register, registered } = require('./register')\nconst Prng = require('./prng')\nconst Moon = require('./moon')\nconst number = require('./primitives/number/number')\nconst object = require('./primitives/object/object')\nconst json = require('./primitives/json/json')\nconst array = require('./primitives/array/array')\nconst string = require('./primitives/string/string')\n\nconst fiona = seed => new Moon(seed, Prng)\n\nfiona.version = packageJson.version\n\n// TODO: would it be simpler to pull the Register factory into core index?\nconst registerFactory = (name, fn) => {\n  const fnProxy = (...args) => fn(...args)\n  // TODO: handle duplicate extension registrations\n  registered.push(fnProxy)\n  return (fiona[name] = fnProxy)\n}\n\nconst registerMethod = (name, fn) => {\n  return (Moon.prototype[name] = fn)\n}\n\n// TODO: should it be possible to register extensions local to seeded instance?\n// perhaps something like:\n//     const personExtension = seeded => ({\n//       gender: fiona.Gender,\n//       name: ({ data }) => seeded.fullname({ gender: data.gender })\n//     })\n//     fiona().register(['person', personExtension]).object(() => fiona.Person, { luckyNumber: fiona.Number({ max: 100 }) })\nfiona.register = Register(registerFactory, registerMethod)\n\n// TODO: register Random on seeded instance, perhaps need to implement seeded.register first\nfiona.Random = () => seeded => seeded.random()\n\nconst clone = seeded => fiona(seeded.info().initseed).state(seeded.state())\n\nfiona.register(['clone', clone])\n\nfiona.register(\n  ['number', number],\n  ['object', object],\n  ['json', json],\n  ['string', string],\n  ['array', array]\n)\n\nmodule.exports = fiona\n"
         },
         {
           "id": 6,
@@ -518,8 +518,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -527,7 +527,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -536,15 +536,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             }
           ],
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           },
           "failed": false,
           "errors": 0,
@@ -606,8 +606,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -615,7 +615,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -624,8 +624,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             },
             {
@@ -633,15 +633,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/register/index.js",
               "name": "./src/core/register/index.js",
               "profile": {
-                "factory": 21,
+                "factory": 23,
                 "building": 6,
-                "dependencies": 18
+                "dependencies": 13
               }
             }
           ],
           "profile": {
-            "factory": 12,
-            "building": 5
+            "factory": 8,
+            "building": 4
           },
           "failed": false,
           "errors": 0,
@@ -689,8 +689,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -698,7 +698,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -707,8 +707,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             },
             {
@@ -716,15 +716,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/register/index.js",
               "name": "./src/core/register/index.js",
               "profile": {
-                "factory": 21,
+                "factory": 23,
                 "building": 6,
-                "dependencies": 18
+                "dependencies": 13
               }
             }
           ],
           "profile": {
-            "factory": 12,
-            "building": 5
+            "factory": 8,
+            "building": 4
           },
           "failed": false,
           "errors": 0,
@@ -772,8 +772,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -781,7 +781,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -790,8 +790,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             },
             {
@@ -799,15 +799,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
               "name": "./src/core/prng/index.js",
               "profile": {
-                "factory": 21,
+                "factory": 23,
                 "building": 6,
-                "dependencies": 18
+                "dependencies": 13
               }
             }
           ],
           "profile": {
-            "factory": 21,
-            "building": 2
+            "factory": 15,
+            "building": 3
           },
           "failed": false,
           "errors": 0,
@@ -855,8 +855,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -864,7 +864,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -873,8 +873,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             },
             {
@@ -882,15 +882,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
               "name": "./src/core/prng/index.js",
               "profile": {
-                "factory": 21,
+                "factory": 23,
                 "building": 6,
-                "dependencies": 18
+                "dependencies": 13
               }
             }
           ],
           "profile": {
-            "factory": 21,
-            "building": 2
+            "factory": 15,
+            "building": 3
           },
           "failed": false,
           "errors": 0,
@@ -938,8 +938,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -947,7 +947,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -956,8 +956,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             },
             {
@@ -965,15 +965,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
               "name": "./src/core/prng/index.js",
               "profile": {
-                "factory": 21,
+                "factory": 23,
                 "building": 6,
-                "dependencies": 18
+                "dependencies": 13
               }
             }
           ],
           "profile": {
-            "factory": 21,
-            "building": 2
+            "factory": 15,
+            "building": 3
           },
           "failed": false,
           "errors": 0,
@@ -1021,8 +1021,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -1030,7 +1030,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -1039,15 +1039,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             }
           ],
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           },
           "failed": false,
           "errors": 0,
@@ -1095,8 +1095,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -1104,7 +1104,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -1113,15 +1113,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             }
           ],
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           },
           "failed": false,
           "errors": 0,
@@ -1169,8 +1169,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -1178,7 +1178,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -1187,15 +1187,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             }
           ],
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           },
           "failed": false,
           "errors": 0,
@@ -1243,8 +1243,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -1252,7 +1252,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -1261,8 +1261,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             },
             {
@@ -1270,9 +1270,9 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/primitives/object/object.js",
               "name": "./src/core/primitives/object/object.js",
               "profile": {
-                "factory": 21,
+                "factory": 23,
                 "building": 6,
-                "dependencies": 18
+                "dependencies": 13
               }
             },
             {
@@ -1280,15 +1280,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/recurse/index.js",
               "name": "./src/core/recurse/index.js",
               "profile": {
-                "factory": 20,
-                "building": 9,
-                "dependencies": 0
+                "factory": 16,
+                "building": 7,
+                "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 2,
-            "building": 3,
+            "factory": 4,
+            "building": 1,
             "dependencies": 1
           },
           "failed": false,
@@ -1337,8 +1337,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -1346,7 +1346,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -1355,15 +1355,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             }
           ],
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           },
           "failed": false,
           "errors": 0,
@@ -1411,8 +1411,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -1420,7 +1420,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -1429,15 +1429,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             }
           ],
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           },
           "failed": false,
           "errors": 0,
@@ -1485,8 +1485,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 1,
-                "building": 2
+                "factory": 0,
+                "building": 3
               }
             },
             {
@@ -1494,7 +1494,7 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 27,
                 "building": 9
               }
             },
@@ -1503,15 +1503,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 4,
-                "building": 6
+                "factory": 5,
+                "building": 5
               }
             }
           ],
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           },
           "failed": false,
           "errors": 0,
@@ -1574,8 +1574,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -1583,7 +1583,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -1592,8 +1592,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         },
         {
@@ -1601,16 +1601,16 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/primitives/object/object.js",
           "name": "./src/core/primitives/object/object.js",
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           }
         }
       ],
       "profile": {
-        "factory": 20,
-        "building": 9,
-        "dependencies": 0
+        "factory": 16,
+        "building": 7,
+        "dependencies": 1
       },
       "failed": false,
       "errors": 0,
@@ -1676,8 +1676,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -1685,7 +1685,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -1694,15 +1694,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         }
       ],
       "profile": {
-        "factory": 21,
+        "factory": 23,
         "building": 6,
-        "dependencies": 18
+        "dependencies": 13
       },
       "failed": false,
       "errors": 0,
@@ -1759,8 +1759,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -1768,7 +1768,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -1777,15 +1777,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         }
       ],
       "profile": {
-        "factory": 21,
+        "factory": 23,
         "building": 6,
-        "dependencies": 18
+        "dependencies": 13
       },
       "failed": false,
       "errors": 0,
@@ -1837,8 +1837,8 @@
       "issuerName": null,
       "issuerPath": null,
       "profile": {
-        "factory": 1,
-        "building": 2
+        "factory": 0,
+        "building": 3
       },
       "failed": false,
       "errors": 0,
@@ -1883,13 +1883,13 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         }
       ],
       "profile": {
-        "factory": 25,
+        "factory": 27,
         "building": 9
       },
       "failed": false,
@@ -1921,7 +1921,7 @@
       "name": "./src/core/index.js",
       "index": 2,
       "index2": 16,
-      "size": 1603,
+      "size": 1696,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -1938,8 +1938,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -1947,14 +1947,14 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         }
       ],
       "profile": {
-        "factory": 4,
-        "building": 6
+        "factory": 5,
+        "building": 5
       },
       "failed": false,
       "errors": 0,
@@ -1977,7 +1977,7 @@
         "ModuleConcatenation bailout: Module is not an ECMAScript module"
       ],
       "depth": 2,
-      "source": "const packageJson = require('../../package')\nconst { Register, registered } = require('./register')\nconst Prng = require('./prng')\nconst Moon = require('./moon')\nconst number = require('./primitives/number/number')\nconst object = require('./primitives/object/object')\nconst json = require('./primitives/json/json')\nconst array = require('./primitives/array/array')\nconst string = require('./primitives/string/string')\n\nconst fiona = seed => new Moon(seed, Prng)\n\nfiona.version = packageJson.version\n\n// TODO: would it be simpler to pull the Register factory into core index?\nconst registerFactory = (name, fn) => {\n  const fnProxy = (...args) => fn(...args)\n  // TODO: handle duplicate extension registrations\n  registered.push(fnProxy)\n  return (fiona[name] = fnProxy)\n}\n\nconst registerMethod = (name, fn) => {\n  return (Moon.prototype[name] = fn)\n}\n\n// TODO: should it be possible to register extensions local to seeded instance?\n// perhaps something like:\n//     const personExtension = seeded => ({\n//       gender: fiona.Gender,\n//       name: ({ data }) => seeded.fullname({ gender: data.gender })\n//     })\n//     fiona().register(['person', personExtension]).object(() => fiona.Person, { luckyNumber: fiona.Number({ max: 100 }) })\nfiona.register = Register(registerFactory, registerMethod)\n\nfiona.Random = () => seeded => seeded.random()\n\nconst clone = seeded => fiona(seeded.info().initseed).state(seeded.state())\n\nfiona.register(['clone', clone])\n\nfiona.register(\n  ['number', number],\n  ['object', object],\n  ['json', json],\n  ['string', string],\n  ['array', array]\n)\n\nmodule.exports = fiona\n"
+      "source": "const packageJson = require('../../package')\nconst { Register, registered } = require('./register')\nconst Prng = require('./prng')\nconst Moon = require('./moon')\nconst number = require('./primitives/number/number')\nconst object = require('./primitives/object/object')\nconst json = require('./primitives/json/json')\nconst array = require('./primitives/array/array')\nconst string = require('./primitives/string/string')\n\nconst fiona = seed => new Moon(seed, Prng)\n\nfiona.version = packageJson.version\n\n// TODO: would it be simpler to pull the Register factory into core index?\nconst registerFactory = (name, fn) => {\n  const fnProxy = (...args) => fn(...args)\n  // TODO: handle duplicate extension registrations\n  registered.push(fnProxy)\n  return (fiona[name] = fnProxy)\n}\n\nconst registerMethod = (name, fn) => {\n  return (Moon.prototype[name] = fn)\n}\n\n// TODO: should it be possible to register extensions local to seeded instance?\n// perhaps something like:\n//     const personExtension = seeded => ({\n//       gender: fiona.Gender,\n//       name: ({ data }) => seeded.fullname({ gender: data.gender })\n//     })\n//     fiona().register(['person', personExtension]).object(() => fiona.Person, { luckyNumber: fiona.Number({ max: 100 }) })\nfiona.register = Register(registerFactory, registerMethod)\n\n// TODO: register Random on seeded instance, perhaps need to implement seeded.register first\nfiona.Random = () => seeded => seeded.random()\n\nconst clone = seeded => fiona(seeded.info().initseed).state(seeded.state())\n\nfiona.register(['clone', clone])\n\nfiona.register(\n  ['number', number],\n  ['object', object],\n  ['json', json],\n  ['string', string],\n  ['array', array]\n)\n\nmodule.exports = fiona\n"
     },
     {
       "id": 6,
@@ -2002,8 +2002,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2011,7 +2011,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2020,15 +2020,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         }
       ],
       "profile": {
-        "factory": 21,
+        "factory": 23,
         "building": 6,
-        "dependencies": 18
+        "dependencies": 13
       },
       "failed": false,
       "errors": 0,
@@ -2090,8 +2090,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2099,7 +2099,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2108,8 +2108,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         },
         {
@@ -2117,15 +2117,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/register/index.js",
           "name": "./src/core/register/index.js",
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           }
         }
       ],
       "profile": {
-        "factory": 12,
-        "building": 5
+        "factory": 8,
+        "building": 4
       },
       "failed": false,
       "errors": 0,
@@ -2173,8 +2173,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2182,7 +2182,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2191,8 +2191,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         },
         {
@@ -2200,15 +2200,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/register/index.js",
           "name": "./src/core/register/index.js",
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           }
         }
       ],
       "profile": {
-        "factory": 12,
-        "building": 5
+        "factory": 8,
+        "building": 4
       },
       "failed": false,
       "errors": 0,
@@ -2256,8 +2256,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2265,7 +2265,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2274,8 +2274,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         },
         {
@@ -2283,15 +2283,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
           "name": "./src/core/prng/index.js",
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           }
         }
       ],
       "profile": {
-        "factory": 21,
-        "building": 2
+        "factory": 15,
+        "building": 3
       },
       "failed": false,
       "errors": 0,
@@ -2339,8 +2339,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2348,7 +2348,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2357,8 +2357,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         },
         {
@@ -2366,15 +2366,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
           "name": "./src/core/prng/index.js",
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           }
         }
       ],
       "profile": {
-        "factory": 21,
-        "building": 2
+        "factory": 15,
+        "building": 3
       },
       "failed": false,
       "errors": 0,
@@ -2422,8 +2422,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2431,7 +2431,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2440,8 +2440,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         },
         {
@@ -2449,15 +2449,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
           "name": "./src/core/prng/index.js",
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           }
         }
       ],
       "profile": {
-        "factory": 21,
-        "building": 2
+        "factory": 15,
+        "building": 3
       },
       "failed": false,
       "errors": 0,
@@ -2505,8 +2505,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2514,7 +2514,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2523,15 +2523,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         }
       ],
       "profile": {
-        "factory": 21,
+        "factory": 23,
         "building": 6,
-        "dependencies": 18
+        "dependencies": 13
       },
       "failed": false,
       "errors": 0,
@@ -2579,8 +2579,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2588,7 +2588,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2597,15 +2597,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         }
       ],
       "profile": {
-        "factory": 21,
+        "factory": 23,
         "building": 6,
-        "dependencies": 18
+        "dependencies": 13
       },
       "failed": false,
       "errors": 0,
@@ -2653,8 +2653,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2662,7 +2662,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2671,15 +2671,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         }
       ],
       "profile": {
-        "factory": 21,
+        "factory": 23,
         "building": 6,
-        "dependencies": 18
+        "dependencies": 13
       },
       "failed": false,
       "errors": 0,
@@ -2727,8 +2727,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2736,7 +2736,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2745,8 +2745,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         },
         {
@@ -2754,9 +2754,9 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/primitives/object/object.js",
           "name": "./src/core/primitives/object/object.js",
           "profile": {
-            "factory": 21,
+            "factory": 23,
             "building": 6,
-            "dependencies": 18
+            "dependencies": 13
           }
         },
         {
@@ -2764,15 +2764,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/recurse/index.js",
           "name": "./src/core/recurse/index.js",
           "profile": {
-            "factory": 20,
-            "building": 9,
-            "dependencies": 0
+            "factory": 16,
+            "building": 7,
+            "dependencies": 1
           }
         }
       ],
       "profile": {
-        "factory": 2,
-        "building": 3,
+        "factory": 4,
+        "building": 1,
         "dependencies": 1
       },
       "failed": false,
@@ -2821,8 +2821,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2830,7 +2830,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2839,15 +2839,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         }
       ],
       "profile": {
-        "factory": 21,
+        "factory": 23,
         "building": 6,
-        "dependencies": 18
+        "dependencies": 13
       },
       "failed": false,
       "errors": 0,
@@ -2895,8 +2895,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2904,7 +2904,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2913,15 +2913,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         }
       ],
       "profile": {
-        "factory": 21,
+        "factory": 23,
         "building": 6,
-        "dependencies": 18
+        "dependencies": 13
       },
       "failed": false,
       "errors": 0,
@@ -2969,8 +2969,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 1,
-            "building": 2
+            "factory": 0,
+            "building": 3
           }
         },
         {
@@ -2978,7 +2978,7 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 27,
             "building": 9
           }
         },
@@ -2987,15 +2987,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 4,
-            "building": 6
+            "factory": 5,
+            "building": 5
           }
         }
       ],
       "profile": {
-        "factory": 21,
+        "factory": 23,
         "building": 6,
-        "dependencies": 18
+        "dependencies": 13
       },
       "failed": false,
       "errors": 0,

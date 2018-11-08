@@ -2,9 +2,9 @@
   "errors": [],
   "warnings": [],
   "version": "4.25.1",
-  "hash": "d2623119275b26066568",
-  "time": 203,
-  "builtAt": 1541668470850,
+  "hash": "f25c59d44c605bac2afe",
+  "time": 206,
+  "builtAt": 1541720242549,
   "publicPath": "",
   "outputPath": "/Users/billymoon/projects/fiona",
   "assetsByChunkName": {
@@ -13,7 +13,7 @@
   "assets": [
     {
       "name": "fiona.min.js",
-      "size": 20032,
+      "size": 20065,
       "chunks": [
         0
       ],
@@ -54,14 +54,14 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 43448,
+      "size": 43661,
       "names": [
         "main"
       ],
       "files": [
         "fiona.min.js"
       ],
-      "hash": "c4d0fe2ab9d6383e5d4c",
+      "hash": "916d16efc5e5f6890ec1",
       "siblings": [],
       "parents": [],
       "children": [],
@@ -71,8 +71,8 @@
           "id": 0,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/types.js",
           "name": "./node_modules/ret/lib/types.js",
-          "index": 32,
-          "index2": 26,
+          "index": 33,
+          "index2": 27,
           "size": 166,
           "cacheable": true,
           "built": true,
@@ -82,7 +82,7 @@
             0
           ],
           "issuer": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
-          "issuerId": 32,
+          "issuerId": 33,
           "issuerName": "./node_modules/ret/lib/index.js",
           "issuerPath": [
             {
@@ -99,42 +99,42 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
-              }
-            },
-            {
-              "id": 30,
-              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-              "name": "./src/regex/regex.js",
-              "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 26,
+                "building": 13
               }
             },
             {
               "id": 31,
-              "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-              "name": "./node_modules/randexp/lib/randexp.js",
+              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+              "name": "./src/regex/regex.js",
               "profile": {
-                "factory": 14,
-                "building": 9
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
               "id": 32,
+              "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
+              "name": "./node_modules/randexp/lib/randexp.js",
+              "profile": {
+                "factory": 12,
+                "building": 9
+              }
+            },
+            {
+              "id": 33,
               "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
               "name": "./node_modules/ret/lib/index.js",
               "profile": {
-                "factory": 10,
-                "building": 14
+                "factory": 12,
+                "building": 16
               }
             }
           ],
           "profile": {
-            "factory": 10,
-            "building": 12,
+            "factory": 15,
+            "building": 11,
             "dependencies": 0
           },
           "failed": false,
@@ -152,7 +152,7 @@
               "loc": "1:14-32"
             },
             {
-              "moduleId": 32,
+              "moduleId": 33,
               "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
               "module": "./node_modules/ret/lib/index.js",
               "moduleName": "./node_modules/ret/lib/index.js",
@@ -161,7 +161,7 @@
               "loc": "2:18-36"
             },
             {
-              "moduleId": 33,
+              "moduleId": 34,
               "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/util.js",
               "module": "./node_modules/ret/lib/util.js",
               "moduleName": "./node_modules/ret/lib/util.js",
@@ -170,7 +170,7 @@
               "loc": "1:14-32"
             },
             {
-              "moduleId": 34,
+              "moduleId": 35,
               "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/positions.js",
               "module": "./node_modules/ret/lib/positions.js",
               "moduleName": "./node_modules/ret/lib/positions.js",
@@ -219,8 +219,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -228,9 +228,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -238,8 +238,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             },
             {
@@ -247,14 +247,14 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/primitives/object/object.js",
               "name": "./src/core/primitives/object/object.js",
               "profile": {
-                "factory": 28,
-                "building": 5,
-                "dependencies": 24
+                "factory": 31,
+                "building": 11,
+                "dependencies": 20
               }
             }
           ],
           "profile": {
-            "factory": 25,
+            "factory": 20,
             "building": 5,
             "dependencies": 1
           },
@@ -331,8 +331,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -340,9 +340,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -350,15 +350,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             }
           ],
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -424,8 +424,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -433,9 +433,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -443,15 +443,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             }
           ],
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -517,8 +517,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -526,15 +526,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/choose/choose.js",
               "name": "./src/choose/choose.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             }
           ],
           "profile": {
-            "factory": 19,
-            "building": 6
+            "factory": 21,
+            "building": 3
           },
           "failed": false,
           "errors": 0,
@@ -572,8 +572,8 @@
           "id": 5,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/sets.js",
           "name": "./node_modules/ret/lib/sets.js",
-          "index": 33,
-          "index2": 27,
+          "index": 34,
+          "index2": 28,
           "size": 1665,
           "cacheable": true,
           "built": true,
@@ -583,7 +583,7 @@
             0
           ],
           "issuer": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
-          "issuerId": 32,
+          "issuerId": 33,
           "issuerName": "./node_modules/ret/lib/index.js",
           "issuerPath": [
             {
@@ -600,42 +600,42 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
-              }
-            },
-            {
-              "id": 30,
-              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-              "name": "./src/regex/regex.js",
-              "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 26,
+                "building": 13
               }
             },
             {
               "id": 31,
-              "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-              "name": "./node_modules/randexp/lib/randexp.js",
+              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+              "name": "./src/regex/regex.js",
               "profile": {
-                "factory": 14,
-                "building": 9
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
               "id": 32,
+              "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
+              "name": "./node_modules/randexp/lib/randexp.js",
+              "profile": {
+                "factory": 12,
+                "building": 9
+              }
+            },
+            {
+              "id": 33,
               "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
               "name": "./node_modules/ret/lib/index.js",
               "profile": {
-                "factory": 10,
-                "building": 14
+                "factory": 12,
+                "building": 16
               }
             }
           ],
           "profile": {
-            "factory": 10,
-            "building": 12,
+            "factory": 15,
+            "building": 11,
             "dependencies": 0
           },
           "failed": false,
@@ -644,7 +644,7 @@
           "assets": [],
           "reasons": [
             {
-              "moduleId": 32,
+              "moduleId": 33,
               "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
               "module": "./node_modules/ret/lib/index.js",
               "moduleName": "./node_modules/ret/lib/index.js",
@@ -653,7 +653,7 @@
               "loc": "3:18-35"
             },
             {
-              "moduleId": 33,
+              "moduleId": 34,
               "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/util.js",
               "module": "./node_modules/ret/lib/util.js",
               "moduleName": "./node_modules/ret/lib/util.js",
@@ -675,7 +675,7 @@
           "identifier": "multi ./src/index.js",
           "name": "multi ./src/index.js",
           "index": 0,
-          "index2": 37,
+          "index2": 38,
           "size": 28,
           "built": true,
           "optional": false,
@@ -716,7 +716,7 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "index": 1,
-          "index2": 36,
+          "index2": 37,
           "size": 1079,
           "cacheable": true,
           "built": true,
@@ -740,8 +740,8 @@
             }
           ],
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           },
           "failed": false,
           "errors": 0,
@@ -798,15 +798,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -837,7 +837,7 @@
           "name": "./src/core/index.js",
           "index": 3,
           "index2": 16,
-          "size": 1603,
+          "size": 1696,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -863,8 +863,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -872,15 +872,15 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             }
           ],
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           },
           "failed": false,
           "errors": 0,
@@ -903,7 +903,7 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 3,
-          "source": "const packageJson = require('../../package')\nconst { Register, registered } = require('./register')\nconst Prng = require('./prng')\nconst Moon = require('./moon')\nconst number = require('./primitives/number/number')\nconst object = require('./primitives/object/object')\nconst json = require('./primitives/json/json')\nconst array = require('./primitives/array/array')\nconst string = require('./primitives/string/string')\n\nconst fiona = seed => new Moon(seed, Prng)\n\nfiona.version = packageJson.version\n\n// TODO: would it be simpler to pull the Register factory into core index?\nconst registerFactory = (name, fn) => {\n  const fnProxy = (...args) => fn(...args)\n  // TODO: handle duplicate extension registrations\n  registered.push(fnProxy)\n  return (fiona[name] = fnProxy)\n}\n\nconst registerMethod = (name, fn) => {\n  return (Moon.prototype[name] = fn)\n}\n\n// TODO: should it be possible to register extensions local to seeded instance?\n// perhaps something like:\n//     const personExtension = seeded => ({\n//       gender: fiona.Gender,\n//       name: ({ data }) => seeded.fullname({ gender: data.gender })\n//     })\n//     fiona().register(['person', personExtension]).object(() => fiona.Person, { luckyNumber: fiona.Number({ max: 100 }) })\nfiona.register = Register(registerFactory, registerMethod)\n\nfiona.Random = () => seeded => seeded.random()\n\nconst clone = seeded => fiona(seeded.info().initseed).state(seeded.state())\n\nfiona.register(['clone', clone])\n\nfiona.register(\n  ['number', number],\n  ['object', object],\n  ['json', json],\n  ['string', string],\n  ['array', array]\n)\n\nmodule.exports = fiona\n"
+          "source": "const packageJson = require('../../package')\nconst { Register, registered } = require('./register')\nconst Prng = require('./prng')\nconst Moon = require('./moon')\nconst number = require('./primitives/number/number')\nconst object = require('./primitives/object/object')\nconst json = require('./primitives/json/json')\nconst array = require('./primitives/array/array')\nconst string = require('./primitives/string/string')\n\nconst fiona = seed => new Moon(seed, Prng)\n\nfiona.version = packageJson.version\n\n// TODO: would it be simpler to pull the Register factory into core index?\nconst registerFactory = (name, fn) => {\n  const fnProxy = (...args) => fn(...args)\n  // TODO: handle duplicate extension registrations\n  registered.push(fnProxy)\n  return (fiona[name] = fnProxy)\n}\n\nconst registerMethod = (name, fn) => {\n  return (Moon.prototype[name] = fn)\n}\n\n// TODO: should it be possible to register extensions local to seeded instance?\n// perhaps something like:\n//     const personExtension = seeded => ({\n//       gender: fiona.Gender,\n//       name: ({ data }) => seeded.fullname({ gender: data.gender })\n//     })\n//     fiona().register(['person', personExtension]).object(() => fiona.Person, { luckyNumber: fiona.Number({ max: 100 }) })\nfiona.register = Register(registerFactory, registerMethod)\n\n// TODO: register Random on seeded instance, perhaps need to implement seeded.register first\nfiona.Random = () => seeded => seeded.random()\n\nconst clone = seeded => fiona(seeded.info().initseed).state(seeded.state())\n\nfiona.register(['clone', clone])\n\nfiona.register(\n  ['number', number],\n  ['object', object],\n  ['json', json],\n  ['string', string],\n  ['array', array]\n)\n\nmodule.exports = fiona\n"
         },
         {
           "id": 10,
@@ -937,8 +937,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -946,9 +946,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -956,15 +956,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             }
           ],
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -1035,8 +1035,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1044,9 +1044,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1054,8 +1054,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             },
             {
@@ -1063,15 +1063,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/register/index.js",
               "name": "./src/core/register/index.js",
               "profile": {
-                "factory": 28,
-                "building": 5,
-                "dependencies": 24
+                "factory": 31,
+                "building": 11,
+                "dependencies": 20
               }
             }
           ],
           "profile": {
-            "factory": 15,
-            "building": 3
+            "factory": 8,
+            "building": 2
           },
           "failed": false,
           "errors": 0,
@@ -1128,8 +1128,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1137,9 +1137,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1147,8 +1147,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             },
             {
@@ -1156,15 +1156,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/register/index.js",
               "name": "./src/core/register/index.js",
               "profile": {
-                "factory": 28,
-                "building": 5,
-                "dependencies": 24
+                "factory": 31,
+                "building": 11,
+                "dependencies": 20
               }
             }
           ],
           "profile": {
-            "factory": 15,
-            "building": 3
+            "factory": 8,
+            "building": 2
           },
           "failed": false,
           "errors": 0,
@@ -1221,8 +1221,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1230,9 +1230,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1240,8 +1240,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             },
             {
@@ -1249,14 +1249,14 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
               "name": "./src/core/prng/index.js",
               "profile": {
-                "factory": 28,
-                "building": 5,
-                "dependencies": 24
+                "factory": 31,
+                "building": 11,
+                "dependencies": 20
               }
             }
           ],
           "profile": {
-            "factory": 24,
+            "factory": 13,
             "building": 2
           },
           "failed": false,
@@ -1314,8 +1314,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1323,9 +1323,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1333,8 +1333,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             },
             {
@@ -1342,14 +1342,14 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
               "name": "./src/core/prng/index.js",
               "profile": {
-                "factory": 28,
-                "building": 5,
-                "dependencies": 24
+                "factory": 31,
+                "building": 11,
+                "dependencies": 20
               }
             }
           ],
           "profile": {
-            "factory": 24,
+            "factory": 13,
             "building": 2
           },
           "failed": false,
@@ -1407,8 +1407,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1416,9 +1416,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1426,8 +1426,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             },
             {
@@ -1435,14 +1435,14 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
               "name": "./src/core/prng/index.js",
               "profile": {
-                "factory": 28,
-                "building": 5,
-                "dependencies": 24
+                "factory": 31,
+                "building": 11,
+                "dependencies": 20
               }
             }
           ],
           "profile": {
-            "factory": 24,
+            "factory": 13,
             "building": 2
           },
           "failed": false,
@@ -1500,8 +1500,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1509,9 +1509,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1519,15 +1519,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             }
           ],
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -1584,8 +1584,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1593,9 +1593,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1603,15 +1603,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             }
           ],
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -1668,8 +1668,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1677,9 +1677,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1687,15 +1687,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             }
           ],
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -1752,8 +1752,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1761,9 +1761,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1771,8 +1771,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             },
             {
@@ -1780,9 +1780,9 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/primitives/object/object.js",
               "name": "./src/core/primitives/object/object.js",
               "profile": {
-                "factory": 28,
-                "building": 5,
-                "dependencies": 24
+                "factory": 31,
+                "building": 11,
+                "dependencies": 20
               }
             },
             {
@@ -1790,14 +1790,14 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/recurse/index.js",
               "name": "./src/core/recurse/index.js",
               "profile": {
-                "factory": 25,
+                "factory": 20,
                 "building": 5,
                 "dependencies": 1
               }
             }
           ],
           "profile": {
-            "factory": 3,
+            "factory": 4,
             "building": 1,
             "dependencies": 1
           },
@@ -1856,8 +1856,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1865,9 +1865,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1875,15 +1875,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             }
           ],
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -1940,8 +1940,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -1949,9 +1949,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -1959,15 +1959,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             }
           ],
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -2024,8 +2024,8 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
@@ -2033,9 +2033,9 @@
               "identifier": "/Users/billymoon/projects/fiona/core/index.js",
               "name": "./core/index.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
@@ -2043,15 +2043,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
               "name": "./src/core/index.js",
               "profile": {
-                "factory": 19,
-                "building": 2
+                "factory": 16,
+                "building": 4
               }
             }
           ],
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -2108,15 +2108,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -2173,15 +2173,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -2238,15 +2238,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -2303,15 +2303,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -2368,15 +2368,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -2433,15 +2433,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -2471,8 +2471,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/name/name.js",
           "name": "./src/name/name.js",
           "index": 27,
-          "index2": 25,
-          "size": 3386,
+          "index2": 26,
+          "size": 1238,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -2498,15 +2498,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -2529,14 +2529,88 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 2,
-          "source": "const namedata = {\n  male: {\n    firstname: ['Jack', 'James', 'Oliver', 'Lewis', 'Logan', 'Harry', 'Noah', 'Leo', 'Charlie', 'Alexander', 'Jacob', 'Lucas', 'Harris', 'Mason', 'Alfie', 'Finlay', 'Ethan', 'Daniel', 'Aaron', 'Max', 'Archie', 'Thomas', 'Matthew', 'Adam', 'Rory', 'Nathan', 'Callum', 'Joshua', 'Oscar', 'Brodie', 'Cameron', 'Harrison', 'William', 'Finn', 'Riley', 'Dylan', 'Samuel', 'Jaxon', 'Liam', 'Ollie', 'Jamie', 'Connor', 'Luke', 'Theo', 'Ryan', 'Andrew', 'Caleb', 'Jude', 'Joseph', 'Benjamin', 'Muhammad', 'Arran', 'Angus', 'John', 'David', 'Isaac', 'Cole', 'Hamish', 'Robert', 'Jackson', 'Michael', 'George', 'Kai', 'Leon', 'Kyle', 'Ben', 'Luca', 'Blake', 'Murray', 'Aiden', 'Carter', 'Jake', 'Owen', 'Cooper', 'Freddie', 'Ruaridh', 'Jayden', 'Aidan', 'Fraser', 'Reuben', 'Euan', 'Sam', 'Blair', 'Calvin', 'Christopher', 'Alex', 'Arthur', 'Calum', 'Cody', 'Elliot', 'Josh', 'Lachlan', 'Zac', 'Arlo', 'Kayden', 'Robbie', 'Tyler', 'Conor', 'Henry', 'Hunter', 'Zachary'],\n    title: ['Mr', 'Dr', 'Sir', 'Lord']\n  },\n  female: {\n    firstname: ['Fiona', 'Aria', 'Mia', 'Emily', 'Sophie', 'Ava', 'Amelia', 'Jessica', 'Ella', 'Lucy', 'Charlotte', 'Ellie', 'Lily', 'Grace', 'Sophia', 'Chloe', 'Evie', 'Emma', 'Millie', 'Eilidh', 'Anna', 'Eva', 'Hannah', 'Erin', 'Layla', 'Ruby', 'Orla', 'Harper', 'Georgia', 'Maisie', 'Isabella', 'Katie', 'Zoe', 'Holly', 'Robyn', 'Amber', 'Rosie', 'Zara', 'Emilia', 'Sofia', 'Skye', 'Poppy', 'Daisy', 'Alice', 'Lilly', 'Esme', 'Rebecca', 'Scarlett', 'Ivy', 'Abigail', 'Imogen', 'Leah', 'Amy', 'Lacey', 'Maya', 'Niamh', 'Willow', 'Thea', 'Elizabeth', 'Abbie', 'Lexi', 'Hollie', 'Molly', 'Brooke', 'Gracie', 'Sarah', 'Cara', 'Sienna', 'Mila', 'Phoebe', 'Rose', 'Lola', 'Iona', 'Ayla', 'Megan', 'Paige', 'Kayla', 'Julia', 'Mya', 'Alexandra', 'Arianna', 'Summer', 'Hope', 'Quinn', 'Maria', 'Eve', 'Violet', 'Ariana', 'Arya', 'Bella', 'Elsie', 'Lillie', 'Florence', 'Hanna', 'Madison', 'Amelie', 'Matilda', 'Lauren'],\n    title: ['Miss', 'Mrs', 'Dr', 'Ms', 'Dame']\n  },\n  surname: ['Moon', 'Smith', 'Brown', 'Wilson', 'Robertson', 'Campbell', 'Stewart', 'Thomson', 'Anderson', 'Scott', 'MacDonald', 'Reid', 'Murray', 'Clark', 'Taylor', 'Ross', 'Young', 'Paterson', 'Watson', 'Mitchell', 'Fraser']\n}\n\nconst getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male'))\n\nconst gender = seeded => {\n  return seeded.random() < 0.5 ? 'male' : 'female'\n}\n\nconst title = (seeded, { gender } = {}) => {\n  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].title)\n}\n\nconst firstname = (seeded, { gender } = {}) => {\n  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].firstname)\n}\n\nconst firstnames = (seeded, { gender } = {}) => {\n  return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 3 }), namedata[getGender(gender || seeded.gender())].firstname).join(' ')\n}\n\nconst surname = seeded => {\n  return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 2 }), namedata.surname).join(seeded.bool() ? ' ' : '-')\n}\n\nconst fullname = (seeded, { gender } = {}) => {\n  const myGender = getGender(gender || seeded.gender())\n  return `${seeded.title({ gender: myGender })} ${seeded.firstnames({ gender: myGender })} ${seeded.surname()}`\n}\n\nmodule.exports = {\n  gender,\n  title,\n  firstname,\n  firstnames,\n  surname,\n  fullname,\n  namedata\n}\n"
+          "source": "const namedata = require('./namedata')\n\nconst getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male'))\n\nconst gender = seeded => {\n  return seeded.random() < 0.5 ? 'male' : 'female'\n}\n\nconst title = (seeded, { gender } = {}) => {\n  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].title)\n}\n\nconst firstname = (seeded, { gender } = {}) => {\n  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].firstname)\n}\n\n// TODO: remove firstnames method from name extension\nconst firstnames = (seeded, { gender } = {}) => {\n  return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 3 }), namedata[getGender(gender || seeded.gender())].firstname).join(' ')\n}\n\nconst surname = seeded => {\n  return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 2 }), namedata.surname).join(seeded.bool() ? ' ' : '-')\n}\n\nconst fullname = (seeded, { gender } = {}) => {\n  const myGender = getGender(gender || seeded.gender())\n  return `${seeded.title({ gender: myGender })} ${seeded.firstnames({ gender: myGender })} ${seeded.surname()}`\n}\n\nmodule.exports = {\n  gender,\n  title,\n  firstname,\n  firstnames,\n  surname,\n  fullname,\n  namedata\n}\n"
         },
         {
           "id": 30,
+          "identifier": "/Users/billymoon/projects/fiona/src/name/namedata.js",
+          "name": "./src/name/namedata.js",
+          "index": 28,
+          "index2": 25,
+          "size": 2268,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "/Users/billymoon/projects/fiona/src/name/name.js",
+          "issuerId": 29,
+          "issuerName": "./src/name/name.js",
+          "issuerPath": [
+            {
+              "id": 6,
+              "identifier": "multi ./src/index.js",
+              "name": "multi ./src/index.js",
+              "profile": {
+                "factory": 1,
+                "building": 2
+              }
+            },
+            {
+              "id": 7,
+              "identifier": "/Users/billymoon/projects/fiona/src/index.js",
+              "name": "./src/index.js",
+              "profile": {
+                "factory": 26,
+                "building": 13
+              }
+            },
+            {
+              "id": 29,
+              "identifier": "/Users/billymoon/projects/fiona/src/name/name.js",
+              "name": "./src/name/name.js",
+              "profile": {
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
+              }
+            }
+          ],
+          "profile": {
+            "factory": 9,
+            "building": 4
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": 29,
+              "moduleIdentifier": "/Users/billymoon/projects/fiona/src/name/name.js",
+              "module": "./src/name/name.js",
+              "moduleName": "./src/name/name.js",
+              "type": "cjs require",
+              "userRequest": "./namedata",
+              "loc": "1:17-38"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 3,
+          "source": "const namedata = {\n  male: {\n    firstname: ['Jack', 'James', 'Oliver', 'Lewis', 'Logan', 'Harry', 'Noah', 'Leo', 'Charlie', 'Alexander', 'Jacob', 'Lucas', 'Harris', 'Mason', 'Alfie', 'Finlay', 'Ethan', 'Daniel', 'Aaron', 'Max', 'Archie', 'Thomas', 'Matthew', 'Adam', 'Rory', 'Nathan', 'Callum', 'Joshua', 'Oscar', 'Brodie', 'Cameron', 'Harrison', 'William', 'Finn', 'Riley', 'Dylan', 'Samuel', 'Jaxon', 'Liam', 'Ollie', 'Jamie', 'Connor', 'Luke', 'Theo', 'Ryan', 'Andrew', 'Caleb', 'Jude', 'Joseph', 'Benjamin', 'Muhammad', 'Arran', 'Angus', 'John', 'David', 'Isaac', 'Cole', 'Hamish', 'Robert', 'Jackson', 'Michael', 'George', 'Kai', 'Leon', 'Kyle', 'Ben', 'Luca', 'Blake', 'Murray', 'Aiden', 'Carter', 'Jake', 'Owen', 'Cooper', 'Freddie', 'Ruaridh', 'Jayden', 'Aidan', 'Fraser', 'Reuben', 'Euan', 'Sam', 'Blair', 'Calvin', 'Christopher', 'Alex', 'Arthur', 'Calum', 'Cody', 'Elliot', 'Josh', 'Lachlan', 'Zac', 'Arlo', 'Kayden', 'Robbie', 'Tyler', 'Conor', 'Henry', 'Hunter', 'Zachary'],\n    title: ['Mr', 'Dr', 'Sir', 'Lord']\n  },\n  female: {\n    firstname: ['Fiona', 'Aria', 'Mia', 'Emily', 'Sophie', 'Ava', 'Amelia', 'Jessica', 'Ella', 'Lucy', 'Charlotte', 'Ellie', 'Lily', 'Grace', 'Sophia', 'Chloe', 'Evie', 'Emma', 'Millie', 'Eilidh', 'Anna', 'Eva', 'Hannah', 'Erin', 'Layla', 'Ruby', 'Orla', 'Harper', 'Georgia', 'Maisie', 'Isabella', 'Katie', 'Zoe', 'Holly', 'Robyn', 'Amber', 'Rosie', 'Zara', 'Emilia', 'Sofia', 'Skye', 'Poppy', 'Daisy', 'Alice', 'Lilly', 'Esme', 'Rebecca', 'Scarlett', 'Ivy', 'Abigail', 'Imogen', 'Leah', 'Amy', 'Lacey', 'Maya', 'Niamh', 'Willow', 'Thea', 'Elizabeth', 'Abbie', 'Lexi', 'Hollie', 'Molly', 'Brooke', 'Gracie', 'Sarah', 'Cara', 'Sienna', 'Mila', 'Phoebe', 'Rose', 'Lola', 'Iona', 'Ayla', 'Megan', 'Paige', 'Kayla', 'Julia', 'Mya', 'Alexandra', 'Arianna', 'Summer', 'Hope', 'Quinn', 'Maria', 'Eve', 'Violet', 'Ariana', 'Arya', 'Bella', 'Elsie', 'Lillie', 'Florence', 'Hanna', 'Madison', 'Amelie', 'Matilda', 'Lauren'],\n    title: ['Miss', 'Mrs', 'Dr', 'Ms', 'Dame']\n  },\n  surname: ['Moon', 'Smith', 'Brown', 'Wilson', 'Robertson', 'Campbell', 'Stewart', 'Thomson', 'Anderson', 'Scott', 'MacDonald', 'Reid', 'Murray', 'Clark', 'Taylor', 'Ross', 'Young', 'Paterson', 'Watson', 'Mitchell', 'Fraser']\n}\n\nmodule.exports = namedata\n"
+        },
+        {
+          "id": 31,
           "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
           "name": "./src/regex/regex.js",
-          "index": 28,
-          "index2": 33,
+          "index": 29,
+          "index2": 34,
           "size": 429,
           "cacheable": true,
           "built": true,
@@ -2563,15 +2637,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -2597,11 +2671,11 @@
           "source": "// TODO: should regex be part of core?\nconst RandExp = require('randexp')\n\nconst regex = (seeded, regex = /[A-F0-9]{16}/) => {\n  const myRandExp = new RandExp(regex)\n  // redefine RandExp's random number generator to use fiona's prng\n  myRandExp.randInt = (a, b) => a + Math.floor(seeded.random() * (1 + b - a))\n  // return the randomly generated string, not the RandExp object\n  return myRandExp.gen()\n}\n\nmodule.exports = regex\n"
         },
         {
-          "id": 31,
+          "id": 32,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
           "name": "./node_modules/randexp/lib/randexp.js",
-          "index": 29,
-          "index2": 32,
+          "index": 30,
+          "index2": 33,
           "size": 6308,
           "cacheable": true,
           "built": true,
@@ -2611,7 +2685,7 @@
             0
           ],
           "issuer": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-          "issuerId": 30,
+          "issuerId": 31,
           "issuerName": "./src/regex/regex.js",
           "issuerPath": [
             {
@@ -2628,23 +2702,23 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             },
             {
-              "id": 30,
+              "id": 31,
               "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
               "name": "./src/regex/regex.js",
               "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             }
           ],
           "profile": {
-            "factory": 14,
+            "factory": 12,
             "building": 9
           },
           "failed": false,
@@ -2653,7 +2727,7 @@
           "assets": [],
           "reasons": [
             {
-              "moduleId": 30,
+              "moduleId": 31,
               "moduleIdentifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
               "module": "./src/regex/regex.js",
               "moduleName": "./src/regex/regex.js",
@@ -2671,11 +2745,11 @@
           "source": "'use strict';\n\nconst ret    = require('ret');\nconst DRange = require('drange');\nconst types  = ret.types;\n\n\nmodule.exports = class RandExp {\n  /**\n   * @constructor\n   * @param {RegExp|String} regexp\n   * @param {String} m\n   */\n  constructor(regexp, m) {\n    this._setDefaults(regexp);\n    if (regexp instanceof RegExp) {\n      this.ignoreCase = regexp.ignoreCase;\n      this.multiline = regexp.multiline;\n      regexp = regexp.source;\n\n    } else if (typeof regexp === 'string') {\n      this.ignoreCase = m && m.indexOf('i') !== -1;\n      this.multiline = m && m.indexOf('m') !== -1;\n    } else {\n      throw new Error('Expected a regexp or string');\n    }\n\n    this.tokens = ret(regexp);\n  }\n\n\n  /**\n   * Checks if some custom properties have been set for this regexp.\n   *\n   * @param {RandExp} randexp\n   * @param {RegExp} regexp\n   */\n  _setDefaults(regexp) {\n    // When a repetitional token has its max set to Infinite,\n    // randexp won't actually generate a random amount between min and Infinite\n    // instead it will see Infinite as min + 100.\n    this.max = regexp.max != null ? regexp.max :\n      RandExp.prototype.max != null ? RandExp.prototype.max : 100;\n\n    // This allows expanding to include additional characters\n    // for instance: RandExp.defaultRange.add(0, 65535);\n    this.defaultRange = regexp.defaultRange ?\n      regexp.defaultRange : this.defaultRange.clone();\n\n    if (regexp.randInt) {\n      this.randInt = regexp.randInt;\n    }\n  }\n\n\n  /**\n   * Generates the random string.\n   *\n   * @return {String}\n   */\n  gen() {\n    return this._gen(this.tokens, []);\n  }\n\n\n  /**\n   * Generate random string modeled after given tokens.\n   *\n   * @param {Object} token\n   * @param {Array.<String>} groups\n   * @return {String}\n   */\n  _gen(token, groups) {\n    var stack, str, n, i, l;\n\n    switch (token.type) {\n      case types.ROOT:\n      case types.GROUP:\n        // Ignore lookaheads for now.\n        if (token.followedBy || token.notFollowedBy) { return ''; }\n\n        // Insert placeholder until group string is generated.\n        if (token.remember && token.groupNumber === undefined) {\n          token.groupNumber = groups.push(null) - 1;\n        }\n\n        stack = token.options ?\n          this._randSelect(token.options) : token.stack;\n\n        str = '';\n        for (i = 0, l = stack.length; i < l; i++) {\n          str += this._gen(stack[i], groups);\n        }\n\n        if (token.remember) {\n          groups[token.groupNumber] = str;\n        }\n        return str;\n\n      case types.POSITION:\n        // Do nothing for now.\n        return '';\n\n      case types.SET:\n        var expandedSet = this._expand(token);\n        if (!expandedSet.length) { return ''; }\n        return String.fromCharCode(this._randSelect(expandedSet));\n\n      case types.REPETITION:\n        // Randomly generate number between min and max.\n        n = this.randInt(token.min,\n          token.max === Infinity ? token.min + this.max : token.max);\n\n        str = '';\n        for (i = 0; i < n; i++) {\n          str += this._gen(token.value, groups);\n        }\n\n        return str;\n\n      case types.REFERENCE:\n        return groups[token.value - 1] || '';\n\n      case types.CHAR:\n        var code = this.ignoreCase && this._randBool() ?\n          this._toOtherCase(token.value) : token.value;\n        return String.fromCharCode(code);\n    }\n  }\n\n\n  /**\n   * If code is alphabetic, converts to other case.\n   * If not alphabetic, returns back code.\n   *\n   * @param {Number} code\n   * @return {Number}\n   */\n  _toOtherCase(code) {\n    return code + (97 <= code && code <= 122 ? -32 :\n      65 <= code && code <= 90  ?  32 : 0);\n  }\n\n\n  /**\n   * Randomly returns a true or false value.\n   *\n   * @return {Boolean}\n   */\n  _randBool() {\n    return !this.randInt(0, 1);\n  }\n\n\n  /**\n   * Randomly selects and returns a value from the array.\n   *\n   * @param {Array.<Object>} arr\n   * @return {Object}\n   */\n  _randSelect(arr) {\n    if (arr instanceof DRange) {\n      return arr.index(this.randInt(0, arr.length - 1));\n    }\n    return arr[this.randInt(0, arr.length - 1)];\n  }\n\n\n  /**\n   * expands a token to a DiscontinuousRange of characters which has a\n   * length and an index function (for random selecting)\n   *\n   * @param {Object} token\n   * @return {DiscontinuousRange}\n   */\n  _expand(token) {\n    if (token.type === ret.types.CHAR) {\n      return new DRange(token.value);\n    } else if (token.type === ret.types.RANGE) {\n      return new DRange(token.from, token.to);\n    } else {\n      let drange = new DRange();\n      for (let i = 0; i < token.set.length; i++) {\n        let subrange = this._expand(token.set[i]);\n        drange.add(subrange);\n        if (this.ignoreCase) {\n          for (let j = 0; j < subrange.length; j++) {\n            let code = subrange.index(j);\n            let otherCaseCode = this._toOtherCase(code);\n            if (code !== otherCaseCode) {\n              drange.add(otherCaseCode);\n            }\n          }\n        }\n      }\n      if (token.not) {\n        return this.defaultRange.clone().subtract(drange);\n      } else {\n        return this.defaultRange.clone().intersect(drange);\n      }\n    }\n  }\n\n\n  /**\n   * Randomly generates and returns a number between a and b (inclusive).\n   *\n   * @param {Number} a\n   * @param {Number} b\n   * @return {Number}\n   */\n  randInt(a, b) {\n    return a + Math.floor(Math.random() * (1 + b - a));\n  }\n\n\n  /**\n   * Default range of characters to generate from.\n   */\n  get defaultRange() {\n    return this._range = this._range || new DRange(32, 126);\n  }\n\n  set defaultRange(range) {\n    this._range = range;\n  }\n\n\n  /**\n   *\n   * Enables use of randexp with a shorter call.\n   *\n   * @param {RegExp|String| regexp}\n   * @param {String} m\n   * @return {String}\n   */\n  static randexp(regexp, m) {\n    var randexp;\n    if(typeof regexp === 'string') {\n      regexp = new RegExp(regexp, m);\n    }\n\n    if (regexp._randexp === undefined) {\n      randexp = new RandExp(regexp, m);\n      regexp._randexp = randexp;\n    } else {\n      randexp = regexp._randexp;\n      randexp._setDefaults(regexp);\n    }\n    return randexp.gen();\n  }\n\n\n  /**\n   * Enables sugary /regexp/.gen syntax.\n   */\n  static sugar() {\n    /* eshint freeze:false */\n    RegExp.prototype.gen = function() {\n      return RandExp.randexp(this);\n    };\n  }\n};\n"
         },
         {
-          "id": 32,
+          "id": 33,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
           "name": "./node_modules/ret/lib/index.js",
-          "index": 30,
-          "index2": 30,
+          "index": 31,
+          "index2": 31,
           "size": 6514,
           "cacheable": true,
           "built": true,
@@ -2685,7 +2759,7 @@
             0
           ],
           "issuer": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-          "issuerId": 31,
+          "issuerId": 32,
           "issuerName": "./node_modules/randexp/lib/randexp.js",
           "issuerPath": [
             {
@@ -2702,33 +2776,33 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
-              }
-            },
-            {
-              "id": 30,
-              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-              "name": "./src/regex/regex.js",
-              "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 26,
+                "building": 13
               }
             },
             {
               "id": 31,
+              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+              "name": "./src/regex/regex.js",
+              "profile": {
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
+              }
+            },
+            {
+              "id": 32,
               "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
               "name": "./node_modules/randexp/lib/randexp.js",
               "profile": {
-                "factory": 14,
+                "factory": 12,
                 "building": 9
               }
             }
           ],
           "profile": {
-            "factory": 10,
-            "building": 14
+            "factory": 12,
+            "building": 16
           },
           "failed": false,
           "errors": 0,
@@ -2736,7 +2810,7 @@
           "assets": [],
           "reasons": [
             {
-              "moduleId": 31,
+              "moduleId": 32,
               "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
               "module": "./node_modules/randexp/lib/randexp.js",
               "moduleName": "./node_modules/randexp/lib/randexp.js",
@@ -2754,11 +2828,11 @@
           "source": "const util      = require('./util');\nconst types     = require('./types');\nconst sets      = require('./sets');\nconst positions = require('./positions');\n\n\nmodule.exports = (regexpStr) => {\n  var i = 0, l, c,\n    start = { type: types.ROOT, stack: []},\n\n    // Keep track of last clause/group and stack.\n    lastGroup = start,\n    last = start.stack,\n    groupStack = [];\n\n\n  var repeatErr = (i) => {\n    util.error(regexpStr, `Nothing to repeat at column ${i - 1}`);\n  };\n\n  // Decode a few escaped characters.\n  var str = util.strToChars(regexpStr);\n  l = str.length;\n\n  // Iterate through each character in string.\n  while (i < l) {\n    c = str[i++];\n\n    switch (c) {\n      // Handle escaped characters, inclues a few sets.\n      case '\\\\':\n        c = str[i++];\n\n        switch (c) {\n          case 'b':\n            last.push(positions.wordBoundary());\n            break;\n\n          case 'B':\n            last.push(positions.nonWordBoundary());\n            break;\n\n          case 'w':\n            last.push(sets.words());\n            break;\n\n          case 'W':\n            last.push(sets.notWords());\n            break;\n\n          case 'd':\n            last.push(sets.ints());\n            break;\n\n          case 'D':\n            last.push(sets.notInts());\n            break;\n\n          case 's':\n            last.push(sets.whitespace());\n            break;\n\n          case 'S':\n            last.push(sets.notWhitespace());\n            break;\n\n          default:\n            // Check if c is integer.\n            // In which case it's a reference.\n            if (/\\d/.test(c)) {\n              last.push({ type: types.REFERENCE, value: parseInt(c, 10) });\n\n            // Escaped character.\n            } else {\n              last.push({ type: types.CHAR, value: c.charCodeAt(0) });\n            }\n        }\n\n        break;\n\n\n      // Positionals.\n      case '^':\n        last.push(positions.begin());\n        break;\n\n      case '$':\n        last.push(positions.end());\n        break;\n\n\n      // Handle custom sets.\n      case '[':\n        // Check if this class is 'anti' i.e. [^abc].\n        var not;\n        if (str[i] === '^') {\n          not = true;\n          i++;\n        } else {\n          not = false;\n        }\n\n        // Get all the characters in class.\n        var classTokens = util.tokenizeClass(str.slice(i), regexpStr);\n\n        // Increase index by length of class.\n        i += classTokens[1];\n        last.push({\n          type: types.SET,\n          set: classTokens[0],\n          not,\n        });\n\n        break;\n\n\n      // Class of any character except \\n.\n      case '.':\n        last.push(sets.anyChar());\n        break;\n\n\n      // Push group onto stack.\n      case '(':\n        // Create group.\n        var group = {\n          type: types.GROUP,\n          stack: [],\n          remember: true,\n        };\n\n        c = str[i];\n\n        // If if this is a special kind of group.\n        if (c === '?') {\n          c = str[i + 1];\n          i += 2;\n\n          // Match if followed by.\n          if (c === '=') {\n            group.followedBy = true;\n\n          // Match if not followed by.\n          } else if (c === '!') {\n            group.notFollowedBy = true;\n\n          } else if (c !== ':') {\n            util.error(regexpStr,\n              `Invalid group, character '${c}'` +\n              ` after '?' at column ${i - 1}`);\n          }\n\n          group.remember = false;\n        }\n\n        // Insert subgroup into current group stack.\n        last.push(group);\n\n        // Remember the current group for when the group closes.\n        groupStack.push(lastGroup);\n\n        // Make this new group the current group.\n        lastGroup = group;\n        last = group.stack;\n        break;\n\n\n      // Pop group out of stack.\n      case ')':\n        if (groupStack.length === 0) {\n          util.error(regexpStr, `Unmatched ) at column ${i - 1}`);\n        }\n        lastGroup = groupStack.pop();\n\n        // Check if this group has a PIPE.\n        // To get back the correct last stack.\n        last = lastGroup.options ?\n          lastGroup.options[lastGroup.options.length - 1] : lastGroup.stack;\n        break;\n\n\n      // Use pipe character to give more choices.\n      case '|':\n        // Create array where options are if this is the first PIPE\n        // in this clause.\n        if (!lastGroup.options) {\n          lastGroup.options = [lastGroup.stack];\n          delete lastGroup.stack;\n        }\n\n        // Create a new stack and add to options for rest of clause.\n        var stack = [];\n        lastGroup.options.push(stack);\n        last = stack;\n        break;\n\n\n      // Repetition.\n      // For every repetition, remove last element from last stack\n      // then insert back a RANGE object.\n      // This design is chosen because there could be more than\n      // one repetition symbols in a regex i.e. `a?+{2,3}`.\n      case '{':\n        var rs = /^(\\d+)(,(\\d+)?)?\\}/.exec(str.slice(i)), min, max;\n        if (rs !== null) {\n          if (last.length === 0) {\n            repeatErr(i);\n          }\n          min = parseInt(rs[1], 10);\n          max = rs[2] ? rs[3] ? parseInt(rs[3], 10) : Infinity : min;\n          i += rs[0].length;\n\n          last.push({\n            type: types.REPETITION,\n            min,\n            max,\n            value: last.pop(),\n          });\n        } else {\n          last.push({\n            type: types.CHAR,\n            value: 123,\n          });\n        }\n        break;\n\n      case '?':\n        if (last.length === 0) {\n          repeatErr(i);\n        }\n        last.push({\n          type: types.REPETITION,\n          min: 0,\n          max: 1,\n          value: last.pop(),\n        });\n        break;\n\n      case '+':\n        if (last.length === 0) {\n          repeatErr(i);\n        }\n        last.push({\n          type: types.REPETITION,\n          min: 1,\n          max: Infinity,\n          value: last.pop(),\n        });\n        break;\n\n      case '*':\n        if (last.length === 0) {\n          repeatErr(i);\n        }\n        last.push({\n          type: types.REPETITION,\n          min: 0,\n          max: Infinity,\n          value: last.pop(),\n        });\n        break;\n\n\n      // Default is a character that is not `\\[](){}?+*^$`.\n      default:\n        last.push({\n          type: types.CHAR,\n          value: c.charCodeAt(0),\n        });\n    }\n\n  }\n\n  // Check if any groups have not been closed.\n  if (groupStack.length !== 0) {\n    util.error(regexpStr, 'Unterminated group');\n  }\n\n  return start;\n};\n\nmodule.exports.types = types;\n"
         },
         {
-          "id": 33,
+          "id": 34,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/util.js",
           "name": "./node_modules/ret/lib/util.js",
-          "index": 31,
-          "index2": 28,
+          "index": 32,
+          "index2": 29,
           "size": 2436,
           "cacheable": true,
           "built": true,
@@ -2768,7 +2842,7 @@
             0
           ],
           "issuer": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
-          "issuerId": 32,
+          "issuerId": 33,
           "issuerName": "./node_modules/ret/lib/index.js",
           "issuerPath": [
             {
@@ -2785,42 +2859,42 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
-              }
-            },
-            {
-              "id": 30,
-              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-              "name": "./src/regex/regex.js",
-              "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 26,
+                "building": 13
               }
             },
             {
               "id": 31,
-              "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-              "name": "./node_modules/randexp/lib/randexp.js",
+              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+              "name": "./src/regex/regex.js",
               "profile": {
-                "factory": 14,
-                "building": 9
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
               "id": 32,
+              "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
+              "name": "./node_modules/randexp/lib/randexp.js",
+              "profile": {
+                "factory": 12,
+                "building": 9
+              }
+            },
+            {
+              "id": 33,
               "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
               "name": "./node_modules/ret/lib/index.js",
               "profile": {
-                "factory": 10,
-                "building": 14
+                "factory": 12,
+                "building": 16
               }
             }
           ],
           "profile": {
-            "factory": 10,
-            "building": 12,
+            "factory": 15,
+            "building": 11,
             "dependencies": 0
           },
           "failed": false,
@@ -2829,7 +2903,7 @@
           "assets": [],
           "reasons": [
             {
-              "moduleId": 32,
+              "moduleId": 33,
               "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
               "module": "./node_modules/ret/lib/index.js",
               "moduleName": "./node_modules/ret/lib/index.js",
@@ -2847,11 +2921,11 @@
           "source": "const types = require('./types');\nconst sets  = require('./sets');\n\n\nconst CTRL = '@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^ ?';\nconst SLSH = { '0': 0, 't': 9, 'n': 10, 'v': 11, 'f': 12, 'r': 13 };\n\n/**\n * Finds character representations in str and convert all to\n * their respective characters\n *\n * @param {String} str\n * @return {String}\n */\nexports.strToChars = function(str) {\n  /* jshint maxlen: false */\n  var chars_regex = /(\\[\\\\b\\])|(\\\\)?\\\\(?:u([A-F0-9]{4})|x([A-F0-9]{2})|(0?[0-7]{2})|c([@A-Z[\\\\\\]^?])|([0tnvfr]))/g;\n  str = str.replace(chars_regex, function(s, b, lbs, a16, b16, c8, dctrl, eslsh) {\n    if (lbs) {\n      return s;\n    }\n\n    var code = b ? 8 :\n      a16   ? parseInt(a16, 16) :\n      b16   ? parseInt(b16, 16) :\n      c8    ? parseInt(c8,   8) :\n      dctrl ? CTRL.indexOf(dctrl) :\n      SLSH[eslsh];\n\n    var c = String.fromCharCode(code);\n\n    // Escape special regex characters.\n    if (/[[\\]{}^$.|?*+()]/.test(c)) {\n      c = '\\\\' + c;\n    }\n\n    return c;\n  });\n\n  return str;\n};\n\n\n/**\n * turns class into tokens\n * reads str until it encounters a ] not preceeded by a \\\n *\n * @param {String} str\n * @param {String} regexpStr\n * @return {Array.<Array.<Object>, Number>}\n */\nexports.tokenizeClass = (str, regexpStr) => {\n  /* jshint maxlen: false */\n  var tokens = [];\n  var regexp = /\\\\(?:(w)|(d)|(s)|(W)|(D)|(S))|((?:(?:\\\\)(.)|([^\\]\\\\]))-(?:\\\\)?([^\\]]))|(\\])|(?:\\\\)?([^])/g;\n  var rs, c;\n\n\n  while ((rs = regexp.exec(str)) != null) {\n    if (rs[1]) {\n      tokens.push(sets.words());\n\n    } else if (rs[2]) {\n      tokens.push(sets.ints());\n\n    } else if (rs[3]) {\n      tokens.push(sets.whitespace());\n\n    } else if (rs[4]) {\n      tokens.push(sets.notWords());\n\n    } else if (rs[5]) {\n      tokens.push(sets.notInts());\n\n    } else if (rs[6]) {\n      tokens.push(sets.notWhitespace());\n\n    } else if (rs[7]) {\n      tokens.push({\n        type: types.RANGE,\n        from: (rs[8] || rs[9]).charCodeAt(0),\n        to: rs[10].charCodeAt(0),\n      });\n\n    } else if ((c = rs[12])) {\n      tokens.push({\n        type: types.CHAR,\n        value: c.charCodeAt(0),\n      });\n\n    } else {\n      return [tokens, regexp.lastIndex];\n    }\n  }\n\n  exports.error(regexpStr, 'Unterminated character class');\n};\n\n\n/**\n * Shortcut to throw errors.\n *\n * @param {String} regexp\n * @param {String} msg\n */\nexports.error = (regexp, msg) => {\n  throw new SyntaxError('Invalid regular expression: /' + regexp + '/: ' + msg);\n};\n"
         },
         {
-          "id": 34,
+          "id": 35,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/positions.js",
           "name": "./node_modules/ret/lib/positions.js",
-          "index": 34,
-          "index2": 29,
+          "index": 35,
+          "index2": 30,
           "size": 297,
           "cacheable": true,
           "built": true,
@@ -2861,7 +2935,7 @@
             0
           ],
           "issuer": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
-          "issuerId": 32,
+          "issuerId": 33,
           "issuerName": "./node_modules/ret/lib/index.js",
           "issuerPath": [
             {
@@ -2878,42 +2952,42 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
-              }
-            },
-            {
-              "id": 30,
-              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-              "name": "./src/regex/regex.js",
-              "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 26,
+                "building": 13
               }
             },
             {
               "id": 31,
-              "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-              "name": "./node_modules/randexp/lib/randexp.js",
+              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+              "name": "./src/regex/regex.js",
               "profile": {
-                "factory": 14,
-                "building": 9
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
               }
             },
             {
               "id": 32,
+              "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
+              "name": "./node_modules/randexp/lib/randexp.js",
+              "profile": {
+                "factory": 12,
+                "building": 9
+              }
+            },
+            {
+              "id": 33,
               "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
               "name": "./node_modules/ret/lib/index.js",
               "profile": {
-                "factory": 10,
-                "building": 14
+                "factory": 12,
+                "building": 16
               }
             }
           ],
           "profile": {
-            "factory": 10,
-            "building": 12,
+            "factory": 15,
+            "building": 11,
             "dependencies": 0
           },
           "failed": false,
@@ -2922,7 +2996,7 @@
           "assets": [],
           "reasons": [
             {
-              "moduleId": 32,
+              "moduleId": 33,
               "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
               "module": "./node_modules/ret/lib/index.js",
               "moduleName": "./node_modules/ret/lib/index.js",
@@ -2940,11 +3014,11 @@
           "source": "const types = require('./types');\nexports.wordBoundary = () => ({ type: types.POSITION, value: 'b' });\nexports.nonWordBoundary = () => ({ type: types.POSITION, value: 'B' });\nexports.begin = () => ({ type: types.POSITION, value: '^' });\nexports.end = () => ({ type: types.POSITION, value: '$' });\n"
         },
         {
-          "id": 35,
+          "id": 36,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/drange/lib/index.js",
           "name": "./node_modules/drange/lib/index.js",
-          "index": 35,
-          "index2": 31,
+          "index": 36,
+          "index2": 32,
           "size": 4918,
           "cacheable": true,
           "built": true,
@@ -2954,7 +3028,7 @@
             0
           ],
           "issuer": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-          "issuerId": 31,
+          "issuerId": 32,
           "issuerName": "./node_modules/randexp/lib/randexp.js",
           "issuerPath": [
             {
@@ -2971,33 +3045,33 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
-              }
-            },
-            {
-              "id": 30,
-              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-              "name": "./src/regex/regex.js",
-              "profile": {
-                "factory": 34,
-                "building": 1,
-                "dependencies": 18
+                "factory": 26,
+                "building": 13
               }
             },
             {
               "id": 31,
+              "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+              "name": "./src/regex/regex.js",
+              "profile": {
+                "factory": 37,
+                "building": 2,
+                "dependencies": 20
+              }
+            },
+            {
+              "id": 32,
               "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
               "name": "./node_modules/randexp/lib/randexp.js",
               "profile": {
-                "factory": 14,
+                "factory": 12,
                 "building": 9
               }
             }
           ],
           "profile": {
-            "factory": 10,
-            "building": 14
+            "factory": 12,
+            "building": 16
           },
           "failed": false,
           "errors": 0,
@@ -3005,7 +3079,7 @@
           "assets": [],
           "reasons": [
             {
-              "moduleId": 31,
+              "moduleId": 32,
               "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
               "module": "./node_modules/randexp/lib/randexp.js",
               "moduleName": "./node_modules/randexp/lib/randexp.js",
@@ -3023,11 +3097,11 @@
           "source": "'use strict';\n/* eslint indent: 4 */\n\n\n// Private helper class\nclass SubRange {\n    constructor(low, high) {\n        this.low = low;\n        this.high = high;\n        this.length = 1 + high - low;\n    }\n\n    overlaps(range) {\n        return !(this.high < range.low || this.low > range.high);\n    }\n\n    touches(range) {\n        return !(this.high + 1 < range.low || this.low - 1 > range.high);\n    }\n\n    // Returns inclusive combination of SubRanges as a SubRange.\n    add(range) {\n        return new SubRange(\n            Math.min(this.low, range.low),\n            Math.max(this.high, range.high)\n        );\n    }\n\n    // Returns subtraction of SubRanges as an array of SubRanges.\n    // (There's a case where subtraction divides it in 2)\n    subtract(range) {\n        if (range.low <= this.low && range.high >= this.high) {\n            return [];\n        } else if (range.low > this.low && range.high < this.high) {\n            return [\n                new SubRange(this.low, range.low - 1),\n                new SubRange(range.high + 1, this.high)\n            ];\n        } else if (range.low <= this.low) {\n            return [new SubRange(range.high + 1, this.high)];\n        } else {\n            return [new SubRange(this.low, range.low - 1)];\n        }\n    }\n\n    toString() {\n        return this.low == this.high ?\n            this.low.toString() : this.low + '-' + this.high;\n    }\n}\n\n\nclass DRange {\n    constructor(a, b) {\n        this.ranges = [];\n        this.length = 0;\n        if (a != null) this.add(a, b);\n    }\n\n    _update_length() {\n        this.length = this.ranges.reduce((previous, range) => {\n            return previous + range.length;\n        }, 0);\n    }\n\n    add(a, b) {\n        var _add = (subrange) => {\n            var i = 0;\n            while (i < this.ranges.length && !subrange.touches(this.ranges[i])) {\n                i++;\n            }\n            var newRanges = this.ranges.slice(0, i);\n            while (i < this.ranges.length && subrange.touches(this.ranges[i])) {\n                subrange = subrange.add(this.ranges[i]);\n                i++;\n            }\n            newRanges.push(subrange);\n            this.ranges = newRanges.concat(this.ranges.slice(i));\n            this._update_length();\n        }\n\n        if (a instanceof DRange) {\n            a.ranges.forEach(_add);\n        } else {\n            if (b == null) b = a;\n            _add(new SubRange(a, b));\n        }\n        return this;\n    }\n\n    subtract(a, b) {\n        var _subtract = (subrange) => {\n            var i = 0;\n            while (i < this.ranges.length && !subrange.overlaps(this.ranges[i])) {\n                i++;\n            }\n            var newRanges = this.ranges.slice(0, i);\n            while (i < this.ranges.length && subrange.overlaps(this.ranges[i])) {\n                newRanges = newRanges.concat(this.ranges[i].subtract(subrange));\n                i++;\n            }\n            this.ranges = newRanges.concat(this.ranges.slice(i));\n            this._update_length();\n        };\n\n        if (a instanceof DRange) {\n            a.ranges.forEach(_subtract);\n        } else {\n            if (b == null) b = a;\n            _subtract(new SubRange(a, b));\n        }\n        return this;\n    }\n\n    intersect(a, b) {\n        var newRanges = [];\n        var _intersect = (subrange) => {\n            var i = 0;\n            while (i < this.ranges.length && !subrange.overlaps(this.ranges[i])) {\n                i++;\n            }\n            while (i < this.ranges.length && subrange.overlaps(this.ranges[i])) {\n                var low = Math.max(this.ranges[i].low, subrange.low);\n                var high = Math.min(this.ranges[i].high, subrange.high);\n                newRanges.push(new SubRange(low, high));\n                i++;\n            }\n        };\n\n        if (a instanceof DRange) {\n            a.ranges.forEach(_intersect);\n        } else {\n            if (b == null) b = a;\n            _intersect(new SubRange(a, b));\n        }\n        this.ranges = newRanges;\n        this._update_length();\n        return this;\n    }\n\n    index(index) {\n        var i = 0;\n        while (i < this.ranges.length && this.ranges[i].length <= index) {\n            index -= this.ranges[i].length;\n            i++;\n        }\n        return this.ranges[i].low + index;\n    }\n\n    toString() {\n        return '[ ' + this.ranges.join(', ') + ' ]';\n    }\n\n    clone() {\n        return new DRange(this);\n    }\n\n    numbers() {\n        return this.ranges.reduce((result, subrange) => {\n            var i = subrange.low;\n            while (i <= subrange.high) {\n                result.push(i);\n                i++;\n            }\n            return result;\n        }, []);\n    }\n\n    subranges() {\n        return this.ranges.map((subrange) => ({\n            low: subrange.low,\n            high: subrange.high,\n            length: 1 + subrange.high - subrange.low\n        }));\n    }\n}\n\nmodule.exports = DRange;\n"
         },
         {
-          "id": 36,
+          "id": 37,
           "identifier": "/Users/billymoon/projects/fiona/src/shuffle/shuffle.js",
           "name": "./src/shuffle/shuffle.js",
-          "index": 36,
-          "index2": 34,
+          "index": 37,
+          "index2": 35,
           "size": 139,
           "cacheable": true,
           "built": true,
@@ -3054,15 +3128,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -3088,11 +3162,11 @@
           "source": "const shuffle = (seeded, arr, { qty } = {}) => seeded.choose(typeof qty !== 'undefined' ? qty : arr.length, arr)\n\nmodule.exports = shuffle\n"
         },
         {
-          "id": 37,
+          "id": 38,
           "identifier": "/Users/billymoon/projects/fiona/src/find/find.js",
           "name": "./src/find/find.js",
-          "index": 37,
-          "index2": 35,
+          "index": 38,
+          "index2": 36,
           "size": 418,
           "cacheable": true,
           "built": true,
@@ -3119,15 +3193,15 @@
               "identifier": "/Users/billymoon/projects/fiona/src/index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 25,
-                "building": 12
+                "factory": 26,
+                "building": 13
               }
             }
           ],
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           },
           "failed": false,
           "errors": 0,
@@ -3171,8 +3245,8 @@
       "id": 0,
       "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/types.js",
       "name": "./node_modules/ret/lib/types.js",
-      "index": 32,
-      "index2": 26,
+      "index": 33,
+      "index2": 27,
       "size": 166,
       "cacheable": true,
       "built": true,
@@ -3182,7 +3256,7 @@
         0
       ],
       "issuer": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
-      "issuerId": 32,
+      "issuerId": 33,
       "issuerName": "./node_modules/ret/lib/index.js",
       "issuerPath": [
         {
@@ -3199,42 +3273,42 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
-          }
-        },
-        {
-          "id": 30,
-          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-          "name": "./src/regex/regex.js",
-          "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 26,
+            "building": 13
           }
         },
         {
           "id": 31,
-          "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-          "name": "./node_modules/randexp/lib/randexp.js",
+          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+          "name": "./src/regex/regex.js",
           "profile": {
-            "factory": 14,
-            "building": 9
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
           "id": 32,
+          "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
+          "name": "./node_modules/randexp/lib/randexp.js",
+          "profile": {
+            "factory": 12,
+            "building": 9
+          }
+        },
+        {
+          "id": 33,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
           "name": "./node_modules/ret/lib/index.js",
           "profile": {
-            "factory": 10,
-            "building": 14
+            "factory": 12,
+            "building": 16
           }
         }
       ],
       "profile": {
-        "factory": 10,
-        "building": 12,
+        "factory": 15,
+        "building": 11,
         "dependencies": 0
       },
       "failed": false,
@@ -3252,7 +3326,7 @@
           "loc": "1:14-32"
         },
         {
-          "moduleId": 32,
+          "moduleId": 33,
           "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
           "module": "./node_modules/ret/lib/index.js",
           "moduleName": "./node_modules/ret/lib/index.js",
@@ -3261,7 +3335,7 @@
           "loc": "2:18-36"
         },
         {
-          "moduleId": 33,
+          "moduleId": 34,
           "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/util.js",
           "module": "./node_modules/ret/lib/util.js",
           "moduleName": "./node_modules/ret/lib/util.js",
@@ -3270,7 +3344,7 @@
           "loc": "1:14-32"
         },
         {
-          "moduleId": 34,
+          "moduleId": 35,
           "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/positions.js",
           "module": "./node_modules/ret/lib/positions.js",
           "moduleName": "./node_modules/ret/lib/positions.js",
@@ -3319,8 +3393,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -3328,9 +3402,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -3338,8 +3412,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         },
         {
@@ -3347,14 +3421,14 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/primitives/object/object.js",
           "name": "./src/core/primitives/object/object.js",
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           }
         }
       ],
       "profile": {
-        "factory": 25,
+        "factory": 20,
         "building": 5,
         "dependencies": 1
       },
@@ -3431,8 +3505,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -3440,9 +3514,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -3450,15 +3524,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         }
       ],
       "profile": {
-        "factory": 28,
-        "building": 5,
-        "dependencies": 24
+        "factory": 31,
+        "building": 11,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -3524,8 +3598,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -3533,9 +3607,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -3543,15 +3617,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         }
       ],
       "profile": {
-        "factory": 28,
-        "building": 5,
-        "dependencies": 24
+        "factory": 31,
+        "building": 11,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -3617,8 +3691,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -3626,15 +3700,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/choose/choose.js",
           "name": "./src/choose/choose.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         }
       ],
       "profile": {
-        "factory": 19,
-        "building": 6
+        "factory": 21,
+        "building": 3
       },
       "failed": false,
       "errors": 0,
@@ -3672,8 +3746,8 @@
       "id": 5,
       "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/sets.js",
       "name": "./node_modules/ret/lib/sets.js",
-      "index": 33,
-      "index2": 27,
+      "index": 34,
+      "index2": 28,
       "size": 1665,
       "cacheable": true,
       "built": true,
@@ -3683,7 +3757,7 @@
         0
       ],
       "issuer": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
-      "issuerId": 32,
+      "issuerId": 33,
       "issuerName": "./node_modules/ret/lib/index.js",
       "issuerPath": [
         {
@@ -3700,42 +3774,42 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
-          }
-        },
-        {
-          "id": 30,
-          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-          "name": "./src/regex/regex.js",
-          "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 26,
+            "building": 13
           }
         },
         {
           "id": 31,
-          "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-          "name": "./node_modules/randexp/lib/randexp.js",
+          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+          "name": "./src/regex/regex.js",
           "profile": {
-            "factory": 14,
-            "building": 9
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
           "id": 32,
+          "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
+          "name": "./node_modules/randexp/lib/randexp.js",
+          "profile": {
+            "factory": 12,
+            "building": 9
+          }
+        },
+        {
+          "id": 33,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
           "name": "./node_modules/ret/lib/index.js",
           "profile": {
-            "factory": 10,
-            "building": 14
+            "factory": 12,
+            "building": 16
           }
         }
       ],
       "profile": {
-        "factory": 10,
-        "building": 12,
+        "factory": 15,
+        "building": 11,
         "dependencies": 0
       },
       "failed": false,
@@ -3744,7 +3818,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleId": 32,
+          "moduleId": 33,
           "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
           "module": "./node_modules/ret/lib/index.js",
           "moduleName": "./node_modules/ret/lib/index.js",
@@ -3753,7 +3827,7 @@
           "loc": "3:18-35"
         },
         {
-          "moduleId": 33,
+          "moduleId": 34,
           "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/util.js",
           "module": "./node_modules/ret/lib/util.js",
           "moduleName": "./node_modules/ret/lib/util.js",
@@ -3775,7 +3849,7 @@
       "identifier": "multi ./src/index.js",
       "name": "multi ./src/index.js",
       "index": 0,
-      "index2": 37,
+      "index2": 38,
       "size": 28,
       "built": true,
       "optional": false,
@@ -3816,7 +3890,7 @@
       "identifier": "/Users/billymoon/projects/fiona/src/index.js",
       "name": "./src/index.js",
       "index": 1,
-      "index2": 36,
+      "index2": 37,
       "size": 1079,
       "cacheable": true,
       "built": true,
@@ -3840,8 +3914,8 @@
         }
       ],
       "profile": {
-        "factory": 25,
-        "building": 12
+        "factory": 26,
+        "building": 13
       },
       "failed": false,
       "errors": 0,
@@ -3898,15 +3972,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -3937,7 +4011,7 @@
       "name": "./src/core/index.js",
       "index": 3,
       "index2": 16,
-      "size": 1603,
+      "size": 1696,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -3963,8 +4037,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -3972,15 +4046,15 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         }
       ],
       "profile": {
-        "factory": 19,
-        "building": 2
+        "factory": 16,
+        "building": 4
       },
       "failed": false,
       "errors": 0,
@@ -4003,7 +4077,7 @@
         "ModuleConcatenation bailout: Module is not an ECMAScript module"
       ],
       "depth": 3,
-      "source": "const packageJson = require('../../package')\nconst { Register, registered } = require('./register')\nconst Prng = require('./prng')\nconst Moon = require('./moon')\nconst number = require('./primitives/number/number')\nconst object = require('./primitives/object/object')\nconst json = require('./primitives/json/json')\nconst array = require('./primitives/array/array')\nconst string = require('./primitives/string/string')\n\nconst fiona = seed => new Moon(seed, Prng)\n\nfiona.version = packageJson.version\n\n// TODO: would it be simpler to pull the Register factory into core index?\nconst registerFactory = (name, fn) => {\n  const fnProxy = (...args) => fn(...args)\n  // TODO: handle duplicate extension registrations\n  registered.push(fnProxy)\n  return (fiona[name] = fnProxy)\n}\n\nconst registerMethod = (name, fn) => {\n  return (Moon.prototype[name] = fn)\n}\n\n// TODO: should it be possible to register extensions local to seeded instance?\n// perhaps something like:\n//     const personExtension = seeded => ({\n//       gender: fiona.Gender,\n//       name: ({ data }) => seeded.fullname({ gender: data.gender })\n//     })\n//     fiona().register(['person', personExtension]).object(() => fiona.Person, { luckyNumber: fiona.Number({ max: 100 }) })\nfiona.register = Register(registerFactory, registerMethod)\n\nfiona.Random = () => seeded => seeded.random()\n\nconst clone = seeded => fiona(seeded.info().initseed).state(seeded.state())\n\nfiona.register(['clone', clone])\n\nfiona.register(\n  ['number', number],\n  ['object', object],\n  ['json', json],\n  ['string', string],\n  ['array', array]\n)\n\nmodule.exports = fiona\n"
+      "source": "const packageJson = require('../../package')\nconst { Register, registered } = require('./register')\nconst Prng = require('./prng')\nconst Moon = require('./moon')\nconst number = require('./primitives/number/number')\nconst object = require('./primitives/object/object')\nconst json = require('./primitives/json/json')\nconst array = require('./primitives/array/array')\nconst string = require('./primitives/string/string')\n\nconst fiona = seed => new Moon(seed, Prng)\n\nfiona.version = packageJson.version\n\n// TODO: would it be simpler to pull the Register factory into core index?\nconst registerFactory = (name, fn) => {\n  const fnProxy = (...args) => fn(...args)\n  // TODO: handle duplicate extension registrations\n  registered.push(fnProxy)\n  return (fiona[name] = fnProxy)\n}\n\nconst registerMethod = (name, fn) => {\n  return (Moon.prototype[name] = fn)\n}\n\n// TODO: should it be possible to register extensions local to seeded instance?\n// perhaps something like:\n//     const personExtension = seeded => ({\n//       gender: fiona.Gender,\n//       name: ({ data }) => seeded.fullname({ gender: data.gender })\n//     })\n//     fiona().register(['person', personExtension]).object(() => fiona.Person, { luckyNumber: fiona.Number({ max: 100 }) })\nfiona.register = Register(registerFactory, registerMethod)\n\n// TODO: register Random on seeded instance, perhaps need to implement seeded.register first\nfiona.Random = () => seeded => seeded.random()\n\nconst clone = seeded => fiona(seeded.info().initseed).state(seeded.state())\n\nfiona.register(['clone', clone])\n\nfiona.register(\n  ['number', number],\n  ['object', object],\n  ['json', json],\n  ['string', string],\n  ['array', array]\n)\n\nmodule.exports = fiona\n"
     },
     {
       "id": 10,
@@ -4037,8 +4111,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4046,9 +4120,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4056,15 +4130,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         }
       ],
       "profile": {
-        "factory": 28,
-        "building": 5,
-        "dependencies": 24
+        "factory": 31,
+        "building": 11,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -4135,8 +4209,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4144,9 +4218,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4154,8 +4228,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         },
         {
@@ -4163,15 +4237,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/register/index.js",
           "name": "./src/core/register/index.js",
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           }
         }
       ],
       "profile": {
-        "factory": 15,
-        "building": 3
+        "factory": 8,
+        "building": 2
       },
       "failed": false,
       "errors": 0,
@@ -4228,8 +4302,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4237,9 +4311,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4247,8 +4321,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         },
         {
@@ -4256,15 +4330,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/register/index.js",
           "name": "./src/core/register/index.js",
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           }
         }
       ],
       "profile": {
-        "factory": 15,
-        "building": 3
+        "factory": 8,
+        "building": 2
       },
       "failed": false,
       "errors": 0,
@@ -4321,8 +4395,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4330,9 +4404,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4340,8 +4414,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         },
         {
@@ -4349,14 +4423,14 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
           "name": "./src/core/prng/index.js",
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           }
         }
       ],
       "profile": {
-        "factory": 24,
+        "factory": 13,
         "building": 2
       },
       "failed": false,
@@ -4414,8 +4488,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4423,9 +4497,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4433,8 +4507,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         },
         {
@@ -4442,14 +4516,14 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
           "name": "./src/core/prng/index.js",
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           }
         }
       ],
       "profile": {
-        "factory": 24,
+        "factory": 13,
         "building": 2
       },
       "failed": false,
@@ -4507,8 +4581,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4516,9 +4590,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4526,8 +4600,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         },
         {
@@ -4535,14 +4609,14 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/prng/index.js",
           "name": "./src/core/prng/index.js",
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           }
         }
       ],
       "profile": {
-        "factory": 24,
+        "factory": 13,
         "building": 2
       },
       "failed": false,
@@ -4600,8 +4674,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4609,9 +4683,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4619,15 +4693,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         }
       ],
       "profile": {
-        "factory": 28,
-        "building": 5,
-        "dependencies": 24
+        "factory": 31,
+        "building": 11,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -4684,8 +4758,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4693,9 +4767,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4703,15 +4777,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         }
       ],
       "profile": {
-        "factory": 28,
-        "building": 5,
-        "dependencies": 24
+        "factory": 31,
+        "building": 11,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -4768,8 +4842,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4777,9 +4851,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4787,15 +4861,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         }
       ],
       "profile": {
-        "factory": 28,
-        "building": 5,
-        "dependencies": 24
+        "factory": 31,
+        "building": 11,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -4852,8 +4926,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4861,9 +4935,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4871,8 +4945,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         },
         {
@@ -4880,9 +4954,9 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/primitives/object/object.js",
           "name": "./src/core/primitives/object/object.js",
           "profile": {
-            "factory": 28,
-            "building": 5,
-            "dependencies": 24
+            "factory": 31,
+            "building": 11,
+            "dependencies": 20
           }
         },
         {
@@ -4890,14 +4964,14 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/recurse/index.js",
           "name": "./src/core/recurse/index.js",
           "profile": {
-            "factory": 25,
+            "factory": 20,
             "building": 5,
             "dependencies": 1
           }
         }
       ],
       "profile": {
-        "factory": 3,
+        "factory": 4,
         "building": 1,
         "dependencies": 1
       },
@@ -4956,8 +5030,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -4965,9 +5039,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -4975,15 +5049,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         }
       ],
       "profile": {
-        "factory": 28,
-        "building": 5,
-        "dependencies": 24
+        "factory": 31,
+        "building": 11,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5040,8 +5114,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -5049,9 +5123,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -5059,15 +5133,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         }
       ],
       "profile": {
-        "factory": 28,
-        "building": 5,
-        "dependencies": 24
+        "factory": 31,
+        "building": 11,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5124,8 +5198,8 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
@@ -5133,9 +5207,9 @@
           "identifier": "/Users/billymoon/projects/fiona/core/index.js",
           "name": "./core/index.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
@@ -5143,15 +5217,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/index.js",
           "name": "./src/core/index.js",
           "profile": {
-            "factory": 19,
-            "building": 2
+            "factory": 16,
+            "building": 4
           }
         }
       ],
       "profile": {
-        "factory": 28,
-        "building": 5,
-        "dependencies": 24
+        "factory": 31,
+        "building": 11,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5208,15 +5282,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5273,15 +5347,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5338,15 +5412,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5403,15 +5477,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5468,15 +5542,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5533,15 +5607,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5571,8 +5645,8 @@
       "identifier": "/Users/billymoon/projects/fiona/src/name/name.js",
       "name": "./src/name/name.js",
       "index": 27,
-      "index2": 25,
-      "size": 3386,
+      "index2": 26,
+      "size": 1238,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -5598,15 +5672,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5629,14 +5703,88 @@
         "ModuleConcatenation bailout: Module is not an ECMAScript module"
       ],
       "depth": 2,
-      "source": "const namedata = {\n  male: {\n    firstname: ['Jack', 'James', 'Oliver', 'Lewis', 'Logan', 'Harry', 'Noah', 'Leo', 'Charlie', 'Alexander', 'Jacob', 'Lucas', 'Harris', 'Mason', 'Alfie', 'Finlay', 'Ethan', 'Daniel', 'Aaron', 'Max', 'Archie', 'Thomas', 'Matthew', 'Adam', 'Rory', 'Nathan', 'Callum', 'Joshua', 'Oscar', 'Brodie', 'Cameron', 'Harrison', 'William', 'Finn', 'Riley', 'Dylan', 'Samuel', 'Jaxon', 'Liam', 'Ollie', 'Jamie', 'Connor', 'Luke', 'Theo', 'Ryan', 'Andrew', 'Caleb', 'Jude', 'Joseph', 'Benjamin', 'Muhammad', 'Arran', 'Angus', 'John', 'David', 'Isaac', 'Cole', 'Hamish', 'Robert', 'Jackson', 'Michael', 'George', 'Kai', 'Leon', 'Kyle', 'Ben', 'Luca', 'Blake', 'Murray', 'Aiden', 'Carter', 'Jake', 'Owen', 'Cooper', 'Freddie', 'Ruaridh', 'Jayden', 'Aidan', 'Fraser', 'Reuben', 'Euan', 'Sam', 'Blair', 'Calvin', 'Christopher', 'Alex', 'Arthur', 'Calum', 'Cody', 'Elliot', 'Josh', 'Lachlan', 'Zac', 'Arlo', 'Kayden', 'Robbie', 'Tyler', 'Conor', 'Henry', 'Hunter', 'Zachary'],\n    title: ['Mr', 'Dr', 'Sir', 'Lord']\n  },\n  female: {\n    firstname: ['Fiona', 'Aria', 'Mia', 'Emily', 'Sophie', 'Ava', 'Amelia', 'Jessica', 'Ella', 'Lucy', 'Charlotte', 'Ellie', 'Lily', 'Grace', 'Sophia', 'Chloe', 'Evie', 'Emma', 'Millie', 'Eilidh', 'Anna', 'Eva', 'Hannah', 'Erin', 'Layla', 'Ruby', 'Orla', 'Harper', 'Georgia', 'Maisie', 'Isabella', 'Katie', 'Zoe', 'Holly', 'Robyn', 'Amber', 'Rosie', 'Zara', 'Emilia', 'Sofia', 'Skye', 'Poppy', 'Daisy', 'Alice', 'Lilly', 'Esme', 'Rebecca', 'Scarlett', 'Ivy', 'Abigail', 'Imogen', 'Leah', 'Amy', 'Lacey', 'Maya', 'Niamh', 'Willow', 'Thea', 'Elizabeth', 'Abbie', 'Lexi', 'Hollie', 'Molly', 'Brooke', 'Gracie', 'Sarah', 'Cara', 'Sienna', 'Mila', 'Phoebe', 'Rose', 'Lola', 'Iona', 'Ayla', 'Megan', 'Paige', 'Kayla', 'Julia', 'Mya', 'Alexandra', 'Arianna', 'Summer', 'Hope', 'Quinn', 'Maria', 'Eve', 'Violet', 'Ariana', 'Arya', 'Bella', 'Elsie', 'Lillie', 'Florence', 'Hanna', 'Madison', 'Amelie', 'Matilda', 'Lauren'],\n    title: ['Miss', 'Mrs', 'Dr', 'Ms', 'Dame']\n  },\n  surname: ['Moon', 'Smith', 'Brown', 'Wilson', 'Robertson', 'Campbell', 'Stewart', 'Thomson', 'Anderson', 'Scott', 'MacDonald', 'Reid', 'Murray', 'Clark', 'Taylor', 'Ross', 'Young', 'Paterson', 'Watson', 'Mitchell', 'Fraser']\n}\n\nconst getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male'))\n\nconst gender = seeded => {\n  return seeded.random() < 0.5 ? 'male' : 'female'\n}\n\nconst title = (seeded, { gender } = {}) => {\n  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].title)\n}\n\nconst firstname = (seeded, { gender } = {}) => {\n  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].firstname)\n}\n\nconst firstnames = (seeded, { gender } = {}) => {\n  return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 3 }), namedata[getGender(gender || seeded.gender())].firstname).join(' ')\n}\n\nconst surname = seeded => {\n  return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 2 }), namedata.surname).join(seeded.bool() ? ' ' : '-')\n}\n\nconst fullname = (seeded, { gender } = {}) => {\n  const myGender = getGender(gender || seeded.gender())\n  return `${seeded.title({ gender: myGender })} ${seeded.firstnames({ gender: myGender })} ${seeded.surname()}`\n}\n\nmodule.exports = {\n  gender,\n  title,\n  firstname,\n  firstnames,\n  surname,\n  fullname,\n  namedata\n}\n"
+      "source": "const namedata = require('./namedata')\n\nconst getGender = gender => (gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male'))\n\nconst gender = seeded => {\n  return seeded.random() < 0.5 ? 'male' : 'female'\n}\n\nconst title = (seeded, { gender } = {}) => {\n  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].title)\n}\n\nconst firstname = (seeded, { gender } = {}) => {\n  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].firstname)\n}\n\n// TODO: remove firstnames method from name extension\nconst firstnames = (seeded, { gender } = {}) => {\n  return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 3 }), namedata[getGender(gender || seeded.gender())].firstname).join(' ')\n}\n\nconst surname = seeded => {\n  return seeded.choose(seeded.clone().distribution(x => x * x * x).number({ min: 1, max: 2 }), namedata.surname).join(seeded.bool() ? ' ' : '-')\n}\n\nconst fullname = (seeded, { gender } = {}) => {\n  const myGender = getGender(gender || seeded.gender())\n  return `${seeded.title({ gender: myGender })} ${seeded.firstnames({ gender: myGender })} ${seeded.surname()}`\n}\n\nmodule.exports = {\n  gender,\n  title,\n  firstname,\n  firstnames,\n  surname,\n  fullname,\n  namedata\n}\n"
     },
     {
       "id": 30,
+      "identifier": "/Users/billymoon/projects/fiona/src/name/namedata.js",
+      "name": "./src/name/namedata.js",
+      "index": 28,
+      "index2": 25,
+      "size": 2268,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "/Users/billymoon/projects/fiona/src/name/name.js",
+      "issuerId": 29,
+      "issuerName": "./src/name/name.js",
+      "issuerPath": [
+        {
+          "id": 6,
+          "identifier": "multi ./src/index.js",
+          "name": "multi ./src/index.js",
+          "profile": {
+            "factory": 1,
+            "building": 2
+          }
+        },
+        {
+          "id": 7,
+          "identifier": "/Users/billymoon/projects/fiona/src/index.js",
+          "name": "./src/index.js",
+          "profile": {
+            "factory": 26,
+            "building": 13
+          }
+        },
+        {
+          "id": 29,
+          "identifier": "/Users/billymoon/projects/fiona/src/name/name.js",
+          "name": "./src/name/name.js",
+          "profile": {
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
+          }
+        }
+      ],
+      "profile": {
+        "factory": 9,
+        "building": 4
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": 29,
+          "moduleIdentifier": "/Users/billymoon/projects/fiona/src/name/name.js",
+          "module": "./src/name/name.js",
+          "moduleName": "./src/name/name.js",
+          "type": "cjs require",
+          "userRequest": "./namedata",
+          "loc": "1:17-38"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 3,
+      "source": "const namedata = {\n  male: {\n    firstname: ['Jack', 'James', 'Oliver', 'Lewis', 'Logan', 'Harry', 'Noah', 'Leo', 'Charlie', 'Alexander', 'Jacob', 'Lucas', 'Harris', 'Mason', 'Alfie', 'Finlay', 'Ethan', 'Daniel', 'Aaron', 'Max', 'Archie', 'Thomas', 'Matthew', 'Adam', 'Rory', 'Nathan', 'Callum', 'Joshua', 'Oscar', 'Brodie', 'Cameron', 'Harrison', 'William', 'Finn', 'Riley', 'Dylan', 'Samuel', 'Jaxon', 'Liam', 'Ollie', 'Jamie', 'Connor', 'Luke', 'Theo', 'Ryan', 'Andrew', 'Caleb', 'Jude', 'Joseph', 'Benjamin', 'Muhammad', 'Arran', 'Angus', 'John', 'David', 'Isaac', 'Cole', 'Hamish', 'Robert', 'Jackson', 'Michael', 'George', 'Kai', 'Leon', 'Kyle', 'Ben', 'Luca', 'Blake', 'Murray', 'Aiden', 'Carter', 'Jake', 'Owen', 'Cooper', 'Freddie', 'Ruaridh', 'Jayden', 'Aidan', 'Fraser', 'Reuben', 'Euan', 'Sam', 'Blair', 'Calvin', 'Christopher', 'Alex', 'Arthur', 'Calum', 'Cody', 'Elliot', 'Josh', 'Lachlan', 'Zac', 'Arlo', 'Kayden', 'Robbie', 'Tyler', 'Conor', 'Henry', 'Hunter', 'Zachary'],\n    title: ['Mr', 'Dr', 'Sir', 'Lord']\n  },\n  female: {\n    firstname: ['Fiona', 'Aria', 'Mia', 'Emily', 'Sophie', 'Ava', 'Amelia', 'Jessica', 'Ella', 'Lucy', 'Charlotte', 'Ellie', 'Lily', 'Grace', 'Sophia', 'Chloe', 'Evie', 'Emma', 'Millie', 'Eilidh', 'Anna', 'Eva', 'Hannah', 'Erin', 'Layla', 'Ruby', 'Orla', 'Harper', 'Georgia', 'Maisie', 'Isabella', 'Katie', 'Zoe', 'Holly', 'Robyn', 'Amber', 'Rosie', 'Zara', 'Emilia', 'Sofia', 'Skye', 'Poppy', 'Daisy', 'Alice', 'Lilly', 'Esme', 'Rebecca', 'Scarlett', 'Ivy', 'Abigail', 'Imogen', 'Leah', 'Amy', 'Lacey', 'Maya', 'Niamh', 'Willow', 'Thea', 'Elizabeth', 'Abbie', 'Lexi', 'Hollie', 'Molly', 'Brooke', 'Gracie', 'Sarah', 'Cara', 'Sienna', 'Mila', 'Phoebe', 'Rose', 'Lola', 'Iona', 'Ayla', 'Megan', 'Paige', 'Kayla', 'Julia', 'Mya', 'Alexandra', 'Arianna', 'Summer', 'Hope', 'Quinn', 'Maria', 'Eve', 'Violet', 'Ariana', 'Arya', 'Bella', 'Elsie', 'Lillie', 'Florence', 'Hanna', 'Madison', 'Amelie', 'Matilda', 'Lauren'],\n    title: ['Miss', 'Mrs', 'Dr', 'Ms', 'Dame']\n  },\n  surname: ['Moon', 'Smith', 'Brown', 'Wilson', 'Robertson', 'Campbell', 'Stewart', 'Thomson', 'Anderson', 'Scott', 'MacDonald', 'Reid', 'Murray', 'Clark', 'Taylor', 'Ross', 'Young', 'Paterson', 'Watson', 'Mitchell', 'Fraser']\n}\n\nmodule.exports = namedata\n"
+    },
+    {
+      "id": 31,
       "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
       "name": "./src/regex/regex.js",
-      "index": 28,
-      "index2": 33,
+      "index": 29,
+      "index2": 34,
       "size": 429,
       "cacheable": true,
       "built": true,
@@ -5663,15 +5811,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -5697,11 +5845,11 @@
       "source": "// TODO: should regex be part of core?\nconst RandExp = require('randexp')\n\nconst regex = (seeded, regex = /[A-F0-9]{16}/) => {\n  const myRandExp = new RandExp(regex)\n  // redefine RandExp's random number generator to use fiona's prng\n  myRandExp.randInt = (a, b) => a + Math.floor(seeded.random() * (1 + b - a))\n  // return the randomly generated string, not the RandExp object\n  return myRandExp.gen()\n}\n\nmodule.exports = regex\n"
     },
     {
-      "id": 31,
+      "id": 32,
       "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
       "name": "./node_modules/randexp/lib/randexp.js",
-      "index": 29,
-      "index2": 32,
+      "index": 30,
+      "index2": 33,
       "size": 6308,
       "cacheable": true,
       "built": true,
@@ -5711,7 +5859,7 @@
         0
       ],
       "issuer": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-      "issuerId": 30,
+      "issuerId": 31,
       "issuerName": "./src/regex/regex.js",
       "issuerPath": [
         {
@@ -5728,23 +5876,23 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         },
         {
-          "id": 30,
+          "id": 31,
           "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
           "name": "./src/regex/regex.js",
           "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         }
       ],
       "profile": {
-        "factory": 14,
+        "factory": 12,
         "building": 9
       },
       "failed": false,
@@ -5753,7 +5901,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleId": 30,
+          "moduleId": 31,
           "moduleIdentifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
           "module": "./src/regex/regex.js",
           "moduleName": "./src/regex/regex.js",
@@ -5771,11 +5919,11 @@
       "source": "'use strict';\n\nconst ret    = require('ret');\nconst DRange = require('drange');\nconst types  = ret.types;\n\n\nmodule.exports = class RandExp {\n  /**\n   * @constructor\n   * @param {RegExp|String} regexp\n   * @param {String} m\n   */\n  constructor(regexp, m) {\n    this._setDefaults(regexp);\n    if (regexp instanceof RegExp) {\n      this.ignoreCase = regexp.ignoreCase;\n      this.multiline = regexp.multiline;\n      regexp = regexp.source;\n\n    } else if (typeof regexp === 'string') {\n      this.ignoreCase = m && m.indexOf('i') !== -1;\n      this.multiline = m && m.indexOf('m') !== -1;\n    } else {\n      throw new Error('Expected a regexp or string');\n    }\n\n    this.tokens = ret(regexp);\n  }\n\n\n  /**\n   * Checks if some custom properties have been set for this regexp.\n   *\n   * @param {RandExp} randexp\n   * @param {RegExp} regexp\n   */\n  _setDefaults(regexp) {\n    // When a repetitional token has its max set to Infinite,\n    // randexp won't actually generate a random amount between min and Infinite\n    // instead it will see Infinite as min + 100.\n    this.max = regexp.max != null ? regexp.max :\n      RandExp.prototype.max != null ? RandExp.prototype.max : 100;\n\n    // This allows expanding to include additional characters\n    // for instance: RandExp.defaultRange.add(0, 65535);\n    this.defaultRange = regexp.defaultRange ?\n      regexp.defaultRange : this.defaultRange.clone();\n\n    if (regexp.randInt) {\n      this.randInt = regexp.randInt;\n    }\n  }\n\n\n  /**\n   * Generates the random string.\n   *\n   * @return {String}\n   */\n  gen() {\n    return this._gen(this.tokens, []);\n  }\n\n\n  /**\n   * Generate random string modeled after given tokens.\n   *\n   * @param {Object} token\n   * @param {Array.<String>} groups\n   * @return {String}\n   */\n  _gen(token, groups) {\n    var stack, str, n, i, l;\n\n    switch (token.type) {\n      case types.ROOT:\n      case types.GROUP:\n        // Ignore lookaheads for now.\n        if (token.followedBy || token.notFollowedBy) { return ''; }\n\n        // Insert placeholder until group string is generated.\n        if (token.remember && token.groupNumber === undefined) {\n          token.groupNumber = groups.push(null) - 1;\n        }\n\n        stack = token.options ?\n          this._randSelect(token.options) : token.stack;\n\n        str = '';\n        for (i = 0, l = stack.length; i < l; i++) {\n          str += this._gen(stack[i], groups);\n        }\n\n        if (token.remember) {\n          groups[token.groupNumber] = str;\n        }\n        return str;\n\n      case types.POSITION:\n        // Do nothing for now.\n        return '';\n\n      case types.SET:\n        var expandedSet = this._expand(token);\n        if (!expandedSet.length) { return ''; }\n        return String.fromCharCode(this._randSelect(expandedSet));\n\n      case types.REPETITION:\n        // Randomly generate number between min and max.\n        n = this.randInt(token.min,\n          token.max === Infinity ? token.min + this.max : token.max);\n\n        str = '';\n        for (i = 0; i < n; i++) {\n          str += this._gen(token.value, groups);\n        }\n\n        return str;\n\n      case types.REFERENCE:\n        return groups[token.value - 1] || '';\n\n      case types.CHAR:\n        var code = this.ignoreCase && this._randBool() ?\n          this._toOtherCase(token.value) : token.value;\n        return String.fromCharCode(code);\n    }\n  }\n\n\n  /**\n   * If code is alphabetic, converts to other case.\n   * If not alphabetic, returns back code.\n   *\n   * @param {Number} code\n   * @return {Number}\n   */\n  _toOtherCase(code) {\n    return code + (97 <= code && code <= 122 ? -32 :\n      65 <= code && code <= 90  ?  32 : 0);\n  }\n\n\n  /**\n   * Randomly returns a true or false value.\n   *\n   * @return {Boolean}\n   */\n  _randBool() {\n    return !this.randInt(0, 1);\n  }\n\n\n  /**\n   * Randomly selects and returns a value from the array.\n   *\n   * @param {Array.<Object>} arr\n   * @return {Object}\n   */\n  _randSelect(arr) {\n    if (arr instanceof DRange) {\n      return arr.index(this.randInt(0, arr.length - 1));\n    }\n    return arr[this.randInt(0, arr.length - 1)];\n  }\n\n\n  /**\n   * expands a token to a DiscontinuousRange of characters which has a\n   * length and an index function (for random selecting)\n   *\n   * @param {Object} token\n   * @return {DiscontinuousRange}\n   */\n  _expand(token) {\n    if (token.type === ret.types.CHAR) {\n      return new DRange(token.value);\n    } else if (token.type === ret.types.RANGE) {\n      return new DRange(token.from, token.to);\n    } else {\n      let drange = new DRange();\n      for (let i = 0; i < token.set.length; i++) {\n        let subrange = this._expand(token.set[i]);\n        drange.add(subrange);\n        if (this.ignoreCase) {\n          for (let j = 0; j < subrange.length; j++) {\n            let code = subrange.index(j);\n            let otherCaseCode = this._toOtherCase(code);\n            if (code !== otherCaseCode) {\n              drange.add(otherCaseCode);\n            }\n          }\n        }\n      }\n      if (token.not) {\n        return this.defaultRange.clone().subtract(drange);\n      } else {\n        return this.defaultRange.clone().intersect(drange);\n      }\n    }\n  }\n\n\n  /**\n   * Randomly generates and returns a number between a and b (inclusive).\n   *\n   * @param {Number} a\n   * @param {Number} b\n   * @return {Number}\n   */\n  randInt(a, b) {\n    return a + Math.floor(Math.random() * (1 + b - a));\n  }\n\n\n  /**\n   * Default range of characters to generate from.\n   */\n  get defaultRange() {\n    return this._range = this._range || new DRange(32, 126);\n  }\n\n  set defaultRange(range) {\n    this._range = range;\n  }\n\n\n  /**\n   *\n   * Enables use of randexp with a shorter call.\n   *\n   * @param {RegExp|String| regexp}\n   * @param {String} m\n   * @return {String}\n   */\n  static randexp(regexp, m) {\n    var randexp;\n    if(typeof regexp === 'string') {\n      regexp = new RegExp(regexp, m);\n    }\n\n    if (regexp._randexp === undefined) {\n      randexp = new RandExp(regexp, m);\n      regexp._randexp = randexp;\n    } else {\n      randexp = regexp._randexp;\n      randexp._setDefaults(regexp);\n    }\n    return randexp.gen();\n  }\n\n\n  /**\n   * Enables sugary /regexp/.gen syntax.\n   */\n  static sugar() {\n    /* eshint freeze:false */\n    RegExp.prototype.gen = function() {\n      return RandExp.randexp(this);\n    };\n  }\n};\n"
     },
     {
-      "id": 32,
+      "id": 33,
       "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
       "name": "./node_modules/ret/lib/index.js",
-      "index": 30,
-      "index2": 30,
+      "index": 31,
+      "index2": 31,
       "size": 6514,
       "cacheable": true,
       "built": true,
@@ -5785,7 +5933,7 @@
         0
       ],
       "issuer": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-      "issuerId": 31,
+      "issuerId": 32,
       "issuerName": "./node_modules/randexp/lib/randexp.js",
       "issuerPath": [
         {
@@ -5802,33 +5950,33 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
-          }
-        },
-        {
-          "id": 30,
-          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-          "name": "./src/regex/regex.js",
-          "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 26,
+            "building": 13
           }
         },
         {
           "id": 31,
+          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+          "name": "./src/regex/regex.js",
+          "profile": {
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
+          }
+        },
+        {
+          "id": 32,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
           "name": "./node_modules/randexp/lib/randexp.js",
           "profile": {
-            "factory": 14,
+            "factory": 12,
             "building": 9
           }
         }
       ],
       "profile": {
-        "factory": 10,
-        "building": 14
+        "factory": 12,
+        "building": 16
       },
       "failed": false,
       "errors": 0,
@@ -5836,7 +5984,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleId": 31,
+          "moduleId": 32,
           "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
           "module": "./node_modules/randexp/lib/randexp.js",
           "moduleName": "./node_modules/randexp/lib/randexp.js",
@@ -5854,11 +6002,11 @@
       "source": "const util      = require('./util');\nconst types     = require('./types');\nconst sets      = require('./sets');\nconst positions = require('./positions');\n\n\nmodule.exports = (regexpStr) => {\n  var i = 0, l, c,\n    start = { type: types.ROOT, stack: []},\n\n    // Keep track of last clause/group and stack.\n    lastGroup = start,\n    last = start.stack,\n    groupStack = [];\n\n\n  var repeatErr = (i) => {\n    util.error(regexpStr, `Nothing to repeat at column ${i - 1}`);\n  };\n\n  // Decode a few escaped characters.\n  var str = util.strToChars(regexpStr);\n  l = str.length;\n\n  // Iterate through each character in string.\n  while (i < l) {\n    c = str[i++];\n\n    switch (c) {\n      // Handle escaped characters, inclues a few sets.\n      case '\\\\':\n        c = str[i++];\n\n        switch (c) {\n          case 'b':\n            last.push(positions.wordBoundary());\n            break;\n\n          case 'B':\n            last.push(positions.nonWordBoundary());\n            break;\n\n          case 'w':\n            last.push(sets.words());\n            break;\n\n          case 'W':\n            last.push(sets.notWords());\n            break;\n\n          case 'd':\n            last.push(sets.ints());\n            break;\n\n          case 'D':\n            last.push(sets.notInts());\n            break;\n\n          case 's':\n            last.push(sets.whitespace());\n            break;\n\n          case 'S':\n            last.push(sets.notWhitespace());\n            break;\n\n          default:\n            // Check if c is integer.\n            // In which case it's a reference.\n            if (/\\d/.test(c)) {\n              last.push({ type: types.REFERENCE, value: parseInt(c, 10) });\n\n            // Escaped character.\n            } else {\n              last.push({ type: types.CHAR, value: c.charCodeAt(0) });\n            }\n        }\n\n        break;\n\n\n      // Positionals.\n      case '^':\n        last.push(positions.begin());\n        break;\n\n      case '$':\n        last.push(positions.end());\n        break;\n\n\n      // Handle custom sets.\n      case '[':\n        // Check if this class is 'anti' i.e. [^abc].\n        var not;\n        if (str[i] === '^') {\n          not = true;\n          i++;\n        } else {\n          not = false;\n        }\n\n        // Get all the characters in class.\n        var classTokens = util.tokenizeClass(str.slice(i), regexpStr);\n\n        // Increase index by length of class.\n        i += classTokens[1];\n        last.push({\n          type: types.SET,\n          set: classTokens[0],\n          not,\n        });\n\n        break;\n\n\n      // Class of any character except \\n.\n      case '.':\n        last.push(sets.anyChar());\n        break;\n\n\n      // Push group onto stack.\n      case '(':\n        // Create group.\n        var group = {\n          type: types.GROUP,\n          stack: [],\n          remember: true,\n        };\n\n        c = str[i];\n\n        // If if this is a special kind of group.\n        if (c === '?') {\n          c = str[i + 1];\n          i += 2;\n\n          // Match if followed by.\n          if (c === '=') {\n            group.followedBy = true;\n\n          // Match if not followed by.\n          } else if (c === '!') {\n            group.notFollowedBy = true;\n\n          } else if (c !== ':') {\n            util.error(regexpStr,\n              `Invalid group, character '${c}'` +\n              ` after '?' at column ${i - 1}`);\n          }\n\n          group.remember = false;\n        }\n\n        // Insert subgroup into current group stack.\n        last.push(group);\n\n        // Remember the current group for when the group closes.\n        groupStack.push(lastGroup);\n\n        // Make this new group the current group.\n        lastGroup = group;\n        last = group.stack;\n        break;\n\n\n      // Pop group out of stack.\n      case ')':\n        if (groupStack.length === 0) {\n          util.error(regexpStr, `Unmatched ) at column ${i - 1}`);\n        }\n        lastGroup = groupStack.pop();\n\n        // Check if this group has a PIPE.\n        // To get back the correct last stack.\n        last = lastGroup.options ?\n          lastGroup.options[lastGroup.options.length - 1] : lastGroup.stack;\n        break;\n\n\n      // Use pipe character to give more choices.\n      case '|':\n        // Create array where options are if this is the first PIPE\n        // in this clause.\n        if (!lastGroup.options) {\n          lastGroup.options = [lastGroup.stack];\n          delete lastGroup.stack;\n        }\n\n        // Create a new stack and add to options for rest of clause.\n        var stack = [];\n        lastGroup.options.push(stack);\n        last = stack;\n        break;\n\n\n      // Repetition.\n      // For every repetition, remove last element from last stack\n      // then insert back a RANGE object.\n      // This design is chosen because there could be more than\n      // one repetition symbols in a regex i.e. `a?+{2,3}`.\n      case '{':\n        var rs = /^(\\d+)(,(\\d+)?)?\\}/.exec(str.slice(i)), min, max;\n        if (rs !== null) {\n          if (last.length === 0) {\n            repeatErr(i);\n          }\n          min = parseInt(rs[1], 10);\n          max = rs[2] ? rs[3] ? parseInt(rs[3], 10) : Infinity : min;\n          i += rs[0].length;\n\n          last.push({\n            type: types.REPETITION,\n            min,\n            max,\n            value: last.pop(),\n          });\n        } else {\n          last.push({\n            type: types.CHAR,\n            value: 123,\n          });\n        }\n        break;\n\n      case '?':\n        if (last.length === 0) {\n          repeatErr(i);\n        }\n        last.push({\n          type: types.REPETITION,\n          min: 0,\n          max: 1,\n          value: last.pop(),\n        });\n        break;\n\n      case '+':\n        if (last.length === 0) {\n          repeatErr(i);\n        }\n        last.push({\n          type: types.REPETITION,\n          min: 1,\n          max: Infinity,\n          value: last.pop(),\n        });\n        break;\n\n      case '*':\n        if (last.length === 0) {\n          repeatErr(i);\n        }\n        last.push({\n          type: types.REPETITION,\n          min: 0,\n          max: Infinity,\n          value: last.pop(),\n        });\n        break;\n\n\n      // Default is a character that is not `\\[](){}?+*^$`.\n      default:\n        last.push({\n          type: types.CHAR,\n          value: c.charCodeAt(0),\n        });\n    }\n\n  }\n\n  // Check if any groups have not been closed.\n  if (groupStack.length !== 0) {\n    util.error(regexpStr, 'Unterminated group');\n  }\n\n  return start;\n};\n\nmodule.exports.types = types;\n"
     },
     {
-      "id": 33,
+      "id": 34,
       "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/util.js",
       "name": "./node_modules/ret/lib/util.js",
-      "index": 31,
-      "index2": 28,
+      "index": 32,
+      "index2": 29,
       "size": 2436,
       "cacheable": true,
       "built": true,
@@ -5868,7 +6016,7 @@
         0
       ],
       "issuer": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
-      "issuerId": 32,
+      "issuerId": 33,
       "issuerName": "./node_modules/ret/lib/index.js",
       "issuerPath": [
         {
@@ -5885,42 +6033,42 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
-          }
-        },
-        {
-          "id": 30,
-          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-          "name": "./src/regex/regex.js",
-          "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 26,
+            "building": 13
           }
         },
         {
           "id": 31,
-          "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-          "name": "./node_modules/randexp/lib/randexp.js",
+          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+          "name": "./src/regex/regex.js",
           "profile": {
-            "factory": 14,
-            "building": 9
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
           "id": 32,
+          "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
+          "name": "./node_modules/randexp/lib/randexp.js",
+          "profile": {
+            "factory": 12,
+            "building": 9
+          }
+        },
+        {
+          "id": 33,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
           "name": "./node_modules/ret/lib/index.js",
           "profile": {
-            "factory": 10,
-            "building": 14
+            "factory": 12,
+            "building": 16
           }
         }
       ],
       "profile": {
-        "factory": 10,
-        "building": 12,
+        "factory": 15,
+        "building": 11,
         "dependencies": 0
       },
       "failed": false,
@@ -5929,7 +6077,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleId": 32,
+          "moduleId": 33,
           "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
           "module": "./node_modules/ret/lib/index.js",
           "moduleName": "./node_modules/ret/lib/index.js",
@@ -5947,11 +6095,11 @@
       "source": "const types = require('./types');\nconst sets  = require('./sets');\n\n\nconst CTRL = '@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^ ?';\nconst SLSH = { '0': 0, 't': 9, 'n': 10, 'v': 11, 'f': 12, 'r': 13 };\n\n/**\n * Finds character representations in str and convert all to\n * their respective characters\n *\n * @param {String} str\n * @return {String}\n */\nexports.strToChars = function(str) {\n  /* jshint maxlen: false */\n  var chars_regex = /(\\[\\\\b\\])|(\\\\)?\\\\(?:u([A-F0-9]{4})|x([A-F0-9]{2})|(0?[0-7]{2})|c([@A-Z[\\\\\\]^?])|([0tnvfr]))/g;\n  str = str.replace(chars_regex, function(s, b, lbs, a16, b16, c8, dctrl, eslsh) {\n    if (lbs) {\n      return s;\n    }\n\n    var code = b ? 8 :\n      a16   ? parseInt(a16, 16) :\n      b16   ? parseInt(b16, 16) :\n      c8    ? parseInt(c8,   8) :\n      dctrl ? CTRL.indexOf(dctrl) :\n      SLSH[eslsh];\n\n    var c = String.fromCharCode(code);\n\n    // Escape special regex characters.\n    if (/[[\\]{}^$.|?*+()]/.test(c)) {\n      c = '\\\\' + c;\n    }\n\n    return c;\n  });\n\n  return str;\n};\n\n\n/**\n * turns class into tokens\n * reads str until it encounters a ] not preceeded by a \\\n *\n * @param {String} str\n * @param {String} regexpStr\n * @return {Array.<Array.<Object>, Number>}\n */\nexports.tokenizeClass = (str, regexpStr) => {\n  /* jshint maxlen: false */\n  var tokens = [];\n  var regexp = /\\\\(?:(w)|(d)|(s)|(W)|(D)|(S))|((?:(?:\\\\)(.)|([^\\]\\\\]))-(?:\\\\)?([^\\]]))|(\\])|(?:\\\\)?([^])/g;\n  var rs, c;\n\n\n  while ((rs = regexp.exec(str)) != null) {\n    if (rs[1]) {\n      tokens.push(sets.words());\n\n    } else if (rs[2]) {\n      tokens.push(sets.ints());\n\n    } else if (rs[3]) {\n      tokens.push(sets.whitespace());\n\n    } else if (rs[4]) {\n      tokens.push(sets.notWords());\n\n    } else if (rs[5]) {\n      tokens.push(sets.notInts());\n\n    } else if (rs[6]) {\n      tokens.push(sets.notWhitespace());\n\n    } else if (rs[7]) {\n      tokens.push({\n        type: types.RANGE,\n        from: (rs[8] || rs[9]).charCodeAt(0),\n        to: rs[10].charCodeAt(0),\n      });\n\n    } else if ((c = rs[12])) {\n      tokens.push({\n        type: types.CHAR,\n        value: c.charCodeAt(0),\n      });\n\n    } else {\n      return [tokens, regexp.lastIndex];\n    }\n  }\n\n  exports.error(regexpStr, 'Unterminated character class');\n};\n\n\n/**\n * Shortcut to throw errors.\n *\n * @param {String} regexp\n * @param {String} msg\n */\nexports.error = (regexp, msg) => {\n  throw new SyntaxError('Invalid regular expression: /' + regexp + '/: ' + msg);\n};\n"
     },
     {
-      "id": 34,
+      "id": 35,
       "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/positions.js",
       "name": "./node_modules/ret/lib/positions.js",
-      "index": 34,
-      "index2": 29,
+      "index": 35,
+      "index2": 30,
       "size": 297,
       "cacheable": true,
       "built": true,
@@ -5961,7 +6109,7 @@
         0
       ],
       "issuer": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
-      "issuerId": 32,
+      "issuerId": 33,
       "issuerName": "./node_modules/ret/lib/index.js",
       "issuerPath": [
         {
@@ -5978,42 +6126,42 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
-          }
-        },
-        {
-          "id": 30,
-          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-          "name": "./src/regex/regex.js",
-          "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 26,
+            "building": 13
           }
         },
         {
           "id": 31,
-          "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-          "name": "./node_modules/randexp/lib/randexp.js",
+          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+          "name": "./src/regex/regex.js",
           "profile": {
-            "factory": 14,
-            "building": 9
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
           }
         },
         {
           "id": 32,
+          "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
+          "name": "./node_modules/randexp/lib/randexp.js",
+          "profile": {
+            "factory": 12,
+            "building": 9
+          }
+        },
+        {
+          "id": 33,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
           "name": "./node_modules/ret/lib/index.js",
           "profile": {
-            "factory": 10,
-            "building": 14
+            "factory": 12,
+            "building": 16
           }
         }
       ],
       "profile": {
-        "factory": 10,
-        "building": 12,
+        "factory": 15,
+        "building": 11,
         "dependencies": 0
       },
       "failed": false,
@@ -6022,7 +6170,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleId": 32,
+          "moduleId": 33,
           "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/ret/lib/index.js",
           "module": "./node_modules/ret/lib/index.js",
           "moduleName": "./node_modules/ret/lib/index.js",
@@ -6040,11 +6188,11 @@
       "source": "const types = require('./types');\nexports.wordBoundary = () => ({ type: types.POSITION, value: 'b' });\nexports.nonWordBoundary = () => ({ type: types.POSITION, value: 'B' });\nexports.begin = () => ({ type: types.POSITION, value: '^' });\nexports.end = () => ({ type: types.POSITION, value: '$' });\n"
     },
     {
-      "id": 35,
+      "id": 36,
       "identifier": "/Users/billymoon/projects/fiona/node_modules/drange/lib/index.js",
       "name": "./node_modules/drange/lib/index.js",
-      "index": 35,
-      "index2": 31,
+      "index": 36,
+      "index2": 32,
       "size": 4918,
       "cacheable": true,
       "built": true,
@@ -6054,7 +6202,7 @@
         0
       ],
       "issuer": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
-      "issuerId": 31,
+      "issuerId": 32,
       "issuerName": "./node_modules/randexp/lib/randexp.js",
       "issuerPath": [
         {
@@ -6071,33 +6219,33 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
-          }
-        },
-        {
-          "id": 30,
-          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
-          "name": "./src/regex/regex.js",
-          "profile": {
-            "factory": 34,
-            "building": 1,
-            "dependencies": 18
+            "factory": 26,
+            "building": 13
           }
         },
         {
           "id": 31,
+          "identifier": "/Users/billymoon/projects/fiona/src/regex/regex.js",
+          "name": "./src/regex/regex.js",
+          "profile": {
+            "factory": 37,
+            "building": 2,
+            "dependencies": 20
+          }
+        },
+        {
+          "id": 32,
           "identifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
           "name": "./node_modules/randexp/lib/randexp.js",
           "profile": {
-            "factory": 14,
+            "factory": 12,
             "building": 9
           }
         }
       ],
       "profile": {
-        "factory": 10,
-        "building": 14
+        "factory": 12,
+        "building": 16
       },
       "failed": false,
       "errors": 0,
@@ -6105,7 +6253,7 @@
       "assets": [],
       "reasons": [
         {
-          "moduleId": 31,
+          "moduleId": 32,
           "moduleIdentifier": "/Users/billymoon/projects/fiona/node_modules/randexp/lib/randexp.js",
           "module": "./node_modules/randexp/lib/randexp.js",
           "moduleName": "./node_modules/randexp/lib/randexp.js",
@@ -6123,11 +6271,11 @@
       "source": "'use strict';\n/* eslint indent: 4 */\n\n\n// Private helper class\nclass SubRange {\n    constructor(low, high) {\n        this.low = low;\n        this.high = high;\n        this.length = 1 + high - low;\n    }\n\n    overlaps(range) {\n        return !(this.high < range.low || this.low > range.high);\n    }\n\n    touches(range) {\n        return !(this.high + 1 < range.low || this.low - 1 > range.high);\n    }\n\n    // Returns inclusive combination of SubRanges as a SubRange.\n    add(range) {\n        return new SubRange(\n            Math.min(this.low, range.low),\n            Math.max(this.high, range.high)\n        );\n    }\n\n    // Returns subtraction of SubRanges as an array of SubRanges.\n    // (There's a case where subtraction divides it in 2)\n    subtract(range) {\n        if (range.low <= this.low && range.high >= this.high) {\n            return [];\n        } else if (range.low > this.low && range.high < this.high) {\n            return [\n                new SubRange(this.low, range.low - 1),\n                new SubRange(range.high + 1, this.high)\n            ];\n        } else if (range.low <= this.low) {\n            return [new SubRange(range.high + 1, this.high)];\n        } else {\n            return [new SubRange(this.low, range.low - 1)];\n        }\n    }\n\n    toString() {\n        return this.low == this.high ?\n            this.low.toString() : this.low + '-' + this.high;\n    }\n}\n\n\nclass DRange {\n    constructor(a, b) {\n        this.ranges = [];\n        this.length = 0;\n        if (a != null) this.add(a, b);\n    }\n\n    _update_length() {\n        this.length = this.ranges.reduce((previous, range) => {\n            return previous + range.length;\n        }, 0);\n    }\n\n    add(a, b) {\n        var _add = (subrange) => {\n            var i = 0;\n            while (i < this.ranges.length && !subrange.touches(this.ranges[i])) {\n                i++;\n            }\n            var newRanges = this.ranges.slice(0, i);\n            while (i < this.ranges.length && subrange.touches(this.ranges[i])) {\n                subrange = subrange.add(this.ranges[i]);\n                i++;\n            }\n            newRanges.push(subrange);\n            this.ranges = newRanges.concat(this.ranges.slice(i));\n            this._update_length();\n        }\n\n        if (a instanceof DRange) {\n            a.ranges.forEach(_add);\n        } else {\n            if (b == null) b = a;\n            _add(new SubRange(a, b));\n        }\n        return this;\n    }\n\n    subtract(a, b) {\n        var _subtract = (subrange) => {\n            var i = 0;\n            while (i < this.ranges.length && !subrange.overlaps(this.ranges[i])) {\n                i++;\n            }\n            var newRanges = this.ranges.slice(0, i);\n            while (i < this.ranges.length && subrange.overlaps(this.ranges[i])) {\n                newRanges = newRanges.concat(this.ranges[i].subtract(subrange));\n                i++;\n            }\n            this.ranges = newRanges.concat(this.ranges.slice(i));\n            this._update_length();\n        };\n\n        if (a instanceof DRange) {\n            a.ranges.forEach(_subtract);\n        } else {\n            if (b == null) b = a;\n            _subtract(new SubRange(a, b));\n        }\n        return this;\n    }\n\n    intersect(a, b) {\n        var newRanges = [];\n        var _intersect = (subrange) => {\n            var i = 0;\n            while (i < this.ranges.length && !subrange.overlaps(this.ranges[i])) {\n                i++;\n            }\n            while (i < this.ranges.length && subrange.overlaps(this.ranges[i])) {\n                var low = Math.max(this.ranges[i].low, subrange.low);\n                var high = Math.min(this.ranges[i].high, subrange.high);\n                newRanges.push(new SubRange(low, high));\n                i++;\n            }\n        };\n\n        if (a instanceof DRange) {\n            a.ranges.forEach(_intersect);\n        } else {\n            if (b == null) b = a;\n            _intersect(new SubRange(a, b));\n        }\n        this.ranges = newRanges;\n        this._update_length();\n        return this;\n    }\n\n    index(index) {\n        var i = 0;\n        while (i < this.ranges.length && this.ranges[i].length <= index) {\n            index -= this.ranges[i].length;\n            i++;\n        }\n        return this.ranges[i].low + index;\n    }\n\n    toString() {\n        return '[ ' + this.ranges.join(', ') + ' ]';\n    }\n\n    clone() {\n        return new DRange(this);\n    }\n\n    numbers() {\n        return this.ranges.reduce((result, subrange) => {\n            var i = subrange.low;\n            while (i <= subrange.high) {\n                result.push(i);\n                i++;\n            }\n            return result;\n        }, []);\n    }\n\n    subranges() {\n        return this.ranges.map((subrange) => ({\n            low: subrange.low,\n            high: subrange.high,\n            length: 1 + subrange.high - subrange.low\n        }));\n    }\n}\n\nmodule.exports = DRange;\n"
     },
     {
-      "id": 36,
+      "id": 37,
       "identifier": "/Users/billymoon/projects/fiona/src/shuffle/shuffle.js",
       "name": "./src/shuffle/shuffle.js",
-      "index": 36,
-      "index2": 34,
+      "index": 37,
+      "index2": 35,
       "size": 139,
       "cacheable": true,
       "built": true,
@@ -6154,15 +6302,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,
@@ -6188,11 +6336,11 @@
       "source": "const shuffle = (seeded, arr, { qty } = {}) => seeded.choose(typeof qty !== 'undefined' ? qty : arr.length, arr)\n\nmodule.exports = shuffle\n"
     },
     {
-      "id": 37,
+      "id": 38,
       "identifier": "/Users/billymoon/projects/fiona/src/find/find.js",
       "name": "./src/find/find.js",
-      "index": 37,
-      "index2": 35,
+      "index": 38,
+      "index2": 36,
       "size": 418,
       "cacheable": true,
       "built": true,
@@ -6219,15 +6367,15 @@
           "identifier": "/Users/billymoon/projects/fiona/src/index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 25,
-            "building": 12
+            "factory": 26,
+            "building": 13
           }
         }
       ],
       "profile": {
-        "factory": 34,
-        "building": 1,
-        "dependencies": 18
+        "factory": 37,
+        "building": 2,
+        "dependencies": 20
       },
       "failed": false,
       "errors": 0,

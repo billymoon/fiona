@@ -36,6 +36,11 @@ export async function reports (task) {
 
 export async function buildsize (task) {
   await task.clear('static/reports/size')
+  try {
+    mkdirSync('static/reports')
+  } catch (err) {
+    console.log('failed to create static/reports', err)
+  }
   mkdirSync('static/reports/size')
   // TODO: why does this not resolve files in stats file
   exec('webpack-bundle-analyzer static/webpack-stats.json -m static -r static/reports/size/main.html -O')
