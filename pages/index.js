@@ -3,6 +3,7 @@ import { provide } from '../docs/app/state'
 
 import {
   OverviewDynamicOverview,
+  OverviewHowFionaWorks,
   OverviewQuickStart,
   OverviewSeededPRNG,
   OverviewDistribution,
@@ -13,6 +14,7 @@ import {
 const Page = () =>
   <Layout>
     <Article><OverviewDynamicOverview /></Article>
+    <Article><OverviewHowFionaWorks /></Article>
     <Article><OverviewQuickStart /></Article>
     <Article><OverviewSeededPRNG /></Article>
     <Article><OverviewDistribution /></Article>

@@ -62,8 +62,8 @@ const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) =>
 const Nav = ({ router }) =>
   <div>
     <ButtonLink label='Overview' selected={router.pathname === '/'} href='/' />
-    <ButtonLink label='API' selected={router.pathname === '/api'} href='/api' />
-    <ButtonLink label='Examples' selected={router.pathname === '/examples'} href='/examples' />
+    <ButtonLink label='API' selected={router.pathname.match(/^\/api(\/|$)/)} href='/api' />
+    <ButtonLink label='Examples' selected={router.pathname.match(/^\/examples(\/|$)/)} href='/examples' />
   </div>
 
 export default withRouter(Nav)
