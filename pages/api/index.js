@@ -14,7 +14,7 @@ import ApiFnSurname from '../../src/name/surname.docs'
 import ApiFnNumber from '../../src/core/primitives/number/number.docs'
 // import ApiFnObject from '../../src/core/primitives/object/object.docs'
 import ApiFnRandom from '../../src/core/random.docs'
-// import ApiFnRegister from '../../src/core/core-plugin.docs'
+import ApiFnRegister from '../../src/core/register/register.docs'
 // import ApiFnReseed from '../../src/core/core-reseed.docs'
 // import ApiFnState from '../../src/core/core-state.docs'
 // import ApiFnString from '../../src/core/primitives/string/string.docs'
@@ -63,9 +63,9 @@ const Page = () =>
         <ApiFnSurname />
         <ApiFnFullname />
         <ApiFnInfo />
+        <ApiFnRegister />
         {/*
         
-        <ApiFnRegister />
         <ApiFnClone />
         <ApiFnReseed />
         <ApiFnState />
