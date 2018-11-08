@@ -10,7 +10,7 @@ const Section = ({ seed }) =>
     ${JSON.stringify(fiona(seed).choose(2, ['pink', 'powder blue', 'purple']))}
     `} />
 
-    <p>Like `fiona.fn.oneOf`, the current distribution function will influence the choice.</p>
+    <p>Like `fiona.OneOf`, the current distribution function will influence the choice.</p>
 
     <Sample input={`
     fiona(${seed}).distribution(i => i * i * i).choose(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])

@@ -18,7 +18,7 @@ const MainContent = withTheme(
       <Article style={{ textAlign: "center" }}>
         <h1>
           {fiona(seed).regex(
-            /(Make Believe|Simulated|Immitation|Substitute|Pretend|Fake|Spurious|Mock) Data/
+            /(Pretend|Simulated|Immitation|Substitute|Make Believe|Fake|Spurious|Mock) Data/
           )}
         </h1>
       </Article>

@@ -33,6 +33,7 @@ const registerMethod = (name, fn) => {
 //     fiona().register(['person', personExtension]).object(() => fiona.Person, { luckyNumber: fiona.Number({ max: 100 }) })
 fiona.register = Register(registerFactory, registerMethod)
 
+// TODO: register Random on seeded instance, perhaps need to implement seeded.register first
 fiona.Random = () => seeded => seeded.random()
 
 const clone = seeded => fiona(seeded.info().initseed).state(seeded.state())

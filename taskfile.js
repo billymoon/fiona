@@ -55,7 +55,7 @@ export async function build (task) {
 }
 
 export async function fiona (task) {
-  exec('webpack --profile --reporter json > static/webpack-stats.json')
+  exec('webpack --profile --json > static/webpack-stats.json')
 }
 
 export async function docs (task) {
@@ -63,7 +63,7 @@ export async function docs (task) {
 }
 
 export async function core (task) {
-  exec('webpack --config webpack.config.core.js --profile --reporter json > static/webpack-stats.core.json')
+  exec('webpack --config webpack.config.core.js --profile --json > static/webpack-stats.core.json')
 }
 
 export async function deploy (task) {

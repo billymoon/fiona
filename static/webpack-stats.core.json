@@ -2,9 +2,9 @@
   "errors": [],
   "warnings": [],
   "version": "4.25.1",
-  "hash": "93f4806be2be1b430204",
-  "time": 441,
-  "builtAt": 1541613109934,
+  "hash": "cdb691272e680d88d4ba",
+  "time": 150,
+  "builtAt": 1541668483917,
   "publicPath": "",
   "outputPath": "/Users/billymoon/projects/fiona",
   "assetsByChunkName": {
@@ -13,7 +13,7 @@
   "assets": [
     {
       "name": "fiona.core.min.js",
-      "size": 5759,
+      "size": 5782,
       "chunks": [
         0
       ],
@@ -54,14 +54,14 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 12214,
+      "size": 12243,
       "names": [
         "main"
       ],
       "files": [
         "fiona.core.min.js"
       ],
-      "hash": "af526081a763e3fd2500",
+      "hash": "7452e86e5ac3376f937c",
       "siblings": [],
       "parents": [],
       "children": [],
@@ -90,8 +90,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -118,15 +118,15 @@
               "name": "./src/core/primitives/object/object.js",
               "profile": {
                 "factory": 21,
-                "building": 7,
-                "dependencies": 23
+                "building": 6,
+                "dependencies": 18
               }
             }
           ],
           "profile": {
-            "factory": 24,
-            "building": 11,
-            "dependencies": 1
+            "factory": 20,
+            "building": 9,
+            "dependencies": 0
           },
           "failed": false,
           "errors": 0,
@@ -192,8 +192,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -217,8 +217,8 @@
           ],
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           },
           "failed": false,
           "errors": 0,
@@ -275,8 +275,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -300,8 +300,8 @@
           ],
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           },
           "failed": false,
           "errors": 0,
@@ -353,8 +353,8 @@
           "issuerName": null,
           "issuerPath": null,
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           },
           "failed": false,
           "errors": 0,
@@ -399,8 +399,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             }
           ],
@@ -454,8 +454,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -501,7 +501,7 @@
           "name": "./package.json",
           "index": 3,
           "index2": 0,
-          "size": 1792,
+          "size": 1821,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -518,8 +518,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -543,8 +543,8 @@
           ],
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           },
           "failed": false,
           "errors": 0,
@@ -581,7 +581,7 @@
             "ModuleConcatenation bailout: Module is not an ECMAScript module"
           ],
           "depth": 3,
-          "source": "{\n  \"name\": \"fiona\",\n  \"version\": \"2.7.0\",\n  \"description\": \"tiny yet powerful pseudo random data generator\",\n  \"repository\": \"billymoon/fiona\",\n  \"main\": \"fiona.min.js\",\n  \"scripts\": {\n    \"start\": \"next start\",\n    \"dev\": \"next dev\",\n    \"test\": \"jest\",\n    \"size-limit\": \"size-limit\",\n    \"build\": \"taskr build\",\n    \"deploy\": \"taskr deploy\",\n    \"fix\": \"taskr fix\",\n    \"git-pre-commit\": \"taskr precommit\",\n    \"git-post-commit\": \"taskr postcommit\",\n    \"git-post-merge\": \"taskr postcommit\"\n  },\n  \"author\": \"Billy Moon\",\n  \"license\": \"ISC\",\n  \"devDependencies\": {\n    \"@taskr/clear\": \"^1.1.0\",\n    \"@taskr/esnext\": \"^1.1.0\",\n    \"@weco/next-plugin-transpile-modules\": \"0.0.2\",\n    \"@zeit/git-hooks\": \"^0.1.4\",\n    \"bezier-easing\": \"^2.0.3\",\n    \"fetch-pretender\": \"^1.5.0\",\n    \"git-tools\": \"^0.3.0\",\n    \"jest\": \"^22.4.4\",\n    \"jsx-components\": \"1.2.0\",\n    \"lodash.template\": \"^4.4.0\",\n    \"next\": \"^6.1.1\",\n    \"randexp\": \"^0.4.6\",\n    \"react\": \"^16.4.1\",\n    \"react-dom\": \"^16.0.0\",\n    \"react-redux\": \"^5.1.0\",\n    \"redux\": \"^4.0.1\",\n    \"size-limit\": \"^0.21.0\",\n    \"standard\": \"^11.0.1\",\n    \"taskr\": \"^1.1.0\",\n    \"webpack\": \"^4.25.1\",\n    \"webpack-bundle-analyzer\": \"^3.0.3\",\n    \"webpack-command\": \"^0.4.2\"\n  },\n  \"jest\": {\n    \"testURL\": \"http://localhost/\",\n    \"collectCoverageFrom\": [\n      \"src/**/*.js\",\n      \"!src/**/*.docs.js\",\n      \"!src/docs/**\"\n    ],\n    \"testPathIgnorePatterns\": [\n      \"node_modules\",\n      \"misc\"\n    ]\n  },\n  \"dependencies\": {\n  },\n  \"size-limit\": [\n    {\n      \"config\": \"webpack.config.core.js\",\n      \"limit\": \"5 KB\"\n    },\n    {\n      \"config\": \"webpack.config.js\",\n      \"limit\": \"20 KB\"\n    },\n    {\n      \"path\": \"fiona.min.js\",\n      \"limit\": \"10 KB\"\n    },\n    {\n      \"path\": \"fiona.core.min.js\",\n      \"limit\": \"2 KB\"\n    }\n  ]\n}\n"
+          "source": "{\n  \"name\": \"fiona\",\n  \"version\": \"2.7.0\",\n  \"description\": \"tiny yet powerful pseudo random data generator\",\n  \"repository\": \"billymoon/fiona\",\n  \"main\": \"fiona.min.js\",\n  \"scripts\": {\n    \"start\": \"next start\",\n    \"dev\": \"next dev\",\n    \"test\": \"jest\",\n    \"size-limit\": \"size-limit\",\n    \"build\": \"taskr build\",\n    \"deploy\": \"taskr deploy\",\n    \"fix\": \"taskr fix\",\n    \"git-pre-commit\": \"taskr precommit\",\n    \"git-post-commit\": \"taskr postcommit\",\n    \"git-post-merge\": \"taskr postcommit\"\n  },\n  \"author\": \"Billy Moon\",\n  \"license\": \"ISC\",\n  \"devDependencies\": {\n    \"@taskr/clear\": \"^1.1.0\",\n    \"@taskr/esnext\": \"^1.1.0\",\n    \"@weco/next-plugin-transpile-modules\": \"0.0.2\",\n    \"@zeit/git-hooks\": \"^0.1.4\",\n    \"bezier-easing\": \"^2.0.3\",\n    \"fetch-pretender\": \"^1.5.0\",\n    \"git-tools\": \"^0.3.0\",\n    \"jest\": \"^22.4.4\",\n    \"jsx-components\": \"1.2.0\",\n    \"lodash.template\": \"^4.4.0\",\n    \"next\": \"^6.1.1\",\n    \"randexp\": \"^0.4.6\",\n    \"react\": \"^16.4.1\",\n    \"react-dom\": \"^16.0.0\",\n    \"react-redux\": \"^5.1.0\",\n    \"redux\": \"^4.0.1\",\n    \"size-limit\": \"^0.21.0\",\n    \"standard\": \"^11.0.1\",\n    \"taskr\": \"^1.1.0\",\n    \"webpack\": \"^4.25.1\",\n    \"webpack-bundle-analyzer\": \"^3.0.3\",\n    \"webpack-cli\": \"^3.1.2\"\n  },\n  \"jest\": {\n    \"testURL\": \"http://localhost/\",\n    \"collectCoverageFrom\": [\n      \"src/**/*.js\",\n      \"!src/**/*.docs.js\",\n      \"!src/docs/**\"\n    ],\n    \"testPathIgnorePatterns\": [\n      \"node_modules\",\n      \"misc\"\n    ]\n  },\n  \"dependencies\": {\n    \"react-highlight\": \"^0.12.0\"\n  },\n  \"size-limit\": [\n    {\n      \"config\": \"webpack.config.core.js\",\n      \"limit\": \"5 KB\"\n    },\n    {\n      \"config\": \"webpack.config.js\",\n      \"limit\": \"20 KB\"\n    },\n    {\n      \"path\": \"fiona.min.js\",\n      \"limit\": \"10 KB\"\n    },\n    {\n      \"path\": \"fiona.core.min.js\",\n      \"limit\": \"2 KB\"\n    }\n  ]\n}\n"
         },
         {
           "id": 7,
@@ -606,8 +606,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -634,14 +634,14 @@
               "name": "./src/core/register/index.js",
               "profile": {
                 "factory": 21,
-                "building": 7,
-                "dependencies": 23
+                "building": 6,
+                "dependencies": 18
               }
             }
           ],
           "profile": {
-            "factory": 15,
-            "building": 7
+            "factory": 12,
+            "building": 5
           },
           "failed": false,
           "errors": 0,
@@ -689,8 +689,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -717,14 +717,14 @@
               "name": "./src/core/register/index.js",
               "profile": {
                 "factory": 21,
-                "building": 7,
-                "dependencies": 23
+                "building": 6,
+                "dependencies": 18
               }
             }
           ],
           "profile": {
-            "factory": 15,
-            "building": 7
+            "factory": 12,
+            "building": 5
           },
           "failed": false,
           "errors": 0,
@@ -772,8 +772,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -800,14 +800,14 @@
               "name": "./src/core/prng/index.js",
               "profile": {
                 "factory": 21,
-                "building": 7,
-                "dependencies": 23
+                "building": 6,
+                "dependencies": 18
               }
             }
           ],
           "profile": {
-            "factory": 27,
-            "building": 4
+            "factory": 21,
+            "building": 2
           },
           "failed": false,
           "errors": 0,
@@ -855,8 +855,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -883,14 +883,14 @@
               "name": "./src/core/prng/index.js",
               "profile": {
                 "factory": 21,
-                "building": 7,
-                "dependencies": 23
+                "building": 6,
+                "dependencies": 18
               }
             }
           ],
           "profile": {
-            "factory": 27,
-            "building": 4
+            "factory": 21,
+            "building": 2
           },
           "failed": false,
           "errors": 0,
@@ -938,8 +938,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -966,14 +966,14 @@
               "name": "./src/core/prng/index.js",
               "profile": {
                 "factory": 21,
-                "building": 7,
-                "dependencies": 23
+                "building": 6,
+                "dependencies": 18
               }
             }
           ],
           "profile": {
-            "factory": 27,
-            "building": 4
+            "factory": 21,
+            "building": 2
           },
           "failed": false,
           "errors": 0,
@@ -1021,8 +1021,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -1046,8 +1046,8 @@
           ],
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           },
           "failed": false,
           "errors": 0,
@@ -1095,8 +1095,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -1120,8 +1120,8 @@
           ],
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           },
           "failed": false,
           "errors": 0,
@@ -1169,8 +1169,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -1194,8 +1194,8 @@
           ],
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           },
           "failed": false,
           "errors": 0,
@@ -1243,8 +1243,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -1271,8 +1271,8 @@
               "name": "./src/core/primitives/object/object.js",
               "profile": {
                 "factory": 21,
-                "building": 7,
-                "dependencies": 23
+                "building": 6,
+                "dependencies": 18
               }
             },
             {
@@ -1280,16 +1280,16 @@
               "identifier": "/Users/billymoon/projects/fiona/src/core/recurse/index.js",
               "name": "./src/core/recurse/index.js",
               "profile": {
-                "factory": 24,
-                "building": 11,
-                "dependencies": 1
+                "factory": 20,
+                "building": 9,
+                "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 6,
-            "building": 2,
-            "dependencies": 0
+            "factory": 2,
+            "building": 3,
+            "dependencies": 1
           },
           "failed": false,
           "errors": 0,
@@ -1337,8 +1337,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -1362,8 +1362,8 @@
           ],
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           },
           "failed": false,
           "errors": 0,
@@ -1411,8 +1411,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -1436,8 +1436,8 @@
           ],
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           },
           "failed": false,
           "errors": 0,
@@ -1485,8 +1485,8 @@
               "identifier": "multi ./core/index.js",
               "name": "multi ./core/index.js",
               "profile": {
-                "factory": 0,
-                "building": 3
+                "factory": 1,
+                "building": 2
               }
             },
             {
@@ -1510,8 +1510,8 @@
           ],
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           },
           "failed": false,
           "errors": 0,
@@ -1574,8 +1574,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -1602,15 +1602,15 @@
           "name": "./src/core/primitives/object/object.js",
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           }
         }
       ],
       "profile": {
-        "factory": 24,
-        "building": 11,
-        "dependencies": 1
+        "factory": 20,
+        "building": 9,
+        "dependencies": 0
       },
       "failed": false,
       "errors": 0,
@@ -1676,8 +1676,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -1701,8 +1701,8 @@
       ],
       "profile": {
         "factory": 21,
-        "building": 7,
-        "dependencies": 23
+        "building": 6,
+        "dependencies": 18
       },
       "failed": false,
       "errors": 0,
@@ -1759,8 +1759,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -1784,8 +1784,8 @@
       ],
       "profile": {
         "factory": 21,
-        "building": 7,
-        "dependencies": 23
+        "building": 6,
+        "dependencies": 18
       },
       "failed": false,
       "errors": 0,
@@ -1837,8 +1837,8 @@
       "issuerName": null,
       "issuerPath": null,
       "profile": {
-        "factory": 0,
-        "building": 3
+        "factory": 1,
+        "building": 2
       },
       "failed": false,
       "errors": 0,
@@ -1883,8 +1883,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         }
       ],
@@ -1938,8 +1938,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -1985,7 +1985,7 @@
       "name": "./package.json",
       "index": 3,
       "index2": 0,
-      "size": 1792,
+      "size": 1821,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -2002,8 +2002,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2027,8 +2027,8 @@
       ],
       "profile": {
         "factory": 21,
-        "building": 7,
-        "dependencies": 23
+        "building": 6,
+        "dependencies": 18
       },
       "failed": false,
       "errors": 0,
@@ -2065,7 +2065,7 @@
         "ModuleConcatenation bailout: Module is not an ECMAScript module"
       ],
       "depth": 3,
-      "source": "{\n  \"name\": \"fiona\",\n  \"version\": \"2.7.0\",\n  \"description\": \"tiny yet powerful pseudo random data generator\",\n  \"repository\": \"billymoon/fiona\",\n  \"main\": \"fiona.min.js\",\n  \"scripts\": {\n    \"start\": \"next start\",\n    \"dev\": \"next dev\",\n    \"test\": \"jest\",\n    \"size-limit\": \"size-limit\",\n    \"build\": \"taskr build\",\n    \"deploy\": \"taskr deploy\",\n    \"fix\": \"taskr fix\",\n    \"git-pre-commit\": \"taskr precommit\",\n    \"git-post-commit\": \"taskr postcommit\",\n    \"git-post-merge\": \"taskr postcommit\"\n  },\n  \"author\": \"Billy Moon\",\n  \"license\": \"ISC\",\n  \"devDependencies\": {\n    \"@taskr/clear\": \"^1.1.0\",\n    \"@taskr/esnext\": \"^1.1.0\",\n    \"@weco/next-plugin-transpile-modules\": \"0.0.2\",\n    \"@zeit/git-hooks\": \"^0.1.4\",\n    \"bezier-easing\": \"^2.0.3\",\n    \"fetch-pretender\": \"^1.5.0\",\n    \"git-tools\": \"^0.3.0\",\n    \"jest\": \"^22.4.4\",\n    \"jsx-components\": \"1.2.0\",\n    \"lodash.template\": \"^4.4.0\",\n    \"next\": \"^6.1.1\",\n    \"randexp\": \"^0.4.6\",\n    \"react\": \"^16.4.1\",\n    \"react-dom\": \"^16.0.0\",\n    \"react-redux\": \"^5.1.0\",\n    \"redux\": \"^4.0.1\",\n    \"size-limit\": \"^0.21.0\",\n    \"standard\": \"^11.0.1\",\n    \"taskr\": \"^1.1.0\",\n    \"webpack\": \"^4.25.1\",\n    \"webpack-bundle-analyzer\": \"^3.0.3\",\n    \"webpack-command\": \"^0.4.2\"\n  },\n  \"jest\": {\n    \"testURL\": \"http://localhost/\",\n    \"collectCoverageFrom\": [\n      \"src/**/*.js\",\n      \"!src/**/*.docs.js\",\n      \"!src/docs/**\"\n    ],\n    \"testPathIgnorePatterns\": [\n      \"node_modules\",\n      \"misc\"\n    ]\n  },\n  \"dependencies\": {\n  },\n  \"size-limit\": [\n    {\n      \"config\": \"webpack.config.core.js\",\n      \"limit\": \"5 KB\"\n    },\n    {\n      \"config\": \"webpack.config.js\",\n      \"limit\": \"20 KB\"\n    },\n    {\n      \"path\": \"fiona.min.js\",\n      \"limit\": \"10 KB\"\n    },\n    {\n      \"path\": \"fiona.core.min.js\",\n      \"limit\": \"2 KB\"\n    }\n  ]\n}\n"
+      "source": "{\n  \"name\": \"fiona\",\n  \"version\": \"2.7.0\",\n  \"description\": \"tiny yet powerful pseudo random data generator\",\n  \"repository\": \"billymoon/fiona\",\n  \"main\": \"fiona.min.js\",\n  \"scripts\": {\n    \"start\": \"next start\",\n    \"dev\": \"next dev\",\n    \"test\": \"jest\",\n    \"size-limit\": \"size-limit\",\n    \"build\": \"taskr build\",\n    \"deploy\": \"taskr deploy\",\n    \"fix\": \"taskr fix\",\n    \"git-pre-commit\": \"taskr precommit\",\n    \"git-post-commit\": \"taskr postcommit\",\n    \"git-post-merge\": \"taskr postcommit\"\n  },\n  \"author\": \"Billy Moon\",\n  \"license\": \"ISC\",\n  \"devDependencies\": {\n    \"@taskr/clear\": \"^1.1.0\",\n    \"@taskr/esnext\": \"^1.1.0\",\n    \"@weco/next-plugin-transpile-modules\": \"0.0.2\",\n    \"@zeit/git-hooks\": \"^0.1.4\",\n    \"bezier-easing\": \"^2.0.3\",\n    \"fetch-pretender\": \"^1.5.0\",\n    \"git-tools\": \"^0.3.0\",\n    \"jest\": \"^22.4.4\",\n    \"jsx-components\": \"1.2.0\",\n    \"lodash.template\": \"^4.4.0\",\n    \"next\": \"^6.1.1\",\n    \"randexp\": \"^0.4.6\",\n    \"react\": \"^16.4.1\",\n    \"react-dom\": \"^16.0.0\",\n    \"react-redux\": \"^5.1.0\",\n    \"redux\": \"^4.0.1\",\n    \"size-limit\": \"^0.21.0\",\n    \"standard\": \"^11.0.1\",\n    \"taskr\": \"^1.1.0\",\n    \"webpack\": \"^4.25.1\",\n    \"webpack-bundle-analyzer\": \"^3.0.3\",\n    \"webpack-cli\": \"^3.1.2\"\n  },\n  \"jest\": {\n    \"testURL\": \"http://localhost/\",\n    \"collectCoverageFrom\": [\n      \"src/**/*.js\",\n      \"!src/**/*.docs.js\",\n      \"!src/docs/**\"\n    ],\n    \"testPathIgnorePatterns\": [\n      \"node_modules\",\n      \"misc\"\n    ]\n  },\n  \"dependencies\": {\n    \"react-highlight\": \"^0.12.0\"\n  },\n  \"size-limit\": [\n    {\n      \"config\": \"webpack.config.core.js\",\n      \"limit\": \"5 KB\"\n    },\n    {\n      \"config\": \"webpack.config.js\",\n      \"limit\": \"20 KB\"\n    },\n    {\n      \"path\": \"fiona.min.js\",\n      \"limit\": \"10 KB\"\n    },\n    {\n      \"path\": \"fiona.core.min.js\",\n      \"limit\": \"2 KB\"\n    }\n  ]\n}\n"
     },
     {
       "id": 7,
@@ -2090,8 +2090,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2118,14 +2118,14 @@
           "name": "./src/core/register/index.js",
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           }
         }
       ],
       "profile": {
-        "factory": 15,
-        "building": 7
+        "factory": 12,
+        "building": 5
       },
       "failed": false,
       "errors": 0,
@@ -2173,8 +2173,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2201,14 +2201,14 @@
           "name": "./src/core/register/index.js",
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           }
         }
       ],
       "profile": {
-        "factory": 15,
-        "building": 7
+        "factory": 12,
+        "building": 5
       },
       "failed": false,
       "errors": 0,
@@ -2256,8 +2256,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2284,14 +2284,14 @@
           "name": "./src/core/prng/index.js",
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           }
         }
       ],
       "profile": {
-        "factory": 27,
-        "building": 4
+        "factory": 21,
+        "building": 2
       },
       "failed": false,
       "errors": 0,
@@ -2339,8 +2339,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2367,14 +2367,14 @@
           "name": "./src/core/prng/index.js",
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           }
         }
       ],
       "profile": {
-        "factory": 27,
-        "building": 4
+        "factory": 21,
+        "building": 2
       },
       "failed": false,
       "errors": 0,
@@ -2422,8 +2422,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2450,14 +2450,14 @@
           "name": "./src/core/prng/index.js",
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           }
         }
       ],
       "profile": {
-        "factory": 27,
-        "building": 4
+        "factory": 21,
+        "building": 2
       },
       "failed": false,
       "errors": 0,
@@ -2505,8 +2505,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2530,8 +2530,8 @@
       ],
       "profile": {
         "factory": 21,
-        "building": 7,
-        "dependencies": 23
+        "building": 6,
+        "dependencies": 18
       },
       "failed": false,
       "errors": 0,
@@ -2579,8 +2579,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2604,8 +2604,8 @@
       ],
       "profile": {
         "factory": 21,
-        "building": 7,
-        "dependencies": 23
+        "building": 6,
+        "dependencies": 18
       },
       "failed": false,
       "errors": 0,
@@ -2653,8 +2653,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2678,8 +2678,8 @@
       ],
       "profile": {
         "factory": 21,
-        "building": 7,
-        "dependencies": 23
+        "building": 6,
+        "dependencies": 18
       },
       "failed": false,
       "errors": 0,
@@ -2727,8 +2727,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2755,8 +2755,8 @@
           "name": "./src/core/primitives/object/object.js",
           "profile": {
             "factory": 21,
-            "building": 7,
-            "dependencies": 23
+            "building": 6,
+            "dependencies": 18
           }
         },
         {
@@ -2764,16 +2764,16 @@
           "identifier": "/Users/billymoon/projects/fiona/src/core/recurse/index.js",
           "name": "./src/core/recurse/index.js",
           "profile": {
-            "factory": 24,
-            "building": 11,
-            "dependencies": 1
+            "factory": 20,
+            "building": 9,
+            "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 6,
-        "building": 2,
-        "dependencies": 0
+        "factory": 2,
+        "building": 3,
+        "dependencies": 1
       },
       "failed": false,
       "errors": 0,
@@ -2821,8 +2821,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2846,8 +2846,8 @@
       ],
       "profile": {
         "factory": 21,
-        "building": 7,
-        "dependencies": 23
+        "building": 6,
+        "dependencies": 18
       },
       "failed": false,
       "errors": 0,
@@ -2895,8 +2895,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2920,8 +2920,8 @@
       ],
       "profile": {
         "factory": 21,
-        "building": 7,
-        "dependencies": 23
+        "building": 6,
+        "dependencies": 18
       },
       "failed": false,
       "errors": 0,
@@ -2969,8 +2969,8 @@
           "identifier": "multi ./core/index.js",
           "name": "multi ./core/index.js",
           "profile": {
-            "factory": 0,
-            "building": 3
+            "factory": 1,
+            "building": 2
           }
         },
         {
@@ -2994,8 +2994,8 @@
       ],
       "profile": {
         "factory": 21,
-        "building": 7,
-        "dependencies": 23
+        "building": 6,
+        "dependencies": 18
       },
       "failed": false,
       "errors": 0,
