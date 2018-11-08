@@ -1,7 +1,7 @@
-import { Layout, Article } from "../../src/docs/app";
-import { provide } from "../../src/docs/app/state";
+import { Layout, Article } from "../../docs/app";
+import { provide } from "../../docs/app/state";
 
-import { ApiOverview, ApiSearch } from "../../src/docs/sections";
+import { ApiOverview, ApiSearch } from "../../docs/sections";
 
 // import ApiFnClone from '../../src/core/core-clone.docs'
 // import ApiFnFind from '../../src/find/find.docs'

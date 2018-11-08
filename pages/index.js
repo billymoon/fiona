@@ -1,5 +1,5 @@
-import { Layout, Article } from '../src/docs/app'
-import { provide } from '../src/docs/app/state'
+import { Layout, Article } from '../docs/app'
+import { provide } from '../docs/app/state'
 
 import {
   OverviewDynamicOverview,
@@ -8,7 +8,7 @@ import {
   OverviewDistribution,
   OverviewExtending,
   OverviewContributing
-} from '../src/docs/sections'
+} from '../docs/sections'
 
 const Page = () =>
   <Layout>

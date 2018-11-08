@@ -1,4 +1,4 @@
-import { fiona, consume, ApiSection, Sample } from '../docs/app'
+import { fiona, consume, ApiSection, Sample } from '../../docs/app'
 
 const Section = ({ seed }) =>
   <ApiSection heading={<span><small>fiona.</small>Choose</span>}>

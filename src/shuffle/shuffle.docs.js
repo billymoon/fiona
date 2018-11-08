@@ -1,4 +1,4 @@
-import { fiona, consume, ApiSection, Sample } from '../docs/app'
+import { fiona, consume, ApiSection, Sample } from '../../docs/app'
 
 // TODO: document fischer yates style, and qty param
 
