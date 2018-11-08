@@ -84,20 +84,49 @@ export const provide = Component => {
 };
 
 // TODO: be selective about what state is consumed per component, especially the blinking
+export const withBlink = Component => {
+  return connect(
+    state => ({
+      blink: state.blink,
+      blinkInterval: state.blinkInterval
+    }),
+    dispatch => ({
+      toggleBlink: () => dispatch({ type: "TOGGLE_BLINK" }),
+      cancelBlink: () => dispatch({ type: "CANCEL_BLINK" })
+    })
+  )(Component);
+}
+
+export const withApi = Component => {
+  return connect(
+    state => ({
+      apiFilter: state.apiFilter
+    }),
+    dispatch => ({
+      setApiFilter: newfilter =>
+        dispatch({ type: "SET_API_FILTER", payload: newfilter })
+    })
+  )(Component);
+};
+
+export const withThemeState = Component => {
+  return connect(
+    state => ({
+      theme: state.theme
+    }),
+    dispatch => ({
+      toggleTheme: index => dispatch({ type: "TOGGLE_THEME", payload: index })
+    })
+  )(Component);
+};
+
 export const consume = Component => {
   return connect(
     state => ({
       seed: state.seed,
-      apiFilter: state.apiFilter,
-      blink: state.blink,
-      blinkInterval: state.blinkInterval,
       theme: state.theme
     }),
     dispatch => ({
-      toggleBlink: () => dispatch({ type: "TOGGLE_BLINK" }),
-      cancelBlink: () => dispatch({ type: "CANCEL_BLINK" }),
-      setApiFilter: newfilter =>
-        dispatch({ type: "SET_API_FILTER", payload: newfilter }),
       setSeed: newseed => dispatch({ type: "SET_SEED", payload: newseed }),
       clickSeed: index => dispatch({ type: "CLICK_SEED", payload: index }),
       toggleTheme: index => dispatch({ type: "TOGGLE_THEME", payload: index })

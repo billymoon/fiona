@@ -1,4 +1,4 @@
-import { fiona, config, consume } from '.'
+import { fiona, config, consume, withBlink } from '.'
 
 const pos = index => ({ x: (index % 11) * 40 + 10, y: Math.floor(index / 11) * 40 + 10 })
 
@@ -111,4 +111,4 @@ const Logo = ({ seed, blink, blinkInterval, theme, clickSeed, toggleTheme }) =>
     `}</style>
   </div>
 
-export default consume(Logo)
+export default withBlink(consume(Logo))

@@ -1,4 +1,4 @@
-import { consume } from '../../app/state'
+import { withApi, withThemeState } from '../../app/state'
 
 const ApiSearch = ({ setApiFilter, apiFilter, theme, ...props }) =>
   <div>
@@ -22,4 +22,4 @@ const ApiSearch = ({ setApiFilter, apiFilter, theme, ...props }) =>
     `}</style>
   </div>
 
-export default consume(ApiSearch)
+export default withApi(withThemeState(ApiSearch))
