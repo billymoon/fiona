@@ -28,7 +28,7 @@ const Section = ({ seed }) =>
 
     <p>Assuming some kind of setup code loading <a href='https://github.com/sstur/fetch-pretender'>Fetch Pretender</a></p>
 
-    <Sample>{`
+    <Sample lang="html">{`
     <script src="https://cdn.rawgit.com/billymoon/fetch-pretender/master/dist/pretender.js"></script>
     `}</Sample>
 

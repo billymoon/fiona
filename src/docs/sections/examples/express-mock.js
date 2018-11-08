@@ -47,7 +47,7 @@ const Section = ({ seed }) =>
 
     ... or with curl ...
 
-    <Sample>{`
+    <Sample lang="none">{`
     $ curl http://localhost:3001/api/user/${seed}
     `}</Sample>
 

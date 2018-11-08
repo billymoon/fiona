@@ -1,5 +1,6 @@
 // node core deps
 const childProcess = require('child_process')
+const { mkdirSync } = require('fs')
 
 // 3rd party deps
 const Repo = require('git-tools')
@@ -25,8 +26,20 @@ export async function test (task) {
   exec('npm run test')
 }
 
+export async function sizelimit (task) {
+  exec('npm run size-limit')
+}
+
 export async function reports (task) {
-  task.serial(['coverage'])
+  task.serial(['coverage', 'buildsize'])
+}
+
+export async function buildsize (task) {
+  await task.clear('static/reports/size')
+  mkdirSync('static/reports/size')
+  // TODO: why does this not resolve files in stats file
+  exec('webpack-bundle-analyzer static/webpack-stats.json -m static -r static/reports/size/main.html -O')
+  exec('webpack-bundle-analyzer static/webpack-stats.core.json -m static -r static/reports/size/core.html -O')
 }
 
 export async function coverage (task) {
@@ -38,11 +51,11 @@ export async function coverage (task) {
 }
 
 export async function build (task) {
-  task.serial(['fiona', 'docs', 'core', 'reports'])
+  task.serial(['fiona', 'docs', 'core', 'reports', 'sizelimit'])
 }
 
 export async function fiona (task) {
-  exec('webpack')
+  exec('webpack --profile --reporter json > static/webpack-stats.json')
 }
 
 export async function docs (task) {
@@ -50,7 +63,7 @@ export async function docs (task) {
 }
 
 export async function core (task) {
-  exec('webpack --config webpack.config.core.js')
+  exec('webpack --config webpack.config.core.js --profile --reporter json > static/webpack-stats.core.json')
 }
 
 export async function deploy (task) {

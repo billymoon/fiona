@@ -1,4 +1,4 @@
-import { fiona, consume, Sample } from "../../app";
+import { fiona, consume, Sample, Code } from "../../app";
 
 const templateStringOutput = seeded =>
   seeded.object(

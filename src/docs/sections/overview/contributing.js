@@ -8,7 +8,7 @@ const Section = ({ seed }) =>
   <section>
     <h2>Contributing</h2>
 
-    <p>Fiona aims to be performant, robust, well documented and <Link href='/static/reports/coverage/index.html'><a>well tested</a></Link>.</p>
+    <p>Fiona aims to be performant, robust, well documented, <Link href='/static/reports/coverage/index.html'><a>well tested</a></Link> and <Link href="/static/reports/size/main.html"><a>small</a></Link> (full library is ~8KB core is ~3KB gzipped).</p>
 
     <p>Fiona is open source, <Link href='https://github.com/billymoon/fiona'><a>fork me on github</a></Link>. Pull requests and issues welcome. I think the most useful thing the community could contribute to this project at this time is to help build up the methods to become a rich tapestry of data generating utilities.</p>
 
@@ -19,7 +19,7 @@ const Section = ({ seed }) =>
     <ul>
       <li><NPM name='jest' /> for testing</li>
       <li><NPM name='webpack' /> and <NPM name='babel-cli' /> for bundling distributable</li>
-      <li><NPM name='taskr' /> and <NPM name='husky' /> for development lifecycle scripting</li>
+      <li><NPM name='taskr' /> and <NPM name='@zeit/git-hooks' /> for development lifecycle scripting</li>
       <li><NPM name='standard' /> for linting</li>
       <li><NPM name='react' /> and <NPM name='next' /> for documentation website</li>
     </ul>

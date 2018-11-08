@@ -8,6 +8,7 @@
     "start": "next start",
     "dev": "next dev",
     "test": "jest",
+    "size-limit": "size-limit",
     "build": "taskr build",
     "deploy": "taskr deploy",
     "fix": "taskr fix",
@@ -34,10 +35,12 @@
     "react-dom": "^16.0.0",
     "react-redux": "^5.1.0",
     "redux": "^4.0.1",
+    "size-limit": "^0.21.0",
     "standard": "^11.0.1",
     "taskr": "^1.1.0",
-    "webpack": "^4.8.3",
-    "webpack-command": "^0.2.0"
+    "webpack": "^4.25.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-command": "^0.4.2"
   },
   "jest": {
     "testURL": "http://localhost/",
@@ -51,5 +54,25 @@
       "misc"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-highlight": "^0.12.0"
+  },
+  "size-limit": [
+    {
+      "config": "webpack.config.core.js",
+      "limit": "5 KB"
+    },
+    {
+      "config": "webpack.config.js",
+      "limit": "20 KB"
+    },
+    {
+      "path": "fiona.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "fiona.core.min.js",
+      "limit": "2 KB"
+    }
+  ]
 }

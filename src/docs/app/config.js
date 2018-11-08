@@ -63,7 +63,9 @@ export default {
       white: clr.white
     },
     grid: {
-      unit: 1,
+      unit: 21,
+      equalized: false,
+      fluidish: false,
       breakpoints: { xs: 0, sm: 768, md: 992, lg: 1200, xl: 1400, xxl: 1400 }
     },
     font: {

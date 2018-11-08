@@ -7,7 +7,7 @@ const Section = ({ seed }) =>
 
     <p>Install via npm</p>
     
-    <Sample>{`npm install fiona`}</Sample>
+    <Sample lang='none'>{`npm install fiona`}</Sample>
     
     <p>import into your app</p>
     
@@ -15,7 +15,7 @@ const Section = ({ seed }) =>
     
     <p>or include in webpage from cdn</p>
     
-    <Sample>{`<script src='https://cdn.jsdelivr.net/npm/fiona'></script>`}</Sample>
+    <Sample lang='html'>{`<script src='https://cdn.jsdelivr.net/npm/fiona'></script>`}</Sample>
 
     <p><i>n.b. you can open the console and edit/run code samples from this page</i></p>
 
