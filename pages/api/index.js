@@ -12,12 +12,12 @@ import ApiFnFullname from '../../src/name/fullname.docs'
 import ApiFnInfo from '../../src/core/info.docs'
 import ApiFnSurname from '../../src/name/surname.docs'
 import ApiFnNumber from '../../src/core/primitives/number/number.docs'
-// import ApiFnObject from '../../src/core/primitives/object/object.docs'
+import ApiFnObject from '../../src/core/primitives/object/object.docs'
 import ApiFnRandom from '../../src/core/random.docs'
 import ApiFnRegister from '../../src/core/register/register.docs'
 // import ApiFnReseed from '../../src/core/core-reseed.docs'
 // import ApiFnState from '../../src/core/core-state.docs'
-// import ApiFnString from '../../src/core/primitives/string/string.docs'
+import ApiFnString from '../../src/core/primitives/string/string.docs'
 import ApiFnTitle from '../../src/name/title.docs'
 import ApiFnDistribution from "../../src/core/distribution/distribution.docs";
 import ApiFnArray from "../../src/core/primitives/array/array.docs";
@@ -64,6 +64,8 @@ const Page = () =>
         <ApiFnFullname />
         <ApiFnInfo />
         <ApiFnRegister />
+        <ApiFnObject />
+        <ApiFnString />
         {/*
         
         <ApiFnClone />
@@ -72,8 +74,6 @@ const Page = () =>
         
         <ApiFnFind />
 
-        <ApiFnObject />
-        <ApiFnString />
         */}
       </section>
     </Article>
