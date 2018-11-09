@@ -5,6 +5,8 @@ module.exports = withTM({
   exportPathMap: () => ({
     '/': { page: '/' },
     '/api': { page: '/api' },
-    '/examples': { page: '/examples' }
+    '/examples': { page: '/examples' },
+    '/examples/mock-api': { page: '/examples/mock-api' },
+    '/examples/populate-template': { page: '/examples/populate-template' }
   })
 })

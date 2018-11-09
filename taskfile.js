@@ -39,7 +39,8 @@ export async function buildsize (task) {
   try {
     mkdirSync('static/reports')
   } catch (err) {
-    console.log('failed to create static/reports', err)
+    // TODO: use fs-extra to ensure directory
+    // console.log('failed to create static/reports', err)
   }
   mkdirSync('static/reports/size')
   // TODO: why does this not resolve files in stats file
@@ -65,7 +66,7 @@ export async function fiona (task) {
 
 export async function docs (task) {
   exec('next build')
-  exec('next export')
+  // exec('next export')
 }
 
 export async function core (task) {
