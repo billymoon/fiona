@@ -1,24 +1,25 @@
-import { withState, Layout, Article } from '../src/docs/app'
+import { Layout, Article } from '../docs/app'
+import { provide } from '../docs/app/state'
 
 import {
   OverviewDynamicOverview,
+  OverviewHowFionaWorks,
   OverviewQuickStart,
   OverviewSeededPRNG,
-  OverviewWeighting,
-  OverviewChainedDataBuilder,
-  OverviewPlugins,
+  OverviewDistribution,
+  OverviewExtending,
   OverviewContributing
-} from '../src/docs/sections'
+} from '../docs/sections'
 
 const Page = () =>
   <Layout>
     <Article><OverviewDynamicOverview /></Article>
+    <Article><OverviewHowFionaWorks /></Article>
     <Article><OverviewQuickStart /></Article>
     <Article><OverviewSeededPRNG /></Article>
-    <Article><OverviewWeighting /></Article>
-    <Article><OverviewChainedDataBuilder /></Article>
-    <Article><OverviewPlugins /></Article>
+    <Article><OverviewDistribution /></Article>
+    <Article><OverviewExtending /></Article>
     <Article><OverviewContributing /></Article>
   </Layout>
 
-export default withState(Page)
+export default provide(Page)

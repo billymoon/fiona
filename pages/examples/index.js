@@ -1,21 +1,19 @@
-import { withState, Layout, Article } from '../../src/docs/app'
+import Link from "next/link";
+import { Layout, Article, Shelf } from "../../docs/app";
+import { provide } from "../../docs/app/state";
 
 import {
   ExamplesIntro,
-  ExamplesTemplateString,
-  ExamplesTemplatePlugin,
-  ExamplesPretend,
-  ExamplesExpressMock
-} from '../../src/docs/sections'
+  ExamplesDashboard
+} from "../../docs/sections";
 
-const Page = () =>
+const Page = () => (
   <Layout>
-    <Article><ExamplesIntro /></Article>
-    <Article><ExamplesPretend /></Article>
-    <Article><ExamplesExpressMock /></Article>
-    <Article><ExamplesTemplateString /></Article>
-    <Article><ExamplesTemplatePlugin /></Article>
+    <Article>
+      <ExamplesIntro />
+    </Article>
+    <ExamplesDashboard />
   </Layout>
+);
 
-
-export default withState(Page)
+export default provide(Page);

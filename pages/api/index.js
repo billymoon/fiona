@@ -1,68 +1,82 @@
-import { withState, Layout, Article } from '../../src/docs/app'
+import { Layout, Article } from "../../docs/app";
+import { provide } from "../../docs/app/state";
 
-import {
-  ApiOverview,
-  ApiSearch
-} from '../../src/docs/sections'
+import { ApiOverview, ApiSearch } from "../../docs/sections";
 
-import ApiFnBool from '../../src/plugins/bool/fiona.bool.docs'
-import ApiFnCall from '../../src/core/core-call.docs'
-import ApiFnPlugin from '../../src/core/core-plugin.docs'
-import ApiFnRandom from '../../src/core/core-random.docs'
-import ApiFnChoose from '../../src/plugins/choose/fiona.choose.docs'
-import ApiFnOneof from '../../src/plugins/choose/fiona.choose-oneof.docs'
-import ApiFnArr from '../../src/plugins/arr/fiona.arr.docs'
-import ApiFnDate from '../../src/plugins/date/fiona.date.docs'
-import ApiFnDuplicable from '../../src/plugins/duplicable/fiona.duplicable.docs'
-import ApiFnFirstname from '../../src/plugins/name/fiona.name-firstname.docs'
-import ApiFnFirstnames from '../../src/plugins/name/fiona.name-firstnames.docs'
-import ApiFnGender from '../../src/plugins/name/fiona.name-gender.docs'
-import ApiFnLastname from '../../src/plugins/name/fiona.name-lastname.docs'
-import ApiFnName from '../../src/plugins/name/fiona.name.docs'
-import ApiFnTitle from '../../src/plugins/name/fiona.name-title.docs'
-import ApiFnNamedata from '../../src/plugins/name/fiona.name-namedata.docs'
-import ApiFnLorem from '../../src/plugins/lorem/fiona.lorem.docs'
-import ApiFnPara from '../../src/plugins/lorem/fiona.lorem-para.docs'
-import ApiFnSentence from '../../src/plugins/lorem/fiona.lorem-sentence.docs'
-import ApiFnWord from '../../src/plugins/lorem/fiona.lorem-word.docs'
-import ApiFnRegex from '../../src/plugins/regex/fiona.regex.docs'
-import ApiFnWeighted from '../../src/plugins/weighted/fiona.weighted.docs'
-import ApiFnNumber from '../../src/plugins/number/fiona.number.docs'
-import ApiFnShuffle from '../../src/plugins/shuffle/fiona.shuffle.docs'
+// import ApiFnClone from '../../src/core/core-clone.docs'
+// import ApiFnFind from '../../src/find/find.docs'
+import ApiFnFirstname from '../../src/name/firstname.docs'
+import ApiFnGender from '../../src/name/gender.docs'
+import ApiFnNamedata from '../../src/name/namedata.docs'
+import ApiFnFullname from '../../src/name/fullname.docs'
+import ApiFnInfo from '../../src/core/info.docs'
+import ApiFnSurname from '../../src/name/surname.docs'
+import ApiFnNumber from '../../src/core/primitives/number/number.docs'
+import ApiFnObject from '../../src/core/primitives/object/object.docs'
+import ApiFnRandom from '../../src/core/random.docs'
+import ApiFnRegister from '../../src/core/register/register.docs'
+// import ApiFnReseed from '../../src/core/core-reseed.docs'
+// import ApiFnState from '../../src/core/core-state.docs'
+import ApiFnString from '../../src/core/primitives/string/string.docs'
+import ApiFnTitle from '../../src/name/title.docs'
+import ApiFnDistribution from "../../src/core/distribution/distribution.docs";
+import ApiFnArray from "../../src/core/primitives/array/array.docs";
+import ApiFnBool from "../../src/bool/bool.docs";
+import ApiFnChoose from "../../src/choose/choose.docs";
+import ApiFnDate from "../../src/date/date.docs";
+import ApiFnDuplicable from "../../src/duplicable/duplicable.docs";
+import ApiFnJson from "../../src/core/primitives/json/json.docs";
+import ApiFnLorem from "../../src/lorem/lorem.docs";
+import ApiFnOneof from "../../src/choose/one-of.docs";
+import ApiFnParagraph from "../../src/lorem/paragraph.docs";
+import ApiFnRegex from "../../src/regex/regex.docs";
+import ApiFnSentence from "../../src/lorem/sentence.docs";
+import ApiFnShuffle from "../../src/shuffle/shuffle.docs";
+import ApiFnWord from "../../src/lorem/word.docs";
 
-// TODO document api for: reseed, clone, callback, data, info, chain, value, json, state, plugin, call, find
-const Page = () =>
+const Page = () => 
   <Layout>
     <Article>
       <ApiOverview />
       <ApiSearch />
       <section>
-        <ApiFnRandom />
-        <ApiFnNumber />
+        <ApiFnArray />
         <ApiFnBool />
-        <ApiFnPlugin />
-        <ApiFnCall />
+        <ApiFnChoose />
         <ApiFnDate />
-        <ApiFnShuffle />
         <ApiFnDuplicable />
+        <ApiFnJson />
+        <ApiFnLorem />
+        <ApiFnOneof />
+        <ApiFnParagraph />
+        <ApiFnRegex />
+        <ApiFnSentence />
+        <ApiFnNumber />
+        <ApiFnShuffle />
+        <ApiFnWord />
+        <ApiFnDistribution />
+        <ApiFnRandom />
         <ApiFnGender />
         <ApiFnTitle />
-        <ApiFnFirstname />
-        <ApiFnFirstnames />
-        <ApiFnLastname />
-        <ApiFnName />
         <ApiFnNamedata />
-        <ApiFnLorem />
-        <ApiFnWord />
-        <ApiFnSentence />
-        <ApiFnPara />
-        <ApiFnOneof />
-        <ApiFnArr />
-        <ApiFnChoose />
-        <ApiFnRegex />
-        <ApiFnWeighted />
+        <ApiFnFirstname />
+        <ApiFnSurname />
+        <ApiFnFullname />
+        <ApiFnInfo />
+        <ApiFnRegister />
+        <ApiFnObject />
+        <ApiFnString />
+        {/*
+        
+        <ApiFnClone />
+        <ApiFnReseed />
+        <ApiFnState />
+        
+        <ApiFnFind />
+
+        */}
       </section>
     </Article>
   </Layout>
 
-export default withState(Page)
+export default provide(Page);
