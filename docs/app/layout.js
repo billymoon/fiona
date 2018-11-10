@@ -1,12 +1,18 @@
 import Head from "next/head";
+import Router from "next/router";
 import { withRouter } from "next/router";
 import { Ribbon } from "jsx-components";
 
-import { Theme, Shelf, Article, withTheme } from "../app";
+import { Theme, Shelf, Article, withTheme, withNav } from "../app";
 import { Logo, Nav, fiona, injectState, config, consume } from "./";
 
-const MainContent = withTheme(
-  withRouter(({ router, seed, theme, children }) => (
+const handleRouteChange = url => {
+  console.log('App is changing to: ', url)
+}
+
+
+const MainContent = withNav(withTheme(
+  withRouter(({ router, seed, theme, closed, children }) => (
     <section>
       <Ribbon
         href="https://github.com/billymoon/fiona"
@@ -23,7 +29,7 @@ const MainContent = withTheme(
         </h1>
       </Article>
       <Article style={{ textAlign: "center" }}>
-        <Nav />
+        <Nav closed={closed} />
       </Article>
       <style global jsx>{`
         @import url("https://fonts.googleapis.com/css?family=Raleway|Andika|Cousine");
@@ -85,25 +91,29 @@ const MainContent = withTheme(
         font-size: 0.75em;
       }
 
-      h1 { font-size: 40px; margin-top: 0px; margin-bottom: 10px; }
+      h1 { font-size: 24px; margin-top: 0px; margin-bottom: 10px; }
       h2 { font-size: 32px; }
       h3 { font-size: 24px; }
       h4 { font-size: 22px; }
       h5 { font-size: 18px; }
       h6 { font-size: 16px; }      
       @media screen and (min-width: 768px) {
-        h1 { margin-top: 20px; margin-bottom: 40px; }
+        h1 { font-size: 40px; margin-top: 20px; margin-bottom: 40px; }
       }
     `}</style>
       {children}
     </section>
   ))
-);
+));
 
 // TODO: simpify and tidy this section, perhaps this whole layout file
 // TODO: re-implement dynamic theme switcher
-const MainLayout = ({ seed, children }) => (
+const MainLayout = ({ router, seed, children }) => (
   <div>
+    {(() => {
+      console.log(Router.events)
+      return null
+    })()}
     <Head>
       <title>Fiona</title>
       <meta charSet="UTF-8" />
@@ -126,4 +136,4 @@ const MainLayout = ({ seed, children }) => (
   </div>
 );
 
-export default consume(MainLayout);
+export default withRouter(consume(MainLayout));

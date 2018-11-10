@@ -29,6 +29,8 @@ const reducer = (state, action) => {
     }
 
     return { ...state, theme: theme };
+  } else if (action.type === "TOGGLE_NAV") {
+    return { ...state, closed: !state.closed };
   } else if (action.type === "TOGGLE_BLINK") {
     const blink = state.blink === null ? null : !state.blink;
     return { ...state, blink: blink };
@@ -62,6 +64,7 @@ const store = createStore(
     blink: false,
     blinkInterval: blinkIntervalID,
     apiFilter: "",
+    closed: true,
     seed: config.magicNumber,
     theme: Object.assign({}, config.theme)
   },
@@ -105,6 +108,17 @@ export const withApi = Component => {
     dispatch => ({
       setApiFilter: newfilter =>
         dispatch({ type: "SET_API_FILTER", payload: newfilter })
+    })
+  )(Component);
+};
+
+export const withNav = Component => {
+  return connect(
+    state => ({
+      closed: state.closed
+    }),
+    dispatch => ({
+      toggleNav: () => dispatch({ type: "TOGGLE_NAV" })
     })
   )(Component);
 };

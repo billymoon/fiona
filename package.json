@@ -29,7 +29,7 @@
     "jest": "^22.4.4",
     "jsx-components": "1.2.0",
     "lodash.template": "^4.4.0",
-    "next": "^6.1.1",
+    "next": "^7.0.2",
     "randexp": "^0.4.6",
     "react": "^16.4.1",
     "react-dom": "^16.0.0",
