@@ -11,7 +11,7 @@ module.exports = {
     './core/index.js'
   ],
   output: {
-    path: __dirname,
+    path: path.join(__dirname, 'static'),
     filename: 'fiona.core.min.js',
     libraryTarget: 'umd',
     library: 'Fiona',

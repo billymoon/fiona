@@ -1,3 +1,5 @@
+// TODO: do we need to include bezier easing library?
+import bezierEasing from 'bezier-easing'
 import { Fiona, consume, Sample } from '../../app'
 
 const Section = ({ seed }) => (
@@ -52,7 +54,7 @@ const Section = ({ seed }) => (
     ${JSON.stringify(
       Fiona(seed).array(5, seeded =>
         seeded
-          .distribution(require('bezier-easing')(0.5, 0.5, 1, 0))
+          .distribution(bezierEasing(0.5, 0.5, 1, 0))
           .number({ min: 10000, max: 100000 })
       )
     )}
