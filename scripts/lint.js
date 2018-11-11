@@ -1,3 +1,4 @@
 const { execWithArgs } = require('./utils')
 
-execWithArgs('prettier {pages,core}/**/*.js')
+// The quotes make sure that Prettier expands the globs rather than your shell
+execWithArgs('prettier "{core,docs,pages,scripts,src}/**/*.js"')

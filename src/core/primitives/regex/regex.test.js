@@ -18,6 +18,8 @@ describe('regex (if registered)', () => {
   test('should handle regex if plugin registered', () => {
     Fiona.register(['regex', regexPlugin])
     const pattern = /of [01]{8} (ro|cy)bo(rg|t)s/
-    expect(seeded.object({ army: pattern })).toEqual({ army: 'of 00001011 cybots' })
+    expect(seeded.object({ army: pattern })).toEqual({
+      army: 'of 00001011 cybots'
+    })
   })
 })

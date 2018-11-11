@@ -1,9 +1,9 @@
-import Head from "next/head";
-import { withRouter } from "next/router";
-import { Ribbon } from "jsx-components";
+import Head from 'next/head'
+import { withRouter } from 'next/router'
+import { Ribbon } from 'jsx-components'
 
-import { Theme, Shelf, Article, withTheme, withNav, Sample } from "../app";
-import { Logo, Nav, Fiona, injectState, config, consume } from "./";
+import { Theme, Shelf, Article, withTheme, withNav, Sample } from '../app'
+import { Logo, Nav, Fiona, injectState, config, consume } from './'
 
 const MainContent = withNav(
   withTheme(
@@ -13,9 +13,11 @@ const MainContent = withNav(
           href="https://github.com/billymoon/Fiona"
           color={theme.clr.primary}
         />
-        <Article style={{ textAlign: "center" }}>
+        <Article style={{ textAlign: 'center' }}>
           <Logo />
-          <Sample special={['mobile-no-bg']}>{`const seeded = Fiona(${seed})`}</Sample>
+          <Sample
+            special={['mobile-no-bg']}
+          >{`const seeded = Fiona(${seed})`}</Sample>
         </Article>
         {/*
         <Article style={{ textAlign: "center" }}>
@@ -26,11 +28,11 @@ const MainContent = withNav(
           </h1>
         </Article>
       */}
-        <Article style={{ textAlign: "center" }}>
+        <Article style={{ textAlign: 'center' }}>
           <Nav closed={closed} />
         </Article>
         <style global jsx>{`
-          @import url("https://fonts.googleapis.com/css?family=Raleway|Andika|Cousine");
+          @import url('https://fonts.googleapis.com/css?family=Raleway|Andika|Cousine');
         `}</style>
         <style global jsx>{`
       html {
@@ -104,7 +106,7 @@ const MainContent = withNav(
       </section>
     ))
   )
-);
+)
 
 // TODO: simpify and tidy this section, perhaps this whole layout file
 // TODO: re-implement dynamic theme switcher
@@ -136,6 +138,6 @@ const MainLayout = ({ router, seed, children }) => (
     </Head>
     <MainContent seed={seed}>{children}</MainContent>
   </div>
-);
+)
 
-export default withRouter(consume(MainLayout));
+export default withRouter(consume(MainLayout))

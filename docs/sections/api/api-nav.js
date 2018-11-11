@@ -1,4 +1,4 @@
-import { withApi, withThemeState } from "../../app/state";
+import { withApi, withThemeState } from '../../app/state'
 
 const apis = [
   'Fiona.Random',
@@ -32,7 +32,7 @@ const apis = [
   'Fiona.Duplicable',
   'Fiona.Distribution',
   'Fiona.register'
-];
+]
 
 const ApiSearch = ({ setApiFilter, theme, ...props }) => (
   <div>
@@ -42,8 +42,8 @@ const ApiSearch = ({ setApiFilter, theme, ...props }) => (
           <a
             href={`#${api}`}
             onClick={evt => {
-              evt.preventDefault();
-              setApiFilter(api);
+              evt.preventDefault()
+              setApiFilter(api)
             }}
           >
             {api.replace(/^Fiona\./, '')}
@@ -51,7 +51,7 @@ const ApiSearch = ({ setApiFilter, theme, ...props }) => (
         </li>
       ))}
     </ul>
-    <div className="clearfix"></div>
+    <div className="clearfix" />
     <style jsx>{`
       a {
         font-size: 14px;
@@ -73,6 +73,6 @@ const ApiSearch = ({ setApiFilter, theme, ...props }) => (
       }
     `}</style>
   </div>
-);
+)
 
-export default withApi(withThemeState(ApiSearch));
+export default withApi(withThemeState(ApiSearch))

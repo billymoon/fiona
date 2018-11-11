@@ -11,15 +11,30 @@ import {
   OverviewContributing
 } from '../docs/sections'
 
-const Page = () =>
+const Page = () => (
   <Layout>
-    <Article><OverviewDynamicOverview /></Article>
-    <Article><OverviewHowFionaWorks /></Article>
-    <Article><OverviewQuickStart /></Article>
-    <Article><OverviewSeededPRNG /></Article>
-    <Article><OverviewDistribution /></Article>
-    <Article><OverviewExtending /></Article>
-    <Article><OverviewContributing /></Article>
+    <Article>
+      <OverviewDynamicOverview />
+    </Article>
+    <Article>
+      <OverviewHowFionaWorks />
+    </Article>
+    <Article>
+      <OverviewQuickStart />
+    </Article>
+    <Article>
+      <OverviewSeededPRNG />
+    </Article>
+    <Article>
+      <OverviewDistribution />
+    </Article>
+    <Article>
+      <OverviewExtending />
+    </Article>
+    <Article>
+      <OverviewContributing />
+    </Article>
   </Layout>
+)
 
 export default provide(Page)

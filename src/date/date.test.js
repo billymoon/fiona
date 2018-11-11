@@ -6,7 +6,9 @@ Fiona.register(['date', require('./date')])
 test('Fiona.Date', () => {
   expect(Fiona(1).date()).toBe('1967-07-02')
   expect(Fiona(1).date({ min: '1980-01-01' })).toBe('1989-03-02')
-  expect(Fiona(1).date({ min: '1980-01-01', max: '1981-03-22' })).toBe('1980-07-23')
+  expect(Fiona(1).date({ min: '1980-01-01', max: '1981-03-22' })).toBe(
+    '1980-07-23'
+  )
 })
 
 test('Fiona.Date (long)', () => {
@@ -14,5 +16,7 @@ test('Fiona.Date (long)', () => {
 })
 
 test('Fiona.Date (throws when min > max)', () => {
-  expect(() => Fiona(1).date({ min: '1980-01-01', max: '1979-01-01' })).toThrow()
+  expect(() =>
+    Fiona(1).date({ min: '1980-01-01', max: '1979-01-01' })
+  ).toThrow()
 })

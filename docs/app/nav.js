@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { withRouter } from "next/router";
+import Link from 'next/link'
+import { withRouter } from 'next/router'
 
-import { withTheme, config, withNav } from "../app";
+import { withTheme, config, withNav } from '../app'
 
-const radius = 6;
-const underline = 3;
-const underlinePressed = 1;
+const radius = 6
+const underline = 3
+const underlinePressed = 1
 
 const Menu = ({ closed }) => (
   <div className="menu">
@@ -18,7 +18,7 @@ const Menu = ({ closed }) => (
         display: flex;
         width: 40px;
         height: 40px;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         align-items: center;
         -webkit-box-pack: center;
         justify-content: center;
@@ -54,24 +54,28 @@ const Menu = ({ closed }) => (
 
       .line.top {
         background-color: #d24188;
-        transform: ${closed ? `translateY(-4px) rotate(0deg)` : `translateY(2px) rotate(45deg)`};
+        transform: ${closed
+          ? `translateY(-4px) rotate(0deg)`
+          : `translateY(2px) rotate(45deg)`};
       }
 
       .line.bottom {
         background-color: #5056a9;
-        transform: ${closed ? `translateY(4px) rotate(0deg)` : `translateY(0px) rotate(-45deg)`};
+        transform: ${closed
+          ? `translateY(4px) rotate(0deg)`
+          : `translateY(0px) rotate(-45deg)`};
       }
     `}</style>
   </div>
-);
+)
 
 const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) => (
   <div>
     <Link prefetch href={href}>
       <a
-        className={["action-button"]
-          .concat(selected ? ["selected"] : [])
-          .join(" ")}
+        className={['action-button']
+          .concat(selected ? ['selected'] : [])
+          .join(' ')}
       >
         {label}
       </a>
@@ -122,7 +126,7 @@ const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) => (
       }
     `}</style>
   </div>
-));
+))
 
 const getHeading = pathname => {
   if (pathname === '/') {
@@ -139,13 +143,22 @@ const Nav = ({ router, closed, toggleNav }) => (
   <div>
     <div className="menu-toggle">
       <h4 style={{ margin: 0 }}>{getHeading(router.pathname)}</h4>
-      <a href="#" onClick={evt => {
-        evt.preventDefault()
-        toggleNav(!closed)
-      }}><Menu closed={closed} /></a>
+      <a
+        href="#"
+        onClick={evt => {
+          evt.preventDefault()
+          toggleNav(!closed)
+        }}
+      >
+        <Menu closed={closed} />
+      </a>
     </div>
-    <div className='menu-items'>
-      <ButtonLink label="Overview" selected={router.pathname === "/"} href="/" />
+    <div className="menu-items">
+      <ButtonLink
+        label="Overview"
+        selected={router.pathname === '/'}
+        href="/"
+      />
       <ButtonLink
         label="API"
         selected={router.pathname.match(/^\/api(\/|$)/)}
@@ -155,7 +168,7 @@ const Nav = ({ router, closed, toggleNav }) => (
         label="Examples"
         selected={router.pathname.match(/^\/examples(\/|$)/)}
         href="/examples"
-      />      
+      />
     </div>
     <div className="heading-container">
       <h2 style={{ margin: 0 }}>{getHeading(router.pathname)}</h2>
@@ -191,6 +204,6 @@ const Nav = ({ router, closed, toggleNav }) => (
       }
     `}</style>
   </div>
-);
+)
 
-export default withRouter(withNav(Nav));
+export default withRouter(withNav(Nav))

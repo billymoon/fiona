@@ -13,7 +13,9 @@ const recurseObject = (seeded, original, position, current) => {
 const recurseArray = (seeded, original, position, current) => {
   return current.map((item, index) => {
     const nextPosition = `${position}[${index}]`
-    return item === undefined ? undefined : recurseData(seeded, original, nextPosition, item, index)
+    return item === undefined
+      ? undefined
+      : recurseData(seeded, original, nextPosition, item, index)
   })
 }
 

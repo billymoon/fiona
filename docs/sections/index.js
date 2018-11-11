@@ -14,4 +14,3 @@ export { default as ExamplesTemplatePlugin } from './examples/template-plugin'
 export { default as ExamplesPretend } from './examples/pretend'
 export { default as ExamplesExpressMock } from './examples/express-mock'
 export { default as ExamplesDashboard } from './examples/dashboard'
-

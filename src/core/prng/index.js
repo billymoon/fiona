@@ -1,4 +1,4 @@
-// TODO: add a Mersenne Twister for comparison, and benchmark 
+// TODO: add a Mersenne Twister for comparison, and benchmark
 const xor = require('./xor')
 const processSeed = require('../process-seed')
 const Distribution = require('../distribution')

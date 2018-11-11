@@ -1,7 +1,7 @@
-import Head from "next/head";
-import Highlight from "react-highlight/lib/optimized";
+import Head from 'next/head'
+import Highlight from 'react-highlight/lib/optimized'
 
-const Code = ({ bgColor = "#fff6f8", special=[], lang, children }) => (
+const Code = ({ bgColor = '#fff6f8', special = [], lang, children }) => (
   <div className={special.concat(['f5', 'editor']).join(' ')}>
     <style jsx>{`
       .editor {
@@ -52,19 +52,19 @@ const Code = ({ bgColor = "#fff6f8", special=[], lang, children }) => (
         }
       }
     `}</style>
-    {lang === "none" ? (
+    {lang === 'none' ? (
       <pre className="hljs">
         <code>{children}</code>
       </pre>
     ) : (
       <Highlight
-        className={lang || "javascript"}
-        languages={["json", "xml", "javascript"]}
+        className={lang || 'javascript'}
+        languages={['json', 'xml', 'javascript']}
       >
         {children}
       </Highlight>
     )}
   </div>
-);
+)
 
-export default Code;
+export default Code

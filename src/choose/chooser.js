@@ -1,6 +1,9 @@
 const chooser = (position, arr, weights) => {
   const calculatedWeights = arr.reduce((memo, value, index) => {
-    memo.push((memo[index - 1] || 0) + (typeof weights[index] === 'number' ? weights[index] : 1))
+    memo.push(
+      (memo[index - 1] || 0) +
+        (typeof weights[index] === 'number' ? weights[index] : 1)
+    )
     return memo
   }, [])
 

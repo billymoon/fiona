@@ -1,8 +1,13 @@
 import { withApi, withThemeState } from '../../app/state'
 
-const ApiSearch = ({ setApiFilter, apiFilter, theme, ...props }) =>
+const ApiSearch = ({ setApiFilter, apiFilter, theme, ...props }) => (
   <div>
-    <input ref={el => el && el.focus()} value={apiFilter} placeholder='filter api methods' onChange={evt => setApiFilter(evt.target.value)} />
+    <input
+      ref={el => el && el.focus()}
+      value={apiFilter}
+      placeholder="filter api methods"
+      onChange={evt => setApiFilter(evt.target.value)}
+    />
     <style jsx>{`
       input {
         border: 3px solid ${theme.clr.secondaryAccent};
@@ -21,5 +26,6 @@ const ApiSearch = ({ setApiFilter, apiFilter, theme, ...props }) =>
       }
     `}</style>
   </div>
+)
 
 export default withApi(withThemeState(ApiSearch))

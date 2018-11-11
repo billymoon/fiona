@@ -1,6 +1,6 @@
 /* global test expect describe beforeEach */
 
-const xor = require("./xor");
+const xor = require('./xor')
 
 const fixtures = {
   stateInitial: [
@@ -20,65 +20,65 @@ const fixtures = {
   resultCalledOnce: 0.6176335954189457,
   resultCalledTwice: 0.28963487096579504,
   resultCalledThrice: 0.0009165019732511146
-};
+}
 
-describe("xor", () => {
-  let prng;
+describe('xor', () => {
+  let prng
 
   beforeEach(() => {
-    prng = xor(0);
-  });
+    prng = xor(0)
+  })
 
-  test("random", () => {
-    const { random } = prng;
-    expect(random()).toBe(fixtures.resultCalledOnce);
-    expect(random()).toBe(fixtures.resultCalledTwice);
-    expect(random()).toBe(fixtures.resultCalledThrice);
-  });
+  test('random', () => {
+    const { random } = prng
+    expect(random()).toBe(fixtures.resultCalledOnce)
+    expect(random()).toBe(fixtures.resultCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
+  })
 
-  test("reseed", () => {
-    const { reseed, random } = prng;
-    expect(random()).toBe(fixtures.resultCalledOnce);
-    expect(random()).toBe(fixtures.resultCalledTwice);
-    expect(random()).toBe(fixtures.resultCalledThrice);
-    reseed(0);
-    expect(random()).toBe(fixtures.resultCalledOnce);
-    expect(random()).toBe(fixtures.resultCalledTwice);
-    expect(random()).toBe(fixtures.resultCalledThrice);
-  });
+  test('reseed', () => {
+    const { reseed, random } = prng
+    expect(random()).toBe(fixtures.resultCalledOnce)
+    expect(random()).toBe(fixtures.resultCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
+    reseed(0)
+    expect(random()).toBe(fixtures.resultCalledOnce)
+    expect(random()).toBe(fixtures.resultCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
+  })
 
-  test("getState", () => {
-    const { getState, random } = prng;
-    expect(getState()).toEqual(fixtures.stateInitial);
-    random();
-    expect(getState()).toEqual(fixtures.stateCalledOnce);
-    random();
-    expect(getState()).toEqual(fixtures.stateCalledTwice);
-    random();
-    expect(getState()).toEqual(fixtures.stateCalledThrice);
-  });
+  test('getState', () => {
+    const { getState, random } = prng
+    expect(getState()).toEqual(fixtures.stateInitial)
+    random()
+    expect(getState()).toEqual(fixtures.stateCalledOnce)
+    random()
+    expect(getState()).toEqual(fixtures.stateCalledTwice)
+    random()
+    expect(getState()).toEqual(fixtures.stateCalledThrice)
+  })
 
-  test("setState", () => {
-    const { setState, random } = prng;
+  test('setState', () => {
+    const { setState, random } = prng
 
-    expect(random()).toBe(fixtures.resultCalledOnce);
-    expect(random()).toBe(fixtures.resultCalledTwice);
-    expect(random()).toBe(fixtures.resultCalledThrice);
+    expect(random()).toBe(fixtures.resultCalledOnce)
+    expect(random()).toBe(fixtures.resultCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
 
-    setState(fixtures.stateInitial);
-    expect(random()).toBe(fixtures.resultCalledOnce);
-    expect(random()).toBe(fixtures.resultCalledTwice);
-    expect(random()).toBe(fixtures.resultCalledThrice);
+    setState(fixtures.stateInitial)
+    expect(random()).toBe(fixtures.resultCalledOnce)
+    expect(random()).toBe(fixtures.resultCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
 
-    setState(fixtures.stateCalledOnce);
-    expect(random()).toBe(fixtures.resultCalledTwice);
-    expect(random()).toBe(fixtures.resultCalledThrice);
+    setState(fixtures.stateCalledOnce)
+    expect(random()).toBe(fixtures.resultCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
 
-    setState(fixtures.stateCalledTwice);
-    expect(random()).toBe(fixtures.resultCalledThrice);
+    setState(fixtures.stateCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
 
-    setState(fixtures.stateCalledOnce);
-    expect(random()).toBe(fixtures.resultCalledTwice);
-    expect(random()).toBe(fixtures.resultCalledThrice);
-  });
-});
+    setState(fixtures.stateCalledOnce)
+    expect(random()).toBe(fixtures.resultCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
+  })
+})

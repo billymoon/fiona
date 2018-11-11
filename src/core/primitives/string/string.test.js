@@ -18,7 +18,9 @@ describe('string', () => {
   })
 
   test('plugin can be called as method on Fiona', () => {
-    expect(seeded.string`a ${seeded => seeded.random()} c`).toBe('a 0.9915455756669611 c')
+    expect(seeded.string`a ${seeded => seeded.random()} c`).toBe(
+      'a 0.9915455756669611 c'
+    )
   })
 
   test('plugin can be called as method on Fiona', () => {

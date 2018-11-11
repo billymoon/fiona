@@ -22,9 +22,19 @@ const defaultNamaData = () => {
   })
 }
 
-const Section = ({ seed }) =>
-  <ApiSection heading={<span><small>Fiona.</small>namedata</span>}>
-    <p>The data used to generate names and salutations is exposed as <code>Fiona.namedata</code> which can be inspected, and modified. The data is based on Scottish census records and is structured like this sample:</p>
+const Section = ({ seed }) => (
+  <ApiSection
+    heading={
+      <span>
+        <small>Fiona.</small>namedata
+      </span>
+    }
+  >
+    <p>
+      The data used to generate names and salutations is exposed as{' '}
+      <code>Fiona.namedata</code> which can be inspected, and modified. The data
+      is based on Scottish census records and is structured like this sample:
+    </p>
 
     <Sample>{`
     Fiona.namedata = {
@@ -40,9 +50,13 @@ const Section = ({ seed }) =>
     }
     `}</Sample>
 
-    <p>To change the namedata, you can assign new values to the properties of <code>Fiona.namedata</code> but not the object itself.</p>
+    <p>
+      To change the namedata, you can assign new values to the properties of{' '}
+      <code>Fiona.namedata</code> but not the object itself.
+    </p>
 
-    <Sample input={`
+    <Sample
+      input={`
     Fiona(${seed}).fullname()
 
     Object.assign(Fiona.namedata, {
@@ -57,10 +71,13 @@ const Section = ({ seed }) =>
     })
 
     Fiona(${seed}).fullname()
-    `} output={`
+    `}
+      output={`
     ${Fiona(seed).fullname()}
     ${customNamaData() || ''}${Fiona(seed).fullname()}${defaultNamaData() || ''}
-    `} />
+    `}
+    />
   </ApiSection>
+)
 
 export default consume(Section)

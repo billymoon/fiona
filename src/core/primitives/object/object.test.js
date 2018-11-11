@@ -15,31 +15,37 @@ describe('object', () => {
   })
 
   test('should return nested object', () => {
-    const expected = JSON.stringify(seeded.object({ a: { b: 1 }}))
+    const expected = JSON.stringify(seeded.object({ a: { b: 1 } }))
     const fixture = `{"a":{"b":1}}`
     expect(expected).toBe(fixture)
   })
 
   test('should return handled function', () => {
-    const expected = JSON.stringify(seeded.object({ a: () => 1}))
+    const expected = JSON.stringify(seeded.object({ a: () => 1 }))
     const fixture = `{"a":1}`
     expect(expected).toBe(fixture)
   })
 
   test('should return handled function with seeded value', () => {
-    const expected = JSON.stringify(seeded.object({ a: seeded => seeded.random() }))
+    const expected = JSON.stringify(
+      seeded.object({ a: seeded => seeded.random() })
+    )
     const fixture = `{"a":0.7904736091338441}`
     expect(expected).toBe(fixture)
   })
 
   test('should handle functions with recursion', () => {
-    const expected = JSON.stringify(seeded.object({ a: () => seeded => seeded.random() }))
+    const expected = JSON.stringify(
+      seeded.object({ a: () => seeded => seeded.random() })
+    )
     const fixture = `{"a":0.7904736091338441}`
     expect(expected).toBe(fixture)
   })
 
   test('should handle deeply nested object with function property', () => {
-    const expected = JSON.stringify(seeded.object({ a: { b: seeded => seeded.random() } }))
+    const expected = JSON.stringify(
+      seeded.object({ a: { b: seeded => seeded.random() } })
+    )
     const fixture = `{"a":{"b":0.530906858169896}}`
     expect(expected).toBe(fixture)
   })
@@ -84,29 +90,21 @@ describe('object', () => {
   })
 
   test('should handle complex nested objects with arrays and functions', () => {
-    const expected = JSON.stringify(seeded.object({
-      a: () => [
-        0,
-        1,
-        undefined,
-        3,
-        () => () => Fiona.Random,
-        {
-          b: () => [
-            'b0',
-            'b1',
-            'b2',
-            () => 'b3',
-            () => Fiona.Random
-          ]
-        },
-        [
-          6,
-          7,
-          () => Fiona.Random
+    const expected = JSON.stringify(
+      seeded.object({
+        a: () => [
+          0,
+          1,
+          undefined,
+          3,
+          () => () => Fiona.Random,
+          {
+            b: () => ['b0', 'b1', 'b2', () => 'b3', () => Fiona.Random]
+          },
+          [6, 7, () => Fiona.Random]
         ]
-      ]
-    }))
+      })
+    )
     const fixture = `{"a":[0,1,null,3,0.8738715024077667,{"b":["b0","b1","b2","b3",0.82669865890718]},[6,7,0.24771976435916487]]}`
     expect(expected).toBe(fixture)
   })
@@ -130,7 +128,9 @@ describe('object', () => {
   })
 
   test('should execute plugins defined as Fiona.MyPlugin({ argument: 1 })', () => {
-    const expected = JSON.stringify(seeded.object({ a: Fiona.Number({ precision: -3 }) }))
+    const expected = JSON.stringify(
+      seeded.object({ a: Fiona.Number({ precision: -3 }) })
+    )
     const fixture = `{"a":790000}`
     expect(expected).toBe(fixture)
   })

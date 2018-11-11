@@ -58,7 +58,8 @@
     ]
   },
   "prettier": {
-    "semi": false
+    "semi": false,
+    "singleQuote": true
   },
   "dependencies": {
     "react-highlight": "^0.12.0"

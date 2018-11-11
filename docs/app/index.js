@@ -2,7 +2,14 @@
 export * from 'jsx-components'
 
 export { default as config } from './config'
-export { provide, consume, withBlink, withApi, withThemeState, withNav } from './state'
+export {
+  provide,
+  consume,
+  withBlink,
+  withApi,
+  withThemeState,
+  withNav
+} from './state'
 export { default as Fiona } from './fiona-loader'
 export { withTheme, Theme } from './theme'
 
@@ -24,12 +31,40 @@ const formatCode = code => {
   const lines = code.split('\n')
   const lastline = lines[lines.length - 1]
   const indent = (/^ +$/.test(lastline) && lastline.length) || 0
-  return lines.map(line => line.slice(indent)).join('\n').replace(/\n\n+/gm, '\n\n').replace(/^\s*\s\s*/m, '')
+  return lines
+    .map(line => line.slice(indent))
+    .join('\n')
+    .replace(/\n\n+/gm, '\n\n')
+    .replace(/^\s*\s\s*/m, '')
 }
 
-export const Sample = ({ input, output, special, children, lang, ...props }) =>
+export const Sample = ({
+  input,
+  output,
+  special,
+  children,
+  lang,
+  ...props
+}) => (
   <div>
-    {input && <Code special={special} lang={lang} bgColor={config.theme.clr.highlight}>{`// input\n\n${formatCode(input)}`}</Code>}
-    {output && <Code special={special} lang='none' bgColor={config.theme.clr.secondaryHighlight}>{`// output\n\n${formatCode(output)}`}</Code>}
-    {children && <Code special={special} lang={lang}>{formatCode(children)}</Code>}
+    {input && (
+      <Code
+        special={special}
+        lang={lang}
+        bgColor={config.theme.clr.highlight}
+      >{`// input\n\n${formatCode(input)}`}</Code>
+    )}
+    {output && (
+      <Code
+        special={special}
+        lang="none"
+        bgColor={config.theme.clr.secondaryHighlight}
+      >{`// output\n\n${formatCode(output)}`}</Code>
+    )}
+    {children && (
+      <Code special={special} lang={lang}>
+        {formatCode(children)}
+      </Code>
+    )}
   </div>
+)

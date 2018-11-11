@@ -2,11 +2,7 @@
 
 const Fiona = require('../..')
 
-const fixtures = [
-  512979,
-  432056,
-  247403
-]
+const fixtures = [512979, 432056, 247403]
 
 describe('number', () => {
   let seeded

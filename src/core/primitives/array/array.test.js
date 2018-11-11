@@ -2,13 +2,7 @@
 
 const Fiona = require('../..')
 
-const fixtures = [
-  923436,
-  991546,
-  100070,
-  247407,
-  240368
-]
+const fixtures = [923436, 991546, 100070, 247407, 240368]
 
 describe('array', () => {
   let seeded
@@ -30,11 +24,15 @@ describe('array', () => {
   })
 
   test('accepts max/min arguments', () => {
-    expect(seeded.array({ min: 2, max: 4 }, Fiona.Number)).toEqual(fixtures.slice(0, 3))
+    expect(seeded.array({ min: 2, max: 4 }, Fiona.Number)).toEqual(
+      fixtures.slice(0, 3)
+    )
   })
 
   test('uses passed processor', () => {
-    expect(seeded.array(5, Fiona.Number, i => i.map(j => j / 100) )).toEqual(fixtures.map(j => j / 100))
+    expect(seeded.array(5, Fiona.Number, i => i.map(j => j / 100))).toEqual(
+      fixtures.map(j => j / 100)
+    )
   })
 
   test('joins array if passed string as processor', () => {

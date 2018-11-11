@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Layout, Article, Shelf } from "../../app";
+import Link from 'next/link'
+import { Layout, Article, Shelf } from '../../app'
 
 const Showcase = ({ children, title, href, img }) => (
   <div>
@@ -27,7 +27,7 @@ const Showcase = ({ children, title, href, img }) => (
       }
     `}</style>
   </div>
-);
+)
 
 export default () => (
   <section>
@@ -57,15 +57,27 @@ export default () => (
           href="/examples/populate-template"
           img="populate-template"
         >
-          <p>Generated data can be used to populate pretty much any kind of template. You could be creating a letter template, or generating SQL to populate a development database.</p>
-          <p>It's possible to generate template output directly by inserting functions to render data inline, but by using a two step process of generating the model, and then applying it to the template, there are some benefits.</p>
+          <p>
+            Generated data can be used to populate pretty much any kind of
+            template. You could be creating a letter template, or generating SQL
+            to populate a development database.
+          </p>
+          <p>
+            It's possible to generate template output directly by inserting
+            functions to render data inline, but by using a two step process of
+            generating the model, and then applying it to the template, there
+            are some benefits.
+          </p>
           <ul>
             <li>multiple templates can be populated from one model</li>
-            <li>the model can include information used to derive the template output that does not appear in the output</li>
+            <li>
+              the model can include information used to derive the template
+              output that does not appear in the output
+            </li>
             <li>the template can consume data from other sources</li>
           </ul>
         </Showcase>
       }
     />
   </section>
-);
+)

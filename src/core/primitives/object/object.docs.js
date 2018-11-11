@@ -1,4 +1,4 @@
-import { Fiona, consume, ApiSection, Sample } from "../../../../docs/app";
+import { Fiona, consume, ApiSection, Sample } from '../../../../docs/app'
 
 const Section = ({ seed }) => (
   <span>
@@ -81,7 +81,7 @@ const Section = ({ seed }) => (
                 seeded.array(
                   3,
                   Fiona.Firstname({ gender: seeded.data.name.gender }),
-                  " "
+                  ' '
                 ),
               lastname: seeded =>
                 seeded.surname({ gender: seeded.data.name.gender })
@@ -94,6 +94,6 @@ const Section = ({ seed }) => (
       />
     </ApiSection>
   </span>
-);
+)
 
-export default consume(Section);
+export default consume(Section)
