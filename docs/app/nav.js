@@ -124,19 +124,21 @@ const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) => (
   </div>
 ));
 
+const getHeading = pathname => {
+  if (pathname === '/') {
+    return 'Overview'
+  } else if (pathname.match(/^\/api(\/|$)/)) {
+    return 'API'
+  } else if (pathname.match(/^\/examples(\/|$)/)) {
+    return 'Examples'
+  }
+}
+
 // TODO: simpify and tidy this section, perhaps this whole nav file
 const Nav = ({ router, closed, toggleNav }) => (
   <div>
     <div className="menu-toggle">
-      <h4 style={{ margin: 0 }}>{(() => {
-        if (router.pathname === '/') {
-          return 'Overview'
-        } else if (router.pathname.match(/^\/api(\/|$)/)) {
-          return 'API'
-        } else if (router.pathname.match(/^\/examples(\/|$)/)) {
-          return 'Examples'
-        }
-      })()}</h4>
+      <h4 style={{ margin: 0 }}>{getHeading(router.pathname)}</h4>
       <a href="#" onClick={evt => {
         evt.preventDefault()
         toggleNav(!closed)
@@ -155,6 +157,9 @@ const Nav = ({ router, closed, toggleNav }) => (
         href="/examples"
       />      
     </div>
+    <div className="heading-container">
+      <h2 style={{ margin: 0 }}>{getHeading(router.pathname)}</h2>
+    </div>
     <style jsx>{`
       .menu-items {
         display: ${closed ? 'none' : 'block'};
@@ -165,7 +170,17 @@ const Nav = ({ router, closed, toggleNav }) => (
         justify-content: space-between;
       }
 
+      .heading-container {
+        clear: both;
+        display: none;
+        text-align: left;
+      }
+
       @media screen and (min-width: ${config.theme.grid.breakpoints.sm}px) {
+        .heading-container {
+          display: block;
+        }
+
         .menu-items {
           display: block;
         }

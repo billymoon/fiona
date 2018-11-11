@@ -27,11 +27,11 @@ export async function test (task) {
 }
 
 export async function sizelimit (task) {
-  exec('npm run size-limit')
+  exec('size-limit')
 }
 
 export async function reports (task) {
-  task.serial(['coverage', 'buildsize'])
+  task.serial(['coverage', 'buildsize', 'dependencies'])
 }
 
 export async function buildsize (task) {
@@ -46,6 +46,16 @@ export async function buildsize (task) {
   // TODO: why does this not resolve files in stats file
   exec('webpack-bundle-analyzer static/webpack-stats.json -m static -r static/reports/size/main.html -O')
   exec('webpack-bundle-analyzer static/webpack-stats.core.json -m static -r static/reports/size/core.html -O')
+}
+
+export async function dependencies (task) {
+  try {
+    mkdirSync('static/reports')
+  } catch (err) {
+    // TODO: use fs-extra to ensure directory
+    // console.log('failed to create static/reports', err)
+  }
+  exec('webpack-bundle-analyzerdepcruise -X "^node_modules" --prefix "https://github.com/billymoon/fiona/blob/master/" --output-type dot src/index.js | dot -T svg > static/dependency-graph.svg')
 }
 
 export async function coverage (task) {

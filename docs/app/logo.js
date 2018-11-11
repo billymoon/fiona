@@ -55,8 +55,8 @@ const Logo = ({ seed, blink, blinkInterval, theme, clickSeed, toggleTheme }) =>
       </g>
       <g>
         {(seed === config.magicNumber ? fionaDots : fiona(seed).getDots()).map((filled, index) =>
-          <circle key={index} cx={pos(index).x} cy={pos(index).y} r={filled ? 9 : 8} strokeWidth={filled ? 0 : 2} className={[
-            filled || (!blinkInterval && (index === 24 ? config.magicNumber : index) === seed) ? 'filled' : '',
+          <circle key={index} cx={pos(index).x} cy={pos(index).y} r={8} strokeWidth={2} className={[
+            (!blinkInterval && (index === 24 ? config.magicNumber : index) === seed) ? 'filled' : '',
             ((index === 24 ? config.magicNumber : index) === seed && (blink ? 'blink selected' : 'selected')) || ''
           ].join(' ')} onClick={() => {
             // TODO: move this into clickSeed action
@@ -85,6 +85,7 @@ const Logo = ({ seed, blink, blinkInterval, theme, clickSeed, toggleTheme }) =>
       }
       line {
         stroke: ${theme.clr.primary};
+        stroke-width: 10px;
         fill: ${theme.clr.white};
       }
       circle:hover {
@@ -95,13 +96,13 @@ const Logo = ({ seed, blink, blinkInterval, theme, clickSeed, toggleTheme }) =>
         stroke: ${theme.clr.white};
       }
       circle.selected {
-        stroke: ${theme.clr.primary};
+        stroke: ${theme.clr.secondary};
       }
       circle.blink {
-        fill: ${theme.clr.primary};
+        fill: ${theme.clr.secondary};
       }
       circle.filled.selected {
-        fill: ${theme.clr.primary};
+        fill: ${theme.clr.secondary};
       }
       @media screen and (min-width: 768px) {
         .root {

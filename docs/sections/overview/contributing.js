@@ -8,13 +8,13 @@ const Section = ({ seed }) =>
   <section>
     <h2>Contributing</h2>
 
-    <p>Fiona aims to be performant, robust, well documented, <Link href='/static/reports/coverage/index.html'><a>well tested</a></Link> and <Link href="/static/reports/size/main.html"><a>small</a></Link> (full library is ~8KB core is ~3KB gzipped).</p>
+    <p>Fiona aims to be performant, robust, well documented, <Link href='/static/dependency-graph.svg'><a>well organised</a></Link>, <Link href='/static/reports/coverage/index.html'><a>well tested</a></Link> and <Link href="/static/reports/size/main.html"><a>small</a></Link> (full library is ~8KB core is ~3KB gzipped).</p>
 
     <p>Fiona is open source, <Link href='https://github.com/billymoon/fiona'><a>fork me on github</a></Link>. Pull requests and issues welcome. The most useful thing the community could contribute to this project at this time is to help build up the methods to become a rich tapestry of data generating utilities.</p>
 
     <p>The code style is terse and succinct, and hopefully easy to understand and work with. The file structure is based around colocation, so the src folder includes the main library code, it's tests, and the documentation.</p>
 
-    <p>Whilst there are very few dependencies (<NPM name='randexp' /> and <NPM name='bezier-easing' />) in the fiona library, there are several used to aid development:</p>
+    <p>Whilst there are very few dependencies (only <NPM name='randexp' />) in the fiona library, there are several used to aid development:</p>
 
     <ul>
       <li><NPM name='jest' /> for testing</li>

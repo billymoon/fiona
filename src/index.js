@@ -1,4 +1,4 @@
-const fiona = require('../core')
+const fiona = require('./core')
 const bool = require('./bool/bool')
 const choose = require('./choose/choose')
 const oneOf = require('./choose/one-of')
@@ -8,7 +8,6 @@ const { lorem, word, sentence, paragraph } = require('./lorem/lorem')
 const { gender, title, firstname, firstnames, surname, fullname, namedata } = require('./name/name')
 const regex = require('./regex/regex')
 const shuffle = require('./shuffle/shuffle')
-const find = require('./find/find')
 
 fiona.register(
   ['bool', bool],

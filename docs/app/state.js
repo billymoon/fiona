@@ -1,3 +1,4 @@
+import Router from "next/router";
 import { Provider, connect } from "react-redux";
 import { createStore } from "redux";
 
@@ -30,7 +31,7 @@ const reducer = (state, action) => {
 
     return { ...state, theme: theme };
   } else if (action.type === "TOGGLE_NAV") {
-    return { ...state, closed: !state.closed };
+    return { ...state, closed: (typeof action.payload === 'undefined' ? !state.closed : action.payload)};
   } else if (action.type === "TOGGLE_BLINK") {
     const blink = state.blink === null ? null : !state.blink;
     return { ...state, blink: blink };
@@ -67,10 +68,7 @@ const store = createStore(
     closed: true,
     seed: config.magicNumber,
     theme: Object.assign({}, config.theme)
-  },
-  process.browser &&
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__()
+  }
 );
 
 // store.subscribe(() => {
@@ -147,6 +145,12 @@ export const consume = Component => {
     })
   )(Component);
 };
+
+const handleRouteChange = url => {
+  store.dispatch({ type: "TOGGLE_NAV", payload: true });
+}
+
+Router.events.on('routeChangeComplete', handleRouteChange)
 
 // // TODO: when toggle blink and navigate away, can try to set state in interval when component already destroyed
 // const initialize = ({ toggleBlink }) => {

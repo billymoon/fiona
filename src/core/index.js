@@ -1,4 +1,4 @@
-const packageJson = require('../../package')
+const packageJson = require('../../package.json')
 const { Register, registered } = require('./register')
 const Prng = require('./prng')
 const Moon = require('./moon')

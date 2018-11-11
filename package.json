@@ -7,8 +7,8 @@
   "scripts": {
     "start": "next start",
     "dev": "next dev",
+    "export": "next build && next export",
     "test": "jest",
-    "size-limit": "size-limit",
     "build": "taskr build",
     "deploy": "taskr deploy",
     "fix": "taskr fix",
@@ -24,6 +24,7 @@
     "@weco/next-plugin-transpile-modules": "0.0.2",
     "@zeit/git-hooks": "^0.1.4",
     "bezier-easing": "^2.0.3",
+    "dependency-cruiser": "^4.6.3",
     "fetch-pretender": "^1.5.0",
     "git-tools": "^0.3.0",
     "jest": "^22.4.4",

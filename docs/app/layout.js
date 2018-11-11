@@ -1,15 +1,9 @@
 import Head from "next/head";
-import Router from "next/router";
 import { withRouter } from "next/router";
 import { Ribbon } from "jsx-components";
 
 import { Theme, Shelf, Article, withTheme, withNav } from "../app";
 import { Logo, Nav, fiona, injectState, config, consume } from "./";
-
-const handleRouteChange = url => {
-  console.log('App is changing to: ', url)
-}
-
 
 const MainContent = withNav(withTheme(
   withRouter(({ router, seed, theme, closed, children }) => (
@@ -110,14 +104,10 @@ const MainContent = withNav(withTheme(
 // TODO: re-implement dynamic theme switcher
 const MainLayout = ({ router, seed, children }) => (
   <div>
-    {(() => {
-      console.log(Router.events)
-      return null
-    })()}
     <Head>
       <title>Fiona</title>
       <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <link
         rel="icon"

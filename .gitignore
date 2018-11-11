@@ -2,6 +2,7 @@
 .esm-cache
 .next
 misc
+out
 node_modules
 coverage
 static/reports
