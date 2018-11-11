@@ -5,11 +5,11 @@
   "repository": "billymoon/fiona",
   "main": "fiona.min.js",
   "scripts": {
-    "start": "next start",
-    "dev": "next dev",
+    "start": "node scripts/dev",
+    "test": "node scripts/test",
+    "lint": "node scripts/lint",
+    "build": "node scripts/build",
     "export": "next build && next export",
-    "test": "jest",
-    "build": "taskr build",
     "deploy": "taskr deploy",
     "fix": "taskr fix",
     "git-pre-commit": "taskr precommit",
@@ -31,6 +31,7 @@
     "jsx-components": "1.2.0",
     "lodash.template": "^4.4.0",
     "next": "^7.0.2",
+    "prettier": "^1.15.2",
     "randexp": "^0.4.6",
     "react": "^16.4.1",
     "react-dom": "^16.0.0",
@@ -52,8 +53,12 @@
     ],
     "testPathIgnorePatterns": [
       "node_modules",
+      "scripts",
       "misc"
     ]
+  },
+  "prettier": {
+    "semi": false
   },
   "dependencies": {
     "react-highlight": "^0.12.0"

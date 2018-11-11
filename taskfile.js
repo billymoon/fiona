@@ -118,3 +118,10 @@ export async function postcommit (task) {
   // }
   console.log('time to tag and push...')
 }
+
+export async function dev (task) {
+  console.log(123)
+  // exec('next dev')
+}
+
+export default dev
