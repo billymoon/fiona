@@ -5,6 +5,7 @@ import { createStore } from "redux";
 import config from "./config";
 import Fiona from "./fiona-loader";
 
+// TODO: find better place to initialise window.Fiona
 if (process.browser) {
   window.seeded = Fiona(config.magicNumber)
 }
@@ -40,13 +41,15 @@ const reducer = (state, action) => {
   } else if (action.type === "CLICK_SEED") {
     const index = action.payload;
     const seed = state.seed;
-    window.seeded = Fiona(seed)
     const newSeed =
       (index === 24 ? config.magicNumber : index) === seed
         ? Math.floor(Math.random() * 33)
         : index === 24
           ? config.magicNumber
           : index;
+    if (process.browser) {
+      window.seeded.reset(newSeed)
+    }
     // TODO: redux compose this instead of duplicating logic
     clearInterval(state.blinkInterval);
     return { ...state, seed: newSeed, blink: false, blinkInterval: null };
@@ -64,11 +67,12 @@ const store = createStore(
   {
     blink: false,
     blinkInterval: blinkIntervalID,
-    apiFilter: "",
+    apiFilter: 'Fiona.Random',
     closed: true,
     seed: config.magicNumber,
     theme: Object.assign({}, config.theme)
   }
+  // TODO: get redux dev tools working with next 7
 );
 
 // store.subscribe(() => {

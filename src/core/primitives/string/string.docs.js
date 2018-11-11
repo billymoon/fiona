@@ -1,22 +1,15 @@
-import { Fiona, consume, ApiSection, Sample } from '../../../../docs/app'
+import { Fiona, consume, ApiSection, Sample } from "../../../../docs/app";
 
-const Section = ({ seed }) =>
+const Section = ({ seed }) => (
   <span>
-    {/* TODO: document Fiona.String
-    <ApiSection heading={<span><small>Fiona.</small>Json</span>}>
-
-      <p>A method to return current data object as json string.</p>
+    <ApiSection heading={<span><small>Fiona.</small>String</span>}>
+      <p>A method to populate stirng literal template with resolved values.</p>
 
       <Sample input={`
-      Fiona(${seed}).json({
-        fullname: Fiona.Fullname,
-        age: Fiona.Number({ max: 100 })
-      })
-      `} output={`\n${JSON.stringify(Fiona(seed).object({ fullname: Fiona.Fullname, age: Fiona.Number({ max: 100 }) }), null, 2)}`} />
-
-      <p><b>n.b.</b> the <code>Fiona.Json</code> method proxies through to <code>Fiona.Object</code> then formats the output, so all arguments accepted by <code>Fiona.Object</code> are accepted by <code>Fiona.Json</code></p>
+      Fiona(${seed}).string\`Hi \${Fiona.Firstname}, how are you?\`
+      `} output={`\n${JSON.stringify(Fiona(seed).string`Hi ${Fiona.Firstname}, how are you?`)}`} />
     </ApiSection>
-    */}
   </span>
+);
 
-export default consume(Section)
+export default consume(Section);

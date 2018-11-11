@@ -16,7 +16,7 @@ import Code from './code'
 // export { Container, Row, Col, Article, Shelf } from './grid'
 
 import config from './config'
-import { Sample as VanillaSample} from 'jsx-components'
+import { Sample as VanillaSample } from 'jsx-components'
 // TODO: improve code sample component
 // export const Sample = ({ ...props }) => <VanillaSample breakpoint={`${config.theme.grid.breakpoints.lg}px`} {...props} />
 
@@ -27,9 +27,9 @@ const formatCode = code => {
   return lines.map(line => line.slice(indent)).join('\n').replace(/\n\n+/gm, '\n\n').replace(/^\s*\s\s*/m, '')
 }
 
-export const Sample = ({ input, output, children, lang, ...props }) =>
+export const Sample = ({ input, output, special, children, lang, ...props }) =>
   <div>
-    {input && <Code lang={lang} bgColor={config.theme.clr.highlight}>{`// input\n\n${formatCode(input)}`}</Code>}
-    {output && <Code lang='none' bgColor={config.theme.clr.secondaryHighlight}>{`// output\n\n${formatCode(output)}`}</Code>}
-    {children && <Code lang={lang}>{formatCode(children)}</Code>}
+    {input && <Code special={special} lang={lang} bgColor={config.theme.clr.highlight}>{`// input\n\n${formatCode(input)}`}</Code>}
+    {output && <Code special={special} lang='none' bgColor={config.theme.clr.secondaryHighlight}>{`// output\n\n${formatCode(output)}`}</Code>}
+    {children && <Code special={special} lang={lang}>{formatCode(children)}</Code>}
   </div>

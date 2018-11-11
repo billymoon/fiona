@@ -1,12 +1,22 @@
-import Head from 'next/head'
+import Head from "next/head";
 import Highlight from "react-highlight/lib/optimized";
 
-export default ({ bgColor='#fff6f8' , lang, children }) => (
-  <div className="f5 editor">
+const Code = ({ bgColor = "#fff6f8", special=[], lang, children }) => (
+  <div className={special.concat(['f5', 'editor']).join(' ')}>
     <style jsx>{`
       .editor {
         background-color: ${bgColor};
-        background: linear-gradient(90deg, white 0%, ${bgColor} 5%, ${bgColor} 95%, white 100%);
+        background: linear-gradient(
+          90deg,
+          white 0%,
+          ${bgColor} 5%,
+          ${bgColor} 95%,
+          white 100%
+        );
+      }
+
+      .mobile-no-bg {
+        background: none;
       }
     `}</style>
     <style global jsx>{`
@@ -32,6 +42,15 @@ export default ({ bgColor='#fff6f8' , lang, children }) => (
       .editor .hljs-string {
         font-weight: 400;
       }
+
+      .mobile-no-bg code {
+        font-size: 14px;
+      }
+      @media screen and (min-width: 400px) {
+        .mobile-no-bg code {
+          font-size: 18px;
+        }
+      }
     `}</style>
     {lang === "none" ? (
       <pre className="hljs">
@@ -47,3 +66,5 @@ export default ({ bgColor='#fff6f8' , lang, children }) => (
     )}
   </div>
 );
+
+export default Code;

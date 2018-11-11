@@ -5,18 +5,19 @@ import { Ribbon } from "jsx-components";
 import { Theme, Shelf, Article, withTheme, withNav, Sample } from "../app";
 import { Logo, Nav, Fiona, injectState, config, consume } from "./";
 
-const MainContent = withNav(withTheme(
-  withRouter(({ router, seed, theme, closed, children }) => (
-    <section>
-      <Ribbon
-        href="https://github.com/billymoon/Fiona"
-        color={theme.clr.primary}
-      />
-      <Article style={{ textAlign: "center" }}>
-        <Logo />
-        <Sample>{`const seeded = Fiona(${seed})`}</Sample>
-      </Article>
-      {/*
+const MainContent = withNav(
+  withTheme(
+    withRouter(({ router, seed, theme, closed, children }) => (
+      <section>
+        <Ribbon
+          href="https://github.com/billymoon/Fiona"
+          color={theme.clr.primary}
+        />
+        <Article style={{ textAlign: "center" }}>
+          <Logo />
+          <Sample special={['mobile-no-bg']}>{`const seeded = Fiona(${seed})`}</Sample>
+        </Article>
+        {/*
         <Article style={{ textAlign: "center" }}>
           <h1>
             {Fiona(seed).regex(
@@ -25,13 +26,13 @@ const MainContent = withNav(withTheme(
           </h1>
         </Article>
       */}
-      <Article style={{ textAlign: "center" }}>
-        <Nav closed={closed} />
-      </Article>
-      <style global jsx>{`
-        @import url("https://fonts.googleapis.com/css?family=Raleway|Andika|Cousine");
-      `}</style>
-      <style global jsx>{`
+        <Article style={{ textAlign: "center" }}>
+          <Nav closed={closed} />
+        </Article>
+        <style global jsx>{`
+          @import url("https://fonts.googleapis.com/css?family=Raleway|Andika|Cousine");
+        `}</style>
+        <style global jsx>{`
       html {
         background-color: ${theme.clr.accent};
       }
@@ -40,19 +41,20 @@ const MainContent = withNav(withTheme(
         margin: 0;
         padding: 0 0 5em 0;
         color: ${theme.fg};
-        background-color: ${theme.bg};
+
         font-family: ${theme.font.body};
         font-size: 17px;
 
+        background-color: ${theme.bg};
         background: -moz-linear-gradient(top, ${theme.clr.accent} 0, ${
-        theme.bg
-      } 160px);
+          theme.bg
+        } 160px);
         background: -webkit-linear-gradient(top, ${theme.clr.accent} 0,${
-        theme.bg
-      } 160px);
+          theme.bg
+        } 160px);
         background: linear-gradient(to bottom, ${theme.clr.accent} 0,${
-        theme.bg
-      } 160px);
+          theme.bg
+        } 160px);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${
           theme.clr.accent
         }', endColorstr='${theme.bg}',GradientType=0 );
@@ -98,10 +100,11 @@ const MainContent = withNav(withTheme(
         h1 { font-size: 40px; margin-top: 20px; margin-bottom: 40px; }
       }
     `}</style>
-      {children}
-    </section>
-  ))
-));
+        {children}
+      </section>
+    ))
+  )
+);
 
 // TODO: simpify and tidy this section, perhaps this whole layout file
 // TODO: re-implement dynamic theme switcher
@@ -110,7 +113,10 @@ const MainLayout = ({ router, seed, children }) => (
     <Head>
       <title>Fiona</title>
       <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover"
+      />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <link
         rel="icon"
@@ -119,7 +125,10 @@ const MainLayout = ({ router, seed, children }) => (
         type="image/png"
       />
       {/* TODO: evaluate ascetic and lightfair themes and import css from node_modules */}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.13.1/styles/mono-blue.css" />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/highlight.js@9.13.1/styles/mono-blue.css"
+      />
       {/* TODO: re-enable error tracking if can disable locally
       <script src='https://cdn.ravenjs.com/3.26.2/raven.min.js' crossorigin='anonymous'></script>
       <script>Raven.config('https://cbe5f0dcbb0b4d488ca750f1b7f7ac11@sentry.io/1226793').install()</script>
