@@ -1,25 +1,25 @@
-import { fiona, consume, ApiSection, Sample } from '../../docs/app'
+import { Fiona, consume, ApiSection, Sample } from '../../docs/app'
 
 const Section = ({ seed }) =>
-  <ApiSection heading={<span><small>fiona.</small>Bool</span>}>
+  <ApiSection heading={<span><small>Fiona.</small>Bool</span>}>
     <p>A seeded utility to return true or false. Takes `chance` option to change the probability of true as decimal value between 0 and 1 which defaults to 0.5.</p>
 
     <Sample input={`
-    fiona(${seed}).bool()
+    Fiona(${seed}).bool()
     `} output={`
-    ${fiona(seed).bool()}
+    ${Fiona(seed).bool()}
     `} />
 
     <Sample input={`
-    fiona(${seed}).string\`The rumour is \${fiona.Bool}\`
+    Fiona(${seed}).string\`The rumour is \${Fiona.Bool}\`
     `} output={`
-    ${JSON.stringify(fiona(seed).string`The rumour is ${fiona.Bool}`)}
+    ${JSON.stringify(Fiona(seed).string`The rumour is ${Fiona.Bool}`)}
     `} />
 
     <Sample input={`
-    fiona(${seed}).array(5, fiona.Bool({ chance: 0.3 }))
+    Fiona(${seed}).array(5, Fiona.Bool({ chance: 0.3 }))
     `} output={`
-    ${JSON.stringify(fiona(seed).array(5, fiona.Bool({ chance: 0.3 })))}
+    ${JSON.stringify(Fiona(seed).array(5, Fiona.Bool({ chance: 0.3 })))}
     `} />
   </ApiSection>
 

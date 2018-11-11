@@ -1,15 +1,15 @@
-import { fiona, consume, ApiSection, Sample } from '../../docs/app'
+import { Fiona, consume, ApiSection, Sample } from '../../docs/app'
 
 const Section = ({ seed }) =>
-  <ApiSection heading={<span><small>fiona.</small>Title</span>}>
+  <ApiSection heading={<span><small>Fiona.</small>Title</span>}>
     <p>A seeded utility to return a salutation, optionally taking a gender to adhere to.</p>
 
     <Sample input={`
-    fiona(${seed}).title() // can be either gender
-    fiona(${seed}).title({ gender: 'male' }) // always male
+    Fiona(${seed}).title() // can be either gender
+    Fiona(${seed}).title({ gender: 'male' }) // always male
     `} output={`
-    ${fiona(seed).title()}
-    ${fiona(seed).title({ gender: 'male' })}
+    ${Fiona(seed).title()}
+    ${Fiona(seed).title({ gender: 'male' })}
     `} />
   </ApiSection>
 

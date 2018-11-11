@@ -3,7 +3,7 @@ export * from 'jsx-components'
 
 export { default as config } from './config'
 export { provide, consume, withBlink, withApi, withThemeState, withNav } from './state'
-export { default as fiona } from './fiona-loader'
+export { default as Fiona } from './fiona-loader'
 export { withTheme, Theme } from './theme'
 
 export { default as Layout } from './layout'

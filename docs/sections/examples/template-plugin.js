@@ -1,6 +1,6 @@
 import template from "lodash.template";
 
-import { fiona, consume, Sample } from "../../app";
+import { Fiona, consume, Sample } from "../../app";
 
 if (process.browser) {
   window._ = {
@@ -8,7 +8,7 @@ if (process.browser) {
   };
 }
 
-fiona.register([
+Fiona.register([
   "template",
   (seeded, ...data) => (templateArray, ...args) => {
     const templateString = templateArray.reduce(
@@ -29,13 +29,13 @@ const Section = ({ seed }) => (
 
     <Sample
       input={`
-    fiona.register(['template', (seeded, ...data) => (templateArray, ...args) => {
+    Fiona.register(['template', (seeded, ...data) => (templateArray, ...args) => {
       const templateString = templateArray.reduce((a, b) => a + args.shift().toString() + b)
       // assuming lodash is loaded, render template with values
       return _.template(templateString)(seeded.object(...data))
     }])
 
-    fiona(${seed}).template({
+    Fiona(${seed}).template({
         fullname: seeded => seeded.fullname(),
         color: seeded => seeded.oneOf(['red', 'orange', 'yellow', 'green', 'blue'])
     })\`Hi <%= fullname %>,
@@ -47,9 +47,9 @@ const Section = ({ seed }) => (
     Fiona
     x x x\`
     `}
-      output={fiona(seed).template({
-        fullname: fiona.Fullname(),
-        color: fiona.OneOf(["red", "orange", "yellow", "green", "blue"])
+      output={Fiona(seed).template({
+        fullname: Fiona.Fullname(),
+        color: Fiona.OneOf(["red", "orange", "yellow", "green", "blue"])
       })`
     Hi <%= fullname %>,
 

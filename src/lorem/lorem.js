@@ -16,7 +16,7 @@ const sentence = seeded => {
   return sentence[0].toUpperCase() + sentence.slice(1) + '.'
 }
 
-// TODO: can I use fiona.Array to generate paragraphs?
+// TODO: can I use Fiona.Array to generate paragraphs?
 const paragraph = seeded => Array(seeded.number({ min: 1, max: 10 })).fill(0).map(i => seeded.sentence()).join('  ')
 
 module.exports = {

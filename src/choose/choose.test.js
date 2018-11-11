@@ -1,10 +1,10 @@
 /* global test expect */
 
-const fiona = require('../core')
-fiona.register(['choose', require('./choose')])
+const Fiona = require('../core')
+Fiona.register(['choose', require('./choose')])
 
-test('fiona.Choose', () => {
-  const baby = fiona(1)
+test('Fiona.Choose', () => {
+  const baby = Fiona(1)
   const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   expect(baby.choose(3, oneToTen)).toEqual([5, 7, 8])
   expect(baby.choose(3, oneToTen)).toEqual([1, 9, 4])

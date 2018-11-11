@@ -1,12 +1,12 @@
 /* global test expect describe beforeEach */
 
-const fiona = require("..");
+const Fiona = require("..");
 
 describe("seeded.distribution", () => {
   let seeded;
   
   beforeEach(() => {
-    seeded = fiona("moon");
+    seeded = Fiona("moon");
   });
 
   test("should have inert default distribution function", () => {

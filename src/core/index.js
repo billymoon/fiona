@@ -8,16 +8,16 @@ const json = require('./primitives/json/json')
 const array = require('./primitives/array/array')
 const string = require('./primitives/string/string')
 
-const fiona = seed => new Moon(seed, Prng)
+const Fiona = seed => new Moon(seed, Prng)
 
-fiona.version = packageJson.version
+Fiona.version = packageJson.version
 
 // TODO: would it be simpler to pull the Register factory into core index?
 const registerFactory = (name, fn) => {
   const fnProxy = (...args) => fn(...args)
   // TODO: handle duplicate extension registrations
   registered.push(fnProxy)
-  return (fiona[name] = fnProxy)
+  return (Fiona[name] = fnProxy)
 }
 
 const registerMethod = (name, fn) => {
@@ -27,20 +27,20 @@ const registerMethod = (name, fn) => {
 // TODO: should it be possible to register extensions local to seeded instance?
 // perhaps something like:
 //     const personExtension = seeded => ({
-//       gender: fiona.Gender,
+//       gender: Fiona.Gender,
 //       name: ({ data }) => seeded.fullname({ gender: data.gender })
 //     })
-//     fiona().register(['person', personExtension]).object(() => fiona.Person, { luckyNumber: fiona.Number({ max: 100 }) })
-fiona.register = Register(registerFactory, registerMethod)
+//     Fiona().register(['person', personExtension]).object(() => Fiona.Person, { luckyNumber: Fiona.Number({ max: 100 }) })
+Fiona.register = Register(registerFactory, registerMethod)
 
 // TODO: register Random on seeded instance, perhaps need to implement seeded.register first
-fiona.Random = () => seeded => seeded.random()
+Fiona.Random = () => seeded => seeded.random()
 
-const clone = seeded => fiona(seeded.info().initseed).state(seeded.state())
+const clone = seeded => Fiona(seeded.info().initseed).state(seeded.state())
 
-fiona.register(['clone', clone])
+Fiona.register(['clone', clone])
 
-fiona.register(
+Fiona.register(
   ['number', number],
   ['object', object],
   ['json', json],
@@ -48,4 +48,4 @@ fiona.register(
   ['array', array]
 )
 
-module.exports = fiona
+module.exports = Fiona

@@ -1,12 +1,12 @@
 /* global test expect describe */
 
-const fiona = require('../..')
+const Fiona = require('../..')
 
 describe('json', () => {
   let seeded
 
   beforeEach(() => {
-    seeded = fiona('moon')
+    seeded = Fiona('moon')
   })
 
   test('should add json method which returns json of seeded.value', () => {

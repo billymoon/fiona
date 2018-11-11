@@ -2,7 +2,7 @@
 
 // TODO: move tests closer to relevant source code
 const index = require('.')
-const fiona = require('..')
+const Fiona = require('..')
 
 const fixtures = [
   0.5129792850990683,
@@ -16,9 +16,9 @@ describe('sanity', () => {
   })
 })
 
-describe('exports fiona', () => {
-  test('index exports fiona', () => {
-    expect(index).toBe(fiona)
+describe('exports Fiona', () => {
+  test('index exports Fiona', () => {
+    expect(index).toBe(Fiona)
   })
 })
 
@@ -26,13 +26,13 @@ describe('core', () => {
   let seeded
 
   beforeEach(() => {
-    seeded = fiona('moon')
+    seeded = Fiona('moon')
   })
 
   describe('seeded.info', () => {
     test('reports initseed', () => {
       expect(seeded.info().initseed).toBe('moon')
-      const seeded2 = fiona(1)
+      const seeded2 = Fiona(1)
       expect(seeded2.info().initseed).toBe(1)
     })
   })
@@ -47,14 +47,14 @@ describe('core', () => {
     test('returns expected floats in order', () => {
       const MathRandom = Math.random
       Math.random = () => 0.12345678
-      expect(fiona().info().initseed).toBe(12345678)
+      expect(Fiona().info().initseed).toBe(12345678)
       Math.random = MathRandom
     })
 
-    test('returns expected floats in order when called as fiona.Random', () => {
-      expect(fiona.Random()(seeded)).toBe(fixtures[0])
-      expect(fiona.Random()(seeded)).toBe(fixtures[1])
-      expect(fiona.Random()(seeded)).toBe(fixtures[2])
+    test('returns expected floats in order when called as Fiona.Random', () => {
+      expect(Fiona.Random()(seeded)).toBe(fixtures[0])
+      expect(Fiona.Random()(seeded)).toBe(fixtures[1])
+      expect(Fiona.Random()(seeded)).toBe(fixtures[2])
     })
   })
 

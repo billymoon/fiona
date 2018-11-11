@@ -1,13 +1,13 @@
-import { fiona, consume, ApiSection, Sample } from '../../docs/app'
+import { Fiona, consume, ApiSection, Sample } from '../../docs/app'
 
 const Section = ({ seed }) =>
-  <ApiSection heading={<span><small>fiona.</small>Surname</span>}>
+  <ApiSection heading={<span><small>Fiona.</small>Surname</span>}>
     <p>A seeded utility to return a single surname.</p>
 
     <Sample input={`
-    fiona(${seed}).surname()
+    Fiona(${seed}).surname()
     `} output={`
-    ${fiona(seed).surname()}
+    ${Fiona(seed).surname()}
     `} />
   </ApiSection>
 

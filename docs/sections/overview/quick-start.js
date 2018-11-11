@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { fiona, consume, Sample } from '../../app'
+import { Fiona, consume, Sample } from '../../app'
 
 const Section = ({ seed }) =>
   <section>
@@ -11,7 +11,7 @@ const Section = ({ seed }) =>
     
     <p>import into your app</p>
     
-    <Sample>{`import fiona from 'fiona'`}</Sample>
+    <Sample>{`import Fiona from 'fiona'`}</Sample>
     
     <p>or include in webpage from cdn</p>
     
@@ -21,44 +21,44 @@ const Section = ({ seed }) =>
 
     <p>The most basic use case is to generate a random number</p>
     
-    <Sample>{`fiona().number()`}</Sample>
+    <Sample>{`Fiona().number()`}</Sample>
 
     <Sample input={`
-    const milesFromHome = fiona(${seed}).number()
-    const age = fiona(${seed}).number({ max: 100 })
+    const milesFromHome = Fiona(${seed}).number()
+    const age = Fiona(${seed}).number({ max: 100 })
     `} output={`
-    ${fiona(seed).number()}
-    ${fiona(seed).number({ max: 100 })}
+    ${Fiona(seed).number()}
+    ${Fiona(seed).number({ max: 100 })}
     `} />
 
     <p>It becomes more useful when creating data structures. With registered functions, you can use the shorthand capitalized Constructors within data structures for a very terse syntax.</p>
 
     {/* TODO: json method should export double spaced indented output for the sample component */}
     <Sample input={`
-    fiona(${seed}).object({
-      milesFromHome: fiona.Number,
-      age: fiona.Number({ max: 100 })
+    Fiona(${seed}).object({
+      milesFromHome: Fiona.Number,
+      age: Fiona.Number({ max: 100 })
     })
-    `} output={`\n${JSON.stringify(fiona(seed).object({
-      milesFromHome: fiona.Number(),
-      age: fiona.Number({ max: 100 })
+    `} output={`\n${JSON.stringify(Fiona(seed).object({
+      milesFromHome: Fiona.Number(),
+      age: Fiona.Number({ max: 100 })
     }), null, 2)}`} />
 
-    <p>As requirements develop, you can add values to the structure without the original values changing, this is because the seeded random number generator uses a combination of the seed fiona is initialised with, and the pathname of the property being resolved.</p>
+    <p>As requirements develop, you can add values to the structure without the original values changing, this is because the seeded random number generator uses a combination of the seed Fiona is initialised with, and the pathname of the property being resolved.</p>
 
     <Sample input={`
-    fiona(${seed}).object({
-      milesFromHome: fiona.Number,
-      name: fiona.Fullname,
-      age: fiona.Number({ max: 100 })
+    Fiona(${seed}).object({
+      milesFromHome: Fiona.Number,
+      name: Fiona.Fullname,
+      age: Fiona.Number({ max: 100 })
     })
-    `} output={`\n${JSON.stringify(fiona(seed).object({
-      milesFromHome: fiona.Number(),
-      name: fiona.Fullname,
-      age: fiona.Number({ max: 100 })
+    `} output={`\n${JSON.stringify(Fiona(seed).object({
+      milesFromHome: Fiona.Number(),
+      name: Fiona.Fullname,
+      age: Fiona.Number({ max: 100 })
     }), null, 2)}`} />
 
-    <p>There are lots of methods to help generate different types of data, you can read more about them in the <Link href='/api'><a>api section</a></Link>. These methods can be called on an instance to return a value, or on `fiona` itself to return a higher order function that when called with an instance, returns a value. Also, during recursion, any found functions are executed to resolve their value. Combining these things allows a very terse and powerful syntax to describe any data structure.</p>
+    <p>There are lots of methods to help generate different types of data, you can read more about them in the <Link href='/api'><a>api section</a></Link>. These methods can be called on an instance to return a value, or on `Fiona` itself to return a higher order function that when called with an instance, returns a value. Also, during recursion, any found functions are executed to resolve their value. Combining these things allows a very terse and powerful syntax to describe any data structure.</p>
 
     <Sample>{`
     // use a regex pattern to generate strings that match
@@ -66,23 +66,23 @@ const Section = ({ seed }) =>
     `}</Sample>
 
     <Sample input={`
-    fiona(${seed}).object({
-      milesFromHome: fiona.Number,
-      age: fiona.Number({ max: 100 }),
-      name: fiona.Fullname,
+    Fiona(${seed}).object({
+      milesFromHome: Fiona.Number,
+      age: Fiona.Number({ max: 100 }),
+      name: Fiona.Fullname,
       iban: ibanPattern,
-      colour: fiona.OneOf([
+      colour: Fiona.OneOf([
         'red',
         'yellow',
         'blue'
       ])
     })
-    `} output={`\n${JSON.stringify(fiona(seed).object({
-      milesFromHome: fiona.Number,
-      age: fiona.Number({ max: 100 }),
-      name: fiona.Fullname,
+    `} output={`\n${JSON.stringify(Fiona(seed).object({
+      milesFromHome: Fiona.Number,
+      age: Fiona.Number({ max: 100 }),
+      name: Fiona.Fullname,
       iban: /[A-Z]{2}\d{2}( \d{4}){4,5} \d{1,3}/,
-      colour: fiona.OneOf(['red', 'yellow', 'blue'])
+      colour: Fiona.OneOf(['red', 'yellow', 'blue'])
     }), null, 2)}`} />
   </section>
 

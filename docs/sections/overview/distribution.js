@@ -1,4 +1,4 @@
-import { fiona, consume, Sample } from '../../app'
+import { Fiona, consume, Sample } from '../../app'
 
 const Section = ({ seed }) =>
   <section>
@@ -10,9 +10,9 @@ const Section = ({ seed }) =>
     const tendToLow = i => i * i * i
     const income = seeded => seeded.distribution(tendToLow).number({ max: 100000 })
 
-    fiona(${seed}).array(5, income)
+    Fiona(${seed}).array(5, income)
     `} output={`
-    ${JSON.stringify(fiona(seed).array(5, seeded => seeded.distribution(i => i * i * i).number({ max: 100000 })))}
+    ${JSON.stringify(Fiona(seed).array(5, seeded => seeded.distribution(i => i * i * i).number({ max: 100000 })))}
     `} />
 
     <div className='clearfix' />
@@ -25,9 +25,9 @@ const Section = ({ seed }) =>
     const salaryDistribution = bezierEasing(0.5, 0.5, 1, 0)
     const income = seeded => seeded.distribution(salaryDistribution).number({ max: 100000 })
 
-    fiona(${seed}).array(5, income)
+    Fiona(${seed}).array(5, income)
     `} output={`
-    ${JSON.stringify(fiona(seed).array(5, seeded => seeded.distribution(require('bezier-easing')(0.5, 0.5, 1, 0)).number({ min: 10000, max: 100000 })))}
+    ${JSON.stringify(Fiona(seed).array(5, seeded => seeded.distribution(require('bezier-easing')(0.5, 0.5, 1, 0)).number({ min: 10000, max: 100000 })))}
     `} />
 
     <div className='clearfix' />
@@ -35,9 +35,9 @@ const Section = ({ seed }) =>
     <p>You can also clamp or otherwise manipulate the output with distribution functions. In this example, any salary that would have been less than 40k will be 40k because the number method is based on a call to random which has been passed through the distribution function</p>
 
     <Sample input={`
-    fiona(${seed}).array(5, seeded => seeded.distribution(i => i < 0.4 ? 0.4 : i).number({ max: 100000 })
+    Fiona(${seed}).array(5, seeded => seeded.distribution(i => i < 0.4 ? 0.4 : i).number({ max: 100000 })
     `} output={`
-    ${JSON.stringify(fiona(seed).array(5, seeded => seeded.distribution(i => i < 0.4 ? 0.4 : i).number({ max: 100000 })))}
+    ${JSON.stringify(Fiona(seed).array(5, seeded => seeded.distribution(i => i < 0.4 ? 0.4 : i).number({ max: 100000 })))}
     `} />
 
     <div className='clearfix' />

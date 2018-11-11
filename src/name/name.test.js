@@ -1,58 +1,58 @@
 /* global test,expect */
 
-const fiona = require('../core')
-fiona.register(['bool', require('../bool/bool')])
-fiona.register(['choose', require('../choose/choose')])
-fiona.register(['oneOf', require('../choose/one-of')])
-fiona.register(['title', require('./name').title])
-fiona.register(['firstname', require('./name').firstname])
-fiona.register(['firstnames', require('./name').firstnames])
-fiona.register(['surname', require('./name').surname])
-fiona.register(['gender', require('./name').gender])
-fiona.register(['fullname', require('./name').fullname])
+const Fiona = require('../core')
+Fiona.register(['bool', require('../bool/bool')])
+Fiona.register(['choose', require('../choose/choose')])
+Fiona.register(['oneOf', require('../choose/one-of')])
+Fiona.register(['title', require('./name').title])
+Fiona.register(['firstname', require('./name').firstname])
+Fiona.register(['firstnames', require('./name').firstnames])
+Fiona.register(['surname', require('./name').surname])
+Fiona.register(['gender', require('./name').gender])
+Fiona.register(['fullname', require('./name').fullname])
 
 test('sanity', () => {
   expect(true + true === 2).toBe(true)
 })
 
 test('import', () => {
-  expect(typeof fiona === 'function').toBe(true)
+  expect(typeof Fiona === 'function').toBe(true)
 })
 
-test('fiona.Title', () => {
-  expect(fiona(1).title()).toBe('Sir')
-  expect(fiona(1).title({})).toBe('Sir')
-  expect(fiona(2).title()).toBe('Miss')
-  expect(fiona(2).title({})).toBe('Miss')
-  expect(fiona(4).title({ gender: 'f' })).toBe('Ms')
-  expect(fiona(4).title({ gender: 'm' })).toBe('Sir')
-  expect(fiona(4).title({ gender: 'Male' })).toBe('Sir')
+test('Fiona.Title', () => {
+  expect(Fiona(1).title()).toBe('Sir')
+  expect(Fiona(1).title({})).toBe('Sir')
+  expect(Fiona(2).title()).toBe('Miss')
+  expect(Fiona(2).title({})).toBe('Miss')
+  expect(Fiona(4).title({ gender: 'f' })).toBe('Ms')
+  expect(Fiona(4).title({ gender: 'm' })).toBe('Sir')
+  expect(Fiona(4).title({ gender: 'Male' })).toBe('Sir')
 })
 
-test('fiona.Firstname', () => {
-  expect(fiona(1).firstname()).toBe('Hamish')
-  expect(fiona(1).firstname({})).toBe('Hamish')
-  expect(fiona(2).firstname()).toBe('Ava')
-  expect(fiona(2).firstname({})).toBe('Ava')
-  expect(fiona(2).firstname({ gender: 'f' })).toBe('Leah')
-  expect(fiona(2).firstname({ gender: 'm' })).toBe('Angus')
-  expect(fiona(2).firstname({ gender: 'Male' })).toBe('Angus')
+test('Fiona.Firstname', () => {
+  expect(Fiona(1).firstname()).toBe('Hamish')
+  expect(Fiona(1).firstname({})).toBe('Hamish')
+  expect(Fiona(2).firstname()).toBe('Ava')
+  expect(Fiona(2).firstname({})).toBe('Ava')
+  expect(Fiona(2).firstname({ gender: 'f' })).toBe('Leah')
+  expect(Fiona(2).firstname({ gender: 'm' })).toBe('Angus')
+  expect(Fiona(2).firstname({ gender: 'Male' })).toBe('Angus')
 })
 
-test('fiona.Firstnames', () => {
-  expect(fiona(1).firstnames()).toBe('Hamish')
+test('Fiona.Firstnames', () => {
+  expect(Fiona(1).firstnames()).toBe('Hamish')
 })
 
-test('fiona.Surname', () => {
-  expect(fiona(1).surname()).toBe('Scott')
-  expect(fiona(2).surname()).toBe('Reid')
+test('Fiona.Surname', () => {
+  expect(Fiona(1).surname()).toBe('Scott')
+  expect(Fiona(2).surname()).toBe('Reid')
 })
 
-test('fiona.Gender', () => {
-  expect(fiona(1).gender()).toBe('male')
-  expect(fiona(2).gender()).toBe('female')
+test('Fiona.Gender', () => {
+  expect(Fiona(1).gender()).toBe('male')
+  expect(Fiona(2).gender()).toBe('female')
 })
 
-test('fiona.Fullname', () => {
-  expect(fiona(1).fullname()).toBe('Sir Kyle Moon')
+test('Fiona.Fullname', () => {
+  expect(Fiona(1).fullname()).toBe('Sir Kyle Moon')
 })

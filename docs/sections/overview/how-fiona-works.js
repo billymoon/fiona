@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { fiona, consume, Shelf, Row, Col } from '../../app'
+import { Fiona, consume, Shelf, Row, Col } from '../../app'
 
 const Section = ({ seed }) =>
   <section>

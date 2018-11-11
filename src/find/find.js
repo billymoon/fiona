@@ -1,10 +1,10 @@
 // TODO: document find
-const find = fiona => (predicate, cb, { startseed = 0, tries = 1e6 } = {}) => {
+const find = Fiona => (predicate, cb, { startseed = 0, tries = 1e6 } = {}) => {
   let seed = startseed
   let seeded
   let value
   do {
-    seeded = fiona(seed)
+    seeded = Fiona(seed)
     value = cb(seeded)
   } while (seed++ < tries + startseed && !predicate(value))
   if (seed > tries + startseed) {

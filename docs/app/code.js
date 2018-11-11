@@ -6,6 +6,7 @@ export default ({ bgColor='#fff6f8' , lang, children }) => (
     <style jsx>{`
       .editor {
         background-color: ${bgColor};
+        background: linear-gradient(90deg, white 0%, ${bgColor} 5%, ${bgColor} 95%, white 100%);
       }
     `}</style>
     <style global jsx>{`
@@ -14,7 +15,7 @@ export default ({ bgColor='#fff6f8' , lang, children }) => (
         white-space: pre-wrap;
       }
       .editor .hljs {
-        border: 1px solid silver;
+        // border: 1px solid silver;
         margin-bottom: 10px;
         background-color: transparent;
       }

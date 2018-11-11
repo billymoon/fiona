@@ -1,7 +1,7 @@
-import fiona from '../../src'
+import Fiona from '../../src'
 
 if (process.browser) {
-  window.fiona = fiona // eslint-disable-line
+  window.Fiona = Fiona // eslint-disable-line
 }
 
-export default fiona
+export default Fiona

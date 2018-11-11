@@ -2,26 +2,29 @@ import Head from "next/head";
 import { withRouter } from "next/router";
 import { Ribbon } from "jsx-components";
 
-import { Theme, Shelf, Article, withTheme, withNav } from "../app";
-import { Logo, Nav, fiona, injectState, config, consume } from "./";
+import { Theme, Shelf, Article, withTheme, withNav, Sample } from "../app";
+import { Logo, Nav, Fiona, injectState, config, consume } from "./";
 
 const MainContent = withNav(withTheme(
   withRouter(({ router, seed, theme, closed, children }) => (
     <section>
       <Ribbon
-        href="https://github.com/billymoon/fiona"
+        href="https://github.com/billymoon/Fiona"
         color={theme.clr.primary}
       />
       <Article style={{ textAlign: "center" }}>
         <Logo />
+        <Sample>{`const seeded = Fiona(${seed})`}</Sample>
       </Article>
-      <Article style={{ textAlign: "center" }}>
-        <h1>
-          {fiona(seed).regex(
-            /(Pretend|Simulated|Immitation|Substitute|Make Believe|Fake|Spurious|Mock) Data/
-          )}
-        </h1>
-      </Article>
+      {/*
+        <Article style={{ textAlign: "center" }}>
+          <h1>
+            {Fiona(seed).regex(
+              /(Pretend|Simulated|Immitation|Substitute|Make Believe|Fake|Spurious|Mock) Data/
+            )}
+          </h1>
+        </Article>
+      */}
       <Article style={{ textAlign: "center" }}>
         <Nav closed={closed} />
       </Article>

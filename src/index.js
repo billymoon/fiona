@@ -1,4 +1,4 @@
-const fiona = require('./core')
+const Fiona = require('./core')
 const bool = require('./bool/bool')
 const choose = require('./choose/choose')
 const oneOf = require('./choose/one-of')
@@ -9,7 +9,7 @@ const { gender, title, firstname, firstnames, surname, fullname, namedata } = re
 const regex = require('./regex/regex')
 const shuffle = require('./shuffle/shuffle')
 
-fiona.register(
+Fiona.register(
   ['bool', bool],
   ['choose', choose],
   ['oneOf', oneOf],
@@ -30,6 +30,6 @@ fiona.register(
 )
 
 // TODO: move namedata to getter/setter function - somehow encapsulate name plugin
-fiona.namedata = namedata
+Fiona.namedata = namedata
 
-module.exports = fiona
+module.exports = Fiona

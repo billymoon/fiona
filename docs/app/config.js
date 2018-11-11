@@ -39,11 +39,11 @@ const clr = {
 
 export default {
   // seed that creates data with name 'Miss Fiona Moon' and age '0'
-  // fiona.find(
+  // Fiona.find(
   //   ({ name, age }) => name === 'Miss Fiona Moon' && age === 0,
   //   seeded => seeded.data({
-  //     name: fiona.call('name'),
-  //     age: fiona.call('number', { max: 100 })
+  //     name: Fiona.call('name'),
+  //     age: Fiona.call('number', { max: 100 })
   //   }),
   //   { startseed: 950000 }
   // ).info()

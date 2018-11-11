@@ -3,15 +3,14 @@ import { Provider, connect } from "react-redux";
 import { createStore } from "redux";
 
 import config from "./config";
+import Fiona from "./fiona-loader";
+
+if (process.browser) {
+  window.seeded = Fiona(config.magicNumber)
+}
 
 const reducer = (state, action) => {
-  if (action.type === "SET_SEED") {
-    const newseed = action.payload;
-    return {
-      ...state,
-      seed: newseed ? Math.floor(Math.random() * 33) : newseed
-    };
-  } else if (action.type === "SET_API_FILTER") {
+  if (action.type === "SET_API_FILTER") {
     return { ...state, apiFilter: action.payload };
   } else if (action.type === "TOGGLE_THEME") {
     const theme = { ...state.theme };
@@ -41,6 +40,7 @@ const reducer = (state, action) => {
   } else if (action.type === "CLICK_SEED") {
     const index = action.payload;
     const seed = state.seed;
+    window.seeded = Fiona(seed)
     const newSeed =
       (index === 24 ? config.magicNumber : index) === seed
         ? Math.floor(Math.random() * 33)
@@ -139,7 +139,6 @@ export const consume = Component => {
       theme: state.theme
     }),
     dispatch => ({
-      setSeed: newseed => dispatch({ type: "SET_SEED", payload: newseed }),
       clickSeed: index => dispatch({ type: "CLICK_SEED", payload: index }),
       toggleTheme: index => dispatch({ type: "TOGGLE_THEME", payload: index })
     })

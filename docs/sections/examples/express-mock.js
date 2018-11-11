@@ -1,27 +1,27 @@
-import { fiona, consume, Sample } from '../../app'
+import { Fiona, consume, Sample } from '../../app'
 
 const Section = ({ seed }) =>
   <section>
     <h3>Express Mock Server</h3>
 
-    <p>This example assumes you have a project with dependencies added for <a href='https://www.npmjs.com/package/fiona'>fiona</a>, <a href='https://www.npmjs.com/package/express'>express</a> and <a href='https://www.npmjs.com/package/express-http-proxy'>express-http-proxy</a> and that you have a development server running on port 3000 serving your web app.</p>
+    <p>This example assumes you have a project with dependencies added for <a href='https://www.npmjs.com/package/Fiona'>Fiona</a>, <a href='https://www.npmjs.com/package/express'>express</a> and <a href='https://www.npmjs.com/package/express-http-proxy'>express-http-proxy</a> and that you have a development server running on port 3000 serving your web app.</p>
 
     <p>Define an express proxy server and run with nodejs - e.g. save the snippet as `server.js` and run `node server`</p>
 
     <Sample>{`
     // require dependencies
-    const fiona = require('fiona')
+    const Fiona = require('fiona')
     const proxy = require('express-http-proxy')
     const express = require('express')
     
     // define express server
     const app = express()
 
-    // define fiona generated data handler for user api
+    // define Fiona generated data handler for user api
     app.use('/api/user/:id', (req, res) => {
-      res.end(fiona(req.params.id).chain({
-        fullname: fiona.Fullname,
-        age: fiona.Number({ max: 100 })
+      res.end(Fiona(req.params.id).chain({
+        fullname: Fiona.Fullname,
+        age: Fiona.Number({ max: 100 })
       }).json())
     })
 
@@ -39,9 +39,9 @@ const Section = ({ seed }) =>
     <Sample input={`
     fetch('/api/user/${seed}').then(r => r.json()).then(console.log)
     `} output={`\n${
-      fiona(seed).json({
-        fullname: fiona.Fullname,
-        age: fiona.Number({ max: 100 })
+      Fiona(seed).json({
+        fullname: Fiona.Fullname,
+        age: Fiona.Number({ max: 100 })
       })
     }`} />
 
