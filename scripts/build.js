@@ -27,9 +27,9 @@ exec(
 removeSync('webpack-stats.json')
 removeSync('webpack-stats.core.json')
 
-// TODO: figure out how to generate this during server build, so how to deal with `dot` command
+// // TODO: figure out how to generate this during server build, so how to deal with `dot` command
 // exec(
-//   'depcruise -X "^node_modules" --prefix "https://github.com/billymoon/fiona/blob/master/" --output-type dot src/index.js | dot -T svg > static/dependency-graph.svg'
+//   'depcruise -X "^node_modules" --prefix "https:////github.com/billymoon/fiona/blob/master/" --output-type dot src/index.js | dot -T svg > static/dependency-graph.svg'
 // )
 
 exec('next build && next export')

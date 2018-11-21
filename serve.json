@@ -1,0 +1,13 @@
+{
+  "cleanUrls": [
+    "/**",
+    "/!**/index.html",
+    "/!static/reports/coverage/src/core/index.html",
+    "/!static/reports/coverage/src/core/index.html/",
+    "/!static/reports/coverage/src/core/index/",
+    "/!static/reports/coverage/src/core/index",
+    "/!static/reports/coverage/src/core/**"
+  ],
+  "renderSingle": false,
+  "trailingSlash": true
+}

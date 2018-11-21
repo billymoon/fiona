@@ -1,11 +1,12 @@
 {
   "name": "fiona",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
   "main": "fiona.min.js",
   "scripts": {
     "start": "node scripts/dev",
+    "dev": "node scripts/dev",
     "test": "node scripts/test",
     "build": "node scripts/build",
     "fix": "node scripts/fix",
