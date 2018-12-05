@@ -45,7 +45,9 @@ const Section = ({ seed }) => (
       output={`
 
 
-    Fiona(seed).income()
+    ${Fiona(seed)
+      .distribution(i => i * i * i)
+      .number({ max: 1000000 })}
     `}
     />
 
@@ -54,13 +56,13 @@ const Section = ({ seed }) => (
     <Sample
       input={`
     Fiona.register(['chooseThree', (seeded, arr) => seeded.choose(3, arr)])
-    
+
     Fiona(${seed}).chooseThree([1, 2, 3, 4, 5, 6, 7, 8, 9])
     `}
       output={`
 
 
-    Fiona(seed).choose(3, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    ${JSON.stringify(Fiona(seed).choose(3, [1, 2, 3, 4, 5, 6, 7, 8, 9]))}
     `}
     />
 
