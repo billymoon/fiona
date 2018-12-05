@@ -3,7 +3,7 @@ import { Fiona, consume, Sample } from '../../app'
 
 const Section = ({ seed }) => (
   <section>
-    <h2>Quickstart...</h2>
+    <h2>Getting started</h2>
 
     <p>Install via npm</p>
 
