@@ -39,6 +39,24 @@ describe('basics', () => {
     ).toEqual({ a: 611259, b: 649633, c: 378387 })
   })
 
+  test('original passed in object is left unchanged', () => {
+    const seeded = Fiona()
+    const b = { c: 3 }
+    const data = { a: () => 1, b }
+    const output = recurseData(seeded, data)
+    expect(output).toEqual({ a: 1, b: { c: 3 } })
+    expect(typeof data.a).toBe('function')
+    expect(data.b).toBe(b)
+  })
+
+  test('functions should be evaluated and root set to top level evaluated function', () => {
+    const seeded = Fiona()
+    const a = { b: ({ data }) => expect(data).toBe(a) }
+    recurseData(seeded, () => () => a)
+    const c = [({ data }) => expect(data).toBe(c)]
+    recurseData(seeded, () => () => c)
+  })
+
   test('anonymous functions', () => {
     const seeded = Fiona()
     const output = recurseData(seeded, {
