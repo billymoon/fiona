@@ -19,8 +19,23 @@ describe('string', () => {
 
   test('plugin can be called as method on Fiona', () => {
     expect(seeded.string`a ${seeded => seeded.random()} c`).toBe(
-      'a 0.9915455756669611 c'
+      'a 0.9234358602778222 c'
     )
+  })
+
+  test('plugin produces same variables as array', () => {
+    const output = seeded.string`${seeded => seeded.random()}:${seeded =>
+      seeded.random()}:${seeded => seeded.random()}:${seeded =>
+      seeded.random()}`
+    const fixture = seeded
+      .object([
+        seeded => seeded.random(),
+        seeded => seeded.random(),
+        seeded => seeded.random(),
+        seeded => seeded.random()
+      ])
+      .join(':')
+    expect(output).toBe(fixture)
   })
 
   test('plugin can be called as method on Fiona', () => {

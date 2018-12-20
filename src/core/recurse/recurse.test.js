@@ -26,7 +26,7 @@ describe('basics', () => {
   test('Fiona.String', () => {
     expect(
       Fiona(1).string`${Fiona.Number} ${Fiona.Number} ${Fiona.Number}`
-    ).toEqual(`89810 461785 913511`)
+    ).toEqual(`349277 89810 57572`)
   })
 
   test('Fiona.Object', () => {
