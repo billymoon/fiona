@@ -22,7 +22,6 @@
     "fetch-pretender": "^1.5.0",
     "fs-extra": "^7.0.1",
     "jest": "^22.4.4",
-    "jsx-components": "1.2.0",
     "lodash.template": "^4.4.0",
     "next": "^7.0.2",
     "prettier": "^1.15.2",

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { withRouter } from 'next/router'
-import { Ribbon } from 'jsx-components'
+import { Ribbon } from '../../components'
 
 import { Theme, Shelf, Article, withTheme, withNav, Sample } from '../app'
 import { Logo, Nav, Fiona, injectState, config, consume } from './'

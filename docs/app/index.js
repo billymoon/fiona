@@ -1,5 +1,5 @@
 // Seems to be overridden by explicitly exported components
-export * from 'jsx-components'
+export * from '../../components'
 
 export { default as config } from './config'
 export {
@@ -23,7 +23,7 @@ import Code from './code'
 // export { Container, Row, Col, Article, Shelf } from './grid'
 
 import config from './config'
-import { Sample as VanillaSample } from 'jsx-components'
+import { Sample as VanillaSample } from '../../components'
 // TODO: improve code sample component
 // export const Sample = ({ ...props }) => <VanillaSample breakpoint={`${config.theme.grid.breakpoints.lg}px`} {...props} />
 
