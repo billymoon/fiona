@@ -54,6 +54,31 @@ describe('core', () => {
     })
   })
 
+  describe('seeded.reverse', () => {
+    test('returns expected floats in order', () => {
+      seeded.random()
+      seeded.random()
+      seeded.random()
+      seeded.random()
+      expect(seeded.reverse()).toBe(fixtures[2])
+      expect(seeded.reverse()).toBe(fixtures[1])
+      expect(seeded.reverse()).toBe(fixtures[0])
+    })
+  })
+
+  describe('seeded.reverse (repeat values)', () => {
+    test('repeat previous value by calling reverse', () => {
+      const name1 = seeded.fullname()
+      seeded.reverse()
+      seeded.reverse()
+      seeded.reverse()
+      seeded.reverse()
+      seeded.reverse()
+      const name2 = seeded.fullname()
+      expect(name1).toBe(name2)
+    })
+  })
+
   describe('seeded.reset', () => {
     test('to return state to original', () => {
       expect(seeded.random()).toBe(fixtures[0])
