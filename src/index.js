@@ -3,6 +3,7 @@ const bool = require('./bool/bool')
 const choose = require('./choose/choose')
 const oneOf = require('./choose/one-of')
 const date = require('./date/date')
+const img = require('./img/img')
 const duplicable = require('./duplicable/duplicable')
 const { lorem, word, sentence, paragraph } = require('./lorem/lorem')
 const {
@@ -22,6 +23,7 @@ Fiona.register(
   ['choose', choose],
   ['oneOf', oneOf],
   ['date', date],
+  ['img', img],
   ['duplicable', duplicable],
   ['lorem', lorem],
   ['word', word],

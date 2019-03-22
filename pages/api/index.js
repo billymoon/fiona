@@ -24,6 +24,7 @@ import ApiFnArray from '../../src/core/primitives/array/array.docs'
 import ApiFnBool from '../../src/bool/bool.docs'
 import ApiFnChoose from '../../src/choose/choose.docs'
 import ApiFnDate from '../../src/date/date.docs'
+import ApiFnImg from '../../src/img/img.docs'
 import ApiFnDuplicable from '../../src/duplicable/duplicable.docs'
 import ApiFnJson from '../../src/core/primitives/json/json.docs'
 import ApiFnLorem from '../../src/lorem/lorem.docs'
@@ -45,6 +46,7 @@ const Page = () => (
           <ApiFnBool />
           <ApiFnChoose />
           <ApiFnDate />
+          <ApiFnImg />
           <ApiFnDuplicable />
           <ApiFnJson />
           <ApiFnLorem />
