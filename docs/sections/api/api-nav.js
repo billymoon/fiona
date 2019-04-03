@@ -16,6 +16,8 @@ const apis = [
   'Fiona.Choose',
   'Fiona.OneOf',
 
+  'Fiona.Img',
+
   'Fiona.Lorem',
   'Fiona.Paragraph',
   'Fiona.Sentence',

@@ -14,3 +14,9 @@ export { default as ExamplesTemplatePlugin } from './examples/template-plugin'
 export { default as ExamplesPretend } from './examples/pretend'
 export { default as ExamplesExpressMock } from './examples/express-mock'
 export { default as ExamplesDashboard } from './examples/dashboard'
+export {
+  default as ExamplesImagePlaceholders
+} from './examples/image-placeholders'
+export {
+  default as ExamplesSmokeyImagePlaceholders
+} from './examples/smokey-image-placeholders'

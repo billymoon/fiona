@@ -46,7 +46,11 @@ const Section = ({ seed }) => (
     import bezierEasing from 'bezier-easing'
 
     const salaryDistribution = bezierEasing(0.5, 0.5, 1, 0)
-    const income = seeded => seeded.distribution(salaryDistribution).number({ max: 100000 })
+    const income = seeded => {
+      return seeded
+        .distribution(salaryDistribution)
+        .number({ max: 100000 })
+    }
 
     Fiona(${seed}).array(5, income)
     `}

@@ -35,73 +35,74 @@ const MainContent = withNav(
           @import url('https://fonts.googleapis.com/css?family=Raleway|Andika|Cousine');
         `}</style>
         <style global jsx>{`
-      html {
-        background-color: ${theme.clr.accent};
-      }
+          html {
+            background-color: ${theme.clr.accent};
+          }
 
-      body {
-        margin: 0;
-        padding: 0 0 5em 0;
-        color: ${theme.fg};
+          body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: ${theme.fg};
 
-        font-family: ${theme.font.body};
-        font-size: 17px;
+            font-family: ${theme.font.body};
+            font-size: 17px;
 
-        background-color: ${theme.bg};
-        background: -moz-linear-gradient(top, ${theme.clr.accent} 0, ${
+            background-color: ${theme.bg};
+            background: -moz-linear-gradient(top, ${theme.clr.accent} 0, ${
           theme.bg
         } 160px);
-        background: -webkit-linear-gradient(top, ${theme.clr.accent} 0,${
+            background: -webkit-linear-gradient(top, ${theme.clr.accent} 0,${
           theme.bg
         } 160px);
-        background: linear-gradient(to bottom, ${theme.clr.accent} 0,${
+            background: linear-gradient(to bottom, ${theme.clr.accent} 0,${
           theme.bg
         } 160px);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${
-          theme.clr.accent
-        }', endColorstr='${theme.bg}',GradientType=0 );
-      }
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${
+              theme.clr.accent
+            }', endColorstr='${theme.bg}',GradientType=0 );
+          }
 
-      code {
-        color: ${theme.clr.secondary};
-        font-family: ${theme.font.code};
-        font-size: 14px;
-      }
+          code {
+            color: ${theme.clr.secondary};
+            font-family: ${theme.font.code};
+            font-size: 14px;
+          }
 
-      code.secondary {
-        color: ${theme.clr.primary};
-      }
+          code.secondary {
+            color: ${theme.clr.primary};
+          }
 
-      .outer {
-        margin: 10px -10px;
-        padding: 10px;
-        border: 1px solid ${theme.clr.light};
-        background-color: ${theme.clr.highlight};
-      }
+          .outer {
+            margin: 10px -10px;
+            padding: 10px;
+            border: 1px solid ${theme.clr.light};
+            background-color: ${theme.clr.highlight};
+          }
 
-      h1, h2, h3, h4, h5, h6 {
-        font-family: ${theme.font.heading};
-        color: ${theme.clr.primary};
-        font-weight: normal;
-        margin-bottom: 10px;
-        margin-top: 10px;
-      }
+          h1, h2, h3, h4, h5, h6 {
+            font-family: ${theme.font.heading};
+            color: ${theme.clr.primary};
+            font-weight: normal;
+            margin-bottom: 10px;
+            margin-top: 10px;
+          }
 
-      h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-        color: ${theme.clr.light};
-        font-size: 0.75em;
-      }
+          h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+            color: ${theme.clr.light};
+            font-size: 0.75em;
+          }
 
-      h1 { font-size: 24px; margin-top: 0px; margin-bottom: 10px; }
-      h2 { font-size: 32px; }
-      h3 { font-size: 24px; }
-      h4 { font-size: 22px; }
-      h5 { font-size: 18px; }
-      h6 { font-size: 16px; }      
-      @media screen and (min-width: 768px) {
-        h1 { font-size: 40px; margin-top: 20px; margin-bottom: 40px; }
-      }
-    `}</style>
+          h1 { font-size: 24px; margin-top: 0px; margin-bottom: 10px; }
+          h2 { font-size: 32px; }
+          h3 { font-size: 24px; }
+          h4 { font-size: 22px; }
+          h5 { font-size: 18px; }
+          h6 { font-size: 16px; }      
+          @media screen and (min-width: 768px) {
+            h1 { font-size: 40px; margin-top: 20px; margin-bottom: 40px; }
+          }
+        `}</style>
         {children}
       </section>
     ))
