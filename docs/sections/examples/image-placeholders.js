@@ -82,7 +82,7 @@ const Section = ({ seed, theme }) => (
 <img src={Fiona(seed).img({
   height: 200,
   width: 400,
-  bg: theme.clr.secondaryAccent,
+  bg: '${theme.clr.secondaryAccent}',
   colors: [
     { start: '${theme.clr.primary}',
         end: '${theme.clr.accent}' },
