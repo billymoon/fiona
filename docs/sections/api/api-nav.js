@@ -28,6 +28,8 @@ const apis = [
   'Fiona.Fullname',
   'Fiona.namedata',
 
+  'Fiona.Img',
+
   'Fiona.Info',
   'Fiona.Duplicable',
   'Fiona.Distribution',
