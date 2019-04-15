@@ -1,16 +1,17 @@
-const packageJson = require('../../package.json')
-const { Register, registered } = require('./register')
-const Prng = require('./prng')
-const Moon = require('./moon')
-const number = require('./primitives/number/number')
-const object = require('./primitives/object/object')
-const json = require('./primitives/json/json')
-const array = require('./primitives/array/array')
-const string = require('./primitives/string/string')
+// TODO: re-introduce version in browser compatible way
+// import packageJson from '../../package.json'
+import { Register, registered } from './register/register.js'
+import Prng from './prng/index.js'
+import Moon from './moon/index.js'
+import number from './primitives/number/number.js'
+import object from './primitives/object/object.js'
+import json from './primitives/json/json.js'
+import array from './primitives/array/array.js'
+import string from './primitives/string/string.js'
 
 const Fiona = seed => new Moon(seed, Prng)
 
-Fiona.version = packageJson.version
+// Fiona.version = packageJson.version
 
 // TODO: would it be simpler to pull the Register factory into core index?
 const registerFactory = (name, fn) => {
@@ -31,6 +32,7 @@ const registerMethod = (name, fn) => {
 //       name: ({ data }) => seeded.fullname({ gender: data.gender })
 //     })
 //     Fiona().register(['person', personExtension]).object(() => Fiona.Person, { luckyNumber: Fiona.Number({ max: 100 }) })
+// console.log(Register(registerFactory, registerMethod))
 Fiona.register = Register(registerFactory, registerMethod)
 
 // TODO: register Random on seeded instance, perhaps need to implement seeded.register first
@@ -48,4 +50,4 @@ Fiona.register(
   ['array', array]
 )
 
-module.exports = Fiona
+export default Fiona

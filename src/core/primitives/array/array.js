@@ -1,4 +1,4 @@
-const recurseData = require('../../recurse')
+import recurseData from '../../recurse/index.js'
 
 const array = (seeded, qty, input, processor = i => i) => {
   // TODO: I think the processor pattern is used a couple of times, can it be generalised?
@@ -11,4 +11,4 @@ const array = (seeded, qty, input, processor = i => i) => {
   return myProcessor(recurseData(seeded, Array(quantity).fill(input)))
 }
 
-module.exports = array
+export default array

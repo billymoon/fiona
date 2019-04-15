@@ -1,7 +1,8 @@
 /* global test expect */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('../core')
-Fiona.register(['img', require('./img')])
+const Fiona = requireEsm('../core')
+Fiona.register(['img', requireEsm('./img')])
 
 test('Fiona.Img', () => {
   const imgDataURI = Fiona(1).img()

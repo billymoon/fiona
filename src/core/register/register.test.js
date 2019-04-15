@@ -1,6 +1,7 @@
 /* global test expect describe beforeEach */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('..')
+const Fiona = requireEsm('..')
 
 describe('Fiona.register', () => {
   let seeded

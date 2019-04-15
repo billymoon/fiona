@@ -1,5 +1,5 @@
 // TODO: document Fiona.String
-const recurseData = require('../../recurse')
+import recurseData from '../../recurse/index.js'
 
 // TODO: can injected values be same as result of Fiona.Array?
 const string = (seeded, [first, ...rest], ...variables) => {
@@ -10,4 +10,4 @@ const string = (seeded, [first, ...rest], ...variables) => {
   )
 }
 
-module.exports = string
+export default string

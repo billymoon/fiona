@@ -1,4 +1,7 @@
-const Register = (registerFactory, registerMethod) => (...extensions) =>
+// TODO: track registered extensions better, at least via setter/remover/matcher
+export const registered = []
+
+export const Register = (registerFactory, registerMethod) => (...extensions) =>
   extensions.forEach(plugin => {
     const [name, fn] =
       typeof plugin === 'function' ? [plugin.name, plugin] : plugin
@@ -12,5 +15,3 @@ const Register = (registerFactory, registerMethod) => (...extensions) =>
       return fn(this, ...args)
     })
   })
-
-module.exports = Register

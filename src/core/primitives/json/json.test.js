@@ -1,6 +1,8 @@
 /* global test expect describe */
+// const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('../..')
+// const Fiona = requireEsm('../..')
+import Fiona from '../..'
 
 describe('json', () => {
   let seeded

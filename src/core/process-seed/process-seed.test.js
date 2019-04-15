@@ -1,6 +1,9 @@
 /* global test expect describe beforeEach */
+const requireEsm = lib => require('esm')(module)(lib).default
+var expect = require('expect')
+const test = it
 
-const processSeed = require('./')
+const processSeed = requireEsm('./')
 
 describe('process-seed', () => {
   test('process-seed passes number back', () => {

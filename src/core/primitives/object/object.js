@@ -1,4 +1,4 @@
-const recurseData = require('../../recurse')
+import recurseData from '../../recurse/index.js'
 
 const object = (seeded, ...originals) => {
   return originals.reduce((memo, original) => {
@@ -11,4 +11,4 @@ const object = (seeded, ...originals) => {
     // return result
   }, {})
 }
-module.exports = object
+export default object

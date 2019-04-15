@@ -1,6 +1,7 @@
 /* global test expect describe */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('../..')
+const Fiona = requireEsm('../..')
 
 const fixtures = [923436, 991546, 100070, 247407, 240368]
 

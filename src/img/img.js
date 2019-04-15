@@ -56,7 +56,7 @@ const img = (seeded, opts) => {
     opts
   )
 
-  colorMapper = colorMapperFactory(colors)
+  const colorMapper = colorMapperFactory(colors)
 
   const parts = []
   for (let i = 0; i < 100; i++) {
@@ -81,4 +81,4 @@ const img = (seeded, opts) => {
   return `data:image/svg+xml;utf8,${svgwrapper(parts.join('\n'))}`
 }
 
-module.exports = img
+export default img

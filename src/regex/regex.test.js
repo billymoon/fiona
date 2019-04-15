@@ -1,7 +1,8 @@
 /* global test,expect */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('../core')
-Fiona.register(['regex', require('./regex')])
+const Fiona = requireEsm('../core')
+Fiona.register(['regex', requireEsm('./regex')])
 
 test('sanity', () => {
   expect(true + true).toBe(2)

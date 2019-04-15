@@ -3,11 +3,13 @@
   "version": "3.2.0",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
-  "main": "static/fiona.min.js",
+  "main": "index.js",
   "scripts": {
     "start": "node scripts/dev",
     "dev": "node scripts/dev",
-    "test": "node scripts/test",
+    "test": "mocha --recursive -r esm --file mocha-setup.js src",
+    "cover": "nyc npm test",
+    "cover:report": "npm run cover && nyc report --reporter lcov",
     "build": "node scripts/build",
     "fix": "node scripts/fix",
     "git-pre-commit": "node scripts/precommit"
@@ -21,7 +23,6 @@
     "dependency-cruiser": "^4.6.3",
     "fetch-pretender": "^1.5.0",
     "fs-extra": "^7.0.1",
-    "jest": "^22.4.4",
     "lodash.template": "^4.4.0",
     "next": "^7.0.2",
     "prettier": "^1.15.2",
@@ -36,7 +37,12 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "esm": "^3.2.22",
+    "expect": "^24.7.1",
+    "mocha": "^6.1.3",
+    "nyc": "^13.3.0"
+  },
   "jest": {
     "testURL": "http://localhost/",
     "collectCoverageFrom": [

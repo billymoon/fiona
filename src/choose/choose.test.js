@@ -1,7 +1,8 @@
 /* global test expect */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('../core')
-Fiona.register(['choose', require('./choose')])
+const Fiona = requireEsm('../core')
+Fiona.register(['choose', requireEsm('./choose')])
 
 test('Fiona.Choose', () => {
   const baby = Fiona(1)

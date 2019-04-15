@@ -13,4 +13,4 @@ const find = Fiona => (predicate, cb, { startseed = 0, tries = 1e6 } = {}) => {
   return seeded.reset()
 }
 
-module.exports = find
+export default find

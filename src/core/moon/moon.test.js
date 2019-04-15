@@ -1,6 +1,7 @@
 /* global test expect describe beforeEach */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Moon = require('.')
+const Moon = requireEsm('./index.js')
 
 describe('Moon constructor', () => {
   const stateMock = {}

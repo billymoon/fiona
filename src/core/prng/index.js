@@ -1,10 +1,10 @@
 // TODO: add a Mersenne Twister for comparison, and benchmark
-const xor = require('./xor')
-const processSeed = require('../process-seed')
-const Distribution = require('../distribution')
+import xor from './xor.js'
+import processSeed from '../process-seed/index.js'
+import Distribution from '../distribution/index.js'
 
 // TODO: add specific tests for prng wrapper
-module.exports = (seeded, initseed) => {
+export default (seeded, initseed) => {
   // initialise prng functions
   const { reseed, getState, setState, random: prngRandom, reverse } = xor(0)
 

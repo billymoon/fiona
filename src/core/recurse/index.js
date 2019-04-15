@@ -1,5 +1,5 @@
-const Prng = require('../prng')
-const { registered } = require('../register')
+import Prng from '../prng/index.js'
+import { registered } from '../register/register.js'
 
 const handleArray = (seeded, node, path, root) => {
   for (let i = 0; i < node.length; i++) {
@@ -29,8 +29,6 @@ const handleFunction = (seeded, node, path, root) => {
   return recursor(seeded, newNode, path, path === 'root' ? newNode : root)
 }
 
-const handleRegex = (seeded, node) => (seeded.regex ? seeded.regex(node) : node)
-
 const recursor = (seeded, node, path, root) =>
   node === null || node === undefined
     ? node
@@ -41,7 +39,7 @@ const recursor = (seeded, node, path, root) =>
     : typeof node === 'function'
     ? handleFunction(seeded, node, path, root)
     : node.constructor === RegExp
-    ? handleRegex(seeded, node)
+    ? seeded.regex(node)
     : node
 
 const cloner = node =>
@@ -61,4 +59,4 @@ const recurse = (seeded, nodeIn) => {
   return recursor(seeded, node, 'root', node)
 }
 
-module.exports = recurse
+export default recurse

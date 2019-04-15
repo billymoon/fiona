@@ -15,4 +15,4 @@ const processSeed = inputSeed => {
   }
 }
 
-module.exports = processSeed
+export default processSeed

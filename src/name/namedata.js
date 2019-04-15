@@ -233,4 +233,4 @@ const namedata = {
   ]
 }
 
-module.exports = namedata
+export default namedata

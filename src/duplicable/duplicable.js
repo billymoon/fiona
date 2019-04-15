@@ -8,4 +8,4 @@ const duplicable = (seeded, { frequency = 0.1, pool = 10 } = {}) => {
   return seeded
 }
 
-module.exports = duplicable
+export default duplicable

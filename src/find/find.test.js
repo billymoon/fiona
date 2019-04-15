@@ -1,16 +1,20 @@
 /* global test expect describe */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('../core')
-Fiona.register(['bool', require('../bool/bool')])
-Fiona.register(['choose', require('../choose/choose')])
-Fiona.register(['oneOf', require('../choose/one-of')])
-Fiona.register(['title', require('../name/name').title])
-Fiona.register(['firstname', require('../name/name').firstname])
-Fiona.register(['firstnames', require('../name/name').firstnames])
-Fiona.register(['surname', require('../name/name').surname])
-Fiona.register(['gender', require('../name/name').gender])
-Fiona.register(['fullname', require('../name/name').fullname])
-const find = require('./find')(Fiona)
+const Fiona = requireEsm('../core')
+Fiona.register(['bool', requireEsm('../bool/bool')])
+Fiona.register(['choose', requireEsm('../choose/choose')])
+Fiona.register(['oneOf', requireEsm('../choose/one-of')])
+Fiona.register(['title', require('esm')(module)('../name/name').title])
+Fiona.register(['firstname', require('esm')(module)('../name/name').firstname])
+Fiona.register([
+  'firstnames',
+  require('esm')(module)('../name/name').firstnames
+])
+Fiona.register(['surname', require('esm')(module)('../name/name').surname])
+Fiona.register(['gender', require('esm')(module)('../name/name').gender])
+Fiona.register(['fullname', require('esm')(module)('../name/name').fullname])
+const find = requireEsm('./find')(Fiona)
 
 describe('find', () => {
   test('find with Fiona.Data', () => {

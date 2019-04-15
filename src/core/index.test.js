@@ -1,8 +1,9 @@
 /* global test expect describe beforeEach */
+const requireEsm = lib => require('esm')(module)(lib).default
 
 // TODO: move tests closer to relevant source code
-const index = require('.')
-const Fiona = require('..')
+const index = requireEsm('.')
+const Fiona = requireEsm('..')
 
 const fixtures = [0.5129792850990683, 0.4320565277859832, 0.2474033479799532]
 

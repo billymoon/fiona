@@ -1,8 +1,9 @@
 /* global test expect */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('../core')
-Fiona.register(['choose', require('../choose/choose')])
-Fiona.register(['shuffle', require('./shuffle')])
+const Fiona = requireEsm('../core')
+Fiona.register(['choose', requireEsm('../choose/choose')])
+Fiona.register(['shuffle', requireEsm('./shuffle')])
 
 test('Fiona.Shuffle', () => {
   expect(Fiona(1).shuffle([1, 2, 3, 4, 5])).toEqual([3, 4, 2, 1, 5])

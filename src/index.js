@@ -1,12 +1,12 @@
-const Fiona = require('./core')
-const bool = require('./bool/bool')
-const choose = require('./choose/choose')
-const oneOf = require('./choose/one-of')
-const date = require('./date/date')
-const img = require('./img/img')
-const duplicable = require('./duplicable/duplicable')
-const { lorem, word, sentence, paragraph } = require('./lorem/lorem')
-const {
+import Fiona from './core/index.js'
+import bool from './bool/bool.js'
+import choose from './choose/choose.js'
+import oneOf from './choose/one-of.js'
+import date from './date/date.js'
+import img from './img/img.js'
+import duplicable from './duplicable/duplicable.js'
+import { lorem, word, sentence, paragraph } from './lorem/lorem.js'
+import {
   gender,
   title,
   firstname,
@@ -14,9 +14,9 @@ const {
   surname,
   fullname,
   namedata
-} = require('./name/name')
-const regex = require('./regex/regex')
-const shuffle = require('./shuffle/shuffle')
+} from './name/name.js'
+import regex from './regex/regex.js'
+import shuffle from './shuffle/shuffle.js'
 
 Fiona.register(
   ['bool', bool],
@@ -42,4 +42,4 @@ Fiona.register(
 // TODO: move namedata to getter/setter function - somehow encapsulate name plugin
 Fiona.namedata = namedata
 
-module.exports = Fiona
+export default Fiona

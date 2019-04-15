@@ -1,15 +1,16 @@
 /* global test,expect */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('../core')
-Fiona.register(['bool', require('../bool/bool')])
-Fiona.register(['choose', require('../choose/choose')])
-Fiona.register(['oneOf', require('../choose/one-of')])
-Fiona.register(['title', require('./name').title])
-Fiona.register(['firstname', require('./name').firstname])
-Fiona.register(['firstnames', require('./name').firstnames])
-Fiona.register(['surname', require('./name').surname])
-Fiona.register(['gender', require('./name').gender])
-Fiona.register(['fullname', require('./name').fullname])
+const Fiona = requireEsm('../core')
+Fiona.register(['bool', requireEsm('../bool/bool')])
+Fiona.register(['choose', requireEsm('../choose/choose')])
+Fiona.register(['oneOf', requireEsm('../choose/one-of')])
+Fiona.register(['title', require('esm')(module)('./name').title])
+Fiona.register(['firstname', require('esm')(module)('./name').firstname])
+Fiona.register(['firstnames', require('esm')(module)('./name').firstnames])
+Fiona.register(['surname', require('esm')(module)('./name').surname])
+Fiona.register(['gender', require('esm')(module)('./name').gender])
+Fiona.register(['fullname', require('esm')(module)('./name').fullname])
 
 test('sanity', () => {
   expect(true + true === 2).toBe(true)

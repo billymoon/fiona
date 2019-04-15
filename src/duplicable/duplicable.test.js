@@ -1,7 +1,8 @@
 /* global test expect */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('../core')
-Fiona.register(['duplicable', require('./duplicable')])
+const Fiona = requireEsm('../core')
+Fiona.register(['duplicable', requireEsm('./duplicable')])
 
 test('Fiona.Duplicable', () => {
   expect(

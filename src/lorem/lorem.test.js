@@ -1,11 +1,12 @@
 /* global test expect */
+const requireEsm = lib => require('esm')(module)(lib).default
 
-const Fiona = require('../core')
-Fiona.register(['choose', require('../choose/choose')])
-Fiona.register(['lorem', require('./lorem').lorem])
-Fiona.register(['word', require('./lorem').word])
-Fiona.register(['sentence', require('./lorem').sentence])
-Fiona.register(['paragraph', require('./lorem').paragraph])
+const Fiona = requireEsm('../core')
+Fiona.register(['choose', requireEsm('../choose/choose')])
+Fiona.register(['lorem', require('esm')(module)('./lorem').lorem])
+Fiona.register(['word', require('esm')(module)('./lorem').word])
+Fiona.register(['sentence', require('esm')(module)('./lorem').sentence])
+Fiona.register(['paragraph', require('esm')(module)('./lorem').paragraph])
 
 test('Fiona.Lorem', () => {
   expect(Fiona(1).lorem()).toBe(

@@ -1,6 +1,6 @@
 /* global test expect describe beforeEach */
-
-const xor = require('./xor')
+const requireEsm = lib => require('esm')(module)(lib).default
+const xor = requireEsm('./xor')
 
 const fixtures = {
   stateInitial: [
