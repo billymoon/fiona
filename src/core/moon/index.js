@@ -8,8 +8,8 @@ function Moon(seedin, Prng) {
     seedin !== undefined ? seedin : Math.floor(Math.random() * 1e8)
 
   // initialise PRNG
-  const { state, reset, random, distribution } = Prng(seeded, initseed)
-  Object.assign(seeded, { state, reset, random, distribution })
+  const { state, reset, random, reverse, distribution } = Prng(seeded, initseed)
+  Object.assign(seeded, { state, reset, random, reverse, distribution })
 
   seeded.info = () => ({ initseed })
 

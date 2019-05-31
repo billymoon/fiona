@@ -6,7 +6,7 @@ const Distribution = require('../distribution')
 // TODO: add specific tests for prng wrapper
 module.exports = (seeded, initseed) => {
   // initialise prng functions
-  const { reseed, getState, setState, random: prngRandom } = xor(0)
+  const { reseed, getState, setState, random: prngRandom, reverse } = xor(0)
 
   // seed prng with initial seed
   reseed(processSeed(initseed))
@@ -47,6 +47,7 @@ module.exports = (seeded, initseed) => {
     state,
     reset,
     random,
+    reverse,
     distribution
   }
 }

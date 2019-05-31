@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Layout, Article, Shelf } from '../../app'
+import { Fiona, Layout, Article, Shelf, withTheme } from '../../app'
 
 const Showcase = ({ children, title, href, img }) => (
   <div>
@@ -7,7 +7,7 @@ const Showcase = ({ children, title, href, img }) => (
     <Link prefetch href={href}>
       <a>
         <div className="img-wrapper">
-          <img src={`/static/img/${img}.png`} alt="" />
+          <img src={img} alt="" />
         </div>
       </a>
     </Link>
@@ -29,11 +29,15 @@ const Showcase = ({ children, title, href, img }) => (
   </div>
 )
 
-export default () => (
+export default withTheme(({ seed, theme }) => (
   <section>
     <Shelf
       section1={
-        <Showcase title="Mock API" href="/examples/mock-api" img="mock-api">
+        <Showcase
+          title="Mock API"
+          href="/examples/mock-api"
+          img="/static/img/mock-api.png"
+        >
           <p>
             By agreeing the api up-front, and generating a mock api makes it
             possible to work on front end components whilst the api feature is
@@ -55,7 +59,7 @@ export default () => (
         <Showcase
           title="Populate Template"
           href="/examples/populate-template"
-          img="populate-template"
+          img="/static/img/populate-template.png"
         >
           <p>
             Generated data can be used to populate pretty much any kind of
@@ -78,6 +82,32 @@ export default () => (
           </ul>
         </Showcase>
       }
+      section3={
+        <Showcase
+          title="Image Placeholders"
+          href="/examples/image-placeholders"
+          img={Fiona(seed).img({
+            height: 1060,
+            width: 1414,
+            bg: theme.clr.secondaryAccent,
+            colors: [
+              { start: theme.clr.primary, end: theme.clr.accent },
+              { start: theme.clr.secondary, end: theme.clr.secondaryAccent }
+            ]
+          })}
+        >
+          <p>
+            Using placeholder images can help to design layouts, by doing for
+            graphics, what lorem ipsum does for text.
+          </p>
+
+          <p>
+            By making placeholder images repeatable, visual diff tools will not
+            be broken, and they can be used for any testing that requires
+            reproducing of same scenario.
+          </p>
+        </Showcase>
+      }
     />
   </section>
-)
+))

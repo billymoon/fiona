@@ -36,6 +36,50 @@ describe('xor', () => {
     expect(random()).toBe(fixtures.resultCalledThrice)
   })
 
+  test('reverse', () => {
+    const { random, reverse } = prng
+    expect(random()).toBe(fixtures.resultCalledOnce)
+    expect(random()).toBe(fixtures.resultCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
+    expect(reverse()).toBe(fixtures.resultCalledTwice)
+    expect(reverse()).toBe(fixtures.resultCalledOnce)
+    expect(random()).toBe(fixtures.resultCalledTwice)
+    expect(reverse()).toBe(fixtures.resultCalledOnce)
+    expect(random()).toBe(fixtures.resultCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
+  })
+
+  test('reverse in loop', () => {
+    // TODO: generate long random chain then reverse back through it
+    for (let seed = 1e3; seed--; ) {
+      const { random, reverse } = xor(seed)
+      const [once, twice, thrice] = [random(), random(), random()]
+      expect(reverse()).toBe(twice)
+      expect(reverse()).toBe(once)
+    }
+  })
+
+  test('reverse from state', () => {
+    // TODO: understand why state is different (but similar) stepping back
+    // but produces same result and state stepping forward
+    const { getState, setState, random, reverse } = prng
+    setState(fixtures.stateCalledThrice)
+    expect(reverse()).toBe(fixtures.resultCalledTwice)
+    const stateAfterStepBack = getState()
+    expect(random()).toBe(fixtures.resultCalledThrice)
+    expect(getState()).toEqual(fixtures.stateCalledThrice)
+    setState(fixtures.stateCalledTwice)
+    expect(random()).toBe(fixtures.resultCalledThrice)
+    setState(stateAfterStepBack)
+    expect(random()).toBe(fixtures.resultCalledThrice)
+    expect(stateAfterStepBack.slice(1)).toEqual(
+      fixtures.stateCalledTwice.slice(1)
+    )
+    expect(stateAfterStepBack.slice(0, 1)).not.toEqual(
+      fixtures.stateCalledTwice.slice(0, 1)
+    )
+  })
+
   test('reseed', () => {
     const { reseed, random } = prng
     expect(random()).toBe(fixtures.resultCalledOnce)
