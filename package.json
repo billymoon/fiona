@@ -1,6 +1,6 @@
 {
   "name": "fiona",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
   "main": "static/fiona.min.js",
