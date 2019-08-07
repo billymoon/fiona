@@ -40,6 +40,7 @@ const MainContent = withNav(
       }
 
       body {
+        box-shadow: inset 0px 10px 30px -10px ${theme.clr.primary};
         margin: 0;
         padding: 0 0 5em 0;
         color: ${theme.fg};

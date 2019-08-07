@@ -98,18 +98,30 @@ const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) => (
         text-decoration: none;
         color: ${theme.clr.primary};
         background-color: ${theme.clr.accent};
-        border-bottom: ${underline}px solid ${theme.clr.primary};
+        box-shadow: 0px 1px 1px 0px ${theme.clr.accent},
+          0px 1px 1px 0px #00000066;
+      }
+
+      .action-button:hover {
+        box-shadow: 0px 3px 3px 0px ${theme.clr.accent},
+          0px 3px 3px 0px #00000066;
+      }
+
+      .action-button:active {
+        box-shadow: 0px 2px 2px 0px ${theme.clr.accent},
+          0px 2px 2px 0px #00000066;
       }
 
       .action-button.selected {
         color: ${theme.clr.secondary};
         background-color: ${theme.clr.secondaryAccent};
-        border-bottom: ${underline}px solid ${theme.clr.secondary};
+        box-shadow: 0px 2px 2px 0px ${theme.clr.secondaryAccent},
+          0px 2px 2px 0px #00000066;
       }
 
-      .action-button:active {
-        border-bottom: ${underlinePressed}px solid;
-        margin-top: ${underline - underlinePressed}px;
+      .action-button.selected:active {
+        box-shadow: 0px 2px 2px 0px ${theme.clr.secondaryAccent},
+          0px 2px 2px 0px #00000066;
       }
 
       @media screen and (min-width: ${config.theme.grid.breakpoints.sm}px) {
@@ -119,8 +131,6 @@ const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) => (
         }
 
         .action-button:active {
-          transform: translate(0px, ${underline - underlinePressed}px);
-          -webkit-transform: translate(0px, ${underline - underlinePressed}px);
           margin-top: 0px;
         }
       }
