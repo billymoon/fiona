@@ -1,7 +1,2 @@
-const Register = require('./register')
-const registered = require('./registered')
-
-module.exports = {
-  Register,
-  registered
-}
+export { default as Register } from './register.js'
+export { default as registered } from './registered.js'

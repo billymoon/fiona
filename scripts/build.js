@@ -2,9 +2,9 @@ const { emptyDirSync, copySync, removeSync } = require('fs-extra')
 
 const { exec } = require('./utils')
 
-exec('node scripts/lint')
+//exec('node scripts/lint')
 
-exec('jest --coverage')
+//exec('jest --coverage')
 
 exec('webpack --profile --json > webpack-stats.json')
 exec(
@@ -13,9 +13,9 @@ exec(
 
 exec('size-limit')
 
-emptyDirSync('static/reports/coverage')
-copySync('coverage/lcov-report', 'static/reports/coverage')
-removeSync('coverage')
+// emptyDirSync('static/reports/coverage')
+// copySync('coverage/lcov-report', 'static/reports/coverage')
+// removeSync('coverage')
 
 emptyDirSync('static/reports/size')
 exec(

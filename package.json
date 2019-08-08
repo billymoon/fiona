@@ -37,6 +37,10 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "esm": "^3.2.25",
     "pretender": "^3.0.2"
   },
   "jest": {
@@ -59,11 +63,11 @@
   "size-limit": [
     {
       "config": "webpack.config.core.js",
-      "limit": "5 KB"
+      "limit": "7 KB"
     },
     {
       "config": "webpack.config.js",
-      "limit": "20 KB"
+      "limit": "25 KB"
     },
     {
       "path": "static/fiona.min.js",

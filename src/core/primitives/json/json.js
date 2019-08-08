@@ -3,4 +3,4 @@ const json = (seeded, ...input) => {
   return JSON.stringify(seeded.object(...input))
 }
 
-module.exports = json
+export default json

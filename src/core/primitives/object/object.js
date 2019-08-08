@@ -1,8 +1,9 @@
-const recurseData = require('../../recurse')
+import recurseData from '../../recurse/index.js'
 
 const object = (seeded, ...originals) => {
   return originals.reduce((memo, original) => {
-    return recurseData(seeded, original, undefined, undefined, memo)
+    return recurseData(seeded, original)
+    // return recurseData(seeded, original, undefined, undefined, memo)
     // TODO: re-instate error checking for object
     // const result = recurseData(seeded, original, undefined, undefined, memo)
     // if (!(typeof result === 'object' && result.constructor === Object)) {
@@ -11,4 +12,4 @@ const object = (seeded, ...originals) => {
     // return result
   }, {})
 }
-module.exports = object
+export default object

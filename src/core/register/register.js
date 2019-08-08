@@ -13,4 +13,4 @@ const Register = (registerFactory, registerMethod) => (...extensions) =>
     })
   })
 
-module.exports = Register
+export default Register
