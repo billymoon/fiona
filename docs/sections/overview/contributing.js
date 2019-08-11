@@ -51,18 +51,17 @@ const Section = ({ seed }) => (
 
     <ul>
       <li>
-        <NPM name="jest" /> for testing
+        <NPM name="ava" /> for testing
       </li>
       <li>
         <NPM name="webpack" /> and <NPM name="babel-cli" /> for bundling
         distributable
       </li>
       <li>
-        <NPM name="taskr" /> and <NPM name="@zeit/git-hooks" /> for development
-        lifecycle scripting
+        <NPM name="@zeit/git-hooks" /> for development lifecycle scripting
       </li>
       <li>
-        <NPM name="standard" /> for linting
+        <NPM name="prettier" /> for linting
       </li>
       <li>
         <NPM name="react" /> and <NPM name="next" /> for documentation website

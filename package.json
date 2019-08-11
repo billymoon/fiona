@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node scripts/dev",
     "dev": "node scripts/dev",
+    "coverage": "node scripts/coverage",
     "test": "node scripts/test",
     "build": "node scripts/build",
     "fix": "node scripts/fix",
@@ -17,13 +18,16 @@
   "devDependencies": {
     "@weco/next-plugin-transpile-modules": "0.0.2",
     "@zeit/git-hooks": "^0.1.4",
+    "ava": "^2.2.0",
+    "babel-loader": "^8.0.6",
     "bezier-easing": "^2.1.0",
     "dependency-cruiser": "^4.6.3",
+    "esm": "^3.2.25",
     "fetch-pretender": "^1.5.0",
     "fs-extra": "^7.0.1",
-    "jest": "^22.4.4",
     "lodash.template": "^4.4.0",
     "next": "^7.0.2",
+    "nyc": "^14.1.1",
     "prettier": "^1.15.2",
     "randexp": "^0.4.6",
     "react": "^16.4.1",
@@ -36,24 +40,23 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2"
   },
-  "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.6",
-    "babel-preset-env": "^1.7.0",
-    "esm": "^3.2.25",
-    "pretender": "^3.0.2"
-  },
-  "jest": {
-    "testURL": "http://localhost/",
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/**/*.docs.js",
-      "!src/docs/**"
+  "ava": {
+    "require": [
+      "esm"
     ],
-    "testPathIgnorePatterns": [
-      "node_modules",
-      "scripts",
-      "misc"
+    "files": [
+      "src/**/*.test.js"
+    ]
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "src/**/*.test.js",
+      "src/**/*.docs.js",
+      "src/docs/**"
     ]
   },
   "prettier": {

@@ -1,33 +1,31 @@
-/* global test expect describe beforeEach */
+import test from 'ava'
+import Fiona from '../index.js'
 
-const Fiona = require('..')
+// TODO: why do we have to run these tests serially
+let seeded
 
-describe('seeded.distribution', () => {
-  let seeded
+test.beforeEach(t => {
+  seeded = Fiona('moon')
+})
 
-  beforeEach(() => {
-    seeded = Fiona('moon')
-  })
+test.serial('should have inert default distribution function', t => {
+  t.is(typeof seeded.distribution, 'function')
+  t.is(seeded.distribution(1), 1)
+  t.is(seeded.distribution(0.12345), 0.12345)
+  t.is(seeded.distribution(1e6), 1e6)
+  t.is(seeded.distribution('awesome'), 'awesome')
+})
 
-  test('should have inert default distribution function', () => {
-    expect(typeof seeded.distribution).toBe('function')
-    expect(seeded.distribution(1)).toBe(1)
-    expect(seeded.distribution(0.12345)).toBe(0.12345)
-    expect(seeded.distribution(1e6)).toBe(1e6)
-    expect(seeded.distribution('awesome')).toBe('awesome')
-  })
+test.serial('should set distribution function', t => {
+  t.is(seeded.distribution(5), 5)
+  seeded.distribution(i => i * i)
+  t.is(seeded.distribution(5), 25)
+})
 
-  test('should set distribution function', () => {
-    expect(seeded.distribution(5)).toBe(5)
-    seeded.distribution(i => i * i)
-    expect(seeded.distribution(5)).toBe(25)
-  })
-
-  test('should reset distribution function', () => {
-    expect(seeded.distribution(5)).toBe(5)
-    seeded.distribution(i => i * i)
-    expect(seeded.distribution(5)).toBe(25)
-    seeded.distribution(null)
-    expect(seeded.distribution(5)).toBe(5)
-  })
+test.serial('should reset distribution function', t => {
+  t.is(seeded.distribution(5), 5)
+  seeded.distribution(i => i * i)
+  t.is(seeded.distribution(5), 25)
+  seeded.distribution(null)
+  t.is(seeded.distribution(5), 5)
 })

@@ -4,6 +4,6 @@ const { exec } = require('./utils')
 
 exec('node scripts/lint')
 
-exec('jest')
+exec('node scripts/test')
 
 exec('size-limit')

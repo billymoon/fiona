@@ -4,8 +4,8 @@ const packageJson = require('./package')
 
 // extract the version from package json to include in build
 fs.writeFileSync(
-  path.join(__dirname, 'package-extract.json'),
-  JSON.stringify({ version: packageJson.version }, null, 2)
+  path.join(__dirname, 'package-extract.js'),
+  `export default { version: '${packageJson.version}' }`
 )
 
 module.exports = {

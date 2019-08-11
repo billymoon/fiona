@@ -1,15 +1,15 @@
-/* global test expect */
+import test from 'ava'
+import Fiona from '../core/index.js'
 
-const Fiona = require('../core')
 Fiona.register(['choose', require('./choose')])
 
-test('Fiona.Choose', () => {
+test('Fiona.Choose', t => {
   const baby = Fiona(1)
   const oneToTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  expect(baby.choose(3, oneToTen)).toEqual([5, 7, 8])
-  expect(baby.choose(3, oneToTen)).toEqual([1, 9, 4])
-  expect(baby.choose(3, oneToTen)).toEqual([4, 1, 10])
-  expect(baby.choose(11, oneToTen)).toEqual([
+  t.deepEqual(baby.choose(3, oneToTen), [5, 7, 8])
+  t.deepEqual(baby.choose(3, oneToTen), [1, 9, 4])
+  t.deepEqual(baby.choose(3, oneToTen), [4, 1, 10])
+  t.deepEqual(baby.choose(11, oneToTen), [
     9,
     5,
     8,
@@ -23,18 +23,18 @@ test('Fiona.Choose', () => {
     undefined
   ])
   baby.reset()
-  expect(baby.choose(3, oneToTen, { weights: [10, 5, 1] })).toEqual([2, 3, 4])
+  t.deepEqual(baby.choose(3, oneToTen, { weights: [10, 5, 1] }), [2, 3, 4])
   baby.reset()
-  expect(baby.choose(3, oneToTen, { weights: [10, 5, ''] })).toEqual([2, 3, 4])
+  t.deepEqual(baby.choose(3, oneToTen, { weights: [10, 5, ''] }), [2, 3, 4])
   baby.reset()
-  expect(baby.choose(3, oneToTen, { weights: [10] })).toEqual([1, 3, 4])
+  t.deepEqual(baby.choose(3, oneToTen, { weights: [10] }), [1, 3, 4])
   baby.reset()
-  expect(baby.choose(3, oneToTen, { weights: [10, 1] })).toEqual([1, 3, 4])
+  t.deepEqual(baby.choose(3, oneToTen, { weights: [10, 1] }), [1, 3, 4])
   baby.reset().distribution(i => i * i * i)
-  expect(baby.choose(3, oneToTen)).toEqual([1, 3, 5])
-  expect(baby.choose(3, oneToTen)).toEqual([1, 7, 3])
-  expect(baby.choose(3, oneToTen)).toEqual([1, 2, 8])
-  expect(baby.choose(11, oneToTen)).toEqual([
+  t.deepEqual(baby.choose(3, oneToTen), [1, 3, 5])
+  t.deepEqual(baby.choose(3, oneToTen), [1, 7, 3])
+  t.deepEqual(baby.choose(3, oneToTen), [1, 2, 8])
+  t.deepEqual(baby.choose(11, oneToTen), [
     7,
     2,
     5,
@@ -47,6 +47,6 @@ test('Fiona.Choose', () => {
     10,
     undefined
   ])
-  expect(baby.choose(null, oneToTen)).toEqual([])
-  expect(baby.choose(0, oneToTen)).toEqual([])
+  t.deepEqual(baby.choose(null, oneToTen), [])
+  t.deepEqual(baby.choose(0, oneToTen), [])
 })

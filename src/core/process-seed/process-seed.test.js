@@ -1,19 +1,16 @@
-/* global test expect describe beforeEach */
+import test from 'ava'
+import processSeed from './index.js'
 
-const processSeed = require('./')
+test('process-seed passes number back', t => {
+  t.is(processSeed(1), 1)
+  t.is(processSeed(1e6), 1e6)
+  t.is(processSeed(1e32), 1e32)
+})
 
-describe('process-seed', () => {
-  test('process-seed passes number back', () => {
-    expect(processSeed(1)).toBe(1)
-    expect(processSeed(1e6)).toBe(1e6)
-    expect(processSeed(1e32)).toBe(1e32)
-  })
-
-  test('process-seed converts string to integer', () => {
-    expect(processSeed('1')).toBe(49)
-    expect(processSeed('2')).toBe(50)
-    expect(processSeed('abc')).toBe(2423384358)
-    expect(processSeed('abcdefghijklmnopqrstuvwxyz')).toBe(-261981256238)
-    expect(processSeed('moon')).toBe(-16743999484)
-  })
+test('process-seed converts string to integer', t => {
+  t.is(processSeed('1'), 49)
+  t.is(processSeed('2'), 50)
+  t.is(processSeed('abc'), 2423384358)
+  t.is(processSeed('abcdefghijklmnopqrstuvwxyz'), -261981256238)
+  t.is(processSeed('moon'), -16743999484)
 })

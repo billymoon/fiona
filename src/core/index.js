@@ -1,4 +1,4 @@
-// const packageJson = require('../../package.json')
+import packageJson from '../../package-extract.js'
 import { Register, registered } from './register/index.js'
 import Prng from './prng/index.js'
 import Moon from './moon/index.js'
@@ -11,7 +11,7 @@ import string from './primitives/string/string.js'
 const Fiona = seed => new Moon(seed, Prng)
 
 // Fiona.version = packageJson.version
-Fiona.version = 'unknown'
+Fiona.version = '__VERSION__'
 
 // TODO: would it be simpler to pull the Register factory into core index?
 const registerFactory = (name, fn) => {

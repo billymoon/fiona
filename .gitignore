@@ -1,13 +1,14 @@
 .DS_Store
 .esm-cache
 .next
+.nyc_output
 misc
 out
 node_modules
 coverage
 static/reports
 
-package-extract.json
+package-extract.js
 *.log
 package-lock.json
 yarn.lock

@@ -1,41 +1,40 @@
-/* global test expect describe */
-
-const Fiona = require('../..')
+import test from 'ava'
+import Fiona from '../..'
 
 const fixtures = [923436, 991546, 100070, 247407, 240368]
 
-describe('array', () => {
-  let seeded
+let seeded
 
-  beforeEach(() => {
-    seeded = Fiona('moon')
-  })
+test.beforeEach(() => {
+  seeded = Fiona('moon')
+})
 
-  test('returns array', () => {
-    expect(seeded.array(5, 1)).toEqual([1, 1, 1, 1, 1])
-  })
+test.serial('returns array', t => {
+  t.deepEqual(seeded.array(5, 1), [1, 1, 1, 1, 1])
+})
 
-  test('recurses array', () => {
-    expect(seeded.array(5, seeded => seeded.number())).toEqual(fixtures)
-  })
+test.serial('recurses array', t => {
+  t.deepEqual(seeded.array(5, seeded => seeded.number()), fixtures)
+})
 
-  test('recurses array with bar Fiona.Plugin syntax', () => {
-    expect(seeded.array(5, Fiona.Number)).toEqual(fixtures)
-  })
+test.serial('recurses array with bar Fiona.Plugin syntax', t => {
+  t.deepEqual(seeded.array(5, Fiona.Number), fixtures)
+})
 
-  test('accepts max/min arguments', () => {
-    expect(seeded.array({ min: 2, max: 4 }, Fiona.Number)).toEqual(
-      fixtures.slice(0, 3)
-    )
-  })
+test.serial('accepts max/min arguments', t => {
+  t.deepEqual(
+    seeded.array({ min: 2, max: 4 }, Fiona.Number),
+    fixtures.slice(0, 3)
+  )
+})
 
-  test('uses passed processor', () => {
-    expect(seeded.array(5, Fiona.Number, i => i.map(j => j / 100))).toEqual(
-      fixtures.map(j => j / 100)
-    )
-  })
+test.serial('uses passed processor', t => {
+  t.deepEqual(
+    seeded.array(5, Fiona.Number, i => i.map(j => j / 100)),
+    fixtures.map(j => j / 100)
+  )
+})
 
-  test('joins array if passed string as processor', () => {
-    expect(seeded.array(5, Fiona.Number, ':')).toEqual(fixtures.join(':'))
-  })
+test.serial('joins array if passed string as processor', t => {
+  t.is(seeded.array(5, Fiona.Number, ':'), fixtures.join(':'))
 })

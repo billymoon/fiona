@@ -1,58 +1,63 @@
-/* global test expect describe beforeEach */
+import test from 'ava'
+import Fiona from '..'
+import { Register, registered } from './index.js'
 
-const Fiona = require('..')
+let seeded
 
-describe('Fiona.register', () => {
-  let seeded
+test.beforeEach(t => {
+  seeded = Fiona('moon')
+})
 
-  beforeEach(() => {
-    seeded = Fiona('moon')
-  })
+test.serial('accepts named function as extension', t => {
+  const zeroHundred = seeded => Math.round(seeded.random() * 100)
+  Fiona.register(zeroHundred)
+  t.is(seeded.zeroHundred(), 51)
+})
 
-  test('accepts named function as extension', () => {
-    const zeroHundred = seeded => Math.round(seeded.random() * 100)
-    Fiona.register(zeroHundred)
-    expect(seeded.zeroHundred()).toBe(51)
-  })
+test.serial('exports register from index.js', t => {
+  t.is(typeof Register, 'function')
+})
 
-  test('accepts multiple named functions as extensions', () => {
-    const zeroHundred = seeded => Math.round(seeded.random() * 100)
-    const zeroTwoHundred = seeded => Math.round(seeded.random() * 100)
-    Fiona.register(zeroHundred, zeroTwoHundred)
-    expect(seeded.zeroHundred()).toBe(51)
-    expect(seeded.zeroTwoHundred()).toBe(43)
-  })
+test.serial('exports registered from index.js', t => {
+  t.is(typeof registered, 'object')
+})
 
-  test('accepts name and function as extension', () => {
-    Fiona.register(['zeroHundred', seeded => Math.round(seeded.random() * 100)])
-    expect(seeded.zeroHundred()).toBe(51)
-  })
+test.serial('accepts multiple named functions as extensions', t => {
+  const zeroHundred = seeded => Math.round(seeded.random() * 100)
+  const zeroTwoHundred = seeded => Math.round(seeded.random() * 100)
+  Fiona.register(zeroHundred, zeroTwoHundred)
+  t.is(seeded.zeroHundred(), 51)
+  t.is(seeded.zeroTwoHundred(), 43)
+})
 
-  test('extension can be called as method on Fiona', () => {
-    const zeroHundred = seeded => Math.round(seeded.random() * 100)
-    Fiona.register(zeroHundred)
-    expect(Fiona.ZeroHundred()(seeded)).toBe(51)
-  })
+test.serial('accepts name and function as extension', t => {
+  Fiona.register(['zeroHundred', seeded => Math.round(seeded.random() * 100)])
+  t.is(seeded.zeroHundred(), 51)
+})
 
-  test('plugin can is called with no arguments with no brackets', () => {
+test.serial('extension can be called as method on Fiona', t => {
+  const zeroHundred = seeded => Math.round(seeded.random() * 100)
+  Fiona.register(zeroHundred)
+  t.is(Fiona.ZeroHundred()(seeded), 51)
+})
+
+test.serial('plugin can is called with no arguments with no brackets', t => {
+  const zeroHundred = (seeded, arg) => typeof arg
+  Fiona.register(zeroHundred)
+  t.deepEqual(seeded.object({ a: Fiona.ZeroHundred }), { a: 'undefined' })
+})
+
+test.serial(
+  'extension can is called with no arguments with no brackets in string',
+  t => {
     const zeroHundred = (seeded, arg) => typeof arg
     Fiona.register(zeroHundred)
-    expect(seeded.object({ a: Fiona.ZeroHundred })).toEqual({ a: 'undefined' })
-  })
+    t.deepEqual(seeded.string`number ${Fiona.ZeroHundred}`, `number undefined`)
+  }
+)
 
-  test('extension can is called with no arguments with no brackets in string', () => {
-    const zeroHundred = (seeded, arg) => typeof arg
-    Fiona.register(zeroHundred)
-    expect(seeded.string`number ${Fiona.ZeroHundred}`).toEqual(
-      `number undefined`
-    )
-  })
-
-  test('extension can is called with passed arguments in string', () => {
-    const zeroHundred = (seeded, arg) => typeof arg
-    Fiona.register(zeroHundred)
-    expect(seeded.string`number ${Fiona.ZeroHundred(1)}`).toEqual(
-      `number number`
-    )
-  })
+test.serial('extension can is called with passed arguments in string', t => {
+  const zeroHundred = (seeded, arg) => typeof arg
+  Fiona.register(zeroHundred)
+  t.deepEqual(seeded.string`number ${Fiona.ZeroHundred(1)}`, `number number`)
 })

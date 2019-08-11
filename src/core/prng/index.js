@@ -1,5 +1,5 @@
 // TODO: add a Mersenne Twister for comparison, and benchmark
-import  xor from './xor.js'
+import xor from './xor.js'
 import processSeed from '../process-seed/index.js'
 import Distribution from '../distribution/index.js'
 
