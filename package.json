@@ -16,7 +16,7 @@
   "author": "Billy Moon",
   "license": "ISC",
   "devDependencies": {
-    "@weco/next-plugin-transpile-modules": "0.0.2",
+    "@types/react": "^16.9.1",
     "@zeit/git-hooks": "^0.1.4",
     "ava": "^2.2.0",
     "babel-loader": "^8.0.6",
@@ -26,7 +26,7 @@
     "fetch-pretender": "^1.5.0",
     "fs-extra": "^7.0.1",
     "lodash.template": "^4.4.0",
-    "next": "^7.0.2",
+    "next": "^9.0.3",
     "nyc": "^14.1.1",
     "prettier": "^1.15.2",
     "randexp": "^0.4.6",
@@ -36,6 +36,7 @@
     "react-redux": "^5.1.0",
     "redux": "^4.0.1",
     "size-limit": "^0.21.0",
+    "typescript": "^3.5.3",
     "webpack": "^4.25.1",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2"
@@ -65,19 +66,19 @@
   "size-limit": [
     {
       "config": "webpack.config.core.js",
-      "limit": "7 KB"
+      "limit": "100 KB"
     },
     {
       "config": "webpack.config.js",
-      "limit": "25 KB"
+      "limit": "100 KB"
     },
     {
       "path": "static/fiona.min.js",
-      "limit": "10 KB"
+      "limit": "20 KB"
     },
     {
       "path": "static/fiona.core.min.js",
-      "limit": "2 KB"
+      "limit": "10 KB"
     }
   ]
 }

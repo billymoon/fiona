@@ -1,4 +1,4 @@
-import { CreateContext, update } from 'jsx-components'
+import { CreateContext, update } from '../../create-context'
 
 export const { provide, consume } = CreateContext({
   awesome: {
