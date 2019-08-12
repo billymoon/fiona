@@ -1,4 +1,4 @@
-import packageJson from '../../package-extract.js'
+import config from './config.js'
 import { Register, registered } from './register/index.js'
 import Prng from './prng/index.js'
 import Moon from './moon/index.js'
@@ -10,8 +10,7 @@ import string from './primitives/string/string.js'
 
 const Fiona = seed => new Moon(seed, Prng)
 
-// Fiona.version = packageJson.version
-Fiona.version = '__VERSION__'
+Fiona.version = config.version
 
 // TODO: would it be simpler to pull the Register factory into core index?
 const registerFactory = (name, fn) => {

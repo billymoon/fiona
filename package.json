@@ -54,9 +54,8 @@
       "src/**/*.js"
     ],
     "exclude": [
-      "src/**/*.test.js",
-      "src/**/*.docs.js",
-      "src/docs/**"
+      "**/*.test.js",
+      "**/*.docs.js"
     ]
   },
   "prettier": {
