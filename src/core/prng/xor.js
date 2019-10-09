@@ -44,4 +44,4 @@ const xor = seed => {
   }
 }
 
-module.exports = xor
+export default xor

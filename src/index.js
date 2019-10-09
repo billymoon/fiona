@@ -1,4 +1,4 @@
-const Fiona = require('./core')
+import Fiona from './core'
 const bool = require('./bool/bool')
 const choose = require('./choose/choose')
 const oneOf = require('./choose/one-of')
@@ -42,4 +42,4 @@ Fiona.register(
 // TODO: move namedata to getter/setter function - somehow encapsulate name plugin
 Fiona.namedata = namedata
 
-module.exports = Fiona
+export default Fiona

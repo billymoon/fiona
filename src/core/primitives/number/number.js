@@ -6,4 +6,4 @@ const number = (seeded, { max = 1e6, min = 0, precision = 0 } = {}) => {
   )
 }
 
-module.exports = number
+export default number

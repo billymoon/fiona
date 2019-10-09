@@ -19,4 +19,4 @@ function Moon(seedin, Prng) {
 // set up self referencial prototype chain á la jQuery
 Moon.prototype = { constructor: Moon }
 
-module.exports = Moon
+export default Moon

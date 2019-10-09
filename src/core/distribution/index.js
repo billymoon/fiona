@@ -1,7 +1,7 @@
 // define default distribution method as passthrough
 const defaultDistribution = i => i
 
-module.exports = seeded => {
+export default seeded => {
   // define initial distribution to be default distribution
   let distribution = defaultDistribution
 

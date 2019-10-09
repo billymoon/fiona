@@ -1,16 +1,16 @@
-/* global test,expect */
+import test from 'ava'
+import Fiona from '../core/index.js'
 
-const Fiona = require('../core')
 Fiona.register(['bool', require('./bool')])
 
-test('Fiona.Bool', () => {
-  expect(Fiona(1).bool()).toBe(true)
-  expect(Fiona(2).bool()).toBe(false)
+test('Fiona.Bool', t => {
+  t.is(Fiona(1).bool(), true)
+  t.is(Fiona(2).bool(), false)
 })
 
-test('Fiona.Bool (chance)', () => {
-  expect(Fiona(1).bool()).toBe(true)
-  expect(Fiona(1).bool({ chance: 0.25 })).toBe(false)
-  expect(Fiona(2).bool()).toBe(false)
-  expect(Fiona(2).bool({ chance: 0.75 })).toBe(true)
+test('Fiona.Bool (chance)', t => {
+  t.is(Fiona(1).bool(), true)
+  t.is(Fiona(1).bool({ chance: 0.25 }), false)
+  t.is(Fiona(2).bool(), false)
+  t.is(Fiona(2).bool({ chance: 0.75 }), true)
 })

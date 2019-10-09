@@ -1,5 +1,5 @@
-const Prng = require('../prng')
-const { registered } = require('../register')
+import Prng from '../prng/index.js'
+import { registered } from '../register/index.js'
 
 const handleArray = (seeded, node, path, root) => {
   for (let i = 0; i < node.length; i++) {
@@ -61,4 +61,4 @@ const recurse = (seeded, nodeIn) => {
   return recursor(seeded, node, 'root', node)
 }
 
-module.exports = recurse
+export default recurse

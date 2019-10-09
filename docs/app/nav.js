@@ -170,9 +170,9 @@ const Nav = ({ router, closed, toggleNav }) => (
         href="/"
       />
       <ButtonLink
-        label="API"
-        selected={router.pathname.match(/^\/api(\/|$)/)}
-        href="/api"
+        label="API Docs"
+        selected={router.pathname.match(/^\/api-docs(\/|$)/)}
+        href="/api-docs"
       />
       <ButtonLink
         label="Examples"

@@ -56,7 +56,7 @@ const img = (seeded, opts) => {
     opts
   )
 
-  colorMapper = colorMapperFactory(colors)
+  const colorMapper = colorMapperFactory(colors)
 
   const parts = []
   for (let i = 0; i < 100; i++) {

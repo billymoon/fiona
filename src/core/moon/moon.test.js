@@ -1,51 +1,48 @@
-/* global test expect describe beforeEach */
+import test from 'ava'
+import Moon from './index.js'
 
-const Moon = require('.')
+const stateMock = {}
+const resetMock = {}
+const randomMock = {}
+const distributionMock = {}
 
-describe('Moon constructor', () => {
-  const stateMock = {}
-  const resetMock = {}
-  const randomMock = {}
-  const distributionMock = {}
+let PrngMock
+let moon
 
-  let PrngMock
-  let moon
-
-  beforeEach(() => {
-    PrngMock = () => ({
-      state: stateMock,
-      reset: resetMock,
-      random: randomMock,
-      distribution: distributionMock
-    })
-
-    moon = new Moon(0, PrngMock)
+test.beforeEach(() => {
+  PrngMock = () => ({
+    state: stateMock,
+    reset: resetMock,
+    random: randomMock,
+    distribution: distributionMock
   })
 
-  test('attaches member functions from passed Prng', () => {
-    expect(moon.distribution).toBe(distributionMock)
-    expect(moon.random).toBe(randomMock)
-    expect(moon.reset).toBe(resetMock)
-    expect(moon.state).toBe(stateMock)
-  })
+  moon = new Moon(0, PrngMock)
+})
 
-  test('info returns original initseed', () => {
-    expect(moon.info().initseed).toBe(0)
-  })
+test('attaches member functions from passed Prng', t => {
+  t.is(moon.distribution, distributionMock)
+  t.is(moon.random, randomMock)
+  t.is(moon.reset, resetMock)
+  t.is(moon.state, stateMock)
+})
 
-  test('returns instance of Moon', () => {
-    expect(moon instanceof Moon).toBe(true)
-  })
+test('info returns original initseed', t => {
+  t.is(moon.info().initseed, 0)
+})
 
-  test('sets up self referential prototype constructor', () => {
-    expect(Moon.prototype.constructor).toBe(Moon)
-    expect(moon.constructor).toBe(Moon)
-  })
+test('returns instance of Moon', t => {
+  t.is(moon instanceof Moon, true)
+})
 
-  test('info returns generated initseed when none passed as argument', () => {
-    const initseed = new Moon(undefined, PrngMock).info().initseed
-    expect(initseed > 0).toBe(true)
-    expect(initseed < 1e8).toBe(true)
-    expect(initseed % 1).toBe(0)
-  })
+test('sets up self referential prototype constructor', t => {
+  t.is(Moon.prototype.constructor, Moon)
+  t.is(moon.constructor, Moon)
+})
+
+test('info returns generated initseed when none passed as argument', t => {
+  const initseed = new Moon(undefined, PrngMock).info().initseed
+  t.is(initseed > 0, true)
+  t.is(initseed < 1e8, true)
+  t.is(initseed % 1, 0)
 })

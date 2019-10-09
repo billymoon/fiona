@@ -4,7 +4,7 @@ const { exec } = require('./utils')
 
 exec('node scripts/lint')
 
-exec('jest --coverage')
+exec('node scripts/coverage')
 
 exec('webpack --profile --json > webpack-stats.json')
 exec(
