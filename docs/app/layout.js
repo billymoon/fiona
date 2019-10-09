@@ -49,18 +49,10 @@ const MainContent = withNav(
         font-size: 17px;
 
         background-color: ${theme.bg};
-        background: -moz-linear-gradient(top, ${theme.clr.accent} 0, ${
-          theme.bg
-        } 160px);
-        background: -webkit-linear-gradient(top, ${theme.clr.accent} 0,${
-          theme.bg
-        } 160px);
-        background: linear-gradient(to bottom, ${theme.clr.accent} 0,${
-          theme.bg
-        } 160px);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${
-          theme.clr.accent
-        }', endColorstr='${theme.bg}',GradientType=0 );
+        background: -moz-linear-gradient(top, ${theme.clr.accent} 0, ${theme.bg} 160px);
+        background: -webkit-linear-gradient(top, ${theme.clr.accent} 0,${theme.bg} 160px);
+        background: linear-gradient(to bottom, ${theme.clr.accent} 0,${theme.bg} 160px);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${theme.clr.accent}', endColorstr='${theme.bg}',GradientType=0 );
       }
 
       code {
