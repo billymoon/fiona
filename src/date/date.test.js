@@ -1,7 +1,8 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
+import date from './date.js'
 
-Fiona.register(['date', require('./date')])
+Fiona.register(['date', date])
 
 test('Fiona.Date', t => {
   t.is(Fiona(1).date(), '1967-07-02')

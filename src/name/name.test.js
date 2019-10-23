@@ -1,15 +1,20 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
 
-Fiona.register(['bool', require('../bool/bool')])
-Fiona.register(['choose', require('../choose/choose')])
-Fiona.register(['oneOf', require('../choose/one-of')])
-Fiona.register(['title', require('./name').title])
-Fiona.register(['firstname', require('./name').firstname])
-Fiona.register(['firstnames', require('./name').firstnames])
-Fiona.register(['surname', require('./name').surname])
-Fiona.register(['gender', require('./name').gender])
-Fiona.register(['fullname', require('./name').fullname])
+import bool from '../bool/bool'
+import choose from '../choose/choose'
+import oneOf from '../choose/one-of'
+import { title, firstname, firstnames, surname, gender, fullname } from './name'
+
+Fiona.register(['bool', bool])
+Fiona.register(['choose', choose])
+Fiona.register(['oneOf', oneOf])
+Fiona.register(['title', title])
+Fiona.register(['firstname', firstname])
+Fiona.register(['firstnames', firstnames])
+Fiona.register(['surname', surname])
+Fiona.register(['gender', gender])
+Fiona.register(['fullname', fullname])
 
 test('sanity', t => {
   t.is(true + true === 2, true)

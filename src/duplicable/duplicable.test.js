@@ -1,7 +1,8 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
+import duplicable from './duplicable'
 
-Fiona.register(['duplicable', require('./duplicable')])
+Fiona.register(['duplicable', duplicable])
 
 test('Fiona.Duplicable', t => {
   t.deepEqual(

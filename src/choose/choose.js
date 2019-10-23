@@ -1,4 +1,4 @@
-const chooser = require('./chooser')
+import chooser from './chooser.js'
 
 // TODO: can the choose method be improved? Can weights be defined as distribution instead?
 const choose = (seeded, qty, arr, { weights = [] } = {}) => {
@@ -15,4 +15,4 @@ const choose = (seeded, qty, arr, { weights = [] } = {}) => {
     })
 }
 
-module.exports = choose
+export default choose

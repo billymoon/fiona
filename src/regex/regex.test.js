@@ -1,7 +1,8 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
+import regex from './regex'
 
-Fiona.register(['regex', require('./regex')])
+Fiona.register(['regex', regex])
 
 test('sanity', t => {
   t.is(true + true, 2)

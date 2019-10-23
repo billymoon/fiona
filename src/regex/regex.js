@@ -1,5 +1,5 @@
 // TODO: should regex be part of core?
-const RandExp = require('randexp')
+import RandExp from './randexp.js'
 
 const regex = (seeded, regex = /[A-F0-9]{16}/) => {
   const myRandExp = new RandExp(RegExp(regex))
@@ -9,4 +9,4 @@ const regex = (seeded, regex = /[A-F0-9]{16}/) => {
   return myRandExp.gen()
 }
 
-module.exports = regex
+export default regex

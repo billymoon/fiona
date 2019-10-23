@@ -1,22 +1,23 @@
-const namedata = require('./namedata')
+import namedatain from './namedata.js'
+export const namedata = namedatain
 
 const getGender = gender =>
   gender && (gender[0].toLowerCase() === 'f' ? 'female' : 'male')
 
-const gender = seeded => {
+export const gender = seeded => {
   return seeded.random() < 0.5 ? 'male' : 'female'
 }
 
-const title = (seeded, { gender } = {}) => {
+export const title = (seeded, { gender } = {}) => {
   return seeded.oneOf(namedata[getGender(gender || seeded.gender())].title)
 }
 
-const firstname = (seeded, { gender } = {}) => {
+export const firstname = (seeded, { gender } = {}) => {
   return seeded.oneOf(namedata[getGender(gender || seeded.gender())].firstname)
 }
 
 // TODO: remove firstnames method from name extension
-const firstnames = (seeded, { gender } = {}) => {
+export const firstnames = (seeded, { gender } = {}) => {
   return seeded
     .choose(
       seeded
@@ -28,7 +29,7 @@ const firstnames = (seeded, { gender } = {}) => {
     .join(' ')
 }
 
-const surname = seeded => {
+export const surname = seeded => {
   return seeded
     .choose(
       seeded
@@ -40,19 +41,9 @@ const surname = seeded => {
     .join(seeded.bool() ? ' ' : '-')
 }
 
-const fullname = (seeded, { gender } = {}) => {
+export const fullname = (seeded, { gender } = {}) => {
   const myGender = getGender(gender || seeded.gender())
   return `${seeded.title({ gender: myGender })} ${seeded.firstnames({
     gender: myGender
   })} ${seeded.surname()}`
-}
-
-module.exports = {
-  gender,
-  title,
-  firstname,
-  firstnames,
-  surname,
-  fullname,
-  namedata
 }

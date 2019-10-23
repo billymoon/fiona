@@ -1,7 +1,7 @@
-const chooser = require('./chooser')
+import chooser from './chooser.js'
 
 const oneOf = (seeded, arr, { weights = [] } = {}) => {
   return arr[chooser(seeded.random(), arr, weights)]
 }
 
-module.exports = oneOf
+export default oneOf

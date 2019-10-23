@@ -81,4 +81,4 @@ const img = (seeded, opts) => {
   return `data:image/svg+xml;utf8,${svgwrapper(parts.join('\n'))}`
 }
 
-module.exports = img
+export default img

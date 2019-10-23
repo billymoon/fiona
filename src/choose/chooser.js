@@ -24,4 +24,4 @@ const chooser = (position, arr, weights) => {
   return index
 }
 
-module.exports = chooser
+export default chooser

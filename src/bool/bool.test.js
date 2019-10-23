@@ -1,7 +1,8 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
+import bool from './bool.js'
 
-Fiona.register(['bool', require('./bool')])
+Fiona.register(['bool', bool])
 
 test('Fiona.Bool', t => {
   t.is(Fiona(1).bool(), true)

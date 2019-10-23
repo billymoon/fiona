@@ -1,7 +1,8 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
+import img from './img'
 
-Fiona.register(['img', require('./img')])
+Fiona.register(['img', img])
 
 test('Fiona.Img', t => {
   const imgDataURI = Fiona(1).img()

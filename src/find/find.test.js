@@ -1,16 +1,30 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
 
-Fiona.register(['bool', require('../bool/bool')])
-Fiona.register(['choose', require('../choose/choose')])
-Fiona.register(['oneOf', require('../choose/one-of')])
-Fiona.register(['title', require('../name/name').title])
-Fiona.register(['firstname', require('../name/name').firstname])
-Fiona.register(['firstnames', require('../name/name').firstnames])
-Fiona.register(['surname', require('../name/name').surname])
-Fiona.register(['gender', require('../name/name').gender])
-Fiona.register(['fullname', require('../name/name').fullname])
-const find = require('./find')(Fiona)
+import bool from '../bool/bool.js'
+import choose from '../choose/choose.js'
+import oneOf from '../choose/one-of.js'
+import {
+  title,
+  firstname,
+  firstnames,
+  surname,
+  gender,
+  fullname
+} from '../name/name.js'
+import Find from './find.js'
+
+Fiona.register(['bool', bool])
+Fiona.register(['choose', choose])
+Fiona.register(['oneOf', oneOf])
+Fiona.register(['title', title])
+Fiona.register(['firstname', firstname])
+Fiona.register(['firstnames', firstnames])
+Fiona.register(['surname', surname])
+Fiona.register(['gender', gender])
+Fiona.register(['fullname', fullname])
+
+const find = Find(Fiona)
 
 test('find Fiona Moon', t => {
   t.is(

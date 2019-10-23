@@ -1,4 +1,4 @@
-const lorem = (seeded, { qty = 15 } = {}) => {
+export const lorem = (seeded, { qty = 15 } = {}) => {
   const out = seeded.random() < 0.2 ? 'lorem ipsum ' : ''
   let words = []
   while (words.length < qty) {
@@ -13,23 +13,16 @@ const lorem = (seeded, { qty = 15 } = {}) => {
   return out + seeded.choose(seeded.number({ min, max }), words).join(' ')
 }
 
-const word = seeded => seeded.lorem({ qty: 1 }).split(' ')[0]
+export const word = seeded => seeded.lorem({ qty: 1 }).split(' ')[0]
 
-const sentence = seeded => {
+export const sentence = seeded => {
   const sentence = seeded.lorem({ qty: 25 })
   return sentence[0].toUpperCase() + sentence.slice(1) + '.'
 }
 
 // TODO: can I use Fiona.Array to generate paragraphs?
-const paragraph = seeded =>
+export const paragraph = seeded =>
   Array(seeded.number({ min: 1, max: 10 }))
     .fill(0)
     .map(i => seeded.sentence())
     .join('  ')
-
-module.exports = {
-  lorem,
-  word,
-  sentence,
-  paragraph
-}

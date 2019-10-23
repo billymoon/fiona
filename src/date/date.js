@@ -9,4 +9,4 @@ const date = (seeded, { min = '1940', max = '2000', long = false } = {}) => {
   return long ? date : date.slice(0, 10)
 }
 
-module.exports = date
+export default date

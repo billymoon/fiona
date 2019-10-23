@@ -1,8 +1,10 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
+import choose from '../choose/choose.js'
+import shuffle from './shuffle.js'
 
-Fiona.register(['choose', require('../choose/choose')])
-Fiona.register(['shuffle', require('./shuffle')])
+Fiona.register(['choose', choose])
+Fiona.register(['shuffle', shuffle])
 
 test('Fiona.Shuffle', t => {
   t.deepEqual(Fiona(1).shuffle([1, 2, 3, 4, 5]), [3, 4, 2, 1, 5])

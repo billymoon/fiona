@@ -1,11 +1,14 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
 
-Fiona.register(['choose', require('../choose/choose')])
-Fiona.register(['lorem', require('./lorem').lorem])
-Fiona.register(['word', require('./lorem').word])
-Fiona.register(['sentence', require('./lorem').sentence])
-Fiona.register(['paragraph', require('./lorem').paragraph])
+import choose from '../choose/choose'
+import { lorem, word, sentence, paragraph } from './lorem'
+
+Fiona.register(['choose', choose])
+Fiona.register(['lorem', lorem])
+Fiona.register(['word', word])
+Fiona.register(['sentence', sentence])
+Fiona.register(['paragraph', paragraph])
 
 test('Fiona.Lorem', t => {
   t.is(

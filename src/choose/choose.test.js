@@ -1,7 +1,8 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
+import choose from './choose.js'
 
-Fiona.register(['choose', require('./choose')])
+Fiona.register(['choose', choose])
 
 test('Fiona.Choose', t => {
   const baby = Fiona(1)
