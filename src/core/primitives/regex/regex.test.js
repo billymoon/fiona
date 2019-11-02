@@ -1,6 +1,7 @@
 import test from 'ava'
 import Fiona from '../..'
-import regexPlugin from '../../../regex/regex'
+import RegexPlugin from '../../../regex/regex'
+import RandExp from 'randexp'
 
 let seeded
 
@@ -14,7 +15,7 @@ test.serial('should passthrough regex if plugin not registered', t => {
 })
 
 test.serial('should handle regex if plugin registered', t => {
-  Fiona.register(['regex', regexPlugin])
+  Fiona.register(['regex', RegexPlugin(RandExp)])
   const pattern = /of [01]{8} (ro|cy)bo(rg|t)s/
   t.deepEqual(seeded.object({ army: pattern }), {
     army: 'of 00001011 cybots'

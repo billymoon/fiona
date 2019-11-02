@@ -37,4 +37,9 @@ const Page = () => (
   </Layout>
 )
 
+Page.getInitialProps = (...atgs) => {
+  console.log(atgs)
+  return {}
+}
+
 export default provide(Page)

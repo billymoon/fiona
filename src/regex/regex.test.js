@@ -1,8 +1,9 @@
 import test from 'ava'
 import Fiona from '../core/index.js'
-import regex from './regex'
+import Regex from './regex'
+import RandExp from 'randexp'
 
-Fiona.register(['regex', regex])
+Fiona.register(['regex', Regex(RandExp)])
 
 test('sanity', t => {
   t.is(true + true, 2)

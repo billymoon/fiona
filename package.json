@@ -1,6 +1,6 @@
 {
   "name": "fiona",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
   "main": "static/fiona.min.js",
@@ -25,7 +25,6 @@
     "bezier-easing": "^2.1.0",
     "dependency-cruiser": "^4.6.3",
     "esm": "^3.2.25",
-    "fetch-pretender": "^1.5.0",
     "fs-extra": "^7.0.1",
     "lodash.template": "^4.4.0",
     "next": "^9.0.3",
@@ -82,5 +81,10 @@
       "path": "static/fiona.core.min.js",
       "limit": "10 KB"
     }
-  ]
+  ],
+  "dependencies": {
+    "fetch-mock": "^7.5.1",
+    "json-graphql-server": "^2.1.3",
+    "pretender": "^3.0.2"
+  }
 }

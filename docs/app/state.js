@@ -89,6 +89,9 @@ export const provide = Component => {
       <Component />
     </Provider>
   )
+
+  Thing.getInitialProps = Component.getInitialProps
+
   return Thing
 }
 
