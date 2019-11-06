@@ -41,3 +41,7 @@ Install and import/require via npm in usual way
 ... or from CDN
 
     <script src='https://cdn.jsdelivr.net/npm/fiona'></script>
+
+... or for those interested in [deno - a secure runtime for JavaScript and TypeScript](https://deno.land)
+
+    import Fiona from 'https://deno.land/x/fiona/deno/index.js'

@@ -90,14 +90,14 @@ const Section = ({ seed }) => (
     import JsonGraphqlServer from 'json-graphql-server'
     const pretender = new Pretender()
 
-    const server = JsonGraphqlServer({
-      data: Fiona(${seed}).object({
-        posts: Fiona.Array(5, () => ({
-          age: Fiona.Number({ max: 100 }),
-          name: Fiona.Fullname
-        }))
+    const data = Fiona().object({
+      users: Fiona.Array(10, fiona => {
+        const index = fiona.info().initseed.match(/root\[(\d+)\]/m)[1]
+        return modelMock(index)
       })
     })
+
+    const server = JsonGraphqlServer({ data })
 
     const handler = server.getHandler()
 
