@@ -1,2 +1,2 @@
-// auto generated file
-export default { version: '3.4.2' }
+// this file is replaced during build
+export default { version: 'unbundled' }
