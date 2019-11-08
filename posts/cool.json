@@ -1,5 +1,14 @@
 {
   "fileRelativePath": "posts/cool.json",
-  "data": {},
-  "title": "asdasdasdasf"
+  "content": {
+    "default": {
+      "fileRelativePath": "posts/cool.json",
+      "data": {},
+      "title": "asdasdasdasf"
+    },
+    "fileRelativePath": "posts/cool.json",
+    "data": {},
+    "title": "asdasdasdasf"
+  },
+  "title": "asd"
 }
