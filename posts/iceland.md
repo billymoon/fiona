@@ -1,7 +1,7 @@
 ---
 author: Albert Hoffman
 date: '2019-07-10T07:00:00.000Z'
-hero_image: ../static/Screenshot 2019-11-02 at 22.48.02.png
+hero_image: ../static/Screenshot 2019-10-28 at 18.14.24.png
 title: 'Iceland, not the supermarket ... :)'
 goodness: 'Super good, and crazy cool etc...'
 ---
