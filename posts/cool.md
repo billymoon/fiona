@@ -2,7 +2,7 @@
 author: Albert Hoffman
 date: '2019-07-10T07:00:00.000Z'
 hero_image: /static/Screenshot 2019-10-29 at 14.48.23.png
-title: Billy is very super awesome
+title: Billy is quite super awesome
 goodness: 'Super good, and crazy cool etc...'
 musicVolume: a bit too Loud
 shelves:
