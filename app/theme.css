@@ -1,0 +1,16 @@
+.default {
+  --text-color: silver;
+  --background-color: silver;
+  --font-family: sans-serif;
+  font-family: var(--font-family);
+}
+
+.dark {
+  --text-color: orange;
+  --background-color: navy;
+}
+
+.light {
+  --text-color: navy;
+  --background-color: orange;
+}

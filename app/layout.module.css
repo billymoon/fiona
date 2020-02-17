@@ -1,0 +1,4 @@
+.main {
+  composes: default from './theme.css';
+  background-color: var(--background-color);
+}

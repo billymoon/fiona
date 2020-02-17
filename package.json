@@ -1,78 +1,17 @@
 {
-  "name": "fiona",
-  "version": "4.0.0",
-  "description": "tiny yet powerful pseudo random data generator",
-  "repository": "billymoon/fiona",
-  "main": "fiona.min.js",
   "scripts": {
-    "prebuild": "npm run lint && npm test",
-    "build": "rollup -c",
-    "postbuild": "npm run bundlesize",
-    "lint": "pretty-quick --check --pattern 'src/**/*.js'",
-    "fix": "pretty-quick --pattern 'src/**/*.js'",
-    "test": "ava",
-    "bundlesize": "bundlesize",
-    "coverage": "nyc --reporter=lcov --reporter=text ava",
-    "git-pre-commit": "npm run prebuild"
+    "start": "${NOW_REGION+'false'} && yarn && now dev || next start",
+    "build": "next build",
+    "dev": "next dev"
   },
-  "author": "Billy Moon",
-  "license": "ISC",
-  "homepage": "https://github.com/billymoon/fiona#readme",
   "dependencies": {
-    "@rollup/plugin-alias": "^2.2.0",
-    "@zeit/git-hooks": "^0.1.4",
-    "ava": "^2.4.0",
-    "bundlesize": "^0.18.0",
-    "esm": "^3.2.25",
-    "nyc": "^14.1.1",
-    "prettier": "^1.18.2",
-    "pretty-quick": "^2.0.1",
-    "randexp": "^0.5.3",
-    "rollup": "^1.26.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.1.2"
-  },
-  "ava": {
-    "require": [
-      "esm"
-    ],
-    "files": [
-      "src/**/*.test.js"
-    ]
-  },
-  "nyc": {
-    "all": true,
-    "include": [
-      "src/**/*.js"
-    ],
-    "exclude": [
-      "**/*.test.js",
-      "**/*.docs.js"
-    ]
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  },
-  "bundlesize": [
-    {
-      "path": "./fiona.core.min.js",
-      "maxSize": "5 kB",
-      "compression": "none"
-    },
-    {
-      "path": "./fiona.min.js",
-      "maxSize": "20 kB",
-      "compression": "none"
-    },
-    {
-      "path": "./fiona.core.min.js",
-      "maxSize": "2 kB"
-    },
-    {
-      "path": "./fiona.min.js",
-      "maxSize": "10 kB"
-    }
-  ]
+    "babel-plugin-auto-import": "^1.0.5",
+    "babel-plugin-import": "^1.13.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-preval": "^4.0.0",
+    "groq-js": "^0.1.4",
+    "next": "^9.2.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
 }
