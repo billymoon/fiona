@@ -41,11 +41,6 @@ module.exports = {
             default: "dynamic",
             path: "next/dynamic"
           },
-          {
-            default: "Layout",
-            members: ["withLayout"],
-            path: "~/app/layout"
-          },
           { default: "fetch", path: "isomorphic-unfetch" },
           { default: "css", path: "./[name].module.css" }
         ]

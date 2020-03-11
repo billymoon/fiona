@@ -5,7 +5,11 @@ export default {
     {
       name: "content",
       type: "array",
-      of: [{ type: "block" }, { type: "codeBlock" }, { type: "imageAndTextBlock" }, { type: "reference", to: [{ type: "component"}] }]
+      of: [
+        { type: "block" },
+        { type: "codeBlock" },
+        { type: "imageAndTextBlock" }
+      ]
     }
   ]
 };

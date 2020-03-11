@@ -1,0 +1,21 @@
+.exampleWrapper {
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .exampleWrapper {
+    flex-direction: row;
+  }
+}
+
+.exampleBlock {
+  flex-grow: 1;
+  padding: 15px;
+}
+
+.img {
+  max-width: 100%;
+}

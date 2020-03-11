@@ -64,6 +64,12 @@ const model = async (query, params = {}, handlers = {}) => {
   // return executor(dereferenced);
 };
 
+export const wrapper = (query, params, handlers) => async ({ req }) => {
+  const result = await model(query, { slug: req.url, ...params }, handlers);
+
+  return { props: { ...result } };
+};
+
 export const withData = (Page, query, params, handlers) => {
   const PageGetInitialProps = Page.getInitialProps;
 

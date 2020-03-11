@@ -1,54 +1,46 @@
-import Fiona from "~/library/src";
-// import { pageData, examples } from "~/app/page-data";
-// import groq from "~/app/model";
-import { withData } from "~/app/model";
+import blockHandler from "~/app/block-handler";
+import model from "~/app/model";
+import Layout from "~/app/layout";
 
-const Page = ({ a, page, examples }) => {
-  console.log(page, a);
-
-  return (
-    <div>
-      Incididunt in nostrud culpa nostrud occaecat ut dolore fugiat esse
-      consequat tempor consequat eu in incididunt ut est eu.
+const Page = ({ page, examples, ...props }) => (
+  <Layout pageTitle={page.pageTitle}>
+    <div
+      className={css.exampleWrapper}
+      log={console.log(1, { page, examples })}
+    >
+      {examples.map(({ exampleTitle, summary, thumbnail, sectionSlug }) => (
+        <div className={css.exampleBlock} key={sectionSlug}>
+          <h3>{exampleTitle}</h3>
+          <a href={`/examples${sectionSlug}`}>
+            <img src={thumbnail.image.asset.url} alt="" className={css.img} />
+          </a>
+          {blockHandler(summary)}
+          <a href={`/examples${sectionSlug}`}>
+            {exampleTitle} demo and code samples
+          </a>
+        </div>
+      ))}
     </div>
-  );
+  </Layout>
+);
+
+const query = `{
+  "page": *[_type=="page" && slug == $slug][0] {
+    pageTitle,
+    sections
+  },
+  "examples": *[_type=="example"] {
+    exampleTitle,
+    summary,
+    thumbnail,
+    sectionSlug
+  }
+}`;
+
+export const getServerSideProps = async ({ req }) => {
+  const props = await model(query, { slug: req.url });
+
+  return { props };
 };
 
-Page.getInitialProps = () => ({
-  a: 1
-});
-// Page.getInitialProps = async () =>
-//   await groq(
-//     `{
-//     "page": *[_type=="page" && slug == $slug][0] {
-//       pageTitle,
-//       sections
-//     },
-//     "examples": *[_type=="articles"] {
-//       summary,
-//       thumbnail
-//     }
-//   }`,
-//     { slug: "/examples" },
-//     // {
-//     //   section: (node, root) => node.title,
-//     //   reference: node => node
-//     // }
-//   );
-
-// export default Page;
-
-export default withData(
-  Page,
-  `{
-    "page": *[_type=="page" && slug == $slug][0] {
-      pageTitle,
-      sections
-    },
-    "examples": *[_type=="articles"] {
-      summary,
-      thumbnail
-    }
-  }`
-  // { slug: "/examples" }
-);
+export default Page;

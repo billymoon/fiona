@@ -1,54 +1,44 @@
-import Fiona from "~/library/src";
-// import { pageData, examples } from "~/app/page-data";
-// import groq from "~/app/model";
-import { withData } from "~/app/model";
+import blockHandler from "~/app/block-handler";
+import model from "~/app/model";
+import Layout from "~/app/layout";
 
-const Page = ({ a, page, examples }) => {
-  console.log(page, a);
+const Page = ({ example }) => {
+  console.log({ example });
 
   return (
-    <div>
-      Incididunt in nostrud culpa nostrud occaecat ut dolore fugiat esse
-      consequat tempor consequat eu in incididunt ut est eu.
-    </div>
+    <Layout pageTitle={example.exampleTitle}>
+      {example.sections.map(blockHandler)}
+    </Layout>
   );
 };
+// <BlockContent blocks={example.sections} serializers={{}} />
 
-Page.getInitialProps = () => ({
-  a: 1
-});
-// Page.getInitialProps = async () =>
-//   await groq(
-//     `{
-//     "page": *[_type=="page" && slug == $slug][0] {
-//       pageTitle,
-//       sections
-//     },
-//     "examples": *[_type=="articles"] {
-//       summary,
-//       thumbnail
-//     }
-//   }`,
-//     { slug: "/examples" },
-//     // {
-//     //   section: (node, root) => node.title,
-//     //   reference: node => node
-//     // }
-//   );
+const query = `{
+  "example": *[_type=="example" && '/examples' + sectionSlug == $slug][0] {
+    exampleTitle,
+    sections
+  }
+}`;
 
-// export default Page;
+export const getStaticProps = async ({ params }) => {
+  const props = await model(query, { slug: `/examples/${params.subsection}` });
 
-export default withData(
-  Page,
-  `{
-    "page": *[_type=="page" && slug == $slug][0] {
-      pageTitle,
-      sections
-    },
-    "examples": *[_type=="articles"] {
-      summary,
-      thumbnail
+  return { props };
+};
+
+export const getStaticPaths = async () => {
+  const props = await model(`*[_type=="example"][].sectionSlug`);
+
+  const paths = props.map(subsection => ({
+    params: {
+      subsection: subsection.replace(/^\//, "")
     }
-  }`
-  // { slug: "/examples" }
-);
+  }));
+
+  return {
+    paths,
+    fallback: false
+  };
+};
+
+export default Page;
