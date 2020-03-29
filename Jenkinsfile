@@ -15,7 +15,7 @@ pipeline {
            }
          }
          steps {
-            sh 'node --verison'
+            sh 'node --version'
             sh 'yarn'
             sh 'yarn test'
          }
