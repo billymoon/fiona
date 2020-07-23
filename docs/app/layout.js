@@ -9,10 +9,7 @@ const MainContent = withNav(
   withTheme(
     withRouter(({ router, seed, theme, closed, children }) => (
       <section>
-        <Ribbon
-          href="https://github.com/billymoon/Fiona"
-          color={theme.clr.primary}
-        />
+        <Ribbon href="//github.com/billymoon/Fiona" color={theme.clr.primary} />
         <Article style={{ textAlign: 'center' }}>
           <Logo />
           <Sample

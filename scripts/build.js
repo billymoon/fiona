@@ -13,16 +13,16 @@ exec(
 
 exec('size-limit')
 
-emptyDirSync('static/reports/coverage')
-copySync('coverage/lcov-report', 'static/reports/coverage')
+emptyDirSync('public/static/reports/coverage')
+copySync('coverage/lcov-report', 'public/static/reports/coverage')
 removeSync('coverage')
 
-emptyDirSync('static/reports/size')
+emptyDirSync('public/static/reports/size')
 exec(
-  'webpack-bundle-analyzer webpack-stats.json -m static -r static/reports/size/main.html -O'
+  'webpack-bundle-analyzer webpack-stats.json -m static -r public/static/reports/size/main.html -O'
 )
 exec(
-  'webpack-bundle-analyzer webpack-stats.core.json -m static -r static/reports/size/core.html -O'
+  'webpack-bundle-analyzer webpack-stats.core.json -m static -r public/static/reports/size/core.html -O'
 )
 removeSync('webpack-stats.json')
 removeSync('webpack-stats.core.json')
@@ -32,7 +32,7 @@ removeSync('webpack-stats.core.json')
 //   'depcruise -X "^node_modules" --prefix "https:////github.com/billymoon/fiona/blob/master/" --output-type dot src/index.js | dot -T svg > static/dependency-graph.svg'
 // )
 
-exec('next build && next export')
+// exec('next build && next export')
 
 // exec(`
 // if [ -n "$(git status --porcelain)" ]; then

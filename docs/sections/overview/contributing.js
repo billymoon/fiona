@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Fiona, consume, Sample } from '../../app'
 
 const NPM = ({ name }) => (
-  <Link href={`https://www.npmjs.com/package/${name}`}>
+  <Link href={`//www.npmjs.com/package/${name}`}>
     <a>{name}</a>
   </Link>
 )
@@ -30,7 +30,7 @@ const Section = ({ seed }) => (
 
     <p>
       Fiona is open source,{' '}
-      <Link href="https://github.com/billymoon/Fiona">
+      <Link href="//github.com/billymoon/Fiona">
         <a>fork me on github</a>
       </Link>
       . Pull requests and issues welcome. The most useful thing the community

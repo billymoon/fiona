@@ -26,7 +26,10 @@ const Section = ({ seed }) => {
         views: Fiona.Number,
         user_id: Fiona.Number
       })),
-      users: [{ id: 123, name: 'John Doe' }, { id: 456, name: 'Jane Doe' }],
+      users: [
+        { id: 123, name: 'John Doe' },
+        { id: 456, name: 'Jane Doe' }
+      ],
       comments: [
         {
           id: 987,
