@@ -27,7 +27,7 @@
     "esm": "^3.2.25",
     "fs-extra": "^7.0.1",
     "lodash.template": "^4.4.0",
-    "next": "^9.4.4",
+    "next": "^9.5.1",
     "nyc": "^14.1.1",
     "prettier": "^1.15.2",
     "randexp": "^0.4.6",
@@ -74,11 +74,11 @@
       "limit": "100 KB"
     },
     {
-      "path": "static/fiona.min.js",
+      "path": "public/static/fiona.min.js",
       "limit": "20 KB"
     },
     {
-      "path": "static/fiona.core.min.js",
+      "path": "public/static/fiona.core.min.js",
       "limit": "10 KB"
     }
   ],

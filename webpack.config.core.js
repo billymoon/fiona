@@ -13,7 +13,7 @@ module.exports = {
   mode: 'production',
   entry: ['./webpack-entry.core.js'],
   output: {
-    path: path.join(__dirname, 'static'),
+    path: path.join(__dirname, 'public', 'static'),
     filename: 'fiona.core.min.js',
     libraryTarget: 'umd',
     library: 'Fiona',

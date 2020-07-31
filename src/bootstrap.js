@@ -20,7 +20,7 @@ import {
 import Regex from './regex/regex.js'
 import shuffle from './shuffle/shuffle.js'
 
-export default RandExp => {
+const bootstrap = RandExp => {
   Fiona.register(
     ['bool', bool],
     ['choose', choose],
@@ -47,3 +47,5 @@ export default RandExp => {
 
   return Fiona
 }
+
+export default bootstrap

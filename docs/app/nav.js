@@ -71,7 +71,7 @@ const Menu = ({ closed }) => (
 
 const ButtonLink = withTheme(({ href, selected, label, theme, ...props }) => (
   <div>
-    <Link prefetch href={href}>
+    <Link href={href}>
       <a
         className={['action-button']
           .concat(selected ? ['selected'] : [])

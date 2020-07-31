@@ -8,7 +8,7 @@ const themeDark = {
   bg: '#444'
 }
 
-export default ThemeFactory => {
+const Theme = ThemeFactory => {
   const Default = ThemeFactory()
 
   const Light = ThemeFactory(themeDefaults)
@@ -22,3 +22,5 @@ export default ThemeFactory => {
 
   return { Dynamic, Default, Light, Dark }
 }
+
+export default Theme

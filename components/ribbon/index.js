@@ -1,4 +1,4 @@
-export default ({ href, color = '#a00', title = 'Fork me on GitHub', breakpoint = '768px' }) =>
+const Ribbon = ({ href, color = '#a00', title = 'Fork me on GitHub', breakpoint = '768px' }) =>
   <div>
     <a className='github-fork-ribbon' href={href} data-ribbon={title} title={title}>{title}</a>
     <style jsx>{`
@@ -103,3 +103,5 @@ export default ({ href, color = '#a00', title = 'Fork me on GitHub', breakpoint 
     }
     `}</style>
   </div>
+
+export default Ribbon

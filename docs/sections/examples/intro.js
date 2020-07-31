@@ -1,4 +1,4 @@
-export default () => (
+const Intro = () => (
   <section>
     <p>
       Fiona is very general purpose, but here are some potential use cases for
@@ -8,3 +8,5 @@ export default () => (
     </p>
   </section>
 )
+
+export default Intro

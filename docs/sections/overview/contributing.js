@@ -2,11 +2,7 @@ import Link from 'next/link'
 
 import { Fiona, consume, Sample } from '../../app'
 
-const NPM = ({ name }) => (
-  <Link href={`//www.npmjs.com/package/${name}`}>
-    <a>{name}</a>
-  </Link>
-)
+const NPM = ({ name }) => <a href={`//www.npmjs.com/package/${name}`}>{name}</a>
 
 const Section = ({ seed }) => (
   <section>
@@ -30,12 +26,10 @@ const Section = ({ seed }) => (
 
     <p>
       Fiona is open source,{' '}
-      <Link href="//github.com/billymoon/Fiona">
-        <a>fork me on github</a>
-      </Link>
-      . Pull requests and issues welcome. The most useful thing the community
-      could contribute to this project at this time is to help build up the
-      methods to become a rich tapestry of data generating utilities.
+      <a href="//github.com/billymoon/Fiona">fork me on github</a>. Pull
+      requests and issues welcome. The most useful thing the community could
+      contribute to this project at this time is to help build up the methods to
+      become a rich tapestry of data generating utilities.
     </p>
 
     <p>

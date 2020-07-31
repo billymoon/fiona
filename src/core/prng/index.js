@@ -4,7 +4,7 @@ import processSeed from '../process-seed/index.js'
 import Distribution from '../distribution/index.js'
 
 // TODO: add specific tests for prng wrapper
-export default (seeded, initseed) => {
+const prng = (seeded, initseed) => {
   // initialise prng functions
   const { reseed, getState, setState, random: prngRandom, reverse } = xor(0)
 
@@ -51,3 +51,5 @@ export default (seeded, initseed) => {
     distribution
   }
 }
+
+export default prng
