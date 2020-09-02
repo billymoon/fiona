@@ -4,7 +4,7 @@ Fiona is a tool for creating large sets of pseudo random data. At it's core it u
 
 # Documentation
 
-There is more complete, better overview of the features at: [fiona.now.sh](https://fiona.now.sh).
+There is more complete, better overview of the features at: [https://fiona.public.itaccess.org/](https://fiona.public.itaccess.org/).
 
 ## Quickstart
 
