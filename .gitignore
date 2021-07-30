@@ -12,3 +12,4 @@ package-extract.js
 *.log
 package-lock.json
 yarn.lock
+.vercel
