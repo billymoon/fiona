@@ -14,7 +14,10 @@ test.serial('returns array', t => {
 })
 
 test.serial('recurses array', t => {
-  t.deepEqual(seeded.array(5, seeded => seeded.number()), fixtures)
+  t.deepEqual(
+    seeded.array(5, seeded => seeded.number()),
+    fixtures
+  )
 })
 
 test.serial('recurses array with bar Fiona.Plugin syntax', t => {

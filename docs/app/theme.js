@@ -1,3 +1,4 @@
+import { createContext } from 'react'
 import { consume, config } from '.'
 
 import { mergeDeep, ThemeCreator, themeDefaults } from '.'
@@ -12,7 +13,7 @@ const ThemeFactory = properties => ({ children }) => children
 //   }
 // }) })(({ children }) => children)
 
-const ThemeStateContext = React.createContext(themeDefaults)
+const ThemeStateContext = createContext(themeDefaults)
 
 export const injectWithState = Component => ({ ...props }) => (
   <ThemeStateContext.Consumer>

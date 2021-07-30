@@ -15,6 +15,4 @@ export { default as ExamplesPretend } from './examples/pretend'
 export { default as ExamplesExpressMock } from './examples/express-mock'
 export { default as ExamplesGraphql } from './examples/graphql'
 export { default as ExamplesDashboard } from './examples/dashboard'
-export {
-  default as ExamplesImagePlaceholders
-} from './examples/image-placeholders'
+export { default as ExamplesImagePlaceholders } from './examples/image-placeholders'

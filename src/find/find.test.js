@@ -28,10 +28,14 @@ const find = Find(Fiona)
 
 test('find Fiona Moon', t => {
   t.is(
-    find(name => name === 'Miss Fiona Moon', seeded => seeded.fullname(), {
-      startseed: 30380,
-      tries: 10
-    }).info().initseed,
+    find(
+      name => name === 'Miss Fiona Moon',
+      seeded => seeded.fullname(),
+      {
+        startseed: 30380,
+        tries: 10
+      }
+    ).info().initseed,
     30382
   )
 })
