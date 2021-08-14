@@ -1,31 +1,40 @@
-import test from 'ava'
-import Fiona from '../index.js'
+import { assertEquals } from "https://deno.land/std@0.103.0/testing/asserts.ts";
+import {
+  beforeEach,
+  describe,
+  it,
+  run,
+} from "https://deno.land/x/tincan/mod.ts";
+import Fiona from "../index.js";
 
-// TODO: why do we have to run these tests serially
-let seeded
+describe("distribution", () => {
+  let seeded;
 
-test.beforeEach(t => {
-  seeded = Fiona('moon')
-})
+  beforeEach(() => {
+    seeded = Fiona("moon");
+  });
 
-test.serial('should have inert default distribution function', t => {
-  t.is(typeof seeded.distribution, 'function')
-  t.is(seeded.distribution(1), 1)
-  t.is(seeded.distribution(0.12345), 0.12345)
-  t.is(seeded.distribution(1e6), 1e6)
-  t.is(seeded.distribution('awesome'), 'awesome')
-})
+  it("should have inert default distribution function", () => {
+    assertEquals(typeof seeded.distribution, "function");
+    assertEquals(seeded.distribution(1), 1);
+    assertEquals(seeded.distribution(0.12345), 0.12345);
+    assertEquals(seeded.distribution(1e6), 1e6);
+    assertEquals(seeded.distribution("awesome"), "awesome");
+  });
 
-test.serial('should set distribution function', t => {
-  t.is(seeded.distribution(5), 5)
-  seeded.distribution(i => i * i)
-  t.is(seeded.distribution(5), 25)
-})
+  it("should set distribution function", () => {
+    assertEquals(seeded.distribution(5), 5);
+    seeded.distribution((i) => i * i);
+    assertEquals(seeded.distribution(5), 25);
+  });
 
-test.serial('should reset distribution function', t => {
-  t.is(seeded.distribution(5), 5)
-  seeded.distribution(i => i * i)
-  t.is(seeded.distribution(5), 25)
-  seeded.distribution(null)
-  t.is(seeded.distribution(5), 5)
-})
+  it("should reset distribution function", () => {
+    assertEquals(seeded.distribution(5), 5);
+    seeded.distribution((i) => i * i);
+    assertEquals(seeded.distribution(5), 25);
+    seeded.distribution(null);
+    assertEquals(seeded.distribution(5), 5);
+  });
+});
+
+run();

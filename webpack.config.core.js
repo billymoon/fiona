@@ -6,7 +6,7 @@ const packageJson = require('./package')
 fs.writeFileSync(
   path.join(__dirname, 'src', 'core', 'config.js'),
 `// auto generated file
-export default { version: '${packageJson.version}' }
+export default { version: '${packageJson.version}' };
 `)
 
 module.exports = {

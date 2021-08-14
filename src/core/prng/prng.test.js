@@ -1,128 +1,134 @@
-import test from 'ava'
-import xor from './xor.js'
+import {
+  assertEquals,
+  assertNotEquals,
+} from "https://deno.land/std@0.103.0/testing/asserts.ts";
+import { it, run } from "https://deno.land/x/tincan/mod.ts";
+import xor from "./xor.js";
 
 const fixtures = {
   stateInitial: [
     2784201997697448,
     2134104996050757,
     8286235680936945,
-    3089905606158966
+    3089905606158966,
   ],
   stateCalledOnce: [
     2134104996050757,
     8286235680936945,
     3089905606158966,
-    1326358046
+    1326358046,
   ],
   stateCalledTwice: [8286235680936945, 3089905606158966, 1326358046, 621986149],
   stateCalledThrice: [3089905606158966, 1326358046, 621986149, 1968173],
   resultCalledOnce: 0.6176335954189457,
   resultCalledTwice: 0.28963487096579504,
-  resultCalledThrice: 0.0009165019732511146
-}
+  resultCalledThrice: 0.0009165019732511146,
+};
 
-test('sanity', t => {
-  t.is(true + true, 2)
-})
+it("sanity", () => {
+  assertEquals(true + true, 2);
+});
 
-test('random', t => {
-  const prng = xor(0)
-  const { random } = prng
-  t.is(random(), fixtures.resultCalledOnce)
-  t.is(random(), fixtures.resultCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
-})
+it("random", () => {
+  const prng = xor(0);
+  const { random } = prng;
+  assertEquals(random(), fixtures.resultCalledOnce);
+  assertEquals(random(), fixtures.resultCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
+});
 
-test('reverse', t => {
-  const prng = xor(0)
-  const { random, reverse } = prng
-  t.is(random(), fixtures.resultCalledOnce)
-  t.is(random(), fixtures.resultCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
-  t.is(reverse(), fixtures.resultCalledTwice)
-  t.is(reverse(), fixtures.resultCalledOnce)
-  t.is(random(), fixtures.resultCalledTwice)
-  t.is(reverse(), fixtures.resultCalledOnce)
-  t.is(random(), fixtures.resultCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
-})
+it("reverse", () => {
+  const prng = xor(0);
+  const { random, reverse } = prng;
+  assertEquals(random(), fixtures.resultCalledOnce);
+  assertEquals(random(), fixtures.resultCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
+  assertEquals(reverse(), fixtures.resultCalledTwice);
+  assertEquals(reverse(), fixtures.resultCalledOnce);
+  assertEquals(random(), fixtures.resultCalledTwice);
+  assertEquals(reverse(), fixtures.resultCalledOnce);
+  assertEquals(random(), fixtures.resultCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
+});
 
-test('reverseInLoop', t => {
+it("reverseInLoop", () => {
   // TODO: generate long random chain then reverse back through it
-  for (let seed = 1e3; seed--; ) {
-    const { random, reverse } = xor(seed)
-    const [once, twice, thrice] = [random(), random(), random()]
-    t.is(reverse(), twice)
-    t.is(reverse(), once)
+  for (let seed = 1e3; seed--;) {
+    const { random, reverse } = xor(seed);
+    const [once, twice] = [random(), random(), random()];
+    assertEquals(reverse(), twice);
+    assertEquals(reverse(), once);
   }
-})
+});
 
-test('reverseFromState', t => {
-  const prng = xor(0)
+it("reverseFromState", () => {
+  const prng = xor(0);
   // TODO: understand why state is different (but similar) stepping back
   // but produces same result and state stepping forward
-  const { getState, setState, random, reverse } = prng
-  setState(fixtures.stateCalledThrice)
-  t.is(reverse(), fixtures.resultCalledTwice)
-  const stateAfterStepBack = getState()
-  t.is(random(), fixtures.resultCalledThrice)
-  t.deepEqual(getState(), fixtures.stateCalledThrice)
-  setState(fixtures.stateCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
-  setState(stateAfterStepBack)
-  t.is(random(), fixtures.resultCalledThrice)
-  t.deepEqual(stateAfterStepBack.slice(1), fixtures.stateCalledTwice.slice(1))
-  t.notDeepEqual(
+  const { getState, setState, random, reverse } = prng;
+  setState(fixtures.stateCalledThrice);
+  assertEquals(reverse(), fixtures.resultCalledTwice);
+  const stateAfterStepBack = getState();
+  assertEquals(random(), fixtures.resultCalledThrice);
+  assertEquals(getState(), fixtures.stateCalledThrice);
+  setState(fixtures.stateCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
+  setState(stateAfterStepBack);
+  assertEquals(random(), fixtures.resultCalledThrice);
+  assertEquals(stateAfterStepBack.slice(1), fixtures.stateCalledTwice.slice(1));
+  assertNotEquals(
     stateAfterStepBack.slice(0, 1),
-    fixtures.stateCalledTwice.slice(0, 1)
-  )
-})
+    fixtures.stateCalledTwice.slice(0, 1),
+  );
+});
 
-test('reseed', t => {
-  const prng = xor(0)
-  const { reseed, random } = prng
-  t.is(random(), fixtures.resultCalledOnce)
-  t.is(random(), fixtures.resultCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
-  reseed(0)
-  t.is(random(), fixtures.resultCalledOnce)
-  t.is(random(), fixtures.resultCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
-})
+it("reseed", () => {
+  const prng = xor(0);
+  const { reseed, random } = prng;
+  assertEquals(random(), fixtures.resultCalledOnce);
+  assertEquals(random(), fixtures.resultCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
+  reseed(0);
+  assertEquals(random(), fixtures.resultCalledOnce);
+  assertEquals(random(), fixtures.resultCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
+});
 
-test('getState', t => {
-  const prng = xor(0)
-  const { getState, random } = prng
-  t.deepEqual(getState(), fixtures.stateInitial)
-  random()
-  t.deepEqual(getState(), fixtures.stateCalledOnce)
-  random()
-  t.deepEqual(getState(), fixtures.stateCalledTwice)
-  random()
-  t.deepEqual(getState(), fixtures.stateCalledThrice)
-})
+it("getState", () => {
+  const prng = xor(0);
+  const { getState, random } = prng;
+  assertEquals(getState(), fixtures.stateInitial);
+  random();
+  assertEquals(getState(), fixtures.stateCalledOnce);
+  random();
+  assertEquals(getState(), fixtures.stateCalledTwice);
+  random();
+  assertEquals(getState(), fixtures.stateCalledThrice);
+});
 
-test('setState', t => {
-  const prng = xor(0)
-  const { setState, random } = prng
+it("setState", () => {
+  const prng = xor(0);
+  const { setState, random } = prng;
 
-  t.is(random(), fixtures.resultCalledOnce)
-  t.is(random(), fixtures.resultCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
+  assertEquals(random(), fixtures.resultCalledOnce);
+  assertEquals(random(), fixtures.resultCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
 
-  setState(fixtures.stateInitial)
-  t.is(random(), fixtures.resultCalledOnce)
-  t.is(random(), fixtures.resultCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
+  setState(fixtures.stateInitial);
+  assertEquals(random(), fixtures.resultCalledOnce);
+  assertEquals(random(), fixtures.resultCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
 
-  setState(fixtures.stateCalledOnce)
-  t.is(random(), fixtures.resultCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
+  setState(fixtures.stateCalledOnce);
+  assertEquals(random(), fixtures.resultCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
 
-  setState(fixtures.stateCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
+  setState(fixtures.stateCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
 
-  setState(fixtures.stateCalledOnce)
-  t.is(random(), fixtures.resultCalledTwice)
-  t.is(random(), fixtures.resultCalledThrice)
-})
+  setState(fixtures.stateCalledOnce);
+  assertEquals(random(), fixtures.resultCalledTwice);
+  assertEquals(random(), fixtures.resultCalledThrice);
+});
+
+run();

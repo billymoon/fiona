@@ -1,43 +1,53 @@
-import test from 'ava'
-import Fiona from '../..'
+import { assertEquals } from "https://deno.land/std@0.103.0/testing/asserts.ts";
+import {
+  beforeEach,
+  describe,
+  it,
+  run,
+} from "https://deno.land/x/tincan/mod.ts";
+import Fiona from "../../index.js";
 
-const fixtures = [923436, 991546, 100070, 247407, 240368]
+const fixtures = [923436, 991546, 100070, 247407, 240368];
 
-let seeded
+describe("array", () => {
+  let seeded;
 
-test.beforeEach(() => {
-  seeded = Fiona('moon')
-})
+  beforeEach(() => {
+    seeded = Fiona("moon");
+  });
 
-test.serial('returns array', t => {
-  t.deepEqual(seeded.array(5, 1), [1, 1, 1, 1, 1])
-})
+  it("returns array", () => {
+    assertEquals(seeded.array(5, 1), [1, 1, 1, 1, 1]);
+  });
 
-test.serial('recurses array', t => {
-  t.deepEqual(
-    seeded.array(5, seeded => seeded.number()),
-    fixtures
-  )
-})
+  it("recurses array", () => {
+    assertEquals(
+      seeded.array(5, (seeded) => seeded.number()),
+      fixtures,
+    );
+  });
 
-test.serial('recurses array with bar Fiona.Plugin syntax', t => {
-  t.deepEqual(seeded.array(5, Fiona.Number), fixtures)
-})
+  it("recurses array with bar Fiona.Plugin syntax", () => {
+    assertEquals(seeded.array(5, Fiona.Number), fixtures);
+  });
 
-test.serial('accepts max/min arguments', t => {
-  t.deepEqual(
-    seeded.array({ min: 2, max: 4 }, Fiona.Number),
-    fixtures.slice(0, 3)
-  )
-})
+  it("accepts max/min arguments", () => {
+    assertEquals(
+      seeded.array({ min: 2, max: 4 }, Fiona.Number),
+      fixtures.slice(0, 3),
+    );
+  });
 
-test.serial('uses passed processor', t => {
-  t.deepEqual(
-    seeded.array(5, Fiona.Number, i => i.map(j => j / 100)),
-    fixtures.map(j => j / 100)
-  )
-})
+  it("uses passed processor", () => {
+    assertEquals(
+      seeded.array(5, Fiona.Number, (i) => i.map((j) => j / 100)),
+      fixtures.map((j) => j / 100),
+    );
+  });
 
-test.serial('joins array if passed string as processor', t => {
-  t.is(seeded.array(5, Fiona.Number, ':'), fixtures.join(':'))
-})
+  it("joins array if passed string as processor", () => {
+    assertEquals(seeded.array(5, Fiona.Number, ":"), fixtures.join(":"));
+  });
+});
+
+run();

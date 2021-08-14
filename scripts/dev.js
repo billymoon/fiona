@@ -1,3 +1,3 @@
-const { execWithArgs } = require('./utils')
+const { execWithArgs } = require("./utils");
 
-execWithArgs('NODE_OPTIONS="--inspect" next dev -p ${PORT:-3000}')
+execWithArgs('NODE_OPTIONS="--inspect" next dev -p ${PORT:-3000}');

@@ -1,16 +1,17 @@
-import test from 'ava'
-import processSeed from './index.js'
+import { assertEquals } from "https://deno.land/std@0.103.0/testing/asserts.ts";
+import { it } from "https://deno.land/x/tincan/mod.ts";
+import processSeed from "./index.js";
 
-test('process-seed passes number back', t => {
-  t.is(processSeed(1), 1)
-  t.is(processSeed(1e6), 1e6)
-  t.is(processSeed(1e32), 1e32)
-})
+it("process-seed passes number back", () => {
+  assertEquals(processSeed(1), 1);
+  assertEquals(processSeed(1e6), 1e6);
+  assertEquals(processSeed(1e32), 1e32);
+});
 
-test('process-seed converts string to integer', t => {
-  t.is(processSeed('1'), 49)
-  t.is(processSeed('2'), 50)
-  t.is(processSeed('abc'), 2423384358)
-  t.is(processSeed('abcdefghijklmnopqrstuvwxyz'), -261981256238)
-  t.is(processSeed('moon'), -16743999484)
-})
+it("process-seed converts string to integer", () => {
+  assertEquals(processSeed("1"), 49);
+  assertEquals(processSeed("2"), 50);
+  assertEquals(processSeed("abc"), 2423384358);
+  assertEquals(processSeed("abcdefghijklmnopqrstuvwxyz"), -261981256238);
+  assertEquals(processSeed("moon"), -16743999484);
+});

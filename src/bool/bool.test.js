@@ -1,17 +1,20 @@
-import test from 'ava'
-import Fiona from '../core/index.js'
-import bool from './bool.js'
+import { assertEquals } from "https://deno.land/std@0.103.0/testing/asserts.ts";
+import { it, run } from "https://deno.land/x/tincan/mod.ts";
+import Fiona from "../core/index.js";
+import bool from "./bool.js";
 
-Fiona.register(['bool', bool])
+Fiona.register(["bool", bool]);
 
-test('Fiona.Bool', t => {
-  t.is(Fiona(1).bool(), true)
-  t.is(Fiona(2).bool(), false)
-})
+it("Fiona.Bool", () => {
+  assertEquals(Fiona(1).bool(), true);
+  assertEquals(Fiona(2).bool(), false);
+});
 
-test('Fiona.Bool (chance)', t => {
-  t.is(Fiona(1).bool(), true)
-  t.is(Fiona(1).bool({ chance: 0.25 }), false)
-  t.is(Fiona(2).bool(), false)
-  t.is(Fiona(2).bool({ chance: 0.75 }), true)
-})
+it("Fiona.Bool (chance)", () => {
+  assertEquals(Fiona(1).bool(), true);
+  assertEquals(Fiona(1).bool({ chance: 0.25 }), false);
+  assertEquals(Fiona(2).bool(), false);
+  assertEquals(Fiona(2).bool({ chance: 0.75 }), true);
+});
+
+run();

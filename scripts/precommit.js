@@ -1,9 +1,9 @@
-const { emptyDirSync, copySync, removeSync } = require('fs-extra')
+const { emptyDirSync, copySync, removeSync } = require("fs-extra");
 
-const { exec } = require('./utils')
+const { exec } = require("./utils");
 
-exec('node scripts/lint')
+exec("deno lint src");
 
-exec('node scripts/test')
+exec("deno test src");
 
-exec('size-limit')
+exec("size-limit");

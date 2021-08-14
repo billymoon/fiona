@@ -1,4 +1,4 @@
-import Bootstrap from './bootstrap'
-import RandExp from 'randexp'
+import Bootstrap from "./bootstrap";
+import RandExp from "randexp";
 
-export default Bootstrap(RandExp)
+export default Bootstrap(RandExp);

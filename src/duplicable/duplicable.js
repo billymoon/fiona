@@ -3,9 +3,9 @@
 // TODO: does changing seed change the duplicated values..? I think it should!
 const duplicable = (seeded, { frequency = 0.1, pool = 10 } = {}) => {
   if (seeded.random() <= frequency) {
-    seeded.reset((Math.floor(seeded.random() * pool + 1) / pool + 1) * 1e16)
+    seeded.reset((Math.floor(seeded.random() * pool + 1) / pool + 1) * 1e16);
   }
-  return seeded
-}
+  return seeded;
+};
 
-export default duplicable
+export default duplicable;

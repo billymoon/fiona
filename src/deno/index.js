@@ -1,4 +1,4 @@
-import Bootstrap from '../bootstrap.js'
-import RandExp from './randexp.js'
+import Bootstrap from "../bootstrap.js";
+import RandExp from "./randexp.js";
 
-export default Bootstrap(RandExp)
+export default Bootstrap(RandExp);

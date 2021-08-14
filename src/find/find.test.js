@@ -1,151 +1,157 @@
-import test from 'ava'
-import Fiona from '../core/index.js'
-
-import bool from '../bool/bool.js'
-import choose from '../choose/choose.js'
-import oneOf from '../choose/one-of.js'
 import {
-  title,
+  assertEquals,
+  assertThrows,
+} from "https://deno.land/std@0.103.0/testing/asserts.ts";
+import { it, run } from "https://deno.land/x/tincan/mod.ts";
+import bool from "../bool/bool.js";
+import choose from "../choose/choose.js";
+import oneOf from "../choose/one-of.js";
+import Fiona from "../core/index.js";
+import {
   firstname,
   firstnames,
-  surname,
+  fullname,
   gender,
-  fullname
-} from '../name/name.js'
-import Find from './find.js'
+  surname,
+  title,
+} from "../name/name.js";
+import Find from "./find.js";
 
-Fiona.register(['bool', bool])
-Fiona.register(['choose', choose])
-Fiona.register(['oneOf', oneOf])
-Fiona.register(['title', title])
-Fiona.register(['firstname', firstname])
-Fiona.register(['firstnames', firstnames])
-Fiona.register(['surname', surname])
-Fiona.register(['gender', gender])
-Fiona.register(['fullname', fullname])
+Fiona.register(["bool", bool]);
+Fiona.register(["choose", choose]);
+Fiona.register(["oneOf", oneOf]);
+Fiona.register(["title", title]);
+Fiona.register(["firstname", firstname]);
+Fiona.register(["firstnames", firstnames]);
+Fiona.register(["surname", surname]);
+Fiona.register(["gender", gender]);
+Fiona.register(["fullname", fullname]);
 
-const find = Find(Fiona)
+const find = Find(Fiona);
 
-test('find Fiona Moon', t => {
-  t.is(
+it("find Fiona Moon", () => {
+  assertEquals(
     find(
-      name => name === 'Miss Fiona Moon',
-      seeded => seeded.fullname(),
+      (name) => name === "Miss Fiona Moon",
+      (seeded) => seeded.fullname(),
       {
         startseed: 30380,
-        tries: 10
-      }
-    ).info().initseed,
-    30382
-  )
-})
-
-test('find with Fiona.Data', t => {
-  t.is(
-    find(
-      data => {
-        return data.age === 61
+        tries: 10,
       },
-      seeded =>
+    ).info().initseed,
+    30382,
+  );
+});
+
+it("find with Fiona.Data", () => {
+  assertEquals(
+    find(
+      (data) => {
+        return data.age === 61;
+      },
+      (seeded) =>
         seeded.object({
           name: Fiona.Fullname,
-          age: Fiona.Number({ max: 100 })
+          age: Fiona.Number({ max: 100 }),
         }),
-      { tries: 120 }
+      { tries: 120 },
     ).info().initseed,
-    119
-  )
-})
+    119,
+  );
+});
 
-test('find without passing options', t => {
-  t.is(
+it("find without passing options", () => {
+  assertEquals(
     find(
-      data => {
-        return data.age === 1
+      (data) => {
+        return data.age === 1;
       },
-      seeded =>
+      (seeded) =>
         seeded.object({
-          age: Fiona.Number({ max: 100 })
-        })
+          age: Fiona.Number({ max: 100 }),
+        }),
     ).info().initseed,
-    162
-  )
-})
+    162,
+  );
+});
 
-test('find (set startseed)', t => {
-  t.is(
+it("find (set startseed)", () => {
+  assertEquals(
     find(
-      data => {
-        return data.age === 61
+      (data) => {
+        return data.age === 61;
       },
-      seeded =>
+      (seeded) =>
         seeded.object({
           name: Fiona.Fullname,
-          age: Fiona.Number({ max: 100 })
+          age: Fiona.Number({ max: 100 }),
         }),
-      { startseed: 307, tries: 10 }
+      { startseed: 307, tries: 10 },
     ).object({ name: Fiona.Fullname }).name,
-    'Dr Max Reid'
-  )
+    "Dr Max Reid",
+  );
 
-  t.is(
+  assertEquals(
     find(
-      data => {
-        return data.name === 'Miss Fiona Moon' && data.age === 1
+      (data) => {
+        return data.name === "Miss Fiona Moon" && data.age === 1;
       },
-      seeded =>
+      (seeded) =>
         seeded.object({
           name: Fiona.Fullname,
-          age: Fiona.Number({ max: 100 })
+          age: Fiona.Number({ max: 100 }),
         }),
-      { startseed: 2983930, tries: 10 }
+      { startseed: 2983930, tries: 10 },
     ).info().initseed,
-    2983938
-  )
+    2983938,
+  );
 
-  t.is(
+  assertEquals(
     find(
-      data => {
-        return data.name === 'Miss Aria Moon' && data.age === 5
+      (data) => {
+        return data.name === "Miss Aria Moon" && data.age === 5;
       },
-      seeded =>
+      (seeded) =>
         seeded.object({
           name: Fiona.Fullname,
-          age: Fiona.Number({ max: 100 })
+          age: Fiona.Number({ max: 100 }),
         }),
-      { startseed: 3482740, tries: 10 }
+      { startseed: 3482740, tries: 10 },
     ).info().initseed,
-    3482749
-  )
+    3482749,
+  );
 
-  t.is(
+  assertEquals(
     find(
-      data => {
-        return data.name === 'Miss Mia Moon' && data.age === 6
+      (data) => {
+        return data.name === "Miss Mia Moon" && data.age === 6;
       },
-      seeded =>
+      (seeded) =>
         seeded.object({
           name: Fiona.Fullname,
-          age: Fiona.Number({ max: 100 })
+          age: Fiona.Number({ max: 100 }),
         }),
-      { startseed: 211500, tries: 10 }
+      { startseed: 211500, tries: 10 },
     ).info().initseed,
-    211502
-  )
-})
+    211502,
+  );
+});
 
-test('find', t => {
-  const err = t.throws(() => {
+it("find", () => {
+  const err = assertThrows(() => {
     find(
-      data => {
-        return data.age === 61
+      (data) => {
+        return data.age === 61;
       },
-      seeded =>
+      (seeded) =>
         seeded.object({
-          age: Fiona.Number({ max: 100 })
+          age: Fiona.Number({ max: 100 }),
         }),
-      { tries: 2 }
-    )
-  })
-  t.is(err.message, 'Predicate not satisfied within 2 tries')
-})
+      { tries: 2 },
+    );
+  });
+
+  assertEquals(err.message, "Predicate not satisfied within 2 tries");
+});
+
+run();
