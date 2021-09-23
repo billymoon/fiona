@@ -3,7 +3,7 @@ import { registered } from "../register/index.js";
 
 const handleArray = (seeded, node, path, root) => {
   for (let i = 0; i < node.length; i++) {
-    node[i] = recursor(seeded, node[i], `${path}[${i}]`, root);
+    node[i] = recursor(seeded, node[i], path.concat(i), root);
   }
 
   return node;
@@ -11,7 +11,7 @@ const handleArray = (seeded, node, path, root) => {
 
 const handleObject = (seeded, node, path, root) => {
   for (const key in node) {
-    node[key] = recursor(seeded, node[key], `${path}.${key}`, root);
+    node[key] = recursor(seeded, node[key], path.concat(key), root);
   }
 
   return node;
@@ -19,14 +19,15 @@ const handleObject = (seeded, node, path, root) => {
 
 const handleFunction = (seeded, node, path, root) => {
   const newSeeded = new seeded.constructor(
-    `${path}/${seeded.info().initseed}`,
     Prng,
+    seeded.info().initseed,
+    seeded.info().path.concat(path)
   );
   // TODO: if we are adding data property, why not also position property?
   // TODO: perhaps data (property on seeded instance during recursion) should be called root, and be a getter/setter and cleaned up after recursion?
   newSeeded.data = root;
   const newNode = registered.indexOf(node) !== -1 ? node() : node(newSeeded);
-  return recursor(seeded, newNode, path, path === "root" ? newNode : root);
+  return recursor(seeded, newNode, path, path.length ? root : newNode);
 };
 
 const handleRegex = (
@@ -61,7 +62,7 @@ const cloner = (node) =>
 
 const recurse = (seeded, nodeIn) => {
   const node = cloner(nodeIn);
-  return recursor(seeded, node, "root", node);
+  return recursor(seeded, node, [], node);
 };
 
 export default recurse;

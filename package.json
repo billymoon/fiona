@@ -3,7 +3,7 @@
   "version": "3.4.2",
   "description": "tiny yet powerful pseudo random data generator",
   "repository": "billymoon/fiona",
-  "main": "static/fiona.min.js",
+  "main": "bin/fiona.js",
   "scripts": {
     "start": "node scripts/dev",
     "dev": "node scripts/dev",

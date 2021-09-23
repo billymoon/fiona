@@ -1,19 +1,19 @@
 // TODO: should Moon be renamed to something more intuitive like FionaConstructor?
 // define main constructor function
-function Moon(seedin, Prng) {
+function Moon(Prng, initseed = Math.floor(Math.random() * 1e8), path) {
   // set initial seed from constructor function initialisation argument, or random integer
-  const initseed = seedin !== undefined
-    ? seedin
-    : Math.floor(Math.random() * 1e8);
+  // const initseed = seedin !== undefined
+  //   ? seedin
+  //   : ;
 
   // initialise PRNG
   const { state, reset, random, reverse, distribution } = Prng(
     this,
-    initseed,
+    JSON.stringify([initseed, path]),
   );
   Object.assign(this, { state, reset, random, reverse, distribution });
 
-  this.info = () => ({ initseed });
+  this.info = () => ({ initseed, path });
 
   return this;
 }

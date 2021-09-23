@@ -8,9 +8,16 @@ import json from "./primitives/json/json.js";
 import array from "./primitives/array/array.js";
 import string from "./primitives/string/string.js";
 
-const Fiona = (seed) => new Moon(seed, Prng);
+const Fiona = (seed, path = []) => new Moon(Prng, seed, path);
 
 Fiona.version = config.version;
+Object.entries({ string, number }).forEach(([name, fn]) => {
+  console.log(name, fn)
+  Fiona[name] = (initseed, path, ...args) => fn(Fiona(initseed, path), ...args)
+})
+
+// Fiona.number = (initseed, path, ...args) => number(Fiona(`${path}/${initseed}`), ...args)
+// Fiona.string = (initseed, path, ...args) => string(Fiona(`root.${path}/${initseed}`), ...args)
 
 // TODO: would it be simpler to pull the Register factory into core index?
 const registerFactory = (name, fn) => {

@@ -24,7 +24,7 @@ process.browser &&
     const data = Fiona().object({
       users: Fiona.Array(10, fiona => {
         // TODO: get fiona to pass current array index into function
-        const index = fiona.info().initseed.match(/root\[(\d+)\]/m)[1]
+        const index = fiona.info().path.toString().match(/(\d+)/m)[1]
         return modelMock(index)
       })
     })
