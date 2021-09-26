@@ -6,7 +6,7 @@ import {
   it,
   run,
 } from "https://deno.land/x/tincan/mod.ts";
-import Fiona from "../deno/index.js";
+import Fiona from "../index.js";
 import index from "./index.js";
 
 const fixtures = [0.5129792850990683, 0.4320565277859832, 0.2474033479799532];

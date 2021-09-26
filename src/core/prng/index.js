@@ -1,7 +1,7 @@
 // TODO: add a Mersenne Twister for comparison, and benchmark
 import xor from "./xor.js";
-import processSeed from "../process-seed/index.js";
-import Distribution from "../distribution/index.js";
+import processSeed from "./process-seed/index.js";
+import Distribution from "./distribution/index.js";
 
 // TODO: add specific tests for prng wrapper
 export default (seeded, initseed) => {

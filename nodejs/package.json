@@ -1,0 +1,10 @@
+{
+  "name": "fiona",
+  "version": "4.0.0-alpha.2",
+  "description": "tiny yet powerful pseudo random data generator",
+  "repository": "billymoon/fiona",
+  "main": "fiona.min.js",
+  "keywords": [],
+  "author": "Billy Moon",
+  "license": "ISC"
+}

@@ -1,7 +1,7 @@
 import { assertEquals } from "https://deno.land/std@0.103.0/testing/asserts.ts";
 import { it, run } from "https://deno.land/x/tincan/mod.ts";
 import Fiona from "../core/index.js";
-import RandExp from "../deno/randexp.js";
+import RandExp from "http://esm.sh/randexp";
 import Regex from "./regex.js";
 
 Fiona.register(["regex", Regex(RandExp)]);

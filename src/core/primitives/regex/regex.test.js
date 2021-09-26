@@ -5,7 +5,7 @@ import {
   it,
   run,
 } from "https://deno.land/x/tincan/mod.ts";
-import RandExp from "../../../deno/randexp.js";
+import RandExp from "http://esm.sh/randexp";
 import RegexPlugin from "../../../regex/regex.js";
 import Fiona from "../../index.js";
 

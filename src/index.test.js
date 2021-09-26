@@ -1,5 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.103.0/testing/asserts.ts";
-import Fiona from "./deno/index.js";
+import Fiona from "./index.js";
 
 Deno.test("registers extensions to Fiona", () => {
   assertEquals(

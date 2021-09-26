@@ -13,3 +13,4 @@ package-extract.js
 package-lock.json
 yarn.lock
 .vercel
+cov_profile*

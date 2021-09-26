@@ -1,8 +1,6 @@
-import recurseData from "../../recurse/index.js";
-
 const object = (seeded, ...originals) => {
   return originals.reduce((_memo, original) => {
-    return recurseData(seeded, original);
+    return seeded.recurse(seeded, original);
     // return recurseData(seeded, original, undefined, undefined, memo)
     // TODO: re-instate error checking for object
     // const result = recurseData(seeded, original, undefined, undefined, memo)

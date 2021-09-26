@@ -1,4 +1,6 @@
-import Bootstrap from "./bootstrap";
-import RandExp from "randexp";
+import Bootstrap from "./bootstrap.js";
+import RandExp from "http://esm.sh/randexp";
 
-export default Bootstrap(RandExp);
+const Fiona = Bootstrap(RandExp);
+
+export default Fiona;
