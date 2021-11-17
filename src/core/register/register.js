@@ -2,8 +2,8 @@ const Register = (registerFactory, registerMethod) =>
   (...extensions) =>
     extensions.forEach((plugin) => {
       const [name, fn] = typeof plugin === "function"
-        ? [plugin.name, plugin]
-        : plugin;
+      ? [plugin.name, plugin]
+      : plugin;
 
       registerFactory(
         name[0].toUpperCase() + name.slice(1),
