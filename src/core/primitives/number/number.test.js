@@ -7,7 +7,7 @@ import {
 } from "https://deno.land/x/tincan/mod.ts";
 import Fiona from "../../index.js";
 
-const fixtures = [512979, 432056, 247403];
+const fixtures = [333516, 198263, 622611];
 
 describe("number", () => {
   let seeded;
@@ -30,18 +30,18 @@ describe("number", () => {
 
   it("plugin to give expected outputs with arguments set", () => {
     assertEquals(Fiona("moon").number(), fixtures[0]);
-    assertEquals(Fiona("moon").number({ min: 500000 }), 756490);
+    assertEquals(Fiona("moon").number({ min: 500000 }), 666758);
     assertEquals(
       Fiona("moon").number({ min: 500000, precision: 3 }),
-      756490.155,
+      666758.492,
     );
-    assertEquals(Fiona("moon").number({ min: 500000, precision: -3 }), 756000);
+    assertEquals(Fiona("moon").number({ min: 500000, precision: -3 }), 666000);
     assertEquals(
       Fiona("moon").number({ min: 500000, precision: null }),
-      756490,
+      666758,
     );
-    assertEquals(Fiona("moon").number({ max: 100 }), 51);
-    assertEquals(Fiona("moon").number({ min: 90, max: 100 }), 95);
+    assertEquals(Fiona("moon").number({ max: 100 }), 33);
+    assertEquals(Fiona("moon").number({ min: 90, max: 100 }), 93);
   });
 });
 

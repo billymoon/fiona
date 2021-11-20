@@ -35,11 +35,11 @@ it("find Fiona Moon", () => {
       (name) => name === "Miss Fiona Moon",
       (seeded) => seeded.fullname(),
       {
-        startseed: 30380,
-        tries: 10,
+        startseed: 39351,
+        tries: 5,
       },
     ).info().initseed,
-    30382,
+    39355,
   );
 });
 
@@ -54,9 +54,12 @@ it("find with Fiona.Data", () => {
           name: Fiona.Fullname,
           age: Fiona.Number({ max: 100 }),
         }),
-      { tries: 120 },
+      {
+        startseed: 120,
+        tries: 4,
+      },
     ).info().initseed,
-    119,
+    123,
   );
 });
 
@@ -71,7 +74,7 @@ it("find without passing options", () => {
           age: Fiona.Number({ max: 100 }),
         }),
     ).info().initseed,
-    162,
+    75,
   );
 });
 
@@ -88,52 +91,22 @@ it("find (set startseed)", () => {
         }),
       { startseed: 307, tries: 10 },
     ).object({ name: Fiona.Fullname }).name,
-    "Dr Max Reid",
+    "Mr Lachlan Caleb Rory Fraser Robertson",
   );
 
   assertEquals(
     find(
       (data) => {
-        return data.name === "Miss Fiona Moon" && data.age === 1;
+        return data.name === "Miss Fiona Moon" && data.age === 5;
       },
       (seeded) =>
         seeded.object({
           name: Fiona.Fullname,
           age: Fiona.Number({ max: 100 }),
         }),
-      { startseed: 2983930, tries: 10 },
+      { startseed: 1322670, tries: 10 },
     ).info().initseed,
-    2983938,
-  );
-
-  assertEquals(
-    find(
-      (data) => {
-        return data.name === "Miss Aria Moon" && data.age === 5;
-      },
-      (seeded) =>
-        seeded.object({
-          name: Fiona.Fullname,
-          age: Fiona.Number({ max: 100 }),
-        }),
-      { startseed: 3482740, tries: 10 },
-    ).info().initseed,
-    3482749,
-  );
-
-  assertEquals(
-    find(
-      (data) => {
-        return data.name === "Miss Mia Moon" && data.age === 6;
-      },
-      (seeded) =>
-        seeded.object({
-          name: Fiona.Fullname,
-          age: Fiona.Number({ max: 100 }),
-        }),
-      { startseed: 211500, tries: 10 },
-    ).info().initseed,
-    211502,
+    1322672,
   );
 });
 

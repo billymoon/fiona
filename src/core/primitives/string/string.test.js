@@ -23,9 +23,10 @@ describe("string", () => {
   });
 
   it("template literal with function expression", () => {
+    const fixture = "a 0.43460802288474887 c";
     assertEquals(
       seeded.string`a ${(seeded) => seeded.random()} c`,
-      "a 0.9234358602778222 c",
+      fixture,
     );
   });
 

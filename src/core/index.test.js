@@ -9,7 +9,7 @@ import {
 import Fiona from "../index.js";
 import index from "./index.js";
 
-const fixtures = [0.5129792850990683, 0.4320565277859832, 0.2474033479799532];
+const fixtures = [0.33351631757501343, 0.1982628773889797, 0.6226111653366179];
 
 describe("core", () => {
   let seeded;
@@ -90,13 +90,13 @@ describe("core", () => {
     assertEquals(seeded.random(), fixtures[1]);
     assertEquals(seeded.random(), fixtures[2]);
     seeded.reset(12345);
-    assertEquals(seeded.random(), 0.9051722604339814);
-    assertEquals(seeded.random(), 0.40475850524602386);
-    assertEquals(seeded.random(), 0.934793325110708);
+    assertEquals(seeded.random(), 0.35700980264554255);
+    assertEquals(seeded.random(), 0.07337278829578905);
+    assertEquals(seeded.random(), 0.05804005640467631);
     seeded.reset(12345);
-    assertEquals(seeded.random(), 0.9051722604339814);
-    assertEquals(seeded.random(), 0.40475850524602386);
-    assertEquals(seeded.random(), 0.934793325110708);
+    assertEquals(seeded.random(), 0.35700980264554255);
+    assertEquals(seeded.random(), 0.07337278829578905);
+    assertEquals(seeded.random(), 0.05804005640467631);
     seeded.reset();
     assertEquals(seeded.random(), fixtures[0]);
     assertEquals(seeded.random(), fixtures[1]);
@@ -140,17 +140,17 @@ describe("core", () => {
 
   it("seeded.state should return expected state", () => {
     assertEquals(seeded.state(), [
-      9114374722873036,
-      1080754632633531,
-      7193642159548421,
-      7191889941316046,
+      6607366118862930,
+      4744600786242914,
+      174673749215283,
+      3741093535787004,
     ]);
     seeded.random();
     assertEquals(seeded.state(), [
-      1080754632633531,
-      7193642159548421,
-      7191889941316046,
-      1101614626,
+      4744600786242914,
+      174673749215283,
+      3741093535787004,
+      716220838,
     ]);
   });
 

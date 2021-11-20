@@ -7,6 +7,11 @@ import {
 } from "https://deno.land/x/tincan/mod.ts";
 import Fiona from "../../index.js";
 
+const fixtures = {
+  a: `{"a":0.9674615049583193}`,
+  b: `{"a":{"b":0.5536784117825695}}`,
+};
+
 describe("object", () => {
   // TODO: test passing multiple arguments and executing functions to resolve objects
   let seeded;
@@ -35,24 +40,21 @@ describe("object", () => {
     const expected = JSON.stringify(
       seeded.object({ a: (seeded) => seeded.random() }),
     );
-    const fixture = `{"a":0.7904736091338441}`;
-    assertEquals(expected, fixture);
+    assertEquals(expected, fixtures.a);
   });
 
   it("should handle functions with recursion", () => {
     const expected = JSON.stringify(
       seeded.object({ a: () => (seeded) => seeded.random() }),
     );
-    const fixture = `{"a":0.7904736091338441}`;
-    assertEquals(expected, fixture);
+    assertEquals(expected, fixtures.a);
   });
 
   it("should handle deeply nested object with function property", () => {
     const expected = JSON.stringify(
       seeded.object({ a: { b: (seeded) => seeded.random() } }),
     );
-    const fixture = `{"a":{"b":0.530906858169896}}`;
-    assertEquals(expected, fixture);
+    assertEquals(expected, fixtures.b);
   });
 
   // TODO: can we provide position another way..?
@@ -113,26 +115,26 @@ describe("object", () => {
         }),
       );
       const fixture =
-        `{"a":[0,1,null,3,0.8738715024077667,{"b":["b0","b1","b2","b3",0.82669865890718]},[6,7,0.24771976435916487]]}`;
+        `{"a":[0,1,null,3,0.8320001027695835,{"b":["b0","b1","b2","b3",0.8808325561139885]},[6,7,0.17345323654518147]]}`;
       assertEquals(expected, fixture);
     },
   );
 
   it("should execute plugins defined as Fiona.MyPlugin()", () => {
     const expected = JSON.stringify(seeded.object({ a: Fiona.Random() }));
-    const fixture = `{"a":0.7904736091338441}`;
+    const fixture = fixtures.a;
     assertEquals(expected, fixture);
   });
 
   it("should execute plugins defined as Fiona.MyPlugin (Random)", () => {
     const expected = JSON.stringify(seeded.object({ a: Fiona.Random }));
-    const fixture = `{"a":0.7904736091338441}`;
+    const fixture = fixtures.a;
     assertEquals(expected, fixture);
   });
 
   it("should execute plugins defined as Fiona.MyPlugin (Number)", () => {
     const expected = JSON.stringify(seeded.object({ a: Fiona.Number }));
-    const fixture = `{"a":790474}`;
+    const fixture = `{"a":967462}`;
     assertEquals(expected, fixture);
   });
 
@@ -142,7 +144,7 @@ describe("object", () => {
       const expected = JSON.stringify(
         seeded.object({ a: Fiona.Number({ precision: -3 }) }),
       );
-      const fixture = `{"a":790000}`;
+      const fixture = `{"a":967000}`;
       assertEquals(expected, fixture);
     },
   );

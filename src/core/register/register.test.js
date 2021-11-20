@@ -1,7 +1,7 @@
 import { assertEquals } from "https://deno.land/std@0.103.0/testing/asserts.ts";
 import {
-  beforeEach,
   afterEach,
+  beforeEach,
   describe,
   it,
   run,
@@ -12,69 +12,72 @@ import { Register } from "./index.js";
 
 describe("register", () => {
   it("returns function", () => {
-    assertEquals(typeof Register(), 'function')
+    assertEquals(typeof Register(), "function");
   });
 
   describe("registers name", () => {
-    let stubbedRegisterFactory
-    let stubbedRegisterMethod
+    let stubbedRegisterFactory;
+    let stubbedRegisterMethod;
 
     beforeEach(() => {
-      stubbedRegisterFactory = spy()
-      stubbedRegisterMethod = spy()
-    })
+      stubbedRegisterFactory = spy();
+      stubbedRegisterMethod = spy();
+    });
 
     it("register function calls factory functions", () => {
-      const register = Register(stubbedRegisterFactory, stubbedRegisterMethod)
-      assertEquals(stubbedRegisterFactory.calls.length, 0)
-      assertEquals(stubbedRegisterMethod.calls.length, 0)
-      register(function namedFunction () {})
-      assertEquals(stubbedRegisterFactory.calls.length, 1)
-      assertEquals(stubbedRegisterMethod.calls.length, 1)
-      assertEquals(stubbedRegisterFactory.calls[0].args[0], "NamedFunction")
-      assertEquals(stubbedRegisterMethod.calls[0].args[0], "namedFunction")
+      const register = Register(stubbedRegisterFactory, stubbedRegisterMethod);
+      assertEquals(stubbedRegisterFactory.calls.length, 0);
+      assertEquals(stubbedRegisterMethod.calls.length, 0);
+      register(function namedFunction() {});
+      assertEquals(stubbedRegisterFactory.calls.length, 1);
+      assertEquals(stubbedRegisterMethod.calls.length, 1);
+      assertEquals(stubbedRegisterFactory.calls[0].args[0], "NamedFunction");
+      assertEquals(stubbedRegisterMethod.calls[0].args[0], "namedFunction");
     });
 
     it("returned function registers extension on registered object", () => {
-      const register = Register(stubbedRegisterFactory, stubbedRegisterMethod)
-      assertEquals(stubbedRegisterFactory.calls.length, 0)
-      assertEquals(stubbedRegisterMethod.calls.length, 0)
-      const variableFunction = () => {}
-      register(variableFunction)
-      assertEquals(stubbedRegisterFactory.calls.length, 1)
-      assertEquals(stubbedRegisterMethod.calls.length, 1)
-      assertEquals(stubbedRegisterFactory.calls[0].args[0], "VariableFunction")
-      assertEquals(stubbedRegisterMethod.calls[0].args[0], "variableFunction")
+      const register = Register(stubbedRegisterFactory, stubbedRegisterMethod);
+      assertEquals(stubbedRegisterFactory.calls.length, 0);
+      assertEquals(stubbedRegisterMethod.calls.length, 0);
+      const variableFunction = () => {};
+      register(variableFunction);
+      assertEquals(stubbedRegisterFactory.calls.length, 1);
+      assertEquals(stubbedRegisterMethod.calls.length, 1);
+      assertEquals(stubbedRegisterFactory.calls[0].args[0], "VariableFunction");
+      assertEquals(stubbedRegisterMethod.calls[0].args[0], "variableFunction");
     });
 
     it("returned function registers extension on registered object", () => {
-      const register = Register(stubbedRegisterFactory, stubbedRegisterMethod)
-      assertEquals(stubbedRegisterFactory.calls.length, 0)
-      assertEquals(stubbedRegisterMethod.calls.length, 0)
-      register(["arrayFunction", () => {}])
-      assertEquals(stubbedRegisterFactory.calls.length, 1)
-      assertEquals(stubbedRegisterMethod.calls.length, 1)
-      assertEquals(stubbedRegisterFactory.calls[0].args[0], "ArrayFunction")
-      assertEquals(stubbedRegisterMethod.calls[0].args[0], "arrayFunction")
+      const register = Register(stubbedRegisterFactory, stubbedRegisterMethod);
+      assertEquals(stubbedRegisterFactory.calls.length, 0);
+      assertEquals(stubbedRegisterMethod.calls.length, 0);
+      register(["arrayFunction", () => {}]);
+      assertEquals(stubbedRegisterFactory.calls.length, 1);
+      assertEquals(stubbedRegisterMethod.calls.length, 1);
+      assertEquals(stubbedRegisterFactory.calls[0].args[0], "ArrayFunction");
+      assertEquals(stubbedRegisterMethod.calls[0].args[0], "arrayFunction");
     });
 
     it("returned function registers extension on registered object", () => {
-      const register = Register(stubbedRegisterFactory, stubbedRegisterMethod)
-      assertEquals(stubbedRegisterFactory.calls.length, 0)
-      assertEquals(stubbedRegisterMethod.calls.length, 0)
-      const variableFunction = () => {}
-      register(["arrayFunction", () => {}], function namedFunction () {}, variableFunction)
-      assertEquals(stubbedRegisterFactory.calls.length, 3)
-      assertEquals(stubbedRegisterMethod.calls.length, 3)
-      assertEquals(stubbedRegisterFactory.calls[0].args[0], "ArrayFunction")
-      assertEquals(stubbedRegisterFactory.calls[1].args[0], "NamedFunction")
-      assertEquals(stubbedRegisterFactory.calls[2].args[0], "VariableFunction")
-      assertEquals(stubbedRegisterMethod.calls[0].args[0], "arrayFunction")
-      assertEquals(stubbedRegisterMethod.calls[1].args[0], "namedFunction")
-      assertEquals(stubbedRegisterMethod.calls[2].args[0], "variableFunction")
+      const register = Register(stubbedRegisterFactory, stubbedRegisterMethod);
+      assertEquals(stubbedRegisterFactory.calls.length, 0);
+      assertEquals(stubbedRegisterMethod.calls.length, 0);
+      const variableFunction = () => {};
+      register(
+        ["arrayFunction", () => {}],
+        function namedFunction() {},
+        variableFunction,
+      );
+      assertEquals(stubbedRegisterFactory.calls.length, 3);
+      assertEquals(stubbedRegisterMethod.calls.length, 3);
+      assertEquals(stubbedRegisterFactory.calls[0].args[0], "ArrayFunction");
+      assertEquals(stubbedRegisterFactory.calls[1].args[0], "NamedFunction");
+      assertEquals(stubbedRegisterFactory.calls[2].args[0], "VariableFunction");
+      assertEquals(stubbedRegisterMethod.calls[0].args[0], "arrayFunction");
+      assertEquals(stubbedRegisterMethod.calls[1].args[0], "namedFunction");
+      assertEquals(stubbedRegisterMethod.calls[2].args[0], "variableFunction");
     });
-  })
-
+  });
 
   // it("accepts named function as extension", () => {
   //   const zeroHundred = (seeded) => Math.round(seeded.random() * 100);

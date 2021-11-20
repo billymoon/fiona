@@ -32,41 +32,41 @@ it("import", () => {
 });
 
 it("Fiona.Title", () => {
-  assertEquals(Fiona(1).title(), "Sir");
-  assertEquals(Fiona(1).title({}), "Sir");
-  assertEquals(Fiona(2).title(), "Miss");
-  assertEquals(Fiona(2).title({}), "Miss");
-  assertEquals(Fiona(4).title({ gender: "f" }), "Ms");
-  assertEquals(Fiona(4).title({ gender: "m" }), "Sir");
-  assertEquals(Fiona(4).title({ gender: "Male" }), "Sir");
+  assertEquals(Fiona(1).title(), "Lord");
+  assertEquals(Fiona(1).title({}), "Lord");
+  assertEquals(Fiona(2).title(), "Lord");
+  assertEquals(Fiona(2).title({}), "Lord");
+  assertEquals(Fiona(4).title({ gender: "f" }), "Dame");
+  assertEquals(Fiona(4).title({ gender: "m" }), "Lord");
+  assertEquals(Fiona(4).title({ gender: "Male" }), "Lord");
 });
 
 it("Fiona.Firstname", () => {
-  assertEquals(Fiona(1).firstname(), "Hamish");
-  assertEquals(Fiona(1).firstname({}), "Hamish");
-  assertEquals(Fiona(2).firstname(), "Ava");
-  assertEquals(Fiona(2).firstname({}), "Ava");
-  assertEquals(Fiona(2).firstname({ gender: "f" }), "Leah");
-  assertEquals(Fiona(2).firstname({ gender: "m" }), "Angus");
-  assertEquals(Fiona(2).firstname({ gender: "Male" }), "Angus");
+  assertEquals(Fiona(1).firstname(), "Sam");
+  assertEquals(Fiona(1).firstname({}), "Sam");
+  assertEquals(Fiona(2).firstname(), "Cody");
+  assertEquals(Fiona(2).firstname({}), "Cody");
+  assertEquals(Fiona(2).firstname({ gender: "f" }), "Zoe");
+  assertEquals(Fiona(2).firstname({ gender: "m" }), "Finn");
+  assertEquals(Fiona(2).firstname({ gender: "Male" }), "Finn");
 });
 
 it("Fiona.Firstnames", () => {
-  assertEquals(Fiona(1).firstnames(), "Hamish");
+  assertEquals(Fiona(1).firstnames(), "Sam");
 });
 
 it("Fiona.Surname", () => {
-  assertEquals(Fiona(1).surname(), "Scott");
-  assertEquals(Fiona(2).surname(), "Reid");
+  assertEquals(Fiona(1).surname(), "Stewart");
+  assertEquals(Fiona(2).surname(), "Stewart");
 });
 
 it("Fiona.Gender", () => {
   assertEquals(Fiona(1).gender(), "male");
-  assertEquals(Fiona(2).gender(), "female");
+  assertEquals(Fiona(2).gender(), "male");
 });
 
 it("Fiona.Fullname", () => {
-  assertEquals(Fiona(1).fullname(), "Sir Kyle Moon");
+  assertEquals(Fiona(1).fullname(), "Lord Murray Murray");
 });
 
 run();

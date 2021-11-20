@@ -8,18 +8,18 @@ Fiona.register(["choose", choose]);
 Fiona.register(["shuffle", shuffle]);
 
 it("Fiona.Shuffle", () => {
-  assertEquals(Fiona(1).shuffle([1, 2, 3, 4, 5]), [3, 4, 2, 1, 5]);
+  assertEquals(Fiona(1).shuffle([1, 2, 3, 4, 5]), [2, 5, 1, 3, 4]);
   assertEquals(Fiona(1).shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), [
-    5,
-    7,
-    8,
     4,
     9,
-    6,
+    8,
     3,
-    2,
+    7,
     10,
+    6,
     1,
+    2,
+    5,
   ]);
 });
 
@@ -33,8 +33,8 @@ it("Fiona.Shuffle (leave src array unmodified)", () => {
 
 it("Fiona.Shuffle with qty", () => {
   assertEquals(Fiona(1).shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], { qty: 3 }), [
-    5,
-    7,
+    4,
+    9,
     8,
   ]);
   assertEquals(

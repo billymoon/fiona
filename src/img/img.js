@@ -69,9 +69,13 @@ const img = (seeded, opts) => {
   }
   const svgwrapper = (inner) =>
     encodeURIComponent(`
-    <svg width="${width}" height="${height}" viewBox="${-1 * width} ${-1 *
-      height} ${width * 2} ${height *
-      2}" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="${width}" height="${height}" viewBox="${-1 * width} ${
+      -1 *
+      height
+    } ${width * 2} ${
+      height *
+      2
+    }" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <style>svg { background-color: ${bg}; }</style>
       ${inner}
     </svg>

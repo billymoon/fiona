@@ -7,7 +7,7 @@ import {
 } from "https://deno.land/x/tincan/mod.ts";
 import Fiona from "../../index.js";
 
-const fixtures = [923436, 991546, 100070, 247407, 240368];
+const fixtures = [434608, 685941, 418669, 134900, 489729];
 
 describe("array", () => {
   let seeded;

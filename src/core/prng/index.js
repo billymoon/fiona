@@ -36,7 +36,9 @@ export default (seeded, initseed) => {
 
   // define prng reset method
   const reset = (seed) => {
-    reseed(processSeed(seed !== undefined ? seed : initseed));
+    reseed(
+      processSeed(seed !== undefined ? JSON.stringify([seed, []]) : initseed),
+    );
     return seeded;
   };
 

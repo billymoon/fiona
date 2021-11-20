@@ -15,11 +15,11 @@ it("import", () => {
 });
 
 it("Fiona.Regex", () => {
-  assertEquals(Fiona(1).regex(/[0-1]{8} (cy|ro)bo(t|rg)s/), "11010001 robots");
+  assertEquals(Fiona(1).regex(/[0-1]{8} (cy|ro)bo(t|rg)s/), "11101100 cybots");
 });
 
 it("Fiona.Regex (with no arguments)", () => {
-  assertEquals(Fiona(1).regex(), "34A7CFE87F5EFD77");
+  assertEquals(Fiona(1).regex(), "643088BCBE3844CA");
 });
 
 run();

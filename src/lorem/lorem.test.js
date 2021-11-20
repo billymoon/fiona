@@ -14,35 +14,35 @@ Fiona.register(["paragraph", paragraph]);
 it("Fiona.Lorem", () => {
   assertEquals(
     Fiona(1).lorem(),
-    "velit consectetur proident et ullamco exercitation deserunt culpa ut excepteur laboris ex nostrud in sit",
+    "dolore reprehenderit ut mollit deserunt ut dolore labore exercitation esse anim fugiat nulla quis sed veniam cillum",
   );
 });
 
 it("Fiona.Lorem (can specify approximately how many words)", () => {
-  assertEquals(Fiona(1).lorem({ qty: 2 }), "velit consectetur");
+  assertEquals(Fiona(1).lorem({ qty: 2 }), "dolore reprehenderit");
 });
 
 it("Fiona.Lorem (sometimes starts lorem ipsum)", () => {
-  assertEquals(Fiona(7).lorem({ qty: 2 }), "lorem ipsum proident id");
+  assertEquals(Fiona(7).lorem({ qty: 2 }), "commodo do");
 });
 
 it("Fiona.Word", () => {
-  assertEquals(Fiona(1).word(), "velit");
-  assertEquals(Fiona(2).word(), "eiusmod");
-  assertEquals(Fiona(3).word(), "nulla");
+  assertEquals(Fiona(1).word(), "dolore");
+  assertEquals(Fiona(2).word(), "occaecat");
+  assertEquals(Fiona(3).word(), "consequat");
 });
 
 it("Fiona.Sentence", () => {
   assertEquals(
     Fiona(1).sentence(),
-    "Velit consectetur proident et ullamco exercitation deserunt culpa ut excepteur laboris ex nostrud in sit in aliqua ad commodo non mollit esse eiusmod enim occaecat sunt.",
+    "Dolore reprehenderit ut mollit deserunt ut dolore labore exercitation esse anim fugiat nulla quis sed veniam cillum minim cupidatat enim ad qui commodo in adipisicing irure dolor laborum id.",
   );
 });
 
 it("Fiona.Paragraph", () => {
   assertEquals(
     Fiona(1).paragraph(),
-    "Amet proident labore ullamco nostrud deserunt in nisi excepteur laboris aliquip adipisicing sunt sed reprehenderit magna enim ea non mollit velit do ut occaecat dolor fugiat aliqua.  Pariatur esse laboris amet laborum adipisicing proident ut mollit consectetur sunt in sed aute consequat excepteur magna sint aliquip ullamco elit qui sit in eu nostrud id dolore do.  Duis mollit deserunt in aliqua velit exercitation ullamco pariatur nostrud sit veniam aute culpa ea ex occaecat reprehenderit commodo esse voluptate ut magna minim consectetur in incididunt qui elit excepteur amet.  Lorem ipsum nostrud in pariatur fugiat voluptate dolor ut proident laborum quis tempor qui nisi duis consequat eu dolor minim elit cillum aliquip aliqua ad.  Est incididunt sint dolore fugiat consectetur proident aliquip pariatur nulla deserunt ea exercitation labore esse sunt occaecat aliqua anim nostrud magna dolore culpa in voluptate velit sit cupidatat in quis.",
+    "In nisi mollit deserunt incididunt et ut nostrud esse anim fugiat nulla veniam elit minim eiusmod ad occaecat ut cupidatat culpa ea in consectetur aute dolor laborum.  Veniam voluptate id eiusmod amet sit duis sunt est aliqua fugiat ut anim deserunt minim occaecat ad in dolor incididunt.  Lorem ipsum dolore excepteur eu enim dolor est anim qui minim tempor amet eiusmod mollit ullamco et officia exercitation in nulla aliquip commodo consequat adipisicing ad esse non magna id dolore ut veniam.  Dolore minim in enim incididunt do elit commodo ullamco pariatur officia mollit ad eiusmod id voluptate non deserunt consequat est.",
   );
 });
 

@@ -24,15 +24,14 @@ describe("regex", () => {
   it("should handle regex if plugin registered", () => {
     Fiona.register(["regex", RegexPlugin(RandExp)]);
     const pattern = /of [01]{8} (ro|cy)bo(rg|t)s/;
-    assertEquals(seeded.object({ army: pattern }), {
-      army: "of 00001011 cybots",
-    });
+    const fixture = { army: "of 01100000 cyborgs" };
+    assertEquals(seeded.object({ army: pattern }), fixture);
   });
 
   it(
     "should handle regex if plugin registered (with no arguments)",
     () => {
-      assertEquals(Fiona(1).regex(), "34A7CFE87F5EFD77");
+      assertEquals(Fiona(1).regex(), "643088BCBE3844CA");
     },
   );
 });
