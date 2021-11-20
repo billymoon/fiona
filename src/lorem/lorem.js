@@ -9,9 +9,7 @@ export const lorem = (seeded, { qty = 15 } = {}) => {
         ),
     );
   }
-  const min = Math.ceil(qty - qty / 3);
-  const max = Math.ceil(qty + qty / 3) - 2;
-  return out + seeded.choose(seeded.number({ min, max }), words).join(" ");
+  return out + seeded.choose(qty, words).join(" ");
 };
 
 export const word = (seeded) => seeded.lorem({ qty: 1 }).split(" ")[0];

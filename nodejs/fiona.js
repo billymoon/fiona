@@ -51,49 +51,49 @@ const baseSeeds = [
 ];
 const xor = (H)=>{
     let [Q, T, V, W] = baseSeeds;
-    const X = ()=>{
-        const $ = Q ^ Q << 11;
+    const $ = ()=>{
+        const aa = Q ^ Q << 11;
         [Q, T, V] = [
             T,
             V,
             W
         ];
-        W = W ^ W >> 19 ^ $ ^ $ >> 8;
+        W = W ^ W >> 19 ^ aa ^ aa >> 8;
         return W / 2147483647;
     };
-    const aa = ()=>{
-        let ba = W ^ V ^ V >> 19;
-        ba = ba ^ ba >> 8;
-        ba = ba ^ ba >> 16;
-        ba = ba ^ ba << 11;
-        ba = ba ^ ba << 22;
+    const ba = ()=>{
+        let ca = W ^ V ^ V >> 19;
+        ca = ca ^ ca >> 8;
+        ca = ca ^ ca >> 16;
+        ca = ca ^ ca << 11;
+        ca = ca ^ ca << 22;
         [W, V, T] = [
             V,
             T,
             Q
         ];
-        Q = ba;
+        Q = ca;
         return W / 2147483647;
     };
-    const ca = ()=>Math.round(X() * 10000000000000000)
+    const da = ()=>Math.round($() * 10000000000000000)
     ;
-    const da = (ea)=>{
-        [Q, T, V, W] = baseSeeds.map((fa)=>fa + ea
+    const ea = (fa)=>{
+        [Q, T, V, W] = baseSeeds.map((ga)=>ga + fa
         );
         [Q, T, V, W] = [
-            ca(),
-            ca(),
-            ca(),
-            ca()
+            da(),
+            da(),
+            da(),
+            da()
         ];
     };
-    da(H);
+    ea(H);
     return {
-        random: ()=>X()
+        random: ()=>$()
         ,
-        reverse: ()=>aa()
+        reverse: ()=>ba()
         ,
-        reseed: da,
+        reseed: ea,
         getState: ()=>[
                 Q,
                 T,
@@ -101,107 +101,110 @@ const xor = (H)=>{
                 W
             ]
         ,
-        setState: (ga)=>[Q, T, V, W] = ga
+        setState: (ha)=>[Q, T, V, W] = ha
     };
 };
-const stringToIntegers = (ha)=>ha.split("").map((ia)=>ia.charCodeAt(0)
+const stringToIntegers = (ia)=>ia.split("").map((ja)=>ja.charCodeAt(0)
     )
 ;
-const compound = (ja, ka)=>xorify(ja + ka)
+const compound = (ka, la)=>xorify(ka + la)
 ;
-const xorify = (la)=>xor(la % 2147483647).random() * 2147483647
+const xorify = (ma)=>xor(ma % 2147483647).random() * 2147483647
 ;
-const prepareSeed = (ma)=>typeof ma === "string" ? stringToIntegers(ma).reduce(compound, 0) : ma
+const prepareSeed = (na)=>typeof na === "string" ? stringToIntegers(na).reduce(compound, 0) : na
 ;
-const processSeed = (na, oa = [])=>[
-        na,
-        ...oa
+const processSeed = (oa, pa = [])=>[
+        oa,
+        ...pa
     ].map(prepareSeed).reduce(compound, 0)
 ;
-const defaultDistribution = (pa)=>pa
+const defaultDistribution = (qa)=>qa
 ;
-const __default1 = (qa)=>{
-    let ra = defaultDistribution;
-    return (sa)=>{
-        if (typeof sa === "function") {
-            ra = sa;
-            return qa;
-        } else if (sa === null) {
-            ra = defaultDistribution;
-            return qa;
+const __default1 = (ra)=>{
+    let sa = defaultDistribution;
+    return (ta)=>{
+        if (typeof ta === "function") {
+            sa = ta;
+            return ra;
+        } else if (ta === null) {
+            sa = defaultDistribution;
+            return ra;
         } else {
-            return ra(sa);
+            return sa(ta);
         }
     };
 };
-const __default2 = (ta, ua)=>{
-    const { reseed , getState , setState , random: va , reverse  } = xor(0);
-    reseed(processSeed(ua));
-    const wa = getState();
-    const xa = (ya)=>{
-        if (ya === undefined) {
+const __default2 = (ua, va)=>{
+    const { reseed , getState , setState , random: wa , reverse  } = xor(0);
+    reseed(processSeed(va));
+    const xa = getState();
+    const ya = (za)=>{
+        if (za === undefined) {
             return getState();
         } else {
-            if (ya === null) {
-                setState(wa);
+            if (za === null) {
+                setState(xa);
             } else {
-                setState(ya);
+                setState(za);
             }
-            return ta;
+            return ua;
         }
     };
-    const za = __default1(ta);
-    const Aa = (Ba)=>{
-        reseed(processSeed(Ba !== undefined ? Ba : ua));
-        return ta;
+    const Aa = __default1(ua);
+    const Ba = (Ca)=>{
+        reseed(processSeed(Ca !== undefined ? JSON.stringify([
+            Ca,
+            []
+        ]) : va));
+        return ua;
     };
-    const Ca = ()=>za(va())
+    const Da = ()=>Aa(wa())
     ;
     return {
-        state: xa,
-        reset: Aa,
-        random: Ca,
+        state: ya,
+        reset: Ba,
+        random: Da,
         reverse,
-        distribution: za
+        distribution: Aa
     };
 };
-const handleArray = (Da, Ea, Fa, Ga)=>{
-    for(let Ha = 0; Ha < Ea.length; Ha++){
-        Ea[Ha] = recursor(Da, Ea[Ha], Fa.concat(Ha), Ga);
+const handleArray = (Ea, Fa, Ga, Ha)=>{
+    for(let Ia = 0; Ia < Fa.length; Ia++){
+        Fa[Ia] = recursor(Ea, Fa[Ia], Ga.concat(Ia), Ha);
     }
-    return Ea;
+    return Fa;
 };
-const handleObject = (Ia, Ja, Ka, La)=>{
-    for(const Ma in Ja){
-        Ja[Ma] = recursor(Ia, Ja[Ma], Ka.concat(Ma), La);
+const handleObject = (Ja, Ka, La, Ma)=>{
+    for(const Na in Ka){
+        Ka[Na] = recursor(Ja, Ka[Na], La.concat(Na), Ma);
     }
-    return Ja;
+    return Ka;
 };
-const handleFunction = (Na, Oa, Pa, Qa)=>{
-    const Ra = new Na.constructor(__default2, Na.info().initseed, Na.info().path.concat(Pa));
-    Ra.data = Qa;
-    const Sa = registered.indexOf(Oa) !== -1 ? Oa() : Oa(Ra);
-    return recursor(Na, Sa, Pa, Pa.length ? Qa : Sa);
+const handleFunction = (Oa, Pa, Qa, Ra)=>{
+    const Sa = new Oa.constructor(__default2, Oa.info().initseed, Oa.info().path.concat(Qa));
+    Sa.data = Ra;
+    const Ta = registered.indexOf(Pa) !== -1 ? Pa() : Pa(Sa);
+    return recursor(Oa, Ta, Qa, Qa.length ? Ra : Ta);
 };
-const handleRegex = (Ta, Ua)=>Ta.regex ? Ta.regex(Ua) : Ua
+const handleRegex = (Ua, Va)=>Ua.regex ? Ua.regex(Va) : Va
 ;
-const recursor = (Va, Wa, Xa, Ya)=>Wa === null || Wa === undefined ? Wa : Wa.constructor === Array ? handleArray(Va, Wa, Xa, Ya) : Wa.constructor === Object ? handleObject(Va, Wa, Xa, Ya) : typeof Wa === "function" ? handleFunction(Va, Wa, Xa, Ya) : Wa.constructor === RegExp ? handleRegex(Va, Wa) : Wa
+const recursor = (Wa, Xa, Ya, Za)=>Xa === null || Xa === undefined ? Xa : Xa.constructor === Array ? handleArray(Wa, Xa, Ya, Za) : Xa.constructor === Object ? handleObject(Wa, Xa, Ya, Za) : typeof Xa === "function" ? handleFunction(Wa, Xa, Ya, Za) : Xa.constructor === RegExp ? handleRegex(Wa, Xa) : Xa
 ;
-const cloner = (Za)=>Za === null || Za === undefined ? Za : Za.constructor === Array ? Za.map(cloner) : Za.constructor === Object ? Object.entries(Za).reduce(($a, [_a, ab])=>_objectSpread({
-        }, $a, {
-            [_a]: cloner(ab)
+const cloner = ($a)=>$a === null || $a === undefined ? $a : $a.constructor === Array ? $a.map(cloner) : $a.constructor === Object ? Object.entries($a).reduce((_a, [ab, bb])=>_objectSpread({
+        }, _a, {
+            [ab]: cloner(bb)
         })
     , {
-    }) : Za
+    }) : $a
 ;
-const recurse = (bb, cb)=>{
-    const db = cloner(cb);
-    return recursor(bb, db, [], db);
+const recurse = (cb, db)=>{
+    const eb = cloner(db);
+    return recursor(cb, eb, [], eb);
 };
-function Moon(eb, fb = Math.floor(Math.random() * 100000000), gb) {
-    const { state , reset , random , reverse , distribution  } = eb(this, JSON.stringify([
-        fb,
-        gb
+function Moon(fb, gb = Math.floor(Math.random() * 100000000), hb) {
+    const { state , reset , random , reverse , distribution  } = fb(this, JSON.stringify([
+        gb,
+        hb
     ]));
     Object.assign(this, {
         state,
@@ -211,8 +214,8 @@ function Moon(eb, fb = Math.floor(Math.random() * 100000000), gb) {
         distribution
     });
     this.info = ()=>({
-            initseed: fb,
-            path: gb
+            initseed: gb,
+            path: hb
         })
     ;
     this.recurse = recurse;
@@ -221,48 +224,48 @@ function Moon(eb, fb = Math.floor(Math.random() * 100000000), gb) {
 Moon.prototype = {
     constructor: Moon
 };
-const number = (hb, { max =1000000 , min =0 , precision =0  } = {
+const number = (ib, { max =1000000 , min =0 , precision =0  } = {
 })=>{
-    const ib = Math.pow(10, precision);
-    return Math.floor((hb.random() * (1 + max - min) + min) * ib) / ib;
+    const jb = Math.pow(10, precision);
+    return Math.floor((ib.random() * (1 + max - min) + min) * jb) / jb;
 };
-const object = (jb, ...kb)=>{
-    return kb.reduce((lb, mb)=>{
-        return jb.recurse(jb, mb);
+const object = (kb, ...lb)=>{
+    return lb.reduce((mb, nb)=>{
+        return kb.recurse(kb, nb);
     }, {
     });
 };
-const json = (nb, ...ob)=>{
-    return JSON.stringify(nb.object(...ob));
+const json = (ob, ...pb)=>{
+    return JSON.stringify(ob.object(...pb));
 };
-const array = (pb, qb, rb, sb = (tb)=>tb
+const array = (qb, rb, sb, tb = (ub)=>ub
 )=>{
-    const ub = typeof sb === "string" ? (vb)=>vb.join(sb)
-     : sb;
-    const wb = typeof qb === "object" && qb.constructor === Object ? pb.number(qb) : pb.recurse(pb.clone(), qb);
-    return ub(pb.recurse(pb, Array(wb).fill(rb)));
+    const vb = typeof tb === "string" ? (wb)=>wb.join(tb)
+     : tb;
+    const xb = typeof rb === "object" && rb.constructor === Object ? qb.number(rb) : qb.recurse(qb.clone(), rb);
+    return vb(qb.recurse(qb, Array(xb).fill(sb)));
 };
-const string = (xb, [yb, ...zb], ...Ab)=>{
-    const Bb = xb.recurse(xb, Ab);
-    return zb.reduce((Cb, Db, Eb)=>`${Cb}${Bb[Eb]}${Db}`
-    , yb);
+const string = (yb, [zb, ...Ab], ...Bb)=>{
+    const Cb = yb.recurse(yb, Bb);
+    return Ab.reduce((Db, Eb, Fb)=>`${Db}${Cb[Fb]}${Eb}`
+    , zb);
 };
-const Fiona = (Fb, Gb = [])=>new Moon(__default2, Fb, Gb)
+const Fiona = (Gb, Hb = [])=>new Moon(__default2, Gb, Hb)
 ;
 Fiona.version = __default.version;
-const registerFactory = (Hb, Ib)=>{
-    const Jb = (...Kb)=>Ib(...Kb)
+const registerFactory = (Ib, Jb)=>{
+    const Kb = (...Lb)=>Jb(...Lb)
     ;
-    registered.push(Jb);
-    return Fiona[Hb] = Jb;
+    registered.push(Kb);
+    return Fiona[Ib] = Kb;
 };
-const registerMethod = (Lb, Mb)=>{
-    return Moon.prototype[Lb] = Mb;
+const registerMethod = (Mb, Nb)=>{
+    return Moon.prototype[Mb] = Nb;
 };
 Fiona.register = Register(registerFactory, registerMethod);
-Fiona.Random = ()=>(Nb)=>Nb.random()
+Fiona.Random = ()=>(Ob)=>Ob.random()
 ;
-const clone = (Ob)=>Fiona(Ob.info().initseed).state(Ob.state())
+const clone = (Pb)=>Fiona(Pb.info().initseed).state(Pb.state())
 ;
 Fiona.register([
     "clone", clone]);
@@ -272,174 +275,169 @@ Fiona.register([
     "json", json], [
     "string", string], [
     "array", array]);
-const bool = (Pb, { chance =0.5  } = {
-})=>Pb.random() < chance
+const bool = (Qb, { chance =0.5  } = {
+})=>Qb.random() < chance
 ;
-const chooser = (Qb, Rb, Sb)=>{
-    const Tb = Rb.reduce((Ub, Vb, Wb)=>{
-        Ub.push((Ub[Wb - 1] || 0) + (typeof Sb[Wb] === "number" ? Sb[Wb] : 1));
-        return Ub;
+const chooser = (Rb, Sb, Tb)=>{
+    const Ub = Sb.reduce((Vb, Wb, Xb)=>{
+        Vb.push((Vb[Xb - 1] || 0) + (typeof Tb[Xb] === "number" ? Tb[Xb] : 1));
+        return Vb;
     }, []);
-    const Xb = Qb * Tb[Tb.length - 1];
-    let Yb;
-    Tb.every((Zb, $b)=>{
-        if (Xb > Zb) {
+    const Yb = Rb * Ub[Ub.length - 1];
+    let Zb;
+    Ub.every(($b, _b)=>{
+        if (Yb > $b) {
             return true;
         } else {
-            Yb = $b;
+            Zb = _b;
             return false;
         }
     });
-    return Yb;
+    return Zb;
 };
-const choose = (_b, ac, bc, { weights =[]  } = {
+const choose = (ac, bc, cc, { weights =[]  } = {
 })=>{
-    const cc = bc.slice(0);
-    const dc = weights.slice(0);
-    return Array(ac || 0).fill(null).map(()=>{
-        const ec = chooser(_b.random(), cc, dc);
-        const fc = cc[ec];
-        cc[ec] = cc[0];
-        cc.shift();
-        return fc;
+    const dc = cc.slice(0);
+    const ec = weights.slice(0);
+    return Array(bc || 0).fill(null).map(()=>{
+        const fc = chooser(ac.random(), dc, ec);
+        const gc = dc[fc];
+        dc[fc] = dc[0];
+        dc.shift();
+        return gc;
     });
 };
-const oneOf = (gc, hc, { weights =[]  } = {
+const oneOf = (hc, ic, { weights =[]  } = {
 })=>{
-    return hc[chooser(gc.random(), hc, weights)];
+    return ic[chooser(hc.random(), ic, weights)];
 };
-const date = (ic, { min ="1940" , max ="2000" , long: jc = false  } = {
+const date = (jc, { min ="1940" , max ="2000" , long: kc = false  } = {
 })=>{
-    const kc = new Date(min) * 1;
-    const lc = new Date(max) * 1;
-    if (kc > lc) {
+    const lc = new Date(min) * 1;
+    const mc = new Date(max) * 1;
+    if (lc > mc) {
         throw Error(`min date must be lower than max date`);
     }
-    const mc = lc - kc;
-    const nc = new Date(ic.number({
-        max: mc
-    }) + kc).toISOString();
-    return jc ? nc : nc.slice(0, 10);
+    const nc = mc - lc;
+    const oc = new Date(jc.number({
+        max: nc
+    }) + lc).toISOString();
+    return kc ? oc : oc.slice(0, 10);
 };
-const RGB = (oc, pc, qc)=>"#" + [
-        oc,
+const RGB = (pc, qc, rc)=>"#" + [
         pc,
-        qc
-    ].map((rc)=>`0${rc.toString(16)}`.slice(-2)
+        qc,
+        rc
+    ].map((sc)=>`0${sc.toString(16)}`.slice(-2)
     ).join("")
 ;
-const getme = (sc)=>{
-    return sc.slice(1).match(/(..)/g).map((tc)=>parseInt(tc, 16)
+const getme = (tc)=>{
+    return tc.slice(1).match(/(..)/g).map((uc)=>parseInt(uc, 16)
     );
 };
-const mapper = (uc, vc)=>(wc)=>{
-        return uc.reduce((xc, yc, zc)=>{
-            const Ac = Math.min(vc[zc], uc[zc]);
-            const Bc = Math.max(vc[zc], uc[zc]);
-            const Cc = Bc - Ac;
-            return `${xc}${(Ac + Math.ceil(Cc * wc)).toString(16)}`;
+const mapper = (vc, wc)=>(xc)=>{
+        return vc.reduce((yc, zc, Ac)=>{
+            const Bc = Math.min(wc[Ac], vc[Ac]);
+            const Cc = Math.max(wc[Ac], vc[Ac]);
+            const Dc = Cc - Bc;
+            return `${yc}${(Bc + Math.ceil(Dc * xc)).toString(16)}`;
         }, "#");
     }
 ;
-const colorMapperFactory = (Dc)=>{
-    const Ec = Dc.map(({ start , end  })=>mapper(getme(start), getme(end))
+const colorMapperFactory = (Ec)=>{
+    const Fc = Ec.map(({ start , end  })=>mapper(getme(start), getme(end))
     );
-    return (Fc)=>{
-        const Gc = Math.floor(Dc.length * Fc);
-        return Ec[Gc](Fc);
+    return (Gc)=>{
+        const Hc = Math.floor(Ec.length * Gc);
+        return Fc[Hc](Gc);
     };
 };
-const img = (Hc, Ic)=>{
-    const { seed , width , height , bg , colors  } = Object.assign(Hc.object({
-        seed: Hc.number(),
+const img = (Ic, Jc)=>{
+    const { seed , width , height , bg , colors  } = Object.assign(Ic.object({
+        seed: Ic.number(),
         width: 1000,
         height: 1000,
-        bg: RGB(Hc.number({
+        bg: RGB(Ic.number({
             max: 255
-        }), Hc.number({
+        }), Ic.number({
             max: 255
-        }), Hc.number({
+        }), Ic.number({
             max: 255
         })),
-        colors: Hc.array({
+        colors: Ic.array({
             min: 1,
             max: 10
-        }, (Jc)=>({
-                start: RGB(Jc.number({
+        }, (Kc)=>({
+                start: RGB(Kc.number({
                     max: 255
-                }), Jc.number({
+                }), Kc.number({
                     max: 255
-                }), Jc.number({
+                }), Kc.number({
                     max: 255
                 })),
-                end: RGB(Jc.number({
+                end: RGB(Kc.number({
                     max: 255
-                }), Jc.number({
+                }), Kc.number({
                     max: 255
-                }), Jc.number({
+                }), Kc.number({
                     max: 255
                 }))
             })
         )
-    }), Ic);
-    const Kc = colorMapperFactory(colors);
-    const Lc = [];
-    for(let Mc = 0; Mc < 100; Mc++){
-        const Nc = Kc(Mc / 100);
-        const Oc = seed * Mc % 360;
-        const [Pc, Qc, Rc, Sc] = [
-            5 * Mc,
+    }), Jc);
+    const Lc = colorMapperFactory(colors);
+    const Mc = [];
+    for(let Nc = 0; Nc < 100; Nc++){
+        const Oc = Lc(Nc / 100);
+        const Pc = seed * Nc % 360;
+        const [Qc, Rc, Sc, Tc] = [
+            5 * Nc,
             5 / seed,
-            Mc * seed,
-            Mc
-        ].map(Math.floor).map((Tc)=>Tc % (Math.max(width, height) * 3)
+            Nc * seed,
+            Nc
+        ].map(Math.floor).map((Uc)=>Uc % (Math.max(width, height) * 3)
         );
-        Lc.push(`<rect x="${Pc}" y="${Qc}" width="${Rc}" height="${Sc}" transform="rotate(${Oc})" fill="${Nc}" />`);
+        Mc.push(`<rect x="${Qc}" y="${Rc}" width="${Sc}" height="${Tc}" transform="rotate(${Pc})" fill="${Oc}" />`);
     }
-    const Uc = (Vc)=>encodeURIComponent(`
+    const Vc = (Wc)=>encodeURIComponent(`
     <svg width="${width}" height="${height}" viewBox="${-1 * width} ${-1 * height} ${width * 2} ${height * 2}" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <style>svg { background-color: ${bg}; }</style>
-      ${Vc}
+      ${Wc}
     </svg>
   `)
     ;
-    return `data:image/svg+xml;utf8,${Uc(Lc.join("\n"))}`;
+    return `data:image/svg+xml;utf8,${Vc(Mc.join("\n"))}`;
 };
-const duplicable = (Wc, { frequency =0.1 , pool =10  } = {
+const duplicable = (Xc, { frequency =0.1 , pool =10  } = {
 })=>{
-    if (Wc.random() <= frequency) {
-        Wc.reset((Math.floor(Wc.random() * pool + 1) / pool + 1) * 10000000000000000);
+    if (Xc.random() <= frequency) {
+        Xc.reset((Math.floor(Xc.random() * pool + 1) / pool + 1) * 10000000000000000);
     }
-    return Wc;
+    return Xc;
 };
-const lorem = (Xc, { qty =15  } = {
+const lorem = (Yc, { qty =15  } = {
 })=>{
-    const Yc = Xc.random() < 0.2 ? "lorem ipsum " : "";
-    let Zc = [];
-    while(Zc.length < qty){
-        Zc = Zc.concat("dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum".split(" "));
+    const Zc = Yc.random() < 0.2 ? "lorem ipsum " : "";
+    let $c = [];
+    while($c.length < qty){
+        $c = $c.concat("dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum".split(" "));
     }
-    const $c = Math.ceil(qty - qty / 3);
-    const _c = Math.ceil(qty + qty / 3) - 2;
-    return Yc + Xc.choose(Xc.number({
-        min: $c,
-        max: _c
-    }), Zc).join(" ");
+    return Zc + Yc.choose(qty, $c).join(" ");
 };
-const word = (ad)=>ad.lorem({
+const word = (_c)=>_c.lorem({
         qty: 1
     }).split(" ")[0]
 ;
-const sentence = (bd)=>{
-    const cd = bd.lorem({
+const sentence = (ad)=>{
+    const bd = ad.lorem({
         qty: 25
     });
-    return cd[0].toUpperCase() + cd.slice(1) + ".";
+    return bd[0].toUpperCase() + bd.slice(1) + ".";
 };
-const paragraph = (dd)=>Array(dd.number({
+const paragraph = (cd)=>Array(cd.number({
         min: 1,
         max: 10
-    })).fill(0).map(()=>dd.sentence()
+    })).fill(0).map(()=>cd.sentence()
     ).join("  ")
 ;
 const namedata = {
@@ -688,54 +686,59 @@ const namedata = {
     ]
 };
 const namedata1 = namedata;
-const getGender = (ed)=>ed && (ed[0].toLowerCase() === "f" ? "female" : "male")
+const getGender = (dd)=>dd && (dd[0].toLowerCase() === "f" ? "female" : "male")
 ;
-const gender = (fd)=>{
-    return fd.random() < 0.5 ? "male" : "female";
+const gender = (ed)=>{
+    return ed.random() < 0.5 ? "male" : "female";
 };
-const title = (gd, { gender: hd  } = {
+const title = (fd, { gender  } = {
 })=>{
-    return gd.oneOf(namedata[getGender(hd || gd.gender())].title);
+    return fd.oneOf(namedata[getGender(gender || fd.gender())].title, {
+        weights: [
+            5,
+            3
+        ]
+    });
 };
-const firstname = (id, { gender: jd  } = {
+const firstname = (gd, { gender  } = {
 })=>{
-    return id.oneOf(namedata[getGender(jd || id.gender())].firstname);
+    return gd.oneOf(namedata[getGender(gender || gd.gender())].firstname);
 };
-const firstnames = (kd, { gender: ld  } = {
+const firstnames = (hd, { gender  } = {
 })=>{
-    return kd.choose(kd.clone().distribution((md)=>md * md * md
+    return hd.choose(hd.clone().distribution((id)=>id * id * id
     ).number({
         min: 1,
         max: 3
-    }), namedata[getGender(ld || kd.gender())].firstname).join(" ");
+    }), namedata[getGender(gender || hd.gender())].firstname).join(" ");
 };
-const surname = (nd)=>{
-    return nd.choose(nd.clone().distribution((od)=>od * od * od
+const surname = (jd)=>{
+    return jd.choose(jd.clone().distribution((kd)=>kd * kd * kd
     ).number({
         min: 1,
         max: 2
-    }), namedata.surname).join(nd.bool() ? " " : "-");
+    }), namedata.surname).join(jd.bool() ? " " : "-");
 };
-const fullname = (pd, { gender: qd  } = {
+const fullname = (ld, { gender  } = {
 })=>{
-    const rd = getGender(qd || pd.gender());
-    return `${pd.title({
-        gender: rd
-    })} ${pd.firstnames({
-        gender: rd
-    })} ${pd.surname()}`;
+    const md = getGender(gender || ld.gender());
+    return `${ld.title({
+        gender: md
+    })} ${ld.firstnames({
+        gender: md
+    })} ${ld.surname()}`;
 };
-const regex = (sd)=>(td, ud = /[A-F0-9]{16}/)=>{
-        const vd = new sd(RegExp(ud));
-        vd.randInt = (wd, xd)=>wd + Math.floor(td.random() * (1 + xd - wd))
+const regex = (nd)=>(od, pd = /[A-F0-9]{16}/)=>{
+        const qd = new nd(RegExp(pd));
+        qd.randInt = (rd, sd)=>rd + Math.floor(od.random() * (1 + sd - rd))
         ;
-        return vd.gen();
+        return qd.gen();
     }
 ;
-const shuffle = (yd, zd, { qty  } = {
-})=>yd.choose(typeof qty !== "undefined" ? qty : zd.length, zd)
+const shuffle = (td, ud, { qty  } = {
+})=>td.choose(typeof qty !== "undefined" ? qty : ud.length, ud)
 ;
-const __default3 = (Ad)=>{
+const __default3 = (vd)=>{
     Fiona.register([
         "bool", bool], [
         "choose", choose], [
@@ -754,7 +757,7 @@ const __default3 = (Ad)=>{
         "surname", surname], [
         "fullname", fullname], [
         "regex",
-        regex(Ad)
+        regex(vd)
     ], [
         "shuffle", shuffle]);
     Fiona.namedata = namedata1;
@@ -765,120 +768,120 @@ var g = Object.defineProperty;
 var v = Object.getOwnPropertyDescriptor;
 var d = Object.getOwnPropertyNames;
 var p = Object.getPrototypeOf, m = Object.prototype.hasOwnProperty;
-var M = (Bd)=>g(Bd, "__esModule", {
+var M = (wd)=>g(wd, "__esModule", {
         value: !0
     })
 ;
-var x = (Cd, Dd)=>()=>(Dd || Cd((Dd = {
+var x = (xd, yd)=>()=>(yd || xd((yd = {
             exports: {
             }
-        }).exports, Dd), Dd.exports)
+        }).exports, yd), yd.exports)
 ;
-var E = (Ed, Fd, Gd)=>{
-    if (Fd && typeof Fd == "object" || typeof Fd == "function") for (let Hd of d(Fd))!m.call(Ed, Hd) && Hd !== "default" && g(Ed, Hd, {
-        get: ()=>Fd[Hd]
+var E = (zd, Ad, Bd)=>{
+    if (Ad && typeof Ad == "object" || typeof Ad == "function") for (let Cd of d(Ad))!m.call(zd, Cd) && Cd !== "default" && g(zd, Cd, {
+        get: ()=>Ad[Cd]
         ,
-        enumerable: !(Gd = v(Fd, Hd)) || Gd.enumerable
+        enumerable: !(Bd = v(Ad, Cd)) || Bd.enumerable
     });
-    return Ed;
-}, _ = (Id)=>E(M(g(Id != null ? f(p(Id)) : {
-    }, "default", Id && Id.__esModule && "default" in Id ? {
-        get: ()=>Id.default
+    return zd;
+}, _ = (Dd)=>E(M(g(Dd != null ? f(p(Dd)) : {
+    }, "default", Dd && Dd.__esModule && "default" in Dd ? {
+        get: ()=>Dd.default
         ,
         enumerable: !0
     } : {
-        value: Id,
+        value: Dd,
         enumerable: !0
-    })), Id)
+    })), Dd)
 ;
-var w = x((Jd, Kd)=>{
+var w = x((Ed, Fd)=>{
     "use strict";
-    var Ld = class _class {
-        overlaps(Md) {
-            return !(this.high < Md.low || this.low > Md.high);
+    var Gd = class _class {
+        overlaps(Hd) {
+            return !(this.high < Hd.low || this.low > Hd.high);
         }
-        touches(Nd) {
-            return !(this.high + 1 < Nd.low || this.low - 1 > Nd.high);
+        touches(Id) {
+            return !(this.high + 1 < Id.low || this.low - 1 > Id.high);
         }
-        add(Od) {
-            return new Ld(Math.min(this.low, Od.low), Math.max(this.high, Od.high));
+        add(Jd) {
+            return new Gd(Math.min(this.low, Jd.low), Math.max(this.high, Jd.high));
         }
-        subtract(Pd) {
-            return Pd.low <= this.low && Pd.high >= this.high ? [] : Pd.low > this.low && Pd.high < this.high ? [
-                new Ld(this.low, Pd.low - 1),
-                new Ld(Pd.high + 1, this.high)
-            ] : Pd.low <= this.low ? [
-                new Ld(Pd.high + 1, this.high)
+        subtract(Kd) {
+            return Kd.low <= this.low && Kd.high >= this.high ? [] : Kd.low > this.low && Kd.high < this.high ? [
+                new Gd(this.low, Kd.low - 1),
+                new Gd(Kd.high + 1, this.high)
+            ] : Kd.low <= this.low ? [
+                new Gd(Kd.high + 1, this.high)
             ] : [
-                new Ld(this.low, Pd.low - 1)
+                new Gd(this.low, Kd.low - 1)
             ];
         }
         toString() {
             return this.low == this.high ? this.low.toString() : this.low + "-" + this.high;
         }
-        constructor(Qd, Rd){
-            this.low = Qd, this.high = Rd, this.length = 1 + Rd - Qd;
+        constructor(Ld, Md){
+            this.low = Ld, this.high = Md, this.length = 1 + Md - Ld;
         }
-    }, Sd = class _class {
+    }, Nd = class _class {
         _update_length() {
-            this.length = this.ranges.reduce((Td, Ud)=>Td + Ud.length
+            this.length = this.ranges.reduce((Od, Pd)=>Od + Pd.length
             , 0);
         }
-        add(Vd, Wd) {
-            var Xd = (Yd)=>{
-                for(var Zd = 0; Zd < this.ranges.length && !Yd.touches(this.ranges[Zd]);)Zd++;
-                for(var $d = this.ranges.slice(0, Zd); Zd < this.ranges.length && Yd.touches(this.ranges[Zd]);)Yd = Yd.add(this.ranges[Zd]), Zd++;
-                $d.push(Yd), this.ranges = $d.concat(this.ranges.slice(Zd)), this._update_length();
+        add(Qd, Rd) {
+            var Sd = (Td)=>{
+                for(var Ud = 0; Ud < this.ranges.length && !Td.touches(this.ranges[Ud]);)Ud++;
+                for(var Vd = this.ranges.slice(0, Ud); Ud < this.ranges.length && Td.touches(this.ranges[Ud]);)Td = Td.add(this.ranges[Ud]), Ud++;
+                Vd.push(Td), this.ranges = Vd.concat(this.ranges.slice(Ud)), this._update_length();
             };
-            return Vd instanceof Sd ? Vd.ranges.forEach(Xd) : (Wd == null && (Wd = Vd), Xd(new Ld(Vd, Wd))), this;
+            return Qd instanceof Nd ? Qd.ranges.forEach(Sd) : (Rd == null && (Rd = Qd), Sd(new Gd(Qd, Rd))), this;
         }
-        subtract(_d, ae) {
-            var be = (ce)=>{
-                for(var de = 0; de < this.ranges.length && !ce.overlaps(this.ranges[de]);)de++;
-                for(var ee = this.ranges.slice(0, de); de < this.ranges.length && ce.overlaps(this.ranges[de]);)ee = ee.concat(this.ranges[de].subtract(ce)), de++;
-                this.ranges = ee.concat(this.ranges.slice(de)), this._update_length();
+        subtract(Wd, Xd) {
+            var Yd = (Zd)=>{
+                for(var $d = 0; $d < this.ranges.length && !Zd.overlaps(this.ranges[$d]);)$d++;
+                for(var _d = this.ranges.slice(0, $d); $d < this.ranges.length && Zd.overlaps(this.ranges[$d]);)_d = _d.concat(this.ranges[$d].subtract(Zd)), $d++;
+                this.ranges = _d.concat(this.ranges.slice($d)), this._update_length();
             };
-            return _d instanceof Sd ? _d.ranges.forEach(be) : (ae == null && (ae = _d), be(new Ld(_d, ae))), this;
+            return Wd instanceof Nd ? Wd.ranges.forEach(Yd) : (Xd == null && (Xd = Wd), Yd(new Gd(Wd, Xd))), this;
         }
-        intersect(fe, ge) {
-            var he = [], ie = (je)=>{
-                for(var ke = 0; ke < this.ranges.length && !je.overlaps(this.ranges[ke]);)ke++;
-                for(; ke < this.ranges.length && je.overlaps(this.ranges[ke]);){
-                    var le = Math.max(this.ranges[ke].low, je.low), me = Math.min(this.ranges[ke].high, je.high);
-                    he.push(new Ld(le, me)), ke++;
+        intersect(ae, be) {
+            var ce = [], de = (ee)=>{
+                for(var fe = 0; fe < this.ranges.length && !ee.overlaps(this.ranges[fe]);)fe++;
+                for(; fe < this.ranges.length && ee.overlaps(this.ranges[fe]);){
+                    var ge = Math.max(this.ranges[fe].low, ee.low), he = Math.min(this.ranges[fe].high, ee.high);
+                    ce.push(new Gd(ge, he)), fe++;
                 }
             };
-            return fe instanceof Sd ? fe.ranges.forEach(ie) : (ge == null && (ge = fe), ie(new Ld(fe, ge))), this.ranges = he, this._update_length(), this;
+            return ae instanceof Nd ? ae.ranges.forEach(de) : (be == null && (be = ae), de(new Gd(ae, be))), this.ranges = ce, this._update_length(), this;
         }
-        index(ne) {
-            for(var oe = 0; oe < this.ranges.length && this.ranges[oe].length <= ne;)ne -= this.ranges[oe].length, oe++;
-            return this.ranges[oe].low + ne;
+        index(ie) {
+            for(var je = 0; je < this.ranges.length && this.ranges[je].length <= ie;)ie -= this.ranges[je].length, je++;
+            return this.ranges[je].low + ie;
         }
         toString() {
             return "[ " + this.ranges.join(", ") + " ]";
         }
         clone() {
-            return new Sd(this);
+            return new Nd(this);
         }
         numbers() {
-            return this.ranges.reduce((pe, qe)=>{
-                for(var re = qe.low; re <= qe.high;)pe.push(re), re++;
-                return pe;
+            return this.ranges.reduce((ke, le)=>{
+                for(var me = le.low; me <= le.high;)ke.push(me), me++;
+                return ke;
             }, []);
         }
         subranges() {
-            return this.ranges.map((se)=>({
-                    low: se.low,
-                    high: se.high,
-                    length: 1 + se.high - se.low
+            return this.ranges.map((ne)=>({
+                    low: ne.low,
+                    high: ne.high,
+                    length: 1 + ne.high - ne.low
                 })
             );
         }
-        constructor(te, ue){
-            this.ranges = [], this.length = 0, te != null && this.add(te, ue);
+        constructor(pe, qe){
+            this.ranges = [], this.length = 0, pe != null && this.add(pe, qe);
         }
     };
-    Kd.exports = Sd;
+    Fd.exports = Nd;
 });
 var j = _(w());
 var export_default = j.default;
@@ -887,34 +890,34 @@ var N = Object.defineProperty;
 var _1 = Object.getOwnPropertyDescriptor;
 var z = Object.getOwnPropertyNames;
 var Y = Object.getPrototypeOf, Z = Object.prototype.hasOwnProperty;
-var J = (ve)=>N(ve, "__esModule", {
+var J = (re)=>N(re, "__esModule", {
         value: !0
     })
 ;
-var E1 = (we, xe)=>()=>(xe || we((xe = {
+var E1 = (se, te)=>()=>(te || se((te = {
             exports: {
             }
-        }).exports, xe), xe.exports)
+        }).exports, te), te.exports)
 ;
-var K = (ye, ze, Ae)=>{
-    if (ze && typeof ze == "object" || typeof ze == "function") for (let Be of z(ze))!Z.call(ye, Be) && Be !== "default" && N(ye, Be, {
-        get: ()=>ze[Be]
+var K = (ue, ve, we)=>{
+    if (ve && typeof ve == "object" || typeof ve == "function") for (let xe of z(ve))!Z.call(ue, xe) && xe !== "default" && N(ue, xe, {
+        get: ()=>ve[xe]
         ,
-        enumerable: !(Ae = _1(ze, Be)) || Ae.enumerable
+        enumerable: !(we = _1(ve, xe)) || we.enumerable
     });
-    return ye;
-}, x1 = (Ce)=>K(J(N(Ce != null ? L(Y(Ce)) : {
-    }, "default", Ce && Ce.__esModule && "default" in Ce ? {
-        get: ()=>Ce.default
+    return ue;
+}, x1 = (ye)=>K(J(N(ye != null ? L(Y(ye)) : {
+    }, "default", ye && ye.__esModule && "default" in ye ? {
+        get: ()=>ye.default
         ,
         enumerable: !0
     } : {
-        value: Ce,
+        value: ye,
         enumerable: !0
-    })), Ce)
+    })), ye)
 ;
-var I = E1((De, Ee)=>{
-    Ee.exports = {
+var I = E1((ze, Ae)=>{
+    Ae.exports = {
         ROOT: 0,
         GROUP: 1,
         POSITION: 2,
@@ -925,157 +928,157 @@ var I = E1((De, Ee)=>{
         CHAR: 7
     };
 });
-var S = E1((Fe)=>{
-    var Ge = I(), He = ()=>[
+var S = E1((Be)=>{
+    var Ce = I(), De = ()=>[
             {
-                type: Ge.RANGE,
+                type: Ce.RANGE,
                 from: 48,
                 to: 57
             }
         ]
-    , Ie = ()=>[
+    , Ee = ()=>[
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 95
             },
             {
-                type: Ge.RANGE,
+                type: Ce.RANGE,
                 from: 97,
                 to: 122
             },
             {
-                type: Ge.RANGE,
+                type: Ce.RANGE,
                 from: 65,
                 to: 90
             }
-        ].concat(He())
-    , Je = ()=>[
+        ].concat(De())
+    , Fe = ()=>[
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 9
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 10
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 11
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 12
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 13
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 32
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 160
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 5760
             },
             {
-                type: Ge.RANGE,
+                type: Ce.RANGE,
                 from: 8192,
                 to: 8202
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 8232
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 8233
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 8239
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 8287
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 12288
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 65279
             }
         ]
-    , Ke = ()=>[
+    , Ge = ()=>[
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 10
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 13
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 8232
             },
             {
-                type: Ge.CHAR,
+                type: Ce.CHAR,
                 value: 8233
             }
         ]
     ;
-    Fe.words = ()=>({
-            type: Ge.SET,
-            set: Ie(),
+    Be.words = ()=>({
+            type: Ce.SET,
+            set: Ee(),
             not: !1
         })
     ;
-    Fe.notWords = ()=>({
-            type: Ge.SET,
-            set: Ie(),
+    Be.notWords = ()=>({
+            type: Ce.SET,
+            set: Ee(),
             not: !0
         })
     ;
-    Fe.ints = ()=>({
-            type: Ge.SET,
-            set: He(),
+    Be.ints = ()=>({
+            type: Ce.SET,
+            set: De(),
             not: !1
         })
     ;
-    Fe.notInts = ()=>({
-            type: Ge.SET,
-            set: He(),
+    Be.notInts = ()=>({
+            type: Ce.SET,
+            set: De(),
             not: !0
         })
     ;
-    Fe.whitespace = ()=>({
-            type: Ge.SET,
-            set: Je(),
+    Be.whitespace = ()=>({
+            type: Ce.SET,
+            set: Fe(),
             not: !1
         })
     ;
-    Fe.notWhitespace = ()=>({
-            type: Ge.SET,
-            set: Je(),
+    Be.notWhitespace = ()=>({
+            type: Ce.SET,
+            set: Fe(),
             not: !0
         })
     ;
-    Fe.anyChar = ()=>({
-            type: Ge.SET,
-            set: Ke(),
+    Be.anyChar = ()=>({
+            type: Ce.SET,
+            set: Ge(),
             not: !0
         })
     ;
 });
-var F = E1((Le)=>{
-    var Me = I(), Ne = S(), Oe = "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^ ?", Pe = {
+var F = E1((He)=>{
+    var Ie = I(), Je = S(), Ke = "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^ ?", Le = {
         "0": 0,
         t: 9,
         n: 10,
@@ -1083,313 +1086,309 @@ var F = E1((Le)=>{
         f: 12,
         r: 13
     };
-    Le.strToChars = function(Qe) {
-        var Re = /(\[\\b\])|(\\)?\\(?:u([A-F0-9]{4})|x([A-F0-9]{2})|(0?[0-7]{2})|c([@A-Z[\\\]^?])|([0tnvfr]))/g;
-        return Qe = Qe.replace(Re, function(Se, Te, Ue, Ve, We, Xe, Ye, Ze) {
-            if (Ue) return Se;
-            var $e = Te ? 8 : Ve ? parseInt(Ve, 16) : We ? parseInt(We, 16) : Xe ? parseInt(Xe, 8) : Ye ? Oe.indexOf(Ye) : Pe[Ze], _e = String.fromCharCode($e);
-            return /[[\]{}^$.|?*+()]/.test(_e) && (_e = "\\" + _e), _e;
-        }), Qe;
+    He.strToChars = function(Me) {
+        var Ne = /(\[\\b\])|(\\)?\\(?:u([A-F0-9]{4})|x([A-F0-9]{2})|(0?[0-7]{2})|c([@A-Z[\\\]^?])|([0tnvfr]))/g;
+        return Me = Me.replace(Ne, function(Oe, Pe, Qe, Re, Se, Te, Ue, Ve) {
+            if (Qe) return Oe;
+            var We = Pe ? 8 : Re ? parseInt(Re, 16) : Se ? parseInt(Se, 16) : Te ? parseInt(Te, 8) : Ue ? Ke.indexOf(Ue) : Le[Ve], Xe = String.fromCharCode(We);
+            return /[[\]{}^$.|?*+()]/.test(Xe) && (Xe = "\\" + Xe), Xe;
+        }), Me;
     };
-    Le.tokenizeClass = (af, bf)=>{
-        for(var cf = [], df = /\\(?:(w)|(d)|(s)|(W)|(D)|(S))|((?:(?:\\)(.)|([^\]\\]))-(?:\\)?([^\]]))|(\])|(?:\\)?([^])/g, ef, ff; (ef = df.exec(af)) != null;)if (ef[1]) cf.push(Ne.words());
-        else if (ef[2]) cf.push(Ne.ints());
-        else if (ef[3]) cf.push(Ne.whitespace());
-        else if (ef[4]) cf.push(Ne.notWords());
-        else if (ef[5]) cf.push(Ne.notInts());
-        else if (ef[6]) cf.push(Ne.notWhitespace());
-        else if (ef[7]) cf.push({
-            type: Me.RANGE,
-            from: (ef[8] || ef[9]).charCodeAt(0),
-            to: ef[10].charCodeAt(0)
+    He.tokenizeClass = (Ye, Ze)=>{
+        for(var $e = [], _e = /\\(?:(w)|(d)|(s)|(W)|(D)|(S))|((?:(?:\\)(.)|([^\]\\]))-(?:\\)?([^\]]))|(\])|(?:\\)?([^])/g, af, bf; (af = _e.exec(Ye)) != null;)if (af[1]) $e.push(Je.words());
+        else if (af[2]) $e.push(Je.ints());
+        else if (af[3]) $e.push(Je.whitespace());
+        else if (af[4]) $e.push(Je.notWords());
+        else if (af[5]) $e.push(Je.notInts());
+        else if (af[6]) $e.push(Je.notWhitespace());
+        else if (af[7]) $e.push({
+            type: Ie.RANGE,
+            from: (af[8] || af[9]).charCodeAt(0),
+            to: af[10].charCodeAt(0)
         });
-        else if (ff = ef[12]) cf.push({
-            type: Me.CHAR,
-            value: ff.charCodeAt(0)
+        else if (bf = af[12]) $e.push({
+            type: Ie.CHAR,
+            value: bf.charCodeAt(0)
         });
         else return [
-            cf,
-            df.lastIndex
+            $e,
+            _e.lastIndex
         ];
-        Le.error(bf, "Unterminated character class");
+        He.error(Ze, "Unterminated character class");
     };
-    Le.error = (gf, hf)=>{
-        throw new SyntaxError("Invalid regular expression: /" + gf + "/: " + hf);
+    He.error = (cf, df)=>{
+        throw new SyntaxError("Invalid regular expression: /" + cf + "/: " + df);
     };
 });
-var U = E1((jf)=>{
-    var kf = I();
-    jf.wordBoundary = ()=>({
-            type: kf.POSITION,
+var U = E1((ef)=>{
+    var ff = I();
+    ef.wordBoundary = ()=>({
+            type: ff.POSITION,
             value: "b"
         })
     ;
-    jf.nonWordBoundary = ()=>({
-            type: kf.POSITION,
+    ef.nonWordBoundary = ()=>({
+            type: ff.POSITION,
             value: "B"
         })
     ;
-    jf.begin = ()=>({
-            type: kf.POSITION,
+    ef.begin = ()=>({
+            type: ff.POSITION,
             value: "^"
         })
     ;
-    jf.end = ()=>({
-            type: kf.POSITION,
+    ef.end = ()=>({
+            type: ff.POSITION,
             value: "$"
         })
     ;
 });
-var P = E1((lf, mf)=>{
-    var nf = F(), of = I(), pf = S(), qf = U();
-    mf.exports = (rf)=>{
-        var sf = 0, tf, uf, vf = {
-            type: of.ROOT,
+var P = E1((gf, hf)=>{
+    var jf = F(), kf = I(), lf = S(), mf = U();
+    hf.exports = (nf)=>{
+        var of = 0, pf, qf, rf = {
+            type: kf.ROOT,
             stack: []
-        }, wf = vf, xf = vf.stack, yf = [], zf = (Af)=>{
-            nf.error(rf, `Nothing to repeat at column ${Af - 1}`);
-        }, Bf = nf.strToChars(rf);
-        for(tf = Bf.length; sf < tf;)switch(uf = Bf[sf++], uf){
+        }, sf = rf, tf = rf.stack, uf = [], vf = (wf)=>{
+            jf.error(nf, `Nothing to repeat at column ${wf - 1}`);
+        }, xf = jf.strToChars(nf);
+        for(pf = xf.length; of < pf;)switch(qf = xf[of++], qf){
             case "\\":
-                switch(uf = Bf[sf++], uf){
+                switch(qf = xf[of++], qf){
                     case "b":
-                        xf.push(qf.wordBoundary());
+                        tf.push(mf.wordBoundary());
                         break;
                     case "B":
-                        xf.push(qf.nonWordBoundary());
+                        tf.push(mf.nonWordBoundary());
                         break;
                     case "w":
-                        xf.push(pf.words());
+                        tf.push(lf.words());
                         break;
                     case "W":
-                        xf.push(pf.notWords());
+                        tf.push(lf.notWords());
                         break;
                     case "d":
-                        xf.push(pf.ints());
+                        tf.push(lf.ints());
                         break;
                     case "D":
-                        xf.push(pf.notInts());
+                        tf.push(lf.notInts());
                         break;
                     case "s":
-                        xf.push(pf.whitespace());
+                        tf.push(lf.whitespace());
                         break;
                     case "S":
-                        xf.push(pf.notWhitespace());
+                        tf.push(lf.notWhitespace());
                         break;
                     default:
-                        /\d/.test(uf) ? xf.push({
-                            type: of.REFERENCE,
-                            value: parseInt(uf, 10)
-                        }) : xf.push({
-                            type: of.CHAR,
-                            value: uf.charCodeAt(0)
+                        /\d/.test(qf) ? tf.push({
+                            type: kf.REFERENCE,
+                            value: parseInt(qf, 10)
+                        }) : tf.push({
+                            type: kf.CHAR,
+                            value: qf.charCodeAt(0)
                         });
                 }
                 break;
             case "^":
-                xf.push(qf.begin());
+                tf.push(mf.begin());
                 break;
             case "$":
-                xf.push(qf.end());
+                tf.push(mf.end());
                 break;
             case "[":
-                var Cf;
-                Bf[sf] === "^" ? (Cf = !0, sf++) : Cf = !1;
-                var Df = nf.tokenizeClass(Bf.slice(sf), rf);
-                sf += Df[1], xf.push({
-                    type: of.SET,
-                    set: Df[0],
-                    not: Cf
+                var yf;
+                xf[of] === "^" ? (yf = !0, of++) : yf = !1;
+                var zf = jf.tokenizeClass(xf.slice(of), nf);
+                of += zf[1], tf.push({
+                    type: kf.SET,
+                    set: zf[0],
+                    not: yf
                 });
                 break;
             case ".":
-                xf.push(pf.anyChar());
+                tf.push(lf.anyChar());
                 break;
             case "(":
-                var Ef = {
-                    type: of.GROUP,
+                var Af = {
+                    type: kf.GROUP,
                     stack: [],
                     remember: !0
                 };
-                uf = Bf[sf], uf === "?" && (uf = Bf[sf + 1], sf += 2, uf === "=" ? Ef.followedBy = !0 : uf === "!" ? Ef.notFollowedBy = !0 : uf !== ":" && nf.error(rf, `Invalid group, character '${uf}' after '?' at column ${sf - 1}`), Ef.remember = !1), xf.push(Ef), yf.push(wf), wf = Ef, xf = Ef.stack;
+                qf = xf[of], qf === "?" && (qf = xf[of + 1], of += 2, qf === "=" ? Af.followedBy = !0 : qf === "!" ? Af.notFollowedBy = !0 : qf !== ":" && jf.error(nf, `Invalid group, character '${qf}' after '?' at column ${of - 1}`), Af.remember = !1), tf.push(Af), uf.push(sf), sf = Af, tf = Af.stack;
                 break;
             case ")":
-                yf.length === 0 && nf.error(rf, `Unmatched ) at column ${sf - 1}`), wf = yf.pop(), xf = wf.options ? wf.options[wf.options.length - 1] : wf.stack;
+                uf.length === 0 && jf.error(nf, `Unmatched ) at column ${of - 1}`), sf = uf.pop(), tf = sf.options ? sf.options[sf.options.length - 1] : sf.stack;
                 break;
             case "|":
-                wf.options || (wf.options = [
-                    wf.stack
-                ], delete wf.stack);
-                var Ff = [];
-                wf.options.push(Ff), xf = Ff;
+                sf.options || (sf.options = [
+                    sf.stack
+                ], delete sf.stack);
+                var Bf = [];
+                sf.options.push(Bf), tf = Bf;
                 break;
             case "{":
-                var Gf = /^(\d+)(,(\d+)?)?\}/.exec(Bf.slice(sf)), Hf, If;
-                Gf !== null ? (xf.length === 0 && zf(sf), Hf = parseInt(Gf[1], 10), If = Gf[2] ? Gf[3] ? parseInt(Gf[3], 10) : 1 / 0 : Hf, sf += Gf[0].length, xf.push({
-                    type: of.REPETITION,
-                    min: Hf,
-                    max: If,
-                    value: xf.pop()
-                })) : xf.push({
-                    type: of.CHAR,
+                var Cf = /^(\d+)(,(\d+)?)?\}/.exec(xf.slice(of)), Df, Ef;
+                Cf !== null ? (tf.length === 0 && vf(of), Df = parseInt(Cf[1], 10), Ef = Cf[2] ? Cf[3] ? parseInt(Cf[3], 10) : 1 / 0 : Df, of += Cf[0].length, tf.push({
+                    type: kf.REPETITION,
+                    min: Df,
+                    max: Ef,
+                    value: tf.pop()
+                })) : tf.push({
+                    type: kf.CHAR,
                     value: 123
                 });
                 break;
             case "?":
-                xf.length === 0 && zf(sf), xf.push({
-                    type: of.REPETITION,
+                tf.length === 0 && vf(of), tf.push({
+                    type: kf.REPETITION,
                     min: 0,
                     max: 1,
-                    value: xf.pop()
+                    value: tf.pop()
                 });
                 break;
             case "+":
-                xf.length === 0 && zf(sf), xf.push({
-                    type: of.REPETITION,
+                tf.length === 0 && vf(of), tf.push({
+                    type: kf.REPETITION,
                     min: 1,
                     max: 1 / 0,
-                    value: xf.pop()
+                    value: tf.pop()
                 });
                 break;
             case "*":
-                xf.length === 0 && zf(sf), xf.push({
-                    type: of.REPETITION,
+                tf.length === 0 && vf(of), tf.push({
+                    type: kf.REPETITION,
                     min: 0,
                     max: 1 / 0,
-                    value: xf.pop()
+                    value: tf.pop()
                 });
                 break;
             default:
-                xf.push({
-                    type: of.CHAR,
-                    value: uf.charCodeAt(0)
+                tf.push({
+                    type: kf.CHAR,
+                    value: qf.charCodeAt(0)
                 });
         }
-        return yf.length !== 0 && nf.error(rf, "Unterminated group"), vf;
+        return uf.length !== 0 && jf.error(nf, "Unterminated group"), rf;
     };
-    mf.exports.types = of;
+    hf.exports.types = kf;
 });
-var j1 = x1(P());
+var X = x1(P()), j1 = x1(P()), { types: oe  } = X;
 var export_default1 = j1.default;
 var C = Object.create;
 var o = Object.defineProperty;
-var p3 = Object.getOwnPropertyDescriptor;
+var p1 = Object.getOwnPropertyDescriptor;
 var y = Object.getOwnPropertyNames;
 var E2 = Object.getPrototypeOf, I1 = Object.prototype.hasOwnProperty;
-var w1 = (Jf)=>o(Jf, "__esModule", {
+var w1 = (Ff)=>o(Ff, "__esModule", {
         value: !0
     })
 ;
-var g2 = (Kf)=>{
-    if (typeof require != "undefined") return require(Kf);
-    throw new Error('Dynamic require of "' + Kf + '" is not supported');
-};
-var O = (Lf, Mf)=>()=>(Mf || Lf((Mf = {
+var O = (Gf, Hf)=>()=>(Hf || Gf((Hf = {
             exports: {
             }
-        }).exports, Mf), Mf.exports)
+        }).exports, Hf), Hf.exports)
 ;
-var x2 = (Nf, Of, Pf)=>{
-    if (Of && typeof Of == "object" || typeof Of == "function") for (let Qf of y(Of))!I1.call(Nf, Qf) && Qf !== "default" && o(Nf, Qf, {
-        get: ()=>Of[Qf]
+var x2 = (If, Jf, Kf)=>{
+    if (Jf && typeof Jf == "object" || typeof Jf == "function") for (let Lf of y(Jf))!I1.call(If, Lf) && Lf !== "default" && o(If, Lf, {
+        get: ()=>Jf[Lf]
         ,
-        enumerable: !(Pf = p3(Of, Qf)) || Pf.enumerable
+        enumerable: !(Kf = p1(Jf, Lf)) || Kf.enumerable
     });
-    return Nf;
-}, v2 = (Rf)=>x2(w1(o(Rf != null ? C(E2(Rf)) : {
-    }, "default", Rf && Rf.__esModule && "default" in Rf ? {
-        get: ()=>Rf.default
+    return If;
+}, v1 = (Mf)=>x2(w1(o(Mf != null ? C(E2(Mf)) : {
+    }, "default", Mf && Mf.__esModule && "default" in Mf ? {
+        get: ()=>Mf.default
         ,
         enumerable: !0
     } : {
-        value: Rf,
+        value: Mf,
         enumerable: !0
-    })), Rf)
+    })), Mf)
 ;
-var R = O((Sf, Tf)=>{
-    var Uf = export_default1, Vf = export_default, Wf = Uf.types;
-    Tf.exports = class d2 {
-        _setDefaults(Xf) {
-            this.max = Xf.max != null ? Xf.max : d2.prototype.max != null ? d2.prototype.max : 100, this.defaultRange = Xf.defaultRange ? Xf.defaultRange : this.defaultRange.clone(), Xf.randInt && (this.randInt = Xf.randInt);
+var R = O((Nf, Of)=>{
+    var Pf = export_default1, Qf = export_default, Rf = Pf.types;
+    Of.exports = class d {
+        _setDefaults(Sf) {
+            this.max = Sf.max != null ? Sf.max : d.prototype.max != null ? d.prototype.max : 100, this.defaultRange = Sf.defaultRange ? Sf.defaultRange : this.defaultRange.clone(), Sf.randInt && (this.randInt = Sf.randInt);
         }
         gen() {
             return this._gen(this.tokens, []);
         }
-        _gen(Yf, Zf) {
-            var $f, _f, ag, bg, cg;
-            switch(Yf.type){
-                case Wf.ROOT:
-                case Wf.GROUP:
-                    if (Yf.followedBy || Yf.notFollowedBy) return "";
-                    for(Yf.remember && Yf.groupNumber === void 0 && (Yf.groupNumber = Zf.push(null) - 1), $f = Yf.options ? this._randSelect(Yf.options) : Yf.stack, _f = "", bg = 0, cg = $f.length; bg < cg; bg++)_f += this._gen($f[bg], Zf);
-                    return Yf.remember && (Zf[Yf.groupNumber] = _f), _f;
-                case Wf.POSITION:
+        _gen(Tf, Uf) {
+            var Vf, Wf, Xf, Yf, Zf;
+            switch(Tf.type){
+                case Rf.ROOT:
+                case Rf.GROUP:
+                    if (Tf.followedBy || Tf.notFollowedBy) return "";
+                    for(Tf.remember && Tf.groupNumber === void 0 && (Tf.groupNumber = Uf.push(null) - 1), Vf = Tf.options ? this._randSelect(Tf.options) : Tf.stack, Wf = "", Yf = 0, Zf = Vf.length; Yf < Zf; Yf++)Wf += this._gen(Vf[Yf], Uf);
+                    return Tf.remember && (Uf[Tf.groupNumber] = Wf), Wf;
+                case Rf.POSITION:
                     return "";
-                case Wf.SET:
-                    var dg = this._expand(Yf);
-                    return dg.length ? String.fromCharCode(this._randSelect(dg)) : "";
-                case Wf.REPETITION:
-                    for(ag = this.randInt(Yf.min, Yf.max === 1 / 0 ? Yf.min + this.max : Yf.max), _f = "", bg = 0; bg < ag; bg++)_f += this._gen(Yf.value, Zf);
-                    return _f;
-                case Wf.REFERENCE:
-                    return Zf[Yf.value - 1] || "";
-                case Wf.CHAR:
-                    var eg = this.ignoreCase && this._randBool() ? this._toOtherCase(Yf.value) : Yf.value;
-                    return String.fromCharCode(eg);
+                case Rf.SET:
+                    var $f = this._expand(Tf);
+                    return $f.length ? String.fromCharCode(this._randSelect($f)) : "";
+                case Rf.REPETITION:
+                    for(Xf = this.randInt(Tf.min, Tf.max === 1 / 0 ? Tf.min + this.max : Tf.max), Wf = "", Yf = 0; Yf < Xf; Yf++)Wf += this._gen(Tf.value, Uf);
+                    return Wf;
+                case Rf.REFERENCE:
+                    return Uf[Tf.value - 1] || "";
+                case Rf.CHAR:
+                    var _f = this.ignoreCase && this._randBool() ? this._toOtherCase(Tf.value) : Tf.value;
+                    return String.fromCharCode(_f);
             }
         }
-        _toOtherCase(fg) {
-            return fg + (97 <= fg && fg <= 122 ? -32 : 65 <= fg && fg <= 90 ? 32 : 0);
+        _toOtherCase(ag) {
+            return ag + (97 <= ag && ag <= 122 ? -32 : 65 <= ag && ag <= 90 ? 32 : 0);
         }
         _randBool() {
             return !this.randInt(0, 1);
         }
-        _randSelect(gg) {
-            return gg instanceof Vf ? gg.index(this.randInt(0, gg.length - 1)) : gg[this.randInt(0, gg.length - 1)];
+        _randSelect(bg) {
+            return bg instanceof Qf ? bg.index(this.randInt(0, bg.length - 1)) : bg[this.randInt(0, bg.length - 1)];
         }
-        _expand(hg) {
-            if (hg.type === Uf.types.CHAR) return new Vf(hg.value);
-            if (hg.type === Uf.types.RANGE) return new Vf(hg.from, hg.to);
+        _expand(cg) {
+            if (cg.type === Pf.types.CHAR) return new Qf(cg.value);
+            if (cg.type === Pf.types.RANGE) return new Qf(cg.from, cg.to);
             {
-                let ig = new Vf;
-                for(let jg = 0; jg < hg.set.length; jg++){
-                    let kg = this._expand(hg.set[jg]);
-                    if (ig.add(kg), this.ignoreCase) for(let lg = 0; lg < kg.length; lg++){
-                        let mg = kg.index(lg), ng = this._toOtherCase(mg);
-                        mg !== ng && ig.add(ng);
+                let dg = new Qf;
+                for(let eg = 0; eg < cg.set.length; eg++){
+                    let fg = this._expand(cg.set[eg]);
+                    if (dg.add(fg), this.ignoreCase) for(let gg = 0; gg < fg.length; gg++){
+                        let hg = fg.index(gg), ig = this._toOtherCase(hg);
+                        hg !== ig && dg.add(ig);
                     }
                 }
-                return hg.not ? this.defaultRange.clone().subtract(ig) : this.defaultRange.clone().intersect(ig);
+                return cg.not ? this.defaultRange.clone().subtract(dg) : this.defaultRange.clone().intersect(dg);
             }
         }
-        randInt(og, pg) {
-            return og + Math.floor(Math.random() * (1 + pg - og));
+        randInt(jg, kg) {
+            return jg + Math.floor(Math.random() * (1 + kg - jg));
         }
         get defaultRange() {
-            return this._range = this._range || new Vf(32, 126);
+            return this._range = this._range || new Qf(32, 126);
         }
-        set defaultRange(qg) {
-            this._range = qg;
+        set defaultRange(lg) {
+            this._range = lg;
         }
-        static randexp(rg, sg) {
-            var tg;
-            return typeof rg == "string" && (rg = new RegExp(rg, sg)), rg._randexp === void 0 ? (tg = new d2(rg, sg), rg._randexp = tg) : (tg = rg._randexp, tg._setDefaults(rg)), tg.gen();
+        static randexp(mg, ng) {
+            var og;
+            return typeof mg == "string" && (mg = new RegExp(mg, ng)), mg._randexp === void 0 ? (og = new d(mg, ng), mg._randexp = og) : (og = mg._randexp, og._setDefaults(mg)), og.gen();
         }
         static sugar() {
             RegExp.prototype.gen = function() {
-                return d2.randexp(this);
+                return d.randexp(this);
             };
         }
-        constructor(ug, vg){
-            if (this._setDefaults(ug), ug instanceof RegExp) this.ignoreCase = ug.ignoreCase, this.multiline = ug.multiline, ug = ug.source;
-            else if (typeof ug == "string") this.ignoreCase = vg && vg.indexOf("i") !== -1, this.multiline = vg && vg.indexOf("m") !== -1;
+        constructor(pg, qg){
+            if (this._setDefaults(pg), pg instanceof RegExp) this.ignoreCase = pg.ignoreCase, this.multiline = pg.multiline, pg = pg.source;
+            else if (typeof pg == "string") this.ignoreCase = qg && qg.indexOf("i") !== -1, this.multiline = qg && qg.indexOf("m") !== -1;
             else throw new Error("Expected a regexp or string");
-            this.tokens = Uf(ug);
+            this.tokens = Pf(pg);
         }
     };
 });
-var b = v2(R());
-var export_default2 = b.default;
-const Fiona1 = __default3(export_default2);
+var b = v1(R());
+var export_default4 = b.default;
+const Fiona1 = __default3(export_default4);
 return Fiona1;
 });

@@ -152,7 +152,10 @@ const __default2 = (R, S)=>{
     };
     const X = __default1(R);
     const Y = (Z)=>{
-        reseed(processSeed(Z !== undefined ? Z : S));
+        reseed(processSeed(Z !== undefined ? JSON.stringify([
+            Z,
+            []
+        ]) : S));
         return R;
     };
     const $ = ()=>X(T())

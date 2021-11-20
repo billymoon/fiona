@@ -14,35 +14,35 @@ Fiona.register(["paragraph", paragraph]);
 it("Fiona.Lorem", () => {
   assertEquals(
     Fiona(1).lorem(),
-    "dolore reprehenderit ut mollit deserunt ut dolore labore exercitation esse anim fugiat nulla quis sed veniam cillum",
+    "non dolore reprehenderit aliquip mollit deserunt labore magna et exercitation cillum anim nulla pariatur nostrud",
   );
 });
 
 it("Fiona.Lorem (can specify approximately how many words)", () => {
-  assertEquals(Fiona(1).lorem({ qty: 2 }), "dolore reprehenderit");
+  assertEquals(Fiona(1).lorem({ qty: 2 }), "non dolore");
 });
 
 it("Fiona.Lorem (sometimes starts lorem ipsum)", () => {
-  assertEquals(Fiona(7).lorem({ qty: 2 }), "commodo do");
+  assertEquals(Fiona(7).lorem({ qty: 2 }), "adipisicing commodo");
 });
 
 it("Fiona.Word", () => {
-  assertEquals(Fiona(1).word(), "dolore");
-  assertEquals(Fiona(2).word(), "occaecat");
-  assertEquals(Fiona(3).word(), "consequat");
+  assertEquals(Fiona(1).word(), "non");
+  assertEquals(Fiona(2).word(), "culpa");
+  assertEquals(Fiona(3).word(), "minim");
 });
 
 it("Fiona.Sentence", () => {
   assertEquals(
     Fiona(1).sentence(),
-    "Dolore reprehenderit ut mollit deserunt ut dolore labore exercitation esse anim fugiat nulla quis sed veniam cillum minim cupidatat enim ad qui commodo in adipisicing irure dolor laborum id.",
+    "Non dolore reprehenderit aliquip mollit deserunt labore magna et exercitation cillum anim nulla pariatur nostrud do quis incididunt veniam cupidatat ad dolor qui consequat in.",
   );
 });
 
 it("Fiona.Paragraph", () => {
   assertEquals(
     Fiona(1).paragraph(),
-    "In nisi mollit deserunt incididunt et ut nostrud esse anim fugiat nulla veniam elit minim eiusmod ad occaecat ut cupidatat culpa ea in consectetur aute dolor laborum.  Veniam voluptate id eiusmod amet sit duis sunt est aliqua fugiat ut anim deserunt minim occaecat ad in dolor incididunt.  Lorem ipsum dolore excepteur eu enim dolor est anim qui minim tempor amet eiusmod mollit ullamco et officia exercitation in nulla aliquip commodo consequat adipisicing ad esse non magna id dolore ut veniam.  Dolore minim in enim incididunt do elit commodo ullamco pariatur officia mollit ad eiusmod id voluptate non deserunt consequat est.",
+    "Dolore reprehenderit ut mollit deserunt ut dolore labore exercitation esse anim fugiat nulla quis sed veniam cillum minim cupidatat enim ad qui commodo in adipisicing.  Ad laborum mollit aliqua nostrud esse est ut id velit dolor sunt sed dolor nulla veniam anim amet exercitation cupidatat quis tempor ullamco pariatur commodo.  Dolore excepteur eu enim dolor est anim qui minim tempor amet eiusmod mollit ullamco et officia exercitation in nulla aliquip commodo consequat adipisicing ad esse.  Sunt mollit dolore amet tempor ex minim fugiat ullamco esse nostrud ut dolore labore irure elit sint officia anim eiusmod magna id cillum dolor sit.",
   );
 });
 

@@ -32,13 +32,13 @@ it("import", () => {
 });
 
 it("Fiona.Title", () => {
-  assertEquals(Fiona(1).title(), "Lord");
-  assertEquals(Fiona(1).title({}), "Lord");
-  assertEquals(Fiona(2).title(), "Lord");
-  assertEquals(Fiona(2).title({}), "Lord");
-  assertEquals(Fiona(4).title({ gender: "f" }), "Dame");
-  assertEquals(Fiona(4).title({ gender: "m" }), "Lord");
-  assertEquals(Fiona(4).title({ gender: "Male" }), "Lord");
+  assertEquals(Fiona(1).title(), "Sir");
+  assertEquals(Fiona(1).title({}), "Sir");
+  assertEquals(Fiona(2).title(), "Sir");
+  assertEquals(Fiona(2).title({}), "Sir");
+  assertEquals(Fiona(4).title({ gender: "f" }), "Ms");
+  assertEquals(Fiona(4).title({ gender: "m" }), "Sir");
+  assertEquals(Fiona(4).title({ gender: "Male" }), "Sir");
 });
 
 it("Fiona.Firstname", () => {
@@ -66,7 +66,7 @@ it("Fiona.Gender", () => {
 });
 
 it("Fiona.Fullname", () => {
-  assertEquals(Fiona(1).fullname(), "Lord Murray Murray");
+  assertEquals(Fiona(1).fullname(), "Sir Murray Murray");
 });
 
 run();
