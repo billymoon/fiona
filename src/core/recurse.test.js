@@ -52,10 +52,14 @@ it("function is recursed with objects and arrays handled", () => {
 it("regex is expanded when regex function is registered", () => {
   const regex = /a/;
   const REGEX_RETURN_MOCK = 1234567890;
+
   assertEquals(
-    recurseData({
-      regex: () => REGEX_RETURN_MOCK,
-    }, regex),
+    recurseData(
+      new (function () {
+        this.info = () => ({ initseed: 1, path: [] });
+        this.regex = () => REGEX_RETURN_MOCK;
+      })()
+    , regex),
     REGEX_RETURN_MOCK,
   );
 });
@@ -64,13 +68,40 @@ it("original regex is returned when regex function is not registered", () => {
   assertEquals(recurseData({}, /a/), /a/);
 });
 
-it("regex is handled when inside function", () => {
+it("regex is handled when inside function and no regex method registered", () => {
   const regex = /a/;
   assertEquals(
     recurseData({
       info: () => ({ initseed: 1, path: [] }),
     }, () => regex),
     regex,
+  );
+});
+
+it("regex is handled when inside function and regex method registered", () => {
+  const regex = /a/;
+  const REGEX_RETURN_MOCK = 1234567890;
+
+  assertEquals(
+    recurseData(
+      new (function () {
+        this.info = () => ({ initseed: 1, path: [] });
+        this.regex = () => REGEX_RETURN_MOCK;
+      })()
+    , () => regex),
+    REGEX_RETURN_MOCK,
+  );
+});
+
+it("bare regex uses path in recursor", () => {
+  const regex = /\d{10}/;
+  assertEquals(
+    Fiona(1).object({
+      a: regex
+    }).a,
+    Fiona(1).object({
+      a: Fiona.Regex(regex)
+    }).a,
   );
 });
 

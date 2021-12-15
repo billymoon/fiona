@@ -28,7 +28,7 @@ function _objectSpread(d) {
     return d;
 }
 const __default = {
-    version: "4.0.0-alpha.3"
+    version: "4.0.0-alpha.4"
 };
 const Register = (i, j)=>(...k)=>k.forEach((l)=>{
             const [m, n] = typeof l === "function" ? [
@@ -186,25 +186,26 @@ const handleFunction = (ja, ka, la, ma)=>{
     const oa = registered.indexOf(ka) !== -1 ? ka() : ka(na);
     return recursor(ja, oa, la, la.length ? ma : oa);
 };
-const handleRegex = (pa, qa)=>pa.regex ? pa.regex(qa) : qa
+const handleRegex = (pa, qa, ra, sa)=>pa.regex ? handleFunction(pa, (ta)=>ta.regex(qa)
+    , ra, sa) : qa
 ;
-const recursor = (ra, sa, ta, ua)=>sa === null || sa === undefined ? sa : sa.constructor === Array ? handleArray(ra, sa, ta, ua) : sa.constructor === Object ? handleObject(ra, sa, ta, ua) : typeof sa === "function" ? handleFunction(ra, sa, ta, ua) : sa.constructor === RegExp ? handleRegex(ra, sa) : sa
+const recursor = (ua, va, wa, xa)=>va === null || va === undefined ? va : va.constructor === Array ? handleArray(ua, va, wa, xa) : va.constructor === Object ? handleObject(ua, va, wa, xa) : typeof va === "function" ? handleFunction(ua, va, wa, xa) : va.constructor === RegExp ? handleRegex(ua, va, wa, xa) : va
 ;
-const cloner = (va)=>va === null || va === undefined ? va : va.constructor === Array ? va.map(cloner) : va.constructor === Object ? Object.entries(va).reduce((wa, [xa, ya])=>_objectSpread({
-        }, wa, {
-            [xa]: cloner(ya)
+const cloner = (ya)=>ya === null || ya === undefined ? ya : ya.constructor === Array ? ya.map(cloner) : ya.constructor === Object ? Object.entries(ya).reduce((za, [Aa, Ba])=>_objectSpread({
+        }, za, {
+            [Aa]: cloner(Ba)
         })
     , {
-    }) : va
+    }) : ya
 ;
-const recurse = (za, Aa)=>{
-    const Ba = cloner(Aa);
-    return recursor(za, Ba, [], Ba);
+const recurse = (Ca, Da)=>{
+    const Ea = cloner(Da);
+    return recursor(Ca, Ea, [], Ea);
 };
-function Moon(Ca, Da = Math.floor(Math.random() * 100000000), Ea) {
-    const { state , reset , random , reverse , distribution  } = Ca(this, JSON.stringify([
-        Da,
-        Ea
+function Moon(Fa, Ga = Math.floor(Math.random() * 100000000), Ha) {
+    const { state , reset , random , reverse , distribution  } = Fa(this, JSON.stringify([
+        Ga,
+        Ha
     ]));
     Object.assign(this, {
         state,
@@ -214,8 +215,8 @@ function Moon(Ca, Da = Math.floor(Math.random() * 100000000), Ea) {
         distribution
     });
     this.info = ()=>({
-            initseed: Da,
-            path: Ea
+            initseed: Ga,
+            path: Ha
         })
     ;
     this.recurse = recurse;
@@ -224,48 +225,48 @@ function Moon(Ca, Da = Math.floor(Math.random() * 100000000), Ea) {
 Moon.prototype = {
     constructor: Moon
 };
-const number = (Fa, { max =1000000 , min =0 , precision =0  } = {
+const number = (Ia, { max =1000000 , min =0 , precision =0  } = {
 })=>{
-    const Ga = Math.pow(10, precision);
-    return Math.floor((Fa.random() * (1 + max - min) + min) * Ga) / Ga;
+    const Ja = Math.pow(10, precision);
+    return Math.floor((Ia.random() * (1 + max - min) + min) * Ja) / Ja;
 };
-const object = (Ha, ...Ia)=>{
-    return Ia.reduce((Ja, Ka)=>{
-        return Ha.recurse(Ha, Ka);
+const object = (Ka, ...La)=>{
+    return La.reduce((Ma, Na)=>{
+        return Ka.recurse(Ka, Na);
     }, {
     });
 };
-const json = (La, ...Ma)=>{
-    return JSON.stringify(La.object(...Ma));
+const json = (Oa, ...Pa)=>{
+    return JSON.stringify(Oa.object(...Pa));
 };
-const array = (Na, Oa, Pa, Qa = (Ra)=>Ra
+const array = (Qa, Ra, Sa, Ta = (Ua)=>Ua
 )=>{
-    const Sa = typeof Qa === "string" ? (Ta)=>Ta.join(Qa)
-     : Qa;
-    const Ua = typeof Oa === "object" && Oa.constructor === Object ? Na.number(Oa) : Na.recurse(Na.clone(), Oa);
-    return Sa(Na.recurse(Na, Array(Ua).fill(Pa)));
+    const Va = typeof Ta === "string" ? (Wa)=>Wa.join(Ta)
+     : Ta;
+    const Xa = typeof Ra === "object" && Ra.constructor === Object ? Qa.number(Ra) : Qa.recurse(Qa.clone(), Ra);
+    return Va(Qa.recurse(Qa, Array(Xa).fill(Sa)));
 };
-const string = (Va, [Wa, ...Xa], ...Ya)=>{
-    const Za = Va.recurse(Va, Ya);
-    return Xa.reduce(($a, _a, ab)=>`${$a}${Za[ab]}${_a}`
-    , Wa);
+const string = (Ya, [Za, ...$a], ..._a)=>{
+    const ab = Ya.recurse(Ya, _a);
+    return $a.reduce((bb, cb, db)=>`${bb}${ab[db]}${cb}`
+    , Za);
 };
-const Fiona = (bb, cb = [])=>new Moon(__default2, bb, cb)
+const Fiona = (eb, fb = [])=>new Moon(__default2, eb, fb)
 ;
 Fiona.version = __default.version;
-const registerFactory = (db, eb)=>{
-    const fb = (...gb)=>eb(...gb)
+const registerFactory = (gb, hb)=>{
+    const ib = (...jb)=>hb(...jb)
     ;
-    registered.push(fb);
-    return Fiona[db] = fb;
+    registered.push(ib);
+    return Fiona[gb] = ib;
 };
-const registerMethod = (hb, ib)=>{
-    return Moon.prototype[hb] = ib;
+const registerMethod = (kb, lb)=>{
+    return Moon.prototype[kb] = lb;
 };
 Fiona.register = Register(registerFactory, registerMethod);
-Fiona.Random = ()=>(jb)=>jb.random()
+Fiona.Random = ()=>(mb)=>mb.random()
 ;
-const clone = (kb)=>Fiona(kb.info().initseed).state(kb.state())
+const clone = (nb)=>Fiona(nb.info().initseed).state(nb.state())
 ;
 Fiona.register([
     "clone", clone]);

@@ -24,7 +24,7 @@ describe("regex", () => {
   it("should handle regex if plugin registered", () => {
     Fiona.register(["regex", RegexPlugin(RandExp)]);
     const pattern = /of [01]{8} (ro|cy)bo(rg|t)s/;
-    const fixture = { army: "of 01100000 cyborgs" };
+    const fixture = { army: "of 01010110 robots" };
     assertEquals(seeded.object({ army: pattern }), fixture);
   });
 

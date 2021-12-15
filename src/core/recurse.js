@@ -33,7 +33,9 @@ const handleFunction = (seeded, node, path, root) => {
 const handleRegex = (
   seeded,
   node,
-) => (seeded.regex ? seeded.regex(node) : node);
+  path,
+  root
+) => (seeded.regex ? handleFunction(seeded, seeded => seeded.regex(node), path, root) : node);
 
 const recursor = (seeded, node, path, root) =>
   node === null || node === undefined
@@ -45,7 +47,7 @@ const recursor = (seeded, node, path, root) =>
     : typeof node === "function"
     ? handleFunction(seeded, node, path, root)
     : node.constructor === RegExp
-    ? handleRegex(seeded, node)
+    ? handleRegex(seeded, node, path, root)
     : node;
 
 const cloner = (node) =>

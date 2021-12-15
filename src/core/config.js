@@ -1,1 +1,1 @@
-export default { version: "4.0.0-alpha.3" };
+export default { version: "0.0.0-githash" };
