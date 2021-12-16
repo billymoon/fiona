@@ -28,7 +28,7 @@ function _objectSpread(d) {
     return d;
 }
 const __default = {
-    version: "4.0.0-alpha.9"
+    version: "4.0.0-alpha.10"
 };
 const Register = (i, j)=>(...k)=>k.forEach((l)=>{
             const [m, n] = typeof l === "function" ? [

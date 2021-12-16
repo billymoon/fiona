@@ -21,7 +21,7 @@ import {
 } from "./name/name.js";
 import Regex from "./regex/regex.js";
 import shuffle from "./shuffle/shuffle.js";
-import fromJSON from "./fromJSON/fromJSON.js";
+import importer from "./import/import.js";
 
 export default (RandExp) => {
   Fiona.register(
@@ -45,7 +45,7 @@ export default (RandExp) => {
     ["fullname", fullname],
     ["regex", Regex(RandExp)],
     ["shuffle", shuffle],
-    ["fromJSON", fromJSON],
+    ["import", importer],
   );
 
   // TODO: move namedata to getter/setter function - somehow encapsulate name plugin

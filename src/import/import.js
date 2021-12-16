@@ -33,15 +33,6 @@ const transformer = recurser((node) => node.fiona, (node) => {
   }
 });
 
-const fromJSON = (seeded, json) => {
-  try {
-    json = JSON.parse(json);
-  } catch (err) {
-    if (err.name !== "SyntaxError") {
-      throw Error(err);
-    }
-  }
-  return seeded.object(transformer(json));
-};
+const fromJSON = (seeded, schemaData) => seeded.object(transformer(schemaData));
 
 export default fromJSON;
