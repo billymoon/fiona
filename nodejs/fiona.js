@@ -28,7 +28,7 @@ function _objectSpread(i) {
     return i;
 }
 const __default = {
-    version: "4.0.0-alpha.8"
+    version: "4.0.0-alpha.9"
 };
 const Register = (r, s)=>(...t)=>t.forEach((u)=>{
             const [A, G] = typeof u === "function" ? [
@@ -772,7 +772,52 @@ const regex = (Hd)=>(Id, Jd = /[A-F0-9]{16}/)=>{
 const shuffle = (Nd, Od, { qty  } = {
 })=>Nd.choose(typeof qty !== "undefined" ? qty : Od.length, Od)
 ;
-const __default3 = (Pd)=>{
+const recurser = (Pd, Qd)=>{
+    const Rd = (Sd, Td)=>{
+        if (Td === undefined) {
+            Td = Sd;
+        }
+        if (Sd === null || Sd === undefined) {
+            return Sd;
+        } else if (Sd.constructor === Array) {
+            return Sd.map((Ud)=>Rd(Ud, Td)
+            );
+        } else if (Sd.constructor === Object) {
+            if (Pd(Sd, Td)) {
+                return Qd(Sd, Td);
+            } else {
+                Object.entries(Sd).forEach(([Vd, Wd])=>{
+                    Sd[Vd] = Rd(Wd, Td);
+                });
+                return Sd;
+            }
+        } else {
+            return Sd;
+        }
+    };
+    return Rd;
+};
+const transformer = recurser((Xd)=>Xd.fiona
+, (Yd)=>{
+    if (Yd.fiona.constructor === Array) {
+        return (Zd)=>Zd[Yd.fiona[0]](...Yd.fiona.slice(1).map(transformer))
+        ;
+    } else {
+        return ($d)=>$d[Yd.fiona]()
+        ;
+    }
+});
+const fromJSON = (_d, ae)=>{
+    try {
+        ae = JSON.parse(ae);
+    } catch (be) {
+        if (be.name !== 'SyntaxError') {
+            throw Error(be);
+        }
+    }
+    return _d.object(transformer(ae));
+};
+const __default3 = (ce)=>{
     Fiona.register([
         "bool", bool], [
         "unique", unique], [
@@ -793,9 +838,10 @@ const __default3 = (Pd)=>{
         "surname", surname], [
         "fullname", fullname], [
         "regex",
-        regex(Pd)
+        regex(ce)
     ], [
-        "shuffle", shuffle]);
+        "shuffle", shuffle], [
+        "fromJSON", fromJSON]);
     Fiona.namedata = namedata1;
     return Fiona;
 };
@@ -804,120 +850,120 @@ var g = Object.defineProperty;
 var v = Object.getOwnPropertyDescriptor;
 var d = Object.getOwnPropertyNames;
 var p = Object.getPrototypeOf, m = Object.prototype.hasOwnProperty;
-var M = (Qd)=>g(Qd, "__esModule", {
+var M = (de)=>g(de, "__esModule", {
         value: !0
     })
 ;
-var x = (Rd, Sd)=>()=>(Sd || Rd((Sd = {
+var x = (ee, fe)=>()=>(fe || ee((fe = {
             exports: {
             }
-        }).exports, Sd), Sd.exports)
+        }).exports, fe), fe.exports)
 ;
-var E = (Td, Ud, Vd)=>{
-    if (Ud && typeof Ud == "object" || typeof Ud == "function") for (let Wd of d(Ud))!m.call(Td, Wd) && Wd !== "default" && g(Td, Wd, {
-        get: ()=>Ud[Wd]
+var E = (ge, he, ie)=>{
+    if (he && typeof he == "object" || typeof he == "function") for (let je of d(he))!m.call(ge, je) && je !== "default" && g(ge, je, {
+        get: ()=>he[je]
         ,
-        enumerable: !(Vd = v(Ud, Wd)) || Vd.enumerable
+        enumerable: !(ie = v(he, je)) || ie.enumerable
     });
-    return Td;
-}, _ = (Xd)=>E(M(g(Xd != null ? f(p(Xd)) : {
-    }, "default", Xd && Xd.__esModule && "default" in Xd ? {
-        get: ()=>Xd.default
+    return ge;
+}, _ = (ke)=>E(M(g(ke != null ? f(p(ke)) : {
+    }, "default", ke && ke.__esModule && "default" in ke ? {
+        get: ()=>ke.default
         ,
         enumerable: !0
     } : {
-        value: Xd,
+        value: ke,
         enumerable: !0
-    })), Xd)
+    })), ke)
 ;
-var w = x((Yd, Zd)=>{
+var w = x((le, me)=>{
     "use strict";
-    var $d = class _class {
-        overlaps(_d) {
-            return !(this.high < _d.low || this.low > _d.high);
+    var ne = class _class {
+        overlaps(pe) {
+            return !(this.high < pe.low || this.low > pe.high);
         }
-        touches(ae) {
-            return !(this.high + 1 < ae.low || this.low - 1 > ae.high);
+        touches(qe) {
+            return !(this.high + 1 < qe.low || this.low - 1 > qe.high);
         }
-        add(be) {
-            return new $d(Math.min(this.low, be.low), Math.max(this.high, be.high));
+        add(re) {
+            return new ne(Math.min(this.low, re.low), Math.max(this.high, re.high));
         }
-        subtract(ce) {
-            return ce.low <= this.low && ce.high >= this.high ? [] : ce.low > this.low && ce.high < this.high ? [
-                new $d(this.low, ce.low - 1),
-                new $d(ce.high + 1, this.high)
-            ] : ce.low <= this.low ? [
-                new $d(ce.high + 1, this.high)
+        subtract(se) {
+            return se.low <= this.low && se.high >= this.high ? [] : se.low > this.low && se.high < this.high ? [
+                new ne(this.low, se.low - 1),
+                new ne(se.high + 1, this.high)
+            ] : se.low <= this.low ? [
+                new ne(se.high + 1, this.high)
             ] : [
-                new $d(this.low, ce.low - 1)
+                new ne(this.low, se.low - 1)
             ];
         }
         toString() {
             return this.low == this.high ? this.low.toString() : this.low + "-" + this.high;
         }
-        constructor(de, ee){
-            this.low = de, this.high = ee, this.length = 1 + ee - de;
+        constructor(te, ue){
+            this.low = te, this.high = ue, this.length = 1 + ue - te;
         }
-    }, fe = class _class {
+    }, ve = class _class {
         _update_length() {
-            this.length = this.ranges.reduce((ge, he)=>ge + he.length
+            this.length = this.ranges.reduce((we, xe)=>we + xe.length
             , 0);
         }
-        add(ie, je) {
-            var ke = (le)=>{
-                for(var me = 0; me < this.ranges.length && !le.touches(this.ranges[me]);)me++;
-                for(var ne = this.ranges.slice(0, me); me < this.ranges.length && le.touches(this.ranges[me]);)le = le.add(this.ranges[me]), me++;
-                ne.push(le), this.ranges = ne.concat(this.ranges.slice(me)), this._update_length();
+        add(ye, ze) {
+            var Ae = (Be)=>{
+                for(var Ce = 0; Ce < this.ranges.length && !Be.touches(this.ranges[Ce]);)Ce++;
+                for(var De = this.ranges.slice(0, Ce); Ce < this.ranges.length && Be.touches(this.ranges[Ce]);)Be = Be.add(this.ranges[Ce]), Ce++;
+                De.push(Be), this.ranges = De.concat(this.ranges.slice(Ce)), this._update_length();
             };
-            return ie instanceof fe ? ie.ranges.forEach(ke) : (je == null && (je = ie), ke(new $d(ie, je))), this;
+            return ye instanceof ve ? ye.ranges.forEach(Ae) : (ze == null && (ze = ye), Ae(new ne(ye, ze))), this;
         }
-        subtract(pe, qe) {
-            var re = (se)=>{
-                for(var te = 0; te < this.ranges.length && !se.overlaps(this.ranges[te]);)te++;
-                for(var ue = this.ranges.slice(0, te); te < this.ranges.length && se.overlaps(this.ranges[te]);)ue = ue.concat(this.ranges[te].subtract(se)), te++;
-                this.ranges = ue.concat(this.ranges.slice(te)), this._update_length();
+        subtract(Ee, Fe) {
+            var Ge = (He)=>{
+                for(var Ie = 0; Ie < this.ranges.length && !He.overlaps(this.ranges[Ie]);)Ie++;
+                for(var Je = this.ranges.slice(0, Ie); Ie < this.ranges.length && He.overlaps(this.ranges[Ie]);)Je = Je.concat(this.ranges[Ie].subtract(He)), Ie++;
+                this.ranges = Je.concat(this.ranges.slice(Ie)), this._update_length();
             };
-            return pe instanceof fe ? pe.ranges.forEach(re) : (qe == null && (qe = pe), re(new $d(pe, qe))), this;
+            return Ee instanceof ve ? Ee.ranges.forEach(Ge) : (Fe == null && (Fe = Ee), Ge(new ne(Ee, Fe))), this;
         }
-        intersect(ve, we) {
-            var xe = [], ye = (ze)=>{
-                for(var Ae = 0; Ae < this.ranges.length && !ze.overlaps(this.ranges[Ae]);)Ae++;
-                for(; Ae < this.ranges.length && ze.overlaps(this.ranges[Ae]);){
-                    var Be = Math.max(this.ranges[Ae].low, ze.low), Ce = Math.min(this.ranges[Ae].high, ze.high);
-                    xe.push(new $d(Be, Ce)), Ae++;
+        intersect(Ke, Le) {
+            var Me = [], Ne = (Oe)=>{
+                for(var Pe = 0; Pe < this.ranges.length && !Oe.overlaps(this.ranges[Pe]);)Pe++;
+                for(; Pe < this.ranges.length && Oe.overlaps(this.ranges[Pe]);){
+                    var Qe = Math.max(this.ranges[Pe].low, Oe.low), Re = Math.min(this.ranges[Pe].high, Oe.high);
+                    Me.push(new ne(Qe, Re)), Pe++;
                 }
             };
-            return ve instanceof fe ? ve.ranges.forEach(ye) : (we == null && (we = ve), ye(new $d(ve, we))), this.ranges = xe, this._update_length(), this;
+            return Ke instanceof ve ? Ke.ranges.forEach(Ne) : (Le == null && (Le = Ke), Ne(new ne(Ke, Le))), this.ranges = Me, this._update_length(), this;
         }
-        index(De) {
-            for(var Ee = 0; Ee < this.ranges.length && this.ranges[Ee].length <= De;)De -= this.ranges[Ee].length, Ee++;
-            return this.ranges[Ee].low + De;
+        index(Se) {
+            for(var Te = 0; Te < this.ranges.length && this.ranges[Te].length <= Se;)Se -= this.ranges[Te].length, Te++;
+            return this.ranges[Te].low + Se;
         }
         toString() {
             return "[ " + this.ranges.join(", ") + " ]";
         }
         clone() {
-            return new fe(this);
+            return new ve(this);
         }
         numbers() {
-            return this.ranges.reduce((Fe, Ge)=>{
-                for(var He = Ge.low; He <= Ge.high;)Fe.push(He), He++;
-                return Fe;
+            return this.ranges.reduce((Ue, Ve)=>{
+                for(var We = Ve.low; We <= Ve.high;)Ue.push(We), We++;
+                return Ue;
             }, []);
         }
         subranges() {
-            return this.ranges.map((Ie)=>({
-                    low: Ie.low,
-                    high: Ie.high,
-                    length: 1 + Ie.high - Ie.low
+            return this.ranges.map((Xe)=>({
+                    low: Xe.low,
+                    high: Xe.high,
+                    length: 1 + Xe.high - Xe.low
                 })
             );
         }
-        constructor(Je, Ke){
-            this.ranges = [], this.length = 0, Je != null && this.add(Je, Ke);
+        constructor(Ye, Ze){
+            this.ranges = [], this.length = 0, Ye != null && this.add(Ye, Ze);
         }
     };
-    Zd.exports = fe;
+    me.exports = ve;
 });
 var j = _(w());
 var export_default = j.default;
@@ -926,34 +972,34 @@ var N = Object.defineProperty;
 var _1 = Object.getOwnPropertyDescriptor;
 var z = Object.getOwnPropertyNames;
 var Y = Object.getPrototypeOf, Z = Object.prototype.hasOwnProperty;
-var J = (Le)=>N(Le, "__esModule", {
+var J = ($e)=>N($e, "__esModule", {
         value: !0
     })
 ;
-var E1 = (Me, Ne)=>()=>(Ne || Me((Ne = {
+var E1 = (_e, af)=>()=>(af || _e((af = {
             exports: {
             }
-        }).exports, Ne), Ne.exports)
+        }).exports, af), af.exports)
 ;
-var K = (Oe, Pe, Qe)=>{
-    if (Pe && typeof Pe == "object" || typeof Pe == "function") for (let Re of z(Pe))!Z.call(Oe, Re) && Re !== "default" && N(Oe, Re, {
-        get: ()=>Pe[Re]
+var K = (bf, cf, df)=>{
+    if (cf && typeof cf == "object" || typeof cf == "function") for (let ef of z(cf))!Z.call(bf, ef) && ef !== "default" && N(bf, ef, {
+        get: ()=>cf[ef]
         ,
-        enumerable: !(Qe = _1(Pe, Re)) || Qe.enumerable
+        enumerable: !(df = _1(cf, ef)) || df.enumerable
     });
-    return Oe;
-}, x1 = (Se)=>K(J(N(Se != null ? L(Y(Se)) : {
-    }, "default", Se && Se.__esModule && "default" in Se ? {
-        get: ()=>Se.default
+    return bf;
+}, x1 = (ff)=>K(J(N(ff != null ? L(Y(ff)) : {
+    }, "default", ff && ff.__esModule && "default" in ff ? {
+        get: ()=>ff.default
         ,
         enumerable: !0
     } : {
-        value: Se,
+        value: ff,
         enumerable: !0
-    })), Se)
+    })), ff)
 ;
-var I = E1((Te, Ue)=>{
-    Ue.exports = {
+var I = E1((gf, hf)=>{
+    hf.exports = {
         ROOT: 0,
         GROUP: 1,
         POSITION: 2,
@@ -964,157 +1010,157 @@ var I = E1((Te, Ue)=>{
         CHAR: 7
     };
 });
-var S = E1((Ve)=>{
-    var We = I(), Xe = ()=>[
+var S = E1((jf)=>{
+    var kf = I(), lf = ()=>[
             {
-                type: We.RANGE,
+                type: kf.RANGE,
                 from: 48,
                 to: 57
             }
         ]
-    , Ye = ()=>[
+    , mf = ()=>[
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 95
             },
             {
-                type: We.RANGE,
+                type: kf.RANGE,
                 from: 97,
                 to: 122
             },
             {
-                type: We.RANGE,
+                type: kf.RANGE,
                 from: 65,
                 to: 90
             }
-        ].concat(Xe())
-    , Ze = ()=>[
+        ].concat(lf())
+    , nf = ()=>[
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 9
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 10
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 11
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 12
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 13
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 32
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 160
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 5760
             },
             {
-                type: We.RANGE,
+                type: kf.RANGE,
                 from: 8192,
                 to: 8202
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 8232
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 8233
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 8239
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 8287
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 12288
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 65279
             }
         ]
-    , $e = ()=>[
+    , of = ()=>[
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 10
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 13
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 8232
             },
             {
-                type: We.CHAR,
+                type: kf.CHAR,
                 value: 8233
             }
         ]
     ;
-    Ve.words = ()=>({
-            type: We.SET,
-            set: Ye(),
+    jf.words = ()=>({
+            type: kf.SET,
+            set: mf(),
             not: !1
         })
     ;
-    Ve.notWords = ()=>({
-            type: We.SET,
-            set: Ye(),
+    jf.notWords = ()=>({
+            type: kf.SET,
+            set: mf(),
             not: !0
         })
     ;
-    Ve.ints = ()=>({
-            type: We.SET,
-            set: Xe(),
+    jf.ints = ()=>({
+            type: kf.SET,
+            set: lf(),
             not: !1
         })
     ;
-    Ve.notInts = ()=>({
-            type: We.SET,
-            set: Xe(),
+    jf.notInts = ()=>({
+            type: kf.SET,
+            set: lf(),
             not: !0
         })
     ;
-    Ve.whitespace = ()=>({
-            type: We.SET,
-            set: Ze(),
+    jf.whitespace = ()=>({
+            type: kf.SET,
+            set: nf(),
             not: !1
         })
     ;
-    Ve.notWhitespace = ()=>({
-            type: We.SET,
-            set: Ze(),
+    jf.notWhitespace = ()=>({
+            type: kf.SET,
+            set: nf(),
             not: !0
         })
     ;
-    Ve.anyChar = ()=>({
-            type: We.SET,
-            set: $e(),
+    jf.anyChar = ()=>({
+            type: kf.SET,
+            set: of(),
             not: !0
         })
     ;
 });
-var F = E1((_e)=>{
-    var af = I(), bf = S(), cf = "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^ ?", df = {
+var F = E1((pf)=>{
+    var qf = I(), rf = S(), sf = "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^ ?", tf = {
         "0": 0,
         t: 9,
         n: 10,
@@ -1122,191 +1168,191 @@ var F = E1((_e)=>{
         f: 12,
         r: 13
     };
-    _e.strToChars = function(ef) {
-        var ff = /(\[\\b\])|(\\)?\\(?:u([A-F0-9]{4})|x([A-F0-9]{2})|(0?[0-7]{2})|c([@A-Z[\\\]^?])|([0tnvfr]))/g;
-        return ef = ef.replace(ff, function(gf, hf, jf, kf, lf, mf, nf, of) {
-            if (jf) return gf;
-            var pf = hf ? 8 : kf ? parseInt(kf, 16) : lf ? parseInt(lf, 16) : mf ? parseInt(mf, 8) : nf ? cf.indexOf(nf) : df[of], qf = String.fromCharCode(pf);
-            return /[[\]{}^$.|?*+()]/.test(qf) && (qf = "\\" + qf), qf;
-        }), ef;
+    pf.strToChars = function(uf) {
+        var vf = /(\[\\b\])|(\\)?\\(?:u([A-F0-9]{4})|x([A-F0-9]{2})|(0?[0-7]{2})|c([@A-Z[\\\]^?])|([0tnvfr]))/g;
+        return uf = uf.replace(vf, function(wf, xf, yf, zf, Af, Bf, Cf, Df) {
+            if (yf) return wf;
+            var Ef = xf ? 8 : zf ? parseInt(zf, 16) : Af ? parseInt(Af, 16) : Bf ? parseInt(Bf, 8) : Cf ? sf.indexOf(Cf) : tf[Df], Ff = String.fromCharCode(Ef);
+            return /[[\]{}^$.|?*+()]/.test(Ff) && (Ff = "\\" + Ff), Ff;
+        }), uf;
     };
-    _e.tokenizeClass = (rf, sf)=>{
-        for(var tf = [], uf = /\\(?:(w)|(d)|(s)|(W)|(D)|(S))|((?:(?:\\)(.)|([^\]\\]))-(?:\\)?([^\]]))|(\])|(?:\\)?([^])/g, vf, wf; (vf = uf.exec(rf)) != null;)if (vf[1]) tf.push(bf.words());
-        else if (vf[2]) tf.push(bf.ints());
-        else if (vf[3]) tf.push(bf.whitespace());
-        else if (vf[4]) tf.push(bf.notWords());
-        else if (vf[5]) tf.push(bf.notInts());
-        else if (vf[6]) tf.push(bf.notWhitespace());
-        else if (vf[7]) tf.push({
-            type: af.RANGE,
-            from: (vf[8] || vf[9]).charCodeAt(0),
-            to: vf[10].charCodeAt(0)
+    pf.tokenizeClass = (Gf, Hf)=>{
+        for(var If = [], Jf = /\\(?:(w)|(d)|(s)|(W)|(D)|(S))|((?:(?:\\)(.)|([^\]\\]))-(?:\\)?([^\]]))|(\])|(?:\\)?([^])/g, Kf, Lf; (Kf = Jf.exec(Gf)) != null;)if (Kf[1]) If.push(rf.words());
+        else if (Kf[2]) If.push(rf.ints());
+        else if (Kf[3]) If.push(rf.whitespace());
+        else if (Kf[4]) If.push(rf.notWords());
+        else if (Kf[5]) If.push(rf.notInts());
+        else if (Kf[6]) If.push(rf.notWhitespace());
+        else if (Kf[7]) If.push({
+            type: qf.RANGE,
+            from: (Kf[8] || Kf[9]).charCodeAt(0),
+            to: Kf[10].charCodeAt(0)
         });
-        else if (wf = vf[12]) tf.push({
-            type: af.CHAR,
-            value: wf.charCodeAt(0)
+        else if (Lf = Kf[12]) If.push({
+            type: qf.CHAR,
+            value: Lf.charCodeAt(0)
         });
         else return [
-            tf,
-            uf.lastIndex
+            If,
+            Jf.lastIndex
         ];
-        _e.error(sf, "Unterminated character class");
+        pf.error(Hf, "Unterminated character class");
     };
-    _e.error = (xf, yf)=>{
-        throw new SyntaxError("Invalid regular expression: /" + xf + "/: " + yf);
+    pf.error = (Mf, Nf)=>{
+        throw new SyntaxError("Invalid regular expression: /" + Mf + "/: " + Nf);
     };
 });
-var U = E1((zf)=>{
-    var Af = I();
-    zf.wordBoundary = ()=>({
-            type: Af.POSITION,
+var U = E1((Of)=>{
+    var Pf = I();
+    Of.wordBoundary = ()=>({
+            type: Pf.POSITION,
             value: "b"
         })
     ;
-    zf.nonWordBoundary = ()=>({
-            type: Af.POSITION,
+    Of.nonWordBoundary = ()=>({
+            type: Pf.POSITION,
             value: "B"
         })
     ;
-    zf.begin = ()=>({
-            type: Af.POSITION,
+    Of.begin = ()=>({
+            type: Pf.POSITION,
             value: "^"
         })
     ;
-    zf.end = ()=>({
-            type: Af.POSITION,
+    Of.end = ()=>({
+            type: Pf.POSITION,
             value: "$"
         })
     ;
 });
-var P = E1((Bf, Cf)=>{
-    var Df = F(), Ef = I(), Ff = S(), Gf = U();
-    Cf.exports = (Hf)=>{
-        var If = 0, Jf, Kf, Lf = {
-            type: Ef.ROOT,
+var P = E1((Qf, Rf)=>{
+    var Sf = F(), Tf = I(), Uf = S(), Vf = U();
+    Rf.exports = (Wf)=>{
+        var Xf = 0, Yf, Zf, $f = {
+            type: Tf.ROOT,
             stack: []
-        }, Mf = Lf, Nf = Lf.stack, Of = [], Pf = (Qf)=>{
-            Df.error(Hf, `Nothing to repeat at column ${Qf - 1}`);
-        }, Rf = Df.strToChars(Hf);
-        for(Jf = Rf.length; If < Jf;)switch(Kf = Rf[If++], Kf){
+        }, _f = $f, ag = $f.stack, bg = [], cg = (dg)=>{
+            Sf.error(Wf, `Nothing to repeat at column ${dg - 1}`);
+        }, eg = Sf.strToChars(Wf);
+        for(Yf = eg.length; Xf < Yf;)switch(Zf = eg[Xf++], Zf){
             case "\\":
-                switch(Kf = Rf[If++], Kf){
+                switch(Zf = eg[Xf++], Zf){
                     case "b":
-                        Nf.push(Gf.wordBoundary());
+                        ag.push(Vf.wordBoundary());
                         break;
                     case "B":
-                        Nf.push(Gf.nonWordBoundary());
+                        ag.push(Vf.nonWordBoundary());
                         break;
                     case "w":
-                        Nf.push(Ff.words());
+                        ag.push(Uf.words());
                         break;
                     case "W":
-                        Nf.push(Ff.notWords());
+                        ag.push(Uf.notWords());
                         break;
                     case "d":
-                        Nf.push(Ff.ints());
+                        ag.push(Uf.ints());
                         break;
                     case "D":
-                        Nf.push(Ff.notInts());
+                        ag.push(Uf.notInts());
                         break;
                     case "s":
-                        Nf.push(Ff.whitespace());
+                        ag.push(Uf.whitespace());
                         break;
                     case "S":
-                        Nf.push(Ff.notWhitespace());
+                        ag.push(Uf.notWhitespace());
                         break;
                     default:
-                        /\d/.test(Kf) ? Nf.push({
-                            type: Ef.REFERENCE,
-                            value: parseInt(Kf, 10)
-                        }) : Nf.push({
-                            type: Ef.CHAR,
-                            value: Kf.charCodeAt(0)
+                        /\d/.test(Zf) ? ag.push({
+                            type: Tf.REFERENCE,
+                            value: parseInt(Zf, 10)
+                        }) : ag.push({
+                            type: Tf.CHAR,
+                            value: Zf.charCodeAt(0)
                         });
                 }
                 break;
             case "^":
-                Nf.push(Gf.begin());
+                ag.push(Vf.begin());
                 break;
             case "$":
-                Nf.push(Gf.end());
+                ag.push(Vf.end());
                 break;
             case "[":
-                var Sf;
-                Rf[If] === "^" ? (Sf = !0, If++) : Sf = !1;
-                var Tf = Df.tokenizeClass(Rf.slice(If), Hf);
-                If += Tf[1], Nf.push({
-                    type: Ef.SET,
-                    set: Tf[0],
-                    not: Sf
+                var fg;
+                eg[Xf] === "^" ? (fg = !0, Xf++) : fg = !1;
+                var gg = Sf.tokenizeClass(eg.slice(Xf), Wf);
+                Xf += gg[1], ag.push({
+                    type: Tf.SET,
+                    set: gg[0],
+                    not: fg
                 });
                 break;
             case ".":
-                Nf.push(Ff.anyChar());
+                ag.push(Uf.anyChar());
                 break;
             case "(":
-                var Uf = {
-                    type: Ef.GROUP,
+                var hg = {
+                    type: Tf.GROUP,
                     stack: [],
                     remember: !0
                 };
-                Kf = Rf[If], Kf === "?" && (Kf = Rf[If + 1], If += 2, Kf === "=" ? Uf.followedBy = !0 : Kf === "!" ? Uf.notFollowedBy = !0 : Kf !== ":" && Df.error(Hf, `Invalid group, character '${Kf}' after '?' at column ${If - 1}`), Uf.remember = !1), Nf.push(Uf), Of.push(Mf), Mf = Uf, Nf = Uf.stack;
+                Zf = eg[Xf], Zf === "?" && (Zf = eg[Xf + 1], Xf += 2, Zf === "=" ? hg.followedBy = !0 : Zf === "!" ? hg.notFollowedBy = !0 : Zf !== ":" && Sf.error(Wf, `Invalid group, character '${Zf}' after '?' at column ${Xf - 1}`), hg.remember = !1), ag.push(hg), bg.push(_f), _f = hg, ag = hg.stack;
                 break;
             case ")":
-                Of.length === 0 && Df.error(Hf, `Unmatched ) at column ${If - 1}`), Mf = Of.pop(), Nf = Mf.options ? Mf.options[Mf.options.length - 1] : Mf.stack;
+                bg.length === 0 && Sf.error(Wf, `Unmatched ) at column ${Xf - 1}`), _f = bg.pop(), ag = _f.options ? _f.options[_f.options.length - 1] : _f.stack;
                 break;
             case "|":
-                Mf.options || (Mf.options = [
-                    Mf.stack
-                ], delete Mf.stack);
-                var Vf = [];
-                Mf.options.push(Vf), Nf = Vf;
+                _f.options || (_f.options = [
+                    _f.stack
+                ], delete _f.stack);
+                var ig = [];
+                _f.options.push(ig), ag = ig;
                 break;
             case "{":
-                var Wf = /^(\d+)(,(\d+)?)?\}/.exec(Rf.slice(If)), Xf, Yf;
-                Wf !== null ? (Nf.length === 0 && Pf(If), Xf = parseInt(Wf[1], 10), Yf = Wf[2] ? Wf[3] ? parseInt(Wf[3], 10) : 1 / 0 : Xf, If += Wf[0].length, Nf.push({
-                    type: Ef.REPETITION,
-                    min: Xf,
-                    max: Yf,
-                    value: Nf.pop()
-                })) : Nf.push({
-                    type: Ef.CHAR,
+                var jg = /^(\d+)(,(\d+)?)?\}/.exec(eg.slice(Xf)), kg, lg;
+                jg !== null ? (ag.length === 0 && cg(Xf), kg = parseInt(jg[1], 10), lg = jg[2] ? jg[3] ? parseInt(jg[3], 10) : 1 / 0 : kg, Xf += jg[0].length, ag.push({
+                    type: Tf.REPETITION,
+                    min: kg,
+                    max: lg,
+                    value: ag.pop()
+                })) : ag.push({
+                    type: Tf.CHAR,
                     value: 123
                 });
                 break;
             case "?":
-                Nf.length === 0 && Pf(If), Nf.push({
-                    type: Ef.REPETITION,
+                ag.length === 0 && cg(Xf), ag.push({
+                    type: Tf.REPETITION,
                     min: 0,
                     max: 1,
-                    value: Nf.pop()
+                    value: ag.pop()
                 });
                 break;
             case "+":
-                Nf.length === 0 && Pf(If), Nf.push({
-                    type: Ef.REPETITION,
+                ag.length === 0 && cg(Xf), ag.push({
+                    type: Tf.REPETITION,
                     min: 1,
                     max: 1 / 0,
-                    value: Nf.pop()
+                    value: ag.pop()
                 });
                 break;
             case "*":
-                Nf.length === 0 && Pf(If), Nf.push({
-                    type: Ef.REPETITION,
+                ag.length === 0 && cg(Xf), ag.push({
+                    type: Tf.REPETITION,
                     min: 0,
                     max: 1 / 0,
-                    value: Nf.pop()
+                    value: ag.pop()
                 });
                 break;
             default:
-                Nf.push({
-                    type: Ef.CHAR,
-                    value: Kf.charCodeAt(0)
+                ag.push({
+                    type: Tf.CHAR,
+                    value: Zf.charCodeAt(0)
                 });
         }
-        return Of.length !== 0 && Df.error(Hf, "Unterminated group"), Lf;
+        return bg.length !== 0 && Sf.error(Wf, "Unterminated group"), $f;
     };
-    Cf.exports.types = Ef;
+    Rf.exports.types = Tf;
 });
 var X = x1(P()), j1 = x1(P()), { types: oe  } = X;
 var export_default1 = j1.default;
@@ -1315,118 +1361,118 @@ var o = Object.defineProperty;
 var y = Object.getOwnPropertyDescriptor;
 var E2 = Object.getOwnPropertyNames;
 var x2 = Object.getPrototypeOf, I1 = Object.prototype.hasOwnProperty;
-var w1 = (Zf)=>o(Zf, "__esModule", {
+var w1 = (mg)=>o(mg, "__esModule", {
         value: !0
     })
 ;
-(($f)=>typeof require != "undefined" ? require : typeof Proxy != "undefined" ? new Proxy($f, {
-        get: (_f, ag)=>(typeof require != "undefined" ? require : _f)[ag]
-    }) : $f
-)(function(bg) {
+((ng)=>typeof require != "undefined" ? require : typeof Proxy != "undefined" ? new Proxy(ng, {
+        get: (og, pg)=>(typeof require != "undefined" ? require : og)[pg]
+    }) : ng
+)(function(qg) {
     if (typeof require != "undefined") return require.apply(this, arguments);
-    throw new Error('Dynamic require of "' + bg + '" is not supported');
+    throw new Error('Dynamic require of "' + qg + '" is not supported');
 });
-var O = (cg, dg)=>()=>(dg || cg((dg = {
+var O = (rg, sg)=>()=>(sg || rg((sg = {
             exports: {
             }
-        }).exports, dg), dg.exports)
+        }).exports, sg), sg.exports)
 ;
-var v1 = (eg, fg, gg)=>{
-    if (fg && typeof fg == "object" || typeof fg == "function") for (let hg of E2(fg))!I1.call(eg, hg) && hg !== "default" && o(eg, hg, {
-        get: ()=>fg[hg]
+var v1 = (tg, ug, vg)=>{
+    if (ug && typeof ug == "object" || typeof ug == "function") for (let wg of E2(ug))!I1.call(tg, wg) && wg !== "default" && o(tg, wg, {
+        get: ()=>ug[wg]
         ,
-        enumerable: !(gg = y(fg, hg)) || gg.enumerable
+        enumerable: !(vg = y(ug, wg)) || vg.enumerable
     });
-    return eg;
-}, _2 = (ig)=>v1(w1(o(ig != null ? C(x2(ig)) : {
-    }, "default", ig && ig.__esModule && "default" in ig ? {
-        get: ()=>ig.default
+    return tg;
+}, _2 = (xg)=>v1(w1(o(xg != null ? C(x2(xg)) : {
+    }, "default", xg && xg.__esModule && "default" in xg ? {
+        get: ()=>xg.default
         ,
         enumerable: !0
     } : {
-        value: ig,
+        value: xg,
         enumerable: !0
-    })), ig)
+    })), xg)
 ;
-var c = O((jg, kg)=>{
-    var lg = export_default1, mg = export_default, ng = lg.types;
-    kg.exports = class h {
-        _setDefaults(og) {
-            this.max = og.max != null ? og.max : h.prototype.max != null ? h.prototype.max : 100, this.defaultRange = og.defaultRange ? og.defaultRange : this.defaultRange.clone(), og.randInt && (this.randInt = og.randInt);
+var c = O((yg, zg)=>{
+    var Ag = export_default1, Bg = export_default, Cg = Ag.types;
+    zg.exports = class h {
+        _setDefaults(Dg) {
+            this.max = Dg.max != null ? Dg.max : h.prototype.max != null ? h.prototype.max : 100, this.defaultRange = Dg.defaultRange ? Dg.defaultRange : this.defaultRange.clone(), Dg.randInt && (this.randInt = Dg.randInt);
         }
         gen() {
             return this._gen(this.tokens, []);
         }
-        _gen(pg, qg) {
-            var rg, sg, tg, ug, vg;
-            switch(pg.type){
-                case ng.ROOT:
-                case ng.GROUP:
-                    if (pg.followedBy || pg.notFollowedBy) return "";
-                    for(pg.remember && pg.groupNumber === void 0 && (pg.groupNumber = qg.push(null) - 1), rg = pg.options ? this._randSelect(pg.options) : pg.stack, sg = "", ug = 0, vg = rg.length; ug < vg; ug++)sg += this._gen(rg[ug], qg);
-                    return pg.remember && (qg[pg.groupNumber] = sg), sg;
-                case ng.POSITION:
+        _gen(Eg, Fg) {
+            var Gg, Hg, Ig, Jg, Kg;
+            switch(Eg.type){
+                case Cg.ROOT:
+                case Cg.GROUP:
+                    if (Eg.followedBy || Eg.notFollowedBy) return "";
+                    for(Eg.remember && Eg.groupNumber === void 0 && (Eg.groupNumber = Fg.push(null) - 1), Gg = Eg.options ? this._randSelect(Eg.options) : Eg.stack, Hg = "", Jg = 0, Kg = Gg.length; Jg < Kg; Jg++)Hg += this._gen(Gg[Jg], Fg);
+                    return Eg.remember && (Fg[Eg.groupNumber] = Hg), Hg;
+                case Cg.POSITION:
                     return "";
-                case ng.SET:
-                    var wg = this._expand(pg);
-                    return wg.length ? String.fromCharCode(this._randSelect(wg)) : "";
-                case ng.REPETITION:
-                    for(tg = this.randInt(pg.min, pg.max === 1 / 0 ? pg.min + this.max : pg.max), sg = "", ug = 0; ug < tg; ug++)sg += this._gen(pg.value, qg);
-                    return sg;
-                case ng.REFERENCE:
-                    return qg[pg.value - 1] || "";
-                case ng.CHAR:
-                    var xg = this.ignoreCase && this._randBool() ? this._toOtherCase(pg.value) : pg.value;
-                    return String.fromCharCode(xg);
+                case Cg.SET:
+                    var Lg = this._expand(Eg);
+                    return Lg.length ? String.fromCharCode(this._randSelect(Lg)) : "";
+                case Cg.REPETITION:
+                    for(Ig = this.randInt(Eg.min, Eg.max === 1 / 0 ? Eg.min + this.max : Eg.max), Hg = "", Jg = 0; Jg < Ig; Jg++)Hg += this._gen(Eg.value, Fg);
+                    return Hg;
+                case Cg.REFERENCE:
+                    return Fg[Eg.value - 1] || "";
+                case Cg.CHAR:
+                    var Mg = this.ignoreCase && this._randBool() ? this._toOtherCase(Eg.value) : Eg.value;
+                    return String.fromCharCode(Mg);
             }
         }
-        _toOtherCase(yg) {
-            return yg + (97 <= yg && yg <= 122 ? -32 : 65 <= yg && yg <= 90 ? 32 : 0);
+        _toOtherCase(Ng) {
+            return Ng + (97 <= Ng && Ng <= 122 ? -32 : 65 <= Ng && Ng <= 90 ? 32 : 0);
         }
         _randBool() {
             return !this.randInt(0, 1);
         }
-        _randSelect(zg) {
-            return zg instanceof mg ? zg.index(this.randInt(0, zg.length - 1)) : zg[this.randInt(0, zg.length - 1)];
+        _randSelect(Og) {
+            return Og instanceof Bg ? Og.index(this.randInt(0, Og.length - 1)) : Og[this.randInt(0, Og.length - 1)];
         }
-        _expand(Ag) {
-            if (Ag.type === lg.types.CHAR) return new mg(Ag.value);
-            if (Ag.type === lg.types.RANGE) return new mg(Ag.from, Ag.to);
+        _expand(Pg) {
+            if (Pg.type === Ag.types.CHAR) return new Bg(Pg.value);
+            if (Pg.type === Ag.types.RANGE) return new Bg(Pg.from, Pg.to);
             {
-                let Bg = new mg;
-                for(let Cg = 0; Cg < Ag.set.length; Cg++){
-                    let Dg = this._expand(Ag.set[Cg]);
-                    if (Bg.add(Dg), this.ignoreCase) for(let Eg = 0; Eg < Dg.length; Eg++){
-                        let Fg = Dg.index(Eg), Gg = this._toOtherCase(Fg);
-                        Fg !== Gg && Bg.add(Gg);
+                let Qg = new Bg;
+                for(let Rg = 0; Rg < Pg.set.length; Rg++){
+                    let Sg = this._expand(Pg.set[Rg]);
+                    if (Qg.add(Sg), this.ignoreCase) for(let Tg = 0; Tg < Sg.length; Tg++){
+                        let Ug = Sg.index(Tg), Vg = this._toOtherCase(Ug);
+                        Ug !== Vg && Qg.add(Vg);
                     }
                 }
-                return Ag.not ? this.defaultRange.clone().subtract(Bg) : this.defaultRange.clone().intersect(Bg);
+                return Pg.not ? this.defaultRange.clone().subtract(Qg) : this.defaultRange.clone().intersect(Qg);
             }
         }
-        randInt(Hg, Ig) {
-            return Hg + Math.floor(Math.random() * (1 + Ig - Hg));
+        randInt(Wg, Xg) {
+            return Wg + Math.floor(Math.random() * (1 + Xg - Wg));
         }
         get defaultRange() {
-            return this._range = this._range || new mg(32, 126);
+            return this._range = this._range || new Bg(32, 126);
         }
-        set defaultRange(Jg) {
-            this._range = Jg;
+        set defaultRange(Yg) {
+            this._range = Yg;
         }
-        static randexp(Kg, Lg) {
-            var Mg;
-            return typeof Kg == "string" && (Kg = new RegExp(Kg, Lg)), Kg._randexp === void 0 ? (Mg = new h(Kg, Lg), Kg._randexp = Mg) : (Mg = Kg._randexp, Mg._setDefaults(Kg)), Mg.gen();
+        static randexp(Zg, $g) {
+            var _g;
+            return typeof Zg == "string" && (Zg = new RegExp(Zg, $g)), Zg._randexp === void 0 ? (_g = new h(Zg, $g), Zg._randexp = _g) : (_g = Zg._randexp, _g._setDefaults(Zg)), _g.gen();
         }
         static sugar() {
             RegExp.prototype.gen = function() {
                 return h.randexp(this);
             };
         }
-        constructor(Ng, Og){
-            if (this._setDefaults(Ng), Ng instanceof RegExp) this.ignoreCase = Ng.ignoreCase, this.multiline = Ng.multiline, Ng = Ng.source;
-            else if (typeof Ng == "string") this.ignoreCase = Og && Og.indexOf("i") !== -1, this.multiline = Og && Og.indexOf("m") !== -1;
+        constructor(ah, bh){
+            if (this._setDefaults(ah), ah instanceof RegExp) this.ignoreCase = ah.ignoreCase, this.multiline = ah.multiline, ah = ah.source;
+            else if (typeof ah == "string") this.ignoreCase = bh && bh.indexOf("i") !== -1, this.multiline = bh && bh.indexOf("m") !== -1;
             else throw new Error("Expected a regexp or string");
-            this.tokens = lg(Ng);
+            this.tokens = Ag(ah);
         }
     };
 });
