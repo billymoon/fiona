@@ -1,12 +1,14 @@
 import Fiona from "./core/index.js";
 
 import bool from "./bool/bool.js";
+import unique from "./unique/unique.js";
 import choose from "./choose/choose.js";
 import oneOf from "./choose/one-of.js";
 import date from "./date/date.js";
 import img from "./img/img.js";
 import duplicable from "./duplicable/duplicable.js";
 
+import gibberish from "./gibberish/gibberish.js";
 import { lorem, paragraph, sentence, word } from "./lorem/lorem.js";
 import {
   firstname,
@@ -23,11 +25,13 @@ import shuffle from "./shuffle/shuffle.js";
 export default (RandExp) => {
   Fiona.register(
     ["bool", bool],
+    ["unique", unique],
     ["choose", choose],
     ["oneOf", oneOf],
     ["date", date],
     ["img", img],
     ["duplicable", duplicable],
+    ["gibberish", gibberish],
     ["lorem", lorem],
     ["word", word],
     ["sentence", sentence],
