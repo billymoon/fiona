@@ -34,8 +34,10 @@ const handleRegex = (
   seeded,
   node,
   path,
-  root
-) => (seeded.regex ? handleFunction(seeded, seeded => seeded.regex(node), path, root) : node);
+  root,
+) => (seeded.regex
+  ? handleFunction(seeded, (seeded) => seeded.regex(node), path, root)
+  : node);
 
 const recursor = (seeded, node, path, root) =>
   node === null || node === undefined

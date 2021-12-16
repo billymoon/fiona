@@ -9,7 +9,9 @@ export const gender = (seeded) => {
 };
 
 export const title = (seeded, { gender } = {}) => {
-  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].title, { weights: [5, 3] });
+  return seeded.oneOf(namedata[getGender(gender || seeded.gender())].title, {
+    weights: [5, 3],
+  });
 };
 
 export const firstname = (seeded, { gender } = {}) => {

@@ -58,8 +58,9 @@ it("regex is expanded when regex function is registered", () => {
       new (function () {
         this.info = () => ({ initseed: 1, path: [] });
         this.regex = () => REGEX_RETURN_MOCK;
-      })()
-    , regex),
+      })(),
+      regex,
+    ),
     REGEX_RETURN_MOCK,
   );
 });
@@ -87,8 +88,9 @@ it("regex is handled when inside function and regex method registered", () => {
       new (function () {
         this.info = () => ({ initseed: 1, path: [] });
         this.regex = () => REGEX_RETURN_MOCK;
-      })()
-    , () => regex),
+      })(),
+      () => regex,
+    ),
     REGEX_RETURN_MOCK,
   );
 });
@@ -97,10 +99,10 @@ it("bare regex uses path in recursor", () => {
   const regex = /\d{10}/;
   assertEquals(
     Fiona(1).object({
-      a: regex
+      a: regex,
     }).a,
     Fiona(1).object({
-      a: Fiona.Regex(regex)
+      a: Fiona.Regex(regex),
     }).a,
   );
 });
