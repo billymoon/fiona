@@ -1,12 +1,16 @@
-Fiona is a tool for creating large sets of pseudo random data. At it's core it uses a Xorshift256 PRNG that makes a mockery of creating predictable seemingly random data.
+Fiona is a tool for creating large sets of pseudo random data. At it's core it
+uses a Xorshift256 PRNG that makes a mockery of creating predictable seemingly
+random data.
 
 # Documentation
 
-There is more complete, better overview of the features at: [https://fiona.itaccess.org](https://fiona.itaccess.org).
+There is more complete, better overview of the features at:
+[https://fiona.itaccess.org](https://fiona.itaccess.org).
 
 ## Quickstart
 
-The most basic use case is to generate a random number: `fiona().number({ max: 1000000, min: 0 })`
+The most basic use case is to generate a random number:
+`fiona().number({ max: 1000000, min: 0 })`
 
     // input                                      // output
     const myNumber = fiona(24).number()           553925
@@ -24,7 +28,7 @@ It becomes more useful when creating data structures.
         'yellow',                                                                 
         'blue'                                                                    
       ])                                                                          
-    })                                                                            
+    })
 
 ## Installation
 
@@ -40,6 +44,7 @@ Install and import/require via npm in usual way
 
     <script src='https://cdn.jsdelivr.net/npm/fiona'></script>
 
-... or for those interested in [deno - a secure runtime for JavaScript and TypeScript](https://deno.land)
+... or for those interested in
+[deno - a secure runtime for JavaScript and TypeScript](https://deno.land)
 
     import Fiona from 'http://esm.sh/fiona'
