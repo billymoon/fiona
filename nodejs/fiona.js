@@ -28,7 +28,7 @@ function _objectSpread(i) {
     return i;
 }
 const __default = {
-    version: "4.0.0-alpha.10"
+    version: "4.0.0"
 };
 const Register = (r, s)=>(...t)=>t.forEach((u)=>{
             const [A, G] = typeof u === "function" ? [
@@ -446,32 +446,32 @@ const duplicable = (nd, { frequency =0.1 , pool =10  } = {
     return nd;
 };
 const gibberish = (od, { qty =1 , syllableMin =1 , syllableMax =5  } = {
-})=>od.array(qty, (pd)=>pd.regex(new RegExp(`([bcdfghklmnprstvw]?(a|ac|ad|af|age|al|an|an|ap|ar|as|at|au|aus|e|ed|el|en|ence|er|ern|ers|es|est|et|eve|ex|i|ic|ies|im|in|ing|ings|is|it|o|ob|oc|of|op|or|out|u|un|up)){${syllableMin},${syllableMax}}`))
+})=>od.array(qty, ()=>od.regex(new RegExp(`([bcdfghklmnprstvw]?(a|ac|ad|af|age|al|an|an|ap|ar|as|at|au|aus|e|ed|el|en|ence|er|ern|ers|es|est|et|eve|ex|i|ic|ies|im|in|ing|ings|is|it|o|ob|oc|of|op|or|out|u|un|up)){${syllableMin},${syllableMax}}`))
     ).join(" ")
 ;
-const lorem = (qd, { qty =15  } = {
+const lorem = (pd, { qty =15  } = {
 })=>{
-    const rd = qd.random() < 0.2 ? "lorem ipsum " : "";
-    let sd = [];
-    while(sd.length < qty){
-        sd = sd.concat("dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum".split(" "));
+    const qd = pd.random() < 0.2 ? "lorem ipsum " : "";
+    let rd = [];
+    while(rd.length < qty){
+        rd = rd.concat("dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum".split(" "));
     }
-    return rd + qd.choose(qty, sd).join(" ");
+    return qd + pd.choose(qty, rd).join(" ");
 };
-const word = (td)=>td.lorem({
+const word = (sd)=>sd.lorem({
         qty: 1
     }).split(" ")[0]
 ;
-const sentence = (ud)=>{
-    const vd = ud.lorem({
+const sentence = (td)=>{
+    const ud = td.lorem({
         qty: 25
     });
-    return vd[0].toUpperCase() + vd.slice(1) + ".";
+    return ud[0].toUpperCase() + ud.slice(1) + ".";
 };
-const paragraph = (wd)=>Array(wd.number({
+const paragraph = (vd)=>Array(vd.number({
         min: 1,
         max: 10
-    })).fill(0).map(()=>wd.sentence()
+    })).fill(0).map(()=>vd.sentence()
     ).join("  ")
 ;
 const namedata = {
@@ -720,96 +720,96 @@ const namedata = {
     ]
 };
 const namedata1 = namedata;
-const getGender = (xd)=>xd && (xd[0].toLowerCase() === "f" ? "female" : "male")
+const getGender = (wd)=>wd && (wd[0].toLowerCase() === "f" ? "female" : "male")
 ;
-const gender = (yd)=>{
-    return yd.random() < 0.5 ? "male" : "female";
+const gender = (xd)=>{
+    return xd.random() < 0.5 ? "male" : "female";
 };
-const title = (zd, { gender  } = {
+const title = (yd, { gender  } = {
 })=>{
-    return zd.oneOf(namedata[getGender(gender || zd.gender())].title, {
+    return yd.oneOf(namedata[getGender(gender || yd.gender())].title, {
         weights: [
             5,
             3
         ]
     });
 };
-const firstname = (Ad, { gender  } = {
+const firstname = (zd, { gender  } = {
 })=>{
-    return Ad.oneOf(namedata[getGender(gender || Ad.gender())].firstname);
+    return zd.oneOf(namedata[getGender(gender || zd.gender())].firstname);
 };
-const firstnames = (Bd, { gender  } = {
+const firstnames = (Ad, { gender  } = {
 })=>{
-    return Bd.choose(Bd.clone().distribution((Cd)=>Cd * Cd * Cd
+    return Ad.choose(Ad.clone().distribution((Bd)=>Bd * Bd * Bd
     ).number({
         min: 1,
         max: 3
-    }), namedata[getGender(gender || Bd.gender())].firstname).join(" ");
+    }), namedata[getGender(gender || Ad.gender())].firstname).join(" ");
 };
-const surname = (Dd)=>{
-    return Dd.choose(Dd.clone().distribution((Ed)=>Ed * Ed * Ed
+const surname = (Cd)=>{
+    return Cd.choose(Cd.clone().distribution((Dd)=>Dd * Dd * Dd
     ).number({
         min: 1,
         max: 2
-    }), namedata.surname).join(Dd.bool() ? " " : "-");
+    }), namedata.surname).join(Cd.bool() ? " " : "-");
 };
-const fullname = (Fd, { gender  } = {
+const fullname = (Ed, { gender  } = {
 })=>{
-    const Gd = getGender(gender || Fd.gender());
-    return `${Fd.title({
-        gender: Gd
-    })} ${Fd.firstnames({
-        gender: Gd
-    })} ${Fd.surname()}`;
+    const Fd = getGender(gender || Ed.gender());
+    return `${Ed.title({
+        gender: Fd
+    })} ${Ed.firstnames({
+        gender: Fd
+    })} ${Ed.surname()}`;
 };
-const regex = (Hd)=>(Id, Jd = /[A-F0-9]{16}/)=>{
-        const Kd = new Hd(RegExp(Jd));
-        Kd.randInt = (Ld, Md)=>Ld + Math.floor(Id.random() * (1 + Md - Ld))
+const regex = (Gd)=>(Hd, Id = /[A-F0-9]{16}/)=>{
+        const Jd = new Gd(RegExp(Id));
+        Jd.randInt = (Kd, Ld)=>Kd + Math.floor(Hd.random() * (1 + Ld - Kd))
         ;
-        return Kd.gen();
+        return Jd.gen();
     }
 ;
-const shuffle = (Nd, Od, { qty  } = {
-})=>Nd.choose(typeof qty !== "undefined" ? qty : Od.length, Od)
+const shuffle = (Md, Nd, { qty  } = {
+})=>Md.choose(typeof qty !== "undefined" ? qty : Nd.length, Nd)
 ;
-const recurser = (Pd, Qd)=>{
-    const Rd = (Sd, Td)=>{
-        if (Td === undefined) {
-            Td = Sd;
+const recurser = (Od, Pd)=>{
+    const Qd = (Rd, Sd)=>{
+        if (Sd === undefined) {
+            Sd = Rd;
         }
-        if (Sd === null || Sd === undefined) {
-            return Sd;
-        } else if (Sd.constructor === Array) {
-            return Sd.map((Ud)=>Rd(Ud, Td)
+        if (Rd === null || Rd === undefined) {
+            return Rd;
+        } else if (Rd.constructor === Array) {
+            return Rd.map((Td)=>Qd(Td, Sd)
             );
-        } else if (Sd.constructor === Object) {
-            if (Pd(Sd, Td)) {
-                return Qd(Sd, Td);
+        } else if (Rd.constructor === Object) {
+            if (Od(Rd, Sd)) {
+                return Pd(Rd, Sd);
             } else {
-                Object.entries(Sd).forEach(([Vd, Wd])=>{
-                    Sd[Vd] = Rd(Wd, Td);
+                Object.entries(Rd).forEach(([Ud, Vd])=>{
+                    Rd[Ud] = Qd(Vd, Sd);
                 });
-                return Sd;
+                return Rd;
             }
         } else {
-            return Sd;
+            return Rd;
         }
     };
-    return Rd;
+    return Qd;
 };
-const transformer = recurser((Xd)=>Xd.fiona
-, (Yd)=>{
-    if (Yd.fiona.constructor === Array) {
-        return (Zd)=>Zd[Yd.fiona[0]](...Yd.fiona.slice(1).map(transformer))
+const transformer = recurser((Wd)=>Wd.fiona
+, (Xd)=>{
+    if (Xd.fiona.constructor === Array) {
+        return (Yd)=>Yd[Xd.fiona[0]](...Xd.fiona.slice(1).map(transformer))
         ;
     } else {
-        return ($d)=>$d[Yd.fiona]()
+        return (Zd)=>Zd[Xd.fiona]()
         ;
     }
 });
-const fromJSON = (_d, ae)=>_d.object(transformer(ae))
+const fromJSON = ($d, _d)=>$d.object(transformer(_d))
 ;
-const __default3 = (be)=>{
+const __default3 = (ae)=>{
     Fiona.register([
         "bool", bool], [
         "unique", unique], [
@@ -830,7 +830,7 @@ const __default3 = (be)=>{
         "surname", surname], [
         "fullname", fullname], [
         "regex",
-        regex(be)
+        regex(ae)
     ], [
         "shuffle", shuffle], [
         "import", fromJSON]);
@@ -842,120 +842,120 @@ var g = Object.defineProperty;
 var v = Object.getOwnPropertyDescriptor;
 var d = Object.getOwnPropertyNames;
 var p = Object.getPrototypeOf, m = Object.prototype.hasOwnProperty;
-var M = (ce)=>g(ce, "__esModule", {
+var M = (be)=>g(be, "__esModule", {
         value: !0
     })
 ;
-var x = (de, ee)=>()=>(ee || de((ee = {
+var x = (ce, de)=>()=>(de || ce((de = {
             exports: {
             }
-        }).exports, ee), ee.exports)
+        }).exports, de), de.exports)
 ;
-var E = (fe, ge, he)=>{
-    if (ge && typeof ge == "object" || typeof ge == "function") for (let ie of d(ge))!m.call(fe, ie) && ie !== "default" && g(fe, ie, {
-        get: ()=>ge[ie]
+var E = (ee, fe, ge)=>{
+    if (fe && typeof fe == "object" || typeof fe == "function") for (let he of d(fe))!m.call(ee, he) && he !== "default" && g(ee, he, {
+        get: ()=>fe[he]
         ,
-        enumerable: !(he = v(ge, ie)) || he.enumerable
+        enumerable: !(ge = v(fe, he)) || ge.enumerable
     });
-    return fe;
-}, _ = (je)=>E(M(g(je != null ? f(p(je)) : {
-    }, "default", je && je.__esModule && "default" in je ? {
-        get: ()=>je.default
+    return ee;
+}, _ = (ie)=>E(M(g(ie != null ? f(p(ie)) : {
+    }, "default", ie && ie.__esModule && "default" in ie ? {
+        get: ()=>ie.default
         ,
         enumerable: !0
     } : {
-        value: je,
+        value: ie,
         enumerable: !0
-    })), je)
+    })), ie)
 ;
-var w = x((ke, le)=>{
+var w = x((je, ke)=>{
     "use strict";
-    var me = class _class {
-        overlaps(ne) {
-            return !(this.high < ne.low || this.low > ne.high);
+    var le = class _class {
+        overlaps(me) {
+            return !(this.high < me.low || this.low > me.high);
         }
-        touches(pe) {
-            return !(this.high + 1 < pe.low || this.low - 1 > pe.high);
+        touches(ne) {
+            return !(this.high + 1 < ne.low || this.low - 1 > ne.high);
         }
-        add(qe) {
-            return new me(Math.min(this.low, qe.low), Math.max(this.high, qe.high));
+        add(pe) {
+            return new le(Math.min(this.low, pe.low), Math.max(this.high, pe.high));
         }
-        subtract(re) {
-            return re.low <= this.low && re.high >= this.high ? [] : re.low > this.low && re.high < this.high ? [
-                new me(this.low, re.low - 1),
-                new me(re.high + 1, this.high)
-            ] : re.low <= this.low ? [
-                new me(re.high + 1, this.high)
+        subtract(qe) {
+            return qe.low <= this.low && qe.high >= this.high ? [] : qe.low > this.low && qe.high < this.high ? [
+                new le(this.low, qe.low - 1),
+                new le(qe.high + 1, this.high)
+            ] : qe.low <= this.low ? [
+                new le(qe.high + 1, this.high)
             ] : [
-                new me(this.low, re.low - 1)
+                new le(this.low, qe.low - 1)
             ];
         }
         toString() {
             return this.low == this.high ? this.low.toString() : this.low + "-" + this.high;
         }
-        constructor(se, te){
-            this.low = se, this.high = te, this.length = 1 + te - se;
+        constructor(re, se){
+            this.low = re, this.high = se, this.length = 1 + se - re;
         }
-    }, ue = class _class {
+    }, te = class _class {
         _update_length() {
-            this.length = this.ranges.reduce((ve, we)=>ve + we.length
+            this.length = this.ranges.reduce((ue, ve)=>ue + ve.length
             , 0);
         }
-        add(xe, ye) {
-            var ze = (Ae)=>{
-                for(var Be = 0; Be < this.ranges.length && !Ae.touches(this.ranges[Be]);)Be++;
-                for(var Ce = this.ranges.slice(0, Be); Be < this.ranges.length && Ae.touches(this.ranges[Be]);)Ae = Ae.add(this.ranges[Be]), Be++;
-                Ce.push(Ae), this.ranges = Ce.concat(this.ranges.slice(Be)), this._update_length();
+        add(we, xe) {
+            var ye = (ze)=>{
+                for(var Ae = 0; Ae < this.ranges.length && !ze.touches(this.ranges[Ae]);)Ae++;
+                for(var Be = this.ranges.slice(0, Ae); Ae < this.ranges.length && ze.touches(this.ranges[Ae]);)ze = ze.add(this.ranges[Ae]), Ae++;
+                Be.push(ze), this.ranges = Be.concat(this.ranges.slice(Ae)), this._update_length();
             };
-            return xe instanceof ue ? xe.ranges.forEach(ze) : (ye == null && (ye = xe), ze(new me(xe, ye))), this;
+            return we instanceof te ? we.ranges.forEach(ye) : (xe == null && (xe = we), ye(new le(we, xe))), this;
         }
-        subtract(De, Ee) {
-            var Fe = (Ge)=>{
-                for(var He = 0; He < this.ranges.length && !Ge.overlaps(this.ranges[He]);)He++;
-                for(var Ie = this.ranges.slice(0, He); He < this.ranges.length && Ge.overlaps(this.ranges[He]);)Ie = Ie.concat(this.ranges[He].subtract(Ge)), He++;
-                this.ranges = Ie.concat(this.ranges.slice(He)), this._update_length();
+        subtract(Ce, De) {
+            var Ee = (Fe)=>{
+                for(var Ge = 0; Ge < this.ranges.length && !Fe.overlaps(this.ranges[Ge]);)Ge++;
+                for(var He = this.ranges.slice(0, Ge); Ge < this.ranges.length && Fe.overlaps(this.ranges[Ge]);)He = He.concat(this.ranges[Ge].subtract(Fe)), Ge++;
+                this.ranges = He.concat(this.ranges.slice(Ge)), this._update_length();
             };
-            return De instanceof ue ? De.ranges.forEach(Fe) : (Ee == null && (Ee = De), Fe(new me(De, Ee))), this;
+            return Ce instanceof te ? Ce.ranges.forEach(Ee) : (De == null && (De = Ce), Ee(new le(Ce, De))), this;
         }
-        intersect(Je, Ke) {
-            var Le = [], Me = (Ne)=>{
-                for(var Oe = 0; Oe < this.ranges.length && !Ne.overlaps(this.ranges[Oe]);)Oe++;
-                for(; Oe < this.ranges.length && Ne.overlaps(this.ranges[Oe]);){
-                    var Pe = Math.max(this.ranges[Oe].low, Ne.low), Qe = Math.min(this.ranges[Oe].high, Ne.high);
-                    Le.push(new me(Pe, Qe)), Oe++;
+        intersect(Ie, Je) {
+            var Ke = [], Le = (Me)=>{
+                for(var Ne = 0; Ne < this.ranges.length && !Me.overlaps(this.ranges[Ne]);)Ne++;
+                for(; Ne < this.ranges.length && Me.overlaps(this.ranges[Ne]);){
+                    var Oe = Math.max(this.ranges[Ne].low, Me.low), Pe = Math.min(this.ranges[Ne].high, Me.high);
+                    Ke.push(new le(Oe, Pe)), Ne++;
                 }
             };
-            return Je instanceof ue ? Je.ranges.forEach(Me) : (Ke == null && (Ke = Je), Me(new me(Je, Ke))), this.ranges = Le, this._update_length(), this;
+            return Ie instanceof te ? Ie.ranges.forEach(Le) : (Je == null && (Je = Ie), Le(new le(Ie, Je))), this.ranges = Ke, this._update_length(), this;
         }
-        index(Re) {
-            for(var Se = 0; Se < this.ranges.length && this.ranges[Se].length <= Re;)Re -= this.ranges[Se].length, Se++;
-            return this.ranges[Se].low + Re;
+        index(Qe) {
+            for(var Re = 0; Re < this.ranges.length && this.ranges[Re].length <= Qe;)Qe -= this.ranges[Re].length, Re++;
+            return this.ranges[Re].low + Qe;
         }
         toString() {
             return "[ " + this.ranges.join(", ") + " ]";
         }
         clone() {
-            return new ue(this);
+            return new te(this);
         }
         numbers() {
-            return this.ranges.reduce((Te, Ue)=>{
-                for(var Ve = Ue.low; Ve <= Ue.high;)Te.push(Ve), Ve++;
-                return Te;
+            return this.ranges.reduce((Se, Te)=>{
+                for(var Ue = Te.low; Ue <= Te.high;)Se.push(Ue), Ue++;
+                return Se;
             }, []);
         }
         subranges() {
-            return this.ranges.map((We)=>({
-                    low: We.low,
-                    high: We.high,
-                    length: 1 + We.high - We.low
+            return this.ranges.map((Ve)=>({
+                    low: Ve.low,
+                    high: Ve.high,
+                    length: 1 + Ve.high - Ve.low
                 })
             );
         }
-        constructor(Xe, Ye){
-            this.ranges = [], this.length = 0, Xe != null && this.add(Xe, Ye);
+        constructor(We, Xe){
+            this.ranges = [], this.length = 0, We != null && this.add(We, Xe);
         }
     };
-    le.exports = ue;
+    ke.exports = te;
 });
 var j = _(w());
 var export_default = j.default;
@@ -964,34 +964,34 @@ var N = Object.defineProperty;
 var _1 = Object.getOwnPropertyDescriptor;
 var z = Object.getOwnPropertyNames;
 var Y = Object.getPrototypeOf, Z = Object.prototype.hasOwnProperty;
-var J = (Ze)=>N(Ze, "__esModule", {
+var J = (Ye)=>N(Ye, "__esModule", {
         value: !0
     })
 ;
-var E1 = ($e, _e)=>()=>(_e || $e((_e = {
+var E1 = (Ze, $e)=>()=>($e || Ze(($e = {
             exports: {
             }
-        }).exports, _e), _e.exports)
+        }).exports, $e), $e.exports)
 ;
-var K = (af, bf, cf)=>{
-    if (bf && typeof bf == "object" || typeof bf == "function") for (let df of z(bf))!Z.call(af, df) && df !== "default" && N(af, df, {
-        get: ()=>bf[df]
+var K = (_e, af, bf)=>{
+    if (af && typeof af == "object" || typeof af == "function") for (let cf of z(af))!Z.call(_e, cf) && cf !== "default" && N(_e, cf, {
+        get: ()=>af[cf]
         ,
-        enumerable: !(cf = _1(bf, df)) || cf.enumerable
+        enumerable: !(bf = _1(af, cf)) || bf.enumerable
     });
-    return af;
-}, x1 = (ef)=>K(J(N(ef != null ? L(Y(ef)) : {
-    }, "default", ef && ef.__esModule && "default" in ef ? {
-        get: ()=>ef.default
+    return _e;
+}, x1 = (df)=>K(J(N(df != null ? L(Y(df)) : {
+    }, "default", df && df.__esModule && "default" in df ? {
+        get: ()=>df.default
         ,
         enumerable: !0
     } : {
-        value: ef,
+        value: df,
         enumerable: !0
-    })), ef)
+    })), df)
 ;
-var I = E1((ff, gf)=>{
-    gf.exports = {
+var I = E1((ef, ff)=>{
+    ff.exports = {
         ROOT: 0,
         GROUP: 1,
         POSITION: 2,
@@ -1002,157 +1002,157 @@ var I = E1((ff, gf)=>{
         CHAR: 7
     };
 });
-var S = E1((hf)=>{
-    var jf = I(), kf = ()=>[
+var S = E1((gf)=>{
+    var hf = I(), jf = ()=>[
             {
-                type: jf.RANGE,
+                type: hf.RANGE,
                 from: 48,
                 to: 57
             }
         ]
-    , lf = ()=>[
+    , kf = ()=>[
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 95
             },
             {
-                type: jf.RANGE,
+                type: hf.RANGE,
                 from: 97,
                 to: 122
             },
             {
-                type: jf.RANGE,
+                type: hf.RANGE,
                 from: 65,
                 to: 90
             }
-        ].concat(kf())
-    , mf = ()=>[
+        ].concat(jf())
+    , lf = ()=>[
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 9
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 10
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 11
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 12
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 13
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 32
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 160
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 5760
             },
             {
-                type: jf.RANGE,
+                type: hf.RANGE,
                 from: 8192,
                 to: 8202
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 8232
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 8233
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 8239
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 8287
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 12288
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 65279
             }
         ]
-    , nf = ()=>[
+    , mf = ()=>[
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 10
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 13
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 8232
             },
             {
-                type: jf.CHAR,
+                type: hf.CHAR,
                 value: 8233
             }
         ]
     ;
-    hf.words = ()=>({
-            type: jf.SET,
-            set: lf(),
-            not: !1
-        })
-    ;
-    hf.notWords = ()=>({
-            type: jf.SET,
-            set: lf(),
-            not: !0
-        })
-    ;
-    hf.ints = ()=>({
-            type: jf.SET,
+    gf.words = ()=>({
+            type: hf.SET,
             set: kf(),
             not: !1
         })
     ;
-    hf.notInts = ()=>({
-            type: jf.SET,
+    gf.notWords = ()=>({
+            type: hf.SET,
             set: kf(),
             not: !0
         })
     ;
-    hf.whitespace = ()=>({
-            type: jf.SET,
-            set: mf(),
+    gf.ints = ()=>({
+            type: hf.SET,
+            set: jf(),
             not: !1
         })
     ;
-    hf.notWhitespace = ()=>({
-            type: jf.SET,
-            set: mf(),
+    gf.notInts = ()=>({
+            type: hf.SET,
+            set: jf(),
             not: !0
         })
     ;
-    hf.anyChar = ()=>({
-            type: jf.SET,
-            set: nf(),
+    gf.whitespace = ()=>({
+            type: hf.SET,
+            set: lf(),
+            not: !1
+        })
+    ;
+    gf.notWhitespace = ()=>({
+            type: hf.SET,
+            set: lf(),
+            not: !0
+        })
+    ;
+    gf.anyChar = ()=>({
+            type: hf.SET,
+            set: mf(),
             not: !0
         })
     ;
 });
-var F = E1((of)=>{
-    var pf = I(), qf = S(), rf = "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^ ?", sf = {
+var F = E1((nf)=>{
+    var of = I(), pf = S(), qf = "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^ ?", rf = {
         "0": 0,
         t: 9,
         n: 10,
@@ -1160,191 +1160,191 @@ var F = E1((of)=>{
         f: 12,
         r: 13
     };
-    of.strToChars = function(tf) {
-        var uf = /(\[\\b\])|(\\)?\\(?:u([A-F0-9]{4})|x([A-F0-9]{2})|(0?[0-7]{2})|c([@A-Z[\\\]^?])|([0tnvfr]))/g;
-        return tf = tf.replace(uf, function(vf, wf, xf, yf, zf, Af, Bf, Cf) {
-            if (xf) return vf;
-            var Df = wf ? 8 : yf ? parseInt(yf, 16) : zf ? parseInt(zf, 16) : Af ? parseInt(Af, 8) : Bf ? rf.indexOf(Bf) : sf[Cf], Ef = String.fromCharCode(Df);
-            return /[[\]{}^$.|?*+()]/.test(Ef) && (Ef = "\\" + Ef), Ef;
-        }), tf;
+    nf.strToChars = function(sf) {
+        var tf = /(\[\\b\])|(\\)?\\(?:u([A-F0-9]{4})|x([A-F0-9]{2})|(0?[0-7]{2})|c([@A-Z[\\\]^?])|([0tnvfr]))/g;
+        return sf = sf.replace(tf, function(uf, vf, wf, xf, yf, zf, Af, Bf) {
+            if (wf) return uf;
+            var Cf = vf ? 8 : xf ? parseInt(xf, 16) : yf ? parseInt(yf, 16) : zf ? parseInt(zf, 8) : Af ? qf.indexOf(Af) : rf[Bf], Df = String.fromCharCode(Cf);
+            return /[[\]{}^$.|?*+()]/.test(Df) && (Df = "\\" + Df), Df;
+        }), sf;
     };
-    of.tokenizeClass = (Ff, Gf)=>{
-        for(var Hf = [], If = /\\(?:(w)|(d)|(s)|(W)|(D)|(S))|((?:(?:\\)(.)|([^\]\\]))-(?:\\)?([^\]]))|(\])|(?:\\)?([^])/g, Jf, Kf; (Jf = If.exec(Ff)) != null;)if (Jf[1]) Hf.push(qf.words());
-        else if (Jf[2]) Hf.push(qf.ints());
-        else if (Jf[3]) Hf.push(qf.whitespace());
-        else if (Jf[4]) Hf.push(qf.notWords());
-        else if (Jf[5]) Hf.push(qf.notInts());
-        else if (Jf[6]) Hf.push(qf.notWhitespace());
-        else if (Jf[7]) Hf.push({
-            type: pf.RANGE,
-            from: (Jf[8] || Jf[9]).charCodeAt(0),
-            to: Jf[10].charCodeAt(0)
+    nf.tokenizeClass = (Ef, Ff)=>{
+        for(var Gf = [], Hf = /\\(?:(w)|(d)|(s)|(W)|(D)|(S))|((?:(?:\\)(.)|([^\]\\]))-(?:\\)?([^\]]))|(\])|(?:\\)?([^])/g, If, Jf; (If = Hf.exec(Ef)) != null;)if (If[1]) Gf.push(pf.words());
+        else if (If[2]) Gf.push(pf.ints());
+        else if (If[3]) Gf.push(pf.whitespace());
+        else if (If[4]) Gf.push(pf.notWords());
+        else if (If[5]) Gf.push(pf.notInts());
+        else if (If[6]) Gf.push(pf.notWhitespace());
+        else if (If[7]) Gf.push({
+            type: of.RANGE,
+            from: (If[8] || If[9]).charCodeAt(0),
+            to: If[10].charCodeAt(0)
         });
-        else if (Kf = Jf[12]) Hf.push({
-            type: pf.CHAR,
-            value: Kf.charCodeAt(0)
+        else if (Jf = If[12]) Gf.push({
+            type: of.CHAR,
+            value: Jf.charCodeAt(0)
         });
         else return [
-            Hf,
-            If.lastIndex
+            Gf,
+            Hf.lastIndex
         ];
-        of.error(Gf, "Unterminated character class");
+        nf.error(Ff, "Unterminated character class");
     };
-    of.error = (Lf, Mf)=>{
-        throw new SyntaxError("Invalid regular expression: /" + Lf + "/: " + Mf);
+    nf.error = (Kf, Lf)=>{
+        throw new SyntaxError("Invalid regular expression: /" + Kf + "/: " + Lf);
     };
 });
-var U = E1((Nf)=>{
-    var Of = I();
-    Nf.wordBoundary = ()=>({
-            type: Of.POSITION,
+var U = E1((Mf)=>{
+    var Nf = I();
+    Mf.wordBoundary = ()=>({
+            type: Nf.POSITION,
             value: "b"
         })
     ;
-    Nf.nonWordBoundary = ()=>({
-            type: Of.POSITION,
+    Mf.nonWordBoundary = ()=>({
+            type: Nf.POSITION,
             value: "B"
         })
     ;
-    Nf.begin = ()=>({
-            type: Of.POSITION,
+    Mf.begin = ()=>({
+            type: Nf.POSITION,
             value: "^"
         })
     ;
-    Nf.end = ()=>({
-            type: Of.POSITION,
+    Mf.end = ()=>({
+            type: Nf.POSITION,
             value: "$"
         })
     ;
 });
-var P = E1((Pf, Qf)=>{
-    var Rf = F(), Sf = I(), Tf = S(), Uf = U();
-    Qf.exports = (Vf)=>{
-        var Wf = 0, Xf, Yf, Zf = {
-            type: Sf.ROOT,
+var P = E1((Of, Pf)=>{
+    var Qf = F(), Rf = I(), Sf = S(), Tf = U();
+    Pf.exports = (Uf)=>{
+        var Vf = 0, Wf, Xf, Yf = {
+            type: Rf.ROOT,
             stack: []
-        }, $f = Zf, _f = Zf.stack, ag = [], bg = (cg)=>{
-            Rf.error(Vf, `Nothing to repeat at column ${cg - 1}`);
-        }, dg = Rf.strToChars(Vf);
-        for(Xf = dg.length; Wf < Xf;)switch(Yf = dg[Wf++], Yf){
+        }, Zf = Yf, $f = Yf.stack, _f = [], ag = (bg)=>{
+            Qf.error(Uf, `Nothing to repeat at column ${bg - 1}`);
+        }, cg = Qf.strToChars(Uf);
+        for(Wf = cg.length; Vf < Wf;)switch(Xf = cg[Vf++], Xf){
             case "\\":
-                switch(Yf = dg[Wf++], Yf){
+                switch(Xf = cg[Vf++], Xf){
                     case "b":
-                        _f.push(Uf.wordBoundary());
+                        $f.push(Tf.wordBoundary());
                         break;
                     case "B":
-                        _f.push(Uf.nonWordBoundary());
+                        $f.push(Tf.nonWordBoundary());
                         break;
                     case "w":
-                        _f.push(Tf.words());
+                        $f.push(Sf.words());
                         break;
                     case "W":
-                        _f.push(Tf.notWords());
+                        $f.push(Sf.notWords());
                         break;
                     case "d":
-                        _f.push(Tf.ints());
+                        $f.push(Sf.ints());
                         break;
                     case "D":
-                        _f.push(Tf.notInts());
+                        $f.push(Sf.notInts());
                         break;
                     case "s":
-                        _f.push(Tf.whitespace());
+                        $f.push(Sf.whitespace());
                         break;
                     case "S":
-                        _f.push(Tf.notWhitespace());
+                        $f.push(Sf.notWhitespace());
                         break;
                     default:
-                        /\d/.test(Yf) ? _f.push({
-                            type: Sf.REFERENCE,
-                            value: parseInt(Yf, 10)
-                        }) : _f.push({
-                            type: Sf.CHAR,
-                            value: Yf.charCodeAt(0)
+                        /\d/.test(Xf) ? $f.push({
+                            type: Rf.REFERENCE,
+                            value: parseInt(Xf, 10)
+                        }) : $f.push({
+                            type: Rf.CHAR,
+                            value: Xf.charCodeAt(0)
                         });
                 }
                 break;
             case "^":
-                _f.push(Uf.begin());
+                $f.push(Tf.begin());
                 break;
             case "$":
-                _f.push(Uf.end());
+                $f.push(Tf.end());
                 break;
             case "[":
-                var eg;
-                dg[Wf] === "^" ? (eg = !0, Wf++) : eg = !1;
-                var fg = Rf.tokenizeClass(dg.slice(Wf), Vf);
-                Wf += fg[1], _f.push({
-                    type: Sf.SET,
-                    set: fg[0],
-                    not: eg
+                var dg;
+                cg[Vf] === "^" ? (dg = !0, Vf++) : dg = !1;
+                var eg = Qf.tokenizeClass(cg.slice(Vf), Uf);
+                Vf += eg[1], $f.push({
+                    type: Rf.SET,
+                    set: eg[0],
+                    not: dg
                 });
                 break;
             case ".":
-                _f.push(Tf.anyChar());
+                $f.push(Sf.anyChar());
                 break;
             case "(":
-                var gg = {
-                    type: Sf.GROUP,
+                var fg = {
+                    type: Rf.GROUP,
                     stack: [],
                     remember: !0
                 };
-                Yf = dg[Wf], Yf === "?" && (Yf = dg[Wf + 1], Wf += 2, Yf === "=" ? gg.followedBy = !0 : Yf === "!" ? gg.notFollowedBy = !0 : Yf !== ":" && Rf.error(Vf, `Invalid group, character '${Yf}' after '?' at column ${Wf - 1}`), gg.remember = !1), _f.push(gg), ag.push($f), $f = gg, _f = gg.stack;
+                Xf = cg[Vf], Xf === "?" && (Xf = cg[Vf + 1], Vf += 2, Xf === "=" ? fg.followedBy = !0 : Xf === "!" ? fg.notFollowedBy = !0 : Xf !== ":" && Qf.error(Uf, `Invalid group, character '${Xf}' after '?' at column ${Vf - 1}`), fg.remember = !1), $f.push(fg), _f.push(Zf), Zf = fg, $f = fg.stack;
                 break;
             case ")":
-                ag.length === 0 && Rf.error(Vf, `Unmatched ) at column ${Wf - 1}`), $f = ag.pop(), _f = $f.options ? $f.options[$f.options.length - 1] : $f.stack;
+                _f.length === 0 && Qf.error(Uf, `Unmatched ) at column ${Vf - 1}`), Zf = _f.pop(), $f = Zf.options ? Zf.options[Zf.options.length - 1] : Zf.stack;
                 break;
             case "|":
-                $f.options || ($f.options = [
-                    $f.stack
-                ], delete $f.stack);
-                var hg = [];
-                $f.options.push(hg), _f = hg;
+                Zf.options || (Zf.options = [
+                    Zf.stack
+                ], delete Zf.stack);
+                var gg = [];
+                Zf.options.push(gg), $f = gg;
                 break;
             case "{":
-                var ig = /^(\d+)(,(\d+)?)?\}/.exec(dg.slice(Wf)), jg, kg;
-                ig !== null ? (_f.length === 0 && bg(Wf), jg = parseInt(ig[1], 10), kg = ig[2] ? ig[3] ? parseInt(ig[3], 10) : 1 / 0 : jg, Wf += ig[0].length, _f.push({
-                    type: Sf.REPETITION,
-                    min: jg,
-                    max: kg,
-                    value: _f.pop()
-                })) : _f.push({
-                    type: Sf.CHAR,
+                var hg = /^(\d+)(,(\d+)?)?\}/.exec(cg.slice(Vf)), ig, jg;
+                hg !== null ? ($f.length === 0 && ag(Vf), ig = parseInt(hg[1], 10), jg = hg[2] ? hg[3] ? parseInt(hg[3], 10) : 1 / 0 : ig, Vf += hg[0].length, $f.push({
+                    type: Rf.REPETITION,
+                    min: ig,
+                    max: jg,
+                    value: $f.pop()
+                })) : $f.push({
+                    type: Rf.CHAR,
                     value: 123
                 });
                 break;
             case "?":
-                _f.length === 0 && bg(Wf), _f.push({
-                    type: Sf.REPETITION,
+                $f.length === 0 && ag(Vf), $f.push({
+                    type: Rf.REPETITION,
                     min: 0,
                     max: 1,
-                    value: _f.pop()
+                    value: $f.pop()
                 });
                 break;
             case "+":
-                _f.length === 0 && bg(Wf), _f.push({
-                    type: Sf.REPETITION,
+                $f.length === 0 && ag(Vf), $f.push({
+                    type: Rf.REPETITION,
                     min: 1,
                     max: 1 / 0,
-                    value: _f.pop()
+                    value: $f.pop()
                 });
                 break;
             case "*":
-                _f.length === 0 && bg(Wf), _f.push({
-                    type: Sf.REPETITION,
+                $f.length === 0 && ag(Vf), $f.push({
+                    type: Rf.REPETITION,
                     min: 0,
                     max: 1 / 0,
-                    value: _f.pop()
+                    value: $f.pop()
                 });
                 break;
             default:
-                _f.push({
-                    type: Sf.CHAR,
-                    value: Yf.charCodeAt(0)
+                $f.push({
+                    type: Rf.CHAR,
+                    value: Xf.charCodeAt(0)
                 });
         }
-        return ag.length !== 0 && Rf.error(Vf, "Unterminated group"), Zf;
+        return _f.length !== 0 && Qf.error(Uf, "Unterminated group"), Yf;
     };
-    Qf.exports.types = Sf;
+    Pf.exports.types = Rf;
 });
 var X = x1(P()), j1 = x1(P()), { types: oe  } = X;
 var export_default1 = j1.default;
@@ -1353,118 +1353,118 @@ var o = Object.defineProperty;
 var y = Object.getOwnPropertyDescriptor;
 var E2 = Object.getOwnPropertyNames;
 var x2 = Object.getPrototypeOf, I1 = Object.prototype.hasOwnProperty;
-var w1 = (lg)=>o(lg, "__esModule", {
+var w1 = (kg)=>o(kg, "__esModule", {
         value: !0
     })
 ;
-((mg)=>typeof require != "undefined" ? require : typeof Proxy != "undefined" ? new Proxy(mg, {
-        get: (ng, og)=>(typeof require != "undefined" ? require : ng)[og]
-    }) : mg
-)(function(pg) {
+((lg)=>typeof require != "undefined" ? require : typeof Proxy != "undefined" ? new Proxy(lg, {
+        get: (mg, ng)=>(typeof require != "undefined" ? require : mg)[ng]
+    }) : lg
+)(function(og) {
     if (typeof require != "undefined") return require.apply(this, arguments);
-    throw new Error('Dynamic require of "' + pg + '" is not supported');
+    throw new Error('Dynamic require of "' + og + '" is not supported');
 });
-var O = (qg, rg)=>()=>(rg || qg((rg = {
+var O = (pg, qg)=>()=>(qg || pg((qg = {
             exports: {
             }
-        }).exports, rg), rg.exports)
+        }).exports, qg), qg.exports)
 ;
-var v1 = (sg, tg, ug)=>{
-    if (tg && typeof tg == "object" || typeof tg == "function") for (let vg of E2(tg))!I1.call(sg, vg) && vg !== "default" && o(sg, vg, {
-        get: ()=>tg[vg]
+var v1 = (rg, sg, tg)=>{
+    if (sg && typeof sg == "object" || typeof sg == "function") for (let ug of E2(sg))!I1.call(rg, ug) && ug !== "default" && o(rg, ug, {
+        get: ()=>sg[ug]
         ,
-        enumerable: !(ug = y(tg, vg)) || ug.enumerable
+        enumerable: !(tg = y(sg, ug)) || tg.enumerable
     });
-    return sg;
-}, _2 = (wg)=>v1(w1(o(wg != null ? C(x2(wg)) : {
-    }, "default", wg && wg.__esModule && "default" in wg ? {
-        get: ()=>wg.default
+    return rg;
+}, _2 = (vg)=>v1(w1(o(vg != null ? C(x2(vg)) : {
+    }, "default", vg && vg.__esModule && "default" in vg ? {
+        get: ()=>vg.default
         ,
         enumerable: !0
     } : {
-        value: wg,
+        value: vg,
         enumerable: !0
-    })), wg)
+    })), vg)
 ;
-var c = O((xg, yg)=>{
-    var zg = export_default1, Ag = export_default, Bg = zg.types;
-    yg.exports = class h {
-        _setDefaults(Cg) {
-            this.max = Cg.max != null ? Cg.max : h.prototype.max != null ? h.prototype.max : 100, this.defaultRange = Cg.defaultRange ? Cg.defaultRange : this.defaultRange.clone(), Cg.randInt && (this.randInt = Cg.randInt);
+var c = O((wg, xg)=>{
+    var yg = export_default1, zg = export_default, Ag = yg.types;
+    xg.exports = class h {
+        _setDefaults(Bg) {
+            this.max = Bg.max != null ? Bg.max : h.prototype.max != null ? h.prototype.max : 100, this.defaultRange = Bg.defaultRange ? Bg.defaultRange : this.defaultRange.clone(), Bg.randInt && (this.randInt = Bg.randInt);
         }
         gen() {
             return this._gen(this.tokens, []);
         }
-        _gen(Dg, Eg) {
-            var Fg, Gg, Hg, Ig, Jg;
-            switch(Dg.type){
-                case Bg.ROOT:
-                case Bg.GROUP:
-                    if (Dg.followedBy || Dg.notFollowedBy) return "";
-                    for(Dg.remember && Dg.groupNumber === void 0 && (Dg.groupNumber = Eg.push(null) - 1), Fg = Dg.options ? this._randSelect(Dg.options) : Dg.stack, Gg = "", Ig = 0, Jg = Fg.length; Ig < Jg; Ig++)Gg += this._gen(Fg[Ig], Eg);
-                    return Dg.remember && (Eg[Dg.groupNumber] = Gg), Gg;
-                case Bg.POSITION:
+        _gen(Cg, Dg) {
+            var Eg, Fg, Gg, Hg, Ig;
+            switch(Cg.type){
+                case Ag.ROOT:
+                case Ag.GROUP:
+                    if (Cg.followedBy || Cg.notFollowedBy) return "";
+                    for(Cg.remember && Cg.groupNumber === void 0 && (Cg.groupNumber = Dg.push(null) - 1), Eg = Cg.options ? this._randSelect(Cg.options) : Cg.stack, Fg = "", Hg = 0, Ig = Eg.length; Hg < Ig; Hg++)Fg += this._gen(Eg[Hg], Dg);
+                    return Cg.remember && (Dg[Cg.groupNumber] = Fg), Fg;
+                case Ag.POSITION:
                     return "";
-                case Bg.SET:
-                    var Kg = this._expand(Dg);
-                    return Kg.length ? String.fromCharCode(this._randSelect(Kg)) : "";
-                case Bg.REPETITION:
-                    for(Hg = this.randInt(Dg.min, Dg.max === 1 / 0 ? Dg.min + this.max : Dg.max), Gg = "", Ig = 0; Ig < Hg; Ig++)Gg += this._gen(Dg.value, Eg);
-                    return Gg;
-                case Bg.REFERENCE:
-                    return Eg[Dg.value - 1] || "";
-                case Bg.CHAR:
-                    var Lg = this.ignoreCase && this._randBool() ? this._toOtherCase(Dg.value) : Dg.value;
-                    return String.fromCharCode(Lg);
+                case Ag.SET:
+                    var Jg = this._expand(Cg);
+                    return Jg.length ? String.fromCharCode(this._randSelect(Jg)) : "";
+                case Ag.REPETITION:
+                    for(Gg = this.randInt(Cg.min, Cg.max === 1 / 0 ? Cg.min + this.max : Cg.max), Fg = "", Hg = 0; Hg < Gg; Hg++)Fg += this._gen(Cg.value, Dg);
+                    return Fg;
+                case Ag.REFERENCE:
+                    return Dg[Cg.value - 1] || "";
+                case Ag.CHAR:
+                    var Kg = this.ignoreCase && this._randBool() ? this._toOtherCase(Cg.value) : Cg.value;
+                    return String.fromCharCode(Kg);
             }
         }
-        _toOtherCase(Mg) {
-            return Mg + (97 <= Mg && Mg <= 122 ? -32 : 65 <= Mg && Mg <= 90 ? 32 : 0);
+        _toOtherCase(Lg) {
+            return Lg + (97 <= Lg && Lg <= 122 ? -32 : 65 <= Lg && Lg <= 90 ? 32 : 0);
         }
         _randBool() {
             return !this.randInt(0, 1);
         }
-        _randSelect(Ng) {
-            return Ng instanceof Ag ? Ng.index(this.randInt(0, Ng.length - 1)) : Ng[this.randInt(0, Ng.length - 1)];
+        _randSelect(Mg) {
+            return Mg instanceof zg ? Mg.index(this.randInt(0, Mg.length - 1)) : Mg[this.randInt(0, Mg.length - 1)];
         }
-        _expand(Og) {
-            if (Og.type === zg.types.CHAR) return new Ag(Og.value);
-            if (Og.type === zg.types.RANGE) return new Ag(Og.from, Og.to);
+        _expand(Ng) {
+            if (Ng.type === yg.types.CHAR) return new zg(Ng.value);
+            if (Ng.type === yg.types.RANGE) return new zg(Ng.from, Ng.to);
             {
-                let Pg = new Ag;
-                for(let Qg = 0; Qg < Og.set.length; Qg++){
-                    let Rg = this._expand(Og.set[Qg]);
-                    if (Pg.add(Rg), this.ignoreCase) for(let Sg = 0; Sg < Rg.length; Sg++){
-                        let Tg = Rg.index(Sg), Ug = this._toOtherCase(Tg);
-                        Tg !== Ug && Pg.add(Ug);
+                let Og = new zg;
+                for(let Pg = 0; Pg < Ng.set.length; Pg++){
+                    let Qg = this._expand(Ng.set[Pg]);
+                    if (Og.add(Qg), this.ignoreCase) for(let Rg = 0; Rg < Qg.length; Rg++){
+                        let Sg = Qg.index(Rg), Tg = this._toOtherCase(Sg);
+                        Sg !== Tg && Og.add(Tg);
                     }
                 }
-                return Og.not ? this.defaultRange.clone().subtract(Pg) : this.defaultRange.clone().intersect(Pg);
+                return Ng.not ? this.defaultRange.clone().subtract(Og) : this.defaultRange.clone().intersect(Og);
             }
         }
-        randInt(Vg, Wg) {
-            return Vg + Math.floor(Math.random() * (1 + Wg - Vg));
+        randInt(Ug, Vg) {
+            return Ug + Math.floor(Math.random() * (1 + Vg - Ug));
         }
         get defaultRange() {
-            return this._range = this._range || new Ag(32, 126);
+            return this._range = this._range || new zg(32, 126);
         }
-        set defaultRange(Xg) {
-            this._range = Xg;
+        set defaultRange(Wg) {
+            this._range = Wg;
         }
-        static randexp(Yg, Zg) {
-            var $g;
-            return typeof Yg == "string" && (Yg = new RegExp(Yg, Zg)), Yg._randexp === void 0 ? ($g = new h(Yg, Zg), Yg._randexp = $g) : ($g = Yg._randexp, $g._setDefaults(Yg)), $g.gen();
+        static randexp(Xg, Yg) {
+            var Zg;
+            return typeof Xg == "string" && (Xg = new RegExp(Xg, Yg)), Xg._randexp === void 0 ? (Zg = new h(Xg, Yg), Xg._randexp = Zg) : (Zg = Xg._randexp, Zg._setDefaults(Xg)), Zg.gen();
         }
         static sugar() {
             RegExp.prototype.gen = function() {
                 return h.randexp(this);
             };
         }
-        constructor(_g, ah){
-            if (this._setDefaults(_g), _g instanceof RegExp) this.ignoreCase = _g.ignoreCase, this.multiline = _g.multiline, _g = _g.source;
-            else if (typeof _g == "string") this.ignoreCase = ah && ah.indexOf("i") !== -1, this.multiline = ah && ah.indexOf("m") !== -1;
+        constructor($g, _g){
+            if (this._setDefaults($g), $g instanceof RegExp) this.ignoreCase = $g.ignoreCase, this.multiline = $g.multiline, $g = $g.source;
+            else if (typeof $g == "string") this.ignoreCase = _g && _g.indexOf("i") !== -1, this.multiline = _g && _g.indexOf("m") !== -1;
             else throw new Error("Expected a regexp or string");
-            this.tokens = zg(_g);
+            this.tokens = yg($g);
         }
     };
 });
