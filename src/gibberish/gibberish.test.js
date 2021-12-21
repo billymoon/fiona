@@ -1,5 +1,8 @@
 import { it, run } from "https://deno.land/x/tincan/mod.ts";
-import { assertEquals, assertNotEquals } from "https://deno.land/std@0.103.0/testing/asserts.ts";
+import {
+  assertEquals,
+  assertNotEquals,
+} from "https://deno.land/std@0.103.0/testing/asserts.ts";
 import RandExp from "https://esm.sh/randexp@0.5.3";
 import Fiona from "../core/index.js";
 
@@ -44,8 +47,8 @@ it("Fiona.Gibberish can specify syllableMin and syllableMax", () => {
 
 it("Fiona.Gibberish does not return same value when called multiple times", () => {
   assertNotEquals(
-    Fiona(1).object(seeded => seeded.gibberish() && seeded.gibberish()),
-    Fiona(1).object(seeded => seeded.gibberish()),
+    Fiona(1).object((seeded) => seeded.gibberish() && seeded.gibberish()),
+    Fiona(1).object((seeded) => seeded.gibberish()),
   );
 });
 
