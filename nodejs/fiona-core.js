@@ -28,7 +28,7 @@ function _objectSpread(d) {
     return d;
 }
 const __default = {
-    version: "4.1.0"
+    version: "4.1.1"
 };
 const Register = (i, j)=>(...k)=>k.forEach((l)=>{
             const [m, n] = typeof l === "function" ? [
@@ -216,7 +216,9 @@ function Moon(Fa, Ga = Math.floor(Math.random() * 100000000), Ha) {
     });
     this.info = ()=>({
             initseed: Ga,
-            path: Ha
+            path: [
+                ...Ha
+            ]
         })
     ;
     this.recurse = recurse;
@@ -266,7 +268,9 @@ const registerMethod = (kb, lb)=>{
 Fiona.register = Register(registerFactory, registerMethod);
 Fiona.Random = ()=>(mb)=>mb.random()
 ;
-const clone = (nb)=>Fiona(nb.info().initseed).state(nb.state())
+Fiona.Info = ()=>(nb)=>nb.info()
+;
+const clone = (ob)=>Fiona(ob.info().initseed).state(ob.state())
 ;
 Fiona.register([
     "clone", clone]);

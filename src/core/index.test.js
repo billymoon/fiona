@@ -32,6 +32,24 @@ describe("core", () => {
     assertEquals(seeded2.info().initseed, 1);
   });
 
+  it("reports info with Fiona.Info syntax", () => {
+    assertEquals(seeded.info(), { initseed: "moon", path: [] });
+    assertEquals(Fiona(1).info(), { initseed: 1, path: [] });
+    assertEquals(Fiona(1).object({ a: Fiona.Info }), {
+      a: { initseed: 1, path: ["a"] },
+    });
+    assertEquals(Fiona(1).object({ a: [Fiona.Info, Fiona.Info] }), {
+      a: [{ initseed: 1, path: ["a", 0] }, { initseed: 1, path: ["a", 1] }],
+    });
+  });
+
+  it("Fiona.Info returns copy so can not mutate original from returned value", () => {
+    const info = seeded.info();
+    info.path.push(1);
+    assertEquals(seeded.info(), { initseed: "moon", path: [] });
+    assertEquals(info, { initseed: "moon", path: [1] });
+  });
+
   it("returns expected floats in order", () => {
     assertEquals(seeded.random(), fixtures[0]);
     assertEquals(seeded.random(), fixtures[1]);

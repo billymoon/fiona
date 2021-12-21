@@ -14,7 +14,7 @@ function Moon(Prng, initseed = Math.floor(Math.random() * 1e8), path) {
   );
   Object.assign(this, { state, reset, random, reverse, distribution });
 
-  this.info = () => ({ initseed, path });
+  this.info = () => ({ initseed, path: [...path] });
   this.recurse = recurse;
 
   return this;

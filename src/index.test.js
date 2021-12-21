@@ -27,6 +27,7 @@ Deno.test("registers extensions to Fiona", () => {
       "Gender",
       "Gibberish",
       "Import",
+      "Info",
       "Title",
       "Unique",
       "Firstname",

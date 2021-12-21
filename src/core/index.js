@@ -36,6 +36,8 @@ Fiona.register = Register(registerFactory, registerMethod);
 // TODO: register Random on seeded instance, perhaps need to implement seeded.register first
 Fiona.Random = () => (seeded) => seeded.random();
 
+Fiona.Info = () => (seeded) => seeded.info();
+
 const clone = (seeded) => Fiona(seeded.info().initseed).state(seeded.state());
 
 Fiona.register(["clone", clone]);
