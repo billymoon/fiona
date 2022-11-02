@@ -47,6 +47,7 @@ declare namespace Fiona {
         title: (options?: { gender?: gender }) => string;
         firstname: (options?: { gender?: gender }) => string;
         surname: () => string;
+        name: (options?: { gender?: gender }) => string;
         fullname: (options?: { gender?: gender }) => string;
         img: (options?: { width?: number, height?: number }) => string;
         info: () => { initseed: SeedType };
@@ -94,6 +95,7 @@ declare namespace Fiona {
         Firstname: (...arg: Parameters<Moon['firstname']>) => (...arg: Parameters<PluginCallback>) => ReturnType<Moon['firstname']>;
         Surname: (...arg: Parameters<Moon['surname']>) => (...arg: Parameters<PluginCallback>) => ReturnType<Moon['surname']>;
         Fullname: (...arg: Parameters<Moon['fullname']>) => (...arg: Parameters<PluginCallback>) => ReturnType<Moon['fullname']>;
+        Name: (...arg: Parameters<Moon['name']>) => (...arg: Parameters<PluginCallback>) => ReturnType<Moon['name']>;
         Img: (...arg: Parameters<Moon['img']>) => (...arg: Parameters<PluginCallback>) => ReturnType<Moon['img']>;
         Info: (...arg: Parameters<Moon['info']>) => (...arg: Parameters<PluginCallback>) => ReturnType<Moon['info']>;
         Duplicable: (...arg: Parameters<Moon['duplicable']>) => (...arg: Parameters<PluginCallback>) => ReturnType<Moon['duplicable']>;
