@@ -23,7 +23,7 @@ it("Fiona.Lorem (can specify approximately how many words)", () => {
 });
 
 it("Fiona.Lorem (sometimes starts lorem ipsum)", () => {
-  assertEquals(Fiona(7).lorem({ qty: 2 }), "adipisicing commodo");
+  assertEquals(Fiona(14).lorem({ qty: 2 }), "lorem ipsum");
 });
 
 it("Fiona.Word", () => {

@@ -1,5 +1,5 @@
 export const lorem = (seeded, { qty = 15 } = {}) => {
-  const out = seeded.random() < 0.2 ? "lorem ipsum " : "";
+  const startWithLoremIpsum = seeded.random() < 0.2;
   let words = [];
   while (words.length < qty) {
     words = words.concat(
@@ -9,7 +9,10 @@ export const lorem = (seeded, { qty = 15 } = {}) => {
         ),
     );
   }
-  return out + seeded.choose(qty, words).join(" ");
+  return (startWithLoremIpsum ? "lorem ipsum" : "") +
+    seeded.choose(startWithLoremIpsum ? Math.max(0, qty - 2) : qty, words).join(
+      " ",
+    );
 };
 
 export const word = (seeded) => seeded.lorem({ qty: 1 }).split(" ")[0];

@@ -20,6 +20,13 @@ it("Fiona.Import handles objects", () => {
   );
 });
 
+it("Fiona.Import handles null and undefined as object property", () => {
+  assertEquals(
+    Fiona(1).import({ x: null, y: { fiona: "random" }, z: undefined }),
+    { x: null, y: 0.2704298972480138, z: undefined },
+  );
+});
+
 it("Fiona.Import handles arrays", () => {
   assertEquals(
     Fiona(1).import([{ fiona: "number" }, { fiona: "random" }]),

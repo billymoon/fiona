@@ -35,11 +35,11 @@ it("find Fiona Moon", () => {
       (name) => name === "Miss Fiona Moon",
       (seeded) => seeded.fullname(),
       {
-        startseed: 39351,
-        tries: 5,
+        startseed: 1440,
+        tries: 2,
       },
     ).info().initseed,
-    39355,
+    1441,
   );
 });
 
@@ -91,7 +91,7 @@ it("find (set startseed)", () => {
         }),
       { startseed: 307, tries: 10 },
     ).object({ name: Fiona.Fullname }).name,
-    "Mr Lachlan Caleb Rory Fraser Robertson",
+    "Lord Leo Mitchell MacDonald",
   );
 
   assertEquals(
@@ -104,9 +104,9 @@ it("find (set startseed)", () => {
           name: Fiona.Fullname,
           age: Fiona.Number({ max: 100 }),
         }),
-      { startseed: 1322670, tries: 10 },
+      { startseed: 101290, tries: 3 },
     ).info().initseed,
-    1322672,
+    101292,
   );
 });
 

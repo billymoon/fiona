@@ -45,9 +45,19 @@ export const surname = (seeded) => {
 
 export const fullname = (seeded, { gender } = {}) => {
   const myGender = getGender(gender || seeded.gender());
-  return `${seeded.title({ gender: myGender })} ${
+  const names = `${
     seeded.firstnames({
       gender: myGender,
     })
+  } ${seeded.surname()}`;
+  return `${seeded.title({ gender: myGender })} ${names}`;
+};
+
+export const name = (seeded, { gender } = {}) => {
+  const myGender = getGender(gender || seeded.gender());
+  return `${
+    seeded.firstnames({
+      gender: myGender,
+    }).split(" ")[0]
   } ${seeded.surname()}`;
 };

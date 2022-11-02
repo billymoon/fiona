@@ -33,6 +33,7 @@ Deno.test("registers extensions to Fiona", () => {
       "Firstname",
       "Firstnames",
       "Surname",
+      "Name",
       "Fullname",
       "Regex",
       "Seed",

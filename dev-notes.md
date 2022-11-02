@@ -1,3 +1,5 @@
+    deno test src --watch
+
     ./build.sh
 
     find src -type f | xargs -I '{}' perl -pi -e 'chomp if eof' {} && \

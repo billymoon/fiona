@@ -9,6 +9,7 @@ import {
   firstnames,
   fullname,
   gender,
+  name,
   surname,
   title,
 } from "./name.js";
@@ -21,6 +22,7 @@ Fiona.register(["firstname", firstname]);
 Fiona.register(["firstnames", firstnames]);
 Fiona.register(["surname", surname]);
 Fiona.register(["gender", gender]);
+Fiona.register(["name", name]);
 Fiona.register(["fullname", fullname]);
 
 it("sanity", () => {
@@ -51,8 +53,16 @@ it("Fiona.Firstname", () => {
   assertEquals(Fiona(2).firstname({ gender: "Male" }), "Finn");
 });
 
-it("Fiona.Firstnames", () => {
+it("Fiona.Firstnames (sometimes returns one name)", () => {
   assertEquals(Fiona(1).firstnames(), "Sam");
+});
+
+it("Fiona.Firstnames (sometimes returns multiple names)", () => {
+  assertEquals(Fiona(3).firstnames(), "Isabella Imogen");
+});
+
+it("Fiona.Firstname (returns first of multiple names returned by Fiona.Firstnames)", () => {
+  assertEquals(Fiona(3).firstname(), "Isabella");
 });
 
 it("Fiona.Surname", () => {
@@ -66,7 +76,22 @@ it("Fiona.Gender", () => {
 });
 
 it("Fiona.Fullname", () => {
-  assertEquals(Fiona(1).fullname(), "Sir Murray Murray");
+  assertEquals(Fiona(1).fullname(), "Lord Sam Murray Murray");
+});
+
+it("Fiona.Fullname with gender", () => {
+  assertEquals(
+    Fiona(1).fullname({ gender: "f" }),
+    "Miss Isabella Young-Taylor",
+  );
+});
+
+it("Fiona.Name", () => {
+  assertEquals(Fiona(1).name(), "Sam Murray");
+});
+
+it("Fiona.Name with gender", () => {
+  assertEquals(Fiona(1).name({ gender: "f" }), "Isabella Young-Taylor");
 });
 
 run();
