@@ -8,6 +8,10 @@ import date from "./date/date.js";
 import img from "./img/img.js";
 import duplicable from "./duplicable/duplicable.js";
 
+import seed from "./seed/seed.js";
+import path from "./path/path.js";
+import index from "./index/index.js";
+
 import gibberish from "./gibberish/gibberish.js";
 import { lorem, paragraph, sentence, word } from "./lorem/lorem.js";
 import {
@@ -46,6 +50,9 @@ export default (RandExp) => {
     ["regex", Regex(RandExp)],
     ["shuffle", shuffle],
     ["import", importer],
+    ["seed", seed],
+    ["path", path],
+    ["index", index],
   );
 
   // TODO: move namedata to getter/setter function - somehow encapsulate name plugin

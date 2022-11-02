@@ -11,7 +11,12 @@ const handleArray = (seeded, node, path, root) => {
 
 const handleObject = (seeded, node, path, root) => {
   for (const key in node) {
-    node[key] = recursor(seeded, node[key], path.concat(key), root);
+    const result = recursor(seeded, node[key], path.concat(key), root);
+    if (result === undefined) {
+      delete node[key]
+    } else {
+      node[key] = result
+    }
   }
 
   return node;
